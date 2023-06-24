@@ -1,15 +1,30 @@
 <?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CrBoy&#39;s blog</title>
+    <title>CrBoy&#39;s Blog</title>
     <link>https://blog.crboy.net/</link>
-    <description>Recent content on CrBoy&#39;s blog</description>
+    <description>Recent content on CrBoy&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</copyright>
-    <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 Jun 2023 01:37:57 +0800</lastBuildDate>
     
         <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>解決新視窗不會取得focus的問題</title>
+        <link>https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/</link>
+        <pubDate>Mon, 18 Jun 2007 02:49:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/</guid>
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/ -&lt;p&gt;我也不確定這是Gnome的問題或是Beryl造成的～&lt;br&gt;
+不過我知道解法了:P&lt;/p&gt;
+&lt;p&gt;在Beryl Manager中找General Options裡面有個&amp;quot;聚交保護級&amp;quot; 把高設定為正常就好了:)&lt;br&gt;
+&lt;a href=&#34;http://www.ubuntu.org.tw/modules/newbb/viewtopic.php?viewmode=flat&amp;amp;type=&amp;amp;topic_id=4541&amp;amp;forum=22&#34;&gt;來源&lt;/a&gt;&lt;/p&gt;
+- https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
+        </item>
     
     
     
@@ -19,7 +34,7 @@
         <pubDate>Mon, 18 Jun 2007 01:46:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%80%E7%AF%87/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%80%E7%AF%87/ -&lt;p&gt;2007年6月5日，innotek 發佈了 VirtualBox 1.4.0 for Linux and Windows。這個新版本有大幅的進步，超過所有自 2007 年 1 月發佈的官方版本以來的所有更新。&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%80%E7%AF%87/ -&lt;p&gt;2007年6月5日，innotek 發佈了 VirtualBox 1.4.0 for Linux and Windows。這個新版本有大幅的進步，超過所有自 2007 年 1 月發佈的官方版本以來的所有更新。&lt;/p&gt;
 &lt;p&gt;這些更新有：對64-bit Linux主機的完整支援，RDP session shadowing，剪貼簿同步化，序列埠，以及更簡單的網路介面。&lt;/p&gt;
 &lt;p&gt;在 儲存部份，VirtualBox已可原生支援 VMware 檔案格式(VMDK)，且可以讓虛擬機器直接存取硬碟與分割區(raw disk support)。圖形使用者介面也獲得很大的改善且提供12種語言的支援(正體/簡體中文、德文、西班牙文、法文、義大利文、波蘭文、葡萄牙文、羅馬尼 亞文、阿拉伯文、俄文、日文)Red Hat Enterprise Linux 5 (RHEL5) and Xandros Desktop 4.1現在也受到官方支援。對FreeBSD與OpenBSD的支援也有進步。&lt;/p&gt;
 &lt;p&gt;細節可參考Changelog。&lt;/p&gt;

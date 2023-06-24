@@ -1,15 +1,31 @@
 <?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CrBoy&#39;s blog</title>
+    <title>CrBoy&#39;s Blog</title>
     <link>https://blog.crboy.net/</link>
-    <description>Recent content on CrBoy&#39;s blog</description>
+    <description>Recent content on CrBoy&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</copyright>
-    <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 Jun 2023 01:37:57 +0800</lastBuildDate>
     
         <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>拖了很多年的新 blog</title>
+        <link>https://blog.crboy.net/drafts/%E6%8B%96%E4%BA%86%E5%BE%88%E5%A4%9A%E5%B9%B4%E7%9A%84%E6%96%B0-blog/</link>
+        <pubDate>Sun, 25 Jun 2023 01:37:57 +0800</pubDate>
+        
+        <guid>https://blog.crboy.net/drafts/%E6%8B%96%E4%BA%86%E5%BE%88%E5%A4%9A%E5%B9%B4%E7%9A%84%E6%96%B0-blog/</guid>
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/drafts/%E6%8B%96%E4%BA%86%E5%BE%88%E5%A4%9A%E5%B9%B4%E7%9A%84%E6%96%B0-blog/ -&lt;p&gt;之前受不了 Blogger 用起來麻煩，而且想要自己掌握所有文章與整個 blog site，跳槽到了 Hexo。但這已經是 7 年前的事了耶&amp;hellip;..XD&lt;/p&gt;
+&lt;p&gt;當時其實沒有做完，雖然把文章都轉成 markdown 了，而且也建了測試 site（叫做 hexo.crboy.net，之後應該會砍掉），但一直想要自己做好自己的 theme 之後再正式部署。這一拖就是 7 年&amp;hellip;
+後來其實也對 Hexo 失去興趣了，因為知道有個新東西叫做 Hugo，而且效能比本來就快的 Hexo 好很多（當時選擇 Hexo 的原因之一是 Hexo 比起基於 Ruby 跟 Jekyll 的 Octopress 還快很多），也玩了一陣子，感覺真的不錯，但也是因為沒有把 theme 搞好而放置。&lt;/p&gt;
+&lt;p&gt;最近端午連假，剛好有點空，就來整理一下。為了避免重蹈覆轍，這次決定挑一個現成的 theme 硬上。至少&amp;hellip;至少提供自己一個可以寫文章的平台吧。&lt;/p&gt;
+&lt;p&gt;總之，今天終於擺脫 Blogger，改用 Hugo 產生的 static site 來當 blog 啦！過去的文章都有做 alias，希望連結沒壞。不過留言我就不想管了，一方面很麻煩，另一方面留言數沒有很多，就放棄它了。之後（如果有空的話XDDD）會加入 Disqus 或其他類似產品來提供留言功能。不過其實，現在已經不比當年，很多有價值的討論都不會發生在 blog 裡面了，也許不提供留言功能也無所謂吧？&lt;/p&gt;
+- https://blog.crboy.net/drafts/%E6%8B%96%E4%BA%86%E5%BE%88%E5%A4%9A%E5%B9%B4%E7%9A%84%E6%96%B0-blog/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
+        </item>
     
     
     
@@ -19,7 +35,7 @@
         <pubDate>Thu, 29 Sep 2016 03:01:12 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/amazing-git-subtree/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/amazing-git-subtree/ -&lt;p&gt;一直以來只知道 git 可以透過 git-submodule 管理巢狀 git 專案。也就是一個大專案中有小專案，而這兩個專案要分別用 git 做版本控制的狀況。這會發生在專案有可以抽出來跟其他專案共用的部分，或是專案需要引入一個外部現有的 git 專案的時候。舉例來說，我的 vimrc 裡面有 snippets，這個 snippets 是值得被另外拉出來成為一個專案的。又或是像 hexo，我要自訂 theme，所以我 fork 了 icarus 這個 theme 來改，但需要把它放進我的大 hexo 專案中。&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/amazing-git-subtree/ -&lt;p&gt;一直以來只知道 git 可以透過 git-submodule 管理巢狀 git 專案。也就是一個大專案中有小專案，而這兩個專案要分別用 git 做版本控制的狀況。這會發生在專案有可以抽出來跟其他專案共用的部分，或是專案需要引入一個外部現有的 git 專案的時候。舉例來說，我的 vimrc 裡面有 snippets，這個 snippets 是值得被另外拉出來成為一個專案的。又或是像 hexo，我要自訂 theme，所以我 fork 了 icarus 這個 theme 來改，但需要把它放進我的大 hexo 專案中。&lt;/p&gt;
 &lt;p&gt;用 submodule 的做法其實滿麻煩的，它的原理是：大專案紀錄某目錄是一個 submodule，所以大專案就不 track 該目錄的變更，而是 track 該目錄的 HEAD commit。該目錄的內容變更則交給他自己 track。也就是說，如果修改了小專案的內容，需要先去小專案裡面把修改 commit 進去後，再去大專案把小專案的新 commit id 給 commit 進去。光用講的都覺得混亂&amp;hellip;&lt;/p&gt;
 &lt;p&gt;有天發現了 git-subtree 是個可以解決類似問題的工具，但差別在於 subtree 不需要事先指定哪個目錄是子專案，只要在需要的時候處理即可。什麼是需要的時候呢？&lt;/p&gt;
 &lt;ol&gt;
@@ -67,7 +83,7 @@ $ git subtree add -P themes/crboy-icarus theme-crboy-icarus master
         <pubDate>Wed, 28 Sep 2016 03:09:57 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/cloudflare-flexible-ssl/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/cloudflare-flexible-ssl/ -&lt;p&gt;最近認真的把 blog 放上 github pages，算是差不多初始化完成了。不過 https 在這年頭是個很重要的問題啊&amp;hellip;.因為我設定了 CNAME，所以目前的網址是 hexo.crboy.net，但是如果直接連到 &lt;a href=&#34;https://hexo.crboy.net&#34;&gt;https://hexo.crboy.net&lt;/a&gt; 的話，會拿到一張 github.com 自己的 ssl 憑證，這張憑證簽給了許多 domain，其中包含 *.github.io，如下圖：&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/cloudflare-flexible-ssl/ -&lt;p&gt;最近認真的把 blog 放上 github pages，算是差不多初始化完成了。不過 https 在這年頭是個很重要的問題啊&amp;hellip;.因為我設定了 CNAME，所以目前的網址是 hexo.crboy.net，但是如果直接連到 &lt;a href=&#34;https://hexo.crboy.net&#34;&gt;https://hexo.crboy.net&lt;/a&gt; 的話，會拿到一張 github.com 自己的 ssl 憑證，這張憑證簽給了許多 domain，其中包含 *.github.io，如下圖：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;github-ssl-cert.png&#34; alt=&#34;github-ssl-cert&#34;&gt;&lt;/p&gt;
 &lt;p&gt;雖然對於 github pages 本來給我的 crboy.githb.io 用起來是沒問題，但我自訂的 domain 可就沒辦法了。&lt;/p&gt;
 &lt;p&gt;找了一下有沒有現成解決方案，找到這篇文章：&lt;a href=&#34;https://sheharyar.me/blog/free-ssl-for-github-pages-with-custom-domains/&#34;&gt;Set Up SSL on Github Pages With Custom Domains for Free&lt;/a&gt;，裡面教你透過 CloudFlare 的 Flexible SSL 來設定，後半段則是教你怎麼強制使用 SSL。但我只想要單純支援 SSL，不反對 user 使用 http 連線，所以後半段就不理他了。進一步找「cloudflare flexible ssl」找到這篇文章：&lt;a href=&#34;https://sofree.cc/cloudflare-free-ssl/&#34;&gt;[免費SSL]Cloudflare 免費憑證讓網站綁上SSL加密連線(https)&lt;/a&gt;，得知原理其實很簡單：讓流量通過 CloudFlare（也就是 enable 他的 cdn 功能），CloudFlare 會幫你對外提供可用的 SSL 憑證。&lt;/p&gt;
@@ -92,7 +108,7 @@ $ git subtree add -P themes/crboy-icarus theme-crboy-icarus master
         <pubDate>Tue, 27 Sep 2016 18:45:49 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/ipinfo.io/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/ipinfo.io/ -&lt;p&gt;以前都用 orange.tw 在查 ip，雖然自己也寫了一個 ip.crboy.net，不過因為實在不想花錢養一台機器，所以就把服務給停掉了。&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/ipinfo.io/ -&lt;p&gt;以前都用 orange.tw 在查 ip，雖然自己也寫了一個 ip.crboy.net，不過因為實在不想花錢養一台機器，所以就把服務給停掉了。&lt;/p&gt;
 &lt;p&gt;剛剛發現 ipinfo.io 這個網站，用瀏覽器開的話相關說明也都有了。但如果直接用 &lt;code&gt;curl&lt;/code&gt; 送 request 的話，就可以拿到自己的 ip 的相關資訊（包含地點、國家等）。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ curl -D- ipinfo.io
 HTTP/1.1 200 OK
@@ -222,7 +238,7 @@ Connection: keep-alive
         <pubDate>Tue, 27 Sep 2016 17:20:42 +0000</pubDate>
         
         <guid>https://blog.crboy.net/pages/about/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/pages/about/ -&lt;p&gt;我是小畢，網路常用代號 CrBoy。&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/pages/about/ -&lt;p&gt;我是小畢，網路常用代號 CrBoy。&lt;/p&gt;
 &lt;p&gt;我換過好多 blog 系統，可是每個都不太滿意。以前用過 &lt;a href=&#34;https://tw.wordpress.org/&#34;&gt;WordPress&lt;/a&gt; 跟 &lt;a href=&#34;https://blogger.com/&#34;&gt;Blogger&lt;/a&gt;，也曾經嘗試過 &lt;a href=&#34;https://logdown.com/&#34;&gt;Logdown&lt;/a&gt;、&lt;a href=&#34;https://www.tumblr.com/&#34;&gt;Tumblr&lt;/a&gt;，但總是因為一些可能不是很重要的小地方放棄了。
 其實寫 blog 是希望可以把一些想法或是研究的東西記錄下來，同時也可以分享給其他人，還有未來的自己。&lt;/p&gt;
 &lt;p&gt;這次我改用 &lt;a href=&#34;https://hexo.io/&#34;&gt;Hexo&lt;/a&gt;，主要看上的是可以用 markdown 寫文章，還可以自訂外觀（Logdown 不能自訂外觀），而且 generate 之後可以放在各種網頁伺服器上，或是 GitHub pages、AWS S3 之類的。總之感覺很方便XD 唯一有一點，過去我一直不傾向使用這一類的 static site generator，像是 &lt;a href=&#34;http://octopress.org/&#34;&gt;Octopress&lt;/a&gt; 之類（我承認我之前看到 Octopress 的時候很心動），是因為沒辦法在線上編輯器直接編輯文章。不過後來想想，其實我的文章產量實在夠少的（自己懶惰），不是在自己電腦上其實也根本不想寫文章。所以有沒有手機 app 或是能不能線上編輯好像都不是非常重要，如果真的要用手機紀錄東西就先記在筆記裡面就好了。&lt;/p&gt;
@@ -238,7 +254,7 @@ Connection: keep-alive
         <pubDate>Mon, 21 Mar 2016 18:04:54 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/hexo-notes-apply-icarus/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/hexo-notes-apply-icarus/ -&lt;p&gt;挑了一下主題，暫時就用 Icarus 這個樣式吧XD&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/hexo-notes-apply-icarus/ -&lt;p&gt;挑了一下主題，暫時就用 Icarus 這個樣式吧XD&lt;/p&gt;
 &lt;p&gt;不過在 config 的時候遇到問題，怎麼改都沒效。後來找到&lt;a href=&#34;http://wuchong.me/blog/2015/03/12/support-jacman-to-Hexo-3/&#34;&gt;這篇文章&lt;/a&gt;，裡面寫到這段話：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;hexo-config 方法会去 theme 主题下的 _config.yml 中查找参数中的配置项&lt;/p&gt;
@@ -255,7 +271,7 @@ Connection: keep-alive
         <pubDate>Sun, 20 Mar 2016 05:47:04 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/move-to-hexo/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/move-to-hexo/ -&lt;p&gt;今天突然覺得，應該要（再）開始好好寫 blog，想了一下，覺得實在受不了 blogger 的鳥氣。
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/move-to-hexo/ -&lt;p&gt;今天突然覺得，應該要（再）開始好好寫 blog，想了一下，覺得實在受不了 blogger 的鳥氣。
 以前評估過 Octopress 跟 Hexo，當時覺得不能用手機發文，或是用別台電腦發文，實在滿討厭的，就暫不考慮使用。
 不過想到我現在的狀況&amp;hellip;.連發文都懶XD
 轉念一想，其實用手機的時候，如果想寫文字，可以先筆記下來（比方說 Evernote），等到拿到電腦再好好整理文章啊！
@@ -273,7 +289,7 @@ Connection: keep-alive
         <pubDate>Mon, 10 Aug 2015 16:19:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/http-how-it-works/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/http-how-it-works/ -&lt;p&gt;從網址列按下 enter 後，到網頁畫面顯示出來，這中間發生了哪些事？&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/http-how-it-works/ -&lt;p&gt;從網址列按下 enter 後，到網頁畫面顯示出來，這中間發生了哪些事？&lt;/p&gt;
 &lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;我一直很喜歡的一個面試題，我決定今天把它拿出來告訴大家，歡迎參考，條件是如果有什麼有趣的回饋請一定要讓我知道！:P&lt;br&gt;
 每次面試工程師 (敝公司會接觸到的是 web 前後端以及 mobile app 工程師) 的時候，我幾乎都會問這個問題：「從網址列按下 enter 後，到網頁畫面顯示出來，這中間發生了哪些事？」這是一個好像很空泛卻又很實際的問題，我則是認為這個問題可以問出受試者對哪個領域較熟悉。&lt;br&gt;
@@ -328,7 +344,7 @@ HTML 中會有些 tag 參考到其他資料嘛，比方說像是 link (通常用
         <pubDate>Thu, 10 Oct 2013 00:00:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/evernote-web-clipper-noscript/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/evernote-web-clipper-noscript/ -&lt;p&gt;這篇是個很短的筆記&amp;hellip;.&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/evernote-web-clipper-noscript/ -&lt;p&gt;這篇是個很短的筆記&amp;hellip;.&lt;/p&gt;
 &lt;p&gt;簡單說，Evernote Web Clipper 在安裝了 NoScript 的 Firefox 上擷取的時候會有一點小小的問題&amp;hellip;原因是 NoScript 把 evernote 外掛做的事情當成 XSS 了。解決方式很簡單，根據&lt;a href=&#34;http://discussion.evernote.com/topic/12304-noscript-and-evernote/&#34;&gt;這篇討論&lt;/a&gt;所說的，只要在 NoScript 的 XSS 白名單中加入下面這行就可以了：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;^https://www.evernote.com/noteit.action(.+)?
 &lt;/code&gt;&lt;/pre&gt;
@@ -343,7 +359,7 @@ HTML 中會有些 tag 參考到其他資料嘛，比方說像是 link (通常用
         <pubDate>Fri, 27 Sep 2013 02:21:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/balsamiq-mockups/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/balsamiq-mockups/ -&lt;p&gt;對於一個美術白癡來說，要設計一個網站的外觀，實在有點困難。有時候要把心中構想先畫出來給人看，都覺得力不從心，所以只好直接寫一個網頁出來，調 CSS 調老半天，只為了把心中的畫面呈現給人「看看再說」。上面所說的作法，做出來的東西比較類似於 prototype，也就是已經包含了部分 CSS/JavaScript 的完整網頁，也許缺的只是真正會 work 的功能還有各種比較細節的調整而已。但萬一這樣做出來的東西不合人家(也許是主管、客戶，甚至是自己)的胃口，那花的這些時間就算沒有全部白費，也浪費掉不少了。&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/balsamiq-mockups/ -&lt;p&gt;對於一個美術白癡來說，要設計一個網站的外觀，實在有點困難。有時候要把心中構想先畫出來給人看，都覺得力不從心，所以只好直接寫一個網頁出來，調 CSS 調老半天，只為了把心中的畫面呈現給人「看看再說」。上面所說的作法，做出來的東西比較類似於 prototype，也就是已經包含了部分 CSS/JavaScript 的完整網頁，也許缺的只是真正會 work 的功能還有各種比較細節的調整而已。但萬一這樣做出來的東西不合人家(也許是主管、客戶，甚至是自己)的胃口，那花的這些時間就算沒有全部白費，也浪費掉不少了。&lt;/p&gt;
 &lt;p&gt;或許有人會說，「我寫 prototype 超快我超強！」但你再強你有人家設計師用 photoshop 隨便畫畫強嗎？雖然人家畫出來的就是一張圖，不會動也不能點，但是省時省力，又能把想表現的重點突顯出來，用來作為前期的討論跟比較相當適合！可能講成這樣還是有人鐵齒&amp;hellip;那試想一個狀況：客戶看了你的 prototype 之後，跟你講了一堆元件說要換位置，下面這個按鈕移到上面去(立刻修改HTML)，這個選單要大一點(趕快調整 font-size, width, height，啊破版了再改一下另外那個&amp;hellip;)，這些東西的間距要小一點，整個寬度要一樣(調 margin 調老半天)&amp;hellip;..總而言之，對於外觀的要求，在圖片上討論常常比在程式碼中討論來得容易，所以也才有所謂的 wireframe 與 mockup 的出現。&lt;/p&gt;
 &lt;p&gt;這邊不深究 wireframe 與 mockup 兩者的差別，下面通通用 mockup 來表示。Mockup 是一種用來呈現成品大致外觀的工具，他不能拿來使用，但是可以讓人容易想像成品的呈現方式 (人類果然是視覺的動物&amp;hellip;)。以前看過一些人是用 photoshop 之類的影像處理軟體在畫 mockup，之後才去作切版套版&amp;hellip;但對於一個美術白癡而言實在太困難了，小弟實在是 photoshop 苦手orz。好在有人推薦了這套工具：&lt;a href=&#34;http://balsamiq.com/products/mockups/&#34;&gt;Balsamiq Mockups&lt;/a&gt;，他是一個很好用的畫 mockup 工具，內建數十種常用元件，可以用來設計網站、視窗程式或是手機介面。下面就直接來介紹一下。&lt;/p&gt;
 &lt;p&gt;下載跟安裝都很簡單，不多說了，Google 一下或是點上面的連結就可以下載&amp;hellip;.我是在 Mac 上安裝的，但他也有 Windows 跟 Linux 版，甚至還有 Google Drive 的 plugin （！）&lt;/p&gt;
@@ -377,62 +393,6 @@ HTML 中會有些 tag 參考到其他資料嘛，比方說像是 link (通常用
 &lt;img src=&#34;14.png&#34; alt=&#34;14&#34;&gt;&lt;/p&gt;
 &lt;p&gt;這樣的工具也許有些人(可能是專業設計師或 photoshop 強者)認為沒什麼，但每樣工具都有他不同的目標。Balsamiq Mockups 並沒有辦法用來作各種不同的繪圖，但是他專注於繪製 mockup 這件事上，所以可以讓這件事變得很簡單，門檻很低，特別是對小弟這種美術白癡來說相當受用！不管是網站設計公司、SOHO或是要設計教材之類的用途，都相當實用。推薦~ :P&lt;/p&gt;
 - https://blog.crboy.net/posts/balsamiq-mockups/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>讓 Gitit 使用自己的網域名稱</title>
-        <link>https://blog.crboy.net/posts/gitit-custom-domain/</link>
-        <pubDate>Thu, 08 Aug 2013 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.crboy.net/posts/gitit-custom-domain/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/gitit-custom-domain/ -&lt;h1 id=&#34;apache&#34;&gt;Apache&lt;/h1&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;lt;virtualhost&amp;gt;
-
-	ServerName wiki.csie.ncku.edu.tw
-	DocumentRoot /var/www/
-	RewriteEngine On
-	ProxyPreserveHost On
-	ProxyRequests Off
-
-	&amp;lt;proxy&amp;gt;
-	Order deny,allow
-	Allow from all
-	&amp;lt;/proxy&amp;gt;
-
-	ProxyPassReverse /    http://127.0.0.1:8000
-	RewriteRule ^(.*) http://127.0.0.1:8000$1 [P]
-	#RewriteLog /var/log/apache2/rewrite.log
-	#RewriteLogLevel 9
-
-	CustomLog ${APACHE_LOG_DIR}/csie-wiki-access.log combined
-	ErrorLog ${APACHE_LOG_DIR}/error.log
-
-	# Possible values include: debug, info, notice, warn, error, crit,
-	# alert, emerg.
-	LogLevel warn
-
-	CustomLog ${APACHE_LOG_DIR}/access.log combined
-	ServerSignature On
-
-&amp;lt;/virtualhost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;nginx&#34;&gt;Nginx&lt;/h1&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;server{
-	listen 80; 
-	server_name wiki.csie.ncku.edu.tw;
-	server_name new.wiki.csie.ncku.edu.tw;
-
-	access_log /var/log/nginx/csiewiki-access.log;
-
-	location / { 
-		proxy_redirect off;
-		proxy_pass http://localhost:8000;
-		proxy_set_header X-Real-IP $remote_addr;
-		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-	}   
-}
-&lt;/code&gt;&lt;/pre&gt;- https://blog.crboy.net/posts/gitit-custom-domain/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     

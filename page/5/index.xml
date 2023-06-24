@@ -1,15 +1,47 @@
 <?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CrBoy&#39;s blog</title>
+    <title>CrBoy&#39;s Blog</title>
     <link>https://blog.crboy.net/</link>
-    <description>Recent content on CrBoy&#39;s blog</description>
+    <description>Recent content on CrBoy&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</copyright>
-    <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 Jun 2023 01:37:57 +0800</lastBuildDate>
     
         <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>如何設定 Gmail 帳戶收取 Google Apps 帳戶的信件</title>
+        <link>https://blog.crboy.net/posts/how-to-setup-pop3-for-google-apps/</link>
+        <pubDate>Tue, 03 Apr 2012 22:00:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/how-to-setup-pop3-for-google-apps/</guid>
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/how-to-setup-pop3-for-google-apps/ -&lt;p&gt;今天學弟在問，要怎麼在自己的 Gmail 信箱中，收取實驗室信箱的 e-mail。我們實驗室的 e-mail 本來是自己架設，不過現在已經轉換到 Google Apps 上去了。而 Google Apps 的帳號其實相當於另一個 Gmail 帳號，除非管理員設定不允許外部 POP3 與 IMAP，否則其實跟一般設定沒什麼兩樣。&lt;/p&gt;
+&lt;p&gt;設定這個可分為兩個部分：在要被收信的信箱開啟 POP3 功能，以及在要用來收信的信箱(通常是自己的 Gmail 帳號)設定收取 POP3 信件。&lt;/p&gt;
+&lt;h1 id=&#34;第一部分-在被收信的帳戶中設定&#34;&gt;第一部分 (在「被收信」的帳戶中設定)&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;1.png&#34; alt=&#34;&#34;&gt;&lt;br&gt;
+進入 Gmail 設定&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;2.png&#34; alt=&#34;&#34;&gt;&lt;br&gt;
+點選「轉寄和 POP/IMAP」&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;3.png&#34; alt=&#34;&#34;&gt;&lt;br&gt;
+點選啟用 POP 功能。至於要收取「所有郵件」或是「現在起所收到的郵件」則是看個人需求。另外，可在這裡設定郵件被收走後，是否要保留？我的習慣是讓他標為已讀，你也可以選擇封存或刪除。&lt;/p&gt;
+&lt;h1 id=&#34;第二部分-在用來收信的帳戶中設定&#34;&gt;第二部分 (在「用來收信」的帳戶中設定)&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;4.png&#34; alt=&#34;&#34;&gt;&lt;br&gt;
+在 Gmail 設定中點選「帳戶」&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;5.png&#34; alt=&#34;&#34;&gt;&lt;br&gt;
+點選「以 POP3 檢查郵件」下面的「新增您的 POP3 郵件帳戶」，會出現下面的視窗&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;6.png&#34; alt=&#34;&#34;&gt;&lt;br&gt;
+輸入「被收信」的帳戶的 e-mail address，如圖例&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;7.png&#34; alt=&#34;&#34;&gt;&lt;br&gt;
+系統會自動幫你填上對應的資訊，但是這個資訊是錯的！必須自行修改，可參考&lt;a href=&#34;http://support.google.com/mail/bin/answer.py?hl=zh-Hant&amp;amp;answer=13287&#34;&gt;這個連結&lt;/a&gt;。使用者名稱是你的完整 e-mail address，並輸入你的密碼。POP 伺服器要設定為 &lt;code&gt;pop.gmail.com&lt;/code&gt;，port 為 995，並啟用 SSL。我的習慣是會把收來的郵件自動加上一個標籤，這樣可以用標籤區分是哪裡收來的信。&lt;/p&gt;
+&lt;p&gt;設定到這裡其實已經差不多了。如果除了收信以外，也想利用那個信箱的 address 來寄信的話，可以透過 Gmail 幫你寄就可以，畢竟根本都是同樣的機器XD&lt;/p&gt;
+&lt;p&gt;補充一個小東西，Gmail Labs (研究室) 裡面有一個有趣的功能，我覺得可以打開。它叫做「重新整理 POP 帳戶」，可以讓你點選首頁的「重新整理」就可以立刻收取外部信箱的信！個人覺得滿實用的 :P&lt;/p&gt;
+&lt;p&gt;PS. 突然想到一個問題是，如果有開啟 two-step verification 的話，是要&amp;hellip;.? 我猜應該是要用應用程式密碼吧？沒試過，有經驗的朋友們可以在底下分享一下。:)&lt;/p&gt;
+- https://blog.crboy.net/posts/how-to-setup-pop3-for-google-apps/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
+        </item>
     
     
     
@@ -19,7 +51,7 @@
         <pubDate>Mon, 02 Apr 2012 23:41:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/release-slides-of-code-smart/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/release-slides-of-code-smart/ -&lt;p&gt;在緊張得半死的狀況中，終於把這個 talk 給講完了XD 希望來聽的人都有些收穫~&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/release-slides-of-code-smart/ -&lt;p&gt;在緊張得半死的狀況中，終於把這個 talk 給講完了XD 希望來聽的人都有些收穫~&lt;/p&gt;
 &lt;p&gt;不過可惜的是，我太緊張了，所以有些東西講的不是很完整，甚至是漏講&amp;hellip;.orz 而且滿多東西好像&amp;hellip;.呃&amp;hellip;.有點臨場發揮&amp;hellip;.XD 希望不要讓人覺得太亂~&lt;/p&gt;
 &lt;p&gt;當日演講簡報可點選&lt;a href=&#34;http://bit.ly/HaJ8wa&#34;&gt;此處下載&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;自己重新看了簡報，大致上檢討一下自己，如下：&lt;/p&gt;
@@ -56,7 +88,7 @@
         <pubDate>Fri, 23 Mar 2012 03:31:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/remote-git-access-via-ssh/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/remote-git-access-via-ssh/ -&lt;p&gt;好，今天來寫個我架設「偽 - git server」的作法吧！&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/remote-git-access-via-ssh/ -&lt;p&gt;好，今天來寫個我架設「偽 - git server」的作法吧！&lt;/p&gt;
 &lt;p&gt;為什麼叫做「偽 - git server」呢？因為他不是真的跑起來一支 daemon 去負責 git 的 access，像是 gitolite 或是 gitosis 那樣。(事實上我也不知道該怎麼把那些東西架起來XD)&lt;br&gt;
 由於 git 可以透過 ssh protocol 來 access，當然要善用這點！&lt;/p&gt;
 &lt;p&gt;以下我分為單人各自使用與多人共用來講：&lt;/p&gt;
@@ -150,7 +182,7 @@ fatal: The remote end hung up unexpectedly
         <pubDate>Sat, 17 Mar 2012 23:25:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/trap-in-bash-zsh-script/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/trap-in-bash-zsh-script/ -&lt;p&gt;最近在跑分散式的程式，每次測試都要開好幾隻程式在跑。就算可以寫 script 自動開啟，還是會遇到一個很討厭的問題，沒辦法自動關閉那些屬於 worker 的程式。好像解釋的不太清楚&amp;hellip;.就是我希望在我程式跑完的時候，或是我把程式強迫終止的時候，我可以同時把好幾個 process 也 kill 掉。特別是強迫終止的時候，因為無論我在最後寫好什麼動作，一旦強迫終止就執行不到了。&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/trap-in-bash-zsh-script/ -&lt;p&gt;最近在跑分散式的程式，每次測試都要開好幾隻程式在跑。就算可以寫 script 自動開啟，還是會遇到一個很討厭的問題，沒辦法自動關閉那些屬於 worker 的程式。好像解釋的不太清楚&amp;hellip;.就是我希望在我程式跑完的時候，或是我把程式強迫終止的時候，我可以同時把好幾個 process 也 kill 掉。特別是強迫終止的時候，因為無論我在最後寫好什麼動作，一旦強迫終止就執行不到了。&lt;/p&gt;
 &lt;p&gt;於是上網尋找解法，找到了 trap 可以用。Trap 這東西，也就是陷阱&amp;hellip;我想他的意思是，會讓你指定的那些 signal 掉入陷阱吧&amp;hellip;(笑)。不曉得 signal 是什麼的請自行閱讀 manpage 或是上網找。&lt;/p&gt;
 &lt;p&gt;這裡提供兩個範例，第一個是測試 trap 功能的範例：&lt;br&gt;
 這個範例中，我指定 SIGTERM SIGINT SIGHUP 這三個 signal 會被 trap 抓住，而 trap 抓到後所要執行的指令為 &amp;ldquo;echo TRAP!!; exit&amp;rdquo;。注意這邊我加上了 exit 讓這個 script 會在接到 signal 的時候終止，否則它只會 echo 出 TRAP!! 後繼續執行它要執行的動作。如果你沒有另外指定別的離開方法，就必須乖乖的等待 script 執行完畢，或是用 kill -9 (送 SIGKILL) 才能終止它了&amp;hellip;&lt;/p&gt;
@@ -170,7 +202,7 @@ fatal: The remote end hung up unexpectedly
         <pubDate>Fri, 16 Mar 2012 23:59:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/talk-0329-code-smart-dont-code-hard/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/talk-0329-code-smart-dont-code-hard/ -&lt;p&gt;這是確定的演講資訊了&amp;hellip;.多少人願意來就看我的造化了XD&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/talk-0329-code-smart-dont-code-hard/ -&lt;p&gt;這是確定的演講資訊了&amp;hellip;.多少人願意來就看我的造化了XD&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;「寫程式？那些老師沒教的事 - Code Smart, Don&amp;rsquo;t Code Hard」&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;身為一個資工系的學生，經手過的 C 語言程式想必不少。而我們以前都是怎麼寫程式的呢？有沒有想過，也許寫程式這件事不用如此辛苦？在 C 語言的開發過程中，從撰寫、編譯、測試、除錯，中間碰到多少工具？俗話說「工欲善其事，必先利其器」，以往所用的工具是不是真的「夠利」呢？&lt;/p&gt;
 &lt;p&gt;如果是成大資工系的學生，想必大一都接受過一段慘痛(?)的日子。我們這些小大一，被壓著去用什麼 pietty 連上 server，還要開什麼 vi 來寫程式。「那是什麼東西？難用死了！」是很多人大一時的心聲。寫完之後還要打好多指令，像是「機西西」&amp;hellip;呃，我是說 gcc，後面接上好多難懂的參數，才能把程式編譯完成。 但我一直到了大三才慢慢知道，這樣的環境才是 C 語言最快樂的地方，也要在這種環境下，我們才能很輕鬆的掌握 C 語言的全貌。噢，當然不是非要透過 putty/pietty 連上工作站才能使用到這類環境，在 windows 上一樣可以使用功能強大的命令列環境。(透過 cygwin/msys) 未來在外寫程式，仍然需要接觸這些東西的。&lt;/p&gt;
@@ -198,7 +230,7 @@ fatal: The remote end hung up unexpectedly
         <pubDate>Sun, 22 Jan 2012 15:39:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/s-shape-adjustment-function/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/s-shape-adjustment-function/ -&lt;p&gt;前陣子一位學妹在噗浪上這樣發問：「問!! 假設我要讓數字越大的越大 越小的越小 我該怎麼做?? 假設零到一百 處理完區間還是零到一百 但是大於五十的會變大 小於五十的會變小 應該要做什麼@@???開根號??微積分?? 」&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/s-shape-adjustment-function/ -&lt;p&gt;前陣子一位學妹在噗浪上這樣發問：「問!! 假設我要讓數字越大的越大 越小的越小 我該怎麼做?? 假設零到一百 處理完區間還是零到一百 但是大於五十的會變大 小於五十的會變小 應該要做什麼@@???開根號??微積分?? 」&lt;/p&gt;
 &lt;p&gt;OK&amp;hellip;.我來整理一下我對這個問題的理解：&lt;br&gt;
 求一函數，定義域為 [0,100]，值域亦為 [0,100]，且若 0&amp;lt;x&amp;lt;50 則 f(x)&amp;lt;x，若 50&amp;lt;x&amp;lt;100 則 f(x)&amp;gt;x。&lt;/p&gt;
 &lt;p&gt;另外還有一部分是我猜測應該也是需求的：&lt;br&gt;
@@ -228,7 +260,7 @@ fatal: The remote end hung up unexpectedly
         <pubDate>Mon, 09 Jan 2012 18:05:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/delete-old-folders-by-modified-time/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/delete-old-folders-by-modified-time/ -&lt;p&gt;今天因為某些原因，得刪除特定目錄底下，太老舊的一些目錄。目錄數量有上百個，一個個刪實在令人難過，身為一個 Linux user，就該善用工具來解決這個問題！&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/delete-old-folders-by-modified-time/ -&lt;p&gt;今天因為某些原因，得刪除特定目錄底下，太老舊的一些目錄。目錄數量有上百個，一個個刪實在令人難過，身為一個 Linux user，就該善用工具來解決這個問題！&lt;/p&gt;
 &lt;p&gt;這篇是個簡單的速記，就不囉唆。只要使用以下指令即可：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ find * -maxdepth 0 -mtime +365 -exec rm -r {} \;
 &lt;/code&gt;&lt;/pre&gt;
@@ -254,7 +286,7 @@ fatal: The remote end hung up unexpectedly
         <pubDate>Wed, 28 Dec 2011 16:04:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/slides-of-makefile/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/slides-of-makefile/ -&lt;p&gt;前陣子準備了一份簡報，可以用來講一場的XD&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/slides-of-makefile/ -&lt;p&gt;前陣子準備了一份簡報，可以用來講一場的XD&lt;/p&gt;
 &lt;p&gt;剛好這兩天系上學弟妹需要用到 make，所以就把其中關於 Makefile 的一部分東西抓出來做了一份短短的講義。內容講的是基本的 Makefile 的撰寫，也就是關於規則以及變數的基本使用部分。&lt;br&gt;
 希望對於讀者有幫助。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://www.slideshare.net/CrBoy/code-smart-makefile-special-release&#34;&gt;Code Smart - Makefile (special release)&lt;/a&gt;&lt;/p&gt;
@@ -269,7 +301,7 @@ fatal: The remote end hung up unexpectedly
         <pubDate>Fri, 23 Dec 2011 23:13:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/necessary-tools-for-programmer/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/necessary-tools-for-programmer/ -&lt;p&gt;這篇是先 po 在系上 BBS 再轉貼過來的XD&amp;quot; 基本上這場的內容相當相當相當的淺&amp;hellip;.本來預設的目標對象是完全不懂 debugger 跟 version control 的學生，特別是大學部，但同樣的對研究生也相當有幫助。(不過我猜研究生以上應該都沒什麼閒工夫聽我在那邊浪費他們的時間吧XD)&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/necessary-tools-for-programmer/ -&lt;p&gt;這篇是先 po 在系上 BBS 再轉貼過來的XD&amp;quot; 基本上這場的內容相當相當相當的淺&amp;hellip;.本來預設的目標對象是完全不懂 debugger 跟 version control 的學生，特別是大學部，但同樣的對研究生也相當有幫助。(不過我猜研究生以上應該都沒什麼閒工夫聽我在那邊浪費他們的時間吧XD)&lt;/p&gt;
 &lt;p&gt;因為這邊的內容比較淺，我想這也許不是很適合在社群中發表，不過也許有哪裡會需要這方面的資訊，之後我會放上相關的簡報，以 CC-BY-SA 釋出。&lt;/p&gt;
 &lt;p&gt;這場 talk 的內容&amp;hellip;.真要說起來大概是兩年前就想講了XD 主要多加了一些關於 git 的部份，因為現在對 git 又更熟了一點這樣&amp;hellip;&lt;/p&gt;
 &lt;p&gt;主題定為「寫程式？那些老師沒教的事 - Code Smart, Don&amp;rsquo;t Code Hard」。內容是關於一些對於開發程式相當有幫助的一些工具： vim, gcc, make, gdb, git&lt;/p&gt;
@@ -288,7 +320,7 @@ fatal: The remote end hung up unexpectedly
         <pubDate>Fri, 11 Nov 2011 23:59:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A0%B4%E4%B8%80%E8%BA%8D%E4%B9%8B%E4%B8%8B/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A0%B4%E4%B8%80%E8%BA%8D%E4%B9%8B%E4%B8%8B/ -&lt;p&gt;哈，真的去看了第二次。我必須說，雖然劇情我早已知悉，雖然演員的動作、喜怒哀樂依然記憶猶新，但我還是隨著故事的腳步，偷偷哭了&amp;hellip;&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A0%B4%E4%B8%80%E8%BA%8D%E4%B9%8B%E4%B8%8B/ -&lt;p&gt;哈，真的去看了第二次。我必須說，雖然劇情我早已知悉，雖然演員的動作、喜怒哀樂依然記憶猶新，但我還是隨著故事的腳步，偷偷哭了&amp;hellip;&lt;/p&gt;
 &lt;p&gt;劇中的親情、愛情，依舊動人心弦，並不因為我知道它只是個故事而顯得冷清。我想這就是我喜歡面劇團的原因吧？或是我天生就這麼多愁善感(?) 希望不要&amp;hellip;.= =a&lt;/p&gt;
 &lt;p&gt;來談談今天看到的一些不同吧。（第零個不同是今天隔壁帶了一枚檸檬一起去看XD）&lt;/p&gt;
 &lt;p&gt;首先是進場時間比較早了，大概 19:20 就開放讓無票觀眾入場了。所以我也特別仔細觀賞了一下進場影片，昨天沒有什麼特別感覺，因為影片事實上沒有什麼內容，只有演員跟角色而已，而且圖也看不太懂&amp;hellip;.只有阿堂的名字旁邊出現的圖看起來比較像人&amp;hellip;.其他的名字旁邊出現的圖&amp;hellip;.我看不太出來那代表什麼orz。但是啊，做得很精緻耶！還記得當時我說「影痴謀殺」的開場做得太粗糙，這次完全不會有這種感覺！不論內容的話，其實對於氣氛的營造還蠻好的 :)&lt;/p&gt;
@@ -331,51 +363,6 @@ fatal: The remote end hung up unexpectedly
 &lt;p&gt;這次演出，算是成大 80 週年校慶的一個部分，待在成大已經邁入第七年的我，在這裡向成大說聲「生日快樂！」成大八十大壽囉，以後也要繼續長大！&lt;/p&gt;
 &lt;p&gt;謝謝面劇團帶給我這兩個晚上豐富的體驗，有視覺上的也有心靈上的，謝謝你們，謝謝面劇團的所有幕前幕後工作人員！你們很棒！你們的表演很棒！你們的努力很棒！&lt;/p&gt;
 - https://blog.crboy.net/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A0%B4%E4%B8%80%E8%BA%8D%E4%B9%8B%E4%B8%8B/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>成大面劇團(Face To Audience) - 一躍之下，</title>
-        <link>https://blog.crboy.net/posts/face-to-audience-3/</link>
-        <pubDate>Thu, 10 Nov 2011 23:59:00 +0000</pubDate>
-        
-        <guid>https://blog.crboy.net/posts/face-to-audience-3/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/face-to-audience-3/ -&lt;p&gt;上次看舞台劇就是面劇團的「影痴謀殺」。今天去看了他們的「一躍之下，」&amp;hellip;過程真是千辛萬苦幾經波折 :P&lt;/p&gt;
-&lt;p&gt;之前就曾經看過他們的演出，深受感動，還為文紀念(是在文鄒鄒什麼&amp;hellip;)。(&lt;a href=&#34;https://blog.crboy.net/face-to-audience-1&#34;&gt;第一篇&lt;/a&gt;、&lt;a href=&#34;https://blog.crboy.net/face-to-audience-2&#34;&gt;第二篇&lt;/a&gt;)&lt;br&gt;
-這次一收到消息就立刻去網路索票，沒想到&amp;hellip;&amp;hellip;.&lt;/p&gt;
-&lt;p&gt;沒了&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.沒了&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.沒了&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.&lt;/p&gt;
-&lt;p&gt;為什麼票被秒殺啊啊啊啊啊啊啊&amp;hellip;..很無奈的把現場索票的時間記得牢牢的，想說一定要搶到！到了 11/8 那天，本來是打算早起的啦&amp;hellip;.可是不小心賴了一下床(:P)，然後又不知道是中了什麼心魔，竟然中午想吃港記(一家總是排隊排很長的燒臘店)&amp;hellip;.我到藝術中心的時候大概是 12:10 左右，遠遠的就看到好多人在排隊，我想大概糟了。沒想到後來聽到更崩潰的消息，「面劇團的票只有30張」。雖然堅持下去，但最後還是排不到票 QQ&lt;/p&gt;
-&lt;p&gt;本來已經放棄了，只是一直在噗浪上哀怨，誰知道今天(11/10)下午不曉得又發了什麼瘋，打電話去藝術中心問問&amp;hellip;..「喂你好，我想請問今天晚上七點半，面劇團在鳳凰樹的演出，有接受現場索票入場嗎？」『有，不過鳳凰樹有點小，你可能要早點過去喔。』&lt;/p&gt;
-&lt;p&gt;五點半，我人已經出現在鳳凰樹劇場的門口了。&lt;/p&gt;
-&lt;p&gt;好啦我知道我真的太誇張了 =口=&amp;quot; ，不過也因為這樣，入場的時候我還坐到一個很棒的位置啊！第四排中間偏右，這個位置高度很剛好，距離也適中，而且前面的人&amp;hellip;.頭沒有很大！隔壁的隔壁剛好是表演工作坊賣票的那位先生，我認得他的衣服XD&lt;/p&gt;
-&lt;p&gt;周圍的光線漸暗，我期待著他們這次的表演。&lt;/p&gt;
-&lt;p&gt;(以下內容有雷，慎入)&lt;/p&gt;
-&lt;p&gt;前面幾幕我一開始真的不太看得懂&amp;hellip;.要後來才有辦法聯結。甚至我竟然以為小魚戴眼鏡跟沒戴眼鏡是不同人 = =&amp;quot; (我比較喜歡沒戴眼鏡XDDDD)。不過我很喜歡劇中的每一幕，他們營造出來的感覺都相當棒！我想最困難(也有點可惜)的應該就是第一幕吧&amp;hellip;.究竟要如何表現那「一躍之下」，我想真的非常困難，但羅同學的表現相當好。&lt;/p&gt;
-&lt;p&gt;對了，羅同學是主角命嗎？XD 這是我看到手冊第一個反應&amp;hellip;.不過他的演技也的確相當不錯，也許修課的時候就已經很厲害了吧？&lt;/p&gt;
-&lt;p&gt;在「哪裡都不是」的地方，小張的表現&amp;hellip;.呃不是，我是說阿堂的表現根本就和影痴謀殺的小張一樣，憨憨的&amp;hellip;.XD&lt;br&gt;
-陳寬求婚的那幕，我喜歡那個幸福感跟害羞。&lt;br&gt;
-阿堂把妹的那幕，我喜歡那個青澀的味道，也在心中高興著他們的交往。&lt;/p&gt;
-&lt;p&gt;後來，阿堂跟小魚交往久了，也同住一個屋簷下，這讓我想到&amp;hellip;.某兩位朋友(sigh)。當初的承諾，當時的堅定，是不是總會隨著時間風化、變質呢？現在想想，似乎總會這樣，愛時轟轟烈烈，但卻在時間的沖襲下，冷卻了那股熱情，也切開了最初的堅定不移。&lt;/p&gt;
-&lt;p&gt;阿堂殺去台北找小魚，似乎是整個故事的轉折點，我想阿堂的一躍之下並不是從那座天井開始的。為什麼兩個人明明彼此相愛，卻要為了莫名的原因而分開呢？他們真的分開了&amp;hellip;..唉&amp;hellip;.小魚心中&lt;strong&gt;是&lt;/strong&gt;掛念著他的，但又為什麼不去把阿堂留下呢？（突然腦中響起「你那麼愛他，為什麼不&lt;del&gt;巴他六下&lt;/del&gt;把他留下」）而且我覺得那個孩子明明就是阿堂的啊&amp;hellip;.難道是我搞錯了!? 還是說，是我被倒敘給弄混了，事實上是小魚先得知阿堂的死訊，然後才答應陳寬的求婚的嗎？唔&amp;hellip;.難道又要去看第二遍了&amp;hellip;.?&lt;/p&gt;
-&lt;p&gt;說到這裡就想到，小魚的尖叫也是個遺憾之處&amp;hellip;.聽起來很突兀，不曉得應該怎麼修正會比較好。&lt;/p&gt;
-&lt;p&gt;中間阿堂提到了他&amp;hellip;..他在學校的事情。他碩士班延畢，目前碩三，論文寫不出來，這這這&amp;hellip;.這不就是我的寫照嗎&amp;hellip;&amp;hellip;||| 好在我沒有在口試的時候被河蟹掉（事實上根本就還沒有口試），家裡也沒有欠五百萬的債務，所以應該不用擔心我會去&lt;em&gt;一躍之下&lt;/em&gt;啦&amp;hellip;反正現在電機系館也有網子這樣。不過天啊，我看到那段我真的是&amp;hellip;..我整個人都彷彿置身在阿堂的&lt;del&gt;鞋子&lt;/del&gt;情境中，我一一對照著他的經歷，想想自己&amp;hellip;.身為一個沒用的碩士生，若是加上如此龐大的壓力，又有誰能承受呢？&lt;/p&gt;
-&lt;p&gt;「你不用擔心啦！」這是阿堂常說的話&amp;hellip;.原來&amp;hellip;.原來這是故事的伏筆嗎？突然想通了，就是阿堂不讓他人分享自己的負擔，最後才讓這些沈重把自己給擊墜在地。突然相當佩服編劇&amp;hellip;雖然編劇(就是之前有指正過我舞台劇!=話劇的楊三毛)被我發現他之前影痴謀殺跟這次的一躍之下都用同一張照片，但是不得不佩服他的才華！上次的影痴謀殺他負責做視覺設計的說。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;楊三毛小檔案：&lt;br&gt;
-系統系100級，&amp;laquo;影痴謀殺&amp;raquo;視覺設計，&amp;laquo;一躍之下，&amp;raquo;編劇兼隱藏版平面設計(我猜應該什麼都摸過了)，照片好像只有一張，都不換，長得滿有型可是因為不明原因把頭髮遮住。&lt;br&gt;
-&amp;ndash; 摘自「影痴謀殺」與「一躍之下，」導覽手冊&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;欸欸我用網誌當回饋單你說好不好呀楊同學~這次我沒在回饋單留名字了&amp;hellip;&lt;/p&gt;
-&lt;p&gt;後來的一小段，稍微感覺有點分離，並沒有跟劇情交織、融合在一起，只是稍微啦。但最後&amp;hellip;最後那邊&amp;hellip;..真他媽的騙眼淚阿&amp;hellip;.小張的靈魂終於能夠見到&amp;hellip;.我怎麼又打錯字了= =a 阿堂的靈魂終於能夠見到小魚，但卻只有不到一秒鐘的時間。即使他們近在咫尺，卻從此天人永隔，而那位婦人&amp;hellip;.(對，我猜到了)，竟然是阿堂的母親，那個他吼過、罵過的母親。即使如此，母親對阿堂的愛也在阿堂死後，爆炸了。七歲&amp;hellip;九歲&amp;hellip;十歲&amp;hellip;&amp;hellip;&amp;hellip;十八歲&amp;hellip;.阿堂怎麼不見了？這是母親最深刻的痛楚啊&amp;hellip;..&lt;/p&gt;
-&lt;p&gt;「我以為，我可以讓他們後悔，沒想到最後悔的，是我自己。」我忘不了阿堂的這句話&amp;hellip;.尋死這件事啊&amp;hellip;.我想很多人都天真的想過吧，但還好我們都戰勝了自己，或是懦弱的被恐懼給擊敗，然後面對下一個挑戰。下次，我是說如果有下次，那就想想這句話吧，「沒想到最後悔的，是我自己。」&lt;/p&gt;
-&lt;p&gt;題外話：突然想起&lt;a href=&#34;http://mypaper.pchome.com.tw/yp123ad/post/1313749126&#34;&gt;今天看到的這篇文章&lt;/a&gt;，沒想到剛好也可以用來勵志一下。「死者不知道，他死後，債務是由他的親人繼承，反而讓他的親人成為被暴力討債的對象！」所以啊，歹路不可行！(?)&lt;/p&gt;
-&lt;p&gt;結局了，來囉嗦幾句吧&amp;hellip;..上次的影痴謀殺我給100分，但這次我只給95分。雖然這場表演依然相當、相當感動我，但是有好多好多地方講話都好快(吵架戲那類的)，都聽不懂在講什麼&amp;hellip;.阿堂、小魚、「穿著花襯衫和木屐的奇怪老頭」&amp;hellip;好像滿多人都會這樣，不曉得為什麼&amp;hellip;&amp;hellip;..然後小次郎卡最多詞XD。這次的故事很棒我很喜歡，也相當貼近我們的生活！在成大生活第七年了，我整個超有感覺的啊！甚至有些地方我能夠直接跟自身經驗做連結呢。立體手冊有驚訝到我，不過還可以做得再精緻一點。為什麼手冊上只有&lt;em&gt;蘇家瑜&lt;/em&gt;的名字是反白的勒？不可以因為演員比較可愛就這樣啊XD。戲份不太平均，娜娜的戲份好少，不過我想編劇跟導演也盡力了吧。然後謝幕的時候有發現大家都很感動，很多演員跟工作人員臉上都掛著藏不住的笑容，還有曾同學(阿堂的媽)謝幕的時候快哭出來了，不過有某位同學相對之下相當的面無表情XDDD。小萍跑去當舞監了，可是舞監是做什麼的啊？然後導覽手冊寫在小萍&amp;hellip;.好啦，寫在許同學旁邊的那位同學我怎麼找都找不到名字啊，&amp;lt;囧&amp;quot;。嗯&amp;hellip;..嚴格來說我比較喜歡影痴謀殺的手冊&amp;hellip;..「一躍之下，」的手冊封面有點太綠&amp;hellip;..orz 我怎麼這麼囉嗦XD&lt;/p&gt;
-&lt;p&gt;對了，進去前有拿到一張海報，我滿喜歡那張海報的，設計的很棒！相當有味道唷 ;)&lt;/p&gt;
-&lt;p&gt;好像還有一些有的沒的想法一時之間想不到&amp;hellip;..想到再說囉~:P 再度推薦成大面劇團！:D&lt;/p&gt;
-&lt;p&gt;Update: 對了，現在想起當初有收到邀請，沒有去加入面劇團真的好可惜！唉，要不是跟阿堂一樣畢不了業的話，我就會去加入了 &amp;gt;&amp;quot;&amp;lt;&lt;br&gt;
-Update: 發現「一躍之下，」這個名字後面應該要加上逗號&amp;hellip;..所以改了好幾個地方= =a&lt;/p&gt;
-- https://blog.crboy.net/posts/face-to-audience-3/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     

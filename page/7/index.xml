@@ -1,15 +1,61 @@
 <?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CrBoy&#39;s blog</title>
+    <title>CrBoy&#39;s Blog</title>
     <link>https://blog.crboy.net/</link>
-    <description>Recent content on CrBoy&#39;s blog</description>
+    <description>Recent content on CrBoy&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</copyright>
-    <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 Jun 2023 01:37:57 +0800</lastBuildDate>
     
         <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Linux 上安裝 APC UPS 的控制程式 - apcupsd</title>
+        <link>https://blog.crboy.net/posts/linux-apcupsd/</link>
+        <pubDate>Sun, 20 Mar 2011 11:35:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/linux-apcupsd/</guid>
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/linux-apcupsd/ -&lt;p&gt;由於實驗室的需要，有機會設定到 APC 的 UPS&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;架構上來說大致上是這樣&amp;hellip;. UPS 透過一條 RJ45-USB 的線接到某主機（主要控制端），另外有兩台主機也吃這個 UPS 的電，而他們必須透過 ethernet 與控制主機溝通。&lt;/p&gt;
+&lt;p&gt;我用到的環境是 Ubuntu 跟 CentOS，設定上沒什麼很大的差別就是了。首先安裝 &lt;code&gt;apcupsd&lt;/code&gt; 這個套件（&lt;code&gt;apt-get install apcupsd&lt;/code&gt; 或是 &lt;code&gt;yum install apcupsd&lt;/code&gt;），接著打開&lt;code&gt;/etc/apcupsd/apcupsd.conf&lt;/code&gt;，這個檔案其實自己就有很詳細的說明了，主要要設定的有這幾個部分：&lt;/p&gt;
+&lt;p&gt;主要控制端：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;UPSCABLE usb  
+UPSTYPE usb  
+NETSERVER on  
+NISIP 0.0.0.0  
+NISPORT 3551  
+UPSCLASS standalone  
+UPSMODE disable  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其他主機：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;UPSCABLE ether  
+UPSTYPE net  
+DEVICE &amp;lt;server_ip&amp;gt;:&amp;lt;port&amp;gt; #例：DEVICE 192.168.12.34:3551  
+NETSERVER off #應該也是可以設定成on 讓別人也可以跟這台主機要資料 但我認為沒有必要就是了  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此外，我還隨手修改了 &lt;code&gt;ONBATTERYDELAY 20&lt;/code&gt;，他的功用是讓機器在發現斷電狀況後多久才開始做反應&amp;hellip;設太短的話怕那種幾秒鐘的跳電也害他關機就是了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;設定好後，要重新啟動 apcupsd：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# /etc/init.d/apcupsd restart  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然後就可以用apcaccess去看看UPS的狀態，本機可以直接使用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# apcaccess
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;來查到狀態，但是我被表很久的是，如果在其他機器，那得這樣才行：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# apcaccess status &amp;lt;server_ip&amp;gt;:&amp;lt;port&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我是認為有查到資訊就表示安裝OK了啦&amp;hellip;.所以收工XD&lt;/p&gt;
+&lt;p&gt;其實安裝設定都不難，只是第一次做很生疏，也不知道該怎麼辦，所以摸索了很久。希望這篇文章有幫到人，也幫到未來的自己。:P&lt;/p&gt;
+&lt;h1 id=&#34;參考資料&#34;&gt;參考資料&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://help.ubuntu.com/community/apcupsd&#34;&gt;http://help.ubuntu.com/community/apcupsd&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.apcupsd.com/manual/manual.html&#34;&gt;http://www.apcupsd.com/manual/manual.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+- https://blog.crboy.net/posts/linux-apcupsd/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
+        </item>
     
     
     
@@ -19,7 +65,7 @@
         <pubDate>Mon, 07 Mar 2011 05:14:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/filco%E7%B4%85%E8%BB%B880%E9%8D%B5%E7%9B%A4%E9%96%8B%E7%AE%B1/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/filco%E7%B4%85%E8%BB%B880%E9%8D%B5%E7%9B%A4%E9%96%8B%E7%AE%B1/ -&lt;blockquote&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/filco%E7%B4%85%E8%BB%B880%E9%8D%B5%E7%9B%A4%E9%96%8B%E7%AE%B1/ -&lt;blockquote&gt;
 &lt;p&gt;August, 2021&lt;br&gt;
 &lt;strong&gt;由於管理不善，這篇開箱文的照片，在多年後已經全數消失，也不知道哪裡找得到了。&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -76,7 +122,7 @@
         <pubDate>Sat, 05 Mar 2011 10:09:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/vim-101/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/vim-101/ -&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/vim-101/ -&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;這篇是先貼在系上 BBS 的文章，主要對象是天真無邪的學弟妹們XD 所以太愚蠢的部份，還有排版太差的部份，就抱歉了orz&lt;/p&gt;
 &lt;h1 id=&#34;簡介&#34;&gt;簡介&lt;/h1&gt;
 &lt;p&gt;標題是騙人的，第一次用 Vim 怎麼可能上手XDDDDD&lt;br&gt;
@@ -199,7 +245,7 @@ vllllllllllllld
         <pubDate>Sat, 05 Jun 2010 02:05:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/ubuntu-install-library/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/ubuntu-install-library/ -&lt;p&gt;有時候拿人家的程式來跑，也許是對方只肯給執行檔，或者是不給source的商業軟體，或是其他情況，總之，有時候會遇到自己的系統上缺少該程式所需要的dynamically linked library (也就是系統上的.so檔, shared object)，或是自己系統上的函式庫版本太舊或太新，此時的作法有兩種：&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/ubuntu-install-library/ -&lt;p&gt;有時候拿人家的程式來跑，也許是對方只肯給執行檔，或者是不給source的商業軟體，或是其他情況，總之，有時候會遇到自己的系統上缺少該程式所需要的dynamically linked library (也就是系統上的.so檔, shared object)，或是自己系統上的函式庫版本太舊或太新，此時的作法有兩種：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;使用現有新版函式庫假裝成舊版。&lt;br&gt;
@@ -251,7 +297,7 @@ vllllllllllllld
         <pubDate>Fri, 04 Jun 2010 07:11:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/proxy-apt-wget/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/proxy-apt-wget/ -&lt;p&gt;台灣的學術網路連國外很慢是眾所皆知的事情&amp;hellip;.但是像 Ubuntu 這種系統，雖然有國內的 mirror，但是有些東西，像是 ppa 之類的 source，還是得從國外抓。今天剛裝完機器要更新，發現有些東西實在龜到不行，&lt;em&gt;426B/s&lt;/em&gt; 耶！雖然最後我抓完了啦&amp;hellip;..不過還是要研究一下該怎麼透過 proxy 抓這些套件。&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/proxy-apt-wget/ -&lt;p&gt;台灣的學術網路連國外很慢是眾所皆知的事情&amp;hellip;.但是像 Ubuntu 這種系統，雖然有國內的 mirror，但是有些東西，像是 ppa 之類的 source，還是得從國外抓。今天剛裝完機器要更新，發現有些東西實在龜到不行，&lt;em&gt;426B/s&lt;/em&gt; 耶！雖然最後我抓完了啦&amp;hellip;..不過還是要研究一下該怎麼透過 proxy 抓這些套件。&lt;/p&gt;
 &lt;p&gt;方法很簡單，只要在 &lt;code&gt;/etc/apt/apt.conf&lt;/code&gt; 裡面寫入以下這段設定：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ACQUIRE {  
 	http::proxy &amp;quot;http://USER:PASSWORD@PROXY-SERVER:PORT&amp;quot;  
@@ -287,7 +333,7 @@ ftp_proxy = http://PROXY-SERVER:PORT
         <pubDate>Thu, 03 Jun 2010 09:14:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/install-nx-on-ubuntu-10.04/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/install-nx-on-ubuntu-10.04/ -&lt;p&gt;呃阿阿阿阿阿&amp;hellip;..我不知道應該怎麼起頭&amp;hellip;&amp;hellip;其實故事是這樣的，去年有學弟跟我推薦了NX這個遠端桌面，他是&lt;a href=&#34;http://www.nomachine.com/&#34;&gt;NoMachine&lt;/a&gt;公司的產品。特色大致上是，支援ssh加密連線，傳輸的資訊有經過壓縮(速度較快，不過影像品質稍微不太好，看得出來是lossy compression)，client可以跨平台，windows跟Linux都可以用，這對於有Linux桌面需求的Windows user真是福音阿!!&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/install-nx-on-ubuntu-10.04/ -&lt;p&gt;呃阿阿阿阿阿&amp;hellip;..我不知道應該怎麼起頭&amp;hellip;&amp;hellip;其實故事是這樣的，去年有學弟跟我推薦了NX這個遠端桌面，他是&lt;a href=&#34;http://www.nomachine.com/&#34;&gt;NoMachine&lt;/a&gt;公司的產品。特色大致上是，支援ssh加密連線，傳輸的資訊有經過壓縮(速度較快，不過影像品質稍微不太好，看得出來是lossy compression)，client可以跨平台，windows跟Linux都可以用，這對於有Linux桌面需求的Windows user真是福音阿!!&lt;/p&gt;
 &lt;p&gt;於是乎，我就把他給裝起來了。一開始我裝的是NoMachine提供的Free Edition，但是後來有人跟我反應會連不上的問題，我找了很久找不出原因，最後我在某篇文章(由於年代久遠現在找不到了)得知，原來NoMachine的免費版本的nxserver有session數的限制，所以只好另尋他法。&lt;/p&gt;
 &lt;p&gt;有個好用的open source版本的nxserver叫做&lt;a href=&#34;http://freenx.berlios.de/&#34;&gt;FreeNX&lt;/a&gt;，想當然爾，「應該」是沒有session數限制的吧？當時在以前版本的ubuntu怎麼裝的我已經忘了，只記得套件名稱是freenx，但是好像不在官方預設的套件庫裡面&amp;hellip;但是在Ubuntu 10.04，我發現了新大陸！XD&amp;quot;&lt;/p&gt;
 &lt;p&gt;這裡是安裝教學，很簡單。&lt;br&gt;
@@ -327,7 +373,7 @@ Installation is simple enough, and similar to the Ubuntu Karmic method.&lt;/p&gt
         <pubDate>Thu, 03 Jun 2010 08:30:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/get-ssh-server-fingerprint/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/get-ssh-server-fingerprint/ -&lt;p&gt;不說廢話先給答案：&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/get-ssh-server-fingerprint/ -&lt;p&gt;不說廢話先給答案：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub  
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;對於廢話有興趣的請繼續閱讀&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&lt;/p&gt;
@@ -384,7 +430,7 @@ Host key verification failed.
         <pubDate>Wed, 02 Jun 2010 11:54:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/patch-replurk-chrome/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/patch-replurk-chrome/ -&lt;p&gt;用Firefox上噗浪(Plurk)的人，有些都會裝&lt;a href=&#34;https://addons.mozilla.org/zh-TW/firefox/addon/748/&#34;&gt;GreaseMonkey&lt;/a&gt;這個套件+&lt;a href=&#34;http://userscripts.org/scripts/show/39186&#34;&gt;RePlurk script&lt;/a&gt;。只不過我在Google Chrome on Linux上&amp;hellip;雖然他預設支援直接安裝userscripts，但是我從來沒有成功跑起來過orz|| (就是可以安裝，但是裝了之後plurk就開不起來了QQ)&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/patch-replurk-chrome/ -&lt;p&gt;用Firefox上噗浪(Plurk)的人，有些都會裝&lt;a href=&#34;https://addons.mozilla.org/zh-TW/firefox/addon/748/&#34;&gt;GreaseMonkey&lt;/a&gt;這個套件+&lt;a href=&#34;http://userscripts.org/scripts/show/39186&#34;&gt;RePlurk script&lt;/a&gt;。只不過我在Google Chrome on Linux上&amp;hellip;雖然他預設支援直接安裝userscripts，但是我從來沒有成功跑起來過orz|| (就是可以安裝，但是裝了之後plurk就開不起來了QQ)&lt;/p&gt;
 &lt;p&gt;後來我發現有個&lt;a href=&#34;https://chrome.google.com/extensions/detail/beaghhigecidoamlpclhiboaeonkceea?hl=zh-tw&#34;&gt;RePlurk Chrome套件&lt;/a&gt;，他可以幫你的plurk頁面加上一個&amp;quot;RePlurk&amp;quot;的按鈕&amp;hellip;.就像我以前在Firefox上用的那樣(dance) 噢&amp;hellip;可是有個問題&amp;hellip;我喜歡的轉噗形式是：「[轉噗]: xxxxxx」，但是RePlurk Chrome的轉噗形式是：「([ReP]) 作者: xxxxxx」，最困擾的就是他不能自訂(angry)！(GreaseMonkey有提供介面讓你修改scripts)&lt;/p&gt;
 &lt;p&gt;這篇就是為了解決這種問題的&amp;hellip;..:P 首先，我的平台是Linux，更詳細的說，是Ubuntu 10.04 (不過其實在openSUSE上也是一樣)&amp;hellip;..而這個套件把他的javascript放在哪裡呢？答案如下：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$HOME/.config/google-chrome/Default/Extensions/beaghhigecidoamlpclhiboaeonkceea/0.1.1/RePlurk.js
@@ -418,7 +464,7 @@ document.getElementsByTagName(&#39;body&#39;)[0].appendChild(GM_JQ);
         <pubDate>Wed, 02 Jun 2010 10:18:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/upgrade-to-ext4/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/upgrade-to-ext4/ -&lt;p&gt;剛好有點三八想把ext3轉到ext4去&amp;hellip;.就找了些資料，寫了這篇文章:P&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/upgrade-to-ext4/ -&lt;p&gt;剛好有點三八想把ext3轉到ext4去&amp;hellip;.就找了些資料，寫了這篇文章:P&lt;/p&gt;
 &lt;p&gt;要轉換成ext4嘛&amp;hellip;&amp;hellip;首先當然有些前提&amp;hellip;.你的kernel要支援ext4才行:D 另外也建議備份重要資料&amp;hellip;.&lt;/p&gt;
 &lt;p&gt;然後step by step的教學就開始了！以下 &lt;code&gt;$DEV&lt;/code&gt; 為device的名字(例：&lt;code&gt;/dev/sda1&lt;/code&gt;)，&lt;code&gt;$MOUNT&lt;/code&gt;為mount point(例：&lt;code&gt;/mnt&lt;/code&gt;)&lt;/p&gt;
 &lt;ol&gt;
@@ -468,7 +514,7 @@ document.getElementsByTagName(&#39;body&#39;)[0].appendChild(GM_JQ);
         <pubDate>Thu, 15 Apr 2010 18:47:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/%E7%94%A8javascript%E5%88%A4%E5%AE%9A%E7%80%8F%E8%A6%BD%E5%99%A8%E6%98%AF%E5%90%A6%E7%82%BAie/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E7%94%A8javascript%E5%88%A4%E5%AE%9A%E7%80%8F%E8%A6%BD%E5%99%A8%E6%98%AF%E5%90%A6%E7%82%BAie/ -&lt;p&gt;摘自 &lt;a href=&#34;http://leeiio.me/ie_detection_in_5_bytes/&#34;&gt;http://leeiio.me/ie_detection_in_5_bytes/&lt;/a&gt;&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/%E7%94%A8javascript%E5%88%A4%E5%AE%9A%E7%80%8F%E8%A6%BD%E5%99%A8%E6%98%AF%E5%90%A6%E7%82%BAie/ -&lt;p&gt;摘自 &lt;a href=&#34;http://leeiio.me/ie_detection_in_5_bytes/&#34;&gt;http://leeiio.me/ie_detection_in_5_bytes/&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;script type=&#39;text/javascript&#39;&amp;gt;  
 var ie = !-[1,];  
 alert(ie);  
@@ -490,61 +536,6 @@ var ie = !+&amp;quot;\v1&amp;quot;;
 &amp;lt;/script&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 - https://blog.crboy.net/posts/%E7%94%A8javascript%E5%88%A4%E5%AE%9A%E7%80%8F%E8%A6%BD%E5%99%A8%E6%98%AF%E5%90%A6%E7%82%BAie/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>10 個最酷的 Linux 單行指令</title>
-        <link>https://blog.crboy.net/posts/top-10-linux-one-liners/</link>
-        <pubDate>Tue, 06 Apr 2010 02:10:00 +0000</pubDate>
-        
-        <guid>https://blog.crboy.net/posts/top-10-linux-one-liners/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/top-10-linux-one-liners/ -&lt;p&gt;本文內容修改自 &lt;a href=&#34;http://linuxtoy.org/archives/top-10-one-liners.html&#34;&gt;http://linuxtoy.org/archives/top-10-one-liners.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;下面是來自 &lt;a href=&#34;http://commandlinefu.com/&#34;&gt;Commandlinefu&lt;/a&gt; 網站由用戶投票表決出的 10 個最酷的 Linux 單行指令。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;sudo !!&lt;/code&gt;
-以 root 帳戶執行上一道指令。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;python -m SimpleHTTPServer&lt;/code&gt;
-利用 Python 建立一個簡單的 Web 伺服器，可透過 &lt;code&gt;http://$HOSTNAME:8000&lt;/code&gt; 瀏覽。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;:w !sudo tee %&lt;/code&gt;
-在 vim 中無需權限儲存編輯的文件。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;cd -&lt;/code&gt;
-更改到上一次瀏覽的目錄。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;^foo^bar&lt;/code&gt;
-將上一道指令中的 foo 替換為 bar，並執行。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;cp filename{,.bak}&lt;/code&gt;
-快速備份或複製文件。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;mtr google.com&lt;/code&gt;
-= &lt;code&gt;traceroute&lt;/code&gt; + &lt;code&gt;ping&lt;/code&gt;。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;!whatever:p&lt;/code&gt;
-搜尋命令歷史，但不執行。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;ssh-copy-id user@host&lt;/code&gt;
-將 ssh keys 複製到 &lt;code&gt;user@host&lt;/code&gt; 以啟用無密碼 SSH 登錄。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;ffmpeg -f x11grab -s wxga -r 25 -i :0.0 -sameq /tmp/out.mpg&lt;/code&gt;
-把 Linux 桌面錄製為影片。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-- https://blog.crboy.net/posts/top-10-linux-one-liners/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     

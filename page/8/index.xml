@@ -1,15 +1,70 @@
 <?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CrBoy&#39;s blog</title>
+    <title>CrBoy&#39;s Blog</title>
     <link>https://blog.crboy.net/</link>
-    <description>Recent content on CrBoy&#39;s blog</description>
+    <description>Recent content on CrBoy&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</copyright>
-    <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 Jun 2023 01:37:57 +0800</lastBuildDate>
     
         <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>10 個最酷的 Linux 單行指令</title>
+        <link>https://blog.crboy.net/posts/top-10-linux-one-liners/</link>
+        <pubDate>Tue, 06 Apr 2010 02:10:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/top-10-linux-one-liners/</guid>
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/top-10-linux-one-liners/ -&lt;p&gt;本文內容修改自 &lt;a href=&#34;http://linuxtoy.org/archives/top-10-one-liners.html&#34;&gt;http://linuxtoy.org/archives/top-10-one-liners.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下面是來自 &lt;a href=&#34;http://commandlinefu.com/&#34;&gt;Commandlinefu&lt;/a&gt; 網站由用戶投票表決出的 10 個最酷的 Linux 單行指令。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;sudo !!&lt;/code&gt;
+以 root 帳戶執行上一道指令。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;python -m SimpleHTTPServer&lt;/code&gt;
+利用 Python 建立一個簡單的 Web 伺服器，可透過 &lt;code&gt;http://$HOSTNAME:8000&lt;/code&gt; 瀏覽。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;:w !sudo tee %&lt;/code&gt;
+在 vim 中無需權限儲存編輯的文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;cd -&lt;/code&gt;
+更改到上一次瀏覽的目錄。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;^foo^bar&lt;/code&gt;
+將上一道指令中的 foo 替換為 bar，並執行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;cp filename{,.bak}&lt;/code&gt;
+快速備份或複製文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;mtr google.com&lt;/code&gt;
+= &lt;code&gt;traceroute&lt;/code&gt; + &lt;code&gt;ping&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;!whatever:p&lt;/code&gt;
+搜尋命令歷史，但不執行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ssh-copy-id user@host&lt;/code&gt;
+將 ssh keys 複製到 &lt;code&gt;user@host&lt;/code&gt; 以啟用無密碼 SSH 登錄。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ffmpeg -f x11grab -s wxga -r 25 -i :0.0 -sameq /tmp/out.mpg&lt;/code&gt;
+把 Linux 桌面錄製為影片。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+- https://blog.crboy.net/posts/top-10-linux-one-liners/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
+        </item>
     
     
     
@@ -19,7 +74,7 @@
         <pubDate>Fri, 20 Nov 2009 12:29:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/screen-message/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/screen-message/ -&lt;p&gt;哈，其實我是想順便測試一下 wp-codebox 這個外掛&amp;hellip;.:P&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/screen-message/ -&lt;p&gt;哈，其實我是想順便測試一下 wp-codebox 這個外掛&amp;hellip;.:P&lt;/p&gt;
 &lt;p&gt;這個小程式很有趣，可以做全螢幕的大字報/看板之類的，下面是我自己做的範例：（圖不見了，找不回來了）&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2009/11/sm-300x187.png&#34; alt=&#34;sm&#34; title=&#34;sm&#34;&gt;&lt;/p&gt;
 &lt;p&gt;別懷疑，這就是一整個螢幕大小！&lt;/p&gt;
@@ -176,7 +231,7 @@
         <pubDate>Sun, 01 Nov 2009 05:12:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/build-pcmanx-on-ubuntu-9.10/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/build-pcmanx-on-ubuntu-9.10/ -&lt;p&gt;該是發技術性文章的時候了&amp;hellip;.XD&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/build-pcmanx-on-ubuntu-9.10/ -&lt;p&gt;該是發技術性文章的時候了&amp;hellip;.XD&lt;/p&gt;
 &lt;p&gt;剛剛才把 Ubuntu 給升到 9.10，要重灌 pcmanx，結果沒想到裝完要執行竟然出現：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;pcmanx: error while loading shared libraries: libpcmanx_core.so.0: cannot open shared object file: No such file or directory  
 &lt;/code&gt;&lt;/pre&gt;
@@ -225,7 +280,7 @@
         <pubDate>Tue, 25 Aug 2009 03:02:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/freebsd-%E7%9B%B8%E8%A6%8B%E6%AD%A1/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/freebsd-%E7%9B%B8%E8%A6%8B%E6%AD%A1/ -&lt;p&gt;今天總算拿到主機板了&amp;hellip;.(唉 運作得好好的主機板竟然重灌的時候發現抓不到PS/2鍵盤)&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/freebsd-%E7%9B%B8%E8%A6%8B%E6%AD%A1/ -&lt;p&gt;今天總算拿到主機板了&amp;hellip;.(唉 運作得好好的主機板竟然重灌的時候發現抓不到PS/2鍵盤)&lt;/p&gt;
 &lt;p&gt;呃 不對 哪有一開始就離題的&amp;hellip;&lt;/p&gt;
 &lt;p&gt;今天嘗試安裝FreeBSD 其實也不是第一次 但是之前裝起來沒多久就被我砍掉了XD 這次一定要努力！&lt;br&gt;
 首先是安裝的部份&amp;hellip;用光碟開機之後 會進到FreeBSD的啟動畫面(boot loader) 選擇預設值就可以進去安裝畫面了XD 我用的是custom的設定 只是覺得這樣可以學比較多東西&amp;hellip;.一樣一樣東西去摸索到設定完成&amp;hellip;&lt;/p&gt;
@@ -253,7 +308,7 @@
         <pubDate>Thu, 23 Jul 2009 00:16:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/%E6%88%91%E6%9C%83c&#43;&#43;%E5%97%8E/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E6%88%91%E6%9C%83c&#43;&#43;%E5%97%8E/ -&lt;p&gt;剛剛看到&lt;a href=&#34;http://nctusdk.blogspot.com/2009/07/c.html&#34;&gt;這篇文章&lt;/a&gt; 自認並沒有很熟 但是會寫一點C++的我想試著回答看看&amp;hellip;.究竟&amp;hellip;..我可以答對多少呢？&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/%E6%88%91%E6%9C%83c&#43;&#43;%E5%97%8E/ -&lt;p&gt;剛剛看到&lt;a href=&#34;http://nctusdk.blogspot.com/2009/07/c.html&#34;&gt;這篇文章&lt;/a&gt; 自認並沒有很熟 但是會寫一點C++的我想試著回答看看&amp;hellip;.究竟&amp;hellip;..我可以答對多少呢？&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;什麼是virtual inheritance? 請舉例說明。&lt;br&gt;
@@ -386,7 +441,7 @@ GCC(g++), MinGW(其實也是GCC), Visual C++(6,2005,2008)&lt;br&gt;
         <pubDate>Sat, 18 Jul 2009 18:47:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/opensuse-%E5%AE%89%E8%A3%9D-flashplayer-plugin/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/opensuse-%E5%AE%89%E8%A3%9D-flashplayer-plugin/ -&lt;p&gt;要趕快記下來不然會忘記！XD&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/opensuse-%E5%AE%89%E8%A3%9D-flashplayer-plugin/ -&lt;p&gt;要趕快記下來不然會忘記！XD&lt;/p&gt;
 &lt;p&gt;這是小弟今天的實驗結果 使用的平台是openSUSE 11.0 + Firefox 3.0.11&lt;/p&gt;
 &lt;p&gt;本來一直找不到可用的flash player plugin 套件庫的都有點問題(我是以能不能看YouTube當成能不能順利使用的指標&amp;hellip;XD) 今天在實驗室剛好跟學弟聊到 就來試試看！&lt;/p&gt;
 &lt;p&gt;首先是學弟用Google找到的連結(關鍵字：64bit flash):&lt;br&gt;
@@ -424,7 +479,7 @@ libflashplayer.so: ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), 
         <pubDate>Thu, 06 Mar 2008 18:39:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9Dnvidia%E5%AE%98%E6%96%B9%E9%A1%AF%E7%A4%BA%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9Dnvidia%E5%AE%98%E6%96%B9%E9%A1%AF%E7%A4%BA%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F/ -&lt;p&gt;首先要停用restricted driver(或移除nvidia-glx套件也是一樣的結果)&lt;br&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9Dnvidia%E5%AE%98%E6%96%B9%E9%A1%AF%E7%A4%BA%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F/ -&lt;p&gt;首先要停用restricted driver(或移除nvidia-glx套件也是一樣的結果)&lt;br&gt;
 接著修改/etc/default/linux-restricted-modules-common中的DISABLED_MODULES屬性 停用nv和nvidia_new(會像這樣：「DISABLED_MODULES=&amp;ldquo;nv nvidia_new&amp;rdquo;」)&lt;br&gt;
 然後刪掉/lib/modules底下的跟nvidia有關的東西(但是我的ubuntu根本沒有這種東西 是找到的教學文件這樣說)&lt;br&gt;
 刪掉/etc/init.d/nvidia-glx 和 /etc/init.d/nvidia-kernel&lt;br&gt;
@@ -446,7 +501,7 @@ libflashplayer.so: ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), 
         <pubDate>Sun, 02 Mar 2008 00:28:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/%E5%9C%A8thinkpad-r61-a76%E4%B8%8A%E5%AE%89%E8%A3%9Dubuntu-&#43;-vista%E9%9B%99%E7%B3%BB%E7%B5%B1/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E5%9C%A8thinkpad-r61-a76%E4%B8%8A%E5%AE%89%E8%A3%9Dubuntu-&#43;-vista%E9%9B%99%E7%B3%BB%E7%B5%B1/ -&lt;p&gt;其實是很久以前的筆記了 不過現在才放在blog上&lt;br&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/%E5%9C%A8thinkpad-r61-a76%E4%B8%8A%E5%AE%89%E8%A3%9Dubuntu-&#43;-vista%E9%9B%99%E7%B3%BB%E7%B5%B1/ -&lt;p&gt;其實是很久以前的筆記了 不過現在才放在blog上&lt;br&gt;
 主角是我在寒假前買的Lenovo(IBM) ThinkPad R61-7743A76 內附的作業系統是Windows Vista Home Premium(可是Palmset上的貼紙竟是Basic:( 真無奈) 不過玩了Ubuntu一年多的我當然迫不及待想嘗試看看在新機器上能夠支援多少功能~XD&lt;br&gt;
 之前就聽很多人說新的硬體不太容易被支援 我都沒有這種煩惱(嗚T_T) 現在總算可以換我煩惱一下了:P&lt;/p&gt;
 &lt;h1 id=&#34;首先是失敗的紀錄&#34;&gt;首先是失敗的紀錄&lt;/h1&gt;
@@ -477,7 +532,7 @@ libflashplayer.so: ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), 
         <pubDate>Wed, 31 Oct 2007 12:25:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/ -&lt;p&gt;開機的 usplash 變黑的 bug 和螢幕解析度有關，只在用 Desktop CD 安裝的時候會遇到。原因是因為安裝程式會偵測螢幕解析度，但是 usplash 沒辦法用那麼高的解析度顯示，於是就黑掉了。&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/ -&lt;p&gt;開機的 usplash 變黑的 bug 和螢幕解析度有關，只在用 Desktop CD 安裝的時候會遇到。原因是因為安裝程式會偵測螢幕解析度，但是 usplash 沒辦法用那麼高的解析度顯示，於是就黑掉了。&lt;/p&gt;
 &lt;p&gt;解法，例如我的螢幕解析度是 1280x1024，但是 usplash 可能只能用 1024x768 跑，到 &lt;code&gt;/etc/usplash.conf&lt;/code&gt; 中將&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;xres=1280  
 yres=1024  
@@ -502,24 +557,9 @@ yres=768
         <pubDate>Thu, 19 Jul 2007 00:23:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/ -&lt;p&gt;在我看到之前已經有人推 OpenOffice.org 了&amp;hellip;&lt;br&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/ -&lt;p&gt;在我看到之前已經有人推 OpenOffice.org 了&amp;hellip;&lt;br&gt;
 只是讓我突然想到 之前不知道看誰說過 你用 MS Office 是很強大沒錯 只是也用不到那麼多功能&amp;hellip;大部分的人 包含我自己在內 其實都用不到什麼很進階的功能 不過就是打打字 排個版 畫個表格之類&amp;hellip;這些東西都可以用 OO.o 來達成 以 c/p 值來說當然高很多 不過我也承認 MS Office 真的比較好用 至少介面親和力比較高 功能也比較完善 (OO.o 有時候會有一些我想要的效果做不出來) 只是人家就是要錢&amp;hellip;.我現在用的是成大的授權 那將來呢？我希望 OO.o 進步快一點 在我畢業之後可以完全不要用 MS Office～～&lt;/p&gt;
 - https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>解決新視窗不會取得focus的問題</title>
-        <link>https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/</link>
-        <pubDate>Mon, 18 Jun 2007 02:49:00 +0000</pubDate>
-        
-        <guid>https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/ -&lt;p&gt;我也不確定這是Gnome的問題或是Beryl造成的～&lt;br&gt;
-不過我知道解法了:P&lt;/p&gt;
-&lt;p&gt;在Beryl Manager中找General Options裡面有個&amp;quot;聚交保護級&amp;quot; 把高設定為正常就好了:)&lt;br&gt;
-&lt;a href=&#34;http://www.ubuntu.org.tw/modules/newbb/viewtopic.php?viewmode=flat&amp;amp;type=&amp;amp;topic_id=4541&amp;amp;forum=22&#34;&gt;來源&lt;/a&gt;&lt;/p&gt;
-- https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     

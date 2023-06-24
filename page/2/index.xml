@@ -1,15 +1,71 @@
 <?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CrBoy&#39;s blog</title>
+    <title>CrBoy&#39;s Blog</title>
     <link>https://blog.crboy.net/</link>
-    <description>Recent content on CrBoy&#39;s blog</description>
+    <description>Recent content on CrBoy&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</copyright>
-    <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 Jun 2023 01:37:57 +0800</lastBuildDate>
     
         <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>讓 Gitit 使用自己的網域名稱</title>
+        <link>https://blog.crboy.net/posts/gitit-custom-domain/</link>
+        <pubDate>Thu, 08 Aug 2013 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/gitit-custom-domain/</guid>
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/gitit-custom-domain/ -&lt;h1 id=&#34;apache&#34;&gt;Apache&lt;/h1&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;lt;virtualhost&amp;gt;
+
+	ServerName wiki.csie.ncku.edu.tw
+	DocumentRoot /var/www/
+	RewriteEngine On
+	ProxyPreserveHost On
+	ProxyRequests Off
+
+	&amp;lt;proxy&amp;gt;
+	Order deny,allow
+	Allow from all
+	&amp;lt;/proxy&amp;gt;
+
+	ProxyPassReverse /    http://127.0.0.1:8000
+	RewriteRule ^(.*) http://127.0.0.1:8000$1 [P]
+	#RewriteLog /var/log/apache2/rewrite.log
+	#RewriteLogLevel 9
+
+	CustomLog ${APACHE_LOG_DIR}/csie-wiki-access.log combined
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+	ServerSignature On
+
+&amp;lt;/virtualhost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;nginx&#34;&gt;Nginx&lt;/h1&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;server{
+	listen 80; 
+	server_name wiki.csie.ncku.edu.tw;
+	server_name new.wiki.csie.ncku.edu.tw;
+
+	access_log /var/log/nginx/csiewiki-access.log;
+
+	location / { 
+		proxy_redirect off;
+		proxy_pass http://localhost:8000;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	}   
+}
+&lt;/code&gt;&lt;/pre&gt;- https://blog.crboy.net/posts/gitit-custom-domain/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
+        </item>
     
     
     
@@ -19,7 +75,7 @@
         <pubDate>Sun, 07 Apr 2013 15:59:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/install-redmine-on-windows/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/install-redmine-on-windows/ -&lt;p&gt;Redmine 是一套很有名的專案管理系統，建構於 Ruby on Rails 之上。網路上搜尋「Redmine」都可以找到很多相關資料，這邊就不贅述功能。&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/install-redmine-on-windows/ -&lt;p&gt;Redmine 是一套很有名的專案管理系統，建構於 Ruby on Rails 之上。網路上搜尋「Redmine」都可以找到很多相關資料，這邊就不贅述功能。&lt;/p&gt;
 &lt;p&gt;由於 Ruby/Rails 在 MacOSX 跟 Linux 相對比較友善，所以要找 Redmine on Windows 的安裝教學實在不太好找，中文資料更是寥寥可數。加上 Rails 進步迅速，很多 07~09 年的資料其實很可能都已經過時，所以乾脆自己研究完寫一篇XD&lt;/p&gt;
 &lt;p&gt;不過由於現在實在沒什麼空寫網誌，所以簡單的把方法跟過程記錄一下&amp;hellip;.&lt;/p&gt;
 &lt;p&gt;這邊主要是根據 &lt;a href=&#34;http://www.redmine.org/projects/redmine/wiki/RedmineInstall&#34;&gt;http://www.redmine.org/projects/redmine/wiki/RedmineInstall&lt;/a&gt; 上面的說明，而 Redmine 安裝相依於特定的 rails 與 ruby 版本，可以參考前面這個連結裡面的表格。而我這邊以 Ruby 1.9.3 + Rails 3.2.13 + Redmine 2.3.0 為目標。&lt;/p&gt;
@@ -121,7 +177,7 @@ bundle install --without development test rmagick --local
         <pubDate>Mon, 24 Sep 2012 01:44:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/ -&lt;p&gt;前幾天突然想到一個問題&amp;hellip;.由於 Ubuntu 預設 editor 是 nano，這對於一個 vim user 來說實在是不太舒服啊XD 所以稍微找了一下，找到一個很簡便的作法，可以用來修改預設 editor，方式如下：&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/ -&lt;p&gt;前幾天突然想到一個問題&amp;hellip;.由於 Ubuntu 預設 editor 是 nano，這對於一個 vim user 來說實在是不太舒服啊XD 所以稍微找了一下，找到一個很簡便的作法，可以用來修改預設 editor，方式如下：&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ sudo update-alternatives --config editor    
 [sudo] password for crboy: 
 There are 4 choices for the alternative editor (providing /usr/bin/editor).
@@ -149,7 +205,7 @@ $
         <pubDate>Fri, 21 Sep 2012 00:03:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/php-email-by-gmail/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/php-email-by-gmail/ -&lt;p&gt;之前為了發 COSCUP 的通知信，參考網路上的範例用 PHP 寫了個小程式。我把範例程式放在這個 gist 上：&lt;a href=&#34;https://gist.github.com/3135053&#34;&gt;https://gist.github.com/3135053&lt;/a&gt;&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/php-email-by-gmail/ -&lt;p&gt;之前為了發 COSCUP 的通知信，參考網路上的範例用 PHP 寫了個小程式。我把範例程式放在這個 gist 上：&lt;a href=&#34;https://gist.github.com/3135053&#34;&gt;https://gist.github.com/3135053&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;其實明顯看得出來，程式沒什麼架構，純粹只是為了可以 work 而寫的&lt;a href=&#34;http://www.ithome.com.tw/itadm/article.php?c=49891&#34;&gt;拋棄式程式&lt;/a&gt;。不過丟出來一方面可以當自己的筆記，以後要找比較好找，另一方面，也許另一個人想要寫類似的小玩具的時候就可以參考了 :P&lt;/p&gt;
 &lt;p&gt;以下是一些簡單的介紹。&lt;/p&gt;
 &lt;p&gt;我使用這個程式的狀況是，我需要寄一封信給很多人，而我又希望每個人收到的信，收件者只有自己，而且信件開頭還會寫上他的名字，這樣比較貼心。所以沒辦法用「寄給自己 and BCC」的方法達成，只好透過程式完成。&lt;/p&gt;
@@ -181,7 +237,7 @@ $
         <pubDate>Wed, 19 Sep 2012 13:56:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/introduction-to-gitit/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/introduction-to-gitit/ -&lt;p&gt;最近打算發一系列的 Gitit 相關文章，希望不要拖稿拖太久&amp;hellip;.萬一去當兵了，可能會拖很久很久這樣XD&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/introduction-to-gitit/ -&lt;p&gt;最近打算發一系列的 Gitit 相關文章，希望不要拖稿拖太久&amp;hellip;.萬一去當兵了，可能會拖很久很久這樣XD&lt;/p&gt;
 &lt;p&gt;之前我一直在尋找一個好用的共同協作平台系統，原因是我覺得 MediaWiki 的語法實在太難寫了&amp;hellip;.特別是當我看到 &lt;a href=&#34;http://wiki.ubuntu-tw.org/&#34;&gt;Ubuntu-TW Wiki&lt;/a&gt; 的首頁原始碼的時候，都快吐血了&amp;hellip;..當下覺得我智商不足&amp;hellip;..orz 但後來一直尋找，尋找的目標是：語法好寫、可即時線上協作的 wiki，所謂的「即時線上協作」就是像 Google Docs 那樣有可以多人同時編輯的頁面這樣。不過一直都找不到我想要的東西&amp;hellip;.即時線上協作有 etherpad-lite 這個 open source 專案，但是他是每個 pad 獨立的，而使用 Markdown 語法的 wiki 也不是沒有，但沒有勇氣(?)去嘗試&amp;hellip;.&lt;/p&gt;
 &lt;p&gt;一開始知道 Gitit，是 &lt;a href=&#34;http://www.plurk.com/zeroplex&#34;&gt;@zeroplex&lt;/a&gt; (日落) 在噗浪上講的。因為之前也跟日落提過我想要尋找一個好用的 wiki system 這件事，他剛好不知道從哪裡獲得資訊，就分享給我了。結果沒想到，一玩下去，驚為天人啊XD&lt;/p&gt;
 &lt;p&gt;我的第一步當然是先去 Google 一下，看有沒有什麼相關訊息。直到現在這個時間點，去 Google 「gitit」還很容易找到 &lt;a href=&#34;http://walkingice.blogspot.tw/2011/11/gitit-git-based-wiki.html&#34;&gt;walkingice 的這篇文章&lt;/a&gt;，另外當然還是要提一下 &lt;a href=&#34;http://gitit.net/&#34;&gt;Gitit 官方網站&lt;/a&gt;。&lt;/p&gt;
@@ -240,7 +296,7 @@ $
         <pubDate>Wed, 19 Sep 2012 10:53:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/php-setting-in-htaccess/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/php-setting-in-htaccess/ -&lt;p&gt;這篇筆記拖稿好久了&amp;hellip;.其實應該很短的，所以趕快寫一寫。&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/php-setting-in-htaccess/ -&lt;p&gt;這篇筆記拖稿好久了&amp;hellip;.其實應該很短的，所以趕快寫一寫。&lt;/p&gt;
 &lt;p&gt;有時候在弄一些 php 相關的東西的時候，需要設定一些模組，例如&lt;a href=&#34;https://blog.crboy.net/2012/06/xdebug-installation-and-usage.html&#34;&gt;之前用過的 Xdebug&lt;/a&gt;，但是每次設定 php.ini 就要重新啟動 apache server，很麻煩還是其次，有時候上線的系統這樣一搞就很多人掰了&amp;hellip;..XD 所以我們需要一個修改後立即生效的做法。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;.htaccess&lt;/code&gt; 是非常實用的做法，只要先在 apache 的設定檔裡去 AllowOverride Options 即可使用 (我自己的機器通常會在特定目錄直接 AllowOverride All)。那麼，到底該怎麼做呢？下面是範例：&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;php_value xdebug.auto_trace on
@@ -263,7 +319,7 @@ php_value xdebug.profiler_output_dir /tmp/xdebug
         <pubDate>Mon, 10 Sep 2012 02:05:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/wtf-pinyin/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/wtf-pinyin/ -&lt;p&gt;有個已經讓我困擾非常久的問題&amp;hellip;.今天來抱怨一下。&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/wtf-pinyin/ -&lt;p&gt;有個已經讓我困擾非常久的問題&amp;hellip;.今天來抱怨一下。&lt;/p&gt;
 &lt;p&gt;這個問題跟拼音有關，我指的是中文字以英文字母表示的那個拼音&amp;hellip;最後還想提一下關於奇怪的「洋中文」 (我自己亂取的稱呼) 現象&amp;hellip;.但必須先說，我不是專業的語言或是文字學家，甚至我對語言、文字都沒有什麼深入的了解，我只是想表達我覺得很困擾，以及&lt;del&gt;莫名奇妙&lt;/del&gt;莫名其妙的一些問題罷了。(感謝&lt;a href=&#34;http://www.plurk.com/mike771115&#34;&gt;朋友&lt;/a&gt;協助訂正錯字)&lt;/p&gt;
 &lt;p&gt;我們在某些特定場合，可能會需要提供自己的英文名字，特別是一些正式的場合，會需要正式的「中文姓名英譯」。而這個英譯應該以什麼為準呢？當然是護照上的英文名字。因為你如果出國，有法定效力的身分證明文件就是護照，所以不管是什麼證件、信用卡或是國際證照上面，最好都是寫護照上的英文名字。連帶的，像是發表論文之類的，我們也會填上護照上的英文名字。&lt;/p&gt;
 &lt;p&gt;OK，那這到底有什麼問題？&lt;/p&gt;
@@ -290,7 +346,7 @@ php_value xdebug.profiler_output_dir /tmp/xdebug
         <pubDate>Sun, 09 Sep 2012 14:03:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/smart-questions/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/smart-questions/ -&lt;p&gt;這篇文章已經看過很多不同網頁都轉貼了，而我也不是很喜歡轉貼&amp;hellip;所以我去 Google 搜尋了「提問的藝術」，然後直接貼第一條結果出來：&lt;a href=&#34;http://ihower.tw/blog/archives/457/&#34;&gt;http://ihower.tw/blog/archives/457/&lt;/a&gt; (是 ihower 大大的部落格 &amp;lt;(_ _)&amp;gt;)。萬一未來哪天連結失效，那就自行搜尋吧~:)&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/smart-questions/ -&lt;p&gt;這篇文章已經看過很多不同網頁都轉貼了，而我也不是很喜歡轉貼&amp;hellip;所以我去 Google 搜尋了「提問的藝術」，然後直接貼第一條結果出來：&lt;a href=&#34;http://ihower.tw/blog/archives/457/&#34;&gt;http://ihower.tw/blog/archives/457/&lt;/a&gt; (是 ihower 大大的部落格 &amp;lt;(_ _)&amp;gt;)。萬一未來哪天連結失效，那就自行搜尋吧~:)&lt;/p&gt;
 &lt;p&gt;那麼，要進入正題了。&lt;/p&gt;
 &lt;p&gt;首先，所謂黑客，在台灣可能比較常稱為駭客，指的是擁有高度知識與技術的人，但比較常用在電腦資訊相關領域。也許他鑽研的是資訊安全，也可能是深入作業系統，也可能是程式高手。我不夠資格對駭客下定義，但我認為這是種文化、是種哲學，體現的是喜好自由、喜好創造的個性。我想&lt;a href=&#34;http://zh.wikipedia.org/wiki/%E9%A7%AD%E5%AE%A2&#34;&gt;維基百科&lt;/a&gt;上的說明應該會更清楚。只要讀者不要把黑客跟蓄意搞破壞的人混為一談就好。這篇文章就是教你該怎麼從這些滿是知識跟經驗的駭客手上，獲得他們所會所學。&lt;/p&gt;
 &lt;p&gt;簡單來說：&lt;/p&gt;
@@ -320,7 +376,7 @@ php_value xdebug.profiler_output_dir /tmp/xdebug
         <pubDate>Sun, 09 Sep 2012 01:24:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/mayday-washer/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/mayday-washer/ -&lt;p&gt;我記得&amp;hellip;是今年的母親節吧。&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/mayday-washer/ -&lt;p&gt;我記得&amp;hellip;是今年的母親節吧。&lt;/p&gt;
 &lt;p&gt;還記得那時候五月天推出了這隻 MV，洗衣機。聽了好久的 KKBOX，一直都沒有仔細去聽歌詞，更沒有去看歌詞寫了什麼。&lt;/p&gt;
 &lt;p&gt;不過，看了 MV 之後，實在讓我太感動了&amp;hellip;..也許，這跟我從小爸爸就過世了有關吧？一直在單親家庭長大的我，對這首歌如此有共鳴，也許是正常的&amp;hellip;&amp;hellip;&amp;hellip;先看看 MV 吧？&lt;/p&gt;
 
@@ -385,7 +441,7 @@ php_value xdebug.profiler_output_dir /tmp/xdebug
         <pubDate>Wed, 01 Aug 2012 17:45:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/ -&lt;p&gt;最近在新增設備，分別是 HP ProCurve 1810G-24 L2 switch 與 Synology RS812+ NAS，沒想到前兩天碰到一個讓人吐血的問題&amp;hellip;故事要從這裡說起&amp;hellip;..&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/ -&lt;p&gt;最近在新增設備，分別是 HP ProCurve 1810G-24 L2 switch 與 Synology RS812+ NAS，沒想到前兩天碰到一個讓人吐血的問題&amp;hellip;故事要從這裡說起&amp;hellip;..&lt;/p&gt;
 &lt;p&gt;一開始很開心的接上了 switch 還有 NAS，似乎相當正常，但操作相當緩慢&amp;hellip;.後來 ping 了一下，封包一直掉&amp;hellip;&amp;hellip;&amp;hellip;.呃，但是後來換台電腦就好了，所以目前這個問題被我擱置&amp;hellip;..XD&lt;/p&gt;
 &lt;p&gt;離題了，Synology NAS 算是還不錯，它的 OS (核心是 Linux，名稱叫做 DSM) 提供了 NFS 的支援，但主要的問題是&amp;hellip;&amp;hellip;問題是我掛不上啊!!!!! 我碰到的狀況相當奇怪，我這台電腦連到 NAS 的管理介面沒有問題，ping 它也回很快，甚至是 CIFS (Windows 的網路芳鄰) 都很順利&amp;hellip;.獨獨 NFS 掛不上去 orz&lt;/p&gt;
 &lt;p&gt;我試了兩台電腦，都是 Linux，這兩台電腦跟 NAS 都接在上面說的那台 HP ProCurve 1810G-24 L2 switch 上。其中一台有防火牆，另一台沒有開，但是問題跟這個無關，所以就不理他了。我的狀況是，showmount 非常正常，NFS 權限也沒問題，但是真的要 mount 的時候就等很久很久很久&amp;hellip;..然後就 timeout 了&amp;hellip;&amp;hellip;= =&lt;/p&gt;
@@ -397,28 +453,6 @@ php_value xdebug.profiler_output_dir /tmp/xdebug
 &lt;p&gt;對&amp;hellip;.跟 Synology 完全無關&amp;hellip;.都是 HP 害的!!!!!!!! 去 Google 搜尋「Auto DoS NFS」也可以找到相關文章&amp;hellip;.都是同一台= = 我還嘗試去找出原因&amp;hellip;.但是找來找去&amp;hellip;.我只能說這是個 bug 吧&amp;hellip;..&lt;/p&gt;
 &lt;p&gt;總之，這真是太杯具了&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;..&lt;/p&gt;
 - https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>導讀與心得：關於軟體的性能調校</title>
-        <link>https://blog.crboy.net/posts/software-performance-tuning/</link>
-        <pubDate>Sun, 08 Jul 2012 17:05:00 +0000</pubDate>
-        
-        <guid>https://blog.crboy.net/posts/software-performance-tuning/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/software-performance-tuning/ -&lt;p&gt;今天來寫寫關於這兩篇文章的摘要跟心得：&lt;br&gt;
-&lt;a href=&#34;http://coolshell.cn/articles/2967.html&#34;&gt;代码优化概要 | 酷 壳 - CoolShell&lt;/a&gt;&lt;br&gt;
-&lt;a href=&#34;http://coolshell.cn/articles/7490.html&#34;&gt;性能调优攻略 | 酷 壳 - CoolShell&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;第一篇文章裡面講的東西很簡單，卻很重要！用 profiler 跟看組語！我個人經常強調的一件事，就是在解決問題的時候一定要先找到問題在哪裡。以前我常用 debugger 來說明，但 debugger 最大的幫助其實不是找出問題，而是「快速的」找出問題。而透過 profiler，對於找出效能問題幾乎是最簡單的作法&amp;hellip;.(有一種相當土法煉鋼的方法是，在自己的程式碼裡面加上一大堆印出 timestamp 的程式碼，聰明一點的還會用夾擠來避免浪費太多時間。但是這個行為本身就是在浪費時間&amp;hellip;.)&lt;/p&gt;
-&lt;p&gt;這篇文章可說是支持了我的觀點，有時候「看起來好像很慢」的程式碼，實際上並不會浪費你太多時間。這是真的！這也是為什麼作者會說，做性能調校要注意兩個重點，一個是花很多時間的程式碼，另一個是被執行很多次的程式碼！看起來很花時間的程式碼，可能不花你很多時間，也不執行很多次！&lt;/p&gt;
-&lt;p&gt;第二篇文章講的就多了&amp;hellip;但這四個步驟的核心觀念很好抓，先定義(效能)需求，然後做測試，接著找出問題，最後解決問題。聽起來很無趣，不是嗎？但常常見到的情況反而是，先看看程式碼，然後猜測問題，修改之後測試看看，最後接受結果。&lt;/p&gt;
-&lt;p&gt;常見的狀況都是這樣，我自己也是，但在我懂得使用 profiler 之後才終於知道該怎麼把效能問題的重點給抓出來。但這篇文章講得更多，第一步定義 throughput 與 latency，這兩個詞的差別常常被忽略，因為他們會互相影響，所以常被用「performance」給概括了，但其實是可以分開考慮的。&lt;/p&gt;
-&lt;p&gt;性能測試部份我就比較沒有經驗了，我只懂得使用 profiler 做簡單的分析，但文中所提到的 throughput 與 latency 測試分析，光用想的就很辛苦&amp;hellip;.更別提還要配合穩定性測試 (舉例來說，如果系統有 memory leak 問題，碰到高 throughput 狀況則可能很容易噴掉)&lt;/p&gt;
-&lt;p&gt;透過測試，我們可以知道系統效能狀況。可以從兩個角度來看：從外面看，看 CPU 與 IO 的使用率。從裡面看，看系統 profiling 的數據。但其實有個很尷尬的問題，profiler 會稍微降低系統效能，所以對於上線的(且忙碌的)系統來說，想抓到真實狀況又不想對系統造成影響真的很難&amp;hellip;..orz&lt;/p&gt;
-&lt;p&gt;最後談到「解決問題」這就多了，因為不同的問題需要不同的解決方式，我認為文章裡每一條經驗都很值得參考！首先可能要改演算法，演算法對效能的影響，我想寫過 ICPC 比賽或是 UVa Online Judge 的人最清楚了！雖然有很多現實問題真的不是演算法解決的 (都是一些有的沒的雜事)，但底下用到的每個演算法都有機會成為瓶頸，也就有可能是系統加速的關鍵。再來，底層會發生的問題也要注意！誰說寫程式不用知道底層？對底層知道的越多，越有可能寫出好程式，這個定律是不會變的&amp;hellip;再來講到系統方面的最佳化，這也是對底層知道越多越有用的例子。後面則是講到資料庫&amp;hellip;資料庫性能調校相對於系統或是程式語言底層實做來說，應該算是顯學了。但是顯學歸顯學，也不是每個人都了解資料庫，所以「亂調一通然後看看速度多快」反而變成最 popular 的技術了&amp;hellip;.= = 文章這部份也相當值得閱讀，首先要知道 DB 的 lock 還有其他實做問題，再來可以透過工具看到 SQL query 的 execution plan (這真的很有用！比亂猜好太多了！但有些 RDBMS 要看到 execution plan 相當麻煩= =)。最後則是常見的 SQL 性能問題，像是 full table scan、index 的使用不當，或是某些通常很花時間的功能&amp;hellip;&lt;/p&gt;
-&lt;p&gt;簡單下個結論，軟體性能調校很重要，但是有些人常常沒有用對方法。建議好好讀過這兩篇文章，還有網路上的其他好文章，嘗試看看用比較好的方法做調整！:)&lt;/p&gt;
-- https://blog.crboy.net/posts/software-performance-tuning/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     

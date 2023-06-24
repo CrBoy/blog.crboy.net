@@ -1,15 +1,37 @@
 <?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CrBoy&#39;s blog</title>
+    <title>CrBoy&#39;s Blog</title>
     <link>https://blog.crboy.net/</link>
-    <description>Recent content on CrBoy&#39;s blog</description>
+    <description>Recent content on CrBoy&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <copyright>本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</copyright>
-    <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 Jun 2023 01:37:57 +0800</lastBuildDate>
     
         <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>導讀與心得：關於軟體的性能調校</title>
+        <link>https://blog.crboy.net/posts/software-performance-tuning/</link>
+        <pubDate>Sun, 08 Jul 2012 17:05:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/software-performance-tuning/</guid>
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/software-performance-tuning/ -&lt;p&gt;今天來寫寫關於這兩篇文章的摘要跟心得：&lt;br&gt;
+&lt;a href=&#34;http://coolshell.cn/articles/2967.html&#34;&gt;代码优化概要 | 酷 壳 - CoolShell&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;http://coolshell.cn/articles/7490.html&#34;&gt;性能调优攻略 | 酷 壳 - CoolShell&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;第一篇文章裡面講的東西很簡單，卻很重要！用 profiler 跟看組語！我個人經常強調的一件事，就是在解決問題的時候一定要先找到問題在哪裡。以前我常用 debugger 來說明，但 debugger 最大的幫助其實不是找出問題，而是「快速的」找出問題。而透過 profiler，對於找出效能問題幾乎是最簡單的作法&amp;hellip;.(有一種相當土法煉鋼的方法是，在自己的程式碼裡面加上一大堆印出 timestamp 的程式碼，聰明一點的還會用夾擠來避免浪費太多時間。但是這個行為本身就是在浪費時間&amp;hellip;.)&lt;/p&gt;
+&lt;p&gt;這篇文章可說是支持了我的觀點，有時候「看起來好像很慢」的程式碼，實際上並不會浪費你太多時間。這是真的！這也是為什麼作者會說，做性能調校要注意兩個重點，一個是花很多時間的程式碼，另一個是被執行很多次的程式碼！看起來很花時間的程式碼，可能不花你很多時間，也不執行很多次！&lt;/p&gt;
+&lt;p&gt;第二篇文章講的就多了&amp;hellip;但這四個步驟的核心觀念很好抓，先定義(效能)需求，然後做測試，接著找出問題，最後解決問題。聽起來很無趣，不是嗎？但常常見到的情況反而是，先看看程式碼，然後猜測問題，修改之後測試看看，最後接受結果。&lt;/p&gt;
+&lt;p&gt;常見的狀況都是這樣，我自己也是，但在我懂得使用 profiler 之後才終於知道該怎麼把效能問題的重點給抓出來。但這篇文章講得更多，第一步定義 throughput 與 latency，這兩個詞的差別常常被忽略，因為他們會互相影響，所以常被用「performance」給概括了，但其實是可以分開考慮的。&lt;/p&gt;
+&lt;p&gt;性能測試部份我就比較沒有經驗了，我只懂得使用 profiler 做簡單的分析，但文中所提到的 throughput 與 latency 測試分析，光用想的就很辛苦&amp;hellip;.更別提還要配合穩定性測試 (舉例來說，如果系統有 memory leak 問題，碰到高 throughput 狀況則可能很容易噴掉)&lt;/p&gt;
+&lt;p&gt;透過測試，我們可以知道系統效能狀況。可以從兩個角度來看：從外面看，看 CPU 與 IO 的使用率。從裡面看，看系統 profiling 的數據。但其實有個很尷尬的問題，profiler 會稍微降低系統效能，所以對於上線的(且忙碌的)系統來說，想抓到真實狀況又不想對系統造成影響真的很難&amp;hellip;..orz&lt;/p&gt;
+&lt;p&gt;最後談到「解決問題」這就多了，因為不同的問題需要不同的解決方式，我認為文章裡每一條經驗都很值得參考！首先可能要改演算法，演算法對效能的影響，我想寫過 ICPC 比賽或是 UVa Online Judge 的人最清楚了！雖然有很多現實問題真的不是演算法解決的 (都是一些有的沒的雜事)，但底下用到的每個演算法都有機會成為瓶頸，也就有可能是系統加速的關鍵。再來，底層會發生的問題也要注意！誰說寫程式不用知道底層？對底層知道的越多，越有可能寫出好程式，這個定律是不會變的&amp;hellip;再來講到系統方面的最佳化，這也是對底層知道越多越有用的例子。後面則是講到資料庫&amp;hellip;資料庫性能調校相對於系統或是程式語言底層實做來說，應該算是顯學了。但是顯學歸顯學，也不是每個人都了解資料庫，所以「亂調一通然後看看速度多快」反而變成最 popular 的技術了&amp;hellip;.= = 文章這部份也相當值得閱讀，首先要知道 DB 的 lock 還有其他實做問題，再來可以透過工具看到 SQL query 的 execution plan (這真的很有用！比亂猜好太多了！但有些 RDBMS 要看到 execution plan 相當麻煩= =)。最後則是常見的 SQL 性能問題，像是 full table scan、index 的使用不當，或是某些通常很花時間的功能&amp;hellip;&lt;/p&gt;
+&lt;p&gt;簡單下個結論，軟體性能調校很重要，但是有些人常常沒有用對方法。建議好好讀過這兩篇文章，還有網路上的其他好文章，嘗試看看用比較好的方法做調整！:)&lt;/p&gt;
+- https://blog.crboy.net/posts/software-performance-tuning/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
+        </item>
     
     
     
@@ -19,7 +41,7 @@
         <pubDate>Tue, 03 Jul 2012 11:05:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/vim-camelcase-to-snakecase/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/vim-camelcase-to-snakecase/ -&lt;p&gt;這篇文章：&lt;a href=&#34;http://fcamel-life.blogspot.tw/2010/03/vim-camel-case-underscore-based.html&#34;&gt;用 vim 將 camel case 改成 underscore-based&lt;/a&gt; 提到用 vim 取代把 CamelCase 轉換成 snake_case 的作法，看到後有一點點小想法，特別紀錄一下 :P&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/vim-camelcase-to-snakecase/ -&lt;p&gt;這篇文章：&lt;a href=&#34;http://fcamel-life.blogspot.tw/2010/03/vim-camel-case-underscore-based.html&#34;&gt;用 vim 將 camel case 改成 underscore-based&lt;/a&gt; 提到用 vim 取代把 CamelCase 轉換成 snake_case 的作法，看到後有一點點小想法，特別紀錄一下 :P&lt;/p&gt;
 &lt;p&gt;作者提到的取代方式是：&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;:%s/\(\l\)\(\u\)/\1_\l\2/gc
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;但配合 very magic 可以變成這樣&lt;/p&gt;
@@ -38,7 +60,7 @@
         <pubDate>Tue, 03 Jul 2012 10:35:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/small-frequent-commit/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/small-frequent-commit/ -&lt;p&gt;今天讀到這篇文章 &lt;a href=&#34;http://fcamel-life.blogspot.tw/2010/08/commit.html&#34;&gt;保持小而頻繁的 commit&lt;/a&gt;&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/small-frequent-commit/ -&lt;p&gt;今天讀到這篇文章 &lt;a href=&#34;http://fcamel-life.blogspot.tw/2010/08/commit.html&#34;&gt;保持小而頻繁的 commit&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;這篇文章在講使用分散式版本控制系統 (DVCS) 時應該儘量保持小而頻繁的 commit 行為，我覺得值得一讀。&lt;/p&gt;
 &lt;p&gt;雖然作者使用的是 mercurial (hg)，但其實跟 git 的觀念是很像的。&lt;/p&gt;
 &lt;p&gt;以下簡單導讀：&lt;br&gt;
@@ -57,7 +79,7 @@
         <pubDate>Sat, 30 Jun 2012 01:05:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/xdebug-remote-debugging/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/xdebug-remote-debugging/ -&lt;h1 id=&#34;簡介&#34;&gt;簡介&lt;/h1&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/xdebug-remote-debugging/ -&lt;h1 id=&#34;簡介&#34;&gt;簡介&lt;/h1&gt;
 &lt;p&gt;PHP 的除錯利器 - Xdebug 也可以進行互動式的除錯。什麼是互動式的除錯呢？當程式在執行中的時候，如果可以把程式的執行控制權攔截下來，那麼就可以根據自己的需求，&lt;strong&gt;單步執行&lt;/strong&gt;我們的程式，並且可以監控程式的狀態。這些狀態包含了像是：目前執行到哪一行程式、目前所有的變數與其值、function 的 call stack (註) 等等。除了看到狀態以外，一個完善的 debugger 還允許開發者動態對變數進行修改，或是動態改變執行流程。&lt;/p&gt;
 &lt;p&gt;註：Call stack 指的是 function 呼叫的順序，如 A 呼叫 B，B 呼叫 C，則 call stack 的長相就像是把 B &lt;strong&gt;疊&lt;/strong&gt;到 A 上，再把 C &lt;strong&gt;疊&lt;/strong&gt;到 B 上，當 C 執行完畢後，就把 C 從 stack 中取走，如果接下來 B 又呼叫了 D，那麼就把 D &lt;strong&gt;疊&lt;/strong&gt;上來。所以在任何時候查看 call stack 都可以知道 function 間呼叫的從屬關係。關於 stack 與 call stack 的更多資訊都可以在網路上查到更清楚的解釋，這邊就不獻醜。&lt;/p&gt;
 &lt;p&gt;那麼要怎麼利用 Xdebug 進行互動式的除錯呢？由於很多 PHP 程式都是設計用來產生網頁的，所以常常會掛在 web server 底下執行，而非由我們手動去跑程式。Xdebug 身為一個 PHP module，他可以對執行流程進行監控，還可以藉由另外的通道跟開發者進行通訊，也就是說，開發者可以透過 Xdebug 對執行中的 PHP 進行控制。&lt;/p&gt;
@@ -126,7 +148,7 @@
         <pubDate>Tue, 26 Jun 2012 00:17:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/gitolite-usage-tutorial/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/gitolite-usage-tutorial/ -&lt;p&gt;首先，要使用 gitolite 一定得先會使用 git。下面就不贅述。&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/gitolite-usage-tutorial/ -&lt;p&gt;首先，要使用 gitolite 一定得先會使用 git。下面就不贅述。&lt;/p&gt;
 &lt;h1 id=&#34;初次設定&#34;&gt;初次設定&lt;/h1&gt;
 &lt;p&gt;使用 gitolite 有以下兩個前置動作&lt;/p&gt;
 &lt;ol&gt;
@@ -217,7 +239,7 @@ $ git push origin master
         <pubDate>Thu, 21 Jun 2012 01:57:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/gitolite-settings-and-managements/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/gitolite-settings-and-managements/ -&lt;p&gt;首先，要使用跟管理 gitolite 一定得先會使用 git。下面就不贅述。&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/gitolite-settings-and-managements/ -&lt;p&gt;首先，要使用跟管理 gitolite 一定得先會使用 git。下面就不贅述。&lt;/p&gt;
 &lt;h1 id=&#34;初次設定&#34;&gt;初次設定&lt;/h1&gt;
 &lt;p&gt;對使用者而言，只要設定好 ssh host alias 即可。如果是 gitolite 管理者，還必須將 gitolite-admin 給 clone 下來，才能繼續後面設定的動作。&lt;/p&gt;
 &lt;ol&gt;
@@ -338,7 +360,7 @@ repo crboy/.+$                  ### crboy 目錄下的任意 repo
         <pubDate>Wed, 20 Jun 2012 01:50:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/gitolite-3-installation/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/gitolite-3-installation/ -&lt;p&gt;Gitolite 是一個持續開發中的 git server 專案，自 2009 年開始後，至今已經發展到第 3 版，作者將其稱之為 g3 (之前的版本分別為 g1 與 g2)。由於 g3 相對於之前的版本，是整個重寫的專案，根據紀錄，g3 是大約今年 4 月才開始的，所以很多文件早已過時，只好慢慢研究作者提供的文件。整個專案都&lt;a href=&#34;https://github.com/sitaramc/gitolite&#34;&gt;放在 github 上&lt;/a&gt;，並且作者也提供了&lt;a href=&#34;http://sitaramc.github.com/gitolite/index.html&#34;&gt;相關文件&lt;/a&gt;，本文就是參考該文件寫成。&lt;br&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/gitolite-3-installation/ -&lt;p&gt;Gitolite 是一個持續開發中的 git server 專案，自 2009 年開始後，至今已經發展到第 3 版，作者將其稱之為 g3 (之前的版本分別為 g1 與 g2)。由於 g3 相對於之前的版本，是整個重寫的專案，根據紀錄，g3 是大約今年 4 月才開始的，所以很多文件早已過時，只好慢慢研究作者提供的文件。整個專案都&lt;a href=&#34;https://github.com/sitaramc/gitolite&#34;&gt;放在 github 上&lt;/a&gt;，並且作者也提供了&lt;a href=&#34;http://sitaramc.github.com/gitolite/index.html&#34;&gt;相關文件&lt;/a&gt;，本文就是參考該文件寫成。&lt;br&gt;
 我的操作環境是：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Ubuntu 12.04&lt;/li&gt;
@@ -437,7 +459,7 @@ command=&amp;quot;/usr/share/gitolite/./gl-auth-command someone&amp;quot;,no-por
         <pubDate>Mon, 18 Jun 2012 01:50:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/gitolite-22-installation/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/gitolite-22-installation/ -&lt;p&gt;&lt;strong&gt;特別注意&lt;/strong&gt; - 為什麼標題要特別註明是 Gitolite 2.2？因為文章已經寫好之後才發現作者已經大幅更新版本。新版有&lt;a href=&#34;http://sitaramc.github.com/gitolite/index.html&#34;&gt;文件在此&lt;/a&gt;。本文是以 ubuntu 12.04 套件庫中的 gitolite 2.2 作為安裝目標。&lt;br&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/gitolite-22-installation/ -&lt;p&gt;&lt;strong&gt;特別注意&lt;/strong&gt; - 為什麼標題要特別註明是 Gitolite 2.2？因為文章已經寫好之後才發現作者已經大幅更新版本。新版有&lt;a href=&#34;http://sitaramc.github.com/gitolite/index.html&#34;&gt;文件在此&lt;/a&gt;。本文是以 ubuntu 12.04 套件庫中的 gitolite 2.2 作為安裝目標。&lt;br&gt;
 Gitolite 是一個持續開發中的 git server 套件，本來還在糾結要玩 gitolite 或是 gitosis，決定兩個都嘗試看看後，發現本來打算先嘗試的 gitosis 很難找到來源，唯一找到的是&lt;a href=&#34;https://github.com/res0nat0r/gitosis&#34;&gt;原作者(吧)在 github 上的 repo&lt;/a&gt;，已經有 3 年沒更新了，於是決定直接嘗試 gitolite。搜尋了一下發現，原來 gitolite 是作者從 gitosis 的想法發展而來，本來是 gitosis + lite，但現在已經發展得比 gitosis 還強大了。而且從 &lt;a href=&#34;https://github.com/sitaramc/gitolite&#34;&gt;gitolite 作者的 github repo&lt;/a&gt; 發現，上次更新是一週前，這表示它現在還是一個活躍且成長中的專案，當然就決定是他了！ (但其實後來才發現上次更新的是第 3 版，第 2 版現在只會修 bug 而已)&lt;br&gt;
 我的安裝過程主要是參考 &lt;a href=&#34;http://blog.longwin.com.tw/2011/03/linux-gitolite-git-server-2011/&#34;&gt;Tsung&amp;rsquo;s Blog 的這篇文章&lt;/a&gt;而成，但不曉得原因為何，我這邊碰到的狀況跟作者不太一樣，我想也許是他使用的是 Debian (?) 或者他用 Ubuntu 但是版本跟我不同吧。我還另外參考了&lt;a href=&#34;http://www.ossxp.com/doc/git/gitolite.html&#34;&gt;這篇文章&lt;/a&gt;，裡面寫的東西滿豐富的。同時這裡也附上&lt;a href=&#34;http://sitaramc.github.com/gitolite/g2/master-toc.html&#34;&gt;作者提供的文件&lt;/a&gt;。&lt;br&gt;
 我的操作環境是：&lt;/p&gt;
@@ -520,7 +542,7 @@ Initialized empty Git repository in /home/git/repositories/testing.git/
         <pubDate>Fri, 15 Jun 2012 06:43:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/php-informix-on-linux/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/php-informix-on-linux/ -&lt;p&gt;環境&lt;/p&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/php-informix-on-linux/ -&lt;p&gt;環境&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Ubuntu 12.04 LTS&lt;/li&gt;
 &lt;li&gt;Apache 2.2.22&lt;/li&gt;
@@ -624,7 +646,7 @@ var_dump($db);
         <pubDate>Tue, 12 Jun 2012 23:39:00 +0000</pubDate>
         
         <guid>https://blog.crboy.net/posts/xdebug-installation-and-usage/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/xdebug-installation-and-usage/ -&lt;h1 id=&#34;環境&#34;&gt;環境&lt;/h1&gt;
+        <description>CrBoy&#39;s Blog https://blog.crboy.net/posts/xdebug-installation-and-usage/ -&lt;h1 id=&#34;環境&#34;&gt;環境&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;Ubuntu 12.04 LTS&lt;/li&gt;
 &lt;li&gt;Apache 2.2.22&lt;/li&gt;
@@ -656,47 +678,6 @@ xdebug.profiler_output_dir = /tmp/xdebug    #profile log 的位置
 &lt;li&gt;&lt;a href=&#34;http://xdebug.org/docs/&#34;&gt;Xdebug 官方文件&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 - https://blog.crboy.net/posts/xdebug-installation-and-usage/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
-        </item>
-    
-    
-    
-        <item>
-        <title>明天，我們空中再見</title>
-        <link>https://blog.crboy.net/posts/%E6%98%8E%E5%A4%A9%E6%88%91%E5%80%91%E7%A9%BA%E4%B8%AD%E5%86%8D%E8%A6%8B/</link>
-        <pubDate>Sat, 09 Jun 2012 11:19:00 +0000</pubDate>
-        
-        <guid>https://blog.crboy.net/posts/%E6%98%8E%E5%A4%A9%E6%88%91%E5%80%91%E7%A9%BA%E4%B8%AD%E5%86%8D%E8%A6%8B/</guid>
-        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E6%98%8E%E5%A4%A9%E6%88%91%E5%80%91%E7%A9%BA%E4%B8%AD%E5%86%8D%E8%A6%8B/ -&lt;p&gt;延續上一篇&amp;hellip;嗨，我來看你們了。&lt;/p&gt;
-&lt;p&gt;週三看的戲，到了現在才寫文章&amp;hellip;哈，其實今天心情不佳，想說寫寫文章沈澱一下自己。前幾天也許真的壓力太大了吧&amp;hellip;.&lt;/p&gt;
-&lt;p&gt;這天我早早下班，直奔成功廳大門，雖然不意外，但是現場竟然已經有 10 個人左右在排隊了&amp;hellip;才 5:15 耶，這群人都是瘋子&amp;hellip;.然後我加入了這群瘋子，開始等XD 到了 6 點多，開始發放「限量月亮版海報」，果然啊&amp;hellip;.第一天發太陽第二天發月亮，真是太奸詐了!!! 讓我很意外的是，竟然發生跟前一天一樣的狀況，延後入場時間。我還以為會碰到的突發狀況前一天都先撞過了&amp;hellip;沒想到&amp;hellip;.看來他們對場地的掌握度還是不足，以後如果還要在成功廳演出的話，要更注意場地問題唷！&lt;/p&gt;
-&lt;p&gt;進場後，先是發了呆，後來發現一個很重要的改進，前一天太亮的「緊急出口」標示被遮起來了，變得雖然能夠看到，但光線不會照亮台上。雖然說遮起來這樣好像不太好，但是這是成功廳的問題吧= = 這標示做這麼亮也太詭異&amp;hellip;.@@&lt;/p&gt;
-&lt;p&gt;開場後，發現依然有些微黑臉的狀況，不過燈光是由上往下打的，無法避免。也許在前方放置反光板可以幫忙打光？不曉得有沒有人這樣做&amp;hellip;.要不然就要請演員注意頭不能太低了&amp;hellip;.這是舞台方面的東西，我不太懂，我想也許有專業的人知道要怎麼辦吧？&lt;/p&gt;
-&lt;p&gt;該來&lt;del&gt;爆雷&lt;/del&gt;談談內容了&amp;hellip;這部戲「明天我們空中再見」把時間軸切的很亂，讓人很難迅速組織起來。每次提到劇名就會想到一件事，這部戲到底干「明天我們空中再見」什麼事啊&amp;hellip;= = 除了開頭跟結尾的廣播內容，還有女主角是個播音員以外&amp;hellip;我實在找不出為什麼要用這個當名稱啊&amp;hellip;果然是藝術&amp;hellip;XD&lt;/p&gt;
-&lt;p&gt;簡介一下故事，也順便可以審視一下我對於故事的理解是否正確。一開始的時間是「現在」，女播音員文媛到了 40 樓高的地方，看著風景，突然就失憶了，所以故事回到過去&amp;hellip;..&lt;/p&gt;
-&lt;p&gt;三年前，溫柔體貼的成華 (他姓張) 與渴望愛情的嘟嘟相識，並在公園裡&amp;hellip;呃&amp;hellip;聊天的時候，遇到小海與烏龜搶劫，然而不打不相識，經過了這晚，成華與嘟嘟交往，也與小海、烏龜成了好朋友。不久後，他們結婚，並去度蜜月，回來後在家裡辦了 party，身為結婚證人的小海也來參加，並以奇妙的方式認識了嘟嘟的多年好友 - 文媛。幾天後，小海忍不住心中的思念 (我說羅同學你的內心戲實在很豐富XD)，與文媛相約爬山，在山上對文媛講了一個神話。小海說，他是太陽，他太燙了，只要接近他就會乾涸，所以天神懲罰他，要他追著月亮，但他們只在黃昏的時候能夠相見，而且只有這時候的太陽才不燙人&amp;hellip;&amp;hellip;這個神話讓他們相戀，卻也造成一年後的心傷&amp;hellip;&lt;/p&gt;
-&lt;p&gt;一年後，是故事最大的轉折點，成華與嘟嘟決定離婚，而文媛與小海約定的一年交往期限也到了，文媛不再理會小海，但小海卻依然無法忘卻。就在某天小海與小妹 (文媛的妹妹) 盼著文媛回來的時候，小海的情緒潰堤，而他們倆發生了關係。在成華的獸醫院裡，嘟嘟 - 文媛所養的狗，嚥下他的最後一口氣，在這裡，小妹、文媛的同事 (男播音員) 還有成華、小海、小女人大吵了一架，這裡是劇情的一大高潮，然而小女人相當帥氣的控制住了小海，免於一場悲劇的發生。&lt;/p&gt;
-&lt;p&gt;噢，小女人，他是小海多年的朋友了，像是在交往，卻又放任小海四處拈花惹草，也許小海心中未曾想過他與小女人的關係，但小女人的心中是喜歡著小海的。她甘願為了小海付出，雖然討厭自己的生活，卻還是掙扎著繼續生存。她會算命，她可以看透別人的未來、別人的人生，卻對自己的過去、現在、未來無能為力。不久後，她自殺了。&lt;/p&gt;
-&lt;p&gt;而以各種方式尋覓文媛不成的小海，也決心讓自己不再痛苦，引火自焚，但沒死。卻在醫院接受成華的探病時，得知了一個晴天霹靂的消息&amp;hellip;.文媛與成華決定結婚。小海相當痛苦，他還是愛著文媛，但還是不情願的出席了成華與文媛的婚禮。在喜宴上，成華的前妻嘟嘟，已經跟烏龜交往了。嘟嘟倒是相當開放，與成華親密合照，這讓烏龜心理不是滋味。而心裡有疙瘩的小海與烏龜，都鬧著彆扭。&lt;/p&gt;
-&lt;p&gt;時間拉回到現在&amp;hellip;在文媛失憶之後，每個人都試圖喚醒文媛的記憶，最激動的就屬小海了，他擔心文媛，擔心他與文媛的過去就這樣消失，一點痕跡也不留下。而被文媛遺忘的嘟嘟與惹文媛生氣的小妹，則試圖用過去的照片喚醒文媛的記憶。但文媛說，知道我過去做了什麼，對我是誰並沒有幫助。而暗戀文媛多年的男播音員，則試圖帶文媛回到錄音室，讓他唸著自己從前寫的稿子。&lt;/p&gt;
-&lt;p&gt;最後大家都體會到，時間都回不去了。這個故事沒有結局，只知道小海要出去旅行，重新做人。也許未來會有意想不到的變化。但，有誰的生活是一成不變的呢？&lt;/p&gt;
-&lt;p&gt;呼&amp;hellip;終於把故事給講完了。回憶演出，有許多部分讓我相當喜歡。先談談小女人出場那一幕，「嚇你爸！嚇你媽！嚇死你全家喔！」&amp;hellip;.呃好啦，這只是個笑點，可是我覺得很好笑XD 小女人賣的是面具，各式各樣的面具，笑臉、哭臉、三隻眼睛的臉&amp;hellip;我喜歡面具們出場的表演方式，也許這有某個專有名詞吧，但我不懂。我只知道配上音樂，營造出來的氣氛很奇妙，也許我們生活周遭也看著一堆面具，有笑臉、哭臉、三隻眼睛的臉&amp;hellip;這世界不就是這樣嗎？&lt;/p&gt;
-&lt;p&gt;另一個也是黑衣隱形人出場的那幕，是小海的自焚。這樣的表演方式很棒，很有氣勢，不曉得是怎麼想到的呢？另外，我注意到其中一位黑衣人，很認真的「跳舞」。雖然我不太懂這個&amp;hellip;但是看得出來他的動作是舞蹈，不是單純的灑粉&amp;hellip;嗯，其實舞蹈也滿好看的嘛 :P&lt;/p&gt;
-&lt;p&gt;嘟嘟跟成華都有口頭禪，嘟嘟說的是「我知道，然後呢？」，成華總是跟人家說「我們可不可以說說話？」『說什麼？』「說話啊。」雖然注意到，但是卻不曉得有什麼特別的意義？噢&amp;hellip;小海常常罵髒話這算口頭禪嗎？XD&lt;/p&gt;
-&lt;p&gt;啊對了，小海跟嘟嘟都抽煙耶&amp;hellip;雖然看過影痴謀殺以後，我對於他們在舞台上點煙、抽煙已經不太意外了，可是沒想到他們都真抽&amp;hellip;實在很好奇你們是平常就抽煙，還是為了表演特地抽的呢？(不會抽煙的人抽煙會嗆到是真的還假的&amp;hellip;？)&lt;/p&gt;
-&lt;p&gt;令人摸不透的文媛，總是靜靜的，像月亮，冷冷的。雖然是重要角色，卻從不突出。白色的衣服很美，卻飄逸的拉開了距離。噢，文媛聽嘟嘟和小妹解釋照片的那一幕，他們解釋的照片就是最後的喜宴會場啊！可是講真的，第一次聽根本就搞不清楚他們在講什麼嘛= = 有夠複雜的XD&lt;/p&gt;
-&lt;p&gt;飾演小妹的演員也是熟面孔了，也是我覺得對自己的演技在做出最大突破的一位演員。雖然從不是主角，但卻一直相當用心的扮演好他的配角，人物的性格很明顯，很棒。那句「男人會喜歡」實在有被戳中&amp;hellip;.XD 好傻好天真XDDD 還有這次做了相當大的犧牲啊&amp;hellip;.@@&lt;/p&gt;
-&lt;p&gt;成華講話一直都是慢慢的、溫和的，可是當中也會藏一些笑點。像是他答應文媛的求婚(?)的時候&amp;hellip;.呃&amp;hellip;..我不會說耶，就很北七XD 還有他跟小女人在酒店的時候&amp;hellip;.『我幫你洗澡&amp;hellip;要不要？』「要。」為什麼連這種話都可以這麼好笑&amp;hellip;..XD&lt;/p&gt;
-&lt;p&gt;說到小女人，他實在很酷。我印象最深刻的就是小海與男播音員吵架的時候，他幾句話就讓小海冷靜了下來&amp;hellip;「你在發瘋啊！」「你恨他嗎？」「走不走？」也許他是最了解小海的人，也或許他能夠洞察未來的變化，但是&amp;hellip;.就是很酷XD&lt;/p&gt;
-&lt;p&gt;男播音員的出場次數不多，戲份也少，唯一的一次比較有份量的，就是他的內心獨白。嗯，其實我覺得不是相當令人印象深刻就是了&amp;hellip;..@@&lt;/p&gt;
-&lt;p&gt;烏龜則是一個很有趣的人，他的台詞幾乎都有梗啊XD 而且感覺演起來好像很累，因為要一直用奇妙的方式講話&amp;hellip;.欸&amp;hellip;應該不是本來就這樣吧？XD&lt;/p&gt;
-&lt;p&gt;嘟嘟&amp;hellip;這次的轉變讓我嚇到啊XDDD 特別是第一次出場的時候，看到大紅色外套、大紅鞋&amp;hellip;這太驚嚇了XD 嘟嘟是一個心中相當熱情的女人，也相當有個性，我感覺到了~&lt;/p&gt;
-&lt;p&gt;小海依然是很多獨角戲，有時候還會忘記其實你電話的那一頭是沒有人的&amp;hellip;&lt;/p&gt;
-&lt;p&gt;以我認識的三位演員來講，因為看過你們過去的演出，所以也特別對你們的演技有感覺，很棒，真的。至於不認識的其他幾位，也可以感覺出你們的用心，辛苦你們了 :)&lt;/p&gt;
-&lt;p&gt;說真的，我實在很不會評論像是服裝、燈光、音樂、演技還是舞台之類的&amp;hellip;因為其實我也不曉得到底這些部分有什麼樣的困難，或是怎樣算是表現得相當好。以一個觀眾的角度來看，我知道大部分都做得很好，只有當中有出一些小差錯而已。辛苦了 :)&lt;/p&gt;
-&lt;p&gt;好像想講的都講得差不多了&amp;hellip;不曉得該怎麼結尾XD 其實心裡還有些想法，是從劇情裡面衍生出來的，可是我也不曉得該怎麼描述，大概&amp;hellip;就像是一種心情而已吧？&lt;/p&gt;
-&lt;p&gt;謝謝面劇團，你們以後也要繼續加油喔！如果是決定好好念書的小朋友 (突然就從粉絲變學長了)，也要好好加油，祝福你們都有很美好的未來。&lt;/p&gt;
-&lt;p&gt;下次的演出&amp;hellip;我想也只能「空中」再見了&amp;hellip;.哈~&lt;/p&gt;
-- https://blog.crboy.net/posts/%E6%98%8E%E5%A4%A9%E6%88%91%E5%80%91%E7%A9%BA%E4%B8%AD%E5%86%8D%E8%A6%8B/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
