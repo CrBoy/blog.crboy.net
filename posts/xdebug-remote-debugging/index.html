@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html><head>
+<title>Xdebug 遠端除錯 (Remote Debugging)</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%b0%a1%e4%bb%8b" class="nav-簡介">
+									簡介
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%af%a6%e4%bd%9c" class="nav-實作">
+									實作
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e8%a7%80%e5%bf%b5" class="nav-觀念">
+									觀念
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%a8%ad%e5%ae%9a" class="nav-設定">
+									設定
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#server-%e7%ab%af" class="nav-server-端">
+									Server 端
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#client-%e7%ab%af" class="nav-client-端">
+									Client 端
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e9%99%a4%e9%8c%af" class="nav-除錯">
+									除錯
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e7%b5%90%e8%ab%96" class="nav-結論">
+									結論
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99" class="nav-參考資料">
+									參考資料
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    Xdebug 遠端除錯 (Remote Debugging)
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2012-06-30 01:05
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/php">php</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E6%95%99%E5%AD%B8">教學</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h1 id="簡介">簡介</h1>
+<p>PHP 的除錯利器 - Xdebug 也可以進行互動式的除錯。什麼是互動式的除錯呢？當程式在執行中的時候，如果可以把程式的執行控制權攔截下來，那麼就可以根據自己的需求，<strong>單步執行</strong>我們的程式，並且可以監控程式的狀態。這些狀態包含了像是：目前執行到哪一行程式、目前所有的變數與其值、function 的 call stack (註) 等等。除了看到狀態以外，一個完善的 debugger 還允許開發者動態對變數進行修改，或是動態改變執行流程。</p>
+<p>註：Call stack 指的是 function 呼叫的順序，如 A 呼叫 B，B 呼叫 C，則 call stack 的長相就像是把 B <strong>疊</strong>到 A 上，再把 C <strong>疊</strong>到 B 上，當 C 執行完畢後，就把 C 從 stack 中取走，如果接下來 B 又呼叫了 D，那麼就把 D <strong>疊</strong>上來。所以在任何時候查看 call stack 都可以知道 function 間呼叫的從屬關係。關於 stack 與 call stack 的更多資訊都可以在網路上查到更清楚的解釋，這邊就不獻醜。</p>
+<p>那麼要怎麼利用 Xdebug 進行互動式的除錯呢？由於很多 PHP 程式都是設計用來產生網頁的，所以常常會掛在 web server 底下執行，而非由我們手動去跑程式。Xdebug 身為一個 PHP module，他可以對執行流程進行監控，還可以藉由另外的通道跟開發者進行通訊，也就是說，開發者可以透過 Xdebug 對執行中的 PHP 進行控制。</p>
+<h1 id="實作">實作</h1>
+<p>在 <a href="http://xdebug.org/docs/">Xdebug 的官方文件</a>中有很詳細的說明，只可惜是英文的 (笑)。底下只介紹關於遠端除錯的部分，但其他部分也相當實用！</p>
+<h2 id="觀念">觀念</h2>
+<p>先介紹觀念跟原理的部分，如果有哪邊寫錯，請多指教。當 PHP 程式開始執行且啟動 debug session 的時候，Xdebug 會根據設定值，主動連線到特定的 IP 的特定 port，以預設值為例，他會嘗試連線到 localhost 的 TCP port 9000，連線成功的話，他會送一個 init message (XML 格式) 出去。這邊在 listen port 9000 的程式我把它稱為 debug client，而 Xdebug 與這個 debug client 間的通訊遵守 <strong>DBGp</strong> 這個 protocol。連線成功後，Xdebug 就會聽從 debug client 的差遣，進行後續的除錯。</p>
+<p>ps. 萬一連線失敗，程式就自己跑自己的。</p>
+<p>舉個例子，我們去銀行辦理業務的時候，會將我們的一些相關資料交給櫃台行員，請他幫我們辦理。最後業務辦好後，行員會將結果 (例如鈔票、收據) 交給你。在這個例子中，銀行就相當於伺服器，我們交給行員的資料就是 http request (包含 header、post data 等等)，行員的處理方式就是網頁程式的邏輯，最後產生的結果，就是 http response。而今天如果剛好銀行是我們自己開的，我們可以安排一位稽核員進去，並告訴稽核員我們的電話號碼，當有人辦理業務的時候，稽核員有權力叫行員暫停動作，並指揮行員做指定的動作。這時候稽核員會打電話給我們，並詢問我們要怎麼做，這時候你可以一步步看到行員的動作，也可以看到行員處理中的所有資料，甚至可以修改那些資料。這位稽核員就是我們裝在伺服器上的 Xdebug，只要預先設定好我們要使用的 IP 跟 port (相當於電話號碼)，稽核員就會在行員接到業務的時候打電話過來。從這個例子也可以發現，使用者 (辦理業務的人) 跟開發者 (接電話的人) 可以是不同人，也就是說技術上你可以透過 Xdebug 去動態修改別人的操作，然而這種狀況不太常見就是了。</p>
+<h2 id="設定">設定</h2>
+<p>接著是設定的部分，設定可以分為 server 端與 client 端。</p>
+<h3 id="server-端">Server 端</h3>
+<p>首先這邊假設 Xdebug 已經正確在 web server 上安裝完成了。如果沒有安裝的話&hellip;呃&hellip;請洽詢您的系統管理員。關於 remote debugging 的部分，有幾個主要設定要寫，你可以選擇寫在 <code>php.ini</code> 中、寫在 <code>httpd.conf</code> (或類似檔案)中、或是寫在 <code>.htaccess</code> 中 (不清楚 <code>httpd.conf</code> 或 <code>.htaccess</code> 的話請查詢 apache 說明文件)。下面將分別舉例，在這個例子中，我們假設我們所使用的 PC (而非 web server) 的 IP 為 1.2.3.4，debug client 所使用的 port 為 9000 (預設值)。</p>
+<p>寫在 <code>php.ini</code> 中</p>
+<pre><code>xdebug.remote_enable = onxdebug.remote_host = 1.2.3.4xdebug.remote_port = 9000
+</code></pre>
+<p>寫在 <code>httpd.conf</code> 或 <code>.htaccess</code> 中</p>
+<pre><code>php_value xdebug.remote_enable onphp_value xdebug.remote_host &quot;1.2.3.4&quot;php_value xdebug.remote_port 9000
+</code></pre>
+<p>如果是寫在 <code>httpd.conf</code> 中，可以把設定包在 virtual host 或 directory 中，就可以只對特定 vhost 或 directory 生效。(關於這個部分我沒有實際寫過，太懶了，如果真的無法設定請告訴我，謝謝)</p>
+<p>其他相關的設定，都可以查閱 <a href="http://xdebug.org/docs/">Xdebug 官方文件</a>。我發現難得有我不用看其他教學，光看原文文件就可以搞起來的東西，想必他的文件應該是滿好懂的&hellip;XD</p>
+<h3 id="client-端">Client 端</h3>
+<p>DBGp 有很多 client 可使用，<a href="http://xdebug.org/docs/">Xdebug 官方文件</a>中也有列出很多，但我實在不喜歡太龐大的東西，所以我只嘗試了：Vim plugin、XDebugClient (XDC) 還有 Notepad++ plugin。如果不是我太笨不會操作的話，就是 XDC 的功能太陽春，除了單步執行、查看變數與 call stack 以外，我不知道他還可以幹嘛&hellip;我需要修改變數值啊啊啊啊~~~ 而且更重要的是，不曉得為什麼他常常出錯&hellip;orz Vim plugin 很不賴，可是他相依 Python，如果是在 windows 底下會比較麻煩一點，這個有空再另外說。下面就以比較大眾化的 Notepad++ 舉例好了。</p>
+<p>Xdebug 的文件中提供的連結 (<a href="http://sourceforge.net/project/showfiles.php?group_id=189927&amp;package_id=236520">http://sourceforge.net/project/showfiles.php?group_id=189927&amp;package_id=236520</a>) 是錯誤的，他會轉向到<a href="http://sourceforge.net/projects/npp-plugins/files/OldFiles/">這個網址</a>。觀察網址跟網頁內容，很明顯這不是我們要的= =，我們很聰明的切到「Parent folder」，發現裡面有「DBGP Plugin」(事實證明，了解細節也是很重要的)，我們將他的最新版 (現在是 v0.12 beta，已經 beta 好久了&hellip;) 下載回來，當然是抓編譯好的 dll 檔，如果懶得找，可以直接從<a href="http://sourceforge.net/projects/npp-plugins/files/DBGP%20Plugin/DBGP%20Plugin%20v0.12%20beta/DBGpPlugin_0_12b_dll.zip/download">這個連結</a>抓。</p>
+<p>抓回來後，只要解壓縮，並在 Notepad++ 中選擇「自訂-匯入-匯入外掛模組」(英文版是「Settings - Import - Import Plugin(s)」)，並選擇 dll 來安裝即可，安裝後檔案就可以刪除了，N++ 自己會複製一份。</p>
+<p>為了讓使用更順利，我們要做一些設定，這些設定其實是經過很多次的撞牆得來的，珍貴。首先打開 DBGp 的 config，把「Bypass all mapping」取消，然後把下面這幾項打勾：</p>
+<ul>
+<li>Refresh local context on every step</li>
+<li>Refresh global context on every step</li>
+<li>Use SOURCE command for all files and bypass maps (重要!)</li>
+<li>Break at first line when debugging starts</li>
+</ul>
+<p>然後打開「自訂-使用者自訂-其他」勾選「自動更新檔案」(不勾你就被煩死XD)，英文版是「Settings - Preferences - MISC.」-&gt;「Update silently」，設定畫面如下圖所示：</p>
+<p><img src="http://" alt="N++ DBGp plugin config（圖不見了，找不回來）"></p>
+<p><img src="http://" alt="N++ silent update（圖不見了，找不回來）"></p>
+<p>設定完成後，就可以打開手機&hellip;呃不對，打開 debug client，畫面如下圖：</p>
+<p><img src="http://" alt="N++ DBGp plugin（圖不見了，找不回來）"></p>
+<p>這時候你的電腦就已經在 listen TCP port 9000 了，注意 windows 防火牆可能會跳出訊息問你是否要允許 Notepad++ 通過，記得放行~注意到圖中有個「Turn OFF」的按鈕，如果暫時不想要 debug 的話，可以快速的關掉，直到需要 debug 的時候再打開唷！</p>
+<h2 id="除錯">除錯</h2>
+<p>開啟瀏覽器，連上你的網頁，接著我們會在 debug client 端這邊收到&hellip;.等等！為什麼什麼都沒收到？難道設定有問題嗎？</p>
+<p>好&hellip;這個問題我已經忘記好幾次了，所以千萬要特別注意。預設情況下，即使 <strong>enable</strong> 了 remote debugging，還是不會啟動遠端除錯的功能的，不是他搞笑，而是他要你在你要 <strong>start</strong> 的時候要跟他說。最簡單的方式是在存取網頁時加上 <code>XDEBUG_SESSION_START=&lt;session_name&gt;</code> 這個參數，下面是範例：</p>
+<pre><code>http://example.com/my_awesome_program_with_bugs.php?XDEBUG_SESSION_START=npp
+</code></pre>
+<p>這個動作會讓 Xdebug 幫你新增一個 cookie 名為 XDEBUG_SESSION，內容就是你的 session name，往後只要連這個網站，他偵測到你的 cookie，Xdebug 就會開始 remote debugging，也就不用每次輸入了。要停止只要用同樣的方式加上 <code>XDEBUG_SESSION_STOP</code> 或是刪掉 cookie 即可。</p>
+<p>如果想要偷懶，可以安裝 browser plugin，它會自動幫你送這些資料。或是更懶惰的，直接在 server 端設定 <code>xdebug.remote_autostart = on</code> 也是一個做法。</p>
+<p>現在真的可以連線了！連上去後，你的 debug client 就會收到 server 端的 source code 還有執行狀態了。可以利用左下方的幾個功能進行追蹤。Step in 是追進函式執行，step over 是直接執行完現在這行，step out 是把現在所在的 context (function 或檔案) 執行完往回 return，run to cursor 應該不用特別解釋了&hellip;</p>
+<p>Run 通常跟中斷點 (breakpoint) 配合，先在後面設定中斷點，然後 run 下去，程式就會在執行到中斷點該行的時候暫停 (該行尚未執行)。或是 debug 完畢要讓程式好好跑完，那就不下中斷點讓他自己跑完這樣。</p>
+<p>後面有個很重要的功能，eval。這個功能可以讓你自己動態寫程式，什麼意思呢？就像隨時可以執行 <code>eval()</code> 函數一樣，可以印出任意變數或運算式，還可以動態賦值 (重要!)。</p>
+<p>下面有張截圖可以欣賞一下：</p>
+<p><img src="http://" alt="N++ DBGp debug（圖不見了，找不回來）"></p>
+<p>ps. 當然你也可以用 netcat (nc) 來當 client 啦&hellip;但是他的 protocol 都送 XML，可能會送到死就是了XDDD 但我用它來測試連線是不是正常建立的時候很有用！有空再寫來聊聊~</p>
+<h1 id="結論">結論</h1>
+<p>其實相對於 GDB (C/C++ 語言在用的 debugger) 來說，Xdebug 真的是滿陽春的&hellip;(默) 也許問題不是出在 Xdebug 身上，而是 client 端的實作問題，因為像是 watch point、command (當 hit breakpoint 時自動執行動作) 等等很實用的功能，應該都能在 client 端完成，但目前都還沒看到，也許其他的實作版本可以找到？但聊勝於無，這樣 debug 總比一行行 echo 來得好太多了&hellip;(攤手) 事實證明，由奢入儉難啊&hellip;用過 GDB 後對於 debugger 的要求也變得嚴苛了 orz</p>
+<h1 id="參考資料">參考資料</h1>
+<ul>
+<li><a href="http://xdebug.org/docs/">Xdebug 官方文件</a></li>
+</ul>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2012-06-30</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/small-frequent-commit/">
+			Next<br>導讀：保持小而頻繁的 commit
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/gitolite-usage-tutorial/">
+			Previous<br>Gitolite 使用教學
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%b0%a1%e4%bb%8b" class="nav-簡介">
+									簡介
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%af%a6%e4%bd%9c" class="nav-實作">
+									實作
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e8%a7%80%e5%bf%b5" class="nav-觀念">
+									觀念
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%a8%ad%e5%ae%9a" class="nav-設定">
+									設定
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#server-%e7%ab%af" class="nav-server-端">
+									Server 端
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#client-%e7%ab%af" class="nav-client-端">
+									Client 端
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e9%99%a4%e9%8c%af" class="nav-除錯">
+									除錯
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e7%b5%90%e8%ab%96" class="nav-結論">
+									結論
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99" class="nav-參考資料">
+									參考資料
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

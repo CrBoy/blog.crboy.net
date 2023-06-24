@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>閒聊 on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/%E9%96%92%E8%81%8A/</link>
+    <description>Recent content in 閒聊 on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Fri, 21 Sep 2012 00:03:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/%E9%96%92%E8%81%8A/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PHP 自動發信程式</title>
+      <link>https://blog.crboy.net/posts/php-email-by-gmail/</link>
+      <pubDate>Fri, 21 Sep 2012 00:03:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/php-email-by-gmail/</guid>
+      <description>之前為了發 COSCUP 的通知信，參考網路上的範例用 PHP 寫了個小程式。我把範例程式放在這個 gist 上：https://gist.github.com/3135053
+其實明顯看得出來，程式沒什麼架構，純粹只是為了可以 work 而寫的拋棄式程式。不過丟出來一方面可以當自己的筆記，以後要找比較好找，另一方面，也許另一個人想要寫類似的小玩具的時候就可以參考了 :P
+以下是一些簡單的介紹。
+我使用這個程式的狀況是，我需要寄一封信給很多人，而我又希望每個人收到的信，收件者只有自己，而且信件開頭還會寫上他的名字，這樣比較貼心。所以沒辦法用「寄給自己 and BCC」的方法達成，只好透過程式完成。
+這個小程式實際上是透過一套稱為 PHPMailer 的 library 做真正的寄信動作，所以困難的部分都被它做走了！我們只要把該設定的東西設定一下就差不多。要設定的項目大概有這些：
+SMTP server 資訊 (主機、port、認證方式&amp;hellip;等) 登入資訊 (我使用 Gmail 寄信，所以需要登入) 寄件者與收件者資訊 信件資訊 (標題與內文) 在我這邊，每封信不同的地方只有收件者與內文，所以我會每次重新產生並設定，其餘部分都在最前面寫死。
+收件者與內文的部分，我是先將收件者名單從 Google Spreadsheets 中匯出成 .tsv 檔 (因為比較容易 parse)，再直接讀入。這個寫在 function parse_name_list_tsv($filename) 中。然後用一個自己刻的簡單 template tool (function fill_template($content, $data), 才 4 行XD) 去加上 user-specified 的資料，最後送信收工！
+一些有趣的小細節：
+忘記為什麼了，我一開始跑起來會出現跟時區有關的錯誤，所以必須加上 date_default_timezone_set(&#39;Asia/Taipei&#39;); 來避免這個問題 因為我的 Google Account 有開啟兩階段驗證 (2-Step Verification)，而我們這種小工具當然不可能支援，所以要為我們的程式特別創造一組應用程式密碼，才能正常使用喔！ 一開始不小心抓到舊版的 PHPMailer，它有個 bug 就是，CC 的人會變成 BCC (或是反過來&amp;hellip;我忘了)，所以我直接從它的 source code 裡找到有問題的那段修掉了 (open source rocks!</description>
+    </item>
+    
+    <item>
+      <title>這拼音到底是什麼鬼？</title>
+      <link>https://blog.crboy.net/posts/wtf-pinyin/</link>
+      <pubDate>Mon, 10 Sep 2012 02:05:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/wtf-pinyin/</guid>
+      <description>有個已經讓我困擾非常久的問題&amp;hellip;.今天來抱怨一下。
+這個問題跟拼音有關，我指的是中文字以英文字母表示的那個拼音&amp;hellip;最後還想提一下關於奇怪的「洋中文」 (我自己亂取的稱呼) 現象&amp;hellip;.但必須先說，我不是專業的語言或是文字學家，甚至我對語言、文字都沒有什麼深入的了解，我只是想表達我覺得很困擾，以及莫名奇妙莫名其妙的一些問題罷了。(感謝朋友協助訂正錯字)
+我們在某些特定場合，可能會需要提供自己的英文名字，特別是一些正式的場合，會需要正式的「中文姓名英譯」。而這個英譯應該以什麼為準呢？當然是護照上的英文名字。因為你如果出國，有法定效力的身分證明文件就是護照，所以不管是什麼證件、信用卡或是國際證照上面，最好都是寫護照上的英文名字。連帶的，像是發表論文之類的，我們也會填上護照上的英文名字。
+OK，那這到底有什麼問題？
+我姓畢，畢業的畢。(我自介的時候都這樣講，講習慣了&amp;hellip;.) 我在護照上的姓是拼做：「Pi」(避免lI不分我改為首字母大寫，護照上是全大寫)&amp;hellip;&amp;hellip;所以外國人來念我的姓的時候，他會覺得我姓屁，屁股的屁 (開玩笑的)。
+我很好奇為什麼會有這種事情發生，所以稍微查了一下。我不是個認真向學的孩子，所以這邊只用維基百科上面的知識來討論。我發現我們的護照上所使用的是威妥瑪拼音，一種用拉丁字母拼寫拼讀漢字的方法&amp;hellip;.拉丁字母耶！到底是誰想出這種天才的作法？明明是要用英文字母表示的東西，你搞個威妥瑪拼音，結果ㄅㄆ不分、ㄉㄊ不分、ㄍㄎ不分、ㄐㄑ不分、ㄓㄔ不分、ㄗㄘ不分&amp;hellip;&amp;hellip;我光看都要崩潰了= =
+這真的不是威妥瑪拼音的錯，雖然我不會念拉丁字母，但至少我看到的 ㄅ (p) 跟 ㄆ (p&amp;rsquo;) 他們的形狀是不一樣的&amp;hellip;.但是你偏要把他用英文字母表示就不對啊&amp;hellip;..(崩潰)
+既然講到這個，就要看看漢語拼音跟通用拼音，這裡還有個中文拼音對照表可以順便參考一下。聽說以前曾經有過要選用哪種拼音的爭論？當時我就不太清楚，而現在其實我也沒有非常感興趣，因為我知道一定各自有自己的理由&amp;hellip;我的觀點是，這兩種不管哪一種都比威妥瑪拼音來得好，因為他們用的是英文字母，而非拉丁字母。雖然還是有些拼音唸起來有點彆扭，但至少每個音都分得出來&amp;hellip;.
+說到「唸」，其實這也是個很有趣的問題&amp;hellip;.像我這樣的台灣土包子，其實這輩子也沒去過中國大陸幾次。不過去了就會發現，同樣的中文字，不同地方的人就有不同的口音。就算是台灣人自己，讀音也可能有微妙的差異。(其實這又牽涉到「注音符號」的問題了&amp;hellip;.說不定我們的讀音根本是被注音符號修正過的而不自知？) 那&amp;hellip;既然大家的讀音都不一樣，又要怎麼制定一個統一的拼音系統呢？雖然不敢確定，不過我猜測也許這就是會有拼音系統之爭的原因之一吧？(另外可能還有政治因素 :P 我完全不意外&amp;hellip;.XD)
+根據我從維基百科上消化來的資料，台灣經歷過威妥瑪拼音、通用拼音、漢語拼音這三個時期，而從 2009 年開始，中央政府已經不建議使用通用拼音，而改採漢語拼音。
+但是事實上其實是，台灣各地所使用的拼音依然混亂。除了舊有拼音沿用以外，還有拼音來不及更改，或是有些地方就是堅持使用某種拼音，甚至是拼錯的 = =
+我想這點是需要台灣人有共識來改進的，不然&amp;hellip;.如果我是外國人我應該會崩潰吧= = 這樣要怎麼國際化&amp;hellip;..
+至於說到國際化嘛，就要提到一個也是很奇怪的問題了&amp;hellip;.
+有時候搭捷運啊，或是火車、高鐵之類的交通工具，常常聽到多種語言的語音廣播，有國語、台語、客語、英語。但是很奇怪，台灣人好像很喜歡把中文地名混入洋腔洋調唸給外國人聽？「台北」會被唸成「胎~配~」(跟「唉配」有關係嗎？)，「台南」會被唸成「胎~難~」，「左營」會唸成「ㄗㄨㄛ~硬~」&amp;hellip;&amp;hellip;&amp;hellip;都沒人覺得這樣很奇怪嗎？真的都沒人覺得這樣很奇怪嗎？(請原諒我跳針)
+我不相信外國人聽到台灣人念出「台北」「台南」「左營」這種我們在用的發音會聽不懂&amp;hellip;說「洋中文」真的有比較好嗎？要國際化，也不用把自己的文化放在地上踩吧&amp;hellip;.. :(
+PS. 前陣子經過台南市大學路跟勝利路口，看到有塊嶄新的路牌寫了「University Road」，當下覺得不太對勁&amp;hellip;因為我之前看到的路牌是「Dasyue Road」(查一下就知道這是通用拼音XD)。雖然我覺得用 University Road 表示「大學路」比較好，但是我更無法接受的是同一個中文名稱卻有不統一的翻譯。我覺得這真是太丟臉了，我們竟然連一個路牌都做不好&amp;hellip;.</description>
+    </item>
+    
+    <item>
+      <title>五月天 - 洗衣機</title>
+      <link>https://blog.crboy.net/posts/mayday-washer/</link>
+      <pubDate>Sun, 09 Sep 2012 01:24:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/mayday-washer/</guid>
+      <description>我記得&amp;hellip;是今年的母親節吧。
+還記得那時候五月天推出了這隻 MV，洗衣機。聽了好久的 KKBOX，一直都沒有仔細去聽歌詞，更沒有去看歌詞寫了什麼。
+不過，看了 MV 之後，實在讓我太感動了&amp;hellip;..也許，這跟我從小爸爸就過世了有關吧？一直在單親家庭長大的我，對這首歌如此有共鳴，也許是正常的&amp;hellip;&amp;hellip;&amp;hellip;先看看 MV 吧？
+奇怪是誰 一直清洗著 我闖的禍和污泥
+好久以來 原來我衣服 全部都是媽媽洗
+第一次看 MV，看到這句的時候，我就突然鼻酸了&amp;hellip;.
+也許是媽媽年紀已經大了吧，每每想到媽媽有天可能會離開我們，就覺得很害怕。但我卻從未想過，從未關心過媽媽的辛苦。是的，我知道媽媽很辛苦，但&amp;hellip;.也就只是知道而已。這種感覺很難形容，當你每天都住在家，平常卻跟媽媽講不到幾句話。其實這也沒什麼特別的，不特別孤單，不特別想念，不特別關心，不特別&amp;hellip;.。但就是特別奇怪。
+也許 我從來不是一個好孩子
+也許 我管不住自己的叛逆
+也許 我從來沒有讓你滿意
+但 我還是想讓你知道
+媽 我愛你
+我其實是邊流淚邊打這篇文章的&amp;hellip;還記得當時，我回頭看了第二遍 MV&amp;hellip;.突然想通了這首歌的故事。一方面是驚訝，驚訝歌詞竟然把這件事隱藏得如此明顯。但一方面也更難過&amp;hellip;..
+洗衣機 穿著一身 退色塑料壓克力
+獨坐在陽台上受 日曬風吹雨淋
+媽，我知道你不愛穿漂亮的衣服，只是想省錢給家裡用，照顧我們這些孩子。你不是不想打扮，不是不想娛樂，而是你把我們看得比自己還重要。媽，我知道你常常一個人在家，孤單的看電視，其實你更想有人陪你說說話。
+電視機 孩子們目光都以他為中心
+黑色簡約外型 多適合客廳
+小時候的我，愛看電視，還為了看電視跟你發脾氣。你，只是讓出電視。 而我，卻完完全全忽略了在我身邊的你&amp;hellip;
+就算是吹風機 也有流線外型
+緊握在手心 像跳舞親密
+光榮的電唱機 晉身為古董級
+典雅的中音比誰都 更受歡迎
+木訥的洗衣機 從沒有主題曲
+只有風霜灰塵 讓人不想接近
+青春期的我，看著繽紛的世界，卻依然忽略了你。當時，只覺得媽媽管很多、很煩，為什麼要來煩我？我們愛聽的流行歌，又有多少為了母親而歌頌？
+從來沒有 一句的怨言 你丟多少它都洗
+脫水總是 全心又全力 直到顫抖了身體
+多少年了 旋轉又旋轉 時間一眨眼過去
+上了年紀 卻依然盡力 孤獨勇敢洗衣機
+&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;..
+這說的，根本就是媽媽&amp;hellip;..根本就是一直以來，全心全力付出的媽媽啊&amp;hellip;&amp;hellip;
+在那之後的歌詞，也許是我未來的生活吧？當我們一步步長大，媽媽卻一點一滴的老邁。如果沒有好好想想，也許未來還是一樣的忽略、看輕自己的媽媽。</description>
+    </item>
+    
+    <item>
+      <title>NAS 的 NFS 掛不上...竟然是 switch 害的!!</title>
+      <link>https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/</link>
+      <pubDate>Wed, 01 Aug 2012 17:45:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/</guid>
+      <description>最近在新增設備，分別是 HP ProCurve 1810G-24 L2 switch 與 Synology RS812+ NAS，沒想到前兩天碰到一個讓人吐血的問題&amp;hellip;故事要從這裡說起&amp;hellip;..
+一開始很開心的接上了 switch 還有 NAS，似乎相當正常，但操作相當緩慢&amp;hellip;.後來 ping 了一下，封包一直掉&amp;hellip;&amp;hellip;&amp;hellip;.呃，但是後來換台電腦就好了，所以目前這個問題被我擱置&amp;hellip;..XD
+離題了，Synology NAS 算是還不錯，它的 OS (核心是 Linux，名稱叫做 DSM) 提供了 NFS 的支援，但主要的問題是&amp;hellip;&amp;hellip;問題是我掛不上啊!!!!! 我碰到的狀況相當奇怪，我這台電腦連到 NAS 的管理介面沒有問題，ping 它也回很快，甚至是 CIFS (Windows 的網路芳鄰) 都很順利&amp;hellip;.獨獨 NFS 掛不上去 orz
+我試了兩台電腦，都是 Linux，這兩台電腦跟 NAS 都接在上面說的那台 HP ProCurve 1810G-24 L2 switch 上。其中一台有防火牆，另一台沒有開，但是問題跟這個無關，所以就不理他了。我的狀況是，showmount 非常正常，NFS 權限也沒問題，但是真的要 mount 的時候就等很久很久很久&amp;hellip;..然後就 timeout 了&amp;hellip;&amp;hellip;= =
+花了一個下午找不到問題，整個晚上在想原因，一直到隔天剛好 NAS 廠商過來，結果他們也找不出原因!!!! 後來是因為廠商帶了台很簡單的 ZyXEL switch 來 (因為之前跟他們說我 ping NAS 掉包掉很大)，沒想到換上去就好了!!!!!! 杯具啊!!!!!!!! 天大的杯具啊!!!!!!!! 好&amp;hellip;&amp;hellip;既然確定是 switch 的問題，當然立馬殺進去 switch 的管理介面看看&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Vim: CamelCase to snake_case</title>
+      <link>https://blog.crboy.net/posts/vim-camelcase-to-snakecase/</link>
+      <pubDate>Tue, 03 Jul 2012 11:05:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/vim-camelcase-to-snakecase/</guid>
+      <description>這篇文章：用 vim 將 camel case 改成 underscore-based 提到用 vim 取代把 CamelCase 轉換成 snake_case 的作法，看到後有一點點小想法，特別紀錄一下 :P
+作者提到的取代方式是：
+:%s/\(\l\)\(\u\)/\1_\l\2/gc 但配合 very magic 可以變成這樣
+:%s/\v(\l)(\u)/\1_\l\2/gc 短了一點點不是重點，重點是括號好看多了XD
+另外作者稍微寫錯的部分是，\l 跟 \u 在 substitute pattern 中表示的是小寫和大寫字元，而不是把下一個字變成大(小)寫，那是在後面做的事。可以 :help /character-classes 看到詳細的列表 (大心)。
+既然這篇文章這麼短，那就提一下好了。今天找資料的時候不小心發現這位作者的 blog，實在看得我欲罷不能啊XD 而且他玩的東西好多，也玩系統、也寫程式，從 C 寫到 PHP、Python、Perl、Ruby&amp;hellip;..太強了orz 還有很多有趣的東西，實在很好玩&amp;hellip;.太佩服 &amp;lt;(_ _)&amp;gt; 建議熱愛技術的人可以參考看看，我覺得很精采 :D</description>
+    </item>
+    
+    <item>
+      <title>期待面劇團「明天我們空中再見」</title>
+      <link>https://blog.crboy.net/posts/wait-for-fta-show/</link>
+      <pubDate>Mon, 04 Jun 2012 01:33:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/wait-for-fta-show/</guid>
+      <description>過了大概半年吧，又可以看到面劇團的演出了！:D
+面劇團 (Face To Audience, FTA) 是成大學生自己組成的一個劇團，最初是由一群修「表演藝術概論」通識的學生聚在一起所組成的。過去曾經舉行過兩場公演，每場各有兩個場次。地點都在成大的鳳凰樹劇場。
+雖然我不是面劇團的團員，也跟裡面的團員一個都不認識，但過去的「四」個演出場次恰好我都參與到了！說來實在是緣份，最初不過是看到學校寄來的信，幫忙宣傳了面劇團的演出，那是第一場的「影痴謀殺」，而他的介紹文案相當的吸引我。雖然到了現在，我已經忘記當時為什麼會被文案吸引，但我還清楚的記得看戲的感動，還有結束後心中幫他們打了一百分滿分的評價！
+隔天，我又傻傻的跑去排隊&amp;hellip;也不曉得是為了什麼，但就很想再看一次，再好好品嚐他們的演出。對了，說到排隊&amp;hellip;因為事前也不曉得要索票還是什麼的，反正我就相當懶惰，所以過去的四場演出，我都是當天提早到達現場排隊，等到開演前五分鐘才能依序入場的。不過，我還記得我運氣相當好，每次都坐到不錯的位置，都在中間靠前面耶！一定是我平常有做好事的關係。噢，然後那天有去找其中兩位演員拍照 :P，正妹小萍跟型男小張，開口的時候我整個超尷尬的XD
+隔了半年，面劇團帶來「一躍之下，」作為校慶賀歲(?)演出。呃&amp;hellip;因為擔心太過熱門，所以很早 (超級早) 就去排隊了，相當尷尬的排了一個第一名&amp;hellip;記得當天不但下雨，而且稍早有另一場活動在那個場地舉辦，所以整個相當狼狽，又找不到地方可以等待。直到面劇團的團員開始佈置，我才終於有地板可以坐XD
+「一躍之下，」我相當喜歡，也許除了演出以外，對於劇本也多了一份親切感吧。故事是以成大為出發點，描述男主角阿堂因為辛酸都往肚子裡吞，被教授冷嘲熱諷，還無法如期畢業，種種的壓力下，他選擇了&amp;hellip;從電機系的天井向下墜落。看戲當時的我，也是一個延畢中的研究生，也常常假裝堅強，戴著面具面對這個世界。這個故事，相當令人鼻酸。我到現在依然無法忘懷劇中那句台詞：「我以為我可以讓他們後悔，沒想到最後悔的，是我自己。」 (哭)
+後來不久，有段小插曲。某天去買水餃之家，當天很多人，我要外帶，當我站在那裡等的時候，發現旁邊有一桌的男女相當眼熟！竟然是&amp;hellip;.正妹小萍跟型男小張！！！噢，其實我一直都記得他們兩個的名字，但是擔心被當成變態，我就當做不記得了。當時鼓起勇氣去跟他們打招呼，首先偽裝成粉絲問「請問你們是面劇團的團員嗎？」『呃&amp;hellip;.是&amp;hellip;..』「我有看過你們的演出~」天啊太尷尬的開場白了XD 沒想到後來提到我有在部落格寫他們的文章，竟然戳中小張的驚訝點 (我的意思是，讓他相當驚訝)，原來他們不只是曾經回覆過而已，竟然還記得我，真害羞 &amp;gt;////&amp;lt; 啊，對了，他們不是兩個人去吃，還有第三位同學。但是&amp;hellip;呃&amp;hellip;嗯&amp;hellip;.哈哈&amp;hellip;..我認不得他 orz
+其實說實在話，我並沒有一直持續追著面劇團的消息，但是緣份讓我們碰在一起(?)。這次面劇團有公演的消息其實我是在網路索票當天早上才知道的，這次我終於可以不用再很可憐的排隊了啊！！！
+雖然說去取票的時候一直很擔心會不會被白眼說「面劇團的票已經有夠難搶了你還索這麼多，是不是要拿票去賣啊？」不過還好沒事啦&amp;hellip;.XD 好歹我以前都是兩場都去的，這次去兩場過份嗎？XDDD 現在相當期待明後兩天的演出啊~我其實也不知道該用怎樣的心情去面對，畢竟如果對一樣事物抱著相當高的期待，即使這樣事物已經相當棒了，心中的評價依然會減分&amp;hellip;但是，我知道面劇團相當優秀啊！而且他們也很努力&amp;hellip;真矛盾 orz。無論如何，我相信他們會再一次帶來很棒的演出。 :)
+「明天我們空中再見」的演出時間是 6/5, 6/6，晚上 7:00，地點在成大光復校區成功廳，如果你正在閱讀這篇文章，如果你也對面劇團很感興趣，建議你可以來看唷！嗯&amp;hellip;我知道你沒有票，但你只要跟我一樣有不屈不撓的精神，當天早點來現場排隊，相信你一定可以成功入場的XD
+&amp;hellip;&amp;hellip;.唉，也許未來就沒機會看到面劇團的演出了&amp;hellip; :( 等到離開了成大，不要說有沒有收到消息，就算收到了消息，也沒有權限索票了。當完兵後，勢必得去工作，好像也很難排隊&amp;hellip;..嗯，總之怎麼想都不可能 (攤手) 就把這兩天的演出，當做是對面劇團留下一個最美好的回憶吧&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>PHP imagettftext() could not read font</title>
+      <link>https://blog.crboy.net/posts/php-imagettftext-could-not-read-font/</link>
+      <pubDate>Thu, 31 May 2012 14:03:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/php-imagettftext-could-not-read-font/</guid>
+      <description>今天撞牆撞很大&amp;hellip;.由於手邊在碰的一個專案裡面需要產生類似驗證碼的圖片，他用了 imagecreate(), imagettftext(), imagesetpixel() 這些 PHP functions。聽說這支程式「曾經」是可以 work 的，不過在我手上就不 work，為了證明不是人品問題，一定要把這個 bug 修掉！
+一開始我傻傻的在程式碼裡面翻找，但這樣實在太沒效率了，身為一個專業的&amp;hellip;.呃&amp;hellip;雜工，一定要懂得善用工具！所以我用了&amp;hellip;.. command line php&amp;hellip;..
+$ php image.php &amp;gt; /dev/null 對啦，只不過是測試環境從 apache 換到 command line 底下了，這樣是有比較強嗎？有喔~因為我的測試環境有裝 xdebug，只要有 enable 就可以在 command line 底下看到 debugging messages，不用特別打開 stack trace。至於最後面把 standard output 導向 /dev/null 是為了不想看到他輸出的那張不完整的圖，那會干擾畫面。
+首先第一步，我忘記詳細的訊息了，大意是說 imagecreate() is undefined 等等，這時候當然要去找找這函式有沒有需要什麼相依的 library 啊！找了一下發現，這些函式是由 PHP 的 GD module 所提供的，所以我迅速的安裝了 GD 模組&amp;hellip;
+$ sudo apt-get install php5-gd 接著，才是重頭戲的開始&amp;hellip;.
+裝好 GD 模組之後，那些 function 都可以使用了，但是我卻一直收到這個錯誤訊息&amp;hellip;.
+PHP Warning: imagettftext(): Could not read font .</description>
+    </item>
+    
+    <item>
+      <title>「那些老師沒教的事」簡報釋出</title>
+      <link>https://blog.crboy.net/posts/release-slides-of-code-smart/</link>
+      <pubDate>Mon, 02 Apr 2012 23:41:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/release-slides-of-code-smart/</guid>
+      <description>在緊張得半死的狀況中，終於把這個 talk 給講完了XD 希望來聽的人都有些收穫~
+不過可惜的是，我太緊張了，所以有些東西講的不是很完整，甚至是漏講&amp;hellip;.orz 而且滿多東西好像&amp;hellip;.呃&amp;hellip;.有點臨場發揮&amp;hellip;.XD 希望不要讓人覺得太亂~
+當日演講簡報可點選此處下載
+自己重新看了簡報，大致上檢討一下自己，如下：
+git-config 沒有 demo 到(因為我自己也很少用&amp;hellip;我都直接看設定檔來改，比較乾脆XD) 之前就一直覺得應該要畫點圖來描述 revision 還有 branch，但是一直偷懶&amp;hellip; git-add -p 沒講到QQ&amp;hellip;.應該要 demo 一下「部分 add 並 commit」的 .gitignore 如果有 demo 的話，應該會更清楚點 沒講到 git-revert 啊!!!! (大敗筆) 應該拿個實際上的使用 git 協作的範例，這樣聽眾會更有感覺&amp;hellip; make 還是該現場 demo 一下&amp;hellip;.幾行而已又不會花多少時間QQ 我竟然沒講到 gdb 可以預先寫好 command，甚至是 function 的這件事&amp;hellip;.. vim demo 太少&amp;hellip;連 vimrc 都沒有開來看看，真是不應該 vim 文字物件 (text object)、tabpage、quickfix、mapping 都應該要提一下的&amp;hellip;. 結果變成檢討文了&amp;hellip;&amp;hellip;..XD
+如果這樣的東西以後還有機會再講的話，也許要考慮拆成兩個部分，然後分別作比較完整的 demo，甚至是現場實作，應該會比較有趣一點！但是，如果是拆開的話，那不管講那個主題都顯得我會得太少了耶&amp;hellip;..orz 畢竟，不管在哪個範疇我都只是個學習者，充其量是脫離初學吧我想。我生來就是只能講初級講題的吧XDDDD
+噢我發現我的文章，總是會出現很多個 XD，對吧？XD
+最後這邊宣傳一下當日最後宣傳的事情。
+我之前嘗試性的建立了一個小小的社群，叫做 C4Labs。當時想嘗試把社群聚會的形式跟氣氛帶到成大來，不過成效好像頗差orz。現在畢業了，想說看看能不能再找回當初的期待。我想把對於電腦、網路、程式等等技術有強烈興趣的朋友們聚集起來，一起討論跟分享。因為涵蓋範圍很廣，想當然爾並不是討論很高級很困難很深入的技術，算是初階的社群？XD
+現在還有一些應該慢慢建立起來的東西，我會儘量去做，目前我在 Google Groups 上開了一個討論群組，作為聯絡的管道。歡迎有興趣跟我們一起分享的朋友們一起來玩！:P
+我們的聚會現在並不定期 (我承認是有一搭沒一搭啦)，不過從上週的演講做為一個開頭，希望每週四晚上都有一個聚會，一週是演講，一週是單純的聚會分享(或閒聊、討論、桌遊？XD)，這樣交錯進行，節奏應該不會太快，而且學得到東西！</description>
+    </item>
+    
+    <item>
+      <title>利用一些時間準備好了一場talk</title>
+      <link>https://blog.crboy.net/posts/necessary-tools-for-programmer/</link>
+      <pubDate>Fri, 23 Dec 2011 23:13:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/necessary-tools-for-programmer/</guid>
+      <description>這篇是先 po 在系上 BBS 再轉貼過來的XD&amp;quot; 基本上這場的內容相當相當相當的淺&amp;hellip;.本來預設的目標對象是完全不懂 debugger 跟 version control 的學生，特別是大學部，但同樣的對研究生也相當有幫助。(不過我猜研究生以上應該都沒什麼閒工夫聽我在那邊浪費他們的時間吧XD)
+因為這邊的內容比較淺，我想這也許不是很適合在社群中發表，不過也許有哪裡會需要這方面的資訊，之後我會放上相關的簡報，以 CC-BY-SA 釋出。
+這場 talk 的內容&amp;hellip;.真要說起來大概是兩年前就想講了XD 主要多加了一些關於 git 的部份，因為現在對 git 又更熟了一點這樣&amp;hellip;
+主題定為「寫程式？那些老師沒教的事 - Code Smart, Don&amp;rsquo;t Code Hard」。內容是關於一些對於開發程式相當有幫助的一些工具： vim, gcc, make, gdb, git
+這些東西也許可有可無，不懂也不會怎樣，然而學習這些工具，入門並不困難，又可以立刻對程式開發有幫助，因此我相當推薦念資工的學弟妹們，或是任何寫程式(特別是 C/C++ 語言)的人簡單了解這些工具。
+從前我們寫程式總是相當努力，在無形中花了很多力氣跟心血去達成目標，事實上很多事情可以更簡單，但是若不曉得這個簡單的世界，那也不得其門而入。從寫程式，到編譯，到除錯，再到程式的改版，我們已經花了太多血汗與肝了&amp;hellip;..要怎麼更簡單、更瀟灑(帥氣?)的搞定這些事，有時會讓人大開眼界~
+這裡我不會講到任何跟程式設計本身有關的技巧，也不會教你如何安裝這些工具，或是把這些工具用得出神入化。我所探討的是你為什麼需要這些工具？這些工具又可以幫上什麼忙？內容中會有基礎的入門教學，旨在提供剛剛接觸且有興趣的人有個無痛入門的管道，我將把重點放在現場的 demo 與互動，歡迎有任何相關問題都可以現場提出，共同討論。討論所能夠學到的東西會比單純的聆聽來的多很多很多唷!!!
+軟體的詳細教學會再找機會個別講&amp;hellip;如果我之後有餘裕的話 :)</description>
+    </item>
+    
+    <item>
+      <title>今天看到有人在徵 MS Office</title>
+      <link>https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/</link>
+      <pubDate>Thu, 19 Jul 2007 00:23:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/</guid>
+      <description>在我看到之前已經有人推 OpenOffice.org 了&amp;hellip;
+只是讓我突然想到 之前不知道看誰說過 你用 MS Office 是很強大沒錯 只是也用不到那麼多功能&amp;hellip;大部分的人 包含我自己在內 其實都用不到什麼很進階的功能 不過就是打打字 排個版 畫個表格之類&amp;hellip;這些東西都可以用 OO.o 來達成 以 c/p 值來說當然高很多 不過我也承認 MS Office 真的比較好用 至少介面親和力比較高 功能也比較完善 (OO.o 有時候會有一些我想要的效果做不出來) 只是人家就是要錢&amp;hellip;.我現在用的是成大的授權 那將來呢？我希望 OO.o 進步快一點 在我畢業之後可以完全不要用 MS Office～～</description>
+    </item>
+    
+    <item>
+      <title>Tumblr 的用途？</title>
+      <link>https://blog.crboy.net/posts/trying-tumblr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/trying-tumblr/</guid>
+      <description>今天在想，找個 web 界面又支援 markdown 的 blog system 來記一些還沒有好好整理的筆記…想著想著就想到 tumblr 了&amp;hellip;（支援 markdown 嗎？XD）
+所以….就來試試看~</description>
+    </item>
+    
+  </channel>
+</rss>

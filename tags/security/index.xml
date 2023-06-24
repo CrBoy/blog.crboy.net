@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>security on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/security/</link>
+    <description>Recent content in security on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Fri, 18 May 2012 14:16:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SSH 安全性設定筆記</title>
+      <link>https://blog.crboy.net/posts/ssh-security-note/</link>
+      <pubDate>Fri, 18 May 2012 14:16:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/ssh-security-note/</guid>
+      <description>以下收錄可增加 ssh 安全性的各種技巧，主要的修改都在 /etc/ssh/sshd_config 中，同時，修改設定後別忘了重新載入設定值或重新啟動 sshd。
+修改預設 port (可用多行開啟多個 port)
+Port &amp;lt;port&amp;gt; 僅監聽特定 ip (適用於多網卡/多 IP 的情形)
+ListenAddress 192.168.1.10 禁止 root 登入
+PermitRootlogin no 管理者必須先以個人帳號登入，再 su 成 root，或利用 sudo 工作。
+禁止使用空密碼登入
+PermitEmptyPasswords no 僅允許或拒絕特定帳號或群組登入
+AllowUsers &amp;lt;user1&amp;gt; &amp;lt;user2&amp;gt; &amp;lt;user3&amp;gt; AllowGroups &amp;lt;group&amp;gt; DenyUsers * DenyGroups no-ssh 根據實驗，對於同一帳號而言，如果同時 Allow 跟 Deny 的話，結果會是 Deny 的。
+廢除密碼登錄，強迫使用 RSA/DSA 驗證
+RSAAuthentication yes PubkeyAuthentication yes AuthorizedKeysFile %h/.ssh/authorized_keys PasswordAuthentication no 並確保 user 的 ~/.ssh 權限為 700，同時將該 user 的 public key 加入其 ~/.</description>
+    </item>
+    
+  </channel>
+</rss>

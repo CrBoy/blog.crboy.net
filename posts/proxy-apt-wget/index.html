@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html><head>
+<title>在apt系統與wget上使用proxy</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99" class="nav-參考資料">
+									參考資料
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    在apt系統與wget上使用proxy
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2010-06-04 07:11
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/linux">Linux</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E7%B6%B2%E7%AE%A1">網管</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>台灣的學術網路連國外很慢是眾所皆知的事情&hellip;.但是像 Ubuntu 這種系統，雖然有國內的 mirror，但是有些東西，像是 ppa 之類的 source，還是得從國外抓。今天剛裝完機器要更新，發現有些東西實在龜到不行，<em>426B/s</em> 耶！雖然最後我抓完了啦&hellip;..不過還是要研究一下該怎麼透過 proxy 抓這些套件。</p>
+<p>方法很簡單，只要在 <code>/etc/apt/apt.conf</code> 裡面寫入以下這段設定：</p>
+<pre><code>ACQUIRE {  
+	http::proxy &quot;http://USER:PASSWORD@PROXY-SERVER:PORT&quot;  
+}
+</code></pre>
+<p>使用者帳號密碼、server 資訊請自行更改，如果是不需要帳號密碼的 proxy server 的話，則引號中只要打 <code>http://PROXY-SERVER:PORT</code> 即可。如果連 port 都不打的話，則預設的 port 是 80（也就是 http 的預設 port）</p>
+<p>接著只要更新套件清單，並安裝想要的套件就好。如果設定有誤，應該會在 update 的時候就出錯了。（像我一開始設定到一台已經不能用的 proxy server，就直接噴 error 給我看&hellip;..）</p>
+<p>那麼，該設定哪一台 proxy server 呢？我找到了一份（有點舊的）proxy 列表，剛好是成大的人做的的樣子，請看參考資料。<br>
+其中我是覺得 <a href="http://proxy.nchc.gov.tw:3128">NCHC 的 proxy server</a> 好像滿可靠的（好歹人家是NCHC&hellip;）如果那份列表的連結以後不能用了，可以試試看這台&hellip;</p>
+<p>至於，wget 又是怎麼回事？噢&hellip;只是因為我發現我去找 proxy 相關資料的時候，很多文章都會同時教 apt 跟 wget 怎麼設定 proxy，那我就從善如流，把相關的資訊照抄一下了～</p>
+<p>編輯 <code>/etc/wgetrc</code> 或是 <code>~/.wgetrc</code>，加入以下設定：</p>
+<pre><code>https_proxy = http://PROXY-SERVER:PORT  
+http_proxy = http://PROXY-SERVER:PORT  
+ftp_proxy = http://PROXY-SERVER:PORT  
+</code></pre>
+<p>應該很好懂吧？<br>
+在我的 Ubuntu 10.04 上這幾行本來就已經存在 <code>/etc/wgetrc</code> 裡面了，用的是 <code>proxy.yoyodyne.com:18023</code> 這台機器，不過預設是註解起來的。所以如果想使用的話，其實只要編輯一下就可以了:)<br>
+（碎碎唸：本來應該用 https 抓的東西卻透過 http proxy 去抓不會不好嗎&hellip;不是應該要用 https proxy&hellip;.？）</p>
+<h1 id="參考資料">參考資料</h1>
+<ul>
+<li><a href="http://blogs.sun.com/venky/entry/using_apt_get_with_a">Using apt-get with a proxy server</a></li>
+<li><a href="http://turtle.ee.ncku.edu.tw/~tung/proxy/proxylst.html">Proxy Server 列表</a></li>
+<li><a href="http://mis.ntct.edu.tw/book/368">如何在 Linux 使用 wget 透過 proxy 抓取檔案</a></li>
+</ul>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2010-06-04</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/ubuntu-install-library/">
+			Next<br>安裝Ubuntu套件庫沒有的library (以libstdc&#43;&#43;.so.5為例)
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/install-nx-on-ubuntu-10.04/">
+			Previous<br>在Ubuntu 10.04 (Lucid Lynx)上安裝NX - 許多人推薦的遠端桌面
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99" class="nav-參考資料">
+									參考資料
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

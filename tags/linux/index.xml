@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/linux/</link>
+    <description>Recent content in Linux on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 10 Oct 2013 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Evernote Web Clipper &#43; NoScript 在 Firefox 上的擷取問題</title>
+      <link>https://blog.crboy.net/posts/evernote-web-clipper-noscript/</link>
+      <pubDate>Thu, 10 Oct 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/evernote-web-clipper-noscript/</guid>
+      <description>這篇是個很短的筆記&amp;hellip;.
+簡單說，Evernote Web Clipper 在安裝了 NoScript 的 Firefox 上擷取的時候會有一點小小的問題&amp;hellip;原因是 NoScript 把 evernote 外掛做的事情當成 XSS 了。解決方式很簡單，根據這篇討論所說的，只要在 NoScript 的 XSS 白名單中加入下面這行就可以了：
+^https://www.evernote.com/noteit.action(.+)? </description>
+    </item>
+    
+    <item>
+      <title>PHP Informix on Linux 安裝與設定</title>
+      <link>https://blog.crboy.net/posts/php-informix-on-linux/</link>
+      <pubDate>Fri, 15 Jun 2012 06:43:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/php-informix-on-linux/</guid>
+      <description>環境
+Ubuntu 12.04 LTS Apache 2.2.22 PHP 5.3.10 如果沒有 apache 與 php 環境可由套件庫安裝
+$ sudo apt-get install apache2 php5 為了編譯模組，需要安裝 php5-dev
+$ sudo apt-get install php5-dev 為了取得 PECL 上的原始碼，需要安裝 subversion (即 SVN)
+$ sudo apt-get install subversion 安裝 Informix Client SDK 在這個連結可以下載 Informix Developer Edition，有免費的版本，但僅供開發使用且有使用資源上的限制。我抓下來的檔案為 iif.11.70.UC5DE.Linux-RHEL5.tar。其實根據 [Install Informix on Debian] 這篇文章看來，應該是有單純的 ClientSDK 可以下載，但是我找不到&amp;hellip;
+將其解開
+$ cd &amp;amp;&amp;amp; mkdir informix &amp;amp;&amp;amp; cd informix $ tar -xf /PATH/TO/iif.11.70.UC5DE.Linux-RHEL5.tar 建立 informix 帳號與群組
+$ sudo addgroup --system informix $ sudo adduser --system informix --ingroup informix 開始安裝</description>
+    </item>
+    
+    <item>
+      <title>「cannot open shared object file」的解決方案</title>
+      <link>https://blog.crboy.net/posts/solution-for-cannot-open-shared-object/</link>
+      <pubDate>Wed, 23 May 2012 15:20:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/solution-for-cannot-open-shared-object/</guid>
+      <description>有時候執行一些指令，會碰到下面這樣的訊息：
+error while loading shared libraries: libiconv.so.2: cannot open shared object file: No such file or directory 在這個例子中，我們的程式找不到 libiconv.so.2 這個 dynamic library。那麼應該怎麼解決呢？
+首先必須找到系統中的 libiconv.so.2，下面四條指令選一條作就好：
+$ locate libiconv.so.2 $ whereis libiconv.so.2 $ find /usr /lib -name libiconv.so.2 $ find / -name libiconv.so.2 2&amp;gt;/dev/null 這時候就可以找出函式庫位置，例如：/usr/local/lib/libiconv.so
+萬一沒有找出來的話，就要自行安裝了。這篇文章有教該如何安裝 libiconv，如果是其他函式庫的話可以自行變通。
+找到位置之後，應該怎麼做呢？如果我們有 root 權限的話，可以把函式庫所在路徑寫入 /etc/ld.so.conf，再重新產生 ld 的 cache 即可，如下：
+# echo &amp;quot;/usr/local/lib&amp;quot; &amp;gt;&amp;gt; /etc/ld.so.conf # 注意! 要用 &amp;gt;&amp;gt; 而非 &amp;gt;！ # ldconfig 在某些系統中，/etc/ld.so.conf 可能會預設加上 include /etc/ld.so.conf.d/*.conf 這樣的敘述，那們我們也可以把路徑放在那個目錄下：</description>
+    </item>
+    
+    <item>
+      <title>透過 ssh 遠端存取 git repository</title>
+      <link>https://blog.crboy.net/posts/remote-git-access-via-ssh/</link>
+      <pubDate>Fri, 23 Mar 2012 03:31:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/remote-git-access-via-ssh/</guid>
+      <description>好，今天來寫個我架設「偽 - git server」的作法吧！
+為什麼叫做「偽 - git server」呢？因為他不是真的跑起來一支 daemon 去負責 git 的 access，像是 gitolite 或是 gitosis 那樣。(事實上我也不知道該怎麼把那些東西架起來XD)
+由於 git 可以透過 ssh protocol 來 access，當然要善用這點！
+以下我分為單人各自使用與多人共用來講：
+單人各自使用 這算是簡單的應用了，只要你有一台工作站的 ssh 帳號，而且工作站上有 git (好吧，我承認我不曉得 minimal requirement 是什麼，也許是 git-shell 吧？) 的話，就可以這樣用，相當簡單！
+首先假設遠端 server/workstation 叫做 Remote，網址是 example.com，我在這台機器上的帳號為 crboy，家目錄是 /home/crboy。相當單純而常見的配置。另外本機叫做 PC，其他相同。
+那麼我們想要開始一個新專案可以這麼做：(注意主機名稱)
+crboy@Remote:~$ mkdir my_project.git # 建立專案 repo 的目錄 crboy@Remote:~$ cd my_project.git # 進去該目錄 crboy@Remote:~/my_project.git$ git init --bare # 初始化這個目錄為「純repo」(這是我自己的說法，應該是不太通用，記得 bare repository 比較好) Initialized empty Git repository in /home/crboy/my_project.</description>
+    </item>
+    
+    <item>
+      <title>在 bash (zsh) script 中使用 trap</title>
+      <link>https://blog.crboy.net/posts/trap-in-bash-zsh-script/</link>
+      <pubDate>Sat, 17 Mar 2012 23:25:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/trap-in-bash-zsh-script/</guid>
+      <description>最近在跑分散式的程式，每次測試都要開好幾隻程式在跑。就算可以寫 script 自動開啟，還是會遇到一個很討厭的問題，沒辦法自動關閉那些屬於 worker 的程式。好像解釋的不太清楚&amp;hellip;.就是我希望在我程式跑完的時候，或是我把程式強迫終止的時候，我可以同時把好幾個 process 也 kill 掉。特別是強迫終止的時候，因為無論我在最後寫好什麼動作，一旦強迫終止就執行不到了。
+於是上網尋找解法，找到了 trap 可以用。Trap 這東西，也就是陷阱&amp;hellip;我想他的意思是，會讓你指定的那些 signal 掉入陷阱吧&amp;hellip;(笑)。不曉得 signal 是什麼的請自行閱讀 manpage 或是上網找。
+這裡提供兩個範例，第一個是測試 trap 功能的範例：
+這個範例中，我指定 SIGTERM SIGINT SIGHUP 這三個 signal 會被 trap 抓住，而 trap 抓到後所要執行的指令為 &amp;ldquo;echo TRAP!!; exit&amp;rdquo;。注意這邊我加上了 exit 讓這個 script 會在接到 signal 的時候終止，否則它只會 echo 出 TRAP!! 後繼續執行它要執行的動作。如果你沒有另外指定別的離開方法，就必須乖乖的等待 script 執行完畢，或是用 kill -9 (送 SIGKILL) 才能終止它了&amp;hellip;
+再來是第二個範例：
+這裡差不多是一個實際使用的 use case 了，參考自：這篇文章。把需要做清理的動作寫進 function 裡，以我最上面提到的情況就是把該關掉的 worker 程式都關掉，在這裡我就印出個 CLEAN UP!! 代替就好XD。然後在 trap 裡設定它負責清理，另外也在 script 正常結束前清理，這樣就可以保證(大概吧?)清理動作一定會被執行，除非是被 SIGKILL 強迫中斷。</description>
+    </item>
+    
+    <item>
+      <title>以特定時間點為基準刪除老舊目錄</title>
+      <link>https://blog.crboy.net/posts/delete-old-folders-by-modified-time/</link>
+      <pubDate>Mon, 09 Jan 2012 18:05:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/delete-old-folders-by-modified-time/</guid>
+      <description>今天因為某些原因，得刪除特定目錄底下，太老舊的一些目錄。目錄數量有上百個，一個個刪實在令人難過，身為一個 Linux user，就該善用工具來解決這個問題！
+這篇是個簡單的速記，就不囉唆。只要使用以下指令即可：
+$ find * -maxdepth 0 -mtime +365 -exec rm -r {} \; 其中幾個重點說明如下：
+使用 find 可以找出符合特定條件的檔案並對該檔案做點事情(下指令) -maxdepth 是用來限制 find 往下搜尋的層數，由於我僅針對此目錄下的所有目錄做處理，故僅使用 find * -maxdepth 0 -mtime 是針對 modified time 做限制，後面接 +n 表示「早於 n 天前修改的檔案（比 n 天還舊）」，若是接上 -n 則表示「晚於 n 天前修改的檔案（比 n 天還新）」。類似的選項還有 atime, amin, ctime, cmin, mmin。可自行查看 manpage。值得注意的是，manpage 中是以「n*24 hours」來說明，不曉得是否有何特殊之處？ -exec 則是針對找到的檔案進行動作，後面接上要執行的指令，並以 {} 代表找到的檔案，結尾並加上 \; 即可。 網路上找到的通常會是刪除「老舊檔案」而非目錄，以下亦附上參考用法。
+$ find . -mtime +365 -exec rm {} \; 祝各位刪檔愉快(笑)。</description>
+    </item>
+    
+    <item>
+      <title>如何說服你的朋友使用 Linux - 但不被當成怪咖</title>
+      <link>https://blog.crboy.net/posts/%E5%A6%82%E4%BD%95%E8%AA%AA%E6%9C%8D%E4%BD%A0%E7%9A%84%E6%9C%8B%E5%8F%8B%E4%BD%BF%E7%94%A8-linux-%E4%BD%86%E4%B8%8D%E8%A2%AB%E7%95%B6%E6%88%90%E6%80%AA%E5%92%96/</link>
+      <pubDate>Wed, 02 Nov 2011 03:15:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E5%A6%82%E4%BD%95%E8%AA%AA%E6%9C%8D%E4%BD%A0%E7%9A%84%E6%9C%8B%E5%8F%8B%E4%BD%BF%E7%94%A8-linux-%E4%BD%86%E4%B8%8D%E8%A2%AB%E7%95%B6%E6%88%90%E6%80%AA%E5%92%96/</guid>
+      <description>本文翻譯自「How to Convince Your Friends to Use Linux Without Being a Jerk」，作者為 Abhishek。
+This article is a translation of &amp;ldquo;How to Convince Your Friends to Use Linux Without Being a Jerk&amp;rdquo;, which is written by Abhishek.
+Linux 是目前世界上最安全穩定的系統之一，但它的使用者數量卻不如想像中的成長迅速。這當中有很多原因，不過我們先不討論。但如果你像其他的 Linux 使用者一樣，對現在 Linux 的市佔率感到失望，我們可以告訴你一些說服你朋友來用 Linux 的小技巧。
+現在有很多 Linux 使用者試著去引誘他們的朋友或家人來嘗試一個有名且容易上手的發行版 - Ubuntu。有些人成功了，不過大部分是失敗的。所以，我們要告訴你一些技巧來幫助你推廣 Linux，但不會被視為一個自以為是又看不起 Windows 或 Mac 的電腦怪咖。
+用秀的！不要用說的。 沒錯，如果你想要說服一個 Windows 或 Mac 的使用者來使用 Linux，這是第一件也是最重要的一件事。Ubuntu、Linux Mint與許多其他發行版看起來都相當漂亮，而且說真的，最新版的 Ubuntu (Ubuntu 11.10) 看起來就跟 Mac 一樣漂亮。不過，如果你只是跟他們用說的，你認為他們會同意你嗎？就算他們同意了，他們還是不清楚 Ubuntu 或是其他你說的發行版究竟長什麼樣子。我的建議是，你可以帶著你的 Linux 筆電，交給對方讓他們玩玩看。如果你用的是 Ubuntu，我建議你開一個新的 Guest Session (訪客使用者階段)，然後把電腦交給他。這樣一來，他們會更了解一個沒有經過調整的桌面有多漂亮。如果你不太可能向你的朋友展示桌面的話，那就傳個關於桌面展示的 Youtube 影片給他吧。</description>
+    </item>
+    
+    <item>
+      <title>用 vim 把一堆程式碼轉成 html 檔案</title>
+      <link>https://blog.crboy.net/posts/vim-to-html/</link>
+      <pubDate>Mon, 31 Oct 2011 09:14:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/vim-to-html/</guid>
+      <description>前陣子剛好跟學弟聊天聊到一些事情，他提到他想把他之前寫的 code 轉成 html&amp;hellip;..呃&amp;hellip;雖然我不太清楚為什麼要這樣做啦&amp;hellip;可能是為了列印之類的&amp;hellip;.不過這個我不太 care&amp;hellip;身為一個資工人，這種事當然要自動化！我只是想知道該怎麼做到而已XD
+這位學弟也玩 Linux，但他說他試過寫 script 卻沒辦法成功，說是檔名有空白就會被分成兩個檔名，會找不到。這怎麼可能呢！所以當下就試試看&amp;hellip;.
+$ mkdir test $ cd test $ touch a\ 1 a\ 2 a\ 3 $ find . -exec echo {} \; 這當然是沒問題的啊！每個檔名都自成一行 :D
+好了&amp;hellip;.問題解決一半。不過如果這樣的話就不會想寫文章了&amp;hellip;主要是因為當天腦袋卡住，竟然沒辦法用 vim 轉換出他要的 html 檔案&amp;hellip;.|||
+先提一下 vim 的 :TOhtml 好了，這東西可以把現在的 syntax highlight 轉換成 html，很酷的小功能說~但當天不曉得為什麼，明明知道應該用 find -exec 配合 vim -c 去做，但檔名就一直不知道該怎麼下&amp;hellip;&amp;hellip;.orz 學弟的需求是這樣：code 放在 a 目錄，輸出的 html 要放在 b 目錄，然後 script 跟 a, b 放在同一層目錄&amp;hellip;.大概是這樣子:p
+後來回家後，還查了我根本不懂的 vim register 跟 variable 的用法，搞老半天，最後發現答案很簡單= =a，只要 truncate 檔名就好了啊&amp;hellip;&amp;hellip;如下所示：</description>
+    </item>
+    
+    <item>
+      <title>Linux 上安裝 APC UPS 的控制程式 - apcupsd</title>
+      <link>https://blog.crboy.net/posts/linux-apcupsd/</link>
+      <pubDate>Sun, 20 Mar 2011 11:35:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/linux-apcupsd/</guid>
+      <description>由於實驗室的需要，有機會設定到 APC 的 UPS&amp;hellip;.
+架構上來說大致上是這樣&amp;hellip;. UPS 透過一條 RJ45-USB 的線接到某主機（主要控制端），另外有兩台主機也吃這個 UPS 的電，而他們必須透過 ethernet 與控制主機溝通。
+我用到的環境是 Ubuntu 跟 CentOS，設定上沒什麼很大的差別就是了。首先安裝 apcupsd 這個套件（apt-get install apcupsd 或是 yum install apcupsd），接著打開/etc/apcupsd/apcupsd.conf，這個檔案其實自己就有很詳細的說明了，主要要設定的有這幾個部分：
+主要控制端：
+UPSCABLE usb UPSTYPE usb NETSERVER on NISIP 0.0.0.0 NISPORT 3551 UPSCLASS standalone UPSMODE disable 其他主機：
+UPSCABLE ether UPSTYPE net DEVICE &amp;lt;server_ip&amp;gt;:&amp;lt;port&amp;gt; #例：DEVICE 192.168.12.34:3551 NETSERVER off #應該也是可以設定成on 讓別人也可以跟這台主機要資料 但我認為沒有必要就是了 此外，我還隨手修改了 ONBATTERYDELAY 20，他的功用是讓機器在發現斷電狀況後多久才開始做反應&amp;hellip;設太短的話怕那種幾秒鐘的跳電也害他關機就是了&amp;hellip;
+設定好後，要重新啟動 apcupsd：
+# /etc/init.d/apcupsd restart 然後就可以用apcaccess去看看UPS的狀態，本機可以直接使用
+# apcaccess 來查到狀態，但是我被表很久的是，如果在其他機器，那得這樣才行：
+# apcaccess status &amp;lt;server_ip&amp;gt;:&amp;lt;port&amp;gt; 我是認為有查到資訊就表示安裝OK了啦&amp;hellip;.</description>
+    </item>
+    
+    <item>
+      <title>安裝Ubuntu套件庫沒有的library (以libstdc&#43;&#43;.so.5為例)</title>
+      <link>https://blog.crboy.net/posts/ubuntu-install-library/</link>
+      <pubDate>Sat, 05 Jun 2010 02:05:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/ubuntu-install-library/</guid>
+      <description>有時候拿人家的程式來跑，也許是對方只肯給執行檔，或者是不給source的商業軟體，或是其他情況，總之，有時候會遇到自己的系統上缺少該程式所需要的dynamically linked library (也就是系統上的.so檔, shared object)，或是自己系統上的函式庫版本太舊或太新，此時的作法有兩種：
+使用現有新版函式庫假裝成舊版。
+此種方法很簡單，只要把新版函式庫建立一個symbolic link就可以了，例如：
+[/usr/lib]$ ln -s libstdc++.so.6 libstdc++.so.5 但是很不幸的這種作法是可能出問題的。例如我今天就遇到了這個問題&amp;hellip;.
+我的系統上裝有libstdc++.so.6，但我要執行的程式連結到的是libstdc++.so.5。所以我用類似以上的方式做了一個假的，結果在執行的時候，跳出訊息顯示，該程式需要CXXABI 1.2(其實我也不太清楚這是啥，只知道ABI是Application Binary Interface)，我猜大概是ABI版本太新&amp;hellip;.沒辦法我動不到&amp;hellip;.orz 所以只好認命的去尋找舊版函式庫了&amp;hellip;
+安裝舊版函式庫
+我在這篇文章找到做法，而且他寫得很簡單易懂:)
+先去Debian Packages抓取我要的套件的deb檔
+$ wget http://debian.nctu.edu.tw/debian/pool/main/g/gcc-3.3/libstdc++5_3.3.6-18_amd64.deb 解壓縮抓下來的檔案
+$ dpkg-deb -x libstdc++5_3.3.6-18_amd64.deb libstdc++5 把其中的函式庫放到/usr/lib中 (小心不要覆蓋到本來的檔案了)
+$ sudo mv libstdc++5/usr/lib/libstdc++.so.5* /usr/lib/ 更新linker的cache
+$ sudo ldconfig 完成了&amp;hellip;..
+照著這樣做是沒問題啦&amp;hellip;.只是我心中還有點疑惑，為什麼不直接安裝該deb套件就好？也許有其他什麼原因？
+總而言之，要安裝缺少的library，只要找到相應的.so檔，並放到/usr/lib中(或是/usr/local/lib中)，再更新ld的cache即可。
+那&amp;hellip;.如果沒有.so可以抓怎麼辦？那就只好自己找source來編譯了&amp;hellip;..那是另外一段故事:D</description>
+    </item>
+    
+    <item>
+      <title>在apt系統與wget上使用proxy</title>
+      <link>https://blog.crboy.net/posts/proxy-apt-wget/</link>
+      <pubDate>Fri, 04 Jun 2010 07:11:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/proxy-apt-wget/</guid>
+      <description>台灣的學術網路連國外很慢是眾所皆知的事情&amp;hellip;.但是像 Ubuntu 這種系統，雖然有國內的 mirror，但是有些東西，像是 ppa 之類的 source，還是得從國外抓。今天剛裝完機器要更新，發現有些東西實在龜到不行，426B/s 耶！雖然最後我抓完了啦&amp;hellip;..不過還是要研究一下該怎麼透過 proxy 抓這些套件。
+方法很簡單，只要在 /etc/apt/apt.conf 裡面寫入以下這段設定：
+ACQUIRE { http::proxy &amp;quot;http://USER:PASSWORD@PROXY-SERVER:PORT&amp;quot; } 使用者帳號密碼、server 資訊請自行更改，如果是不需要帳號密碼的 proxy server 的話，則引號中只要打 http://PROXY-SERVER:PORT 即可。如果連 port 都不打的話，則預設的 port 是 80（也就是 http 的預設 port）
+接著只要更新套件清單，並安裝想要的套件就好。如果設定有誤，應該會在 update 的時候就出錯了。（像我一開始設定到一台已經不能用的 proxy server，就直接噴 error 給我看&amp;hellip;..）
+那麼，該設定哪一台 proxy server 呢？我找到了一份（有點舊的）proxy 列表，剛好是成大的人做的的樣子，請看參考資料。
+其中我是覺得 NCHC 的 proxy server 好像滿可靠的（好歹人家是NCHC&amp;hellip;）如果那份列表的連結以後不能用了，可以試試看這台&amp;hellip;
+至於，wget 又是怎麼回事？噢&amp;hellip;只是因為我發現我去找 proxy 相關資料的時候，很多文章都會同時教 apt 跟 wget 怎麼設定 proxy，那我就從善如流，把相關的資訊照抄一下了～
+編輯 /etc/wgetrc 或是 ~/.wgetrc，加入以下設定：
+https_proxy = http://PROXY-SERVER:PORT http_proxy = http://PROXY-SERVER:PORT ftp_proxy = http://PROXY-SERVER:PORT 應該很好懂吧？</description>
+    </item>
+    
+    <item>
+      <title>在Ubuntu 10.04 (Lucid Lynx)上安裝NX - 許多人推薦的遠端桌面</title>
+      <link>https://blog.crboy.net/posts/install-nx-on-ubuntu-10.04/</link>
+      <pubDate>Thu, 03 Jun 2010 09:14:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/install-nx-on-ubuntu-10.04/</guid>
+      <description>呃阿阿阿阿阿&amp;hellip;..我不知道應該怎麼起頭&amp;hellip;&amp;hellip;其實故事是這樣的，去年有學弟跟我推薦了NX這個遠端桌面，他是NoMachine公司的產品。特色大致上是，支援ssh加密連線，傳輸的資訊有經過壓縮(速度較快，不過影像品質稍微不太好，看得出來是lossy compression)，client可以跨平台，windows跟Linux都可以用，這對於有Linux桌面需求的Windows user真是福音阿!!
+於是乎，我就把他給裝起來了。一開始我裝的是NoMachine提供的Free Edition，但是後來有人跟我反應會連不上的問題，我找了很久找不出原因，最後我在某篇文章(由於年代久遠現在找不到了)得知，原來NoMachine的免費版本的nxserver有session數的限制，所以只好另尋他法。
+有個好用的open source版本的nxserver叫做FreeNX，想當然爾，「應該」是沒有session數限制的吧？當時在以前版本的ubuntu怎麼裝的我已經忘了，只記得套件名稱是freenx，但是好像不在官方預設的套件庫裡面&amp;hellip;但是在Ubuntu 10.04，我發現了新大陸！XD&amp;quot;
+這裡是安裝教學，很簡單。
+首先第一部你要先搞定你的ssh連線&amp;hellip;.通常我是裝openssh-server這個套件好像就搞定了&amp;hellip;.不過ssh博大精深，請另行研究。
+在ssh server裝好之後，就要開始安裝nx server了：
+$ sudo apt-get install python-software-properties #這步其實應該不用做，ubuntu預設就有裝這個套件了 $ sudo add-apt-repository ppa:freenx-team #這步其實讓我滿驚奇的，原來有這樣好用的工具可以用XD.... $ sudo apt-get update #加了套件庫，當然要update一下 $ sudo apt-get install neatx-server` 咦？怎麼不是freenx了？而是一個叫做neatx-server的東西？他的套件說明是這樣的：
+Neatx is an Open Source NX server.
+Neatx is an Open Source NX server, similar to the commercial NX server from NoMachine.
+查到的資料來源網頁是這樣寫的：
+Ubuntu Lucid now uses Neatx, the Open Source NX server from Google.</description>
+    </item>
+    
+    <item>
+      <title>取得 SSH server public key 的 fingerprint</title>
+      <link>https://blog.crboy.net/posts/get-ssh-server-fingerprint/</link>
+      <pubDate>Thu, 03 Jun 2010 08:30:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/get-ssh-server-fingerprint/</guid>
+      <description>不說廢話先給答案：
+$ ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub 對於廢話有興趣的請繼續閱讀&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;
+手邊的機器管一陣子之後，就會開始手癢想要重灌XD
+每次重灌完，要 ssh 上去的時候，都會遇到 key 不符合的情形&amp;hellip;.畫面長得像是這樣：
+$ ssh Some-Server @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY! Someone could be eavesdropping on you right now (man-in-the-middle attack)! It is also possible that the RSA host key has just been changed. The fingerprint for the RSA key sent by the remote host is &amp;lt;這裡是一長串的fingerprint，會有16進位數字，用冒號分隔&amp;gt;. Please contact your system administrator.</description>
+    </item>
+    
+    <item>
+      <title>將filesystem從ext2 or ext3升級到ext4</title>
+      <link>https://blog.crboy.net/posts/upgrade-to-ext4/</link>
+      <pubDate>Wed, 02 Jun 2010 10:18:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/upgrade-to-ext4/</guid>
+      <description>剛好有點三八想把ext3轉到ext4去&amp;hellip;.就找了些資料，寫了這篇文章:P
+要轉換成ext4嘛&amp;hellip;&amp;hellip;首先當然有些前提&amp;hellip;.你的kernel要支援ext4才行:D 另外也建議備份重要資料&amp;hellip;.
+然後step by step的教學就開始了！以下 $DEV 為device的名字(例：/dev/sda1)，$MOUNT為mount point(例：/mnt)
+要變更檔案系統，理所當然絕對不能讓他在被mount的時候亂搞，那是會出人命的XD
+# umount $DEV 這麼快!? 對&amp;hellip;.現在就去變更他吧&amp;hellip;.
+# tune2fs -O extents,uninit_bg,dir_index $DEV 如果是ext2 -&amp;gt; ext4的話則要這樣(因為ext2是沒有日誌(journal)的)
+# tune2fs -O extents,uninit_bg,dir_index,has_journal $DEV 變更完之後，一定要做fsck！
+# fsck -pf $DEV (這裡讓我膽顫心驚！因為出現好多error唷&amp;hellip;.orz||| 而且他還修了很久，差點以為程式爛掉&amp;hellip;.)
+最後就可以把他mount回去囉！
+# mount -t ext4 $DEV $MOUNT 如果是系統預設會mount的filesystem的話，請記得修改/etc/fstab。裡面的參數會紀錄要怎麼mount它&amp;hellip;一定要改！
+ps. 若是有動到/boot，或是開機遇到grub出現問題的話，參考資料裡面有相關資訊！
+參考資料 Ext3升級到Ext4 無損升級 http://blog.chinaunix.net/u1/46672/showart_2069245.html Linux 文件系統從 ext3 升級到 ext4 http://www.vpsee.com/2010/01/convert-ext3-to-ext4-filesystem/ sshlog-轉換 Ext3 到 Ext4 http://blog.ssh.tw/?p=1447 (有ssh大掛保證，這方法讓我更安心了XD) </description>
+    </item>
+    
+    <item>
+      <title>10 個最酷的 Linux 單行指令</title>
+      <link>https://blog.crboy.net/posts/top-10-linux-one-liners/</link>
+      <pubDate>Tue, 06 Apr 2010 02:10:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/top-10-linux-one-liners/</guid>
+      <description>本文內容修改自 http://linuxtoy.org/archives/top-10-one-liners.html
+下面是來自 Commandlinefu 網站由用戶投票表決出的 10 個最酷的 Linux 單行指令。
+sudo !! 以 root 帳戶執行上一道指令。
+python -m SimpleHTTPServer 利用 Python 建立一個簡單的 Web 伺服器，可透過 http://$HOSTNAME:8000 瀏覽。
+:w !sudo tee % 在 vim 中無需權限儲存編輯的文件。
+cd - 更改到上一次瀏覽的目錄。
+^foo^bar 將上一道指令中的 foo 替換為 bar，並執行。
+cp filename{,.bak} 快速備份或複製文件。
+mtr google.com = traceroute + ping。
+!whatever:p 搜尋命令歷史，但不執行。
+ssh-copy-id user@host 將 ssh keys 複製到 user@host 以啟用無密碼 SSH 登錄。
+ffmpeg -f x11grab -s wxga -r 25 -i :0.0 -sameq /tmp/out.</description>
+    </item>
+    
+    <item>
+      <title>一個有趣的小程式 - sm (screen message)</title>
+      <link>https://blog.crboy.net/posts/screen-message/</link>
+      <pubDate>Fri, 20 Nov 2009 12:29:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/screen-message/</guid>
+      <description>哈，其實我是想順便測試一下 wp-codebox 這個外掛&amp;hellip;.:P
+這個小程式很有趣，可以做全螢幕的大字報/看板之類的，下面是我自己做的範例：（圖不見了，找不回來了）
+別懷疑，這就是一整個螢幕大小！
+我曾經拿這隻程式來做舉牌小弟，或是在一些場合可以(娛樂性質的)打廣告或是發表意見之類的XD 總之很好玩就是了~
+下面是他的 python 版本的程式碼，才 140 行而已！值得注意的是，第 70 行的字型我改成我喜歡的字型了，畢竟這類型的應用，還是用黑體最好看了~嘿嘿~:P
+#!/usr/bin/python # encoding:utf8 # vlshow.py # Copyright (C) 2006 Joachim Breitner # # This program is free software; you can redistribute it and/or modify # it under the terms of the GNU General Public License as published by # the Free Software Foundation; either version 2 of the License, or # (at your option) any later version.</description>
+    </item>
+    
+    <item>
+      <title>在Ubuntu 9.10上自行編譯安裝PCManX 0.3.9</title>
+      <link>https://blog.crboy.net/posts/build-pcmanx-on-ubuntu-9.10/</link>
+      <pubDate>Sun, 01 Nov 2009 05:12:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/build-pcmanx-on-ubuntu-9.10/</guid>
+      <description>該是發技術性文章的時候了&amp;hellip;.XD
+剛剛才把 Ubuntu 給升到 9.10，要重灌 pcmanx，結果沒想到裝完要執行竟然出現：
+pcmanx: error while loading shared libraries: libpcmanx_core.so.0: cannot open shared object file: No such file or directory 這個錯誤，於是乎簡單查了一下資料，答案也很簡單：$ sudo ldconfig。以下是完整的編譯+安裝教學：
+首先到 PCManX 的專案網站(註)去下載最新版本的 PCManX GTK2，我抓到的是 pcmanx-gtk2-0.3.9.tar.bz2。
+抓回來之後先解壓縮：
+$ tar -xf pcmanx-gtk2-0.3.9.tar.bz2 會得到一個名為 pcmanx-gtk2-0.3.9 的目錄
+接著：
+$ cd pcmanx-gtk2-0.3.9 進入該目錄
+簡單看了一下 README，我用這樣的參數做 configure：
+$ ./configure --disable-nancy --disable-mouse --enable-wget --enable-proxy 結果發現&amp;hellip;&amp;hellip;對噢我有 library 還沒裝XD 根據專案網頁的說明，要安裝這些套件：
+$ sudo apt-get install intltool intltool-debian libxft-dev libgtk2.0-dev 重新 configure 一次，很快就好了XD 還會要你 type make and pray&amp;hellip;.</description>
+    </item>
+    
+    <item>
+      <title>openSUSE 安裝 flashplayer plugin</title>
+      <link>https://blog.crboy.net/posts/opensuse-%E5%AE%89%E8%A3%9D-flashplayer-plugin/</link>
+      <pubDate>Sat, 18 Jul 2009 18:47:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/opensuse-%E5%AE%89%E8%A3%9D-flashplayer-plugin/</guid>
+      <description>要趕快記下來不然會忘記！XD
+這是小弟今天的實驗結果 使用的平台是openSUSE 11.0 + Firefox 3.0.11
+本來一直找不到可用的flash player plugin 套件庫的都有點問題(我是以能不能看YouTube當成能不能順利使用的指標&amp;hellip;XD) 今天在實驗室剛好跟學弟聊到 就來試試看！
+首先是學弟用Google找到的連結(關鍵字：64bit flash):
+http://labs.adobe.com/technologies/flashplayer10/
+這是Adobe Labs的網站 裡面有flash plugin 10的的prerelease版本可以下載 下載解壓縮後 只有看到一個libflashplayer.so檔 使用file查看：
+$ file libflashplayer.so libflashplayer.so: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, stripped 學弟要我把他放到 ~/.mozilla/plugins/ 裡面 不過我希望可以達到全系統的設定 所以暫時不這樣做(但後來證明這樣做是OK的)
+首先 我試著把libflashplayer.so放到 /usr/lib64/mozilla/plugins/ 裡面 不過firefox找不到他:(
+接著 我放到 /usr/lib/mozilla/plugins/ 裡面 firefox還是找不到他:(
+只好搜尋「opensuse 11 安裝 libflashplayer.so」找到黑眼珠大大的這篇文章 不過其實我看不太懂&amp;hellip;.XD 不過 仔細閱讀之後 發現他把libflashplayer.so放在 /usr/lib/browser-plugins/ 裡面!!!!(他裡面提到nspluginwrapper 不過因為我抓的應該就是for linux的了 所以應該不需要處理就可以用) 我就如法泡製 把libflashplayer.so放在 /usr/lib64/browser-plugins/ 裡面(小弟實在是很白目 硬要先用自己覺得合理的方法做!</description>
+    </item>
+    
+    <item>
+      <title>在Ubuntu上安裝nVidia官方顯示驅動程式</title>
+      <link>https://blog.crboy.net/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9Dnvidia%E5%AE%98%E6%96%B9%E9%A1%AF%E7%A4%BA%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F/</link>
+      <pubDate>Thu, 06 Mar 2008 18:39:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9Dnvidia%E5%AE%98%E6%96%B9%E9%A1%AF%E7%A4%BA%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F/</guid>
+      <description>首先要停用restricted driver(或移除nvidia-glx套件也是一樣的結果)
+接著修改/etc/default/linux-restricted-modules-common中的DISABLED_MODULES屬性 停用nv和nvidia_new(會像這樣：「DISABLED_MODULES=&amp;ldquo;nv nvidia_new&amp;rdquo;」)
+然後刪掉/lib/modules底下的跟nvidia有關的東西(但是我的ubuntu根本沒有這種東西 是找到的教學文件這樣說)
+刪掉/etc/init.d/nvidia-glx 和 /etc/init.d/nvidia-kernel
+接著關閉gdm：「$ sudo /etc/init.d/gdm stop」 如果在視窗介面下無法成功的話 可以按ctrl+alt+F1切換到terminal 接著登入並輸入以上指令 另外我個人的習慣是會先在視窗下登出後才停用gdm~
+然後就可以安裝新版驅動了！不過必須要有libc6-dev套件 似乎是因為官方的安裝程式會幫你編譯kernel module&amp;hellip;至於新版驅動的下載位置&amp;hellip;我都是直接在nVidia的網站搜尋「display」 因為常常會出新版 之前裝的時候我用的是169.09 現在我已經用到171.05了 而且好像很多版本都可以用&amp;hellip;我整個搞不懂@@&amp;quot;(如果有人可以幫小弟解答麻煩告訴我 謝謝！)
+安裝好之後重開gdm就行了：「$ sudo /etc/init.d/gdm start」
+不過我遇到一個無法開啟特效的問題 就是在「外觀設定(Appearence)」的地方的Visual Effect標籤裡 我沒有辦法讓他開啟特效 他會說要安裝受限的驅動程式(restricted driver)才能開(我想這部份可能是預防錯誤預防過了頭吧)
+我的解決方式是直接按alt+F2 執行compiz就可以開啟特效
+另外 如果想要在開機的時候就開啟特效 可以寫入作業階段(系統-管理-作業階段)裡面 但不是執行「compiz」 而是「compiz &amp;ndash;replace」
+意義好像是要取代本來的metacity 不然會發生錯誤(可能是衝突吧) 所以我之前直接執行compiz 開機進入X之後都會當掉&amp;hellip;.= =&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>修正開機沒有splash畫面(進度條)的問題</title>
+      <link>https://blog.crboy.net/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/</link>
+      <pubDate>Wed, 31 Oct 2007 12:25:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/</guid>
+      <description>開機的 usplash 變黑的 bug 和螢幕解析度有關，只在用 Desktop CD 安裝的時候會遇到。原因是因為安裝程式會偵測螢幕解析度，但是 usplash 沒辦法用那麼高的解析度顯示，於是就黑掉了。
+解法，例如我的螢幕解析度是 1280x1024，但是 usplash 可能只能用 1024x768 跑，到 /etc/usplash.conf 中將
+xres=1280 yres=1024 改成
+xres=1024 yres=768 然後再打
+$ sudo update-initramfs -u -k `uname -r` 更新一下就應該可以看到了。
+資料來源為 Ubuntu@TW 的 josesun 回應</description>
+    </item>
+    
+    <item>
+      <title>解決新視窗不會取得focus的問題</title>
+      <link>https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/</link>
+      <pubDate>Mon, 18 Jun 2007 02:49:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/</guid>
+      <description>我也不確定這是Gnome的問題或是Beryl造成的～
+不過我知道解法了:P
+在Beryl Manager中找General Options裡面有個&amp;quot;聚交保護級&amp;quot; 把高設定為正常就好了:)
+來源</description>
+    </item>
+    
+    <item>
+      <title>之前的一篇</title>
+      <link>https://blog.crboy.net/posts/%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%80%E7%AF%87/</link>
+      <pubDate>Mon, 18 Jun 2007 01:46:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%80%E7%AF%87/</guid>
+      <description>2007年6月5日，innotek 發佈了 VirtualBox 1.4.0 for Linux and Windows。這個新版本有大幅的進步，超過所有自 2007 年 1 月發佈的官方版本以來的所有更新。
+這些更新有：對64-bit Linux主機的完整支援，RDP session shadowing，剪貼簿同步化，序列埠，以及更簡單的網路介面。
+在 儲存部份，VirtualBox已可原生支援 VMware 檔案格式(VMDK)，且可以讓虛擬機器直接存取硬碟與分割區(raw disk support)。圖形使用者介面也獲得很大的改善且提供12種語言的支援(正體/簡體中文、德文、西班牙文、法文、義大利文、波蘭文、葡萄牙文、羅馬尼 亞文、阿拉伯文、俄文、日文)Red Hat Enterprise Linux 5 (RHEL5) and Xandros Desktop 4.1現在也受到官方支援。對FreeBSD與OpenBSD的支援也有進步。
+細節可參考Changelog。
+與之前的版本相同的是 VirtualBox 1.4.0 有 GPL 授權的 Open Source 與商業授權可用，而且在大多數情況下，商業版本授權無須付費。
+讓我爽一下，這篇公佈在Ubuntu@TW的新聞大部分的內容是我翻譯的XD~~
+連結在此： http://www.ubuntu.org.tw/modules/news/article.php?storyid=52</description>
+    </item>
+    
+  </channel>
+</rss>

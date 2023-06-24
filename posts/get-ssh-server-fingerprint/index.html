@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html><head>
+<title>取得 SSH server public key 的 fingerprint</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99" class="nav-參考資料">
+									參考資料
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    取得 SSH server public key 的 fingerprint
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2010-06-03 08:30
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/linux">Linux</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E7%B6%B2%E7%AE%A1">網管</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>不說廢話先給答案：</p>
+<pre><code>$ ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub  
+</code></pre>
+<p>對於廢話有興趣的請繼續閱讀&hellip;&hellip;&hellip;&hellip;</p>
+<p>手邊的機器管一陣子之後，就會開始手癢想要重灌XD<br>
+每次重灌完，要 ssh 上去的時候，都會遇到 key 不符合的情形&hellip;.畫面長得像是這樣：</p>
+<pre><code>$ ssh Some-Server  
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  
+@ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @  
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!  
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!  
+It is also possible that the RSA host key has just been changed.  
+The fingerprint for the RSA key sent by the remote host is  
+&lt;這裡是一長串的fingerprint，會有16進位數字，用冒號分隔&gt;.  
+Please contact your system administrator.  
+Add correct host key in /home/crboy/.ssh/known_hosts to get rid of this message.  
+Offending key in /home/crboy/.ssh/known_hosts:1  
+RSA host key for [這裡是server的IP address]:PORT has changed and you have requested strict checking.  
+Host key verification failed.
+</code></pre>
+<p>然後就會沒辦法連線&hellip;&hellip;&hellip;orz</p>
+<p>細節我就不提了，反正我也沒有知道得很清楚。只是，這個機制是為了安全而做的，要是不謹慎一點的話，搞不好攻擊者就趁你重灌之後，偷偷攔截你的連線做 man-in-the-middle 攻擊。所以確認新的 fingerprint是正確的這件事很重要。</p>
+<p>以前年少無知的時候，我都是這樣解決 key 不符合的問題的&hellip;&hellip;</p>
+<pre><code>$ rm ~/.ssh/known_hosts  
+</code></pre>
+<p>&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;對不起我錯了&hellip;..&lt;(_ _)&gt;</p>
+<p>這麼做，不但你現在想要連的那個站儲存的 key 被砍了，就連其他你曾經 ssh 上去過，曾經信任他的站的 key 都砍了&hellip;..這樣真的很糟糕= =<br>
+後來我發現其實在連線的時候，錯誤訊息就會告訴你這個站的 key 存在 known_hosts 的第幾行&hellip;(如上面的範例所示)&hellip;所以只要把那行刪掉，就可以正常連線，又不會影響到其他站了。可是問題來了，我該怎麼確認新拿到的 key 是正確的呢？這時候就要靠 fingerprint 來幫忙了！</p>
+<p>&hellip;&hellip;..呃&hellip;.好啦，相關的背景知識我也講得不清楚，我只想知道怎麼確定 fingerprint 是對的就好，方法如下：</p>
+<p>在要被連線的 server 上，應該會有這樣的檔案：</p>
+<pre><code>/etc/ssh/ssh_host_rsa_key.pub  
+/etc/ssh/ssh_host_dsa_key  
+/etc/ssh/ssh_host_rsa_key  
+/etc/ssh/ssh_host_dsa_key.pub  
+</code></pre>
+<p>這些就是你的 server 的 <em>host key</em>&hellip;.那些 <code>*_key.pub</code> 的就是 public key，另外要注意的是，<code>_key</code> 結尾的那些是 private key，只有 root 可以讀寫！給 ssh 連線確認的話，只需要用到 public key 就好，所以不需要 root 權限。指令如下：</p>
+<pre><code>$ ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub  
+</code></pre>
+<p>或是改成 <code>ssh_host_dsa_key.pub</code>，看你的 ssh client 用什麼認證。但是我只遇過 RSA key 認證的情形，也不知道用 DSA 會怎樣。XD&quot;</p>
+<p>於是乎，我們會得到一個 fingerprint，也就是這個 key 的「指紋」，可以用來辨認對方收到的 key 是不是正確的，所以當你要把 server 開放給某個人連線的時候，記得給他 server 的 fingerprint 唷！:D</p>
+<h1 id="參考資料">參考資料</h1>
+<ul>
+<li><a href="http://www.lysium.de/blog/index.php?/archives/186-How-to-get-ssh-server-fingerprint-information.html">How to get ssh server fingerprint information</a></li>
+<li><a href="http://www.symantec.com/connect/articles/ssh-host-key-protection">SSH Host Key Protection</a></li>
+</ul>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2010-06-03</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/install-nx-on-ubuntu-10.04/">
+			Next<br>在Ubuntu 10.04 (Lucid Lynx)上安裝NX - 許多人推薦的遠端桌面
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/patch-replurk-chrome/">
+			Previous<br>修改 Google Chrome 的外掛 - RePlurk Chrome 的javascript
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99" class="nav-參考資料">
+									參考資料
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

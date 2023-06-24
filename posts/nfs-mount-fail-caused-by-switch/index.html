@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html><head>
+<title>NAS 的 NFS 掛不上...竟然是 switch 害的!!</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    NAS 的 NFS 掛不上...竟然是 switch 害的!!
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2012-08-01 17:45
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/trouble-shooting">Trouble Shooting</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E7%A1%AC%E9%AB%94">硬體</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E9%96%92%E8%81%8A">閒聊</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>最近在新增設備，分別是 HP ProCurve 1810G-24 L2 switch 與 Synology RS812+ NAS，沒想到前兩天碰到一個讓人吐血的問題&hellip;故事要從這裡說起&hellip;..</p>
+<p>一開始很開心的接上了 switch 還有 NAS，似乎相當正常，但操作相當緩慢&hellip;.後來 ping 了一下，封包一直掉&hellip;&hellip;&hellip;.呃，但是後來換台電腦就好了，所以目前這個問題被我擱置&hellip;..XD</p>
+<p>離題了，Synology NAS 算是還不錯，它的 OS (核心是 Linux，名稱叫做 DSM) 提供了 NFS 的支援，但主要的問題是&hellip;&hellip;問題是我掛不上啊!!!!! 我碰到的狀況相當奇怪，我這台電腦連到 NAS 的管理介面沒有問題，ping 它也回很快，甚至是 CIFS (Windows 的網路芳鄰) 都很順利&hellip;.獨獨 NFS 掛不上去 orz</p>
+<p>我試了兩台電腦，都是 Linux，這兩台電腦跟 NAS 都接在上面說的那台 HP ProCurve 1810G-24 L2 switch 上。其中一台有防火牆，另一台沒有開，但是問題跟這個無關，所以就不理他了。我的狀況是，showmount 非常正常，NFS 權限也沒問題，但是真的要 mount 的時候就等很久很久很久&hellip;..然後就 timeout 了&hellip;&hellip;= =</p>
+<p>花了一個下午找不到問題，整個晚上在想原因，一直到隔天剛好 NAS 廠商過來，結果他們也找不出原因!!!! 後來是因為廠商帶了台很簡單的 ZyXEL switch 來 (因為之前跟他們說我 ping NAS 掉包掉很大)，沒想到換上去就好了!!!!!! 杯具啊!!!!!!!! 天大的杯具啊!!!!!!!! 好&hellip;&hellip;既然確定是 switch 的問題，當然立馬殺進去 switch 的管理介面看看&hellip;</p>
+<p>這邊題外話，此時的網路接法是：<code>HP[ZyXEL[我的電腦, NAS], 另一台電腦]</code> (<code>A[a,b]</code> 表示 a 跟 b 接在 A 上)</p>
+<p>接下來是我跟 NAS 廠商的工程師看著同一個螢幕 (其實他是用 VNC 連進來的，因為來我們這裡的人是搞 Windows 的XD)，他一個個看著可以設定的選項，然後關了 security 選項中的兩個選項&hellip;.這個時候我腦袋像是通電一樣&hellip;.立馬連到另一台電腦 (因為我的電腦跟 NAS 之前沒有通過 HP switch)，開始 mount&hellip;..馬上就好了= = (崩潰) 然後打開 Auto DoS&hellip;&hellip;掛不起來了= = (崩潰) 然後關掉 Auto DoS 開啟 Storm Control (大概吧)&hellip;.掛得起來= =</p>
+<p>好啦越來越混亂了&hellip;&hellip;.總而言之就是&hellip;&hellip;..</p>
+<p>HP ProCurve 1810G-24 的 Auto DoS 功能會把 NFS 給擋掉！</p>
+<p>對&hellip;.跟 Synology 完全無關&hellip;.都是 HP 害的!!!!!!!! 去 Google 搜尋「Auto DoS NFS」也可以找到相關文章&hellip;.都是同一台= = 我還嘗試去找出原因&hellip;.但是找來找去&hellip;.我只能說這是個 bug 吧&hellip;..</p>
+<p>總之，這真是太杯具了&hellip;&hellip;&hellip;&hellip;..</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2012-08-01</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/mayday-washer/">
+			Next<br>五月天 - 洗衣機
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/software-performance-tuning/">
+			Previous<br>導讀與心得：關於軟體的性能調校
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

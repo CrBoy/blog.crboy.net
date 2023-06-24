@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>視覺設計 on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/%E8%A6%96%E8%A6%BA%E8%A8%AD%E8%A8%88/</link>
+    <description>Recent content in 視覺設計 on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Fri, 27 Sep 2013 02:21:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/%E8%A6%96%E8%A6%BA%E8%A8%AD%E8%A8%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>好用的 Mockup / Wireframe 工具：Balsamiq Mockups</title>
+      <link>https://blog.crboy.net/posts/balsamiq-mockups/</link>
+      <pubDate>Fri, 27 Sep 2013 02:21:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/balsamiq-mockups/</guid>
+      <description>對於一個美術白癡來說，要設計一個網站的外觀，實在有點困難。有時候要把心中構想先畫出來給人看，都覺得力不從心，所以只好直接寫一個網頁出來，調 CSS 調老半天，只為了把心中的畫面呈現給人「看看再說」。上面所說的作法，做出來的東西比較類似於 prototype，也就是已經包含了部分 CSS/JavaScript 的完整網頁，也許缺的只是真正會 work 的功能還有各種比較細節的調整而已。但萬一這樣做出來的東西不合人家(也許是主管、客戶，甚至是自己)的胃口，那花的這些時間就算沒有全部白費，也浪費掉不少了。
+或許有人會說，「我寫 prototype 超快我超強！」但你再強你有人家設計師用 photoshop 隨便畫畫強嗎？雖然人家畫出來的就是一張圖，不會動也不能點，但是省時省力，又能把想表現的重點突顯出來，用來作為前期的討論跟比較相當適合！可能講成這樣還是有人鐵齒&amp;hellip;那試想一個狀況：客戶看了你的 prototype 之後，跟你講了一堆元件說要換位置，下面這個按鈕移到上面去(立刻修改HTML)，這個選單要大一點(趕快調整 font-size, width, height，啊破版了再改一下另外那個&amp;hellip;)，這些東西的間距要小一點，整個寬度要一樣(調 margin 調老半天)&amp;hellip;..總而言之，對於外觀的要求，在圖片上討論常常比在程式碼中討論來得容易，所以也才有所謂的 wireframe 與 mockup 的出現。
+這邊不深究 wireframe 與 mockup 兩者的差別，下面通通用 mockup 來表示。Mockup 是一種用來呈現成品大致外觀的工具，他不能拿來使用，但是可以讓人容易想像成品的呈現方式 (人類果然是視覺的動物&amp;hellip;)。以前看過一些人是用 photoshop 之類的影像處理軟體在畫 mockup，之後才去作切版套版&amp;hellip;但對於一個美術白癡而言實在太困難了，小弟實在是 photoshop 苦手orz。好在有人推薦了這套工具：Balsamiq Mockups，他是一個很好用的畫 mockup 工具，內建數十種常用元件，可以用來設計網站、視窗程式或是手機介面。下面就直接來介紹一下。
+下載跟安裝都很簡單，不多說了，Google 一下或是點上面的連結就可以下載&amp;hellip;.我是在 Mac 上安裝的，但他也有 Windows 跟 Linux 版，甚至還有 Google Drive 的 plugin （！）
+這是開啟後的畫面，可以看到左下角指出我只有 7 天的試用期，購買的話則是美金 $79，其實對我來說有點貴XD 但如果是工作所需的話，其實這個價倒不會有什麼問題&amp;hellip;
+只要花幾分鐘，從上面拉一些元件下來，打幾個字(不打也沒關係，他都有預設的文字)，就可以快速「畫」出一個網站&amp;hellip;我實在很喜歡這個 browser window，讓我畫出來的東西突然加了20分&amp;hellip;.XD
+覺得中間的框框實在不太好看&amp;hellip;所以就塞了點假文章進去。(我用了一個英文的假文產生器，如果想寫中文的可以參考看看和多的中文假文產生器) 嗯&amp;hellip;.看起來還算有模有樣呢~
+裡面的元件實在太多了，每次都要用選的很麻煩，如果知道大概名字的話，可以透過左上角的 Quick Add 直接搜尋加入
+元件中文字的設定也很簡單，常常都是簡單打個字他就會幫你做出想要的東西了，前提當然是元件要用對&amp;hellip;每個元件預設都有範例可以依循，所以不用擔心不會打，基本的用法都已經在範例中了！
+每個元件也都有相關的一些外觀設定可以用，可以隨意玩玩</description>
+    </item>
+    
+  </channel>
+</rss>

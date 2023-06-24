@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html><head>
+<title>HTTP 通訊簡介</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%89%8d%e8%a8%80" class="nav-前言">
+									前言
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#osi-%e7%b6%b2%e8%b7%af%e4%b8%83%e5%b1%a4%e6%9e%b6%e6%a7%8b" class="nav-osi-網路七層架構">
+									OSI 網路七層架構
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%b6%b2%e8%b7%af%e6%96%b9%e9%9d%a2%e7%9a%84%e5%9b%9e%e7%ad%94" class="nav-網路方面的回答">
+									網路方面的回答
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%97%9c%e6%96%bc-server-%e7%ab%af%e7%9a%84%e5%9b%9e%e7%ad%94" class="nav-關於-server-端的回答">
+									關於 server 端的回答
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#web-server" class="nav-web-server">
+									Web Server
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#application-server" class="nav-application-server">
+									Application Server
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%8d%e4%bd%bf%e7%94%a8-framwork-%e7%9a%84-application" class="nav-不使用-framwork-的-application">
+									不使用 framwork 的 application
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bd%bf%e7%94%a8-framwork-%e7%9a%84-application" class="nav-使用-framwork-的-application">
+									使用 framwork 的 application
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#application-server-%e8%b7%9f-application-%e7%b6%81%e5%9c%a8%e4%b8%80%e8%b5%b7%e7%9a%84%e7%8b%80%e6%b3%81" class="nav-application-server-跟-application-綁在一起的狀況">
+									Application Server 跟 Application 綁在一起的狀況
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e9%97%9c%e6%96%bc-client-%e7%ab%af%e7%9a%84%e5%9b%9e%e7%ad%94" class="nav-關於-client-端的回答">
+									關於 client 端的回答
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%97%9c%e6%96%bc-http-protocol-%e6%9c%ac%e8%ba%ab%e7%9a%84%e5%9b%9e%e7%ad%94" class="nav-關於-http-protocol-本身的回答">
+									關於 HTTP protocol 本身的回答
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%b5%90%e8%aa%9e" class="nav-結語">
+									結語
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    HTTP 通訊簡介
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2015-08-10 16:19
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/web">web</a>
+                                &nbsp;
+                            
+                                <a href="/tags/interview">interview</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>從網址列按下 enter 後，到網頁畫面顯示出來，這中間發生了哪些事？</p>
+<h1 id="前言">前言</h1>
+<p>我一直很喜歡的一個面試題，我決定今天把它拿出來告訴大家，歡迎參考，條件是如果有什麼有趣的回饋請一定要讓我知道！:P<br>
+每次面試工程師 (敝公司會接觸到的是 web 前後端以及 mobile app 工程師) 的時候，我幾乎都會問這個問題：「從網址列按下 enter 後，到網頁畫面顯示出來，這中間發生了哪些事？」這是一個好像很空泛卻又很實際的問題，我則是認為這個問題可以問出受試者對哪個領域較熟悉。<br>
+舉例來說，如果對方說了「瀏覽器會從 server 讀網頁跟 CSS 還有 JavaScript 回來，然後根據 HTML 產生 DOM，並根據 CSS 裡面描述的規則，對 DOM 中的元素進行排版，並且執行 JavaScript」這樣的話，那你可以猜測他應該比較熟悉前端。如果對方說的是「瀏覽器會送出 request 到 server，server 收到之後會先執行指定的 controller 裡面的 method，然後去存取資料庫把資料撈出來並顯示 view 回傳給瀏覽器」，那這個人應該曾經用某個後端的 framework 寫過網頁。又或是「server 會執行指定的 php 檔案，然後把執行結果顯示在瀏覽器上」，他可能是個比較資淺的 php 工程師 (因為講得很粗略)。我碰過一個有趣的例子，他跟我說的是「瀏覽器會先去找 DNS，解出主機的 IP&hellip;」，那表示他至少知道 DNS 這個東西XD。<br>
+總之，這個問題其實相當開放的，牽扯到的東西也滿多的，下面就來講講我會怎麼對付這個問題。</p>
+<h1 id="osi-網路七層架構">OSI 網路七層架構</h1>
+<p>現在的網路世界，可以被分成很多層，每一層各自有他的功能。參考<a href="https://en.wikipedia.org/wiki/OSI_model">維基百科上的 OSI 頁面</a>，看出可分為 physical, data link, network, transport, session, presentation, application 等 layer。由於這個問題屬於較上層相關的問題，所以通常會傾向從 application layer 的角度回答，也就是關於 HTTP protocol 本身，以及處理 HTTP protocol 的應用程式等等。不過，由於網路本身也是很重要的，所以如果能夠從 SSL, TCP/IP, DNS, 防火牆等等角度去敘述，也會是個有趣的答案。</p>
+<h1 id="網路方面的回答">網路方面的回答</h1>
+<p>HTTP 一般走的是 TCP 的 port 80，HTTPS 一般是走 TCP port 443，有些 web server 可能會因為特殊原因開在 8000 或是 8080 等等，都滿常見的。不過其實走哪個 port 都可以，只要是 TCP 就好。(唔，其實我不知道 HTTP 能不能建構於 UDP 之上，我想技術上是可行的，但是有沒有大家共通的實作就是個問題了，所以這邊不討論)<br>
+如果提到了 TCP，那就可以進一步討論到 TCP 的 3-way handshaking，至少一般會了解到 SYN, SYN/ACK, ACK 這個過程。至於關閉連線的 RST&hellip;我承認我忘了 (這篇文章是在搭車的時候抽時間寫的，沒有網路就不查資料了XD)，大致上是 RST, ACK + RST, ACK 之類的的吧&hellip;&hellip;.<br>
+再底層有 IP 嘛，那就可以討論到像是 DNS 的解析 (DNS 用什麼 protocol 傳送資料呢？:P)，拿到 IP 之後，資料要怎麼送出去？路由 (routing) 可能經過什麼地方？再更進一步，IP 的封包有沒有可能偽造來源？</p>
+<h1 id="關於-server-端的回答">關於 server 端的回答</h1>
+<p>由於應用層有很多部分可以討論，所以分開來講。server 上應該會有個 web server 去 listen port 80 (又跟 TCP 扯上關係了！)，這個 server 可能是 apache、nginx、IIS 或是 lighttpd 之類的 general 的 web server，又或者是你的應用程式直接就自己 listen 80 port，比方說 rails 的 dev server: webrick，或是 thin, unicorn、php 的 php-fpm 等等。</p>
+<h2 id="web-server">Web Server</h2>
+<p>web server 是負責接受 http request 的。在 web server 的後面，需要有人負責處理 http request。有可能你的 web server 本身就具備處理 request 的能力，比方說裝了 mod_php 的 apache，或是有 passenger 的 nginx 等等。又或者 web server 只作為一個 reverse proxy，將 http request 轉送給知道怎麼處理的 server。轉送的方式可能透過某個 port，又或是某個 socket file (如果知道這個，應該是有管過或設定過 server 的人)。</p>
+<h2 id="application-server">Application Server</h2>
+<p>那麼 http request 要怎麼處理呢？由於 http request 就只是一串文字，包含了 header 跟 body (或說 content、payload，我不確定有沒有正式正確名稱)，一般是將它解析、轉換成特殊格式，好讓後面的應用程式方便處理。這邊就會有些被定義好的界面，像是以前常聽到的 CGI、FastCGI、uWSGI、Rack&hellip;等等，而我們一般寫的 web 應用程式就是接上這些界面去實作，而不用自己 parse 純文字的 http protocol。<br>
+進入真正的 user 寫的 application 這邊，以我自身的經驗又可根據是否使用 framework 分成兩類。</p>
+<h2 id="不使用-framwork-的-application">不使用 framwork 的 application</h2>
+<p>不用 framework 的經典例子大概就是 php 了。PHP 因為以前 mod_php 安裝很方便 (至少我是這樣覺得啦)，所以到現在依然很紅。幾乎所有 php 入門書都教你寫單純的 php 去產生網頁，簡單來說就是&hellip;.連到哪個路徑就執行哪個檔案裡的程式碼，然後把印出來的結果傳回給 client 端。寫單純 php 的人，大概都用過 $_GET, $_POST 這些 global array，這些 array 的值就是 application server (或是 web server 的某個 module，如 mod_php) 幫你設定好，傳進來給你的 application 用的。最後印出來的資料 (比方說透過 <code>echo &quot;&lt;p&gt;這是一個 &lt;marquee&gt;php 網頁&lt;/marquee&gt;&lt;/p&gt;&quot;</code> 印出來的) 也會交由他們負責回傳給 client。<br>
+(碎碎念：就是因為這些東西包裝得太好了，才會一堆人連 server-side 跟 client-side 的程式執行順序都搞不清楚&hellip;)</p>
+<h2 id="使用-framwork-的-application">使用 framwork 的 application</h2>
+<p>用 framework 的話，狀況就複雜多了，程式的執行順序要看 framework 怎麼設計。以我接觸過的 framework 而言，會有一個單一進入點，request 進來之後，會先進入一個 router，不是網路上的路由器那個 router，是 URI router。URI router 的用途是根據 request 的 http method、URI (簡單說就是整串網址) (通常是這兩個) 決定要執行哪一段程式。以 (Web-)MVC framework 來說，就是某個特定的 controller 的某個特定的 method。或是像有些 framwork 的設計，讓你直接把 method、URI 跟 controller 寫在一起 (像是 Sinatra, Flask)，也是還不賴這樣。又或是像 ASP.net WebForm 的設計，會直接讀取到路徑對應的 .aspx 檔案，然後把它 render 出來，並把程式部分的那些 handler 用奇妙的方式塞進 render 出來的 html 裡面&hellip;我是一直覺得這樣很亂我都被搞混啦XD<br>
+題外話：其實雖然現在公司寫 rails，我也不是完全清楚 rails 完整的執行流程細節&hellip;比方說 app server (unicorn) 進到 rails 的進入點是哪邊 (我只知道 config.ru 是 rack 的 initialize)，他又是根據什麼去找到 routes.rb 這些的&hellip;<br>
+進到 controller 以後，就會&hellip;.執行那個 method XD。不過如果是 rails developer 的話，可能會提到會先執行 ApplicationController 裡面寫的某些東西，或是會用到 before_action 之類的。當然 controller 中會去存取 model，然後 render view 之類的，這些就是各 framework 的設計不同的地方了&hellip;</p>
+<h2 id="application-server-跟-application-綁在一起的狀況">Application Server 跟 Application 綁在一起的狀況</h2>
+<p>其實 application server 也不一定會跟 application 分開，比方說有些人可能喜歡自己處理 raw HTTP request，自己用 C 語言寫個程式，開了 socket 收文字資訊自己 parse&hellip;又或是像 node 世界，有些簡單的小應用就自己開 socket 自己處理資訊這樣 (但我不會寫 node，如果有誤解的話歡迎指教)。</p>
+<h1 id="關於-client-端的回答">關於 client 端的回答</h1>
+<p>Server 端講完了，來講講我比較不熟的 client 端 (又稱為前端、瀏覽器端)。前端嘛&hellip;就把 HTML 建成 DOM，然後 parse 完 CSS 把它裡面的規則拿來排版，最後再執行 JavaScript。(完)<br>
+&hellip;.開玩笑的，不過這邊我比較組織不起來，可能有點雜亂。一開始瀏覽器會把 user 輸入的資訊 (網址、表單內容) 組合成 HTTP request，這個 request 是一個單純的文字串流，然後就透過 TCP 送出去了&hellip;經過 server 端的一番大戰之後，瀏覽器會收到一個回應 (http response)，通常內容會是一份 html 資料啦，這時候瀏覽器就會開始讀取、解析這個 html。<br>
+HTML 中會有些 tag 參考到其他資料嘛，比方說像是 link (通常用來讀 css)、script (通常用來參考外部 JavaScript。VBScript？可以吃嗎？)、img (通常用來放圖片)，當瀏覽器解析到這些外部資源的時候，就會再開一個連線，去讀取外部資源 (簡單來說意思是，下載那些檔案)。當瀏覽器讀到 js 檔案，或是一段 js 程式碼的時候，會停下解析 html 的工作，去執行 js。<br>
+瀏覽器會在解析的時候就執行 js 的這個事實滿重要的，因為很容易害人踩到雷XD。如果你把 js 放在 html 的 head 中，當你執行到這段 js 的時候，html 的 body 根本還沒有讀到，也就是說 DOM 根本還沒建立。如果在 js 中企圖去操作 DOM (比方說，想用 jQuery 找出某個 DOM element 並修改它)，那會連找都找不到&hellip;這也就是為什麼很多 jQuery 範例都會要你用 <code>$(function(){ /*...*/ })</code> 把要做的事情包裝起來。<br>
+再講個題外話，如果瀏覽器是透過 js 送出 request 的話，它應該是透過 XHR (XmlHttpRequest) 物件去送的，也就是俗稱的 AJAX request。這個狀況下，server 回的就可能不是 html 了。一般狀況可能會拿到一個 json 格式的資料，又或者是 xml 格式的資料，當然也有拿到 html 片段的 (像是 ASP.Net 的 UpdatePanel，就是個會去拿 HTML 片段回來顯示的玩意兒)。在處理上的話，就不會把焦點放在 rendering，而會放在 json/xml 格式的解析，還有針對 load 回來的資料的處理了。<br>
+對了，關於瀏覽器這邊，由於瀏覽器發展也是滿快的，我所理解的知識說不定已經過時了，也歡迎各方大德多多指教。&lt;()&gt;</p>
+<h1 id="關於-http-protocol-本身的回答">關於 HTTP protocol 本身的回答</h1>
+<p>上面其實提到好幾次會扯到 HTTP protocol 的東西，像是 request/response，或是像資料格式之類的。有些人也許會注意到：既然瀏覽器送出資料，可能會拿到各種不同格式的資訊，那瀏覽器又是怎麼知道資料是什麼格式的呢？用「副檔名」嗎？<br>
+其實 HTTP 的 request/response 並不單純只是資料，而是還有一些 metadata 的，也就是 http 的 header (跟 html 的 <code>&lt;head&gt;</code> 不一樣噢！)。其實應該要用範例講比較清楚&hellip;可是我現在懶得貼範例 (攤)。<br>
+先來解釋 HTTP request header：關於 request 的 metadata 無非就是要取得什麼資料，主機名稱為何，接受什麼格式、編碼、語言的回應，還有接不接受回傳資料先壓縮過之類的。另外，如果有給 payload (最常見就是 POST 的時候)，那還會有個欄位用來描述 payload 的長度 (byte 數)。<br>
+至於 response header，首先最重要的就是狀態碼。有在上網的人大概比較常聽到「404 Not Found」吧，那個 404 其實就是狀態碼。除此之外常見的還有像是「200 OK」、「302 Found」、「500 Internal Server Error」、「403 Forbidden」 、「400 Bad Request」之類的&hellip;反正很多啦XD 簡單分類：2xx 表示請求成功，3xx 表示重新導向、4xx 表示 (server 認為) client 端有錯誤，5xx 表示 server 自己有錯誤。除了狀態碼以外，header 剩下的部分差不多就是回應 request 裡面的要求了，比方說 Content-Type、Content-Encoding 之類的，還有壓縮與否之類的資訊。<br>
+對 http request/response 有興趣的話，只要打開瀏覽器的開發者工具 (Chrome, Firefox, Safari, IE 都有內建)，選擇觀看網路流量，就可以看到 request/response 的內容了。</p>
+<h1 id="結語">結語</h1>
+<p>其實寫了這麼亂一篇，還是覺得不夠全面，畢竟一開始我提出來的問題就是個開放式的問題&hellip;回頭看看這篇文章，發現如果是另一個人來看我的文章，也會抓出我對於哪些方面的技術接觸較多，哪些比較少，還有哪些地方其實我一竅不通XD<br>
+期許這篇文章可以對一些朋友有點幫助，也希望各路高手如果抓到什麼問題，或是覺得哪邊值得討論，都可以提出來。雖然我很懶 (XD 要不是搭車沒有網路用，我可能一輩子不會把這篇文章寫出來)，但我還是會儘量把上面寫的東西修得更完整的啦&hellip;.</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2015-08-10</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/move-to-hexo/">
+			Next<br>搬家到 Hexo
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/evernote-web-clipper-noscript/">
+			Previous<br>Evernote Web Clipper &#43; NoScript 在 Firefox 上的擷取問題
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%89%8d%e8%a8%80" class="nav-前言">
+									前言
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#osi-%e7%b6%b2%e8%b7%af%e4%b8%83%e5%b1%a4%e6%9e%b6%e6%a7%8b" class="nav-osi-網路七層架構">
+									OSI 網路七層架構
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%b6%b2%e8%b7%af%e6%96%b9%e9%9d%a2%e7%9a%84%e5%9b%9e%e7%ad%94" class="nav-網路方面的回答">
+									網路方面的回答
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%97%9c%e6%96%bc-server-%e7%ab%af%e7%9a%84%e5%9b%9e%e7%ad%94" class="nav-關於-server-端的回答">
+									關於 server 端的回答
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#web-server" class="nav-web-server">
+									Web Server
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#application-server" class="nav-application-server">
+									Application Server
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%8d%e4%bd%bf%e7%94%a8-framwork-%e7%9a%84-application" class="nav-不使用-framwork-的-application">
+									不使用 framwork 的 application
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%bd%bf%e7%94%a8-framwork-%e7%9a%84-application" class="nav-使用-framwork-的-application">
+									使用 framwork 的 application
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#application-server-%e8%b7%9f-application-%e7%b6%81%e5%9c%a8%e4%b8%80%e8%b5%b7%e7%9a%84%e7%8b%80%e6%b3%81" class="nav-application-server-跟-application-綁在一起的狀況">
+									Application Server 跟 Application 綁在一起的狀況
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e9%97%9c%e6%96%bc-client-%e7%ab%af%e7%9a%84%e5%9b%9e%e7%ad%94" class="nav-關於-client-端的回答">
+									關於 client 端的回答
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%97%9c%e6%96%bc-http-protocol-%e6%9c%ac%e8%ba%ab%e7%9a%84%e5%9b%9e%e7%ad%94" class="nav-關於-http-protocol-本身的回答">
+									關於 HTTP protocol 本身的回答
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%b5%90%e8%aa%9e" class="nav-結語">
+									結語
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

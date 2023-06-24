@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>php on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/php/</link>
+    <description>Recent content in php on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Fri, 21 Sep 2012 00:03:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PHP 自動發信程式</title>
+      <link>https://blog.crboy.net/posts/php-email-by-gmail/</link>
+      <pubDate>Fri, 21 Sep 2012 00:03:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/php-email-by-gmail/</guid>
+      <description>之前為了發 COSCUP 的通知信，參考網路上的範例用 PHP 寫了個小程式。我把範例程式放在這個 gist 上：https://gist.github.com/3135053
+其實明顯看得出來，程式沒什麼架構，純粹只是為了可以 work 而寫的拋棄式程式。不過丟出來一方面可以當自己的筆記，以後要找比較好找，另一方面，也許另一個人想要寫類似的小玩具的時候就可以參考了 :P
+以下是一些簡單的介紹。
+我使用這個程式的狀況是，我需要寄一封信給很多人，而我又希望每個人收到的信，收件者只有自己，而且信件開頭還會寫上他的名字，這樣比較貼心。所以沒辦法用「寄給自己 and BCC」的方法達成，只好透過程式完成。
+這個小程式實際上是透過一套稱為 PHPMailer 的 library 做真正的寄信動作，所以困難的部分都被它做走了！我們只要把該設定的東西設定一下就差不多。要設定的項目大概有這些：
+SMTP server 資訊 (主機、port、認證方式&amp;hellip;等) 登入資訊 (我使用 Gmail 寄信，所以需要登入) 寄件者與收件者資訊 信件資訊 (標題與內文) 在我這邊，每封信不同的地方只有收件者與內文，所以我會每次重新產生並設定，其餘部分都在最前面寫死。
+收件者與內文的部分，我是先將收件者名單從 Google Spreadsheets 中匯出成 .tsv 檔 (因為比較容易 parse)，再直接讀入。這個寫在 function parse_name_list_tsv($filename) 中。然後用一個自己刻的簡單 template tool (function fill_template($content, $data), 才 4 行XD) 去加上 user-specified 的資料，最後送信收工！
+一些有趣的小細節：
+忘記為什麼了，我一開始跑起來會出現跟時區有關的錯誤，所以必須加上 date_default_timezone_set(&#39;Asia/Taipei&#39;); 來避免這個問題 因為我的 Google Account 有開啟兩階段驗證 (2-Step Verification)，而我們這種小工具當然不可能支援，所以要為我們的程式特別創造一組應用程式密碼，才能正常使用喔！ 一開始不小心抓到舊版的 PHPMailer，它有個 bug 就是，CC 的人會變成 BCC (或是反過來&amp;hellip;我忘了)，所以我直接從它的 source code 裡找到有問題的那段修掉了 (open source rocks!</description>
+    </item>
+    
+    <item>
+      <title>在 .htaccess 裡面修改 php 設定值</title>
+      <link>https://blog.crboy.net/posts/php-setting-in-htaccess/</link>
+      <pubDate>Wed, 19 Sep 2012 10:53:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/php-setting-in-htaccess/</guid>
+      <description>這篇筆記拖稿好久了&amp;hellip;.其實應該很短的，所以趕快寫一寫。
+有時候在弄一些 php 相關的東西的時候，需要設定一些模組，例如之前用過的 Xdebug，但是每次設定 php.ini 就要重新啟動 apache server，很麻煩還是其次，有時候上線的系統這樣一搞就很多人掰了&amp;hellip;..XD 所以我們需要一個修改後立即生效的做法。
+.htaccess 是非常實用的做法，只要先在 apache 的設定檔裡去 AllowOverride Options 即可使用 (我自己的機器通常會在特定目錄直接 AllowOverride All)。那麼，到底該怎麼做呢？下面是範例：
+php_value xdebug.auto_trace on php_value xdebug.trace_output_dir /tmp/xdebug php_value xdebug.collect_params 3 php_value xdebug.profiler_enable on php_value xdebug.profiler_output_dir /tmp/xdebug 應該滿好懂的？其實就是&amp;hellip;前面先指定 php_value，後面不用等號，直接寫設定值即可。
+這樣做出來的結果，可以在 phpinfo 裡面看到成效。phpinfo 下方的 Configuration 那邊，設定值的部分有三欄，分別是 Directive、Local Value、Master Value，Directive 就是設定值的名稱，Local Value 是在該目錄真的會生效的設定值，Master Value 則是全系統的設定值。如果你覆蓋了全系統的設定，那麼你會看到你的 Local Value 跟 Master Value 不同，應該滿好認的。
+透過這個方式，我們可以隨時去修改 php 的設定值，對於一些測試性的行為很有幫助！:D</description>
+    </item>
+    
+    <item>
+      <title>Xdebug 遠端除錯 (Remote Debugging)</title>
+      <link>https://blog.crboy.net/posts/xdebug-remote-debugging/</link>
+      <pubDate>Sat, 30 Jun 2012 01:05:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/xdebug-remote-debugging/</guid>
+      <description>簡介 PHP 的除錯利器 - Xdebug 也可以進行互動式的除錯。什麼是互動式的除錯呢？當程式在執行中的時候，如果可以把程式的執行控制權攔截下來，那麼就可以根據自己的需求，單步執行我們的程式，並且可以監控程式的狀態。這些狀態包含了像是：目前執行到哪一行程式、目前所有的變數與其值、function 的 call stack (註) 等等。除了看到狀態以外，一個完善的 debugger 還允許開發者動態對變數進行修改，或是動態改變執行流程。
+註：Call stack 指的是 function 呼叫的順序，如 A 呼叫 B，B 呼叫 C，則 call stack 的長相就像是把 B 疊到 A 上，再把 C 疊到 B 上，當 C 執行完畢後，就把 C 從 stack 中取走，如果接下來 B 又呼叫了 D，那麼就把 D 疊上來。所以在任何時候查看 call stack 都可以知道 function 間呼叫的從屬關係。關於 stack 與 call stack 的更多資訊都可以在網路上查到更清楚的解釋，這邊就不獻醜。
+那麼要怎麼利用 Xdebug 進行互動式的除錯呢？由於很多 PHP 程式都是設計用來產生網頁的，所以常常會掛在 web server 底下執行，而非由我們手動去跑程式。Xdebug 身為一個 PHP module，他可以對執行流程進行監控，還可以藉由另外的通道跟開發者進行通訊，也就是說，開發者可以透過 Xdebug 對執行中的 PHP 進行控制。</description>
+    </item>
+    
+    <item>
+      <title>PHP Informix on Linux 安裝與設定</title>
+      <link>https://blog.crboy.net/posts/php-informix-on-linux/</link>
+      <pubDate>Fri, 15 Jun 2012 06:43:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/php-informix-on-linux/</guid>
+      <description>環境
+Ubuntu 12.04 LTS Apache 2.2.22 PHP 5.3.10 如果沒有 apache 與 php 環境可由套件庫安裝
+$ sudo apt-get install apache2 php5 為了編譯模組，需要安裝 php5-dev
+$ sudo apt-get install php5-dev 為了取得 PECL 上的原始碼，需要安裝 subversion (即 SVN)
+$ sudo apt-get install subversion 安裝 Informix Client SDK 在這個連結可以下載 Informix Developer Edition，有免費的版本，但僅供開發使用且有使用資源上的限制。我抓下來的檔案為 iif.11.70.UC5DE.Linux-RHEL5.tar。其實根據 [Install Informix on Debian] 這篇文章看來，應該是有單純的 ClientSDK 可以下載，但是我找不到&amp;hellip;
+將其解開
+$ cd &amp;amp;&amp;amp; mkdir informix &amp;amp;&amp;amp; cd informix $ tar -xf /PATH/TO/iif.11.70.UC5DE.Linux-RHEL5.tar 建立 informix 帳號與群組
+$ sudo addgroup --system informix $ sudo adduser --system informix --ingroup informix 開始安裝</description>
+    </item>
+    
+    <item>
+      <title>Xdebug 基礎安裝與使用</title>
+      <link>https://blog.crboy.net/posts/xdebug-installation-and-usage/</link>
+      <pubDate>Tue, 12 Jun 2012 23:39:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/xdebug-installation-and-usage/</guid>
+      <description>環境 Ubuntu 12.04 LTS Apache 2.2.22 PHP 5.3.10 安裝 透過套件庫安裝
+$ sudo apt-get install php5-xdebug 設定 # /etc/php5/conf.d/xdebug.ini zend_extension=/usr/lib/php5/20090626+lfs/xdebug.so xdebug.auto_trace = on #自動進行 function trace xdebug.trace_output_dir = /tmp/xdebug #trace log 的位置 xdebug.collect_params = 3 #設定顯示參數內容 xdebug.profiler_enable = on #啟用 profiler xdebug.profiler_output_dir = /tmp/xdebug #profile log 的位置 建立記錄檔所需目錄
+$ mkdir /tmp/xdebug &amp;amp;&amp;amp; chmod 777 /tmp/xdebug 使用 每當你執行 php 的時候 (不管是透過 apache 或是用 command line 執行)，會在 /tmp/xdebug 底下產生 log 檔。trace.*.xt 是 function trace 的 log，而 cachegrind.</description>
+    </item>
+    
+    <item>
+      <title>PHP imagettftext() could not read font</title>
+      <link>https://blog.crboy.net/posts/php-imagettftext-could-not-read-font/</link>
+      <pubDate>Thu, 31 May 2012 14:03:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/php-imagettftext-could-not-read-font/</guid>
+      <description>今天撞牆撞很大&amp;hellip;.由於手邊在碰的一個專案裡面需要產生類似驗證碼的圖片，他用了 imagecreate(), imagettftext(), imagesetpixel() 這些 PHP functions。聽說這支程式「曾經」是可以 work 的，不過在我手上就不 work，為了證明不是人品問題，一定要把這個 bug 修掉！
+一開始我傻傻的在程式碼裡面翻找，但這樣實在太沒效率了，身為一個專業的&amp;hellip;.呃&amp;hellip;雜工，一定要懂得善用工具！所以我用了&amp;hellip;.. command line php&amp;hellip;..
+$ php image.php &amp;gt; /dev/null 對啦，只不過是測試環境從 apache 換到 command line 底下了，這樣是有比較強嗎？有喔~因為我的測試環境有裝 xdebug，只要有 enable 就可以在 command line 底下看到 debugging messages，不用特別打開 stack trace。至於最後面把 standard output 導向 /dev/null 是為了不想看到他輸出的那張不完整的圖，那會干擾畫面。
+首先第一步，我忘記詳細的訊息了，大意是說 imagecreate() is undefined 等等，這時候當然要去找找這函式有沒有需要什麼相依的 library 啊！找了一下發現，這些函式是由 PHP 的 GD module 所提供的，所以我迅速的安裝了 GD 模組&amp;hellip;
+$ sudo apt-get install php5-gd 接著，才是重頭戲的開始&amp;hellip;.
+裝好 GD 模組之後，那些 function 都可以使用了，但是我卻一直收到這個錯誤訊息&amp;hellip;.
+PHP Warning: imagettftext(): Could not read font .</description>
+    </item>
+    
+  </channel>
+</rss>

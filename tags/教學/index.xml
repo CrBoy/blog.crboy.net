@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>教學 on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/%E6%95%99%E5%AD%B8/</link>
+    <description>Recent content in 教學 on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 19 Sep 2012 13:56:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/%E6%95%99%E5%AD%B8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gitit 簡介</title>
+      <link>https://blog.crboy.net/posts/introduction-to-gitit/</link>
+      <pubDate>Wed, 19 Sep 2012 13:56:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/introduction-to-gitit/</guid>
+      <description>最近打算發一系列的 Gitit 相關文章，希望不要拖稿拖太久&amp;hellip;.萬一去當兵了，可能會拖很久很久這樣XD
+之前我一直在尋找一個好用的共同協作平台系統，原因是我覺得 MediaWiki 的語法實在太難寫了&amp;hellip;.特別是當我看到 Ubuntu-TW Wiki 的首頁原始碼的時候，都快吐血了&amp;hellip;..當下覺得我智商不足&amp;hellip;..orz 但後來一直尋找，尋找的目標是：語法好寫、可即時線上協作的 wiki，所謂的「即時線上協作」就是像 Google Docs 那樣有可以多人同時編輯的頁面這樣。不過一直都找不到我想要的東西&amp;hellip;.即時線上協作有 etherpad-lite 這個 open source 專案，但是他是每個 pad 獨立的，而使用 Markdown 語法的 wiki 也不是沒有，但沒有勇氣(?)去嘗試&amp;hellip;.
+一開始知道 Gitit，是 @zeroplex (日落) 在噗浪上講的。因為之前也跟日落提過我想要尋找一個好用的 wiki system 這件事，他剛好不知道從哪裡獲得資訊，就分享給我了。結果沒想到，一玩下去，驚為天人啊XD
+我的第一步當然是先去 Google 一下，看有沒有什麼相關訊息。直到現在這個時間點，去 Google 「gitit」還很容易找到 walkingice 的這篇文章，另外當然還是要提一下 Gitit 官方網站。
+Gitit 這東西，是一個用 git 當 back-end datastore 的 wiki 系統，而且自帶 web server，不需要諸如 apache 或是 nginx 的存在也可以運作。Wiki 的語法使用 Markdown，方便好寫，同時也很容易用於其他用途，可攜性佳。
+簡單的 survey 過後，我決定也來試試看。沒想到在 Ubuntu 下安裝跟啟動都超簡單的&amp;hellip;.
+安裝：sudo apt-get install gitit
+建立目錄：mkdir wiki</description>
+    </item>
+    
+    <item>
+      <title>Xdebug 遠端除錯 (Remote Debugging)</title>
+      <link>https://blog.crboy.net/posts/xdebug-remote-debugging/</link>
+      <pubDate>Sat, 30 Jun 2012 01:05:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/xdebug-remote-debugging/</guid>
+      <description>簡介 PHP 的除錯利器 - Xdebug 也可以進行互動式的除錯。什麼是互動式的除錯呢？當程式在執行中的時候，如果可以把程式的執行控制權攔截下來，那麼就可以根據自己的需求，單步執行我們的程式，並且可以監控程式的狀態。這些狀態包含了像是：目前執行到哪一行程式、目前所有的變數與其值、function 的 call stack (註) 等等。除了看到狀態以外，一個完善的 debugger 還允許開發者動態對變數進行修改，或是動態改變執行流程。
+註：Call stack 指的是 function 呼叫的順序，如 A 呼叫 B，B 呼叫 C，則 call stack 的長相就像是把 B 疊到 A 上，再把 C 疊到 B 上，當 C 執行完畢後，就把 C 從 stack 中取走，如果接下來 B 又呼叫了 D，那麼就把 D 疊上來。所以在任何時候查看 call stack 都可以知道 function 間呼叫的從屬關係。關於 stack 與 call stack 的更多資訊都可以在網路上查到更清楚的解釋，這邊就不獻醜。
+那麼要怎麼利用 Xdebug 進行互動式的除錯呢？由於很多 PHP 程式都是設計用來產生網頁的，所以常常會掛在 web server 底下執行，而非由我們手動去跑程式。Xdebug 身為一個 PHP module，他可以對執行流程進行監控，還可以藉由另外的通道跟開發者進行通訊，也就是說，開發者可以透過 Xdebug 對執行中的 PHP 進行控制。</description>
+    </item>
+    
+    <item>
+      <title>Gitolite 使用教學</title>
+      <link>https://blog.crboy.net/posts/gitolite-usage-tutorial/</link>
+      <pubDate>Tue, 26 Jun 2012 00:17:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/gitolite-usage-tutorial/</guid>
+      <description>首先，要使用 gitolite 一定得先會使用 git。下面就不贅述。
+初次設定 使用 gitolite 有以下兩個前置動作
+建立 ssh keypair
+使用 Linux 或 Windows 上的 Git Bash
+$ ssh-keygen -f mykey Generating public/private rsa key pair. Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in mykey. Your public key has been saved in mykey.pub. The key fingerprint is: xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx USER@HOST 這邊要注意幾個地方，-f 後面的參數表示檔名，可自行設定，此例中為 mykey。產生後會有兩個檔案，分別是 mykey.pub 跟 mykey，mykey.pub 是 public key (公鑰)，可以提供給你的 gitolite server 管理員，而 mykey 為 private key (私鑰)，相當於密碼，不可以洩漏給任何人。再來，passphrase 是用來保護 key 的密碼，也要牢記。在認證時，同時擁有 private key 與 passphrase 的人才能通過認證，這才是安全的手法。最後，當 key 產生之後，會印出 key 的 fingerprint (指紋)，是用來核對 public key 正確性用的。</description>
+    </item>
+    
+    <item>
+      <title>Gitolite 設定與管理</title>
+      <link>https://blog.crboy.net/posts/gitolite-settings-and-managements/</link>
+      <pubDate>Thu, 21 Jun 2012 01:57:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/gitolite-settings-and-managements/</guid>
+      <description>首先，要使用跟管理 gitolite 一定得先會使用 git。下面就不贅述。
+初次設定 對使用者而言，只要設定好 ssh host alias 即可。如果是 gitolite 管理者，還必須將 gitolite-admin 給 clone 下來，才能繼續後面設定的動作。
+設定 ssh host alias
+$ vim ~/.ssh/config host gitolite user git hostname localhost port 22 identityfile ~/.ssh/admin 這個設定的重點是指定連線時使用特定的 identity file (private key)，如此才能被 gitolite 認可為管理者 (gitolite 是看你用什麼 key 來決定你的身分)。記得 hostname 的部分要以自己的狀況更換成正確的主機位址。
+取得管理 gitolite 的 repository
+$ git clone gitolite:gitolite-admin 這個 repository 紀錄了所有 gitolite 的權限資料，包含所有 user 的 public key 與 repository 的存取權限設定。conf/gitolite.conf 中記載了所有專案的名稱以及每個 user 對專案的權限。而 keydir 中即為所有 user 的 keys。對 gitolite 的管理與設定都必須透過這個 repo 進行。</description>
+    </item>
+    
+    <item>
+      <title>Gitolite ver.3 (g3) 安裝筆記</title>
+      <link>https://blog.crboy.net/posts/gitolite-3-installation/</link>
+      <pubDate>Wed, 20 Jun 2012 01:50:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/gitolite-3-installation/</guid>
+      <description>Gitolite 是一個持續開發中的 git server 專案，自 2009 年開始後，至今已經發展到第 3 版，作者將其稱之為 g3 (之前的版本分別為 g1 與 g2)。由於 g3 相對於之前的版本，是整個重寫的專案，根據紀錄，g3 是大約今年 4 月才開始的，所以很多文件早已過時，只好慢慢研究作者提供的文件。整個專案都放在 github 上，並且作者也提供了相關文件，本文就是參考該文件寫成。
+我的操作環境是：
+Ubuntu 12.04 Git version 1.7.9.5 Perl 5.14 本文章假設使用者已經具備 git 的基本知識與操作技能，以及基本的 ssh 認知，不再贅述。
+準備步驟 伺服器上須先預備好以下套件
+Git 1.6.6 以上 Perl 5.8.8 以上 OpenSSH 產生管理者的 ssh key (此 key 將專門提供給 gitolite 管理者使用)
+$ ssh-keygen -t rsa -f &amp;lt;key_filename&amp;gt; 舉例：
+$ ssh-keygen -t rsa -f ~/admin 會產生 ~/admin 跟 ~/admin.pub 兩個檔案，分別是 private key 與 public key。</description>
+    </item>
+    
+    <item>
+      <title>Gitolite 2.2 安裝筆記</title>
+      <link>https://blog.crboy.net/posts/gitolite-22-installation/</link>
+      <pubDate>Mon, 18 Jun 2012 01:50:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/gitolite-22-installation/</guid>
+      <description>特別注意 - 為什麼標題要特別註明是 Gitolite 2.2？因為文章已經寫好之後才發現作者已經大幅更新版本。新版有文件在此。本文是以 ubuntu 12.04 套件庫中的 gitolite 2.2 作為安裝目標。
+Gitolite 是一個持續開發中的 git server 套件，本來還在糾結要玩 gitolite 或是 gitosis，決定兩個都嘗試看看後，發現本來打算先嘗試的 gitosis 很難找到來源，唯一找到的是原作者(吧)在 github 上的 repo，已經有 3 年沒更新了，於是決定直接嘗試 gitolite。搜尋了一下發現，原來 gitolite 是作者從 gitosis 的想法發展而來，本來是 gitosis + lite，但現在已經發展得比 gitosis 還強大了。而且從 gitolite 作者的 github repo 發現，上次更新是一週前，這表示它現在還是一個活躍且成長中的專案，當然就決定是他了！ (但其實後來才發現上次更新的是第 3 版，第 2 版現在只會修 bug 而已)
+我的安裝過程主要是參考 Tsung&amp;rsquo;s Blog 的這篇文章而成，但不曉得原因為何，我這邊碰到的狀況跟作者不太一樣，我想也許是他使用的是 Debian (?) 或者他用 Ubuntu 但是版本跟我不同吧。我還另外參考了這篇文章，裡面寫的東西滿豐富的。同時這裡也附上作者提供的文件。
+我的操作環境是：
+Ubuntu 12.04 Git version 1.7.9.5 Gitolite version: 2.2-1 本文章假設使用者已經具備 git 的基本知識與操作技能，不再贅述。另外如果是大部分其他系統的管理者，可能不習慣用 sudo，那麼就先切換到 root 再去執行動作即可。這邊為了保險起見，還是使用一般帳號進行設定。</description>
+    </item>
+    
+    <item>
+      <title>Git on Windows 安裝筆記</title>
+      <link>https://blog.crboy.net/posts/git-on-windows/</link>
+      <pubDate>Fri, 25 May 2012 00:25:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/git-on-windows/</guid>
+      <description>&lt;p&gt;Git 是一套很棒的分散式版本控制系統。不過由於它一直是在 Linux 上生長的，對於在 Windows 上使用來說其實稍嫌麻煩。&lt;/p&gt;
+&lt;h1 id=&#34;windows-上的各種-git&#34;&gt;Windows 上的各種 Git&lt;/h1&gt;
+&lt;p&gt;在網路上搜尋通常會找到 Git for Windows 跟 msysGit 這兩個不同的名詞，我過去一直沒辦法很清楚的把他們兩者區分開來。根據 &lt;a href=&#34;http://msysgit.github.com/&#34;&gt;msysgit 在 github 上的首頁&lt;/a&gt; 與 &lt;a href=&#34;http://stackoverflow.com/questions/3672272/msysgit-vs-git-for-windows&#34;&gt;StackOverflow 上的討論&lt;/a&gt;，我目前的理解是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;msysGit 是 msys + Git 的完整環境，包含了 build 程式用的 toolchain，同時他的執行檔是直接在 user (或者該說是 developer) 的機器上 compile 出來的，使用者隨時可以透過 &lt;code&gt;git pull&lt;/code&gt; 取得最新版的 msysGit 來編譯，算是給 git 開發者用的。&lt;/li&gt;
+&lt;li&gt;Git for Windows 可說是 msysGit 的「產出」，是預先 compile 好的 &lt;code&gt;git.exe&lt;/code&gt; 還有其他執行檔們&amp;hellip;其中只包含了基本的 msys 環境、有 bash、ssh、甚至 Git GUI 等工具，但是沒有 toolchain，適合單純使用（操作）git 的使用者安裝。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;另外還可能會找到一個更有名的東西，稱為 &lt;a href=&#34;http://code.google.com/p/tortoisegit/&#34;&gt;TortoiseGit&lt;/a&gt;，這是知名專案 &lt;a href=&#34;http://tortoisesvn.net/&#34;&gt;TortoiseSVN&lt;/a&gt; 的相關專案，顧名思義，就是烏龜殼包了 Git 啦！要注意的是，他只是一個 Git frontend，需要指定相關執行檔 (如 &lt;code&gt;git.exe&lt;/code&gt;) 的位置才能工作。特別的是，他本身附帶了 PuTTY 的 ssh client (&lt;code&gt;plink.exe&lt;/code&gt;)，讓使用者可以透過比較符合 windows 使用習慣的方式來使用 ssh，如果不是很熟 linux 或是 GUI 狂熱份子可能會比較喜歡。XD&lt;/p&gt;
+&lt;p&gt;註：知名專案 cygwin 也可以安裝 git 並在 command line 下使用，但對於沒在使用 cygwin 的使用者而言麻煩得多，故此處不介紹。&lt;/p&gt;
+&lt;p&gt;這篇文章分成三個部分：首先介紹 Git for Windows (免 compile 的那個) 的安裝，接著是 msysGit (需要 compile 的那個) 的安裝，最後會介紹 TortoiseGit 的安裝，並以一個簡單的 git clone 作為結束。如果是一般單純想在 windows 上用 git 的人，可以只看第一跟第三部分即可，第二部分就當作參考資料吧！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>「cannot open shared object file」的解決方案</title>
+      <link>https://blog.crboy.net/posts/solution-for-cannot-open-shared-object/</link>
+      <pubDate>Wed, 23 May 2012 15:20:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/solution-for-cannot-open-shared-object/</guid>
+      <description>有時候執行一些指令，會碰到下面這樣的訊息：
+error while loading shared libraries: libiconv.so.2: cannot open shared object file: No such file or directory 在這個例子中，我們的程式找不到 libiconv.so.2 這個 dynamic library。那麼應該怎麼解決呢？
+首先必須找到系統中的 libiconv.so.2，下面四條指令選一條作就好：
+$ locate libiconv.so.2 $ whereis libiconv.so.2 $ find /usr /lib -name libiconv.so.2 $ find / -name libiconv.so.2 2&amp;gt;/dev/null 這時候就可以找出函式庫位置，例如：/usr/local/lib/libiconv.so
+萬一沒有找出來的話，就要自行安裝了。這篇文章有教該如何安裝 libiconv，如果是其他函式庫的話可以自行變通。
+找到位置之後，應該怎麼做呢？如果我們有 root 權限的話，可以把函式庫所在路徑寫入 /etc/ld.so.conf，再重新產生 ld 的 cache 即可，如下：
+# echo &amp;quot;/usr/local/lib&amp;quot; &amp;gt;&amp;gt; /etc/ld.so.conf # 注意! 要用 &amp;gt;&amp;gt; 而非 &amp;gt;！ # ldconfig 在某些系統中，/etc/ld.so.conf 可能會預設加上 include /etc/ld.so.conf.d/*.conf 這樣的敘述，那們我們也可以把路徑放在那個目錄下：</description>
+    </item>
+    
+    <item>
+      <title>在 iPhone 上設定 Google 帳戶</title>
+      <link>https://blog.crboy.net/posts/google-account-on-iphone/</link>
+      <pubDate>Sun, 08 Apr 2012 01:42:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/google-account-on-iphone/</guid>
+      <description>今天來耍點小技巧衝文章數。
+最近打算把一些我會的技巧什麼的&amp;hellip;.把它們整理起來並寫出來，未來想要查閱也比較方便。
+恰好之前做過一份簡報，連結在此：當 Google 遇上 iPhone。雖然已經是 iOS5 的年代了，不過設定方式沒有差很多，大概就是畫面有點不同而已&amp;hellip;.所以就不更新了！
+這份簡報的內容是關於怎麼在 iPhone 上加入你的 Google 帳號。這裡說的 Google 帳號可能是 Gmail (*@gmail.com) 或是 Google Apps (*@_&amp;lt;your_domain&amp;gt;_) 的帳戶。內容包含：
+收信 同步行事曆(特別是帳號底下有多個行事曆的同步，預設狀況下只能同步一個行事曆) 通訊錄 工作表 (tasks) 這些都是我在 iPhone 上相當依賴的功能，雖然 iPhone 跟 Google 在通訊錄方面的整合上有點小問題，但是用起來還是相當方便的。
+提供給有興趣的朋友使用 :P</description>
+    </item>
+    
+    <item>
+      <title>如何設定 Gmail 帳戶收取 Google Apps 帳戶的信件</title>
+      <link>https://blog.crboy.net/posts/how-to-setup-pop3-for-google-apps/</link>
+      <pubDate>Tue, 03 Apr 2012 22:00:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/how-to-setup-pop3-for-google-apps/</guid>
+      <description>今天學弟在問，要怎麼在自己的 Gmail 信箱中，收取實驗室信箱的 e-mail。我們實驗室的 e-mail 本來是自己架設，不過現在已經轉換到 Google Apps 上去了。而 Google Apps 的帳號其實相當於另一個 Gmail 帳號，除非管理員設定不允許外部 POP3 與 IMAP，否則其實跟一般設定沒什麼兩樣。
+設定這個可分為兩個部分：在要被收信的信箱開啟 POP3 功能，以及在要用來收信的信箱(通常是自己的 Gmail 帳號)設定收取 POP3 信件。
+第一部分 (在「被收信」的帳戶中設定) 進入 Gmail 設定
+點選「轉寄和 POP/IMAP」
+點選啟用 POP 功能。至於要收取「所有郵件」或是「現在起所收到的郵件」則是看個人需求。另外，可在這裡設定郵件被收走後，是否要保留？我的習慣是讓他標為已讀，你也可以選擇封存或刪除。
+第二部分 (在「用來收信」的帳戶中設定) 在 Gmail 設定中點選「帳戶」
+點選「以 POP3 檢查郵件」下面的「新增您的 POP3 郵件帳戶」，會出現下面的視窗
+輸入「被收信」的帳戶的 e-mail address，如圖例
+系統會自動幫你填上對應的資訊，但是這個資訊是錯的！必須自行修改，可參考這個連結。使用者名稱是你的完整 e-mail address，並輸入你的密碼。POP 伺服器要設定為 pop.gmail.com，port 為 995，並啟用 SSL。我的習慣是會把收來的郵件自動加上一個標籤，這樣可以用標籤區分是哪裡收來的信。
+設定到這裡其實已經差不多了。如果除了收信以外，也想利用那個信箱的 address 來寄信的話，可以透過 Gmail 幫你寄就可以，畢竟根本都是同樣的機器XD
+補充一個小東西，Gmail Labs (研究室) 裡面有一個有趣的功能，我覺得可以打開。它叫做「重新整理 POP 帳戶」，可以讓你點選首頁的「重新整理」就可以立刻收取外部信箱的信！個人覺得滿實用的 :P
+PS. 突然想到一個問題是，如果有開啟 two-step verification 的話，是要&amp;hellip;.</description>
+    </item>
+    
+    <item>
+      <title>透過 ssh 遠端存取 git repository</title>
+      <link>https://blog.crboy.net/posts/remote-git-access-via-ssh/</link>
+      <pubDate>Fri, 23 Mar 2012 03:31:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/remote-git-access-via-ssh/</guid>
+      <description>好，今天來寫個我架設「偽 - git server」的作法吧！
+為什麼叫做「偽 - git server」呢？因為他不是真的跑起來一支 daemon 去負責 git 的 access，像是 gitolite 或是 gitosis 那樣。(事實上我也不知道該怎麼把那些東西架起來XD)
+由於 git 可以透過 ssh protocol 來 access，當然要善用這點！
+以下我分為單人各自使用與多人共用來講：
+單人各自使用 這算是簡單的應用了，只要你有一台工作站的 ssh 帳號，而且工作站上有 git (好吧，我承認我不曉得 minimal requirement 是什麼，也許是 git-shell 吧？) 的話，就可以這樣用，相當簡單！
+首先假設遠端 server/workstation 叫做 Remote，網址是 example.com，我在這台機器上的帳號為 crboy，家目錄是 /home/crboy。相當單純而常見的配置。另外本機叫做 PC，其他相同。
+那麼我們想要開始一個新專案可以這麼做：(注意主機名稱)
+crboy@Remote:~$ mkdir my_project.git # 建立專案 repo 的目錄 crboy@Remote:~$ cd my_project.git # 進去該目錄 crboy@Remote:~/my_project.git$ git init --bare # 初始化這個目錄為「純repo」(這是我自己的說法，應該是不太通用，記得 bare repository 比較好) Initialized empty Git repository in /home/crboy/my_project.</description>
+    </item>
+    
+    <item>
+      <title>以特定時間點為基準刪除老舊目錄</title>
+      <link>https://blog.crboy.net/posts/delete-old-folders-by-modified-time/</link>
+      <pubDate>Mon, 09 Jan 2012 18:05:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/delete-old-folders-by-modified-time/</guid>
+      <description>今天因為某些原因，得刪除特定目錄底下，太老舊的一些目錄。目錄數量有上百個，一個個刪實在令人難過，身為一個 Linux user，就該善用工具來解決這個問題！
+這篇是個簡單的速記，就不囉唆。只要使用以下指令即可：
+$ find * -maxdepth 0 -mtime +365 -exec rm -r {} \; 其中幾個重點說明如下：
+使用 find 可以找出符合特定條件的檔案並對該檔案做點事情(下指令) -maxdepth 是用來限制 find 往下搜尋的層數，由於我僅針對此目錄下的所有目錄做處理，故僅使用 find * -maxdepth 0 -mtime 是針對 modified time 做限制，後面接 +n 表示「早於 n 天前修改的檔案（比 n 天還舊）」，若是接上 -n 則表示「晚於 n 天前修改的檔案（比 n 天還新）」。類似的選項還有 atime, amin, ctime, cmin, mmin。可自行查看 manpage。值得注意的是，manpage 中是以「n*24 hours」來說明，不曉得是否有何特殊之處？ -exec 則是針對找到的檔案進行動作，後面接上要執行的指令，並以 {} 代表找到的檔案，結尾並加上 \; 即可。 網路上找到的通常會是刪除「老舊檔案」而非目錄，以下亦附上參考用法。
+$ find . -mtime +365 -exec rm {} \; 祝各位刪檔愉快(笑)。</description>
+    </item>
+    
+    <item>
+      <title>Slides of Makefile</title>
+      <link>https://blog.crboy.net/posts/slides-of-makefile/</link>
+      <pubDate>Wed, 28 Dec 2011 16:04:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/slides-of-makefile/</guid>
+      <description>前陣子準備了一份簡報，可以用來講一場的XD
+剛好這兩天系上學弟妹需要用到 make，所以就把其中關於 Makefile 的一部分東西抓出來做了一份短短的講義。內容講的是基本的 Makefile 的撰寫，也就是關於規則以及變數的基本使用部分。
+希望對於讀者有幫助。
+Code Smart - Makefile (special release)</description>
+    </item>
+    
+    <item>
+      <title>Google&#43; 教學 - 功能介紹篇</title>
+      <link>https://blog.crboy.net/posts/google-plus-2/</link>
+      <pubDate>Sun, 03 Jul 2011 06:59:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/google-plus-2/</guid>
+      <description>首先進入 Google+ 的主畫面(登入之後)，會看到一個白色背景的 facebook，呃&amp;hellip;不是&amp;hellip;我是說&amp;hellip;.會看到一個跟 facebook 很像的畫面，三欄式版面，左邊顯示自己的頭像、名字(last name)、訊息串選單、Sparks、即時通訊(GTalk)，中欄則顯示一大堆訊息(訊息串)，除非是剛註冊，否則應該不會是空的。，右欄則比較偏向輔助性的功能，像是朋友牆、、建議的朋友(警告：這欄出現指導教授的機率相當高！即使他根本沒有加入 Google+)、還有視訊聚會及手機版的相關訊息。
+再來要特別介紹上面的兩列按鈕。瀏覽器畫面的最上面是 Google 最近持續在改變的新介面(我想應該可以叫他 navbar)，前陣子才在噗浪講說為什麼我的 Google navbar 變成黑的，過沒幾天就出現 Google+ 了XD。Navbar 的最左邊有時候會出現一個「+[名字]」的項目(例如一個人叫小明那他就會出現「+小明」)，這個是在申請了 Google+ 之後才會出現的，不過根據我自己的經驗還有公開調查的結果，這個地方根本就一直改！我看過三個狀況：沒有這個項目，也就是最左邊是「Gmail」。顯示「+[名字]」(例如「+小明」)。還有顯示「+您」。此外，同一個帳號在不同電腦上看到的可能會不一樣，同一個帳號同一台電腦不同時間看可能會不一樣，同帳號同電腦同時間不同分頁看也可能會不一樣&amp;hellip;..(我敗了= =)。
+接著是 Google+ 本身的功能列，有四個主要的按鈕分別是「首頁」、「相片」、「個人資料」、「社交圈」，題外話，我真的覺得這個「社交圈(circles)」可以翻譯成小圈圈就好了&amp;hellip;.XDDDD。這個小圈圈是這次 Google+ 其中一個很吸引人的好玩功能之一！雖然不是說實用度滿點，可是用起來很有趣，而且速度也不錯，特效很可愛，滿方便的。只要把想
+吸收
+加入的人選取，拖拉到某個小圈圈裡就可以了。一個人可以同時被分類在多個小圈圈裡面，所以這個其實很像 tag 的功能，只不過觀點不同而已(其實 tag 也就是分類的另一種觀點嘛= =)。Google 保證你所加入的人只會知道你把他加入社交圈，但是絕對不會知道你給他的小圈圈叫什麼名字，所以應該可以放心的亂取名字？XD
+接著是一些快捷鍵的介紹，配合快捷鍵可以讓閱讀訊息更有效率。在介紹之前，提醒 Vimium(on Chrome)、Vimperator(on Firefox)或是其他類似瀏覽器外掛的用戶要把 http*://plus.google.com/* 加入排除清單，否則快速鍵會被吃掉喔~
+首先注意到每則訊息的左邊，如果你點選這則訊息，那麼會有一條深藍色的線移動到這則訊息上。這相當於一個箭頭，在 Google+ 裡面你可以使用按鍵k跟j來上下移動這個「箭頭」，一次以一則訊息為單位，而且指到的訊息會顯示在目前的 view 的最上面，對於看訊息來說很方便喔~不會眼花找不到！接著按下 enter 就可以直接對這則訊息回覆。另外，根據我的測試，在按下 home 或 end 鍵之後，或是用滑鼠換頁過後，雖然藍線不會改變位置，但是接著按下jk的話，會從當前看到的訊息開始往下或往上閱讀。
+右上角的 popup notification 也有快捷鍵可以使用。首先是 k 跟 j 也可以作為上下移動的功能。按下 enter 或 o 會進入這則訊息，按 u 可以跳出(這是拿 Gmail 快捷鍵來試，沒想到猜對了)。另外，在閱讀訊息的時候，按方向鍵的左右也可以切換新舊訊息，左邊是較新(往上)，右邊是較舊。可以看上面有個「&amp;lt; 較新 | 較舊 &amp;gt;」作為提示。</description>
+    </item>
+    
+  </channel>
+</rss>

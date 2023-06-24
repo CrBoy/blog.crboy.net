@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html><head>
+<title>在Ubuntu 10.04 (Lucid Lynx)上安裝NX - 許多人推薦的遠端桌面</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99%e5%80%91" class="nav-參考資料們">
+									參考資料們
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    在Ubuntu 10.04 (Lucid Lynx)上安裝NX - 許多人推薦的遠端桌面
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2010-06-03 09:14
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/linux">Linux</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E7%B6%B2%E7%AE%A1">網管</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E8%BB%9F%E9%AB%94">軟體</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>呃阿阿阿阿阿&hellip;..我不知道應該怎麼起頭&hellip;&hellip;其實故事是這樣的，去年有學弟跟我推薦了NX這個遠端桌面，他是<a href="http://www.nomachine.com/">NoMachine</a>公司的產品。特色大致上是，支援ssh加密連線，傳輸的資訊有經過壓縮(速度較快，不過影像品質稍微不太好，看得出來是lossy compression)，client可以跨平台，windows跟Linux都可以用，這對於有Linux桌面需求的Windows user真是福音阿!!</p>
+<p>於是乎，我就把他給裝起來了。一開始我裝的是NoMachine提供的Free Edition，但是後來有人跟我反應會連不上的問題，我找了很久找不出原因，最後我在某篇文章(由於年代久遠現在找不到了)得知，原來NoMachine的免費版本的nxserver有session數的限制，所以只好另尋他法。</p>
+<p>有個好用的open source版本的nxserver叫做<a href="http://freenx.berlios.de/">FreeNX</a>，想當然爾，「應該」是沒有session數限制的吧？當時在以前版本的ubuntu怎麼裝的我已經忘了，只記得套件名稱是freenx，但是好像不在官方預設的套件庫裡面&hellip;但是在Ubuntu 10.04，我發現了新大陸！XD&quot;</p>
+<p>這裡是安裝教學，很簡單。<br>
+首先第一部你要先搞定你的ssh連線&hellip;.通常我是裝openssh-server這個套件好像就搞定了&hellip;.不過ssh博大精深，請另行研究。<br>
+在ssh server裝好之後，就要開始安裝nx server了：</p>
+<pre><code>$ sudo apt-get install python-software-properties #這步其實應該不用做，ubuntu預設就有裝這個套件了  
+$ sudo add-apt-repository ppa:freenx-team #這步其實讓我滿驚奇的，原來有這樣好用的工具可以用XD....  
+$ sudo apt-get update #加了套件庫，當然要update一下  
+$ sudo apt-get install neatx-server`  
+</code></pre>
+<p>咦？怎麼不是freenx了？而是一個叫做neatx-server的東西？他的套件說明是這樣的：</p>
+<blockquote>
+<p>Neatx is an Open Source NX server.<br>
+Neatx is an Open Source NX server, similar to the commercial NX server from NoMachine.</p>
+</blockquote>
+<p>查到的資料來源網頁是這樣寫的：</p>
+<blockquote>
+<p>Ubuntu Lucid now uses Neatx, the Open Source NX server from Google.<br>
+Installation is simple enough, and similar to the Ubuntu Karmic method.</p>
+</blockquote>
+<p>看到Google我整個心花怒放阿～～(撒花) 總而言之，他也是一個nx server就是了&hellip;.如果你不想用這個的話，其實還是有freenx這個套件可以裝的。(對，我看過了)<br>
+不過就我自己的經驗來說，我印象中之前看到FreeNX的介面&hellip;.(就是直接關視窗的時候會跳出來的那個對話方塊)&hellip;.滿醜的&hellip;.但是Neatx的我還可以接受:P (呃&hellip;應該不是因為Google所以有加分啦= =a)</p>
+<p>最後簡單提一下，我自己現在的狀況是，有一台多人使用的機器，裝的是Neatx，只有我自己用的機器則是用NoMachine的免費版本。而client的話我則是清一色使用NoMachine的版本，如果你不喜歡，也有open source的nx client可以使用。如：qtnx</p>
+<h1 id="參考資料們">參考資料們</h1>
+<ul>
+<li><a href="https://help.ubuntu.com/community/FreeNX">Ubuntu Documentation - FreeNX</a> 這篇是主要資料來源，裡面也提到在9.10上的安裝方式，其實就是安裝freenx。</li>
+<li><a href="http://www.kenming.idv.tw/ubuntu-server_windows-os_remote-desktop-control_by-freenx">Ubuntu Server 與 Windows 系統的遠端桌面遙控 by FreeNX</a> 這篇主要是用官方的免費版本(然後最下面有提到neatx)，如我前面提到的，NoMachine免費版本會有session數量限制(而且不多)，如果是多人使用的話要注意。</li>
+</ul>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2010-06-03</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/proxy-apt-wget/">
+			Next<br>在apt系統與wget上使用proxy
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/get-ssh-server-fingerprint/">
+			Previous<br>取得 SSH server public key 的 fingerprint
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%83%e8%80%83%e8%b3%87%e6%96%99%e5%80%91" class="nav-參考資料們">
+									參考資料們
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

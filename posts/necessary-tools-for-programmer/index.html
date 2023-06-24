@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html><head>
+<title>利用一些時間準備好了一場talk</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    利用一些時間準備好了一場talk
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2011-12-23 23:13
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/%E9%96%92%E8%81%8A">閒聊</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>這篇是先 po 在系上 BBS 再轉貼過來的XD&quot; 基本上這場的內容相當相當相當的淺&hellip;.本來預設的目標對象是完全不懂 debugger 跟 version control 的學生，特別是大學部，但同樣的對研究生也相當有幫助。(不過我猜研究生以上應該都沒什麼閒工夫聽我在那邊浪費他們的時間吧XD)</p>
+<p>因為這邊的內容比較淺，我想這也許不是很適合在社群中發表，不過也許有哪裡會需要這方面的資訊，之後我會放上相關的簡報，以 CC-BY-SA 釋出。</p>
+<p>這場 talk 的內容&hellip;.真要說起來大概是兩年前就想講了XD 主要多加了一些關於 git 的部份，因為現在對 git 又更熟了一點這樣&hellip;</p>
+<p>主題定為「寫程式？那些老師沒教的事 - Code Smart, Don&rsquo;t Code Hard」。內容是關於一些對於開發程式相當有幫助的一些工具： vim, gcc, make, gdb, git</p>
+<p>這些東西也許可有可無，不懂也不會怎樣，然而學習這些工具，入門並不困難，又可以立刻對程式開發有幫助，因此我相當推薦念資工的學弟妹們，或是任何寫程式(特別是 C/C++ 語言)的人簡單了解這些工具。</p>
+<p>從前我們寫程式總是相當努力，在無形中花了很多力氣跟心血去達成目標，事實上很多事情可以更簡單，但是若不曉得這個簡單的世界，那也不得其門而入。從寫程式，到編譯，到除錯，再到程式的改版，我們已經花了太多血汗與肝了&hellip;..要怎麼更簡單、更瀟灑(帥氣?)的搞定這些事，有時會讓人大開眼界~</p>
+<p>這裡我不會講到任何跟程式設計本身有關的技巧，也不會教你如何安裝這些工具，或是把這些工具用得出神入化。我所探討的是你為什麼需要這些工具？這些工具又可以幫上什麼忙？內容中會有基礎的入門教學，旨在提供剛剛接觸且有興趣的人有個無痛入門的管道，我將把重點放在現場的 demo 與互動，歡迎有任何相關問題都可以現場提出，共同討論。討論所能夠學到的東西會比單純的聆聽來的多很多很多唷!!!</p>
+<p>軟體的詳細教學會再找機會個別講&hellip;如果我之後有餘裕的話 :)</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2011-12-23</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/slides-of-makefile/">
+			Next<br>Slides of Makefile
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A0%B4%E4%B8%80%E8%BA%8D%E4%B9%8B%E4%B8%8B/">
+			Previous<br>我的第二場「一躍之下，」
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

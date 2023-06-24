@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>轉貼 on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/%E8%BD%89%E8%B2%BC/</link>
+    <description>Recent content in 轉貼 on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sat, 25 Jun 2011 19:44:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/%E8%BD%89%E8%B2%BC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>同軸電纜規格</title>
+      <link>https://blog.crboy.net/posts/%E5%90%8C%E8%BB%B8%E9%9B%BB%E7%BA%9C%E8%A6%8F%E6%A0%BC/</link>
+      <pubDate>Sat, 25 Jun 2011 19:44:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E5%90%8C%E8%BB%B8%E9%9B%BB%E7%BA%9C%E8%A6%8F%E6%A0%BC/</guid>
+      <description>之前為了找同軸電纜的規格，找了好久才找到，所以決定把它記錄下來。
+來源是這個地方：
+一般同軸電纜品名記號說明：
+例：3C-2W、5C-2V、5C-FB
+第一項之數字：表示外部導體之約計外徑(mm)
+第二項之文字：&amp;ldquo;D&amp;quot;表示特性阻抗 50 歐姆，&amp;ldquo;C&amp;quot;表示特性阻抗 75 歐姆
+第三項之文字：&amp;ldquo;2&amp;quot;表示PE充實絕緣型，&amp;ldquo;F&amp;quot;表示發泡PE絕緣型
+第四項之文字：&amp;ldquo;V&amp;quot;表示外部導體為一層編織後施以PVC外被覆，&amp;ldquo;W&amp;quot;表示外部導體為二層編織後施以PVC外被覆，&amp;ldquo;B&amp;quot;表示外部導體為兩面鋁箔麥拉帶縱包再加上鍍錫軟銅線編織</description>
+    </item>
+    
+  </channel>
+</rss>

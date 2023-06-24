@@ -1,0 +1,551 @@
+<?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/</link>
+    <description>Recent content on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
+    
+        <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>FILCO紅軸80%鍵盤開箱</title>
+        <link>https://blog.crboy.net/posts/filco%E7%B4%85%E8%BB%B880%E9%8D%B5%E7%9B%A4%E9%96%8B%E7%AE%B1/</link>
+        <pubDate>Mon, 07 Mar 2011 05:14:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/filco%E7%B4%85%E8%BB%B880%E9%8D%B5%E7%9B%A4%E9%96%8B%E7%AE%B1/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/filco%E7%B4%85%E8%BB%B880%E9%8D%B5%E7%9B%A4%E9%96%8B%E7%AE%B1/ -&lt;blockquote&gt;
+&lt;p&gt;August, 2021&lt;br&gt;
+&lt;strong&gt;由於管理不善，這篇開箱文的照片，在多年後已經全數消失，也不知道哪裡找得到了。&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;啊啊啊啊啊啊啊啊啊首先報告一下，小弟這把鍵盤的型號是 - FLICKTL15，用的軸是cherry紅軸(無段落+輕彈力)，80%配置(沒有數字鍵區)，共87個鍵，黑色，白色英文+注音刻印，支援N-key rollover(不過我沒有測試，因為找到的測試軟體只有windows版orz)。另外，小弟對機械式鍵盤其實沒有研究&amp;hellip;所以說，這篇文章其實是一篇&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;超級不專業開箱文。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2011/03/IMG_0536-1024x764.jpg&#34; alt=&#34;&#34; title=&#34;箱子&#34;&gt;&lt;br&gt;
+拿到的時候就這樣一小小盒&amp;hellip;.但是小歸小，還是要好多小朋友才搬得動阿&amp;hellip;..&lt;/p&gt;
+&lt;p&gt;在開箱之前，先看看底部跟側邊的標籤，&lt;del&gt;拖一下台錢&lt;/del&gt;創造一些期待感吧~&lt;br&gt;
+&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2011/03/IMG_0537-1024x764.jpg&#34; alt=&#34;&#34; title=&#34;外盒背面標籤&#34;&gt;
+&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2011/03/IMG_0538-1024x764.jpg&#34; alt=&#34;&#34; title=&#34;外盒側邊標籤&#34;&gt;&lt;/p&gt;
+&lt;p&gt;由於小弟的不專業，這複雜的標籤我看不懂啊啊啊啊啊啊啊啊啊啊啊～～～～～～～～有研究的看倌們就自行解讀吧。&lt;del&gt;(反正這只是拖台錢用的)&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;那就正式把箱子給打開吧。&lt;br&gt;
+&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2011/03/IMG_0539-1024x764.jpg&#34; alt=&#34;&#34; title=&#34;開箱第一眼&#34;&gt;&lt;/p&gt;
+&lt;p&gt;掀開塑膠蓋子(那有專門的名詞嗎？)的樣子&lt;br&gt;
+&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2011/03/IMG_0540-1024x764.jpg&#34; alt=&#34;&#34; title=&#34;掀開塑膠蓋子的樣子&#34;&gt;&lt;/p&gt;
+&lt;p&gt;看到表面的那質感真是令我心花怒放啊XD 不過聽說這傢伙是ABS鍵帽，久了會變光頭&amp;hellip;.? 噢不管他了，真的變了再來換鍵帽吧。&lt;/p&gt;
+&lt;p&gt;配件們出來跟大家打聲招呼&lt;br&gt;
+&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2011/03/IMG_0541-1024x764.jpg&#34; alt=&#34;&#34; title=&#34;配件亮相&#34;&gt;&lt;/p&gt;
+&lt;p&gt;左上角是連接線跟他的束帶，中間是拔鍵器，右下是&lt;del&gt;搶鏡頭&lt;/del&gt;亮眼的紅色WSAD鍵帽&lt;br&gt;
+&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2011/03/IMG_0542-1024x764.jpg&#34; alt=&#34;&#34; title=&#34;配件特寫&#34;&gt;&lt;/p&gt;
+&lt;p&gt;把塑膠袋拆了拿出來呼吸一下新鮮空氣，順便很三八的排列了一下WSAD。可以看到在側面有印刷上下左右，如果忘記誰是上下左右的話可以看= =a (正常的遊戲玩家不會這麼呆吧XD)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2011/03/IMG_0543-1024x764.jpg&#34; alt=&#34;&#34; title=&#34;拔鍵器手把&#34;&gt;&lt;/p&gt;
+&lt;p&gt;拔鍵器手把特寫。其實也沒什麼，只是想拍一下而已。&lt;br&gt;
+&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2011/03/IMG_0544-1024x764.jpg&#34; alt=&#34;&#34; title=&#34;拔鍵器特寫&#34;&gt;&lt;/p&gt;
+&lt;p&gt;這拔鍵器很有趣，跟以前看過的不一樣&amp;hellip;他的頭其實有兩片，分開之後可以扣住鍵帽的兩個角，往上一拉就可以把鍵帽拔掉了。噢不過我覺得這樣的設計比較佔空間就是了&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2011/03/IMG_0545-1024x764.jpg&#34; alt=&#34;&#34; title=&#34;鍵盤功能鍵區&#34;&gt;&lt;br&gt;
+這是鍵盤右側，下方有FILCO的logo，由於我買的是80%版本，沒有NumPad(數字鍵)區域，所以logo也移動到這個位置了。其實還不賴:D&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2011/03/IMG_0547-1024x764.jpg&#34; alt=&#34;&#34; title=&#34;主要打字區&#34;&gt;&lt;br&gt;
+主要打字區的配置。呃&amp;hellip;.突然發現這照片有點變形&amp;hellip;.是廣角端的問題嗎= =a (這明明就是手機拍的 哪來的廣角端&amp;hellip;.) 看起來怪怪的&amp;hellip;不過我只是想拍他的配置啦。長形的enter鍵，長的shift，左右皆有windows key，右邊有快顯功能表鍵。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2011/03/IMG_0548-1024x764.jpg&#34; alt=&#34;&#34; title=&#34;鍵盤全覽&#34;&gt;&lt;/p&gt;
+&lt;p&gt;功能鍵區是我比較喜歡的六塊&lt;del&gt;雞&lt;/del&gt;肌配置。另外可以看到caps lock跟scroll lock的燈號，紅色LED，位置在六塊肌上方，原因也是因為沒有了NumPad&amp;hellip;.所以當然也沒有num lock的燈號了(廢話XD)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2011/03/IMG_0549-1024x764.jpg&#34; alt=&#34;&#34; title=&#34;紅軸&#34;&gt;&lt;br&gt;
+拖了這麼久的台錢，還是得證明一下我真的拿了把紅軸出來，不然會被投訴XDDDDD ZXC這三個鍵很可憐的被我拆了下來，看看這精美的紅軸~&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2011/03/IMG_0550-1024x764.jpg&#34; alt=&#34;&#34; title=&#34;真的是紅軸&#34;&gt;&lt;br&gt;
+換個角度再一張證明我的清白&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2011/03/IMG_0551-1024x764.jpg&#34; alt=&#34;&#34; title=&#34;燈號&#34;&gt;&lt;br&gt;
+燈號近拍。這拍得實在是很糟糕&amp;gt;&amp;lt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2011/03/IMG_0552-1024x764.jpg&#34; alt=&#34;&#34; title=&#34;鍵盤底部標籤&#34;&gt;&lt;br&gt;
+最後一張圖，這是背後標籤。&lt;/p&gt;
+&lt;p&gt;基本上，這篇文章的圖都拍得很糟糕&amp;hellip;噢不過這不是重點，重點是鍵盤。&lt;/p&gt;
+&lt;p&gt;這把鍵盤打感就如同Cherry紅軸一般輕巧，無段落，這是我個人最理想的機械式手感了。跟Cherry的差別在於，聽說FILCO底部有一塊鐵板，所以觸底的感覺比較明顯，而Cherry則是有點QQ的。按鍵的觸發行程沒有很長，也很靈敏，倒是觸底的時候有點吵，在實驗室會不太好意思(羞)。為了不要觸底就要輕輕按，不過一方面早就習慣按到底，另外紅軸的彈簧很輕，所以故意不觸底反而累。相對的黑軸應該就比較OK，但是由於我還是習慣按到底，如果買黑軸手應該會很酸&amp;hellip;..orz||&lt;/p&gt;
+&lt;p&gt;這把鍵盤的手感真的滿不賴的，雖然跟RealForce的超滑順橡皮擦手感比起來還是有差XDDD 可是價錢也有差啊囧&amp;hellip;&lt;/p&gt;
+&lt;p&gt;至於80%的部份，一開始其實有點猶豫，畢竟少了numpad可以用，不過平常筆電也用得很習慣了，所以不要緊。而且80%鍵盤比較省空間，帶出門也比較好帶(大概過陣子就會懶得帶了啦，不過一開始就是會帶著跑來跑去&amp;hellip;.)，唯一的小小不方便就只有偶爾想要用到numpad右下角那個enter的時候&amp;hellip;不過這沒差啦！&lt;/p&gt;
+&lt;p&gt;整體來說，考慮到價錢，這鍵盤的C/P值算是普普通通，不過買把好鍵盤對於經常打字的人來說真的很重要，不但保護雙手，打起來爽度也比較高！經過一番掙扎後還是衝了&amp;hellip;.不然本來只想買FILCO茶軸的&amp;hellip;(也不賴但是有段落感，稍微不喜歡:P)&lt;/p&gt;
+&lt;p&gt;最後跟各位抱歉一下，這篇開箱文不但不專業又把圖拍得很醜XD 希望想要看圖的捧油們可以看得不要太火大&amp;hellip;.下台一鞠躬&amp;lt;(_ _)&amp;gt;&lt;/p&gt;
+- https://blog.crboy.net/posts/filco%E7%B4%85%E8%BB%B880%E9%8D%B5%E7%9B%A4%E9%96%8B%E7%AE%B1/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>第一次用 Vim 就上手</title>
+        <link>https://blog.crboy.net/posts/vim-101/</link>
+        <pubDate>Sat, 05 Mar 2011 10:09:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/vim-101/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/vim-101/ -&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;這篇是先貼在系上 BBS 的文章，主要對象是天真無邪的學弟妹們XD 所以太愚蠢的部份，還有排版太差的部份，就抱歉了orz&lt;/p&gt;
+&lt;h1 id=&#34;簡介&#34;&gt;簡介&lt;/h1&gt;
+&lt;p&gt;標題是騙人的，第一次用 Vim 怎麼可能上手XDDDDD&lt;br&gt;
+只是看到有學弟在講，就順便寫一下。我覺得一開始雖然會什麼都不懂，摸不著頭緒，但是在 Vim 裡面要先有基本生存能力，就像學武先學內功一樣～這篇文章就是要講基本的生存能力&amp;hellip;..&lt;/p&gt;
+&lt;h1 id=&#34;用-vim-開啟檔名為-filename-的檔案&#34;&gt;用 Vim 開啟檔名為 FILENAME 的檔案&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$ vim FILENAME  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;移動&#34;&gt;移動&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;h (左), j (下), k (上), l (右)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我知道這很奇怪，但是請聽我說完&amp;hellip;首先把你的手「正常的」放在鍵盤上&amp;hellip;也就是雙手食指分別在 F 跟 J。通常這兩個按鍵會有一些幫助你定位的設計，常見的作法是有個凸點。接著忘記你的左手的存在，你的右手應該會微微的像 \ 這樣傾斜。&lt;br&gt;
+不要亂動！！！這個時候，你的食指應該比中指更接近自己，這也就是 Vim 裡面上跟下分別是中指跟食指&amp;hellip;呃不是啦 是 &lt;code&gt;k&lt;/code&gt; 跟 &lt;code&gt;j&lt;/code&gt; 的原因&amp;hellip;至於左右呢？啊就左右嘛= =a&lt;/p&gt;
+&lt;h1 id=&#34;輸入&#34;&gt;輸入&lt;/h1&gt;
+&lt;p&gt;先學著用 &lt;code&gt;i&lt;/code&gt; 跟 &lt;code&gt;a&lt;/code&gt; 吧。一個是 insert，一個是 append。這兩個用久了就會變成直覺了。熟了之後再學著用 &lt;code&gt;I&lt;/code&gt; 跟 &lt;code&gt;A&lt;/code&gt; 吧。如果 &lt;code&gt;i&lt;/code&gt; 跟 &lt;code&gt;a&lt;/code&gt; 很直覺，&lt;code&gt;I&lt;/code&gt; 跟 &lt;code&gt;A&lt;/code&gt; 就會很簡單了。（其他的以後再說沒關係）&lt;/p&gt;
+&lt;h1 id=&#34;回到-normal-mode&#34;&gt;回到 Normal Mode&lt;/h1&gt;
+&lt;p&gt;如果有看過其他文章，應該會知道 Vim 有 3 種以上的「mode」。我們不用管這麼多，只要記得「狂按 Esc 就會回到 normal mode」就好。手賤多按幾下沒關係，電腦不會爆炸。噢，你說其他的 mode 喔？先不用記啦，反正你自然就會進去了&amp;hellip;&lt;/p&gt;
+&lt;h1 id=&#34;編修檔案&#34;&gt;編修檔案&lt;/h1&gt;
+&lt;p&gt;有一個很簡單的原則（但是偶爾有例外）：先按數字（假設是 n）再按指令，相當於做那個指令 n 次。我們待會會說明～記得很簡單的幾個就好了。首先，我們來背單字&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;delete - 刪除&lt;br&gt;
+yank - 用力拉&lt;br&gt;
+paste - 貼上&lt;br&gt;
+undo - 復原&lt;/p&gt;
+&lt;p&gt;好了背完了&amp;hellip;.來看看指令&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;dd&lt;/code&gt; - 刪除一整行&lt;br&gt;
+&lt;code&gt;yy&lt;/code&gt; - 複製一整行&lt;br&gt;
+&lt;code&gt;p&lt;/code&gt; - 貼上&lt;br&gt;
+&lt;code&gt;u&lt;/code&gt; - 復原&lt;/p&gt;
+&lt;p&gt;很簡單對不對？相信大家都覺得這實在腦殘的不得了&amp;hellip;..不過在腦殘的同時，不曉得有沒有發現我講了複製、貼上，但是沒有講剪下？我承認我剛剛說謊&amp;hellip;.其實 &lt;code&gt;dd&lt;/code&gt; 是剪下才對&amp;hellip;..(ninja) 只不過剪下跟刪除本來就可以同一件事啦，呵呵呵呵呵呵呵呵～&lt;/p&gt;
+&lt;h1 id=&#34;存檔離開&#34;&gt;存檔離開&lt;/h1&gt;
+&lt;p&gt;我們再來背一次單字&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;write - 寫&lt;br&gt;
+quit - 自殺&amp;hellip;呃不是啦，是離開&lt;/p&gt;
+&lt;p&gt;所以說存檔跟離開的指令就記這4個吧&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;:w&lt;/code&gt; - 存檔&lt;br&gt;
+&lt;code&gt;:wq&lt;/code&gt; - 存檔然後離開&lt;br&gt;
+&lt;code&gt;:q&lt;/code&gt; - 不存檔直接離開&amp;hellip;.但是如果檔案有改過的話 他會跳出錯誤說&amp;hellip;「留下來，或者我跟你走。」 這時候只好嗆聲&amp;hellip;.&lt;br&gt;
+&lt;code&gt;:q!&lt;/code&gt; - 我他X的就是要離開！&lt;/p&gt;
+&lt;p&gt;經過了以上的一大串廢話之後&amp;hellip;..我們再來一小串廢話。以上部分除了背單字以外，剩下的都可以「直接在 normal mode 按」！記得前面有冒號的也別忘了唷^.&amp;lt; 冒號開頭的，最後配上enter服用&amp;hellip;&lt;/p&gt;
+&lt;h1 id=&#34;範例練習&#34;&gt;範例練習&lt;/h1&gt;
+&lt;p&gt;（就是你照著作就對了）&lt;/p&gt;
+&lt;p&gt;首先說明一些事情&amp;hellip;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用 &lt;code&gt;$&lt;/code&gt; 開頭的，就是在一般命令列要打的，打完要按 Enter 送出&lt;/li&gt;
+&lt;li&gt;用 &lt;code&gt;:&lt;/code&gt; 開頭的，是在 Vim 的 Esc 按到死 mode 裡面按下 &lt;code&gt;:&lt;/code&gt; 之後出現的那個冒號&amp;hellip;&lt;/li&gt;
+&lt;li&gt;用 &lt;code&gt;#&lt;/code&gt; 開頭的，一直到行尾表示註解（說明文字）&lt;/li&gt;
+&lt;li&gt;英文或數字開頭的，那應該就是直接在 Vim 裡面照著按了&amp;hellip;.別把 Esc 分開按就好了XD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;（範例開始）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd #為了避免奇怪的事情 我們先回到家目錄  
+$ dmesg &amp;gt; vim_practice #建立一個練習用的檔案 檔名再衝突我也沒辦法了  
+$ vim vim_practice #用 vim 打開檔案  
+
+# 我們在vim裡面囉~~  
+jjjjjjjjjjjjjjjjjjjj #對 你就先把j按著 練習往下移動  
+kkkkkkkkkkkkkkkkkkkk #然後把k按著 練習往上移動  
+jjjjjjjjjjjjjjjjjjjj #不要覺得這很蠢  
+kkkkkkkkkkkkkkkkkkkk #多試幾次就會很順 記得手要放對位置唷~  
+jjjjj #挑一行順眼的 有很多字的行  
+llllllllllllllllllll #對啦就是往右移動
+hhhhhhhhhhhhhhhhhhhh #然後往左移動
+llllllllllllllllllll #往右  
+hhhhhhhhhhhhhhhhhhhh #往左  
+
+#獎勵自己把蠢事做完 可以上個PTT之類的...  
+#剛好ptt閱讀文章的時候也可以用kj當做上下移動.....  
+
+#回到vim  
+i1234567890 #直接照著按應該會看到插入了一串1234567890在裡面吧  
+esc #回normal mode  
+a1234567890 #跟i有一點點差別...一點點...一點點....  
+esc  
+
+#一定很多人會想要在打字的時候移動游標對不對？暫時改掉這個習慣吧  
+#以後再加回來也不遲...先練習使用normal mode下的hjkl移動~  
+
+#一直待在normal mode底下就好了  
+dd #你游標所在的那行就被刪除了  
+jjjjjjjjjjjjj #隨便移動一下  
+p #剛剛刪除的那行貼上去了!!!  
+u #剛剛貼上去的那行不見了!!!  
+10p #對 就照著按[1]-[0]-[p]這3個按鍵...你應該看到了  
+jjjjjjjjjjjjjjjj #再隨便移動一下  
+5yy #你其實已經複製5行字了...  
+p #貼上去  
+
+#你可以隨意玩玩看 或是參考最後面的隨手亂寫  
+
+#準備存檔離開  
+esc, esc, esc, ... #反正就是回到normal mode....  
+:wq &amp;lt;enter&amp;gt;#這樣就存檔離開了  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我敢打賭看到這裡而且照做的人一定會很想揍我，而且會說 Vim 真他x的難用。事實上，只會這些東西的話，Vim 還真的很他x的難用&amp;hellip;..但這些只是基本技巧而已，先有基本能力之後，再去懂得怎麼「聰明一點」吧:D&lt;/p&gt;
+&lt;p&gt;上面廢話很多，為了體貼直接按 End 的人，這裡整理一下第一次使用 Vim 要會的東西：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;命令列下，&lt;code&gt;vim&lt;/code&gt; 後面接上檔名就可以編輯檔案&lt;/li&gt;
+&lt;li&gt;手指頭放在鍵盤上，右手就可以控制游標移動了（什麼 hjkl 不要記啦）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;i&lt;/code&gt;（insert）跟&lt;code&gt;a&lt;/code&gt;（append）用來輸入文字&lt;/li&gt;
+&lt;li&gt;Esc 按到爆就會回到 normal mode&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dd&lt;/code&gt;, &lt;code&gt;yy&lt;/code&gt;, &lt;code&gt;p&lt;/code&gt;, &lt;code&gt;u&lt;/code&gt; 分別是剪下、複製、貼上、復原&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:w&lt;/code&gt;, &lt;code&gt;:wq&lt;/code&gt;, &lt;code&gt;:q&lt;/code&gt;, &lt;code&gt;:q!&lt;/code&gt; 其中的 w, q, ! 分別表示寫入、離開、強制執行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;這裡隨手亂寫一些東西，有興趣可以照著按。每行為一個單位，大小寫有差。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;20i8&amp;lt;esc&amp;gt;  
+G  
+20G  
+gg  
+d10G  
+vllllllllllllld  
+:set nu  
+:set nonu
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;就先這樣吧@@&lt;/p&gt;
+- https://blog.crboy.net/posts/vim-101/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>安裝Ubuntu套件庫沒有的library (以libstdc&#43;&#43;.so.5為例)</title>
+        <link>https://blog.crboy.net/posts/ubuntu-install-library/</link>
+        <pubDate>Sat, 05 Jun 2010 02:05:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/ubuntu-install-library/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/ubuntu-install-library/ -&lt;p&gt;有時候拿人家的程式來跑，也許是對方只肯給執行檔，或者是不給source的商業軟體，或是其他情況，總之，有時候會遇到自己的系統上缺少該程式所需要的dynamically linked library (也就是系統上的.so檔, shared object)，或是自己系統上的函式庫版本太舊或太新，此時的作法有兩種：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;使用現有新版函式庫假裝成舊版。&lt;br&gt;
+此種方法很簡單，只要把新版函式庫建立一個symbolic link就可以了，例如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; [/usr/lib]$ ln -s libstdc++.so.6 libstdc++.so.5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是很不幸的這種作法是可能出問題的。例如我今天就遇到了這個問題&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;我的系統上裝有libstdc++.so.6，但我要執行的程式連結到的是libstdc++.so.5。所以我用類似以上的方式做了一個假的，結果在執行的時候，跳出訊息顯示，該程式需要CXXABI 1.2(其實我也不太清楚這是啥，只知道ABI是Application Binary Interface)，我猜大概是ABI版本太新&amp;hellip;.沒辦法我動不到&amp;hellip;.orz 所以只好認命的去尋找舊版函式庫了&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安裝舊版函式庫&lt;br&gt;
+我在&lt;a href=&#34;http://tess-learning.blogspot.com/2010/04/missing-libstdcso5-in-ubuntu-910.html&#34;&gt;這篇文章&lt;/a&gt;找到做法，而且他寫得很簡單易懂:)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;先去&lt;a href=&#34;http://packages.debian.org/lenny/libstdc++5&#34;&gt;Debian Packages&lt;/a&gt;抓取我要的套件的deb檔&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; $ wget http://debian.nctu.edu.tw/debian/pool/main/g/gcc-3.3/libstdc++5_3.3.6-18_amd64.deb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解壓縮抓下來的檔案&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; $ dpkg-deb -x libstdc++5_3.3.6-18_amd64.deb libstdc++5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;把其中的函式庫放到/usr/lib中 (小心不要覆蓋到本來的檔案了)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; $ sudo mv libstdc++5/usr/lib/libstdc++.so.5* /usr/lib/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;更新linker的cache&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; $ sudo ldconfig
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;完成了&amp;hellip;..&lt;br&gt;
+照著這樣做是沒問題啦&amp;hellip;.只是我心中還有點疑惑，為什麼不直接安裝該deb套件就好？也許有其他什麼原因？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;總而言之，要安裝缺少的library，只要找到相應的.so檔，並放到/usr/lib中(或是/usr/local/lib中)，再更新ld的cache即可。&lt;br&gt;
+那&amp;hellip;.如果沒有.so可以抓怎麼辦？那就只好自己找source來編譯了&amp;hellip;..那是另外一段故事:D&lt;/p&gt;
+- https://blog.crboy.net/posts/ubuntu-install-library/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>在apt系統與wget上使用proxy</title>
+        <link>https://blog.crboy.net/posts/proxy-apt-wget/</link>
+        <pubDate>Fri, 04 Jun 2010 07:11:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/proxy-apt-wget/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/proxy-apt-wget/ -&lt;p&gt;台灣的學術網路連國外很慢是眾所皆知的事情&amp;hellip;.但是像 Ubuntu 這種系統，雖然有國內的 mirror，但是有些東西，像是 ppa 之類的 source，還是得從國外抓。今天剛裝完機器要更新，發現有些東西實在龜到不行，&lt;em&gt;426B/s&lt;/em&gt; 耶！雖然最後我抓完了啦&amp;hellip;..不過還是要研究一下該怎麼透過 proxy 抓這些套件。&lt;/p&gt;
+&lt;p&gt;方法很簡單，只要在 &lt;code&gt;/etc/apt/apt.conf&lt;/code&gt; 裡面寫入以下這段設定：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ACQUIRE {  
+	http::proxy &amp;quot;http://USER:PASSWORD@PROXY-SERVER:PORT&amp;quot;  
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用者帳號密碼、server 資訊請自行更改，如果是不需要帳號密碼的 proxy server 的話，則引號中只要打 &lt;code&gt;http://PROXY-SERVER:PORT&lt;/code&gt; 即可。如果連 port 都不打的話，則預設的 port 是 80（也就是 http 的預設 port）&lt;/p&gt;
+&lt;p&gt;接著只要更新套件清單，並安裝想要的套件就好。如果設定有誤，應該會在 update 的時候就出錯了。（像我一開始設定到一台已經不能用的 proxy server，就直接噴 error 給我看&amp;hellip;..）&lt;/p&gt;
+&lt;p&gt;那麼，該設定哪一台 proxy server 呢？我找到了一份（有點舊的）proxy 列表，剛好是成大的人做的的樣子，請看參考資料。&lt;br&gt;
+其中我是覺得 &lt;a href=&#34;http://proxy.nchc.gov.tw:3128&#34;&gt;NCHC 的 proxy server&lt;/a&gt; 好像滿可靠的（好歹人家是NCHC&amp;hellip;）如果那份列表的連結以後不能用了，可以試試看這台&amp;hellip;&lt;/p&gt;
+&lt;p&gt;至於，wget 又是怎麼回事？噢&amp;hellip;只是因為我發現我去找 proxy 相關資料的時候，很多文章都會同時教 apt 跟 wget 怎麼設定 proxy，那我就從善如流，把相關的資訊照抄一下了～&lt;/p&gt;
+&lt;p&gt;編輯 &lt;code&gt;/etc/wgetrc&lt;/code&gt; 或是 &lt;code&gt;~/.wgetrc&lt;/code&gt;，加入以下設定：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https_proxy = http://PROXY-SERVER:PORT  
+http_proxy = http://PROXY-SERVER:PORT  
+ftp_proxy = http://PROXY-SERVER:PORT  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;應該很好懂吧？&lt;br&gt;
+在我的 Ubuntu 10.04 上這幾行本來就已經存在 &lt;code&gt;/etc/wgetrc&lt;/code&gt; 裡面了，用的是 &lt;code&gt;proxy.yoyodyne.com:18023&lt;/code&gt; 這台機器，不過預設是註解起來的。所以如果想使用的話，其實只要編輯一下就可以了:)&lt;br&gt;
+（碎碎唸：本來應該用 https 抓的東西卻透過 http proxy 去抓不會不好嗎&amp;hellip;不是應該要用 https proxy&amp;hellip;.？）&lt;/p&gt;
+&lt;h1 id=&#34;參考資料&#34;&gt;參考資料&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blogs.sun.com/venky/entry/using_apt_get_with_a&#34;&gt;Using apt-get with a proxy server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://turtle.ee.ncku.edu.tw/~tung/proxy/proxylst.html&#34;&gt;Proxy Server 列表&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://mis.ntct.edu.tw/book/368&#34;&gt;如何在 Linux 使用 wget 透過 proxy 抓取檔案&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+- https://blog.crboy.net/posts/proxy-apt-wget/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>在Ubuntu 10.04 (Lucid Lynx)上安裝NX - 許多人推薦的遠端桌面</title>
+        <link>https://blog.crboy.net/posts/install-nx-on-ubuntu-10.04/</link>
+        <pubDate>Thu, 03 Jun 2010 09:14:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/install-nx-on-ubuntu-10.04/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/install-nx-on-ubuntu-10.04/ -&lt;p&gt;呃阿阿阿阿阿&amp;hellip;..我不知道應該怎麼起頭&amp;hellip;&amp;hellip;其實故事是這樣的，去年有學弟跟我推薦了NX這個遠端桌面，他是&lt;a href=&#34;http://www.nomachine.com/&#34;&gt;NoMachine&lt;/a&gt;公司的產品。特色大致上是，支援ssh加密連線，傳輸的資訊有經過壓縮(速度較快，不過影像品質稍微不太好，看得出來是lossy compression)，client可以跨平台，windows跟Linux都可以用，這對於有Linux桌面需求的Windows user真是福音阿!!&lt;/p&gt;
+&lt;p&gt;於是乎，我就把他給裝起來了。一開始我裝的是NoMachine提供的Free Edition，但是後來有人跟我反應會連不上的問題，我找了很久找不出原因，最後我在某篇文章(由於年代久遠現在找不到了)得知，原來NoMachine的免費版本的nxserver有session數的限制，所以只好另尋他法。&lt;/p&gt;
+&lt;p&gt;有個好用的open source版本的nxserver叫做&lt;a href=&#34;http://freenx.berlios.de/&#34;&gt;FreeNX&lt;/a&gt;，想當然爾，「應該」是沒有session數限制的吧？當時在以前版本的ubuntu怎麼裝的我已經忘了，只記得套件名稱是freenx，但是好像不在官方預設的套件庫裡面&amp;hellip;但是在Ubuntu 10.04，我發現了新大陸！XD&amp;quot;&lt;/p&gt;
+&lt;p&gt;這裡是安裝教學，很簡單。&lt;br&gt;
+首先第一部你要先搞定你的ssh連線&amp;hellip;.通常我是裝openssh-server這個套件好像就搞定了&amp;hellip;.不過ssh博大精深，請另行研究。&lt;br&gt;
+在ssh server裝好之後，就要開始安裝nx server了：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install python-software-properties #這步其實應該不用做，ubuntu預設就有裝這個套件了  
+$ sudo add-apt-repository ppa:freenx-team #這步其實讓我滿驚奇的，原來有這樣好用的工具可以用XD....  
+$ sudo apt-get update #加了套件庫，當然要update一下  
+$ sudo apt-get install neatx-server`  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;咦？怎麼不是freenx了？而是一個叫做neatx-server的東西？他的套件說明是這樣的：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Neatx is an Open Source NX server.&lt;br&gt;
+Neatx is an Open Source NX server, similar to the commercial NX server from NoMachine.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;查到的資料來源網頁是這樣寫的：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ubuntu Lucid now uses Neatx, the Open Source NX server from Google.&lt;br&gt;
+Installation is simple enough, and similar to the Ubuntu Karmic method.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;看到Google我整個心花怒放阿～～(撒花) 總而言之，他也是一個nx server就是了&amp;hellip;.如果你不想用這個的話，其實還是有freenx這個套件可以裝的。(對，我看過了)&lt;br&gt;
+不過就我自己的經驗來說，我印象中之前看到FreeNX的介面&amp;hellip;.(就是直接關視窗的時候會跳出來的那個對話方塊)&amp;hellip;.滿醜的&amp;hellip;.但是Neatx的我還可以接受:P (呃&amp;hellip;應該不是因為Google所以有加分啦= =a)&lt;/p&gt;
+&lt;p&gt;最後簡單提一下，我自己現在的狀況是，有一台多人使用的機器，裝的是Neatx，只有我自己用的機器則是用NoMachine的免費版本。而client的話我則是清一色使用NoMachine的版本，如果你不喜歡，也有open source的nx client可以使用。如：qtnx&lt;/p&gt;
+&lt;h1 id=&#34;參考資料們&#34;&gt;參考資料們&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.ubuntu.com/community/FreeNX&#34;&gt;Ubuntu Documentation - FreeNX&lt;/a&gt; 這篇是主要資料來源，裡面也提到在9.10上的安裝方式，其實就是安裝freenx。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.kenming.idv.tw/ubuntu-server_windows-os_remote-desktop-control_by-freenx&#34;&gt;Ubuntu Server 與 Windows 系統的遠端桌面遙控 by FreeNX&lt;/a&gt; 這篇主要是用官方的免費版本(然後最下面有提到neatx)，如我前面提到的，NoMachine免費版本會有session數量限制(而且不多)，如果是多人使用的話要注意。&lt;/li&gt;
+&lt;/ul&gt;
+- https://blog.crboy.net/posts/install-nx-on-ubuntu-10.04/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>取得 SSH server public key 的 fingerprint</title>
+        <link>https://blog.crboy.net/posts/get-ssh-server-fingerprint/</link>
+        <pubDate>Thu, 03 Jun 2010 08:30:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/get-ssh-server-fingerprint/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/get-ssh-server-fingerprint/ -&lt;p&gt;不說廢話先給答案：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;對於廢話有興趣的請繼續閱讀&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;手邊的機器管一陣子之後，就會開始手癢想要重灌XD&lt;br&gt;
+每次重灌完，要 ssh 上去的時候，都會遇到 key 不符合的情形&amp;hellip;.畫面長得像是這樣：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ssh Some-Server  
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  
+@ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @  
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!  
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!  
+It is also possible that the RSA host key has just been changed.  
+The fingerprint for the RSA key sent by the remote host is  
+&amp;lt;這裡是一長串的fingerprint，會有16進位數字，用冒號分隔&amp;gt;.  
+Please contact your system administrator.  
+Add correct host key in /home/crboy/.ssh/known_hosts to get rid of this message.  
+Offending key in /home/crboy/.ssh/known_hosts:1  
+RSA host key for [這裡是server的IP address]:PORT has changed and you have requested strict checking.  
+Host key verification failed.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然後就會沒辦法連線&amp;hellip;&amp;hellip;&amp;hellip;orz&lt;/p&gt;
+&lt;p&gt;細節我就不提了，反正我也沒有知道得很清楚。只是，這個機制是為了安全而做的，要是不謹慎一點的話，搞不好攻擊者就趁你重灌之後，偷偷攔截你的連線做 man-in-the-middle 攻擊。所以確認新的 fingerprint是正確的這件事很重要。&lt;/p&gt;
+&lt;p&gt;以前年少無知的時候，我都是這樣解決 key 不符合的問題的&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ rm ~/.ssh/known_hosts  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;對不起我錯了&amp;hellip;..&amp;lt;(_ _)&amp;gt;&lt;/p&gt;
+&lt;p&gt;這麼做，不但你現在想要連的那個站儲存的 key 被砍了，就連其他你曾經 ssh 上去過，曾經信任他的站的 key 都砍了&amp;hellip;..這樣真的很糟糕= =&lt;br&gt;
+後來我發現其實在連線的時候，錯誤訊息就會告訴你這個站的 key 存在 known_hosts 的第幾行&amp;hellip;(如上面的範例所示)&amp;hellip;所以只要把那行刪掉，就可以正常連線，又不會影響到其他站了。可是問題來了，我該怎麼確認新拿到的 key 是正確的呢？這時候就要靠 fingerprint 來幫忙了！&lt;/p&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;..呃&amp;hellip;.好啦，相關的背景知識我也講得不清楚，我只想知道怎麼確定 fingerprint 是對的就好，方法如下：&lt;/p&gt;
+&lt;p&gt;在要被連線的 server 上，應該會有這樣的檔案：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/etc/ssh/ssh_host_rsa_key.pub  
+/etc/ssh/ssh_host_dsa_key  
+/etc/ssh/ssh_host_rsa_key  
+/etc/ssh/ssh_host_dsa_key.pub  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;這些就是你的 server 的 &lt;em&gt;host key&lt;/em&gt;&amp;hellip;.那些 &lt;code&gt;*_key.pub&lt;/code&gt; 的就是 public key，另外要注意的是，&lt;code&gt;_key&lt;/code&gt; 結尾的那些是 private key，只有 root 可以讀寫！給 ssh 連線確認的話，只需要用到 public key 就好，所以不需要 root 權限。指令如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;或是改成 &lt;code&gt;ssh_host_dsa_key.pub&lt;/code&gt;，看你的 ssh client 用什麼認證。但是我只遇過 RSA key 認證的情形，也不知道用 DSA 會怎樣。XD&amp;quot;&lt;/p&gt;
+&lt;p&gt;於是乎，我們會得到一個 fingerprint，也就是這個 key 的「指紋」，可以用來辨認對方收到的 key 是不是正確的，所以當你要把 server 開放給某個人連線的時候，記得給他 server 的 fingerprint 唷！:D&lt;/p&gt;
+&lt;h1 id=&#34;參考資料&#34;&gt;參考資料&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.lysium.de/blog/index.php?/archives/186-How-to-get-ssh-server-fingerprint-information.html&#34;&gt;How to get ssh server fingerprint information&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.symantec.com/connect/articles/ssh-host-key-protection&#34;&gt;SSH Host Key Protection&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+- https://blog.crboy.net/posts/get-ssh-server-fingerprint/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>修改 Google Chrome 的外掛 - RePlurk Chrome 的javascript</title>
+        <link>https://blog.crboy.net/posts/patch-replurk-chrome/</link>
+        <pubDate>Wed, 02 Jun 2010 11:54:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/patch-replurk-chrome/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/patch-replurk-chrome/ -&lt;p&gt;用Firefox上噗浪(Plurk)的人，有些都會裝&lt;a href=&#34;https://addons.mozilla.org/zh-TW/firefox/addon/748/&#34;&gt;GreaseMonkey&lt;/a&gt;這個套件+&lt;a href=&#34;http://userscripts.org/scripts/show/39186&#34;&gt;RePlurk script&lt;/a&gt;。只不過我在Google Chrome on Linux上&amp;hellip;雖然他預設支援直接安裝userscripts，但是我從來沒有成功跑起來過orz|| (就是可以安裝，但是裝了之後plurk就開不起來了QQ)&lt;/p&gt;
+&lt;p&gt;後來我發現有個&lt;a href=&#34;https://chrome.google.com/extensions/detail/beaghhigecidoamlpclhiboaeonkceea?hl=zh-tw&#34;&gt;RePlurk Chrome套件&lt;/a&gt;，他可以幫你的plurk頁面加上一個&amp;quot;RePlurk&amp;quot;的按鈕&amp;hellip;.就像我以前在Firefox上用的那樣(dance) 噢&amp;hellip;可是有個問題&amp;hellip;我喜歡的轉噗形式是：「[轉噗]: xxxxxx」，但是RePlurk Chrome的轉噗形式是：「([ReP]) 作者: xxxxxx」，最困擾的就是他不能自訂(angry)！(GreaseMonkey有提供介面讓你修改scripts)&lt;/p&gt;
+&lt;p&gt;這篇就是為了解決這種問題的&amp;hellip;..:P 首先，我的平台是Linux，更詳細的說，是Ubuntu 10.04 (不過其實在openSUSE上也是一樣)&amp;hellip;..而這個套件把他的javascript放在哪裡呢？答案如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$HOME/.config/google-chrome/Default/Extensions/beaghhigecidoamlpclhiboaeonkceea/0.1.1/RePlurk.js
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;補充：在MacOX 10.6.3上是放在&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;~/Library/Application Support/Google/Chrome/Default/Extensions/beaghhigecidoamlpclhiboaeonkceea/0.1.1/RePlurk.js
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;那個一長串的是這個擴充套件的ID(在Chrome的擴充套件頁按「開發人員模式」就可以看到)，0.1.1是我現在使用的版本&amp;hellip;也就是說以後如果這個套件改版可能就會小小換個路徑XD&amp;quot;&lt;/p&gt;
+&lt;p&gt;那該怎麼辦？&lt;/p&gt;
+&lt;p&gt;人類哪有這麼強的記憶力&amp;hellip;.其實我每次都忘記他放在哪裡！我是這麼找到這個檔案的&amp;hellip;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ find ~ |grep -i replurk
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其中就會看到RePlurk.js這個檔案了&amp;hellip;.:P 在windows上一樣可以用搜尋功能來找唷，我想會差不多的吧。&lt;/p&gt;
+&lt;p&gt;找到檔案之後，就是要修改他的內容了。呃&amp;hellip;.我不知道該怎麼說明&amp;hellip;..他裡面把code都擠在一行了XD 其實可以用搜尋取代啦，但是要有點js的基礎才行，不要改到變數名稱了，改字串就好。此外，對於轉噗的連結(原本是叫做&amp;quot;RePlurk&amp;quot;)我也不太滿意&amp;hellip;.所以我把他改成&amp;quot;轉噗&amp;quot;了。&lt;/p&gt;
+&lt;p&gt;講東西只講一半，不教怎麼改一定會被看文章的人追殺！所以提供一個替代方案，我把我修改的RePlurk.js分享給大家，以下，請笑納:D&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var GM_JQ_src = document.createTextNode(&amp;quot;var ReP_Message={};var p=window.Plurks;var o_expand;if(p){o_expand=p.expand;p.expand=function(aa){o_expand(aa);if(typeof ReP_Message.hrefProcessed==&#39;undefined&#39;){ReP_Message.hrefProcessed=true;var ba=document.getElementById(&#39;form_holder&#39;).lastChild;var ib=document.getElementById(&#39;input_big&#39;);if(ba&amp;amp;&amp;amp;ib){var ca=document.createElement(&#39;a&#39;);var da=document.createElement(&#39;div&#39;);da.setAttribute(&#39;class&#39;,&#39;perma_link&#39;);da.id=&#39;RePlurkDiv&#39;;ca.id=&#39;RePlurk&#39;;ca.setAttribute(&#39;href&#39;,&#39;javascript:doRePlurk(ReP_Message.owner_id, ReP_Message.raw, ReP_Message.link);&#39;);ba.appendChild(da).appendChild(ca).appendChild(document.createTextNode(&#39;轉噗&#39;));}}var ea=window.getPD(aa).obj;ReP_Message.link=&#39;http://plurk.com/p/&#39;+(ea.plurk_id).toString(36);ReP_Message.raw=ea.content_raw;ReP_Message.owner_id=ea.owner_id;}}function doRePlurk(fa,ga,ha){var ib=document.getElementById(&#39;input_big&#39;);var ia=window.SiteState.getUserById(fa).nick_name;var ja=ha+&#39; ([轉噗]): &#39;+ga;if(ib){ib.value=ja;p._removeExpand();window.MaxChar.updateBig();}}&amp;quot;);  
+
+var GM_JQ = document.createElement(&#39;script&#39;);  
+GM_JQ.type = &#39;text/javascript&#39;;  
+GM_JQ.appendChild(GM_JQ_src);  
+document.getElementsByTagName(&#39;body&#39;)[0].appendChild(GM_JQ);
+&lt;/code&gt;&lt;/pre&gt;
+- https://blog.crboy.net/posts/patch-replurk-chrome/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>將filesystem從ext2 or ext3升級到ext4</title>
+        <link>https://blog.crboy.net/posts/upgrade-to-ext4/</link>
+        <pubDate>Wed, 02 Jun 2010 10:18:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/upgrade-to-ext4/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/upgrade-to-ext4/ -&lt;p&gt;剛好有點三八想把ext3轉到ext4去&amp;hellip;.就找了些資料，寫了這篇文章:P&lt;/p&gt;
+&lt;p&gt;要轉換成ext4嘛&amp;hellip;&amp;hellip;首先當然有些前提&amp;hellip;.你的kernel要支援ext4才行:D 另外也建議備份重要資料&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;然後step by step的教學就開始了！以下 &lt;code&gt;$DEV&lt;/code&gt; 為device的名字(例：&lt;code&gt;/dev/sda1&lt;/code&gt;)，&lt;code&gt;$MOUNT&lt;/code&gt;為mount point(例：&lt;code&gt;/mnt&lt;/code&gt;)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;要變更檔案系統，理所當然絕對不能讓他在被mount的時候亂搞，那是會出人命的XD&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; # umount $DEV  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;這麼快!? 對&amp;hellip;.現在就去變更他吧&amp;hellip;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; # tune2fs -O extents,uninit_bg,dir_index $DEV  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果是ext2 -&amp;gt; ext4的話則要這樣(因為ext2是沒有日誌(journal)的)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; # tune2fs -O extents,uninit_bg,dir_index,has_journal $DEV  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;變更完之後，一定要做fsck！&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; # fsck -pf $DEV  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;(這裡讓我膽顫心驚！因為出現好多error唷&amp;hellip;.orz||| 而且他還修了很久，差點以為程式爛掉&amp;hellip;.)&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;最後就可以把他mount回去囉！&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; # mount -t ext4 $DEV $MOUNT  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果是系統預設會mount的filesystem的話，請記得修改&lt;code&gt;/etc/fstab&lt;/code&gt;。裡面的參數會紀錄要怎麼mount它&amp;hellip;一定要改！&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;ps. 若是有動到&lt;code&gt;/boot&lt;/code&gt;，或是開機遇到grub出現問題的話，參考資料裡面有相關資訊！&lt;/p&gt;
+&lt;h1 id=&#34;參考資料&#34;&gt;參考資料&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Ext3升級到Ext4 無損升級 &lt;a href=&#34;http://blog.chinaunix.net/u1/46672/showart_2069245.html&#34;&gt;http://blog.chinaunix.net/u1/46672/showart_2069245.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Linux 文件系統從 ext3 升級到 ext4 &lt;a href=&#34;http://www.vpsee.com/2010/01/convert-ext3-to-ext4-filesystem/&#34;&gt;http://www.vpsee.com/2010/01/convert-ext3-to-ext4-filesystem/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;sshlog-轉換 Ext3 到 Ext4 &lt;a href=&#34;http://blog.ssh.tw/?p=1447&#34;&gt;http://blog.ssh.tw/?p=1447&lt;/a&gt; (有ssh大掛保證，這方法讓我更安心了XD)&lt;/li&gt;
+&lt;/ul&gt;
+- https://blog.crboy.net/posts/upgrade-to-ext4/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>用JavaScript判定瀏覽器是否為IE</title>
+        <link>https://blog.crboy.net/posts/%E7%94%A8javascript%E5%88%A4%E5%AE%9A%E7%80%8F%E8%A6%BD%E5%99%A8%E6%98%AF%E5%90%A6%E7%82%BAie/</link>
+        <pubDate>Thu, 15 Apr 2010 18:47:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/%E7%94%A8javascript%E5%88%A4%E5%AE%9A%E7%80%8F%E8%A6%BD%E5%99%A8%E6%98%AF%E5%90%A6%E7%82%BAie/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E7%94%A8javascript%E5%88%A4%E5%AE%9A%E7%80%8F%E8%A6%BD%E5%99%A8%E6%98%AF%E5%90%A6%E7%82%BAie/ -&lt;p&gt;摘自 &lt;a href=&#34;http://leeiio.me/ie_detection_in_5_bytes/&#34;&gt;http://leeiio.me/ie_detection_in_5_bytes/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&#39;text/javascript&#39;&amp;gt;  
+var ie = !-[1,];  
+alert(ie);  
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以上程式碼執行結果：IE 下返回 true，其他標準瀏覽器返回 false。&lt;code&gt;!-[1,]&lt;/code&gt;，僅僅只有 6 bytes！&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&#39;text/javascript&#39;&amp;gt;  
+// Option from Dean Edwards:  
+var ie = /*@cc_on!@*/false;  
+
+// Use the commented line:  
+var ie//@cc_on=1;  
+
+// Variation (shorter variable):  
+var ie = &#39;\v&#39;==&#39;v&#39;;  
+
+// Option to Gareth Hayes (former record-holder):  
+var ie = !+&amp;quot;\v1&amp;quot;;  
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+- https://blog.crboy.net/posts/%E7%94%A8javascript%E5%88%A4%E5%AE%9A%E7%80%8F%E8%A6%BD%E5%99%A8%E6%98%AF%E5%90%A6%E7%82%BAie/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>10 個最酷的 Linux 單行指令</title>
+        <link>https://blog.crboy.net/posts/top-10-linux-one-liners/</link>
+        <pubDate>Tue, 06 Apr 2010 02:10:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/top-10-linux-one-liners/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/top-10-linux-one-liners/ -&lt;p&gt;本文內容修改自 &lt;a href=&#34;http://linuxtoy.org/archives/top-10-one-liners.html&#34;&gt;http://linuxtoy.org/archives/top-10-one-liners.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下面是來自 &lt;a href=&#34;http://commandlinefu.com/&#34;&gt;Commandlinefu&lt;/a&gt; 網站由用戶投票表決出的 10 個最酷的 Linux 單行指令。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;sudo !!&lt;/code&gt;
+以 root 帳戶執行上一道指令。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;python -m SimpleHTTPServer&lt;/code&gt;
+利用 Python 建立一個簡單的 Web 伺服器，可透過 &lt;code&gt;http://$HOSTNAME:8000&lt;/code&gt; 瀏覽。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;:w !sudo tee %&lt;/code&gt;
+在 vim 中無需權限儲存編輯的文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;cd -&lt;/code&gt;
+更改到上一次瀏覽的目錄。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;^foo^bar&lt;/code&gt;
+將上一道指令中的 foo 替換為 bar，並執行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;cp filename{,.bak}&lt;/code&gt;
+快速備份或複製文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;mtr google.com&lt;/code&gt;
+= &lt;code&gt;traceroute&lt;/code&gt; + &lt;code&gt;ping&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;!whatever:p&lt;/code&gt;
+搜尋命令歷史，但不執行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ssh-copy-id user@host&lt;/code&gt;
+將 ssh keys 複製到 &lt;code&gt;user@host&lt;/code&gt; 以啟用無密碼 SSH 登錄。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ffmpeg -f x11grab -s wxga -r 25 -i :0.0 -sameq /tmp/out.mpg&lt;/code&gt;
+把 Linux 桌面錄製為影片。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+- https://blog.crboy.net/posts/top-10-linux-one-liners/ - </description>
+        </item>
+    
+    
+  </channel>
+</rss> 

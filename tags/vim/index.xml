@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vim on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/vim/</link>
+    <description>Recent content in Vim on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Mon, 24 Sep 2012 01:44:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>修改 Debian 或 Ubuntu 預設 editor</title>
+      <link>https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/</link>
+      <pubDate>Mon, 24 Sep 2012 01:44:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/</guid>
+      <description>前幾天突然想到一個問題&amp;hellip;.由於 Ubuntu 預設 editor 是 nano，這對於一個 vim user 來說實在是不太舒服啊XD 所以稍微找了一下，找到一個很簡便的作法，可以用來修改預設 editor，方式如下：
+$ sudo update-alternatives --config editor [sudo] password for crboy: There are 4 choices for the alternative editor (providing /usr/bin/editor). Selection Path Priority Status ------------------------------------------------------------ * 0 /bin/nano 40 auto mode 1 /bin/ed -100 manual mode 2 /bin/nano 40 manual mode 3 /usr/bin/vim.basic 30 manual mode 4 /usr/bin/vim.tiny 10 manual mode Press enter to keep the current choice[*], or type selection number: 3 update-alternatives: using /usr/bin/vim.</description>
+    </item>
+    
+    <item>
+      <title>Vim: CamelCase to snake_case</title>
+      <link>https://blog.crboy.net/posts/vim-camelcase-to-snakecase/</link>
+      <pubDate>Tue, 03 Jul 2012 11:05:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/vim-camelcase-to-snakecase/</guid>
+      <description>這篇文章：用 vim 將 camel case 改成 underscore-based 提到用 vim 取代把 CamelCase 轉換成 snake_case 的作法，看到後有一點點小想法，特別紀錄一下 :P
+作者提到的取代方式是：
+:%s/\(\l\)\(\u\)/\1_\l\2/gc 但配合 very magic 可以變成這樣
+:%s/\v(\l)(\u)/\1_\l\2/gc 短了一點點不是重點，重點是括號好看多了XD
+另外作者稍微寫錯的部分是，\l 跟 \u 在 substitute pattern 中表示的是小寫和大寫字元，而不是把下一個字變成大(小)寫，那是在後面做的事。可以 :help /character-classes 看到詳細的列表 (大心)。
+既然這篇文章這麼短，那就提一下好了。今天找資料的時候不小心發現這位作者的 blog，實在看得我欲罷不能啊XD 而且他玩的東西好多，也玩系統、也寫程式，從 C 寫到 PHP、Python、Perl、Ruby&amp;hellip;..太強了orz 還有很多有趣的東西，實在很好玩&amp;hellip;.太佩服 &amp;lt;(_ _)&amp;gt; 建議熱愛技術的人可以參考看看，我覺得很精采 :D</description>
+    </item>
+    
+    <item>
+      <title>對 Vim 啟動過程做效能分析</title>
+      <link>https://blog.crboy.net/posts/profiling-vim-startup/</link>
+      <pubDate>Wed, 30 May 2012 11:09:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/profiling-vim-startup/</guid>
+      <description>昨天在噗浪上看到有趣的分享，是一篇 StackOverflow 上的文章：Profiling vim startup time。
+其實講的東西相當單純，就是 vim 提供了 --startuptime 選項，後面接上 log 檔的檔名，他會幫你把啟動過程中每個部份所花的時間都記錄下來，有個別時間也有累計時間。例如：
+$ vim --startuptime vim.log 然後就可以看 vim.log 的內容來了解自己啟動 vim 的時候在哪個部分花最多時間囉。對於 vim plugin 裝很多又想瘦身的朋友應該很實用。:)
+嗯&amp;hellip;..身為一個程式語言 (vim script) 的 interpreter&amp;hellip;.果然會出現這種東西XD</description>
+    </item>
+    
+    <item>
+      <title>「那些老師沒教的事」簡報釋出</title>
+      <link>https://blog.crboy.net/posts/release-slides-of-code-smart/</link>
+      <pubDate>Mon, 02 Apr 2012 23:41:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/release-slides-of-code-smart/</guid>
+      <description>在緊張得半死的狀況中，終於把這個 talk 給講完了XD 希望來聽的人都有些收穫~
+不過可惜的是，我太緊張了，所以有些東西講的不是很完整，甚至是漏講&amp;hellip;.orz 而且滿多東西好像&amp;hellip;.呃&amp;hellip;.有點臨場發揮&amp;hellip;.XD 希望不要讓人覺得太亂~
+當日演講簡報可點選此處下載
+自己重新看了簡報，大致上檢討一下自己，如下：
+git-config 沒有 demo 到(因為我自己也很少用&amp;hellip;我都直接看設定檔來改，比較乾脆XD) 之前就一直覺得應該要畫點圖來描述 revision 還有 branch，但是一直偷懶&amp;hellip; git-add -p 沒講到QQ&amp;hellip;.應該要 demo 一下「部分 add 並 commit」的 .gitignore 如果有 demo 的話，應該會更清楚點 沒講到 git-revert 啊!!!! (大敗筆) 應該拿個實際上的使用 git 協作的範例，這樣聽眾會更有感覺&amp;hellip; make 還是該現場 demo 一下&amp;hellip;.幾行而已又不會花多少時間QQ 我竟然沒講到 gdb 可以預先寫好 command，甚至是 function 的這件事&amp;hellip;.. vim demo 太少&amp;hellip;連 vimrc 都沒有開來看看，真是不應該 vim 文字物件 (text object)、tabpage、quickfix、mapping 都應該要提一下的&amp;hellip;. 結果變成檢討文了&amp;hellip;&amp;hellip;..XD
+如果這樣的東西以後還有機會再講的話，也許要考慮拆成兩個部分，然後分別作比較完整的 demo，甚至是現場實作，應該會比較有趣一點！但是，如果是拆開的話，那不管講那個主題都顯得我會得太少了耶&amp;hellip;..orz 畢竟，不管在哪個範疇我都只是個學習者，充其量是脫離初學吧我想。我生來就是只能講初級講題的吧XDDDD
+噢我發現我的文章，總是會出現很多個 XD，對吧？XD
+最後這邊宣傳一下當日最後宣傳的事情。
+我之前嘗試性的建立了一個小小的社群，叫做 C4Labs。當時想嘗試把社群聚會的形式跟氣氛帶到成大來，不過成效好像頗差orz。現在畢業了，想說看看能不能再找回當初的期待。我想把對於電腦、網路、程式等等技術有強烈興趣的朋友們聚集起來，一起討論跟分享。因為涵蓋範圍很廣，想當然爾並不是討論很高級很困難很深入的技術，算是初階的社群？XD
+現在還有一些應該慢慢建立起來的東西，我會儘量去做，目前我在 Google Groups 上開了一個討論群組，作為聯絡的管道。歡迎有興趣跟我們一起分享的朋友們一起來玩！:P
+我們的聚會現在並不定期 (我承認是有一搭沒一搭啦)，不過從上週的演講做為一個開頭，希望每週四晚上都有一個聚會，一週是演講，一週是單純的聚會分享(或閒聊、討論、桌遊？XD)，這樣交錯進行，節奏應該不會太快，而且學得到東西！</description>
+    </item>
+    
+    <item>
+      <title>用 vim 把一堆程式碼轉成 html 檔案</title>
+      <link>https://blog.crboy.net/posts/vim-to-html/</link>
+      <pubDate>Mon, 31 Oct 2011 09:14:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/vim-to-html/</guid>
+      <description>前陣子剛好跟學弟聊天聊到一些事情，他提到他想把他之前寫的 code 轉成 html&amp;hellip;..呃&amp;hellip;雖然我不太清楚為什麼要這樣做啦&amp;hellip;可能是為了列印之類的&amp;hellip;.不過這個我不太 care&amp;hellip;身為一個資工人，這種事當然要自動化！我只是想知道該怎麼做到而已XD
+這位學弟也玩 Linux，但他說他試過寫 script 卻沒辦法成功，說是檔名有空白就會被分成兩個檔名，會找不到。這怎麼可能呢！所以當下就試試看&amp;hellip;.
+$ mkdir test $ cd test $ touch a\ 1 a\ 2 a\ 3 $ find . -exec echo {} \; 這當然是沒問題的啊！每個檔名都自成一行 :D
+好了&amp;hellip;.問題解決一半。不過如果這樣的話就不會想寫文章了&amp;hellip;主要是因為當天腦袋卡住，竟然沒辦法用 vim 轉換出他要的 html 檔案&amp;hellip;.|||
+先提一下 vim 的 :TOhtml 好了，這東西可以把現在的 syntax highlight 轉換成 html，很酷的小功能說~但當天不曉得為什麼，明明知道應該用 find -exec 配合 vim -c 去做，但檔名就一直不知道該怎麼下&amp;hellip;&amp;hellip;.orz 學弟的需求是這樣：code 放在 a 目錄，輸出的 html 要放在 b 目錄，然後 script 跟 a, b 放在同一層目錄&amp;hellip;.大概是這樣子:p
+後來回家後，還查了我根本不懂的 vim register 跟 variable 的用法，搞老半天，最後發現答案很簡單= =a，只要 truncate 檔名就好了啊&amp;hellip;&amp;hellip;如下所示：</description>
+    </item>
+    
+    <item>
+      <title>第一次用 Vim 就上手</title>
+      <link>https://blog.crboy.net/posts/vim-101/</link>
+      <pubDate>Sat, 05 Mar 2011 10:09:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/vim-101/</guid>
+      <description>前言 這篇是先貼在系上 BBS 的文章，主要對象是天真無邪的學弟妹們XD 所以太愚蠢的部份，還有排版太差的部份，就抱歉了orz
+簡介 標題是騙人的，第一次用 Vim 怎麼可能上手XDDDDD
+只是看到有學弟在講，就順便寫一下。我覺得一開始雖然會什麼都不懂，摸不著頭緒，但是在 Vim 裡面要先有基本生存能力，就像學武先學內功一樣～這篇文章就是要講基本的生存能力&amp;hellip;..
+用 Vim 開啟檔名為 FILENAME 的檔案 $ vim FILENAME 移動 h (左), j (下), k (上), l (右)
+我知道這很奇怪，但是請聽我說完&amp;hellip;首先把你的手「正常的」放在鍵盤上&amp;hellip;也就是雙手食指分別在 F 跟 J。通常這兩個按鍵會有一些幫助你定位的設計，常見的作法是有個凸點。接著忘記你的左手的存在，你的右手應該會微微的像 \ 這樣傾斜。
+不要亂動！！！這個時候，你的食指應該比中指更接近自己，這也就是 Vim 裡面上跟下分別是中指跟食指&amp;hellip;呃不是啦 是 k 跟 j 的原因&amp;hellip;至於左右呢？啊就左右嘛= =a
+輸入 先學著用 i 跟 a 吧。一個是 insert，一個是 append。這兩個用久了就會變成直覺了。熟了之後再學著用 I 跟 A 吧。如果 i 跟 a 很直覺，I 跟 A 就會很簡單了。（其他的以後再說沒關係）
+回到 Normal Mode 如果有看過其他文章，應該會知道 Vim 有 3 種以上的「mode」。我們不用管這麼多，只要記得「狂按 Esc 就會回到 normal mode」就好。手賤多按幾下沒關係，電腦不會爆炸。噢，你說其他的 mode 喔？先不用記啦，反正你自然就會進去了&amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>

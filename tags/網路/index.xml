@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>網路 on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/%E7%B6%B2%E8%B7%AF/</link>
+    <description>Recent content in 網路 on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 03 Jul 2011 06:59:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/%E7%B6%B2%E8%B7%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Google&#43; 教學 - 功能介紹篇</title>
+      <link>https://blog.crboy.net/posts/google-plus-2/</link>
+      <pubDate>Sun, 03 Jul 2011 06:59:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/google-plus-2/</guid>
+      <description>首先進入 Google+ 的主畫面(登入之後)，會看到一個白色背景的 facebook，呃&amp;hellip;不是&amp;hellip;我是說&amp;hellip;.會看到一個跟 facebook 很像的畫面，三欄式版面，左邊顯示自己的頭像、名字(last name)、訊息串選單、Sparks、即時通訊(GTalk)，中欄則顯示一大堆訊息(訊息串)，除非是剛註冊，否則應該不會是空的。，右欄則比較偏向輔助性的功能，像是朋友牆、、建議的朋友(警告：這欄出現指導教授的機率相當高！即使他根本沒有加入 Google+)、還有視訊聚會及手機版的相關訊息。
+再來要特別介紹上面的兩列按鈕。瀏覽器畫面的最上面是 Google 最近持續在改變的新介面(我想應該可以叫他 navbar)，前陣子才在噗浪講說為什麼我的 Google navbar 變成黑的，過沒幾天就出現 Google+ 了XD。Navbar 的最左邊有時候會出現一個「+[名字]」的項目(例如一個人叫小明那他就會出現「+小明」)，這個是在申請了 Google+ 之後才會出現的，不過根據我自己的經驗還有公開調查的結果，這個地方根本就一直改！我看過三個狀況：沒有這個項目，也就是最左邊是「Gmail」。顯示「+[名字]」(例如「+小明」)。還有顯示「+您」。此外，同一個帳號在不同電腦上看到的可能會不一樣，同一個帳號同一台電腦不同時間看可能會不一樣，同帳號同電腦同時間不同分頁看也可能會不一樣&amp;hellip;..(我敗了= =)。
+接著是 Google+ 本身的功能列，有四個主要的按鈕分別是「首頁」、「相片」、「個人資料」、「社交圈」，題外話，我真的覺得這個「社交圈(circles)」可以翻譯成小圈圈就好了&amp;hellip;.XDDDD。這個小圈圈是這次 Google+ 其中一個很吸引人的好玩功能之一！雖然不是說實用度滿點，可是用起來很有趣，而且速度也不錯，特效很可愛，滿方便的。只要把想
+吸收
+加入的人選取，拖拉到某個小圈圈裡就可以了。一個人可以同時被分類在多個小圈圈裡面，所以這個其實很像 tag 的功能，只不過觀點不同而已(其實 tag 也就是分類的另一種觀點嘛= =)。Google 保證你所加入的人只會知道你把他加入社交圈，但是絕對不會知道你給他的小圈圈叫什麼名字，所以應該可以放心的亂取名字？XD
+接著是一些快捷鍵的介紹，配合快捷鍵可以讓閱讀訊息更有效率。在介紹之前，提醒 Vimium(on Chrome)、Vimperator(on Firefox)或是其他類似瀏覽器外掛的用戶要把 http*://plus.google.com/* 加入排除清單，否則快速鍵會被吃掉喔~
+首先注意到每則訊息的左邊，如果你點選這則訊息，那麼會有一條深藍色的線移動到這則訊息上。這相當於一個箭頭，在 Google+ 裡面你可以使用按鍵k跟j來上下移動這個「箭頭」，一次以一則訊息為單位，而且指到的訊息會顯示在目前的 view 的最上面，對於看訊息來說很方便喔~不會眼花找不到！接著按下 enter 就可以直接對這則訊息回覆。另外，根據我的測試，在按下 home 或 end 鍵之後，或是用滑鼠換頁過後，雖然藍線不會改變位置，但是接著按下jk的話，會從當前看到的訊息開始往下或往上閱讀。
+右上角的 popup notification 也有快捷鍵可以使用。首先是 k 跟 j 也可以作為上下移動的功能。按下 enter 或 o 會進入這則訊息，按 u 可以跳出(這是拿 Gmail 快捷鍵來試，沒想到猜對了)。另外，在閱讀訊息的時候，按方向鍵的左右也可以切換新舊訊息，左邊是較新(往上)，右邊是較舊。可以看上面有個「&amp;lt; 較新 | 較舊 &amp;gt;」作為提示。</description>
+    </item>
+    
+    <item>
+      <title>Google&#43; 教學 - 囉唆篇</title>
+      <link>https://blog.crboy.net/posts/google-plus-1/</link>
+      <pubDate>Sun, 03 Jul 2011 06:39:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/google-plus-1/</guid>
+      <description>與其說這是一篇教學，不如說是一篇使用心得吧XD&amp;quot;
+目前 Google+ 還是處於封測狀態&amp;hellip;.要有邀請函才能加入，至於邀請函的取得方式已經有許多討論了，這裡就分享一點軼事給一開始沒跟到風的朋友好了~在我剛知道 Google+ 的那天(不確定是不是剛推出的第一天)，我身邊的朋友都還沒有邀請函，而且似乎相當難找&amp;hellip;但我們知道，乘法的力量是很強大的！隔天就發現信箱裡出現兩封邀請函，而且噗浪河道上充滿了 Google+ 的聲音(看來打^H呼聲很大)。掙扎了很久我才終於決定該用哪個帳號申請&amp;hellip;.XD&amp;quot; 咦？怎麼離題了&amp;hellip;.我想說的是，當天早上大家都有邀請函，所以身邊這圈朋友有在線上的幾乎都申請了。
+不過就在我加入前不久，從噗浪河道來看，所有人的邀請函按鈕都被拿掉了&amp;hellip;.當時心想還好我有拿到邀請XD。不過就在不久後，某位(我猜他應該)不願具名的黑鬼^H^H長輩表示，有秘技可以發邀請函！身為一個沒發到邀請函的阿宅，對於秘技非常好奇也是合理的，一問之下發現只要把你要寄邀請函的對象加入小圈圈(Google+ 叫他社交圈啦..)之後對小圈圈發送訊息就可以了。只是我實在很懶，所以不小心發現直接在發訊息的時候輸入對方 e-mail 就可以了&amp;hellip;總而言之&amp;hellip;只要發訊息給沒有 Google+ 帳號的人，他就會收到一封信，裡面包含你的訊息，以及一個「瞭解更多」的連結，從這個連結連過去就可以申請了&amp;hellip;.這是 bug 嗎？XD 不過這個方法不曉得是被濫用還是怎樣&amp;hellip;當天晚上就完全不能用了。根據測試的結果，就算是稍早有收到真正的邀請函的人也無法在當天晚上申請帳號，猜想是完全把加入的功能關閉了。(但隔天疑似又開放了&amp;hellip;)
+以上這些故事因為都過去了，手邊沒有也沒辦法抓截圖，不好意思囉!
+接著我想談一下我對「Google+」這個名字的想法。
+這名字很有趣，可是也很討厭。有趣在於，未來 Google+ 推出什麼新服務的話，就會變成「Google+Games」「Google+Clubs」「Google+Ads(誤)」，甚至可能就叫「+Games」之類的，很可愛的稱呼。可是這個「+」對於台灣人就很妙了，跟人討論的時候可能會出現以下幾種名字：「咕狗加」「Google plus」「G加」&amp;hellip;(我也不知道還有沒有別的)，叫「咕狗加」其實我是覺得不太通順= =a，私心最喜歡「G+」這個稱呼，因為他跟「居家」同音&amp;hellip;:P 不過在比較正式點的說法上，還是要寫「Google+」 唸作「Google plus」比較好~(這次總不會有人寫 Google plu 了吧&amp;hellip;.= =)
+轉貼一則我在噗浪上的訊息&amp;hellip;..「快上 Google+！你今天，居家了嗎？」
+(顯示為下集才要進入主題)</description>
+    </item>
+    
+  </channel>
+</rss>

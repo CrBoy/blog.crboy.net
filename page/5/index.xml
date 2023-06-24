@@ -1,0 +1,382 @@
+<?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/</link>
+    <description>Recent content on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
+    
+        <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>「那些老師沒教的事」簡報釋出</title>
+        <link>https://blog.crboy.net/posts/release-slides-of-code-smart/</link>
+        <pubDate>Mon, 02 Apr 2012 23:41:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/release-slides-of-code-smart/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/release-slides-of-code-smart/ -&lt;p&gt;在緊張得半死的狀況中，終於把這個 talk 給講完了XD 希望來聽的人都有些收穫~&lt;/p&gt;
+&lt;p&gt;不過可惜的是，我太緊張了，所以有些東西講的不是很完整，甚至是漏講&amp;hellip;.orz 而且滿多東西好像&amp;hellip;.呃&amp;hellip;.有點臨場發揮&amp;hellip;.XD 希望不要讓人覺得太亂~&lt;/p&gt;
+&lt;p&gt;當日演講簡報可點選&lt;a href=&#34;http://bit.ly/HaJ8wa&#34;&gt;此處下載&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;自己重新看了簡報，大致上檢討一下自己，如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git-config&lt;/code&gt; 沒有 demo 到(因為我自己也很少用&amp;hellip;我都直接看設定檔來改，比較乾脆XD)&lt;/li&gt;
+&lt;li&gt;之前就一直覺得應該要畫點圖來描述 revision 還有 branch，但是一直偷懶&amp;hellip;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git-add -p&lt;/code&gt; 沒講到QQ&amp;hellip;.應該要 demo 一下「部分 add 並 commit」的&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.gitignore&lt;/code&gt; 如果有 demo 的話，應該會更清楚點&lt;/li&gt;
+&lt;li&gt;沒講到 &lt;code&gt;git-revert&lt;/code&gt; 啊!!!! (大敗筆)&lt;/li&gt;
+&lt;li&gt;應該拿個實際上的使用 git 協作的範例，這樣聽眾會更有感覺&amp;hellip;&lt;/li&gt;
+&lt;li&gt;make 還是該現場 demo 一下&amp;hellip;.幾行而已又不會花多少時間QQ&lt;/li&gt;
+&lt;li&gt;我竟然沒講到 gdb 可以預先寫好 command，甚至是 function 的這件事&amp;hellip;..&lt;/li&gt;
+&lt;li&gt;vim demo 太少&amp;hellip;連 vimrc 都沒有開來看看，真是不應該&lt;/li&gt;
+&lt;li&gt;vim 文字物件 (text object)、tabpage、quickfix、mapping 都應該要提一下的&amp;hellip;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;結果變成檢討文了&amp;hellip;&amp;hellip;..XD&lt;/p&gt;
+&lt;p&gt;如果這樣的東西以後還有機會再講的話，也許要考慮拆成兩個部分，然後分別作比較完整的 demo，甚至是現場實作，應該會比較有趣一點！但是，如果是拆開的話，那不管講那個主題都顯得我會得太少了耶&amp;hellip;..orz 畢竟，不管在哪個範疇我都只是個學習者，充其量是脫離初學吧我想。我生來就是只能講初級講題的吧XDDDD&lt;/p&gt;
+&lt;p&gt;噢我發現我的文章，總是會出現很多個 XD，對吧？XD&lt;/p&gt;
+&lt;p&gt;最後這邊宣傳一下當日最後宣傳的事情。&lt;/p&gt;
+&lt;p&gt;我之前嘗試性的建立了一個小小的社群，叫做 C4Labs。當時想嘗試把社群聚會的形式跟氣氛帶到成大來，不過成效好像頗差orz。現在畢業了，想說看看能不能再找回當初的期待。我想把對於電腦、網路、程式等等技術有強烈興趣的朋友們聚集起來，一起討論跟分享。因為涵蓋範圍很廣，想當然爾並不是討論很高級很困難很深入的技術，算是初階的社群？XD&lt;br&gt;
+現在還有一些應該慢慢建立起來的東西，我會儘量去做，目前我在 Google Groups 上開了一個&lt;a href=&#34;http://bit.ly/C4Labs&#34;&gt;討論群組&lt;/a&gt;，作為聯絡的管道。歡迎有興趣跟我們一起分享的朋友們一起來玩！:P&lt;br&gt;
+我們的聚會現在並不定期 (我承認是有一搭沒一搭啦)，不過從上週的演講做為一個開頭，希望每週四晚上都有一個聚會，一週是演講，一週是單純的聚會分享(或閒聊、討論、桌遊？XD)，這樣交錯進行，節奏應該不會太快，而且學得到東西！&lt;/p&gt;
+&lt;p&gt;另外，就是下次的演講資訊。我們很開心邀請到老魏為我們帶來他玩 vim 的心得分享！時間是在 4 月 12 日的晚上 7:33，地點在資訊系館，詳細的資訊確定後會公開散佈。&lt;/p&gt;
+&lt;p&gt;至於這週的聚會&amp;hellip;.就在系館悠哉的閒聊好了~&lt;/p&gt;
+&lt;p&gt;ps. 之前我們去比金盾獎所取的隊名：C4Labs，就是從這裡出來的，哈！XD&lt;/p&gt;
+- https://blog.crboy.net/posts/release-slides-of-code-smart/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>透過 ssh 遠端存取 git repository</title>
+        <link>https://blog.crboy.net/posts/remote-git-access-via-ssh/</link>
+        <pubDate>Fri, 23 Mar 2012 03:31:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/remote-git-access-via-ssh/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/remote-git-access-via-ssh/ -&lt;p&gt;好，今天來寫個我架設「偽 - git server」的作法吧！&lt;/p&gt;
+&lt;p&gt;為什麼叫做「偽 - git server」呢？因為他不是真的跑起來一支 daemon 去負責 git 的 access，像是 gitolite 或是 gitosis 那樣。(事實上我也不知道該怎麼把那些東西架起來XD)&lt;br&gt;
+由於 git 可以透過 ssh protocol 來 access，當然要善用這點！&lt;/p&gt;
+&lt;p&gt;以下我分為單人各自使用與多人共用來講：&lt;/p&gt;
+&lt;h1 id=&#34;單人各自使用&#34;&gt;單人各自使用&lt;/h1&gt;
+&lt;p&gt;這算是簡單的應用了，只要你有一台工作站的 ssh 帳號，而且工作站上有 git (好吧，我承認我不曉得 minimal requirement 是什麼，也許是 git-shell 吧？) 的話，就可以這樣用，相當簡單！&lt;/p&gt;
+&lt;p&gt;首先假設遠端 server/workstation 叫做 Remote，網址是 example.com，我在這台機器上的帳號為 crboy，家目錄是 /home/crboy。相當單純而常見的配置。另外本機叫做 PC，其他相同。&lt;/p&gt;
+&lt;p&gt;那麼我們想要開始一個新專案可以這麼做：(注意主機名稱)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;crboy@Remote:~$ mkdir my_project.git # 建立專案 repo 的目錄
+crboy@Remote:~$ cd my_project.git # 進去該目錄
+crboy@Remote:~/my_project.git$ git init --bare # 初始化這個目錄為「純repo」(這是我自己的說法，應該是不太通用，記得 bare repository 比較好)
+Initialized empty Git repository in /home/crboy/my_project.git/
+crboy@Remote:~/my_project.git$ ls # 只是看看底下產生了什麼
+branches  config  description  HEAD  hooks  info  objects  refs
+crboy@Remote:~/my_project.git$
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;回到本機上&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;crboy@PC:~$ git clone ssh://example.com/home/crboy/my_project.git # 把剛剛產生的空 repo 給 clone 回來，由於是空的，會收到警告
+Cloning into my_project...warning: You appear to have cloned an empty repository.
+crboy@PC:~$ cd my_project
+crboy@PC:~/my_project$ vim README # 隨便寫點東西吧
+....... # 這邊就不說了，基本的 git 操作，總之你就 commit 一些東西就對了
+crboy@PC:~/my_project$ git push origin master # 第一次 push 要指定遠端主機名稱還有 branch，之後直接 git push 即可
+Counting objects: 3, done
+Writing objects: 100% (3/3), 218 bytes, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To ssh://example.com/home/crboy/my_project.git
+* [new branch]      master -&amp;gt; master
+crboy@PC:~/my_project$ 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;去遠端主機上看看&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;crboy@Remote:~/my_project.git$ git log # 應該會看到你的 log 唷!!
+commit cbaf3fe2ab3bb5477a8f05ff79512dd6930e6177
+Author: CrBoy &amp;lt;email@is.hidden&amp;gt;
+Date:   Fri Mar 23 02:41:52 2012 +0800
+
+	Initial commit
+crboy@Remote:~/my_project.git$
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;成功了！&lt;/p&gt;
+&lt;p&gt;那麼，如果是已經有一個現有的 git repository，想要把他丟到遠端去呢？我是透過 git-remote 來幫忙。首先我們假設遠端已經開好一個空的 repository 了，名字跟剛剛一樣。在本機我們這麼做：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;crboy@PC:~$ cd existing_project
+crboy@PC:~/existing_project$ git remote add origin ssh://example.com/home/crboy/my_project.git # 加入一台遠端主機，名字為 origin
+crboy@PC:~/existing_project$ git push origin master # push 的方式跟之前一樣
+Counting objects: 3, done.
+Writing objects: 100% (3/3), 218 bytes, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To ssh://example.com/home/crboy/my_project.git
+* [new branch]      master -&amp;gt; master
+crboy@PC:~/existing_project$ 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;另外順便提一下，因為剛剛在測試的時候耍蠢，收到以下這個訊息：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fatal: &#39;/home/crboy/my_project.git&#39; does not appear to be a git repository
+fatal: The remote end hung up unexpectedly
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果你跟我一樣，請你不要驚慌，因為這只是你忘記把遠端 repo 的那個目錄 initialize 了&amp;hellip;..XD&lt;/p&gt;
+&lt;p&gt;有沒有發現上面我根本沒有提到要安裝什麼東西，還是要架什麼 server？因為他真的不需要&amp;hellip;.只要本來 ssh 是會通的，git 可以用，那上面的動作就都沒問題了(吧XD)。&lt;/p&gt;
+&lt;p&gt;但是，有時候我們還是得跟別人合作 project 呀！如果有特殊考量，不能用 Github 或是 bitbucket.org 這類服務的話，又該怎麼辦呢？我這邊有個不怎麼完美的作法，但至少是堪用了&amp;hellip;.&lt;/p&gt;
+&lt;h1 id=&#34;多人共用&#34;&gt;多人共用&lt;/h1&gt;
+&lt;p&gt;多人要共用就複雜多了，因為牽扯到權限問題。本來以前的我很天真的要 partner 直接 clone 我的 repo 就好，結果後來要 push 的時候才發現他沒有 writing 權限，沒辦法 push 啊啊啊啊XD 於是乎，我只好把我的 repo，裡面所有檔案的 group 都改成對方的 group，然後再把權限加上 &lt;code&gt;g+w&lt;/code&gt; (&lt;code&gt;chmod -R g+w &amp;lt;repo&amp;gt;&lt;/code&gt;)&amp;hellip;&amp;hellip;..好，他現在可以 push 了。&lt;/p&gt;
+&lt;p&gt;結果過沒多久，又發現出包了啊XDDDD 檢查之後才發現，他新增的一些檔案，owner 會是他，所以我沒辦法改寫，我新增的檔案， group 還是我自己，所以他還是不能 push。雖然可以一直狂修權限，但是這根本就是比水溝還髒的解法= =&lt;/p&gt;
+&lt;p&gt;於是乎，我去想辦法解決這個問題。&lt;/p&gt;
+&lt;p&gt;本來是想架 server 的，不過後來忘記在哪裡看到這個技巧，覺得很方便，又不用多開 daemon，就採用了！運作上還不錯，缺點大概是每次設定上比較麻煩，但是這可以寫支 script 來處理就是XD (根本就是抗拒接受更完整的方案)&lt;/p&gt;
+&lt;p&gt;這個技巧，說穿了很簡單。就是「建立公用帳號，並讓每個人都透過公用帳號來 push/pull」。哇靠，這樣不是很不安全嗎？ CrBoy 你這個惡魔怎麼可以介紹這種鳥方法！呃&amp;hellip;.各位先冷靜，我再說明得詳細一點。&lt;/p&gt;
+&lt;p&gt;這個方法要：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;建立公用帳號 git（當然你可以叫他別的名字啦）&lt;/li&gt;
+&lt;li&gt;設定 git 的 login shell 為 git-shell&lt;/li&gt;
+&lt;li&gt;在 &lt;code&gt;~git/.ssh/&lt;/code&gt; 底下新增 &lt;code&gt;authorized_keys&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;把所有需要 git remote access 的人的 public key 都放進 &lt;code&gt;~git/.ssh/authorized_keys&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;大概這樣吧&amp;hellip;..如果對於 ssh-key 沒有概念的話，呃&amp;hellip;可能要請你看看網路上的其他文章了&amp;hellip;很簡單的，連我都會 :)&lt;/p&gt;
+&lt;p&gt;因為我實在懶得重做一次了，所以請各位看倌照著上面的提示做吧！只要對 linux 跟 ssh 有點概念跟使用經驗的話，應該是沒問題的！做完之後，就可以在 git 這個帳號的家目錄底下建立 repo 了，要建幾個都可以XD。至於 clone 或是 push/pull 的方法，都跟上面單人使用的時候類似，唯一不同的是多人都可以存取同一個 repo 而且不會發生鬧鬼的問題唷！另外補充一下，連線的時候要指定 username 為 git 唷~當然 ssh 的 key 也得設定好才行！&lt;/p&gt;
+&lt;p&gt;但這個方法是有缺點的，其中幾個很明顯的缺點，如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不能控制誰可以存取哪個 repo&lt;/li&gt;
+&lt;li&gt;沒有 web 介面可以看到 repo 資訊&lt;/li&gt;
+&lt;li&gt;要新增 user 需要請管理者更新 authorized_keys&lt;/li&gt;
+&lt;li&gt;要新增 repo 需要請管理者協助&lt;/li&gt;
+&lt;li&gt;只能走 ssh，不能走像是 http, https, 或是 git 之類的 protocol。很多人是不知道怎麼用 ssh 的&amp;hellip;.orz&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所以這個 solution 只適合用在小型團隊，很少開專案或是加減人的狀況囉！&lt;/p&gt;
+&lt;p&gt;對了，抱怨一下，我實在受不了 blogger 寫技術文章真的有夠麻煩&amp;hellip;..快崩潰了= =&lt;/p&gt;
+- https://blog.crboy.net/posts/remote-git-access-via-ssh/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>在 bash (zsh) script 中使用 trap</title>
+        <link>https://blog.crboy.net/posts/trap-in-bash-zsh-script/</link>
+        <pubDate>Sat, 17 Mar 2012 23:25:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/trap-in-bash-zsh-script/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/trap-in-bash-zsh-script/ -&lt;p&gt;最近在跑分散式的程式，每次測試都要開好幾隻程式在跑。就算可以寫 script 自動開啟，還是會遇到一個很討厭的問題，沒辦法自動關閉那些屬於 worker 的程式。好像解釋的不太清楚&amp;hellip;.就是我希望在我程式跑完的時候，或是我把程式強迫終止的時候，我可以同時把好幾個 process 也 kill 掉。特別是強迫終止的時候，因為無論我在最後寫好什麼動作，一旦強迫終止就執行不到了。&lt;/p&gt;
+&lt;p&gt;於是上網尋找解法，找到了 trap 可以用。Trap 這東西，也就是陷阱&amp;hellip;我想他的意思是，會讓你指定的那些 signal 掉入陷阱吧&amp;hellip;(笑)。不曉得 signal 是什麼的請自行閱讀 manpage 或是上網找。&lt;/p&gt;
+&lt;p&gt;這裡提供兩個範例，第一個是測試 trap 功能的範例：&lt;br&gt;
+這個範例中，我指定 SIGTERM SIGINT SIGHUP 這三個 signal 會被 trap 抓住，而 trap 抓到後所要執行的指令為 &amp;ldquo;echo TRAP!!; exit&amp;rdquo;。注意這邊我加上了 exit 讓這個 script 會在接到 signal 的時候終止，否則它只會 echo 出 TRAP!! 後繼續執行它要執行的動作。如果你沒有另外指定別的離開方法，就必須乖乖的等待 script 執行完畢，或是用 kill -9 (送 SIGKILL) 才能終止它了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;再來是第二個範例：&lt;br&gt;
+這裡差不多是一個實際使用的 use case 了，參考自：&lt;a href=&#34;http://linuxcommand.org/wss0160.php&#34;&gt;這篇文章&lt;/a&gt;。把需要做清理的動作寫進 function 裡，以我最上面提到的情況就是把該關掉的 worker 程式都關掉，在這裡我就印出個 CLEAN UP!! 代替就好XD。然後在 trap 裡設定它負責清理，另外也在 script 正常結束前清理，這樣就可以保證(大概吧?)清理動作一定會被執行，除非是被 SIGKILL 強迫中斷。&lt;/p&gt;
+&lt;p&gt;對了&amp;hellip;我實際在用的時候其實是用 zsh 啦，不過我試過了，用 bash 也可以正常執行沒有問題。我指的是 script 第一行指定的 shell，不是執行 script 的 shell 唷！&lt;/p&gt;
+&lt;p&gt;另外還有，我認為 clean_up 應該只要負責清理就好，所以最後小小修改，變成了這樣：&lt;br&gt;
+以上，請多多指教！&amp;lt;(_ _)&amp;gt;&lt;/p&gt;
+- https://blog.crboy.net/posts/trap-in-bash-zsh-script/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>Talk (March 29): 寫程式？那些老師沒教的事 - Code Smart; Don&#39;t Code Hard</title>
+        <link>https://blog.crboy.net/posts/talk-0329-code-smart-dont-code-hard/</link>
+        <pubDate>Fri, 16 Mar 2012 23:59:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/talk-0329-code-smart-dont-code-hard/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/talk-0329-code-smart-dont-code-hard/ -&lt;p&gt;這是確定的演講資訊了&amp;hellip;.多少人願意來就看我的造化了XD&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;「寫程式？那些老師沒教的事 - Code Smart, Don&amp;rsquo;t Code Hard」&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;身為一個資工系的學生，經手過的 C 語言程式想必不少。而我們以前都是怎麼寫程式的呢？有沒有想過，也許寫程式這件事不用如此辛苦？在 C 語言的開發過程中，從撰寫、編譯、測試、除錯，中間碰到多少工具？俗話說「工欲善其事，必先利其器」，以往所用的工具是不是真的「夠利」呢？&lt;/p&gt;
+&lt;p&gt;如果是成大資工系的學生，想必大一都接受過一段慘痛(?)的日子。我們這些小大一，被壓著去用什麼 pietty 連上 server，還要開什麼 vi 來寫程式。「那是什麼東西？難用死了！」是很多人大一時的心聲。寫完之後還要打好多指令，像是「機西西」&amp;hellip;呃，我是說 gcc，後面接上好多難懂的參數，才能把程式編譯完成。 但我一直到了大三才慢慢知道，這樣的環境才是 C 語言最快樂的地方，也要在這種環境下，我們才能很輕鬆的掌握 C 語言的全貌。噢，當然不是非要透過 putty/pietty 連上工作站才能使用到這類環境，在 windows 上一樣可以使用功能強大的命令列環境。(透過 cygwin/msys) 未來在外寫程式，仍然需要接觸這些東西的。&lt;/p&gt;
+&lt;p&gt;除此之外，有經驗的人都知道，我們要隨時備份寫好的程式碼。至少剛剛會動的那個版本要留下來，不然萬一改爛了可能會改不回來。你都怎麼做的呢？&lt;code&gt;backup_01.zip&lt;/code&gt;,  &lt;code&gt;backup_02.zip&lt;/code&gt;, &lt;code&gt;backup_03.zip&lt;/code&gt;, &amp;hellip;？跟同學合作 project 的時候，又是怎麼做的呢？&lt;br&gt;
+「欸我傳給你了喔！」&lt;br&gt;
+『你改了哪些地方啊？我 copy 不完啦！』&lt;br&gt;
+如果你有上述症狀，請立刻撥打下面這隻專線：&lt;br&gt;
+0987-987-987 (哩揪北七-揪北七-揪北七)&lt;/p&gt;
+&lt;p&gt;這場小小的分享，是我個人在學習克服上面這些問題時的心得。其實早就已經有很多好工具可以解決這些問題，端看我們懂不懂得使用。我會介紹到：vim、gcc、make、gdb、git&lt;br&gt;
+由於東西太多了，這天我只會做一個通盤的概論，介紹這些工具分別是做什麼用的，而我們又為什麼需要這些工具，以及這些工具可以帶來什麼好處。&lt;br&gt;
+歡迎完全沒有概念的朋友們來學習，也歡迎有一些概念的朋友們來一起研究，更歡迎相當有概念的朋友們來給小弟批評指教。鼓勵自行攜帶電腦現場實作！或是帶著你的問題來共同討論！希望可以達成演講50%、討論50%的目標！謝謝 &amp;lt;(_ _)&amp;gt;&lt;/p&gt;
+&lt;p&gt;時間：3月29日 晚上7:32&lt;br&gt;
+地點：成大資訊系館 &lt;del&gt;4261&lt;/del&gt; 4263 教室 (地點更新，新教室僅在原教室隔壁)&lt;br&gt;
+講者：畢玉泉 (小畢/CrBoy)&lt;br&gt;
+講題：寫程式？那些老師沒教的事 - Code Smart, Don&amp;rsquo;t Code Hard&lt;/p&gt;
+&lt;p&gt;歡迎宣傳、轉貼以及蒞臨指教 :P&lt;/p&gt;
+- https://blog.crboy.net/posts/talk-0329-code-smart-dont-code-hard/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>S型調整函數</title>
+        <link>https://blog.crboy.net/posts/s-shape-adjustment-function/</link>
+        <pubDate>Sun, 22 Jan 2012 15:39:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/s-shape-adjustment-function/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/s-shape-adjustment-function/ -&lt;p&gt;前陣子一位學妹在噗浪上這樣發問：「問!! 假設我要讓數字越大的越大 越小的越小 我該怎麼做?? 假設零到一百 處理完區間還是零到一百 但是大於五十的會變大 小於五十的會變小 應該要做什麼@@???開根號??微積分?? 」&lt;/p&gt;
+&lt;p&gt;OK&amp;hellip;.我來整理一下我對這個問題的理解：&lt;br&gt;
+求一函數，定義域為 [0,100]，值域亦為 [0,100]，且若 0&amp;lt;x&amp;lt;50 則 f(x)&amp;lt;x，若 50&amp;lt;x&amp;lt;100 則 f(x)&amp;gt;x。&lt;/p&gt;
+&lt;p&gt;另外還有一部分是我猜測應該也是需求的：&lt;br&gt;
+若 x&amp;lt;y 則 f(x)&amp;lt;f(y)，f(0)=0，f(50)=50，f(100)=100。&lt;br&gt;
+後面這幾項其實是為了讓這個調整更加完備一點&amp;hellip;&lt;/p&gt;
+&lt;p&gt;由於這個調整的曲線很像是相片後製時常用的S型曲線(我不是很清楚專有名詞，好像是 gamma 曲線的調整云云)，說不定未來哪天會用到，所以特別寫篇文章記錄這件事 :P&lt;/p&gt;
+&lt;p&gt;這是我提出的 function：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;設 t=x-50，f(x)=50+sqrt(50)&lt;em&gt;sqrt(abs(t))&lt;/em&gt;(abs(t)/t)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果把 t 代進去(寫起來會比較複雜)就是這樣：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;f(x)=50+sqrt(50)&lt;em&gt;sqrt(abs(x-50))&lt;/em&gt;(abs(x-50)/(x-50))&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;底下有圖有真相。當時作圖沒有特別注意的部分是，x&amp;lt;0 跟 x&amp;gt;100 的部份應該要限制住的，不過只是做個概念的印證而已，就不太在意了~&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;ivyhere.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;至於概念上&amp;hellip;..我不是很會解釋，基本上就是利用 sqrt(t) 這個曲線的特性，再去做參數上的調整就是了。我想利用 log 那類的函數應該也可以，但就沒有仔細想了。雖然數學上應該已經有滿多現有的作法可以完成這個目的，不過自己拼湊也是種樂趣 :D&lt;/p&gt;
+&lt;p&gt;總結一下，我設計的這個 function 可以對一群資料做調整，使其高的更高、低的更低，並且保持其大小關係(如果是調整分數之類的應用，這點很重要)。同時這個 function 也是嚴格遞增，用於調整分數之類的滿適合的。:)&lt;/p&gt;
+- https://blog.crboy.net/posts/s-shape-adjustment-function/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>以特定時間點為基準刪除老舊目錄</title>
+        <link>https://blog.crboy.net/posts/delete-old-folders-by-modified-time/</link>
+        <pubDate>Mon, 09 Jan 2012 18:05:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/delete-old-folders-by-modified-time/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/delete-old-folders-by-modified-time/ -&lt;p&gt;今天因為某些原因，得刪除特定目錄底下，太老舊的一些目錄。目錄數量有上百個，一個個刪實在令人難過，身為一個 Linux user，就該善用工具來解決這個問題！&lt;/p&gt;
+&lt;p&gt;這篇是個簡單的速記，就不囉唆。只要使用以下指令即可：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ find * -maxdepth 0 -mtime +365 -exec rm -r {} \;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其中幾個重點說明如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用 &lt;code&gt;find&lt;/code&gt; 可以找出符合特定條件的檔案並對該檔案做點事情(下指令)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-maxdepth&lt;/code&gt; 是用來限制 find 往下搜尋的層數，由於我僅針對此目錄下的所有目錄做處理，故僅使用 &lt;code&gt;find * -maxdepth 0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-mtime&lt;/code&gt; 是針對 modified time 做限制，後面接 &lt;code&gt;+n&lt;/code&gt; 表示「早於 n 天前修改的檔案（比 n 天還舊）」，若是接上 &lt;code&gt;-n&lt;/code&gt; 則表示「晚於 n 天前修改的檔案（比 n 天還新）」。類似的選項還有 &lt;code&gt;atime&lt;/code&gt;, &lt;code&gt;amin&lt;/code&gt;, &lt;code&gt;ctime&lt;/code&gt;, &lt;code&gt;cmin&lt;/code&gt;, &lt;code&gt;mmin&lt;/code&gt;。可自行查看 manpage。值得注意的是，manpage 中是以「n*24 hours」來說明，不曉得是否有何特殊之處？&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-exec&lt;/code&gt; 則是針對找到的檔案進行動作，後面接上要執行的指令，並以 &lt;code&gt;{}&lt;/code&gt; 代表找到的檔案，結尾並加上 &lt;code&gt;\;&lt;/code&gt; 即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;網路上找到的通常會是刪除「老舊檔案」而非目錄，以下亦附上參考用法。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ find . -mtime +365 -exec rm {} \;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;祝各位刪檔愉快(笑)。&lt;/p&gt;
+- https://blog.crboy.net/posts/delete-old-folders-by-modified-time/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>Slides of Makefile</title>
+        <link>https://blog.crboy.net/posts/slides-of-makefile/</link>
+        <pubDate>Wed, 28 Dec 2011 16:04:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/slides-of-makefile/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/slides-of-makefile/ -&lt;p&gt;前陣子準備了一份簡報，可以用來講一場的XD&lt;/p&gt;
+&lt;p&gt;剛好這兩天系上學弟妹需要用到 make，所以就把其中關於 Makefile 的一部分東西抓出來做了一份短短的講義。內容講的是基本的 Makefile 的撰寫，也就是關於規則以及變數的基本使用部分。&lt;br&gt;
+希望對於讀者有幫助。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.slideshare.net/CrBoy/code-smart-makefile-special-release&#34;&gt;Code Smart - Makefile (special release)&lt;/a&gt;&lt;/p&gt;
+- https://blog.crboy.net/posts/slides-of-makefile/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>利用一些時間準備好了一場talk</title>
+        <link>https://blog.crboy.net/posts/necessary-tools-for-programmer/</link>
+        <pubDate>Fri, 23 Dec 2011 23:13:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/necessary-tools-for-programmer/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/necessary-tools-for-programmer/ -&lt;p&gt;這篇是先 po 在系上 BBS 再轉貼過來的XD&amp;quot; 基本上這場的內容相當相當相當的淺&amp;hellip;.本來預設的目標對象是完全不懂 debugger 跟 version control 的學生，特別是大學部，但同樣的對研究生也相當有幫助。(不過我猜研究生以上應該都沒什麼閒工夫聽我在那邊浪費他們的時間吧XD)&lt;/p&gt;
+&lt;p&gt;因為這邊的內容比較淺，我想這也許不是很適合在社群中發表，不過也許有哪裡會需要這方面的資訊，之後我會放上相關的簡報，以 CC-BY-SA 釋出。&lt;/p&gt;
+&lt;p&gt;這場 talk 的內容&amp;hellip;.真要說起來大概是兩年前就想講了XD 主要多加了一些關於 git 的部份，因為現在對 git 又更熟了一點這樣&amp;hellip;&lt;/p&gt;
+&lt;p&gt;主題定為「寫程式？那些老師沒教的事 - Code Smart, Don&amp;rsquo;t Code Hard」。內容是關於一些對於開發程式相當有幫助的一些工具： vim, gcc, make, gdb, git&lt;/p&gt;
+&lt;p&gt;這些東西也許可有可無，不懂也不會怎樣，然而學習這些工具，入門並不困難，又可以立刻對程式開發有幫助，因此我相當推薦念資工的學弟妹們，或是任何寫程式(特別是 C/C++ 語言)的人簡單了解這些工具。&lt;/p&gt;
+&lt;p&gt;從前我們寫程式總是相當努力，在無形中花了很多力氣跟心血去達成目標，事實上很多事情可以更簡單，但是若不曉得這個簡單的世界，那也不得其門而入。從寫程式，到編譯，到除錯，再到程式的改版，我們已經花了太多血汗與肝了&amp;hellip;..要怎麼更簡單、更瀟灑(帥氣?)的搞定這些事，有時會讓人大開眼界~&lt;/p&gt;
+&lt;p&gt;這裡我不會講到任何跟程式設計本身有關的技巧，也不會教你如何安裝這些工具，或是把這些工具用得出神入化。我所探討的是你為什麼需要這些工具？這些工具又可以幫上什麼忙？內容中會有基礎的入門教學，旨在提供剛剛接觸且有興趣的人有個無痛入門的管道，我將把重點放在現場的 demo 與互動，歡迎有任何相關問題都可以現場提出，共同討論。討論所能夠學到的東西會比單純的聆聽來的多很多很多唷!!!&lt;/p&gt;
+&lt;p&gt;軟體的詳細教學會再找機會個別講&amp;hellip;如果我之後有餘裕的話 :)&lt;/p&gt;
+- https://blog.crboy.net/posts/necessary-tools-for-programmer/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>我的第二場「一躍之下，」</title>
+        <link>https://blog.crboy.net/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A0%B4%E4%B8%80%E8%BA%8D%E4%B9%8B%E4%B8%8B/</link>
+        <pubDate>Fri, 11 Nov 2011 23:59:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A0%B4%E4%B8%80%E8%BA%8D%E4%B9%8B%E4%B8%8B/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A0%B4%E4%B8%80%E8%BA%8D%E4%B9%8B%E4%B8%8B/ -&lt;p&gt;哈，真的去看了第二次。我必須說，雖然劇情我早已知悉，雖然演員的動作、喜怒哀樂依然記憶猶新，但我還是隨著故事的腳步，偷偷哭了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;劇中的親情、愛情，依舊動人心弦，並不因為我知道它只是個故事而顯得冷清。我想這就是我喜歡面劇團的原因吧？或是我天生就這麼多愁善感(?) 希望不要&amp;hellip;.= =a&lt;/p&gt;
+&lt;p&gt;來談談今天看到的一些不同吧。（第零個不同是今天隔壁帶了一枚檸檬一起去看XD）&lt;/p&gt;
+&lt;p&gt;首先是進場時間比較早了，大概 19:20 就開放讓無票觀眾入場了。所以我也特別仔細觀賞了一下進場影片，昨天沒有什麼特別感覺，因為影片事實上沒有什麼內容，只有演員跟角色而已，而且圖也看不太懂&amp;hellip;.只有阿堂的名字旁邊出現的圖看起來比較像人&amp;hellip;.其他的名字旁邊出現的圖&amp;hellip;.我看不太出來那代表什麼orz。但是啊，做得很精緻耶！還記得當時我說「影痴謀殺」的開場做得太粗糙，這次完全不會有這種感覺！不論內容的話，其實對於氣氛的營造還蠻好的 :)&lt;/p&gt;
+&lt;p&gt;開場前的&amp;hellip;.廣播？總之就是那個聲音說：「歡迎各位前來欣賞面劇團的一躍之下&amp;hellip;.(之類的)」，她昨天念「ㄧㄠˋ」，今天念「ㄩㄝˋ」唷！XD。然後開場時，我很壞的一直看後面:P。不過因為滿暗的，所以分辨不出哪個是阿堂，直到真的開始後才看到。其實我覺得這樣的開場非常棒！很有驚喜感，也同時象徵了「阿堂也只是群眾中的一個人」這樣的意義。李聿堂，你&amp;hellip;..又跳一次了。XD&lt;/p&gt;
+&lt;p&gt;噢，如果剛剛那算是第零幕的話，那第一幕的開頭出了點小包，真可惜啊。你們不是故意的啦！ :)&lt;/p&gt;
+&lt;p&gt;另外啊，今天講話超級快的狀況比昨天好一些了，但還是有些地方講好快我都聽不懂。 :(&lt;/p&gt;
+&lt;p&gt;對了，我想應該很多觀眾會有一樣的感覺，就是劇中有些台詞實在相當的&amp;hellip;..具有文學氣息&amp;hellip;..也許這是編劇或導演的堅持吧，我抓不太到這樣的設計有什麼特別的用意，尤其是這類相當不白話的台詞比例並不低，究竟有什麼樣的意涵是我體會不到的呢？但無論如何，雖然覺得有點突兀，那些台詞確實是滿美的。「那瞬間支離破碎又空空蕩蕩&amp;hellip;.」這是導覽手冊封面所寫的台詞。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;1.jpg&#34; alt=&#34;&#34;&gt;&lt;br&gt;
+&lt;img src=&#34;2.jpg&#34; alt=&#34;&#34;&gt;&lt;br&gt;
+手冊封面旁邊看到的小半圓形其實是立體折頁的邊邊&lt;/p&gt;
+&lt;p&gt;說到台詞，「一躍之下，」的台詞的確相當值得玩味！我實在記不得全部，不過提起這些台詞，也許會心一笑，也許心有戚戚。舉幾個例子吧：「人生只有 regret，沒有 restart。」不僅趣味，卻也深刻。「我以為我可以讓別人後悔，沒想到最後悔的，是我自己。」這好似一記重擊打中我的心啊，是不是應該，應該更仔細的想想呢？「七歲&amp;hellip;十歲&amp;hellip;..十九歲&amp;hellip;&amp;hellip;&amp;hellip;.二十歲勒？三十歲勒？我的阿堂勒？」想到不禁令人鼻酸。「妳相信我們的愛情，而我相信妳。」這是多美的承諾？卻又在多久以後，崩壞？「這裡不是什麼地方，這裡哪裡都不是！」是否表示到了此處的阿堂，也什麼都不是了呢？&lt;/p&gt;
+&lt;p&gt;「我寫不出論文！」我的天啊這句話好像是我吼的一樣&amp;hellip;.會不會哪天我也被逼急了，而這樣怒吼著呢？阿堂，我超同情你的，你的難過和你的壓力我絕對相當瞭解&amp;hellip;..我說真的！&lt;/p&gt;
+&lt;p&gt;孩子是阿堂的。我昨天關於這個部分有些疑惑，但今天搞清楚了。小魚是在還沒接受陳寬之前就已經先發現自己懷孕的事實，並因為懷孕了，所以只好接受陳寬，否則孩子出生就沒有爸爸。但，有些疑惑的是，究竟小魚愛不愛陳寬呢？劇中的種種過程似乎都顯示了小魚只是勉強自己與陳寬在一起，像是小魚對陳寬有意無意的婉拒，或是在公園時，小魚回答陳寬的問題只說了：「我跟寶寶都愛爸爸。&amp;hellip;&amp;hellip;.你是爸爸。」這似乎暗示了小魚愛的依然是交往六年的阿堂，只是欺騙或是安撫陳寬他將要當孩子的爸的事實。只是&amp;hellip;..我不懂，為什麼小魚會拿陳寬的襯衫來穿呢？甚至說了「不是你穿的就不行。」這種話&amp;hellip;.也許小魚的心中存有矛盾，或是導演跟編劇的心裡有矛盾呢？&lt;/p&gt;
+&lt;p&gt;令人疑惑的地方還有一些，像是小魚說「朋友都說，他跟我交往是他賺到了，要我好好把握。」這好像不太對吧&amp;hellip;..XD？還是我聽錯了呢？還有，阿堂跟小魚應是年紀相仿的同年級同學才對，但是社團博覽會的時候阿堂竟然在擺攤，並讓小魚加入社團，似乎有點不太對勁。另外，小次郎在最後說「如果他沒有自殺，也許他爸爸就不會離開他媽媽了。」但，阿堂在生前接到的最後一通電話不是阿堂的母親告訴他「父親跟一個酒家女跑了」嗎？似乎只有一個合理的解釋就是小次郎太天兵了XD。&lt;/p&gt;
+&lt;p&gt;想起陳寬出門上班的那一幕，他那回眸一笑的「Bye bye.」實在非常有喜感&amp;hellip;.XD。「我不知道！」是阿堂好幾次對小魚說的話&amp;hellip;..雖然是個很低潮的橋段，可是我每聽到一次「我不知道！」的時候，就一直忍不住想到「三壘！」（語出&lt;a href=&#34;http://www.youtube.com/watch?v=z5Me3-q_JiM&#34;&gt;相聲 - 誰在一壘&lt;/a&gt;）。對了，都忘記提到那些天人們的&amp;hellip;髒話了。「閻羅王！&amp;hellip;.」這在我們這種凡人聽起來真是相當的文雅啊，真不愧是住在「上面」的，連講話都不一樣！還有好多有趣的地方實在很難一一列出，我的記憶體實在太有限了&amp;hellip;..如果下次還有機會，建議讀者(如果你正在讀這段文字，你就是讀者)可以去欣賞，因為這場演出絕對可以讓你大笑，也可以讓你落淚，就像是從「上面」掉到「下面」一樣！&lt;/p&gt;
+&lt;p&gt;今天的結束有點小小失望，本來以為有機會可以上台跟演員們合影(不是在叫楊三毛同學XD)的，不過被小萍清場了XDDD。走到外面填寫回饋單，今天留了資料，不過看到那一~長串的欄位我真的沒力氣寫&amp;hellip;.說好要寫在 blog 上的。&lt;/p&gt;
+&lt;h1 id=&#34;給每位角色的話&#34;&gt;給每位角色的話&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;阿堂：人帥真好+主角命的羅同學，我已經不小心記得你的名字了！今天結束後在門口有看到你拿著一支花走進來，不過太害羞了不好意思叫你&amp;hellip;.嘿，你演得很棒喔！無論是喜怒哀樂都相當鮮明，加上宏亮的聲音，有自信的表現，想必會有很多粉絲。:P&lt;br&gt;
+噢對了，我很佩服你舌頭打結還可以立刻改回正確的句子這件事！&lt;/li&gt;
+&lt;li&gt;派哥：我只記得你叫威寶&amp;hellip;.也是個相當有特色的角色，喜感也表現得淋漓盡致(我整個像是被洗腦了我)，從手冊中了解到似乎你也對自己做了很大的突破，在我看來，你的突破相當成功唷！&lt;/li&gt;
+&lt;li&gt;小次郎：很成功的配角。想必在服裝方面是很大的挑戰，我真的不敢打扮成那樣&amp;hellip;.看你在阿堂掏心掏肺的傾訴時，還能在一旁淡定的玩你的寵物，也是蠻厲害的啦XD！第一天雖然卡詞卡了不少，不過第二天改善很多！&lt;/li&gt;
+&lt;li&gt;小魚：好像表情不太豐富唷，你的笑容都是淡淡的微笑，如果再明顯一點的話，快樂的氛圍會更強烈，而且笑起來比較好看。第一天的演出我比較喜歡，說話的流暢度不錯。因為這個角色具有強烈的意義，並且無聲戲(不曉得有沒有專門的名詞)很多，所以豐富臉上的表情會很棒！也能讓整齣戲加分！&lt;/li&gt;
+&lt;li&gt;陳寬：說實在話我不是很喜歡這個角色&amp;hellip;XD，不過我只是單純討厭「陳經理」的行為啦！你是個相當有喜感的人啊~至少我看起來是這樣。雖然戲份不很多，但是有正妹可以抱真是賺到了，哈哈！&lt;/li&gt;
+&lt;li&gt;娜娜：戲份相當少的角色，從頭到尾也都是一貫的冷酷風格，但是出場相當亮眼。隔壁的檸檬說你相當適合這個角色！&lt;/li&gt;
+&lt;li&gt;婦人：（駝背好像有點裝太低）雖然到故事尾聲才出現，卻是相當、相當重要的角色。你的演出非~~常棒！有真的把一個失心瘋的母親心情發揮出來唷！時而笑、時而哭，總是尋找著孩子，卻總是遍尋不著自己的孩子，那股悲傷，看了真的令人為之動容。另外「影痴謀殺」時看過你演 Coco 這個角色，對你的演技相當佩服，很厲害，真的！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;碎碎念&#34;&gt;碎碎念&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;真可惜沒機會跟演員合照，也沒機會請演員在海報上簽名XD&lt;/li&gt;
+&lt;li&gt;發現表情真的是演戲很重要的因素，像小魚的表現其實也滿好的，只是表情不夠豐富就凸顯不出他的好。這部份就可以跟阿堂和阿堂他媽學習，兩位連莊演員，都有很吸引人的臉部演出這樣。&lt;/li&gt;
+&lt;li&gt;我真的不是親友團，一定要說的話，我只能算是粉絲團吧！還是有誰要來認識我一下讓我下次可以當親友團呢？:p&lt;/li&gt;
+&lt;li&gt;阿堂跟小魚轉圈圈轉好久&amp;hellip;.我如果沒看錯的話其實阿堂很想停下來對嗎？XD&lt;/li&gt;
+&lt;li&gt;故事步調真的好快，好快就求婚好快就交往好快就畢業好快就分手&amp;hellip;什麼都好快&amp;hellip;.不過快一點比較好，這樣心中的滿足感會比較強烈！&lt;/li&gt;
+&lt;li&gt;發現手冊裡羅同學的綽號叫小張，是演完影痴謀殺就被定型了嗎XD？&lt;/li&gt;
+&lt;li&gt;這次的視覺設計部分，有一半做得很棒，像是海報、門票、還有一些主要元素等等。但是像手冊感覺就比較粗糙&amp;hellip;不過我也不是設計專家，只好期待下次的視覺設計更加完美！&lt;/li&gt;
+&lt;li&gt;今天排隊的時候跟隔壁的護理系同學搭訕了一下&amp;hellip;&amp;hellip;.(羞)，謝謝他借我他的票讓我可以拍照！:P&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;3.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;這次演出，算是成大 80 週年校慶的一個部分，待在成大已經邁入第七年的我，在這裡向成大說聲「生日快樂！」成大八十大壽囉，以後也要繼續長大！&lt;/p&gt;
+&lt;p&gt;謝謝面劇團帶給我這兩個晚上豐富的體驗，有視覺上的也有心靈上的，謝謝你們，謝謝面劇團的所有幕前幕後工作人員！你們很棒！你們的表演很棒！你們的努力很棒！&lt;/p&gt;
+- https://blog.crboy.net/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A0%B4%E4%B8%80%E8%BA%8D%E4%B9%8B%E4%B8%8B/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>成大面劇團(Face To Audience) - 一躍之下，</title>
+        <link>https://blog.crboy.net/posts/face-to-audience-3/</link>
+        <pubDate>Thu, 10 Nov 2011 23:59:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/face-to-audience-3/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/face-to-audience-3/ -&lt;p&gt;上次看舞台劇就是面劇團的「影痴謀殺」。今天去看了他們的「一躍之下，」&amp;hellip;過程真是千辛萬苦幾經波折 :P&lt;/p&gt;
+&lt;p&gt;之前就曾經看過他們的演出，深受感動，還為文紀念(是在文鄒鄒什麼&amp;hellip;)。(&lt;a href=&#34;https://blog.crboy.net/face-to-audience-1&#34;&gt;第一篇&lt;/a&gt;、&lt;a href=&#34;https://blog.crboy.net/face-to-audience-2&#34;&gt;第二篇&lt;/a&gt;)&lt;br&gt;
+這次一收到消息就立刻去網路索票，沒想到&amp;hellip;&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;沒了&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.沒了&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.沒了&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;為什麼票被秒殺啊啊啊啊啊啊啊&amp;hellip;..很無奈的把現場索票的時間記得牢牢的，想說一定要搶到！到了 11/8 那天，本來是打算早起的啦&amp;hellip;.可是不小心賴了一下床(:P)，然後又不知道是中了什麼心魔，竟然中午想吃港記(一家總是排隊排很長的燒臘店)&amp;hellip;.我到藝術中心的時候大概是 12:10 左右，遠遠的就看到好多人在排隊，我想大概糟了。沒想到後來聽到更崩潰的消息，「面劇團的票只有30張」。雖然堅持下去，但最後還是排不到票 QQ&lt;/p&gt;
+&lt;p&gt;本來已經放棄了，只是一直在噗浪上哀怨，誰知道今天(11/10)下午不曉得又發了什麼瘋，打電話去藝術中心問問&amp;hellip;..「喂你好，我想請問今天晚上七點半，面劇團在鳳凰樹的演出，有接受現場索票入場嗎？」『有，不過鳳凰樹有點小，你可能要早點過去喔。』&lt;/p&gt;
+&lt;p&gt;五點半，我人已經出現在鳳凰樹劇場的門口了。&lt;/p&gt;
+&lt;p&gt;好啦我知道我真的太誇張了 =口=&amp;quot; ，不過也因為這樣，入場的時候我還坐到一個很棒的位置啊！第四排中間偏右，這個位置高度很剛好，距離也適中，而且前面的人&amp;hellip;.頭沒有很大！隔壁的隔壁剛好是表演工作坊賣票的那位先生，我認得他的衣服XD&lt;/p&gt;
+&lt;p&gt;周圍的光線漸暗，我期待著他們這次的表演。&lt;/p&gt;
+&lt;p&gt;(以下內容有雷，慎入)&lt;/p&gt;
+&lt;p&gt;前面幾幕我一開始真的不太看得懂&amp;hellip;.要後來才有辦法聯結。甚至我竟然以為小魚戴眼鏡跟沒戴眼鏡是不同人 = =&amp;quot; (我比較喜歡沒戴眼鏡XDDDD)。不過我很喜歡劇中的每一幕，他們營造出來的感覺都相當棒！我想最困難(也有點可惜)的應該就是第一幕吧&amp;hellip;.究竟要如何表現那「一躍之下」，我想真的非常困難，但羅同學的表現相當好。&lt;/p&gt;
+&lt;p&gt;對了，羅同學是主角命嗎？XD 這是我看到手冊第一個反應&amp;hellip;.不過他的演技也的確相當不錯，也許修課的時候就已經很厲害了吧？&lt;/p&gt;
+&lt;p&gt;在「哪裡都不是」的地方，小張的表現&amp;hellip;.呃不是，我是說阿堂的表現根本就和影痴謀殺的小張一樣，憨憨的&amp;hellip;.XD&lt;br&gt;
+陳寬求婚的那幕，我喜歡那個幸福感跟害羞。&lt;br&gt;
+阿堂把妹的那幕，我喜歡那個青澀的味道，也在心中高興著他們的交往。&lt;/p&gt;
+&lt;p&gt;後來，阿堂跟小魚交往久了，也同住一個屋簷下，這讓我想到&amp;hellip;.某兩位朋友(sigh)。當初的承諾，當時的堅定，是不是總會隨著時間風化、變質呢？現在想想，似乎總會這樣，愛時轟轟烈烈，但卻在時間的沖襲下，冷卻了那股熱情，也切開了最初的堅定不移。&lt;/p&gt;
+&lt;p&gt;阿堂殺去台北找小魚，似乎是整個故事的轉折點，我想阿堂的一躍之下並不是從那座天井開始的。為什麼兩個人明明彼此相愛，卻要為了莫名的原因而分開呢？他們真的分開了&amp;hellip;..唉&amp;hellip;.小魚心中&lt;strong&gt;是&lt;/strong&gt;掛念著他的，但又為什麼不去把阿堂留下呢？（突然腦中響起「你那麼愛他，為什麼不&lt;del&gt;巴他六下&lt;/del&gt;把他留下」）而且我覺得那個孩子明明就是阿堂的啊&amp;hellip;.難道是我搞錯了!? 還是說，是我被倒敘給弄混了，事實上是小魚先得知阿堂的死訊，然後才答應陳寬的求婚的嗎？唔&amp;hellip;.難道又要去看第二遍了&amp;hellip;.?&lt;/p&gt;
+&lt;p&gt;說到這裡就想到，小魚的尖叫也是個遺憾之處&amp;hellip;.聽起來很突兀，不曉得應該怎麼修正會比較好。&lt;/p&gt;
+&lt;p&gt;中間阿堂提到了他&amp;hellip;..他在學校的事情。他碩士班延畢，目前碩三，論文寫不出來，這這這&amp;hellip;.這不就是我的寫照嗎&amp;hellip;&amp;hellip;||| 好在我沒有在口試的時候被河蟹掉（事實上根本就還沒有口試），家裡也沒有欠五百萬的債務，所以應該不用擔心我會去&lt;em&gt;一躍之下&lt;/em&gt;啦&amp;hellip;反正現在電機系館也有網子這樣。不過天啊，我看到那段我真的是&amp;hellip;..我整個人都彷彿置身在阿堂的&lt;del&gt;鞋子&lt;/del&gt;情境中，我一一對照著他的經歷，想想自己&amp;hellip;.身為一個沒用的碩士生，若是加上如此龐大的壓力，又有誰能承受呢？&lt;/p&gt;
+&lt;p&gt;「你不用擔心啦！」這是阿堂常說的話&amp;hellip;.原來&amp;hellip;.原來這是故事的伏筆嗎？突然想通了，就是阿堂不讓他人分享自己的負擔，最後才讓這些沈重把自己給擊墜在地。突然相當佩服編劇&amp;hellip;雖然編劇(就是之前有指正過我舞台劇!=話劇的楊三毛)被我發現他之前影痴謀殺跟這次的一躍之下都用同一張照片，但是不得不佩服他的才華！上次的影痴謀殺他負責做視覺設計的說。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;楊三毛小檔案：&lt;br&gt;
+系統系100級，&amp;laquo;影痴謀殺&amp;raquo;視覺設計，&amp;laquo;一躍之下，&amp;raquo;編劇兼隱藏版平面設計(我猜應該什麼都摸過了)，照片好像只有一張，都不換，長得滿有型可是因為不明原因把頭髮遮住。&lt;br&gt;
+&amp;ndash; 摘自「影痴謀殺」與「一躍之下，」導覽手冊&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;欸欸我用網誌當回饋單你說好不好呀楊同學~這次我沒在回饋單留名字了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;後來的一小段，稍微感覺有點分離，並沒有跟劇情交織、融合在一起，只是稍微啦。但最後&amp;hellip;最後那邊&amp;hellip;..真他媽的騙眼淚阿&amp;hellip;.小張的靈魂終於能夠見到&amp;hellip;.我怎麼又打錯字了= =a 阿堂的靈魂終於能夠見到小魚，但卻只有不到一秒鐘的時間。即使他們近在咫尺，卻從此天人永隔，而那位婦人&amp;hellip;.(對，我猜到了)，竟然是阿堂的母親，那個他吼過、罵過的母親。即使如此，母親對阿堂的愛也在阿堂死後，爆炸了。七歲&amp;hellip;九歲&amp;hellip;十歲&amp;hellip;&amp;hellip;&amp;hellip;十八歲&amp;hellip;.阿堂怎麼不見了？這是母親最深刻的痛楚啊&amp;hellip;..&lt;/p&gt;
+&lt;p&gt;「我以為，我可以讓他們後悔，沒想到最後悔的，是我自己。」我忘不了阿堂的這句話&amp;hellip;.尋死這件事啊&amp;hellip;.我想很多人都天真的想過吧，但還好我們都戰勝了自己，或是懦弱的被恐懼給擊敗，然後面對下一個挑戰。下次，我是說如果有下次，那就想想這句話吧，「沒想到最後悔的，是我自己。」&lt;/p&gt;
+&lt;p&gt;題外話：突然想起&lt;a href=&#34;http://mypaper.pchome.com.tw/yp123ad/post/1313749126&#34;&gt;今天看到的這篇文章&lt;/a&gt;，沒想到剛好也可以用來勵志一下。「死者不知道，他死後，債務是由他的親人繼承，反而讓他的親人成為被暴力討債的對象！」所以啊，歹路不可行！(?)&lt;/p&gt;
+&lt;p&gt;結局了，來囉嗦幾句吧&amp;hellip;..上次的影痴謀殺我給100分，但這次我只給95分。雖然這場表演依然相當、相當感動我，但是有好多好多地方講話都好快(吵架戲那類的)，都聽不懂在講什麼&amp;hellip;.阿堂、小魚、「穿著花襯衫和木屐的奇怪老頭」&amp;hellip;好像滿多人都會這樣，不曉得為什麼&amp;hellip;&amp;hellip;..然後小次郎卡最多詞XD。這次的故事很棒我很喜歡，也相當貼近我們的生活！在成大生活第七年了，我整個超有感覺的啊！甚至有些地方我能夠直接跟自身經驗做連結呢。立體手冊有驚訝到我，不過還可以做得再精緻一點。為什麼手冊上只有&lt;em&gt;蘇家瑜&lt;/em&gt;的名字是反白的勒？不可以因為演員比較可愛就這樣啊XD。戲份不太平均，娜娜的戲份好少，不過我想編劇跟導演也盡力了吧。然後謝幕的時候有發現大家都很感動，很多演員跟工作人員臉上都掛著藏不住的笑容，還有曾同學(阿堂的媽)謝幕的時候快哭出來了，不過有某位同學相對之下相當的面無表情XDDD。小萍跑去當舞監了，可是舞監是做什麼的啊？然後導覽手冊寫在小萍&amp;hellip;.好啦，寫在許同學旁邊的那位同學我怎麼找都找不到名字啊，&amp;lt;囧&amp;quot;。嗯&amp;hellip;..嚴格來說我比較喜歡影痴謀殺的手冊&amp;hellip;..「一躍之下，」的手冊封面有點太綠&amp;hellip;..orz 我怎麼這麼囉嗦XD&lt;/p&gt;
+&lt;p&gt;對了，進去前有拿到一張海報，我滿喜歡那張海報的，設計的很棒！相當有味道唷 ;)&lt;/p&gt;
+&lt;p&gt;好像還有一些有的沒的想法一時之間想不到&amp;hellip;..想到再說囉~:P 再度推薦成大面劇團！:D&lt;/p&gt;
+&lt;p&gt;Update: 對了，現在想起當初有收到邀請，沒有去加入面劇團真的好可惜！唉，要不是跟阿堂一樣畢不了業的話，我就會去加入了 &amp;gt;&amp;quot;&amp;lt;&lt;br&gt;
+Update: 發現「一躍之下，」這個名字後面應該要加上逗號&amp;hellip;..所以改了好幾個地方= =a&lt;/p&gt;
+- https://blog.crboy.net/posts/face-to-audience-3/ - </description>
+        </item>
+    
+    
+  </channel>
+</rss> 

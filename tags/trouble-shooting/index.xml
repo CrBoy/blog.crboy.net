@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Trouble Shooting on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/trouble-shooting/</link>
+    <description>Recent content in Trouble Shooting on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 01 Aug 2012 17:45:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/trouble-shooting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NAS 的 NFS 掛不上...竟然是 switch 害的!!</title>
+      <link>https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/</link>
+      <pubDate>Wed, 01 Aug 2012 17:45:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/</guid>
+      <description>最近在新增設備，分別是 HP ProCurve 1810G-24 L2 switch 與 Synology RS812+ NAS，沒想到前兩天碰到一個讓人吐血的問題&amp;hellip;故事要從這裡說起&amp;hellip;..
+一開始很開心的接上了 switch 還有 NAS，似乎相當正常，但操作相當緩慢&amp;hellip;.後來 ping 了一下，封包一直掉&amp;hellip;&amp;hellip;&amp;hellip;.呃，但是後來換台電腦就好了，所以目前這個問題被我擱置&amp;hellip;..XD
+離題了，Synology NAS 算是還不錯，它的 OS (核心是 Linux，名稱叫做 DSM) 提供了 NFS 的支援，但主要的問題是&amp;hellip;&amp;hellip;問題是我掛不上啊!!!!! 我碰到的狀況相當奇怪，我這台電腦連到 NAS 的管理介面沒有問題，ping 它也回很快，甚至是 CIFS (Windows 的網路芳鄰) 都很順利&amp;hellip;.獨獨 NFS 掛不上去 orz
+我試了兩台電腦，都是 Linux，這兩台電腦跟 NAS 都接在上面說的那台 HP ProCurve 1810G-24 L2 switch 上。其中一台有防火牆，另一台沒有開，但是問題跟這個無關，所以就不理他了。我的狀況是，showmount 非常正常，NFS 權限也沒問題，但是真的要 mount 的時候就等很久很久很久&amp;hellip;..然後就 timeout 了&amp;hellip;&amp;hellip;= =
+花了一個下午找不到問題，整個晚上在想原因，一直到隔天剛好 NAS 廠商過來，結果他們也找不出原因!!!! 後來是因為廠商帶了台很簡單的 ZyXEL switch 來 (因為之前跟他們說我 ping NAS 掉包掉很大)，沒想到換上去就好了!!!!!! 杯具啊!!!!!!!! 天大的杯具啊!!!!!!!! 好&amp;hellip;&amp;hellip;既然確定是 switch 的問題，當然立馬殺進去 switch 的管理介面看看&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>PHP imagettftext() could not read font</title>
+      <link>https://blog.crboy.net/posts/php-imagettftext-could-not-read-font/</link>
+      <pubDate>Thu, 31 May 2012 14:03:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/php-imagettftext-could-not-read-font/</guid>
+      <description>今天撞牆撞很大&amp;hellip;.由於手邊在碰的一個專案裡面需要產生類似驗證碼的圖片，他用了 imagecreate(), imagettftext(), imagesetpixel() 這些 PHP functions。聽說這支程式「曾經」是可以 work 的，不過在我手上就不 work，為了證明不是人品問題，一定要把這個 bug 修掉！
+一開始我傻傻的在程式碼裡面翻找，但這樣實在太沒效率了，身為一個專業的&amp;hellip;.呃&amp;hellip;雜工，一定要懂得善用工具！所以我用了&amp;hellip;.. command line php&amp;hellip;..
+$ php image.php &amp;gt; /dev/null 對啦，只不過是測試環境從 apache 換到 command line 底下了，這樣是有比較強嗎？有喔~因為我的測試環境有裝 xdebug，只要有 enable 就可以在 command line 底下看到 debugging messages，不用特別打開 stack trace。至於最後面把 standard output 導向 /dev/null 是為了不想看到他輸出的那張不完整的圖，那會干擾畫面。
+首先第一步，我忘記詳細的訊息了，大意是說 imagecreate() is undefined 等等，這時候當然要去找找這函式有沒有需要什麼相依的 library 啊！找了一下發現，這些函式是由 PHP 的 GD module 所提供的，所以我迅速的安裝了 GD 模組&amp;hellip;
+$ sudo apt-get install php5-gd 接著，才是重頭戲的開始&amp;hellip;.
+裝好 GD 模組之後，那些 function 都可以使用了，但是我卻一直收到這個錯誤訊息&amp;hellip;.
+PHP Warning: imagettftext(): Could not read font .</description>
+    </item>
+    
+    <item>
+      <title>「cannot open shared object file」的解決方案</title>
+      <link>https://blog.crboy.net/posts/solution-for-cannot-open-shared-object/</link>
+      <pubDate>Wed, 23 May 2012 15:20:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/solution-for-cannot-open-shared-object/</guid>
+      <description>有時候執行一些指令，會碰到下面這樣的訊息：
+error while loading shared libraries: libiconv.so.2: cannot open shared object file: No such file or directory 在這個例子中，我們的程式找不到 libiconv.so.2 這個 dynamic library。那麼應該怎麼解決呢？
+首先必須找到系統中的 libiconv.so.2，下面四條指令選一條作就好：
+$ locate libiconv.so.2 $ whereis libiconv.so.2 $ find /usr /lib -name libiconv.so.2 $ find / -name libiconv.so.2 2&amp;gt;/dev/null 這時候就可以找出函式庫位置，例如：/usr/local/lib/libiconv.so
+萬一沒有找出來的話，就要自行安裝了。這篇文章有教該如何安裝 libiconv，如果是其他函式庫的話可以自行變通。
+找到位置之後，應該怎麼做呢？如果我們有 root 權限的話，可以把函式庫所在路徑寫入 /etc/ld.so.conf，再重新產生 ld 的 cache 即可，如下：
+# echo &amp;quot;/usr/local/lib&amp;quot; &amp;gt;&amp;gt; /etc/ld.so.conf # 注意! 要用 &amp;gt;&amp;gt; 而非 &amp;gt;！ # ldconfig 在某些系統中，/etc/ld.so.conf 可能會預設加上 include /etc/ld.so.conf.d/*.conf 這樣的敘述，那們我們也可以把路徑放在那個目錄下：</description>
+    </item>
+    
+    <item>
+      <title>Boost 神秘的 deprecated warning</title>
+      <link>https://blog.crboy.net/posts/boost-deprecated-warning/</link>
+      <pubDate>Mon, 26 Sep 2011 16:07:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/boost-deprecated-warning/</guid>
+      <description>Boost 是一個相當強大好用的 C++ library，一直都沒辦法把它摸透。最近在用的時候遇到神秘的問題，追了一下還是沒辦法完全理解，先筆記下來也許會有什麼進展(或是得到有緣人的提點:P)。
+首先是我的開發環境：Ubuntu 10.04 64-bits, GCC 4.4.3, Boost 1.40 (libboost-dev 1.40.0.1)
+我其實是在 #include &amp;lt;boost/graph/adjacency_list.hpp&amp;gt; 的地方遇到問題的，他出現的 warning message 如下：
+warning: #warning This file includes at least one deprecated or antiquated header which may be removed without further notice at a future date. Please use a non-deprecated interface with equivalent functionality instead. For a listing of replacement headers and interfaces, consult the file backward_warning.h. To disable this warning use -Wno-deprecated. 這訊息事實上是在 &amp;lt;backward/backward_warning.</description>
+    </item>
+    
+    <item>
+      <title>修正開機沒有splash畫面(進度條)的問題</title>
+      <link>https://blog.crboy.net/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/</link>
+      <pubDate>Wed, 31 Oct 2007 12:25:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/</guid>
+      <description>開機的 usplash 變黑的 bug 和螢幕解析度有關，只在用 Desktop CD 安裝的時候會遇到。原因是因為安裝程式會偵測螢幕解析度，但是 usplash 沒辦法用那麼高的解析度顯示，於是就黑掉了。
+解法，例如我的螢幕解析度是 1280x1024，但是 usplash 可能只能用 1024x768 跑，到 /etc/usplash.conf 中將
+xres=1280 yres=1024 改成
+xres=1024 yres=768 然後再打
+$ sudo update-initramfs -u -k `uname -r` 更新一下就應該可以看到了。
+資料來源為 Ubuntu@TW 的 josesun 回應</description>
+    </item>
+    
+    <item>
+      <title>解決新視窗不會取得focus的問題</title>
+      <link>https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/</link>
+      <pubDate>Mon, 18 Jun 2007 02:49:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/</guid>
+      <description>我也不確定這是Gnome的問題或是Beryl造成的～
+不過我知道解法了:P
+在Beryl Manager中找General Options裡面有個&amp;quot;聚交保護級&amp;quot; 把高設定為正常就好了:)
+來源</description>
+    </item>
+    
+  </channel>
+</rss>

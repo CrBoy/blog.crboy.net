@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html><head>
+<title>Gitolite ver.3 (g3) 安裝筆記</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%ba%96%e5%82%99%e6%ad%a5%e9%a9%9f" class="nav-準備步驟">
+									準備步驟
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%9d%e6%ad%a5%e9%a9%9f-%e6%9c%aa%e8%a8%bb%e6%98%8e--%e7%9a%84%e7%9a%86%e4%bd%bf%e7%94%a8-git-%e5%b8%b3%e8%99%9f" class="nav-安裝步驟-未註明--的皆使用-git-帳號">
+									安裝步驟 (未註明 # 的皆使用 git 帳號)
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e5%85%a8%e6%80%a7" class="nav-安全性">
+									安全性
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%b8%bd%e7%b5%90" class="nav-總結">
+									總結
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    Gitolite ver.3 (g3) 安裝筆記
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2012-06-20 01:50
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/git">Git</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E6%95%99%E5%AD%B8">教學</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E7%AD%86%E8%A8%98">筆記</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>Gitolite 是一個持續開發中的 git server 專案，自 2009 年開始後，至今已經發展到第 3 版，作者將其稱之為 g3 (之前的版本分別為 g1 與 g2)。由於 g3 相對於之前的版本，是整個重寫的專案，根據紀錄，g3 是大約今年 4 月才開始的，所以很多文件早已過時，只好慢慢研究作者提供的文件。整個專案都<a href="https://github.com/sitaramc/gitolite">放在 github 上</a>，並且作者也提供了<a href="http://sitaramc.github.com/gitolite/index.html">相關文件</a>，本文就是參考該文件寫成。<br>
+我的操作環境是：</p>
+<ul>
+<li>Ubuntu 12.04</li>
+<li>Git version 1.7.9.5</li>
+<li>Perl 5.14</li>
+</ul>
+<p>本文章假設使用者已經具備 git 的基本知識與操作技能，以及基本的 ssh 認知，不再贅述。</p>
+<h1 id="準備步驟">準備步驟</h1>
+<ul>
+<li>
+<p>伺服器上須先預備好以下套件</p>
+<ul>
+<li>Git 1.6.6 以上</li>
+<li>Perl 5.8.8 以上</li>
+<li>OpenSSH</li>
+</ul>
+</li>
+<li>
+<p>產生管理者的 ssh key (此 key 將專門提供給 gitolite 管理者使用)</p>
+<pre><code>$ ssh-keygen -t rsa -f &lt;key_filename&gt;
+</code></pre>
+<p>舉例：</p>
+<pre><code>$ ssh-keygen -t rsa -f ~/admin
+</code></pre>
+<p>會產生 <code>~/admin</code> 跟 <code>~/admin.pub</code> 兩個檔案，分別是 private key 與 public key。<br>
+此時會提示輸入 passphrase。passphrase 是用來加密 private key 的密碼，避免 private key 被竊時造成的安全性風險。每次 push/pull 的時候需要輸入 passphrase，可以配合 ssh-add (Linux) 或 Pageant (Windows) 來避免每次都要打 passphrase。<br>
+這邊注意所使用的 <code>&lt;key_filename&gt;</code> 就是 gitolite 管理者 (非主機管理者也非 git 帳號管理者) 所使用的虛擬帳號。</p>
+</li>
+<li>
+<p>建立 git 專用帳號 (我使用 <code>git</code> 而非有些人慣用的 <code>gitolite</code>)</p>
+<pre><code># adduser --system git --shell &quot;/bin/bash&quot;
+</code></pre>
+<p>必須給予 git 帳號一個可以執行 command 的 shell，但可放心所有 gitolite user 都只是虛擬帳號，他們會被導向到 gitolite-shell 這個 gitolite 提供的指令去，無法真的登入。<br>
+以下未特別註明的，皆會使用 git 帳號作為 $ 的擁有者。</p>
+</li>
+</ul>
+<h1 id="安裝步驟-未註明--的皆使用-git-帳號">安裝步驟 (未註明 <code>#</code> 的皆使用 git 帳號)</h1>
+<ol>
+<li>
+<p>取得 <code>gitolite</code> 套件</p>
+<pre><code>$ git clone git://github.com/sitaramc/gitolite.git
+</code></pre>
+</li>
+<li>
+<p>安裝 gitolite 於家目錄下 (其實只是做個 soft link 過去)</p>
+<pre><code>$ mkdir -p ~/bin
+$ gitolite/install -ln
+</code></pre>
+<p>記得把 $HOME/bin 加入 $PATH 中。<br>
+或是也可以用複製的方式安裝到其他系統目錄下 (以 /usr/share/gitolite 為例)</p>
+<pre><code># mkdir -p /usr/share/gitolite
+# gitolite/install -to /usr/share/gitolite
+</code></pre>
+</li>
+<li>
+<p>設置 gitolite</p>
+<pre><code>$ gitolite setup -pk admin.pub # 這裡的 admin.pub 就是之前產生的管理者公鑰
+</code></pre>
+<p>這表示 admin.pub 這把公鑰所對應的私鑰擁有者就是 gitolite 的管理者，同時管理者的虛擬帳號即為 admin。 另外，如果 <code>~/.ssh</code> 底下的 authorized_keys 已經有相同的 public key 的話，會出現 FATAL error：「admin.pub maps to shell access, not admin.」由於 <strong>gitolite 透過使用的 key 來決定使用者是不是管理者</strong>，故不可以使用本來已可連線取得 shell 的 key。</p>
+</li>
+</ol>
+<h1 id="安全性">安全性</h1>
+<ul>
+<li>
+<p>實際使用 gitolite 後，會發現 <code>~git/.ssh/authorized_keys</code> 這個檔案被加入一些東西，像是這樣</p>
+<pre><code># gitolite start
+command=&quot;/usr/share/gitolite/./gl-auth-command admin&quot;,no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa &lt;很長一串 public key&gt; &lt;description&gt;
+command=&quot;/usr/share/gitolite/./gl-auth-command someone&quot;,no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa &lt;很長一串 public key&gt; &lt;description&gt;
+# gitolite end
+</code></pre>
+<p>前面加上的那個稱為 <strong>ssh forced command</strong>，可以限制 user 登入後執行的 command。也就是說，gitolite 在使用時，並沒有啟動 daemon，而是透過 ssh 連線，並轉介到 gl-auth-command 進行動作的。</p>
+</li>
+<li>
+<p>gitolite 在運作時，使用的都是 git 這個帳號 (以我的例子而言)，如果對安全性有很高的要求，可以盡量限縮這個帳號的權限。不過還是得給他一個 shell 使用就是了，我試過將 shell 改成 <code>/bin/false</code> 或 <code>/usr/sbin/nologin</code>，結果操作就失敗了orz</p>
+</li>
+<li>
+<p>預設狀況下，透過 <code>gl-setup</code> 產生的 repository 與其他相關檔案，權限都是 700。也就是說，即使主機上有其他的使用者，如果他沒有管理者權限 (或是 <code>sudo</code> 權限) 的話，也無法存取到那些受 gitolite 管轄的 repository。</p>
+</li>
+<li>
+<p>管理者在進行設定時，最好確認使用者提供的 key 是否正確，可透過</p>
+<pre><code>$ ssh-keygen -lf &lt;pubkey_file&gt;
+</code></pre>
+<p>來獲得 public key 的 fingerprint，並以其他管道與使用者對照確認，避免惡意攻擊。</p>
+</li>
+</ul>
+<h1 id="總結">總結</h1>
+<p>整體弄起來，覺得 g3 在管理設定上，還有使用上都跟 g2 沒有什麼差別，只是安裝上不一樣就是了。不過由於是 perl 程式，其實安裝上還滿容易的，一開始不了解架構的話容易撞牆而已。</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2012-06-20</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/gitolite-settings-and-managements/">
+			Next<br>Gitolite 設定與管理
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/gitolite-22-installation/">
+			Previous<br>Gitolite 2.2 安裝筆記
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%ba%96%e5%82%99%e6%ad%a5%e9%a9%9f" class="nav-準備步驟">
+									準備步驟
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%9d%e6%ad%a5%e9%a9%9f-%e6%9c%aa%e8%a8%bb%e6%98%8e--%e7%9a%84%e7%9a%86%e4%bd%bf%e7%94%a8-git-%e5%b8%b3%e8%99%9f" class="nav-安裝步驟-未註明--的皆使用-git-帳號">
+									安裝步驟 (未註明 # 的皆使用 git 帳號)
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e5%85%a8%e6%80%a7" class="nav-安全性">
+									安全性
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%b8%bd%e7%b5%90" class="nav-總結">
+									總結
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

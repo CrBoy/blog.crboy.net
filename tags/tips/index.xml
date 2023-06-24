@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tips on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/tips/</link>
+    <description>Recent content in tips on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Tue, 27 Sep 2016 18:45:49 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/tips/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>發現一個滿方便的 ip 資訊查詢：ipinfo.io</title>
+      <link>https://blog.crboy.net/posts/ipinfo.io/</link>
+      <pubDate>Tue, 27 Sep 2016 18:45:49 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/ipinfo.io/</guid>
+      <description>以前都用 orange.tw 在查 ip，雖然自己也寫了一個 ip.crboy.net，不過因為實在不想花錢養一台機器，所以就把服務給停掉了。
+剛剛發現 ipinfo.io 這個網站，用瀏覽器開的話相關說明也都有了。但如果直接用 curl 送 request 的話，就可以拿到自己的 ip 的相關資訊（包含地點、國家等）。
+$ curl -D- ipinfo.io HTTP/1.1 200 OK Access-Control-Allow-Origin: * Content-Type: application/json; charset=utf-8 Date: Tue, 27 Sep 2016 10:33:36 GMT Server: nginx/1.8.1 Set-Cookie: first_referrer=; Path=/ X-Content-Type-Options: nosniff Content-Length: 219 Connection: keep-alive { &amp;#34;ip&amp;#34;: &amp;#34;119.14.25.111&amp;#34;, &amp;#34;hostname&amp;#34;: &amp;#34;host-111.25-14-119.dynamic.totalbb.net.tw&amp;#34;, &amp;#34;city&amp;#34;: &amp;#34;Taipei&amp;#34;, &amp;#34;region&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;country&amp;#34;: &amp;#34;TW&amp;#34;, &amp;#34;loc&amp;#34;: &amp;#34;25.0392,121.5250&amp;#34;, &amp;#34;org&amp;#34;: &amp;#34;AS9416 Hoshin Multimedia Center Inc.&amp;#34; } 也可以查詢特定 ip 的資訊：
+$ curl -D- ipinfo.</description>
+    </item>
+    
+    <item>
+      <title>修改 Debian 或 Ubuntu 預設 editor</title>
+      <link>https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/</link>
+      <pubDate>Mon, 24 Sep 2012 01:44:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/</guid>
+      <description>前幾天突然想到一個問題&amp;hellip;.由於 Ubuntu 預設 editor 是 nano，這對於一個 vim user 來說實在是不太舒服啊XD 所以稍微找了一下，找到一個很簡便的作法，可以用來修改預設 editor，方式如下：
+$ sudo update-alternatives --config editor [sudo] password for crboy: There are 4 choices for the alternative editor (providing /usr/bin/editor). Selection Path Priority Status ------------------------------------------------------------ * 0 /bin/nano 40 auto mode 1 /bin/ed -100 manual mode 2 /bin/nano 40 manual mode 3 /usr/bin/vim.basic 30 manual mode 4 /usr/bin/vim.tiny 10 manual mode Press enter to keep the current choice[*], or type selection number: 3 update-alternatives: using /usr/bin/vim.</description>
+    </item>
+    
+    <item>
+      <title>Vim: CamelCase to snake_case</title>
+      <link>https://blog.crboy.net/posts/vim-camelcase-to-snakecase/</link>
+      <pubDate>Tue, 03 Jul 2012 11:05:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/vim-camelcase-to-snakecase/</guid>
+      <description>這篇文章：用 vim 將 camel case 改成 underscore-based 提到用 vim 取代把 CamelCase 轉換成 snake_case 的作法，看到後有一點點小想法，特別紀錄一下 :P
+作者提到的取代方式是：
+:%s/\(\l\)\(\u\)/\1_\l\2/gc 但配合 very magic 可以變成這樣
+:%s/\v(\l)(\u)/\1_\l\2/gc 短了一點點不是重點，重點是括號好看多了XD
+另外作者稍微寫錯的部分是，\l 跟 \u 在 substitute pattern 中表示的是小寫和大寫字元，而不是把下一個字變成大(小)寫，那是在後面做的事。可以 :help /character-classes 看到詳細的列表 (大心)。
+既然這篇文章這麼短，那就提一下好了。今天找資料的時候不小心發現這位作者的 blog，實在看得我欲罷不能啊XD 而且他玩的東西好多，也玩系統、也寫程式，從 C 寫到 PHP、Python、Perl、Ruby&amp;hellip;..太強了orz 還有很多有趣的東西，實在很好玩&amp;hellip;.太佩服 &amp;lt;(_ _)&amp;gt; 建議熱愛技術的人可以參考看看，我覺得很精采 :D</description>
+    </item>
+    
+    <item>
+      <title>對 Vim 啟動過程做效能分析</title>
+      <link>https://blog.crboy.net/posts/profiling-vim-startup/</link>
+      <pubDate>Wed, 30 May 2012 11:09:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/profiling-vim-startup/</guid>
+      <description>昨天在噗浪上看到有趣的分享，是一篇 StackOverflow 上的文章：Profiling vim startup time。
+其實講的東西相當單純，就是 vim 提供了 --startuptime 選項，後面接上 log 檔的檔名，他會幫你把啟動過程中每個部份所花的時間都記錄下來，有個別時間也有累計時間。例如：
+$ vim --startuptime vim.log 然後就可以看 vim.log 的內容來了解自己啟動 vim 的時候在哪個部分花最多時間囉。對於 vim plugin 裝很多又想瘦身的朋友應該很實用。:)
+嗯&amp;hellip;..身為一個程式語言 (vim script) 的 interpreter&amp;hellip;.果然會出現這種東西XD</description>
+    </item>
+    
+    <item>
+      <title>SSH key 的 randomart</title>
+      <link>https://blog.crboy.net/posts/ssh-key-random-art/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/ssh-key-random-art/</guid>
+      <description>滿有趣的…XD 就像是這種東西：
++--[ RSA 2048]----+ |.ooo+ | | oE= = | |..* B . | | . O . o | | o + . S | | . . o o | | o | | | | | +-----------------+ 這東西在產生 ssh key 的時候會出現，如果想要看現有的 public key 的 randomart 的話可以下 ssh-keygen -lv
+如果想要在連上 ssh server 的時候看到 randomart 的話可以在 ssh config 中設定 VisualHostKey=yes 或是連線的時候下 ssh -o VisualHostKey=yes
+滿好玩的XD</description>
+    </item>
+    
+  </channel>
+</rss>

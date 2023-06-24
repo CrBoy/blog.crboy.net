@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>翻譯 on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/%E7%BF%BB%E8%AD%AF/</link>
+    <description>Recent content in 翻譯 on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 02 Nov 2011 03:15:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/%E7%BF%BB%E8%AD%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何說服你的朋友使用 Linux - 但不被當成怪咖</title>
+      <link>https://blog.crboy.net/posts/%E5%A6%82%E4%BD%95%E8%AA%AA%E6%9C%8D%E4%BD%A0%E7%9A%84%E6%9C%8B%E5%8F%8B%E4%BD%BF%E7%94%A8-linux-%E4%BD%86%E4%B8%8D%E8%A2%AB%E7%95%B6%E6%88%90%E6%80%AA%E5%92%96/</link>
+      <pubDate>Wed, 02 Nov 2011 03:15:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E5%A6%82%E4%BD%95%E8%AA%AA%E6%9C%8D%E4%BD%A0%E7%9A%84%E6%9C%8B%E5%8F%8B%E4%BD%BF%E7%94%A8-linux-%E4%BD%86%E4%B8%8D%E8%A2%AB%E7%95%B6%E6%88%90%E6%80%AA%E5%92%96/</guid>
+      <description>本文翻譯自「How to Convince Your Friends to Use Linux Without Being a Jerk」，作者為 Abhishek。
+This article is a translation of &amp;ldquo;How to Convince Your Friends to Use Linux Without Being a Jerk&amp;rdquo;, which is written by Abhishek.
+Linux 是目前世界上最安全穩定的系統之一，但它的使用者數量卻不如想像中的成長迅速。這當中有很多原因，不過我們先不討論。但如果你像其他的 Linux 使用者一樣，對現在 Linux 的市佔率感到失望，我們可以告訴你一些說服你朋友來用 Linux 的小技巧。
+現在有很多 Linux 使用者試著去引誘他們的朋友或家人來嘗試一個有名且容易上手的發行版 - Ubuntu。有些人成功了，不過大部分是失敗的。所以，我們要告訴你一些技巧來幫助你推廣 Linux，但不會被視為一個自以為是又看不起 Windows 或 Mac 的電腦怪咖。
+用秀的！不要用說的。 沒錯，如果你想要說服一個 Windows 或 Mac 的使用者來使用 Linux，這是第一件也是最重要的一件事。Ubuntu、Linux Mint與許多其他發行版看起來都相當漂亮，而且說真的，最新版的 Ubuntu (Ubuntu 11.10) 看起來就跟 Mac 一樣漂亮。不過，如果你只是跟他們用說的，你認為他們會同意你嗎？就算他們同意了，他們還是不清楚 Ubuntu 或是其他你說的發行版究竟長什麼樣子。我的建議是，你可以帶著你的 Linux 筆電，交給對方讓他們玩玩看。如果你用的是 Ubuntu，我建議你開一個新的 Guest Session (訪客使用者階段)，然後把電腦交給他。這樣一來，他們會更了解一個沒有經過調整的桌面有多漂亮。如果你不太可能向你的朋友展示桌面的話，那就傳個關於桌面展示的 Youtube 影片給他吧。</description>
+    </item>
+    
+  </channel>
+</rss>

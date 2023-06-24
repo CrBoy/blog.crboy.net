@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>筆記 on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/%E7%AD%86%E8%A8%98/</link>
+    <description>Recent content in 筆記 on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 07 Apr 2013 15:59:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/%E7%AD%86%E8%A8%98/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在 Windows 上安裝 Redmine 2.3.0 的筆記</title>
+      <link>https://blog.crboy.net/posts/install-redmine-on-windows/</link>
+      <pubDate>Sun, 07 Apr 2013 15:59:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/install-redmine-on-windows/</guid>
+      <description>Redmine 是一套很有名的專案管理系統，建構於 Ruby on Rails 之上。網路上搜尋「Redmine」都可以找到很多相關資料，這邊就不贅述功能。
+由於 Ruby/Rails 在 MacOSX 跟 Linux 相對比較友善，所以要找 Redmine on Windows 的安裝教學實在不太好找，中文資料更是寥寥可數。加上 Rails 進步迅速，很多 07~09 年的資料其實很可能都已經過時，所以乾脆自己研究完寫一篇XD
+不過由於現在實在沒什麼空寫網誌，所以簡單的把方法跟過程記錄一下&amp;hellip;.
+這邊主要是根據 http://www.redmine.org/projects/redmine/wiki/RedmineInstall 上面的說明，而 Redmine 安裝相依於特定的 rails 與 ruby 版本，可以參考前面這個連結裡面的表格。而我這邊以 Ruby 1.9.3 + Rails 3.2.13 + Redmine 2.3.0 為目標。
+以下為安裝步驟：(注意！安裝過程中的路徑最好都不要有中文，如果出現奇怪的問題，請先嘗試把目錄或檔案放到沒有中文路徑的位置。目前我已經碰到某些 gem file 放在中文路徑會沒辦法安裝)
+下載 Ruby installer 與 Development Kit (這邊我都選 32-bit 版本)
+http://rubyinstaller.org/downloads 下載 Redmine (點第一段的 RubyForge 連結)
+http://www.redmine.org/projects/redmine/wiki/Download 安裝 Ruby
+雙擊 ruby installer 並一直 Next，注意中途應選擇「Add Ruby executables to your PATH」 安裝 Development Kit</description>
+    </item>
+    
+    <item>
+      <title>修改 Debian 或 Ubuntu 預設 editor</title>
+      <link>https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/</link>
+      <pubDate>Mon, 24 Sep 2012 01:44:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/</guid>
+      <description>前幾天突然想到一個問題&amp;hellip;.由於 Ubuntu 預設 editor 是 nano，這對於一個 vim user 來說實在是不太舒服啊XD 所以稍微找了一下，找到一個很簡便的作法，可以用來修改預設 editor，方式如下：
+$ sudo update-alternatives --config editor [sudo] password for crboy: There are 4 choices for the alternative editor (providing /usr/bin/editor). Selection Path Priority Status ------------------------------------------------------------ * 0 /bin/nano 40 auto mode 1 /bin/ed -100 manual mode 2 /bin/nano 40 manual mode 3 /usr/bin/vim.basic 30 manual mode 4 /usr/bin/vim.tiny 10 manual mode Press enter to keep the current choice[*], or type selection number: 3 update-alternatives: using /usr/bin/vim.</description>
+    </item>
+    
+    <item>
+      <title>PHP 自動發信程式</title>
+      <link>https://blog.crboy.net/posts/php-email-by-gmail/</link>
+      <pubDate>Fri, 21 Sep 2012 00:03:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/php-email-by-gmail/</guid>
+      <description>之前為了發 COSCUP 的通知信，參考網路上的範例用 PHP 寫了個小程式。我把範例程式放在這個 gist 上：https://gist.github.com/3135053
+其實明顯看得出來，程式沒什麼架構，純粹只是為了可以 work 而寫的拋棄式程式。不過丟出來一方面可以當自己的筆記，以後要找比較好找，另一方面，也許另一個人想要寫類似的小玩具的時候就可以參考了 :P
+以下是一些簡單的介紹。
+我使用這個程式的狀況是，我需要寄一封信給很多人，而我又希望每個人收到的信，收件者只有自己，而且信件開頭還會寫上他的名字，這樣比較貼心。所以沒辦法用「寄給自己 and BCC」的方法達成，只好透過程式完成。
+這個小程式實際上是透過一套稱為 PHPMailer 的 library 做真正的寄信動作，所以困難的部分都被它做走了！我們只要把該設定的東西設定一下就差不多。要設定的項目大概有這些：
+SMTP server 資訊 (主機、port、認證方式&amp;hellip;等) 登入資訊 (我使用 Gmail 寄信，所以需要登入) 寄件者與收件者資訊 信件資訊 (標題與內文) 在我這邊，每封信不同的地方只有收件者與內文，所以我會每次重新產生並設定，其餘部分都在最前面寫死。
+收件者與內文的部分，我是先將收件者名單從 Google Spreadsheets 中匯出成 .tsv 檔 (因為比較容易 parse)，再直接讀入。這個寫在 function parse_name_list_tsv($filename) 中。然後用一個自己刻的簡單 template tool (function fill_template($content, $data), 才 4 行XD) 去加上 user-specified 的資料，最後送信收工！
+一些有趣的小細節：
+忘記為什麼了，我一開始跑起來會出現跟時區有關的錯誤，所以必須加上 date_default_timezone_set(&#39;Asia/Taipei&#39;); 來避免這個問題 因為我的 Google Account 有開啟兩階段驗證 (2-Step Verification)，而我們這種小工具當然不可能支援，所以要為我們的程式特別創造一組應用程式密碼，才能正常使用喔！ 一開始不小心抓到舊版的 PHPMailer，它有個 bug 就是，CC 的人會變成 BCC (或是反過來&amp;hellip;我忘了)，所以我直接從它的 source code 裡找到有問題的那段修掉了 (open source rocks!</description>
+    </item>
+    
+    <item>
+      <title>Gitit 簡介</title>
+      <link>https://blog.crboy.net/posts/introduction-to-gitit/</link>
+      <pubDate>Wed, 19 Sep 2012 13:56:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/introduction-to-gitit/</guid>
+      <description>最近打算發一系列的 Gitit 相關文章，希望不要拖稿拖太久&amp;hellip;.萬一去當兵了，可能會拖很久很久這樣XD
+之前我一直在尋找一個好用的共同協作平台系統，原因是我覺得 MediaWiki 的語法實在太難寫了&amp;hellip;.特別是當我看到 Ubuntu-TW Wiki 的首頁原始碼的時候，都快吐血了&amp;hellip;..當下覺得我智商不足&amp;hellip;..orz 但後來一直尋找，尋找的目標是：語法好寫、可即時線上協作的 wiki，所謂的「即時線上協作」就是像 Google Docs 那樣有可以多人同時編輯的頁面這樣。不過一直都找不到我想要的東西&amp;hellip;.即時線上協作有 etherpad-lite 這個 open source 專案，但是他是每個 pad 獨立的，而使用 Markdown 語法的 wiki 也不是沒有，但沒有勇氣(?)去嘗試&amp;hellip;.
+一開始知道 Gitit，是 @zeroplex (日落) 在噗浪上講的。因為之前也跟日落提過我想要尋找一個好用的 wiki system 這件事，他剛好不知道從哪裡獲得資訊，就分享給我了。結果沒想到，一玩下去，驚為天人啊XD
+我的第一步當然是先去 Google 一下，看有沒有什麼相關訊息。直到現在這個時間點，去 Google 「gitit」還很容易找到 walkingice 的這篇文章，另外當然還是要提一下 Gitit 官方網站。
+Gitit 這東西，是一個用 git 當 back-end datastore 的 wiki 系統，而且自帶 web server，不需要諸如 apache 或是 nginx 的存在也可以運作。Wiki 的語法使用 Markdown，方便好寫，同時也很容易用於其他用途，可攜性佳。
+簡單的 survey 過後，我決定也來試試看。沒想到在 Ubuntu 下安裝跟啟動都超簡單的&amp;hellip;.
+安裝：sudo apt-get install gitit
+建立目錄：mkdir wiki</description>
+    </item>
+    
+    <item>
+      <title>在 .htaccess 裡面修改 php 設定值</title>
+      <link>https://blog.crboy.net/posts/php-setting-in-htaccess/</link>
+      <pubDate>Wed, 19 Sep 2012 10:53:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/php-setting-in-htaccess/</guid>
+      <description>這篇筆記拖稿好久了&amp;hellip;.其實應該很短的，所以趕快寫一寫。
+有時候在弄一些 php 相關的東西的時候，需要設定一些模組，例如之前用過的 Xdebug，但是每次設定 php.ini 就要重新啟動 apache server，很麻煩還是其次，有時候上線的系統這樣一搞就很多人掰了&amp;hellip;..XD 所以我們需要一個修改後立即生效的做法。
+.htaccess 是非常實用的做法，只要先在 apache 的設定檔裡去 AllowOverride Options 即可使用 (我自己的機器通常會在特定目錄直接 AllowOverride All)。那麼，到底該怎麼做呢？下面是範例：
+php_value xdebug.auto_trace on php_value xdebug.trace_output_dir /tmp/xdebug php_value xdebug.collect_params 3 php_value xdebug.profiler_enable on php_value xdebug.profiler_output_dir /tmp/xdebug 應該滿好懂的？其實就是&amp;hellip;前面先指定 php_value，後面不用等號，直接寫設定值即可。
+這樣做出來的結果，可以在 phpinfo 裡面看到成效。phpinfo 下方的 Configuration 那邊，設定值的部分有三欄，分別是 Directive、Local Value、Master Value，Directive 就是設定值的名稱，Local Value 是在該目錄真的會生效的設定值，Master Value 則是全系統的設定值。如果你覆蓋了全系統的設定，那麼你會看到你的 Local Value 跟 Master Value 不同，應該滿好認的。
+透過這個方式，我們可以隨時去修改 php 的設定值，對於一些測試性的行為很有幫助！:D</description>
+    </item>
+    
+    <item>
+      <title>Gitolite 使用教學</title>
+      <link>https://blog.crboy.net/posts/gitolite-usage-tutorial/</link>
+      <pubDate>Tue, 26 Jun 2012 00:17:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/gitolite-usage-tutorial/</guid>
+      <description>首先，要使用 gitolite 一定得先會使用 git。下面就不贅述。
+初次設定 使用 gitolite 有以下兩個前置動作
+建立 ssh keypair
+使用 Linux 或 Windows 上的 Git Bash
+$ ssh-keygen -f mykey Generating public/private rsa key pair. Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in mykey. Your public key has been saved in mykey.pub. The key fingerprint is: xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx USER@HOST 這邊要注意幾個地方，-f 後面的參數表示檔名，可自行設定，此例中為 mykey。產生後會有兩個檔案，分別是 mykey.pub 跟 mykey，mykey.pub 是 public key (公鑰)，可以提供給你的 gitolite server 管理員，而 mykey 為 private key (私鑰)，相當於密碼，不可以洩漏給任何人。再來，passphrase 是用來保護 key 的密碼，也要牢記。在認證時，同時擁有 private key 與 passphrase 的人才能通過認證，這才是安全的手法。最後，當 key 產生之後，會印出 key 的 fingerprint (指紋)，是用來核對 public key 正確性用的。</description>
+    </item>
+    
+    <item>
+      <title>Gitolite 設定與管理</title>
+      <link>https://blog.crboy.net/posts/gitolite-settings-and-managements/</link>
+      <pubDate>Thu, 21 Jun 2012 01:57:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/gitolite-settings-and-managements/</guid>
+      <description>首先，要使用跟管理 gitolite 一定得先會使用 git。下面就不贅述。
+初次設定 對使用者而言，只要設定好 ssh host alias 即可。如果是 gitolite 管理者，還必須將 gitolite-admin 給 clone 下來，才能繼續後面設定的動作。
+設定 ssh host alias
+$ vim ~/.ssh/config host gitolite user git hostname localhost port 22 identityfile ~/.ssh/admin 這個設定的重點是指定連線時使用特定的 identity file (private key)，如此才能被 gitolite 認可為管理者 (gitolite 是看你用什麼 key 來決定你的身分)。記得 hostname 的部分要以自己的狀況更換成正確的主機位址。
+取得管理 gitolite 的 repository
+$ git clone gitolite:gitolite-admin 這個 repository 紀錄了所有 gitolite 的權限資料，包含所有 user 的 public key 與 repository 的存取權限設定。conf/gitolite.conf 中記載了所有專案的名稱以及每個 user 對專案的權限。而 keydir 中即為所有 user 的 keys。對 gitolite 的管理與設定都必須透過這個 repo 進行。</description>
+    </item>
+    
+    <item>
+      <title>Gitolite ver.3 (g3) 安裝筆記</title>
+      <link>https://blog.crboy.net/posts/gitolite-3-installation/</link>
+      <pubDate>Wed, 20 Jun 2012 01:50:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/gitolite-3-installation/</guid>
+      <description>Gitolite 是一個持續開發中的 git server 專案，自 2009 年開始後，至今已經發展到第 3 版，作者將其稱之為 g3 (之前的版本分別為 g1 與 g2)。由於 g3 相對於之前的版本，是整個重寫的專案，根據紀錄，g3 是大約今年 4 月才開始的，所以很多文件早已過時，只好慢慢研究作者提供的文件。整個專案都放在 github 上，並且作者也提供了相關文件，本文就是參考該文件寫成。
+我的操作環境是：
+Ubuntu 12.04 Git version 1.7.9.5 Perl 5.14 本文章假設使用者已經具備 git 的基本知識與操作技能，以及基本的 ssh 認知，不再贅述。
+準備步驟 伺服器上須先預備好以下套件
+Git 1.6.6 以上 Perl 5.8.8 以上 OpenSSH 產生管理者的 ssh key (此 key 將專門提供給 gitolite 管理者使用)
+$ ssh-keygen -t rsa -f &amp;lt;key_filename&amp;gt; 舉例：
+$ ssh-keygen -t rsa -f ~/admin 會產生 ~/admin 跟 ~/admin.pub 兩個檔案，分別是 private key 與 public key。</description>
+    </item>
+    
+    <item>
+      <title>Gitolite 2.2 安裝筆記</title>
+      <link>https://blog.crboy.net/posts/gitolite-22-installation/</link>
+      <pubDate>Mon, 18 Jun 2012 01:50:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/gitolite-22-installation/</guid>
+      <description>特別注意 - 為什麼標題要特別註明是 Gitolite 2.2？因為文章已經寫好之後才發現作者已經大幅更新版本。新版有文件在此。本文是以 ubuntu 12.04 套件庫中的 gitolite 2.2 作為安裝目標。
+Gitolite 是一個持續開發中的 git server 套件，本來還在糾結要玩 gitolite 或是 gitosis，決定兩個都嘗試看看後，發現本來打算先嘗試的 gitosis 很難找到來源，唯一找到的是原作者(吧)在 github 上的 repo，已經有 3 年沒更新了，於是決定直接嘗試 gitolite。搜尋了一下發現，原來 gitolite 是作者從 gitosis 的想法發展而來，本來是 gitosis + lite，但現在已經發展得比 gitosis 還強大了。而且從 gitolite 作者的 github repo 發現，上次更新是一週前，這表示它現在還是一個活躍且成長中的專案，當然就決定是他了！ (但其實後來才發現上次更新的是第 3 版，第 2 版現在只會修 bug 而已)
+我的安裝過程主要是參考 Tsung&amp;rsquo;s Blog 的這篇文章而成，但不曉得原因為何，我這邊碰到的狀況跟作者不太一樣，我想也許是他使用的是 Debian (?) 或者他用 Ubuntu 但是版本跟我不同吧。我還另外參考了這篇文章，裡面寫的東西滿豐富的。同時這裡也附上作者提供的文件。
+我的操作環境是：
+Ubuntu 12.04 Git version 1.7.9.5 Gitolite version: 2.2-1 本文章假設使用者已經具備 git 的基本知識與操作技能，不再贅述。另外如果是大部分其他系統的管理者，可能不習慣用 sudo，那麼就先切換到 root 再去執行動作即可。這邊為了保險起見，還是使用一般帳號進行設定。</description>
+    </item>
+    
+    <item>
+      <title>PHP Informix on Linux 安裝與設定</title>
+      <link>https://blog.crboy.net/posts/php-informix-on-linux/</link>
+      <pubDate>Fri, 15 Jun 2012 06:43:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/php-informix-on-linux/</guid>
+      <description>環境
+Ubuntu 12.04 LTS Apache 2.2.22 PHP 5.3.10 如果沒有 apache 與 php 環境可由套件庫安裝
+$ sudo apt-get install apache2 php5 為了編譯模組，需要安裝 php5-dev
+$ sudo apt-get install php5-dev 為了取得 PECL 上的原始碼，需要安裝 subversion (即 SVN)
+$ sudo apt-get install subversion 安裝 Informix Client SDK 在這個連結可以下載 Informix Developer Edition，有免費的版本，但僅供開發使用且有使用資源上的限制。我抓下來的檔案為 iif.11.70.UC5DE.Linux-RHEL5.tar。其實根據 [Install Informix on Debian] 這篇文章看來，應該是有單純的 ClientSDK 可以下載，但是我找不到&amp;hellip;
+將其解開
+$ cd &amp;amp;&amp;amp; mkdir informix &amp;amp;&amp;amp; cd informix $ tar -xf /PATH/TO/iif.11.70.UC5DE.Linux-RHEL5.tar 建立 informix 帳號與群組
+$ sudo addgroup --system informix $ sudo adduser --system informix --ingroup informix 開始安裝</description>
+    </item>
+    
+    <item>
+      <title>Xdebug 基礎安裝與使用</title>
+      <link>https://blog.crboy.net/posts/xdebug-installation-and-usage/</link>
+      <pubDate>Tue, 12 Jun 2012 23:39:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/xdebug-installation-and-usage/</guid>
+      <description>環境 Ubuntu 12.04 LTS Apache 2.2.22 PHP 5.3.10 安裝 透過套件庫安裝
+$ sudo apt-get install php5-xdebug 設定 # /etc/php5/conf.d/xdebug.ini zend_extension=/usr/lib/php5/20090626+lfs/xdebug.so xdebug.auto_trace = on #自動進行 function trace xdebug.trace_output_dir = /tmp/xdebug #trace log 的位置 xdebug.collect_params = 3 #設定顯示參數內容 xdebug.profiler_enable = on #啟用 profiler xdebug.profiler_output_dir = /tmp/xdebug #profile log 的位置 建立記錄檔所需目錄
+$ mkdir /tmp/xdebug &amp;amp;&amp;amp; chmod 777 /tmp/xdebug 使用 每當你執行 php 的時候 (不管是透過 apache 或是用 command line 執行)，會在 /tmp/xdebug 底下產生 log 檔。trace.*.xt 是 function trace 的 log，而 cachegrind.</description>
+    </item>
+    
+    <item>
+      <title>PHP imagettftext() could not read font</title>
+      <link>https://blog.crboy.net/posts/php-imagettftext-could-not-read-font/</link>
+      <pubDate>Thu, 31 May 2012 14:03:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/php-imagettftext-could-not-read-font/</guid>
+      <description>今天撞牆撞很大&amp;hellip;.由於手邊在碰的一個專案裡面需要產生類似驗證碼的圖片，他用了 imagecreate(), imagettftext(), imagesetpixel() 這些 PHP functions。聽說這支程式「曾經」是可以 work 的，不過在我手上就不 work，為了證明不是人品問題，一定要把這個 bug 修掉！
+一開始我傻傻的在程式碼裡面翻找，但這樣實在太沒效率了，身為一個專業的&amp;hellip;.呃&amp;hellip;雜工，一定要懂得善用工具！所以我用了&amp;hellip;.. command line php&amp;hellip;..
+$ php image.php &amp;gt; /dev/null 對啦，只不過是測試環境從 apache 換到 command line 底下了，這樣是有比較強嗎？有喔~因為我的測試環境有裝 xdebug，只要有 enable 就可以在 command line 底下看到 debugging messages，不用特別打開 stack trace。至於最後面把 standard output 導向 /dev/null 是為了不想看到他輸出的那張不完整的圖，那會干擾畫面。
+首先第一步，我忘記詳細的訊息了，大意是說 imagecreate() is undefined 等等，這時候當然要去找找這函式有沒有需要什麼相依的 library 啊！找了一下發現，這些函式是由 PHP 的 GD module 所提供的，所以我迅速的安裝了 GD 模組&amp;hellip;
+$ sudo apt-get install php5-gd 接著，才是重頭戲的開始&amp;hellip;.
+裝好 GD 模組之後，那些 function 都可以使用了，但是我卻一直收到這個錯誤訊息&amp;hellip;.
+PHP Warning: imagettftext(): Could not read font .</description>
+    </item>
+    
+    <item>
+      <title>Git on Windows 安裝筆記</title>
+      <link>https://blog.crboy.net/posts/git-on-windows/</link>
+      <pubDate>Fri, 25 May 2012 00:25:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/git-on-windows/</guid>
+      <description>&lt;p&gt;Git 是一套很棒的分散式版本控制系統。不過由於它一直是在 Linux 上生長的，對於在 Windows 上使用來說其實稍嫌麻煩。&lt;/p&gt;
+&lt;h1 id=&#34;windows-上的各種-git&#34;&gt;Windows 上的各種 Git&lt;/h1&gt;
+&lt;p&gt;在網路上搜尋通常會找到 Git for Windows 跟 msysGit 這兩個不同的名詞，我過去一直沒辦法很清楚的把他們兩者區分開來。根據 &lt;a href=&#34;http://msysgit.github.com/&#34;&gt;msysgit 在 github 上的首頁&lt;/a&gt; 與 &lt;a href=&#34;http://stackoverflow.com/questions/3672272/msysgit-vs-git-for-windows&#34;&gt;StackOverflow 上的討論&lt;/a&gt;，我目前的理解是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;msysGit 是 msys + Git 的完整環境，包含了 build 程式用的 toolchain，同時他的執行檔是直接在 user (或者該說是 developer) 的機器上 compile 出來的，使用者隨時可以透過 &lt;code&gt;git pull&lt;/code&gt; 取得最新版的 msysGit 來編譯，算是給 git 開發者用的。&lt;/li&gt;
+&lt;li&gt;Git for Windows 可說是 msysGit 的「產出」，是預先 compile 好的 &lt;code&gt;git.exe&lt;/code&gt; 還有其他執行檔們&amp;hellip;其中只包含了基本的 msys 環境、有 bash、ssh、甚至 Git GUI 等工具，但是沒有 toolchain，適合單純使用（操作）git 的使用者安裝。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;另外還可能會找到一個更有名的東西，稱為 &lt;a href=&#34;http://code.google.com/p/tortoisegit/&#34;&gt;TortoiseGit&lt;/a&gt;，這是知名專案 &lt;a href=&#34;http://tortoisesvn.net/&#34;&gt;TortoiseSVN&lt;/a&gt; 的相關專案，顧名思義，就是烏龜殼包了 Git 啦！要注意的是，他只是一個 Git frontend，需要指定相關執行檔 (如 &lt;code&gt;git.exe&lt;/code&gt;) 的位置才能工作。特別的是，他本身附帶了 PuTTY 的 ssh client (&lt;code&gt;plink.exe&lt;/code&gt;)，讓使用者可以透過比較符合 windows 使用習慣的方式來使用 ssh，如果不是很熟 linux 或是 GUI 狂熱份子可能會比較喜歡。XD&lt;/p&gt;
+&lt;p&gt;註：知名專案 cygwin 也可以安裝 git 並在 command line 下使用，但對於沒在使用 cygwin 的使用者而言麻煩得多，故此處不介紹。&lt;/p&gt;
+&lt;p&gt;這篇文章分成三個部分：首先介紹 Git for Windows (免 compile 的那個) 的安裝，接著是 msysGit (需要 compile 的那個) 的安裝，最後會介紹 TortoiseGit 的安裝，並以一個簡單的 git clone 作為結束。如果是一般單純想在 windows 上用 git 的人，可以只看第一跟第三部分即可，第二部分就當作參考資料吧！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>在 bash (zsh) script 中使用 trap</title>
+      <link>https://blog.crboy.net/posts/trap-in-bash-zsh-script/</link>
+      <pubDate>Sat, 17 Mar 2012 23:25:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/trap-in-bash-zsh-script/</guid>
+      <description>最近在跑分散式的程式，每次測試都要開好幾隻程式在跑。就算可以寫 script 自動開啟，還是會遇到一個很討厭的問題，沒辦法自動關閉那些屬於 worker 的程式。好像解釋的不太清楚&amp;hellip;.就是我希望在我程式跑完的時候，或是我把程式強迫終止的時候，我可以同時把好幾個 process 也 kill 掉。特別是強迫終止的時候，因為無論我在最後寫好什麼動作，一旦強迫終止就執行不到了。
+於是上網尋找解法，找到了 trap 可以用。Trap 這東西，也就是陷阱&amp;hellip;我想他的意思是，會讓你指定的那些 signal 掉入陷阱吧&amp;hellip;(笑)。不曉得 signal 是什麼的請自行閱讀 manpage 或是上網找。
+這裡提供兩個範例，第一個是測試 trap 功能的範例：
+這個範例中，我指定 SIGTERM SIGINT SIGHUP 這三個 signal 會被 trap 抓住，而 trap 抓到後所要執行的指令為 &amp;ldquo;echo TRAP!!; exit&amp;rdquo;。注意這邊我加上了 exit 讓這個 script 會在接到 signal 的時候終止，否則它只會 echo 出 TRAP!! 後繼續執行它要執行的動作。如果你沒有另外指定別的離開方法，就必須乖乖的等待 script 執行完畢，或是用 kill -9 (送 SIGKILL) 才能終止它了&amp;hellip;
+再來是第二個範例：
+這裡差不多是一個實際使用的 use case 了，參考自：這篇文章。把需要做清理的動作寫進 function 裡，以我最上面提到的情況就是把該關掉的 worker 程式都關掉，在這裡我就印出個 CLEAN UP!! 代替就好XD。然後在 trap 裡設定它負責清理，另外也在 script 正常結束前清理，這樣就可以保證(大概吧?)清理動作一定會被執行，除非是被 SIGKILL 強迫中斷。</description>
+    </item>
+    
+    <item>
+      <title>S型調整函數</title>
+      <link>https://blog.crboy.net/posts/s-shape-adjustment-function/</link>
+      <pubDate>Sun, 22 Jan 2012 15:39:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/s-shape-adjustment-function/</guid>
+      <description>前陣子一位學妹在噗浪上這樣發問：「問!! 假設我要讓數字越大的越大 越小的越小 我該怎麼做?? 假設零到一百 處理完區間還是零到一百 但是大於五十的會變大 小於五十的會變小 應該要做什麼@@???開根號??微積分?? 」
+OK&amp;hellip;.我來整理一下我對這個問題的理解：
+求一函數，定義域為 [0,100]，值域亦為 [0,100]，且若 0&amp;lt;x&amp;lt;50 則 f(x)&amp;lt;x，若 50&amp;lt;x&amp;lt;100 則 f(x)&amp;gt;x。
+另外還有一部分是我猜測應該也是需求的：
+若 x&amp;lt;y 則 f(x)&amp;lt;f(y)，f(0)=0，f(50)=50，f(100)=100。
+後面這幾項其實是為了讓這個調整更加完備一點&amp;hellip;
+由於這個調整的曲線很像是相片後製時常用的S型曲線(我不是很清楚專有名詞，好像是 gamma 曲線的調整云云)，說不定未來哪天會用到，所以特別寫篇文章記錄這件事 :P
+這是我提出的 function：
+設 t=x-50，f(x)=50+sqrt(50)sqrt(abs(t))(abs(t)/t)
+如果把 t 代進去(寫起來會比較複雜)就是這樣：
+f(x)=50+sqrt(50)sqrt(abs(x-50))(abs(x-50)/(x-50))
+底下有圖有真相。當時作圖沒有特別注意的部分是，x&amp;lt;0 跟 x&amp;gt;100 的部份應該要限制住的，不過只是做個概念的印證而已，就不太在意了~
+至於概念上&amp;hellip;..我不是很會解釋，基本上就是利用 sqrt(t) 這個曲線的特性，再去做參數上的調整就是了。我想利用 log 那類的函數應該也可以，但就沒有仔細想了。雖然數學上應該已經有滿多現有的作法可以完成這個目的，不過自己拼湊也是種樂趣 :D
+總結一下，我設計的這個 function 可以對一群資料做調整，使其高的更高、低的更低，並且保持其大小關係(如果是調整分數之類的應用，這點很重要)。同時這個 function 也是嚴格遞增，用於調整分數之類的滿適合的。:)</description>
+    </item>
+    
+    <item>
+      <title>用 vim 把一堆程式碼轉成 html 檔案</title>
+      <link>https://blog.crboy.net/posts/vim-to-html/</link>
+      <pubDate>Mon, 31 Oct 2011 09:14:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/vim-to-html/</guid>
+      <description>前陣子剛好跟學弟聊天聊到一些事情，他提到他想把他之前寫的 code 轉成 html&amp;hellip;..呃&amp;hellip;雖然我不太清楚為什麼要這樣做啦&amp;hellip;可能是為了列印之類的&amp;hellip;.不過這個我不太 care&amp;hellip;身為一個資工人，這種事當然要自動化！我只是想知道該怎麼做到而已XD
+這位學弟也玩 Linux，但他說他試過寫 script 卻沒辦法成功，說是檔名有空白就會被分成兩個檔名，會找不到。這怎麼可能呢！所以當下就試試看&amp;hellip;.
+$ mkdir test $ cd test $ touch a\ 1 a\ 2 a\ 3 $ find . -exec echo {} \; 這當然是沒問題的啊！每個檔名都自成一行 :D
+好了&amp;hellip;.問題解決一半。不過如果這樣的話就不會想寫文章了&amp;hellip;主要是因為當天腦袋卡住，竟然沒辦法用 vim 轉換出他要的 html 檔案&amp;hellip;.|||
+先提一下 vim 的 :TOhtml 好了，這東西可以把現在的 syntax highlight 轉換成 html，很酷的小功能說~但當天不曉得為什麼，明明知道應該用 find -exec 配合 vim -c 去做，但檔名就一直不知道該怎麼下&amp;hellip;&amp;hellip;.orz 學弟的需求是這樣：code 放在 a 目錄，輸出的 html 要放在 b 目錄，然後 script 跟 a, b 放在同一層目錄&amp;hellip;.大概是這樣子:p
+後來回家後，還查了我根本不懂的 vim register 跟 variable 的用法，搞老半天，最後發現答案很簡單= =a，只要 truncate 檔名就好了啊&amp;hellip;&amp;hellip;如下所示：</description>
+    </item>
+    
+    <item>
+      <title>Boost 神秘的 deprecated warning</title>
+      <link>https://blog.crboy.net/posts/boost-deprecated-warning/</link>
+      <pubDate>Mon, 26 Sep 2011 16:07:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/boost-deprecated-warning/</guid>
+      <description>Boost 是一個相當強大好用的 C++ library，一直都沒辦法把它摸透。最近在用的時候遇到神秘的問題，追了一下還是沒辦法完全理解，先筆記下來也許會有什麼進展(或是得到有緣人的提點:P)。
+首先是我的開發環境：Ubuntu 10.04 64-bits, GCC 4.4.3, Boost 1.40 (libboost-dev 1.40.0.1)
+我其實是在 #include &amp;lt;boost/graph/adjacency_list.hpp&amp;gt; 的地方遇到問題的，他出現的 warning message 如下：
+warning: #warning This file includes at least one deprecated or antiquated header which may be removed without further notice at a future date. Please use a non-deprecated interface with equivalent functionality instead. For a listing of replacement headers and interfaces, consult the file backward_warning.h. To disable this warning use -Wno-deprecated. 這訊息事實上是在 &amp;lt;backward/backward_warning.</description>
+    </item>
+    
+    <item>
+      <title>發現 YAGBE - Yet Another Google Bookmarks™ Extension</title>
+      <link>https://blog.crboy.net/posts/yagbe-yet-another-google-bookmarks/</link>
+      <pubDate>Thu, 22 Sep 2011 01:19:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/yagbe-yet-another-google-bookmarks/</guid>
+      <description>一直很想要一個可以用標籤(label)分類的書籤系統。無奈本來都用 Chrome 的書籤，他沒辦法跟 Google Bookmarks 同步。本來在用的 Xmarks 也是以目錄方式管理的&amp;hellip;.過去我只知道 Firefox 的 Google Toolbar 有支援管理 Google Bookmarks。今天本來是想要試用看看，沒想到現在工具列不適用於 Firefox 5 或更新版本了&amp;hellip;.真是令人難過= =
+但是上帝幫你關上門的時候，會幫你打開一扇窗！本來是打算照他的建議去尋找 Google Bookmarks 的相關套件，就在這個時候我才發現，原來 Chrome 上也有 Google Bookmarks 的 extension！(之前就覺得一定有，可是就是找不到&amp;hellip;)
+我找到三套 extension，分別是Simple Google bookmarks、Google Bookmarks (日本人做的)、還有Yet Another Google Bookmarks Extension。最後根據使用人數，還有評價，選擇了後者 - YAGBE。(好險他有縮寫，不然我會崩潰)
+裝好之後要先 login。目前使用起來，其實不太好用&amp;hellip;.感覺圖跟字都太小，不過字的大小可以調整，我覺得調大一點比較舒服。另外，他是用樹狀顯示的，這當然沒什麼不好，不過感覺不像 Google 的東西就是了，我想我找書籤會用搜尋的吧&amp;hellip;.不可能在那邊捲來捲去，畢竟想用 label 來管理書籤就是因為可以組合標籤來搜尋&amp;hellip;.但是這就是最大的問題了&amp;hellip;.除了 Google 自己的搜尋以外，上面那三套 extension 我都試過了，都不能搜尋多個標籤&amp;hellip;.這&amp;hellip;.真是太杯具了&amp;hellip;..Q____________Q
+好吧，我可以慢慢等待他的進步這樣&amp;hellip;.XD 現在先讓自己能夠把書籤放在雲端就好，反正，也沒那麼常在點書籤&amp;hellip;.反倒是都用來當做好文章的收集跟筆記用。:P
+接下來該做的就是把原有的書籤匯入了&amp;hellip;..感覺是個相當困難的工作，我目前還沒有找到做法&amp;hellip;..等找到再說吧XD</description>
+    </item>
+    
+    <item>
+      <title>同軸電纜規格</title>
+      <link>https://blog.crboy.net/posts/%E5%90%8C%E8%BB%B8%E9%9B%BB%E7%BA%9C%E8%A6%8F%E6%A0%BC/</link>
+      <pubDate>Sat, 25 Jun 2011 19:44:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E5%90%8C%E8%BB%B8%E9%9B%BB%E7%BA%9C%E8%A6%8F%E6%A0%BC/</guid>
+      <description>之前為了找同軸電纜的規格，找了好久才找到，所以決定把它記錄下來。
+來源是這個地方：
+一般同軸電纜品名記號說明：
+例：3C-2W、5C-2V、5C-FB
+第一項之數字：表示外部導體之約計外徑(mm)
+第二項之文字：&amp;ldquo;D&amp;quot;表示特性阻抗 50 歐姆，&amp;ldquo;C&amp;quot;表示特性阻抗 75 歐姆
+第三項之文字：&amp;ldquo;2&amp;quot;表示PE充實絕緣型，&amp;ldquo;F&amp;quot;表示發泡PE絕緣型
+第四項之文字：&amp;ldquo;V&amp;quot;表示外部導體為一層編織後施以PVC外被覆，&amp;ldquo;W&amp;quot;表示外部導體為二層編織後施以PVC外被覆，&amp;ldquo;B&amp;quot;表示外部導體為兩面鋁箔麥拉帶縱包再加上鍍錫軟銅線編織</description>
+    </item>
+    
+  </channel>
+</rss>

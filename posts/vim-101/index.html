@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html><head>
+<title>第一次用 Vim 就上手</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%89%8d%e8%a8%80" class="nav-前言">
+									前言
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%b0%a1%e4%bb%8b" class="nav-簡介">
+									簡介
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%94%a8-vim-%e9%96%8b%e5%95%9f%e6%aa%94%e5%90%8d%e7%82%ba-filename-%e7%9a%84%e6%aa%94%e6%a1%88" class="nav-用-vim-開啟檔名為-filename-的檔案">
+									用 Vim 開啟檔名為 FILENAME 的檔案
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%a7%bb%e5%8b%95" class="nav-移動">
+									移動
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%bc%b8%e5%85%a5" class="nav-輸入">
+									輸入
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%9b%9e%e5%88%b0-normal-mode" class="nav-回到-normal-mode">
+									回到 Normal Mode
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%b7%a8%e4%bf%ae%e6%aa%94%e6%a1%88" class="nav-編修檔案">
+									編修檔案
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ad%98%e6%aa%94%e9%9b%a2%e9%96%8b" class="nav-存檔離開">
+									存檔離開
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%af%84%e4%be%8b%e7%b7%b4%e7%bf%92" class="nav-範例練習">
+									範例練習
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    第一次用 Vim 就上手
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2011-03-05 10:09
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/%E8%BB%9F%E9%AB%94">軟體</a>
+                                &nbsp;
+                            
+                                <a href="/tags/vim">vim</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <h1 id="前言">前言</h1>
+<p>這篇是先貼在系上 BBS 的文章，主要對象是天真無邪的學弟妹們XD 所以太愚蠢的部份，還有排版太差的部份，就抱歉了orz</p>
+<h1 id="簡介">簡介</h1>
+<p>標題是騙人的，第一次用 Vim 怎麼可能上手XDDDDD<br>
+只是看到有學弟在講，就順便寫一下。我覺得一開始雖然會什麼都不懂，摸不著頭緒，但是在 Vim 裡面要先有基本生存能力，就像學武先學內功一樣～這篇文章就是要講基本的生存能力&hellip;..</p>
+<h1 id="用-vim-開啟檔名為-filename-的檔案">用 Vim 開啟檔名為 FILENAME 的檔案</h1>
+<pre><code>$ vim FILENAME  
+</code></pre>
+<h1 id="移動">移動</h1>
+<p><strong>h (左), j (下), k (上), l (右)</strong></p>
+<p>我知道這很奇怪，但是請聽我說完&hellip;首先把你的手「正常的」放在鍵盤上&hellip;也就是雙手食指分別在 F 跟 J。通常這兩個按鍵會有一些幫助你定位的設計，常見的作法是有個凸點。接著忘記你的左手的存在，你的右手應該會微微的像 \ 這樣傾斜。<br>
+不要亂動！！！這個時候，你的食指應該比中指更接近自己，這也就是 Vim 裡面上跟下分別是中指跟食指&hellip;呃不是啦 是 <code>k</code> 跟 <code>j</code> 的原因&hellip;至於左右呢？啊就左右嘛= =a</p>
+<h1 id="輸入">輸入</h1>
+<p>先學著用 <code>i</code> 跟 <code>a</code> 吧。一個是 insert，一個是 append。這兩個用久了就會變成直覺了。熟了之後再學著用 <code>I</code> 跟 <code>A</code> 吧。如果 <code>i</code> 跟 <code>a</code> 很直覺，<code>I</code> 跟 <code>A</code> 就會很簡單了。（其他的以後再說沒關係）</p>
+<h1 id="回到-normal-mode">回到 Normal Mode</h1>
+<p>如果有看過其他文章，應該會知道 Vim 有 3 種以上的「mode」。我們不用管這麼多，只要記得「狂按 Esc 就會回到 normal mode」就好。手賤多按幾下沒關係，電腦不會爆炸。噢，你說其他的 mode 喔？先不用記啦，反正你自然就會進去了&hellip;</p>
+<h1 id="編修檔案">編修檔案</h1>
+<p>有一個很簡單的原則（但是偶爾有例外）：先按數字（假設是 n）再按指令，相當於做那個指令 n 次。我們待會會說明～記得很簡單的幾個就好了。首先，我們來背單字&hellip;.</p>
+<p>delete - 刪除<br>
+yank - 用力拉<br>
+paste - 貼上<br>
+undo - 復原</p>
+<p>好了背完了&hellip;.來看看指令&hellip;.</p>
+<p><code>dd</code> - 刪除一整行<br>
+<code>yy</code> - 複製一整行<br>
+<code>p</code> - 貼上<br>
+<code>u</code> - 復原</p>
+<p>很簡單對不對？相信大家都覺得這實在腦殘的不得了&hellip;..不過在腦殘的同時，不曉得有沒有發現我講了複製、貼上，但是沒有講剪下？我承認我剛剛說謊&hellip;.其實 <code>dd</code> 是剪下才對&hellip;..(ninja) 只不過剪下跟刪除本來就可以同一件事啦，呵呵呵呵呵呵呵呵～</p>
+<h1 id="存檔離開">存檔離開</h1>
+<p>我們再來背一次單字&hellip;.</p>
+<p>write - 寫<br>
+quit - 自殺&hellip;呃不是啦，是離開</p>
+<p>所以說存檔跟離開的指令就記這4個吧&hellip;.</p>
+<p><code>:w</code> - 存檔<br>
+<code>:wq</code> - 存檔然後離開<br>
+<code>:q</code> - 不存檔直接離開&hellip;.但是如果檔案有改過的話 他會跳出錯誤說&hellip;「留下來，或者我跟你走。」 這時候只好嗆聲&hellip;.<br>
+<code>:q!</code> - 我他X的就是要離開！</p>
+<p>經過了以上的一大串廢話之後&hellip;..我們再來一小串廢話。以上部分除了背單字以外，剩下的都可以「直接在 normal mode 按」！記得前面有冒號的也別忘了唷^.&lt; 冒號開頭的，最後配上enter服用&hellip;</p>
+<h1 id="範例練習">範例練習</h1>
+<p>（就是你照著作就對了）</p>
+<p>首先說明一些事情&hellip;</p>
+<ul>
+<li>用 <code>$</code> 開頭的，就是在一般命令列要打的，打完要按 Enter 送出</li>
+<li>用 <code>:</code> 開頭的，是在 Vim 的 Esc 按到死 mode 裡面按下 <code>:</code> 之後出現的那個冒號&hellip;</li>
+<li>用 <code>#</code> 開頭的，一直到行尾表示註解（說明文字）</li>
+<li>英文或數字開頭的，那應該就是直接在 Vim 裡面照著按了&hellip;.別把 Esc 分開按就好了XD</li>
+</ul>
+<p>（範例開始）</p>
+<pre><code>$ cd #為了避免奇怪的事情 我們先回到家目錄  
+$ dmesg &gt; vim_practice #建立一個練習用的檔案 檔名再衝突我也沒辦法了  
+$ vim vim_practice #用 vim 打開檔案  
+
+# 我們在vim裡面囉~~  
+jjjjjjjjjjjjjjjjjjjj #對 你就先把j按著 練習往下移動  
+kkkkkkkkkkkkkkkkkkkk #然後把k按著 練習往上移動  
+jjjjjjjjjjjjjjjjjjjj #不要覺得這很蠢  
+kkkkkkkkkkkkkkkkkkkk #多試幾次就會很順 記得手要放對位置唷~  
+jjjjj #挑一行順眼的 有很多字的行  
+llllllllllllllllllll #對啦就是往右移動
+hhhhhhhhhhhhhhhhhhhh #然後往左移動
+llllllllllllllllllll #往右  
+hhhhhhhhhhhhhhhhhhhh #往左  
+
+#獎勵自己把蠢事做完 可以上個PTT之類的...  
+#剛好ptt閱讀文章的時候也可以用kj當做上下移動.....  
+
+#回到vim  
+i1234567890 #直接照著按應該會看到插入了一串1234567890在裡面吧  
+esc #回normal mode  
+a1234567890 #跟i有一點點差別...一點點...一點點....  
+esc  
+
+#一定很多人會想要在打字的時候移動游標對不對？暫時改掉這個習慣吧  
+#以後再加回來也不遲...先練習使用normal mode下的hjkl移動~  
+
+#一直待在normal mode底下就好了  
+dd #你游標所在的那行就被刪除了  
+jjjjjjjjjjjjj #隨便移動一下  
+p #剛剛刪除的那行貼上去了!!!  
+u #剛剛貼上去的那行不見了!!!  
+10p #對 就照著按[1]-[0]-[p]這3個按鍵...你應該看到了  
+jjjjjjjjjjjjjjjj #再隨便移動一下  
+5yy #你其實已經複製5行字了...  
+p #貼上去  
+
+#你可以隨意玩玩看 或是參考最後面的隨手亂寫  
+
+#準備存檔離開  
+esc, esc, esc, ... #反正就是回到normal mode....  
+:wq &lt;enter&gt;#這樣就存檔離開了  
+</code></pre>
+<p>我敢打賭看到這裡而且照做的人一定會很想揍我，而且會說 Vim 真他x的難用。事實上，只會這些東西的話，Vim 還真的很他x的難用&hellip;..但這些只是基本技巧而已，先有基本能力之後，再去懂得怎麼「聰明一點」吧:D</p>
+<p>上面廢話很多，為了體貼直接按 End 的人，這裡整理一下第一次使用 Vim 要會的東西：</p>
+<ul>
+<li>命令列下，<code>vim</code> 後面接上檔名就可以編輯檔案</li>
+<li>手指頭放在鍵盤上，右手就可以控制游標移動了（什麼 hjkl 不要記啦）</li>
+<li><code>i</code>（insert）跟<code>a</code>（append）用來輸入文字</li>
+<li>Esc 按到爆就會回到 normal mode</li>
+<li><code>dd</code>, <code>yy</code>, <code>p</code>, <code>u</code> 分別是剪下、複製、貼上、復原</li>
+<li><code>:w</code>, <code>:wq</code>, <code>:q</code>, <code>:q!</code> 其中的 w, q, ! 分別表示寫入、離開、強制執行</li>
+</ul>
+<p>這裡隨手亂寫一些東西，有興趣可以照著按。每行為一個單位，大小寫有差。</p>
+<pre><code>20i8&lt;esc&gt;  
+G  
+20G  
+gg  
+d10G  
+vllllllllllllld  
+:set nu  
+:set nonu
+</code></pre>
+<p>就先這樣吧@@</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2011-03-05</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/filco%E7%B4%85%E8%BB%B880%E9%8D%B5%E7%9B%A4%E9%96%8B%E7%AE%B1/">
+			Next<br>FILCO紅軸80%鍵盤開箱
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/ubuntu-install-library/">
+			Previous<br>安裝Ubuntu套件庫沒有的library (以libstdc&#43;&#43;.so.5為例)
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%89%8d%e8%a8%80" class="nav-前言">
+									前言
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%b0%a1%e4%bb%8b" class="nav-簡介">
+									簡介
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%94%a8-vim-%e9%96%8b%e5%95%9f%e6%aa%94%e5%90%8d%e7%82%ba-filename-%e7%9a%84%e6%aa%94%e6%a1%88" class="nav-用-vim-開啟檔名為-filename-的檔案">
+									用 Vim 開啟檔名為 FILENAME 的檔案
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%a7%bb%e5%8b%95" class="nav-移動">
+									移動
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%bc%b8%e5%85%a5" class="nav-輸入">
+									輸入
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%9b%9e%e5%88%b0-normal-mode" class="nav-回到-normal-mode">
+									回到 Normal Mode
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%b7%a8%e4%bf%ae%e6%aa%94%e6%a1%88" class="nav-編修檔案">
+									編修檔案
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ad%98%e6%aa%94%e9%9b%a2%e9%96%8b" class="nav-存檔離開">
+									存檔離開
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%af%84%e4%be%8b%e7%b7%b4%e7%bf%92" class="nav-範例練習">
+									範例練習
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

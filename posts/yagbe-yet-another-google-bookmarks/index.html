@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html><head>
+<title>發現 YAGBE - Yet Another Google Bookmarks™ Extension</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    發現 YAGBE - Yet Another Google Bookmarks™ Extension
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2011-09-22 01:19
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/%E7%AD%86%E8%A8%98">筆記</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>一直很想要一個可以用標籤(label)分類的書籤系統。無奈本來都用 Chrome 的書籤，他沒辦法跟 Google Bookmarks 同步。本來在用的 Xmarks 也是以目錄方式管理的&hellip;.過去我只知道 Firefox 的 Google Toolbar 有支援管理 Google Bookmarks。今天本來是想要試用看看，沒想到現在<a href="http://www.google.com/support/toolbar/bin/answer.py?answer=1342452&amp;topic=15356&amp;hl=zh-TW">工具列不適用於 Firefox 5 或更新版本</a>了&hellip;.真是令人難過= =</p>
+<p>但是上帝幫你關上門的時候，會幫你打開一扇窗！本來是打算照他的建議去尋找 Google Bookmarks 的相關套件，就在這個時候我才發現，原來 Chrome 上也有 Google Bookmarks 的 extension！(之前就覺得一定有，可是就是找不到&hellip;)</p>
+<p>我找到三套 extension，分別是<a href="https://chrome.google.com/webstore/detail/dobhkcpfdpfhghdmiecokllfjiemfmgm?hc=search&amp;hcp=main">Simple Google bookmarks</a>、<a href="https://chrome.google.com/webstore/detail/mnedccijmniojgaehpjebjfpkmafecho?hc=search&amp;hcp=main">Google Bookmarks</a> (日本人做的)、還有<a href="https://chrome.google.com/webstore/detail/jdnejaepfmacfdmhkplckpfdcjgbeode?hc=search&amp;hcp=main">Yet Another Google Bookmarks Extension</a>。最後根據使用人數，還有評價，選擇了後者 - YAGBE。(好險他有縮寫，不然我會崩潰)</p>
+<p>裝好之後要先 login。目前使用起來，其實不太好用&hellip;.感覺圖跟字都太小，不過字的大小可以調整，我覺得調大一點比較舒服。另外，他是用樹狀顯示的，這當然沒什麼不好，不過感覺不像 Google 的東西就是了，我想我找書籤會用搜尋的吧&hellip;.不可能在那邊捲來捲去，畢竟想用 label 來管理書籤就是因為可以組合標籤來搜尋&hellip;.但是這就是最大的問題了&hellip;.除了 Google 自己的搜尋以外，上面那三套 extension 我都試過了，都不能搜尋多個標籤&hellip;.這&hellip;.真是太杯具了&hellip;..Q____________Q</p>
+<p>好吧，我可以慢慢等待他的進步這樣&hellip;.XD 現在先讓自己能夠把書籤放在雲端就好，反正，也沒那麼常在點書籤&hellip;.反倒是都用來當做好文章的收集跟筆記用。:P</p>
+<p>接下來該做的就是把原有的書籤匯入了&hellip;..感覺是個相當困難的工作，我目前還沒有找到做法&hellip;..等找到再說吧XD</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2011-09-22</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/boost-deprecated-warning/">
+			Next<br>Boost 神秘的 deprecated warning
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/google-plus-2/">
+			Previous<br>Google&#43; 教學 - 功能介紹篇
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

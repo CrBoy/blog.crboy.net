@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html><head>
+<title>PHP imagettftext() could not read font</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    PHP imagettftext() could not read font
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2012-05-31 14:03
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/php">php</a>
+                                &nbsp;
+                            
+                                <a href="/tags/trouble-shooting">Trouble Shooting</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E7%AD%86%E8%A8%98">筆記</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E9%96%92%E8%81%8A">閒聊</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>今天撞牆撞很大&hellip;.由於手邊在碰的一個專案裡面需要產生類似驗證碼的圖片，他用了 <code>imagecreate()</code>, <code>imagettftext()</code>, <code>imagesetpixel()</code> 這些 PHP functions。聽說這支程式「曾經」是可以 work 的，不過在我手上就不 work，為了證明不是人品問題，一定要把這個 bug 修掉！<br>
+一開始我傻傻的在程式碼裡面翻找，但這樣實在太沒效率了，身為一個專業的&hellip;.呃&hellip;雜工，一定要懂得善用工具！所以我用了&hellip;.. command line php&hellip;..</p>
+<pre><code>$ php image.php &gt; /dev/null
+</code></pre>
+<p>對啦，只不過是測試環境從 apache 換到 command line 底下了，這樣是有比較強嗎？有喔~因為我的測試環境有裝 <a href="http://xdebug.org/">xdebug</a>，只要有 enable 就可以在 command line 底下看到 debugging messages，不用特別打開 stack trace。至於最後面把 standard output 導向 <code>/dev/null</code> 是為了不想看到他輸出的那張不完整的圖，那會干擾畫面。<br>
+首先第一步，我忘記詳細的訊息了，大意是說 <code>imagecreate() is undefined</code> 等等，這時候當然要去找找這函式有沒有需要什麼相依的 library 啊！找了一下發現，這些函式是由 PHP 的 GD module 所提供的，所以我迅速的安裝了 GD 模組&hellip;</p>
+<pre><code>$ sudo apt-get install php5-gd
+</code></pre>
+<p>接著，才是重頭戲的開始&hellip;.<br>
+<!-- raw HTML omitted --><!-- raw HTML omitted -->裝好 GD 模組之後，那些 function 都可以使用了，但是我卻一直收到這個錯誤訊息&hellip;.</p>
+<pre><code>PHP Warning:  imagettftext(): Could not read font .....(後略)
+</code></pre>
+<p>當然這訊息也是伴隨著 stack trace 的，看看傳進去的字型參數，用的是相對路徑 <code>include/font/font.ttf</code>，當下懷疑是不是找不到檔案，用 <code>realpath()</code> 來幫忙看看&hellip;</p>
+<pre><code>echo realpath($font_path);
+</code></pre>
+<p>但是，咦，怎麼什麼都沒出現？大概花了 30 秒我才發現我做了蠢事&hellip;.我已經把 standard output 丟掉了啊XD 上網找了一下「php stderr」立刻找到應該要這樣做</p>
+<pre><code>file_put_contents('php://stderr', realpath($font_path));
+</code></pre>
+<p>印出來之後，發現我給他的路徑是正確的，怎麼會這樣呢？苦惱許久，才想到要去查查 imagettftext() 的 <a href="http://php.net/manual/en/function.imagettftext.php">manual</a>，發現了驚人的事情！<br>
+原來，某些版本的 GD 會在你給他的路徑是相對路徑時，使用環境變數 <code>GDFONTPATH</code> 當作前綴，並且在最後補上 <code>.ttf</code>。另外，版本低於 2.0.18 的 GD 還不允許路徑裡面有空白字元。檢查了一下&hellip;嗯，路徑沒有空白字元，那會不會是路徑問題？參考官方 manual 提供的 sample code：</p>
+<pre><code>&lt;?php
+// Set the enviroment variable for GD
+putenv('GDFONTPATH=' . realpath('.'));
+
+// Name the font to be used (note the lack of the .ttf extension)
+$font = 'SomeFont';
+?&gt;
+</code></pre>
+<p>我自己設定好了正確的 <code>GDFONTPATH</code> 也把後面的 <code>.ttf</code> 拿掉，依然不 work&hellip;.到這裡我已經快崩潰了&hellip;.即使我發瘋似的交叉測試拿掉或加上 <code>.ttf</code>、更改路徑、使用絕對路徑等等，都還是失敗。<br>
+接著我又開始想，會不會是別的原因？來看看檔案權限好了&hellip;.</p>
+<pre><code>$ ls -l include/font/font.ttf
+</code></pre>
+<p>很好，檔案權限是 644 (<code>rw-r--r--</code>)，應該沒問題吧？算了，死馬當活馬醫，改成 777!!</p>
+<pre><code>$ chmod 777 include/font/font.ttf
+</code></pre>
+<p>可想而知，還是炸了&hellip;..<br>
+在網路上找來找去，碰到類似問題的人大多是這幾種狀況：</p>
+<ul>
+<li>路徑錯誤 (前面提到的相對路徑問題)</li>
+<li>檔案從 windows 傳到 un<em>x 上就無法 work 了 (因為 un</em>x 對檔名是 case-sensitive 的)</li>
+<li>把 <code>ttf</code> 寫成 <code>tff</code> (這是他自己耍笨了&hellip;)</li>
+</ul>
+<p>很多人問問題會列出自己的 GD 版本，那我也來看看有沒有什麼端倪</p>
+<pre><code>$ php -i
+...
+gd
+
+GD Support =&gt; enabled
+GD Version =&gt; 2.0
+FreeType Support =&gt; enabled
+FreeType Linkage =&gt; with freetype
+FreeType Version =&gt; 2.4.8
+T1Lib Support =&gt; enabled
+GIF Read Support =&gt; enabled
+GIF Create Support =&gt; enabled
+JPEG Support =&gt; enabled
+libJPEG Version =&gt; unknown
+PNG Support =&gt; enabled
+libPNG Version =&gt; 1.2.46
+WBMP Support =&gt; enabled
+
+Directive =&gt; Local Value =&gt; Master Value
+gd.jpeg_ignore_warning =&gt; 0 =&gt; 0
+...
+</code></pre>
+<p>就沒問題嘛 orz<br>
+我已經確定我的路徑是完全正確的，而且也是絕對路徑，檔案權限也確定是可以讀取的，GD module 看起來沒有什麼錯，那到底是什麼問題？心灰意冷之際，我想說不然拿現有的其他字型來試試看好了。事實上該專案裡本來有好幾個字型檔，我早就試過幾個都不 work，結果沒想到改成用自己系統本來有的字型，就成功了！太崩潰了!!! 可是還是很高興，立馬回到本來的程式上，加上剛剛使用的字型的絕對路徑，一切都搞定了！(超開心)<br>
+所以總結而言，我一開始的環境沒辦法正確執行這個程式，只有兩個原因</p>
+<ul>
+<li>缺少 php-gd</li>
+<li>字型檔有某種錯誤</li>
+</ul>
+<p>我對字型不太有研究，所以就無法深究該字型檔究竟有什麼問題，畢竟用 <code>file</code> 去看他還是個正常的 True Type font 啊&hellip;.</p>
+<pre><code>$ file font.ttf
+font.ttf: TrueType font data
+</code></pre>
+<p>會不會跟編碼有關係呢？可是我用的只是一個 <code>&quot;1&quot;</code> 耶&hellip;..<br>
+好吧，雖然還是帶著懷疑，不過主要的問題算是解決了，結案！！！</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2012-05-31</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/wait-for-fta-show/">
+			Next<br>期待面劇團「明天我們空中再見」
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/profiling-vim-startup/">
+			Previous<br>對 Vim 啟動過程做效能分析
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

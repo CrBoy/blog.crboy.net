@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html><head>
+<title>「cannot open shared object file」的解決方案</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    「cannot open shared object file」的解決方案
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2012-05-23 15:20
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/linux">Linux</a>
+                                &nbsp;
+                            
+                                <a href="/tags/trouble-shooting">Trouble Shooting</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E6%95%99%E5%AD%B8">教學</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>有時候執行一些指令，會碰到下面這樣的訊息：</p>
+<pre><code>error while loading shared libraries: libiconv.so.2: cannot open shared object file: No such file or directory
+</code></pre>
+<p>在這個例子中，我們的程式找不到 <code>libiconv.so.2</code> 這個 dynamic library。那麼應該怎麼解決呢？</p>
+<p>首先必須找到系統中的 <code>libiconv.so.2</code>，下面四條指令選一條作就好：</p>
+<pre><code>$ locate libiconv.so.2
+$ whereis libiconv.so.2
+$ find /usr /lib -name libiconv.so.2
+$ find / -name libiconv.so.2 2&gt;/dev/null
+</code></pre>
+<p>這時候就可以找出函式庫位置，例如：<code>/usr/local/lib/libiconv.so</code></p>
+<p>萬一沒有找出來的話，就要自行安裝了。<a href="http://www.techsww.com/tutorials/libraries/libiconv/installation/installing_libiconv_on_ubuntu_linux.php">這篇文章</a>有教該如何安裝 libiconv，如果是其他函式庫的話可以自行變通。</p>
+<p>找到位置之後，應該怎麼做呢？如果我們有 root 權限的話，可以把函式庫所在路徑寫入 <code>/etc/ld.so.conf</code>，再重新產生 ld 的 cache 即可，如下：</p>
+<pre><code># echo &quot;/usr/local/lib&quot; &gt;&gt; /etc/ld.so.conf # 注意! 要用 &gt;&gt; 而非 &gt;！
+# ldconfig
+</code></pre>
+<p>在某些系統中，<code>/etc/ld.so.conf</code> 可能會預設加上 <code>include /etc/ld.so.conf.d/*.conf</code> 這樣的敘述，那們我們也可以把路徑放在那個目錄下：</p>
+<pre><code># echo &quot;/usr/local/lib&quot; &gt;&gt; /etc/ld.so.conf.d/usr_local_lib.conf
+# ldconfig
+</code></pre>
+<p>這樣一來就可以讓程式順利搜尋到需要的 library 囉！</p>
+<p><strong>BUT!! 玩 Linux 最重要的就是這個 BUT!!</strong></p>
+<p>如果我們沒有 root 權限的話該怎麼辦呢？這時候只好很可憐的自己搞定了&hellip;如果需要自行編譯 library 的話，可以照著類似的步驟做，但是 prefix (也就是安裝位置) 要設定在自己的家目錄下，例如：</p>
+<pre><code>$ ./configure --prefix=$HOME/libiconv
+</code></pre>
+<p>但這邊假設系統中已經有 <code>/usr/local/lib/libiconv.so.2</code> 這個檔案，進行以下步驟：</p>
+<pre><code>$ echo &quot;export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH&quot; &gt;&gt; ~/.bashrc
+</code></pre>
+<p>原理很簡單，就是透過設定 <code>LD_LIBRARY_PATH</code> 來讓程式找得到需要的 library 檔案。修改後需要重新登入才會生效喔！</p>
+<p>但是&hellip;基本上還是建議不要用後面這個方法啦，找你的系統管理員協助設定 <code>/etc/ld.so.conf</code> 才是好主意。這裡有篇文章：<a href="http://xahlee.org/UnixResource_dir/_/ldpath.html">Why LD_LIBRARY_PATH is bad</a>，專門在討論為什麼不要隨意使用 <code>LD_LIBRARY_PATH</code>。</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2012-05-23</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/git-on-windows/">
+			Next<br>Git on Windows 安裝筆記
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/ssh-security-note/">
+			Previous<br>SSH 安全性設定筆記
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

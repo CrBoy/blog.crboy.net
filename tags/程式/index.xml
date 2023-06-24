@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>程式 on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/%E7%A8%8B%E5%BC%8F/</link>
+    <description>Recent content in 程式 on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 23 Jul 2009 00:16:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/%E7%A8%8B%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>我會C&#43;&#43;嗎？</title>
+      <link>https://blog.crboy.net/posts/%E6%88%91%E6%9C%83c&#43;&#43;%E5%97%8E/</link>
+      <pubDate>Thu, 23 Jul 2009 00:16:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E6%88%91%E6%9C%83c&#43;&#43;%E5%97%8E/</guid>
+      <description>剛剛看到這篇文章 自認並沒有很熟 但是會寫一點C++的我想試著回答看看&amp;hellip;.究竟&amp;hellip;..我可以答對多少呢？
+什麼是virtual inheritance? 請舉例說明。
+當有一個class(稱為D好了)繼承自兩個有共同parent class(稱為A)的class時 必須使用virtual inheritance以避免來自兩個parent class(稱為B與C)的method產生衝突
+什麼是virtual function? 什麼是pure virtual function?
+virtual function會在runtime的時候進行binding 也就是若透過parent class的pointer呼叫某method時 會根據實際指向之child class(或是事實上是該parent class)而呼叫相對應之method 若非dynamic binding的話 則會根據pointer的型態呼叫相對應的程式碼(static binding)
+而pure virtual function則不指向某一段程式碼 僅用來作為一個呼叫child class的method的入口 擁有pure virtual function的class是abstract class 不可產生instance(可以產生的話就奇妙了&amp;hellip;沒有實做的程式碼要怎麼跑&amp;hellip;)
+pointer與reference的差別?
+pointer是一個獨立的變數 儲存的是另一個物件的位址(address) 要取得位址需使用&amp;amp;運算元 要dereferencing需使用*運算元
+reference是一個&amp;hellip;.reference&amp;hellip;||| 僅僅是參考到其指向的物件 相當於該物件的別名(alias) 同時也不像pointer一樣可以更換參考目標 使用時與一般變數之syntax並無不同 僅僅是宣告時要加上&amp;amp;
+什麼是static_cast, dynamic_cast, reinterpret_cast, const_cast? 他們之間的差異是?
+static_cast較類似C語言的cast 在compilation time進行cast
+dynamic_cast是在runtime進行cast 所以cast的成功與否會等到runtime才能獲知(例如有B,C兩個class都繼承自A 而有個A*指向B的物件 此時若要將這個pointer dynamic_cast成C就會產生問題)
+reinterpret_cast我不知道
+const_cast做常數性(const)的cast 我也不清楚詳細用途
+run-time polymorphism與compile-time polymorphism的差異? 分別要如何達成?
+runtime polymorphism是dynamic binding 像是virtual function即是此類</description>
+    </item>
+    
+  </channel>
+</rss>

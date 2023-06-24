@@ -1,0 +1,526 @@
+<?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/</link>
+    <description>Recent content on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
+    
+        <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>一個有趣的小程式 - sm (screen message)</title>
+        <link>https://blog.crboy.net/posts/screen-message/</link>
+        <pubDate>Fri, 20 Nov 2009 12:29:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/screen-message/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/screen-message/ -&lt;p&gt;哈，其實我是想順便測試一下 wp-codebox 這個外掛&amp;hellip;.:P&lt;/p&gt;
+&lt;p&gt;這個小程式很有趣，可以做全螢幕的大字報/看板之類的，下面是我自己做的範例：（圖不見了，找不回來了）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.crboy.net/wp-content/uploads/2009/11/sm-300x187.png&#34; alt=&#34;sm&#34; title=&#34;sm&#34;&gt;&lt;/p&gt;
+&lt;p&gt;別懷疑，這就是一整個螢幕大小！&lt;/p&gt;
+&lt;p&gt;我曾經拿這隻程式來做舉牌小弟，或是在一些場合可以(娛樂性質的)打廣告或是發表意見之類的XD 總之很好玩就是了~&lt;/p&gt;
+&lt;p&gt;下面是他的 python 版本的程式碼，才 140 行而已！值得注意的是，第 70 行的字型我改成我喜歡的字型了，畢竟這類型的應用，還是用黑體最好看了~嘿嘿~:P&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/usr/bin/python  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# encoding:utf8  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#     vlshow.py  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#     Copyright (C) 2006 Joachim Breitner  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#     This program is free software; you can redistribute it and/or modify  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#     it under the terms of the GNU General Public License as published by  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#     the Free Software Foundation; either version 2 of the License, or  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#     (at your option) any later version.  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#     This program is distributed in the hope that it will be useful,  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#     but WITHOUT ANY WARRANTY; without even the implied warranty of  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#     GNU General Public License for more details.  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#     You should have received a copy of the GNU General Public License  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#     along with this program; if not, write to the Free Software  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; pygtk  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pygtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;require(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;2.0&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; gtk  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; pango  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; sys  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; gobject  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;window &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Window(gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;WINDOW_TOPLEVEL)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;window&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_decorated(&lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;window&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;modify_bg(gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;STATE_NORMAL, gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;gdk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;color_parse(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;white&amp;#34;&lt;/span&gt;))  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;window&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;fullscreen()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;settings &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;settings_get_default()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;draw &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;DrawingArea()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;draw&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;modify_bg(gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;STATE_NORMAL, gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;gdk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;color_parse(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;white&amp;#34;&lt;/span&gt;))  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;draw&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_size_request(&lt;span style=&#34;color:#ae81ff&#34;&gt;400&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;300&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pixmap &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;gdk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Pixmap(&lt;span style=&#34;color:#66d9ef&#34;&gt;None&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;color &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;gdk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Color()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cursor &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;gdk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Cursor(pixmap, pixmap, color, color, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tv &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;TextView()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tb &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tv&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_buffer()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_text&lt;/span&gt;():  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; tb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_text(tb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_start_iter(), tb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_end_iter())  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; len(sys&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;argv) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;:  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	tb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_text(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join(sys&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;argv[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;:]))  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	tb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_text(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;quit &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Button(stock&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;STOCK_QUIT)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;quit&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;modify_bg(gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;STATE_NORMAL, gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;gdk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;color_parse(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;white&amp;#34;&lt;/span&gt;))  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;quit&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;connect(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;clicked&amp;#34;&lt;/span&gt;,gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;main_quit)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hbox &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;HBox()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hbox&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;pack_start(tv, expand&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;, fill&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hbox&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;pack_start(quit,  expand&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;,fill&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vbox &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;VBox()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vbox&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;pack_start(draw, expand&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;, fill&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vbox&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;pack_start(hbox, expand&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;, fill&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;window&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add(vbox)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;font &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pango&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;FontDescription()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;font&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_family(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;LiHeiPro&amp;#34;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;font&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_size(&lt;span style=&#34;color:#ae81ff&#34;&gt;60&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;pango&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;SCALE)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;layout &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; draw&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;create_pango_layout(get_text())  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;layout&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_font_description(font)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;layout&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_alignment(pango&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ALIGN_CENTER)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;accel &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;AccelGroup()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;key, mod &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;accelerator_parse(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Q&amp;#34;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;accel&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;connect_group(key, mod, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;main_quit)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;key, mod &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;accelerator_parse(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Escape&amp;#34;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#accel.connect_group(key, mod, 0, gtk.main_quit)  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#key, mod = gtk.accelerator_parse(&amp;#34;C&amp;#34;)  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;accel&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;connect_group(key, mod, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, (&lt;span style=&#34;color:#66d9ef&#34;&gt;lambda&lt;/span&gt; x,y,z,v: tb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_text(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;)))  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;window&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add_accel_group(accel)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;window&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;show_all()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;need_resize&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;need_quick&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;resize&lt;/span&gt;(w&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;None&lt;/span&gt;,rect&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;None&lt;/span&gt;):  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;global&lt;/span&gt; need_resize  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	draw&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;window&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_cursor(cursor)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	(w1,h1) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; layout&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_pixel_size()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; h1&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;and&lt;/span&gt; w1&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;:  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		(x,y,w2,h2) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; draw&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_allocation()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; font&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_size()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; min ( int (s&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;w2&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;w1), int (s&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;h2&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;h1) )  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		font&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_size(s)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		layout&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_font_description(font)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		need_resize&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		need_resize&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;redraw&lt;/span&gt;(w&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;None&lt;/span&gt;,e&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;None&lt;/span&gt;):  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;global&lt;/span&gt; need_resize, need_quick  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; layout&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_text(): &lt;span style=&#34;color:#75715e&#34;&gt;# Fails for empty lines :-(  &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		gc &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; draw&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_style()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;fg_gc[gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;STATE_NORMAL]  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		(w1,h1) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; layout&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_pixel_size()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; h1&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;and&lt;/span&gt; w1&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;:  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			(x,y,w2,h2) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; draw&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_allocation()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			draw&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;window&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;draw_layout(gc,(w2&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;w1)&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,(h2&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;h1)&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,layout)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			hq(&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;quality &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;hq&lt;/span&gt;(q,force&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;):  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;global&lt;/span&gt; quality  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; q &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; quality:  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; q:  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			settings&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_long_property(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;gtk-xft-antialias&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hier halt&amp;#34;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			settings&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_long_property(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;gtk-xft-antialias&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hier halt&amp;#34;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; force:  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			draw&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;queue_draw()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	quality &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; q  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;newtext&lt;/span&gt;(w):  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;global&lt;/span&gt; timeout_id  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	layout&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_text(get_text())  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	resize()  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	hq(&lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;draw&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;connect(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;configure-event&amp;#34;&lt;/span&gt;, resize)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;draw&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;connect(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;expose-event&amp;#34;&lt;/span&gt;, redraw)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;tb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;connect(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;changed&amp;#34;&lt;/span&gt;, newtext)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;gtk&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;main()  
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;另外附上我&lt;a href=&#34;http://mac1.ccns.ncku.edu.tw/wordpress/?p=366&#34; title=&#34;我學弟對這個程式的介紹&#34;&gt;學弟對這個程式的介紹&lt;/a&gt;，我想他的文筆應該比我好吧&amp;hellip;.|||&lt;/p&gt;
+&lt;p&gt;或是您也可以直接去 Google 搜尋「screen message」(千萬不要只搜尋簡寫&amp;hellip;orz) 有很多相關資料~:P&lt;/p&gt;
+&lt;p&gt;Ubuntu 的使用者也可以直接 &lt;code&gt;$ sudo apt-get install sm&lt;/code&gt; 來安裝唷~(不過好像是 C 語言版本的，C 語言版本在我的電腦上運作會跟 compiz 搭配得不太好&amp;hellip;)&lt;/p&gt;
+- https://blog.crboy.net/posts/screen-message/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>在Ubuntu 9.10上自行編譯安裝PCManX 0.3.9</title>
+        <link>https://blog.crboy.net/posts/build-pcmanx-on-ubuntu-9.10/</link>
+        <pubDate>Sun, 01 Nov 2009 05:12:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/build-pcmanx-on-ubuntu-9.10/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/build-pcmanx-on-ubuntu-9.10/ -&lt;p&gt;該是發技術性文章的時候了&amp;hellip;.XD&lt;/p&gt;
+&lt;p&gt;剛剛才把 Ubuntu 給升到 9.10，要重灌 pcmanx，結果沒想到裝完要執行竟然出現：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pcmanx: error while loading shared libraries: libpcmanx_core.so.0: cannot open shared object file: No such file or directory  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;這個錯誤，於是乎簡單查了一下資料，答案也很簡單：&lt;code&gt;$ sudo ldconfig&lt;/code&gt;。以下是完整的編譯+安裝教學：&lt;/p&gt;
+&lt;p&gt;首先到 &lt;a href=&#34;http://code.google.com/p/pcmanx-gtk2/&#34; title=&#34;PCManX的專案網站&#34;&gt;PCManX 的專案網站&lt;/a&gt;(註)去下載最新版本的 PCManX GTK2，我抓到的是 &lt;a href=&#34;http://pcmanx-gtk2.googlecode.com/svn/website/release/pcmanx-gtk2-0.3.9.tar.bz2&#34;&gt;pcmanx-gtk2-0.3.9.tar.bz2&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;抓回來之後先解壓縮：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ tar -xf pcmanx-gtk2-0.3.9.tar.bz2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;會得到一個名為 &lt;code&gt;pcmanx-gtk2-0.3.9&lt;/code&gt; 的目錄&lt;/p&gt;
+&lt;p&gt;接著：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd pcmanx-gtk2-0.3.9
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;進入該目錄&lt;/p&gt;
+&lt;p&gt;簡單看了一下 &lt;code&gt;README&lt;/code&gt;，我用這樣的參數做 configure：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ./configure --disable-nancy --disable-mouse --enable-wget --enable-proxy  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;結果發現&amp;hellip;&amp;hellip;對噢我有 library 還沒裝XD 根據專案網頁的說明，要安裝這些套件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install intltool intltool-debian libxft-dev libgtk2.0-dev  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重新 configure 一次，很快就好了XD 還會要你 type make and pray&amp;hellip;.(輸入make並祈禱)XD&lt;/p&gt;
+&lt;p&gt;再來就是很單純的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ make
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;編譯好之後要安裝，注意因為是安裝到系統，所以要用到 sudo 來取得管理員權限：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo make install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;裝好之後，很開心的想執行！(都出現在 GNOME 的選單了當然很興奮！)沒想到竟然開不起來&amp;hellip;&amp;hellip;&amp;hellip;|||&lt;/p&gt;
+&lt;p&gt;用終端機執行一次才發現他說：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pcmanx: error while loading shared libraries: libpcmanx_core.so.0: cannot open shared object file: No such file or directory
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;大致上的意思是他找不到 &lt;code&gt;libpcmanx_core.so.0&lt;/code&gt; 這個函式庫&amp;hellip;..用 &lt;code&gt;find&lt;/code&gt; 找了一下&amp;hellip;.有阿！他明明就待在 &lt;code&gt;/usr/local/lib&lt;/code&gt; 裡面&amp;hellip;..&lt;/p&gt;
+&lt;p&gt;所以我認為應該是系統不知道該去那個地方搜尋(唉像這種搜尋路徑類的東西我都不太懂ˊˋ) 上網簡單搜尋一下，加上自己的愚蠢嘗試，沒想到一次 AC 啊哈哈哈哈哈XDDDD&lt;/p&gt;
+&lt;p&gt;只要這樣就好了：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo ldconfig  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以上，PCManX 裝完收工！&lt;/p&gt;
+&lt;p&gt;註：過去 PCManX 的專案網頁在&lt;a href=&#34;http://pcmanx.csie.net/&#34;&gt;這裡&lt;/a&gt;，但是自從 0.3.9 以後，就轉移到 Google Code 上了。詳細的原因我不清楚，但是結論就是這樣&amp;hellip;&lt;/p&gt;
+- https://blog.crboy.net/posts/build-pcmanx-on-ubuntu-9.10/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>FreeBSD 相見歡？</title>
+        <link>https://blog.crboy.net/posts/freebsd-%E7%9B%B8%E8%A6%8B%E6%AD%A1/</link>
+        <pubDate>Tue, 25 Aug 2009 03:02:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/freebsd-%E7%9B%B8%E8%A6%8B%E6%AD%A1/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/freebsd-%E7%9B%B8%E8%A6%8B%E6%AD%A1/ -&lt;p&gt;今天總算拿到主機板了&amp;hellip;.(唉 運作得好好的主機板竟然重灌的時候發現抓不到PS/2鍵盤)&lt;/p&gt;
+&lt;p&gt;呃 不對 哪有一開始就離題的&amp;hellip;&lt;/p&gt;
+&lt;p&gt;今天嘗試安裝FreeBSD 其實也不是第一次 但是之前裝起來沒多久就被我砍掉了XD 這次一定要努力！&lt;br&gt;
+首先是安裝的部份&amp;hellip;用光碟開機之後 會進到FreeBSD的啟動畫面(boot loader) 選擇預設值就可以進去安裝畫面了XD 我用的是custom的設定 只是覺得這樣可以學比較多東西&amp;hellip;.一樣一樣東西去摸索到設定完成&amp;hellip;&lt;/p&gt;
+&lt;p&gt;跑安裝花了15分鐘！(可以說是「而已」吧~)&lt;/p&gt;
+&lt;p&gt;安裝後第一步就是連上網路 還有啟動sshd&amp;hellip;.sshd的啟動不難 因為sysinstall(就是那個安裝程式)裏面就有選項可以選了 打開就好 至於連上網路的部份 因為我用的是ADSL 要設定PPPoE的連線&amp;hellip;..&lt;strong&gt;不知道有沒有現成的工具可以用！&lt;/strong&gt; 我是照著 &lt;a href=&#34;http://twbsd.org/cht/book/index.php?ch=05&#34;&gt;http://twbsd.org/cht/book/index.php?ch=05&lt;/a&gt; 的教學把那些資訊都打上去&amp;hellip;(手打真的好累..) 噢 然後就可以上網了！還算滿無痛的說~&lt;/p&gt;
+&lt;p&gt;可以遠端連線之後 接下來就開始摸系統了&amp;hellip;.以下條列式:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;我的個人帳號沒辦法su成root: 編輯/etc/group把帳號加進wheel群組就好&lt;br&gt;
+(哇勒 crash了 硬碟出錯&amp;hellip;.先寫到這邊 除錯去&amp;hellip;.~&amp;quot;~)&lt;br&gt;
+(強迫重開機&amp;hellip;.我不知道發生什麼事了orz)&lt;/li&gt;
+&lt;li&gt;安裝bash跟vim: 進去/usr/ports裏面找到要裝的 然後make install就好&lt;/li&gt;
+&lt;li&gt;安裝vim到一半就出狀況&amp;hellip;看訊息像是I/O error&amp;hellip;重開機後自己會進去single user mode 此時我做了fsck 然後全都選y&amp;hellip;.XD 不知道這樣是否正確&amp;hellip;不過至少重開機後可以正常登入了~&lt;/li&gt;
+&lt;li&gt;root不能ssh進來: 這個沒關係 我知道是為了安全性 不過我也想知道哪裡可以調&amp;hellip;之後再研究看看&lt;/li&gt;
+&lt;li&gt;ports安裝實在好慢&amp;hellip;.XD 要等好久 看來這種爛機器不適合自己編程式&amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;暫時是這個樣子 這篇文章沒有參考價值! 噢 之前是裝FreeBSD6.3 現在裝的是7.2&lt;/p&gt;
+- https://blog.crboy.net/posts/freebsd-%E7%9B%B8%E8%A6%8B%E6%AD%A1/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>我會C&#43;&#43;嗎？</title>
+        <link>https://blog.crboy.net/posts/%E6%88%91%E6%9C%83c&#43;&#43;%E5%97%8E/</link>
+        <pubDate>Thu, 23 Jul 2009 00:16:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/%E6%88%91%E6%9C%83c&#43;&#43;%E5%97%8E/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E6%88%91%E6%9C%83c&#43;&#43;%E5%97%8E/ -&lt;p&gt;剛剛看到&lt;a href=&#34;http://nctusdk.blogspot.com/2009/07/c.html&#34;&gt;這篇文章&lt;/a&gt; 自認並沒有很熟 但是會寫一點C++的我想試著回答看看&amp;hellip;.究竟&amp;hellip;..我可以答對多少呢？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;什麼是virtual inheritance? 請舉例說明。&lt;br&gt;
+當有一個class(稱為D好了)繼承自兩個有共同parent class(稱為A)的class時 必須使用virtual inheritance以避免來自兩個parent class(稱為B與C)的method產生衝突&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;什麼是virtual function? 什麼是pure virtual function?&lt;br&gt;
+virtual function會在runtime的時候進行binding 也就是若透過parent class的pointer呼叫某method時 會根據實際指向之child class(或是事實上是該parent class)而呼叫相對應之method 若非dynamic binding的話 則會根據pointer的型態呼叫相對應的程式碼(static binding)&lt;br&gt;
+而pure virtual function則不指向某一段程式碼 僅用來作為一個呼叫child class的method的入口 擁有pure virtual function的class是abstract class 不可產生instance(可以產生的話就奇妙了&amp;hellip;沒有實做的程式碼要怎麼跑&amp;hellip;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;pointer與reference的差別?&lt;br&gt;
+pointer是一個獨立的變數 儲存的是另一個物件的位址(address) 要取得位址需使用&amp;amp;運算元 要dereferencing需使用*運算元&lt;br&gt;
+reference是一個&amp;hellip;.reference&amp;hellip;||| 僅僅是參考到其指向的物件 相當於該物件的別名(alias) 同時也不像pointer一樣可以更換參考目標 使用時與一般變數之syntax並無不同 僅僅是宣告時要加上&amp;amp;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;什麼是static_cast, dynamic_cast, reinterpret_cast, const_cast? 他們之間的差異是?&lt;br&gt;
+static_cast較類似C語言的cast 在compilation time進行cast&lt;br&gt;
+dynamic_cast是在runtime進行cast 所以cast的成功與否會等到runtime才能獲知(例如有B,C兩個class都繼承自A 而有個A*指向B的物件 此時若要將這個pointer dynamic_cast成C就會產生問題)&lt;br&gt;
+reinterpret_cast我不知道&lt;br&gt;
+const_cast做常數性(const)的cast 我也不清楚詳細用途&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;run-time polymorphism與compile-time polymorphism的差異? 分別要如何達成?&lt;br&gt;
+runtime polymorphism是dynamic binding 像是virtual function即是此類&lt;br&gt;
+compile-time polymorphism是static binding 像是operator和function的overloading 或是template的使用 在compilation time即可確定呼叫目標 屬於此類&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;什麼是explicit constructor?&lt;br&gt;
+就&amp;hellip;.明確宣告constructor吧&amp;hellip;..|||&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;什麼是template disambiguator? 請舉出例子。&lt;br&gt;
+沒聽過&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;有沒有聽過boost or loki? 有沒有用過boost or loki? 請舉出例子。&lt;br&gt;
+聽過boost 用過1次 忘記用來幹嘛了 不過我知道boost是C++的utility 據說有被考慮納入STL的範疇&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;有沒有聽過CRTP (Curiously Recurring Template Pattern)與PBCP (Parametric Base Class Pattern)? 請寫出兩者的sample code並比較它們的差異。&lt;br&gt;
+沒有&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;請問在C++中, struct與class最大的差異是?&lt;br&gt;
+struct預設的存取權限是public 而class是private&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;請問什麼是template partial specialization?&lt;br&gt;
+不知道&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;什麼是type traits? 什麼是tag dispatch? 請以簡單的程式碼說明之。&lt;br&gt;
+不會XD&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;有聽過template metaprogramming嗎? 請舉例解釋之。&lt;br&gt;
+聽過 不過不是很懂意思&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;什麼是SFINAE? 請解釋之。&lt;br&gt;
+不會&amp;hellip;|||&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;為什麼常常看到template的程式碼寫在hpp裡，而不是放在cpp檔中?&lt;br&gt;
+因為被使用到的template在compilation time就必須產生相關程式碼 而不能到linking的時候才產生&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;什麼是functor? 用過(或寫過)任何的functor library嗎? 例如boost function/bind或是fast delegate?&lt;br&gt;
+物件化的function 沒有明確用過/寫過&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;std::list與std::vector的差異是什麼? std::map裡的資料結構是如何實作的?&lt;br&gt;
+list並不支援random access 而vector支援之 但vector對於在前端的資料新增會花較多時間(應該是O(n))&lt;br&gt;
+map一般的實做應該都是利用heap&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;何謂copy constructor? 如何阻止一個class被copy?&lt;br&gt;
+複製一個object時會呼叫的constructor(例如o1=o2時 o1會以copy constructor來建構)&lt;br&gt;
+明確宣告一個protected或是private的copy constructor即可阻止一個class「的物件」被copy&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;virtual function是如何實作的? 什麼是vtbl?&lt;br&gt;
+不知道 猜測是利用一個table紀錄virtual functions的symbol與實際的候選程式碼(instructions)的位址的對應 在執行時由executor選擇？&lt;br&gt;
+那vtbl應該就是virtual table了XD&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在template的宣告裡，typename與class的差異是? 為什麼有typename這個keyword?&lt;br&gt;
+囧 原來有差喔&amp;hellip;.|||&lt;br&gt;
+typename搞不好是為了相容某個別的語言而出現的 例如Objective C之類的&amp;hellip;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;什麼是forward declaration?&lt;br&gt;
+?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如何解決header file mutual inclusion的問題?&lt;br&gt;
+#ifndef XXX&lt;br&gt;
+#define XXX&lt;br&gt;
+//&amp;hellip;&lt;br&gt;
+#endif&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;什麼是templated class? 什麼是class template?&lt;br&gt;
+囧 學過但是忘了&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;什麼是wchar_t? 有沒有用過std::locale跟std::codecvt?&lt;br&gt;
+用於unicode字元的type&lt;br&gt;
+都沒用過&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用過那些c++ compiler? 有沒有聽過c++0x? 試舉出c++0x的新功能。&lt;br&gt;
+GCC(g++), MinGW(其實也是GCC), Visual C++(6,2005,2008)&lt;br&gt;
+沒聽過XD&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;回答完了&amp;hellip;..答題率好像不到一半&amp;hellip;囧&amp;hellip;.|||&lt;br&gt;
+所以我總是說我跟C++不熟&amp;hellip;不知道有沒有C語言的考題 我跟C語言比較熟一點點&amp;hellip;.一點點而已啦&amp;hellip;.XD&lt;/p&gt;
+&lt;p&gt;五樓 請問這篇你給幾分？&lt;/p&gt;
+&lt;p&gt;ps. 這篇是榮譽考 我沒有查資料 所以很鳥請不要見怪 內容有錯誤人子弟也概不負責！&lt;/p&gt;
+- https://blog.crboy.net/posts/%E6%88%91%E6%9C%83c&#43;&#43;%E5%97%8E/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>openSUSE 安裝 flashplayer plugin</title>
+        <link>https://blog.crboy.net/posts/opensuse-%E5%AE%89%E8%A3%9D-flashplayer-plugin/</link>
+        <pubDate>Sat, 18 Jul 2009 18:47:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/opensuse-%E5%AE%89%E8%A3%9D-flashplayer-plugin/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/opensuse-%E5%AE%89%E8%A3%9D-flashplayer-plugin/ -&lt;p&gt;要趕快記下來不然會忘記！XD&lt;/p&gt;
+&lt;p&gt;這是小弟今天的實驗結果 使用的平台是openSUSE 11.0 + Firefox 3.0.11&lt;/p&gt;
+&lt;p&gt;本來一直找不到可用的flash player plugin 套件庫的都有點問題(我是以能不能看YouTube當成能不能順利使用的指標&amp;hellip;XD) 今天在實驗室剛好跟學弟聊到 就來試試看！&lt;/p&gt;
+&lt;p&gt;首先是學弟用Google找到的連結(關鍵字：64bit flash):&lt;br&gt;
+&lt;a href=&#34;http://labs.adobe.com/technologies/flashplayer10/&#34;&gt;http://labs.adobe.com/technologies/flashplayer10/&lt;/a&gt;&lt;br&gt;
+這是Adobe Labs的網站 裡面有flash plugin 10的的prerelease版本可以下載 下載解壓縮後 只有看到一個libflashplayer.so檔 使用file查看：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ file libflashplayer.so  
+libflashplayer.so: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, stripped  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;學弟要我把他放到 ~/.mozilla/plugins/ 裡面 不過我希望可以達到全系統的設定 所以暫時不這樣做(但後來證明這樣做是OK的)&lt;/p&gt;
+&lt;p&gt;首先 我試著把libflashplayer.so放到 /usr/lib64/mozilla/plugins/ 裡面 不過firefox找不到他:(&lt;/p&gt;
+&lt;p&gt;接著 我放到 /usr/lib/mozilla/plugins/ 裡面 firefox還是找不到他:(&lt;/p&gt;
+&lt;p&gt;只好搜尋「opensuse 11 安裝 libflashplayer.so」找到黑眼珠大大的&lt;a href=&#34;http://swyear.blogspot.com/2008/10/flash-10.html&#34;&gt;這篇文章&lt;/a&gt; 不過其實我看不太懂&amp;hellip;.XD 不過 仔細閱讀之後 發現他把libflashplayer.so放在 /usr/lib/browser-plugins/ 裡面!!!!(他裡面提到nspluginwrapper 不過因為我抓的應該就是for linux的了 所以應該不需要處理就可以用) 我就如法泡製 把libflashplayer.so放在 /usr/lib64/browser-plugins/ 裡面(小弟實在是很白目 硬要先用自己覺得合理的方法做!XD) 恩 到這為止就成功了！firefox已經可以順利播放flash 雖然不知道有沒有什麼bug 但是暫時是OK的!!!&lt;/p&gt;
+&lt;p&gt;題外話 在 /usr/lib/browser-plugins/ 裡面也有一個libflashplayer.so 用file去查看發現他是32bits的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ file libflashplayer.so  
+libflashplayer.so: ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked, stripped  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;這就難怪我本來的firefox不能用flash了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;另外 我跟學弟討論為什麼不是放在 /usr/lib(64)/mozilla/plugins/ 底下 他說應該是openSUSE自己改的&amp;hellip;這其實不太能確定啦~不過的確是讓人滿困惑的XD&lt;/p&gt;
+&lt;p&gt;結論 只要有正確版本的flashplayer plugin 可以放在以下3個地方來讓firefox正常執行：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;~/.mozilla/plugins/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/usr/lib64/mozilla/plugins/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/usr/lib/mozilla/plugins/&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;個人私心認為2是最好的選擇(64 bits的lib就放在lib64很合理嘛..) 而如果是非管理員的user則可以選擇放在1&lt;/p&gt;
+&lt;p&gt;這是一篇很緊張的速記 未來也沒有重構的打算 但若是有錯誤也歡迎提供指教！&lt;/p&gt;
+- https://blog.crboy.net/posts/opensuse-%E5%AE%89%E8%A3%9D-flashplayer-plugin/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>在Ubuntu上安裝nVidia官方顯示驅動程式</title>
+        <link>https://blog.crboy.net/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9Dnvidia%E5%AE%98%E6%96%B9%E9%A1%AF%E7%A4%BA%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F/</link>
+        <pubDate>Thu, 06 Mar 2008 18:39:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9Dnvidia%E5%AE%98%E6%96%B9%E9%A1%AF%E7%A4%BA%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9Dnvidia%E5%AE%98%E6%96%B9%E9%A1%AF%E7%A4%BA%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F/ -&lt;p&gt;首先要停用restricted driver(或移除nvidia-glx套件也是一樣的結果)&lt;br&gt;
+接著修改/etc/default/linux-restricted-modules-common中的DISABLED_MODULES屬性 停用nv和nvidia_new(會像這樣：「DISABLED_MODULES=&amp;ldquo;nv nvidia_new&amp;rdquo;」)&lt;br&gt;
+然後刪掉/lib/modules底下的跟nvidia有關的東西(但是我的ubuntu根本沒有這種東西 是找到的教學文件這樣說)&lt;br&gt;
+刪掉/etc/init.d/nvidia-glx 和 /etc/init.d/nvidia-kernel&lt;br&gt;
+接著關閉gdm：「$ sudo /etc/init.d/gdm stop」 如果在視窗介面下無法成功的話 可以按ctrl+alt+F1切換到terminal 接著登入並輸入以上指令 另外我個人的習慣是會先在視窗下登出後才停用gdm~&lt;/p&gt;
+&lt;p&gt;然後就可以安裝新版驅動了！不過必須要有libc6-dev套件 似乎是因為官方的安裝程式會幫你編譯kernel module&amp;hellip;至於新版驅動的下載位置&amp;hellip;我都是直接在nVidia的網站搜尋「display」 因為常常會出新版 之前裝的時候我用的是169.09 現在我已經用到171.05了 而且好像很多版本都可以用&amp;hellip;我整個搞不懂@@&amp;quot;(如果有人可以幫小弟解答麻煩告訴我 謝謝！)&lt;/p&gt;
+&lt;p&gt;安裝好之後重開gdm就行了：「$ sudo /etc/init.d/gdm start」&lt;/p&gt;
+&lt;p&gt;不過我遇到一個無法開啟特效的問題 就是在「外觀設定(Appearence)」的地方的Visual Effect標籤裡 我沒有辦法讓他開啟特效 他會說要安裝受限的驅動程式(restricted driver)才能開(我想這部份可能是預防錯誤預防過了頭吧)&lt;br&gt;
+我的解決方式是直接按alt+F2 執行compiz就可以開啟特效&lt;/p&gt;
+&lt;p&gt;另外 如果想要在開機的時候就開啟特效 可以寫入作業階段(系統-管理-作業階段)裡面 但不是執行「compiz」 而是「compiz &amp;ndash;replace」&lt;br&gt;
+意義好像是要取代本來的metacity 不然會發生錯誤(可能是衝突吧) 所以我之前直接執行compiz 開機進入X之後都會當掉&amp;hellip;.= =&amp;quot;&lt;/p&gt;
+- https://blog.crboy.net/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9Dnvidia%E5%AE%98%E6%96%B9%E9%A1%AF%E7%A4%BA%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>在ThinkPad R61-A76上安裝Ubuntu &#43; Vista雙系統</title>
+        <link>https://blog.crboy.net/posts/%E5%9C%A8thinkpad-r61-a76%E4%B8%8A%E5%AE%89%E8%A3%9Dubuntu-&#43;-vista%E9%9B%99%E7%B3%BB%E7%B5%B1/</link>
+        <pubDate>Sun, 02 Mar 2008 00:28:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/%E5%9C%A8thinkpad-r61-a76%E4%B8%8A%E5%AE%89%E8%A3%9Dubuntu-&#43;-vista%E9%9B%99%E7%B3%BB%E7%B5%B1/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E5%9C%A8thinkpad-r61-a76%E4%B8%8A%E5%AE%89%E8%A3%9Dubuntu-&#43;-vista%E9%9B%99%E7%B3%BB%E7%B5%B1/ -&lt;p&gt;其實是很久以前的筆記了 不過現在才放在blog上&lt;br&gt;
+主角是我在寒假前買的Lenovo(IBM) ThinkPad R61-7743A76 內附的作業系統是Windows Vista Home Premium(可是Palmset上的貼紙竟是Basic:( 真無奈) 不過玩了Ubuntu一年多的我當然迫不及待想嘗試看看在新機器上能夠支援多少功能~XD&lt;br&gt;
+之前就聽很多人說新的硬體不太容易被支援 我都沒有這種煩惱(嗚T_T) 現在總算可以換我煩惱一下了:P&lt;/p&gt;
+&lt;h1 id=&#34;首先是失敗的紀錄&#34;&gt;首先是失敗的紀錄&lt;/h1&gt;
+&lt;p&gt;一開始我用Ubuntu的LiveCD進入系統 並使用gparted(Partition Editor/分割區編輯程式)來調整我的分割區 我先resize我的Vista的磁區 花了好久 可能有1,2個小時吧 後來我想說 先重開機確認看看Vista還能不能正常運作 於是我就在「沒有先把其他分割區建好」的情況下重開機了&lt;br&gt;
+開機後 ThinkVantage的R&amp;amp;R(Rescue &amp;amp; Recovery)提醒我發生錯誤 要檢查之類的&amp;hellip;.這一檢查也不知道檢查了多久 最後我終於沒耐心了 重開機 還原！&lt;br&gt;
+這一還原又花了我一整個晚上&amp;hellip;因為他會經歷多次的重開機 複製檔案 設定 安裝程式等等&amp;hellip;反正&amp;hellip;我就去睡了&amp;hellip;等到完成後&amp;hellip;.恩&amp;hellip;.令人難過的事情發生了！我明明選擇的是Recovery to first partition 但是我的未分割空間也被拿去用了 推測是我沒有把他建立起來 所以就被程式順便拿來灌Vista&amp;hellip;.事情至此 我只能大大的悔恨&amp;hellip;不過我又再翻出&lt;a href=&#34;http://www.mobile01.com/topicdetail.php?f=300&amp;amp;t=426704&#34;&gt;這篇文章&lt;/a&gt; 參考了他裡面一部份的做法 最後我成功了！&lt;/p&gt;
+&lt;h1 id=&#34;成功的紀錄&#34;&gt;成功的紀錄&lt;/h1&gt;
+&lt;p&gt;首先關閉(disable)Windows的系統還原、休眠、以及分頁檔(設為0MB) 這3樣都不太好找 特別是在Vista上&amp;hellip;我每次都要找很久&amp;hellip;XD&lt;br&gt;
+接著重新開機並刪除pagefile.sys 應該是儲存在系統槽(通常是C槽)底下 而且要開啟顯示隱藏檔和顯示系統檔才會看得到&amp;hellip;注意！因為我已經關閉了分頁功能才能安全的刪除這個檔案！&lt;br&gt;
+再來盡量刪掉不必要的檔案 可以備份出來的就先備份出來 還有像是R&amp;amp;R的備份檔有夠大的 我也是把他給刪掉 這個作法的目的是希望該分割區裡的東西越少越好 (我自以為)這樣resize的時候會比較順&amp;hellip;&lt;br&gt;
+然後清理磁碟(我是用&lt;a href=&#34;http://www.ccleaner.com/&#34;&gt;CCleaner&lt;/a&gt;來清理垃圾檔案和無用的登錄檔)&lt;br&gt;
+重開機(這是怪癖 我也不知道有沒有必要)&lt;br&gt;
+最後做磁碟重組(我也忘記我用哪套軟體做的了 可能是出廠預裝的那個吧 忘記名字了)&lt;br&gt;
+再來就可以重開機並用Ubuntu的LiveCD進入系統(當然也可以用別的像是GParted的LiveCD 而我所用的是Ubuntu Gutsy Gibbon/7.10 DVD版本 選英文+安全圖形模式) 在系統內用gparted來調整NTFS磁區的大小 並且建立你要的分割區(最好在這裡先對未來要使用的磁區先做一點規劃 我是切成3個「/」「/home」「swap」)&lt;br&gt;
+完成後就可以重開機再進入Vista了&amp;hellip;.他會自動跑Thindpad的R&amp;amp;R來repair你的系統 結束後「又會」重開機然後開始跑Vista的chkdsk(check disk) 跑完「又會」再重開機 接著就可以順利進入Vista 不過他會說要新增硬體 新增完之後「又會」再重開機一次&amp;hellip;XDDD&lt;br&gt;
+弄到這裡 Vista部份已經解決了 再來就可以直接安裝Ubuntu 不過要小心不要裝到Vista的磁區上去了~&lt;/p&gt;
+&lt;p&gt;我常常跟人家說 Ubuntu是很好安裝的系統 但是如果要安裝雙系統是高級技巧&amp;hellip;特別是現在Vista要做雙系統好像更麻煩去了&amp;hellip;.唉&amp;hellip;.&lt;/p&gt;
+&lt;h1 id=&#34;後記&#34;&gt;後記&lt;/h1&gt;
+&lt;p&gt;後來我不知道什麼時候突然發現我的Vista開機都會有個錯誤訊息 所以我會再找時間重灌(其實是還原)Vista 到時候就可以看看他到底會不會把我的Ubuntu給毀了&amp;hellip;XD 或是毀掉我的MBR(grub裝在MBR裡..)&lt;/p&gt;
+- https://blog.crboy.net/posts/%E5%9C%A8thinkpad-r61-a76%E4%B8%8A%E5%AE%89%E8%A3%9Dubuntu-&#43;-vista%E9%9B%99%E7%B3%BB%E7%B5%B1/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>修正開機沒有splash畫面(進度條)的問題</title>
+        <link>https://blog.crboy.net/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/</link>
+        <pubDate>Wed, 31 Oct 2007 12:25:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/ -&lt;p&gt;開機的 usplash 變黑的 bug 和螢幕解析度有關，只在用 Desktop CD 安裝的時候會遇到。原因是因為安裝程式會偵測螢幕解析度，但是 usplash 沒辦法用那麼高的解析度顯示，於是就黑掉了。&lt;/p&gt;
+&lt;p&gt;解法，例如我的螢幕解析度是 1280x1024，但是 usplash 可能只能用 1024x768 跑，到 &lt;code&gt;/etc/usplash.conf&lt;/code&gt; 中將&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xres=1280  
+yres=1024  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;改成&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xres=1024  
+yres=768  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然後再打&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo update-initramfs -u -k `uname -r`  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;更新一下就應該可以看到了。&lt;/p&gt;
+&lt;p&gt;資料來源為 Ubuntu@TW 的 josesun 回應&lt;/p&gt;
+- https://blog.crboy.net/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>今天看到有人在徵 MS Office</title>
+        <link>https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/</link>
+        <pubDate>Thu, 19 Jul 2007 00:23:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/ -&lt;p&gt;在我看到之前已經有人推 OpenOffice.org 了&amp;hellip;&lt;br&gt;
+只是讓我突然想到 之前不知道看誰說過 你用 MS Office 是很強大沒錯 只是也用不到那麼多功能&amp;hellip;大部分的人 包含我自己在內 其實都用不到什麼很進階的功能 不過就是打打字 排個版 畫個表格之類&amp;hellip;這些東西都可以用 OO.o 來達成 以 c/p 值來說當然高很多 不過我也承認 MS Office 真的比較好用 至少介面親和力比較高 功能也比較完善 (OO.o 有時候會有一些我想要的效果做不出來) 只是人家就是要錢&amp;hellip;.我現在用的是成大的授權 那將來呢？我希望 OO.o 進步快一點 在我畢業之後可以完全不要用 MS Office～～&lt;/p&gt;
+- https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>解決新視窗不會取得focus的問題</title>
+        <link>https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/</link>
+        <pubDate>Mon, 18 Jun 2007 02:49:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/ -&lt;p&gt;我也不確定這是Gnome的問題或是Beryl造成的～&lt;br&gt;
+不過我知道解法了:P&lt;/p&gt;
+&lt;p&gt;在Beryl Manager中找General Options裡面有個&amp;quot;聚交保護級&amp;quot; 把高設定為正常就好了:)&lt;br&gt;
+&lt;a href=&#34;http://www.ubuntu.org.tw/modules/newbb/viewtopic.php?viewmode=flat&amp;amp;type=&amp;amp;topic_id=4541&amp;amp;forum=22&#34;&gt;來源&lt;/a&gt;&lt;/p&gt;
+- https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/ - </description>
+        </item>
+    
+    
+  </channel>
+</rss> 

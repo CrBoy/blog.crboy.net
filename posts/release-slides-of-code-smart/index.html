@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html><head>
+<title>「那些老師沒教的事」簡報釋出</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    「那些老師沒教的事」簡報釋出
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2012-04-02 23:41
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/c/c&#43;&#43;">C/C&#43;&#43;</a>
+                                &nbsp;
+                            
+                                <a href="/tags/git">Git</a>
+                                &nbsp;
+                            
+                                <a href="/tags/vim">Vim</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E8%A8%8A%E6%81%AF">訊息</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E8%BB%9F%E9%AB%94">軟體</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E9%96%92%E8%81%8A">閒聊</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>在緊張得半死的狀況中，終於把這個 talk 給講完了XD 希望來聽的人都有些收穫~</p>
+<p>不過可惜的是，我太緊張了，所以有些東西講的不是很完整，甚至是漏講&hellip;.orz 而且滿多東西好像&hellip;.呃&hellip;.有點臨場發揮&hellip;.XD 希望不要讓人覺得太亂~</p>
+<p>當日演講簡報可點選<a href="http://bit.ly/HaJ8wa">此處下載</a></p>
+<p>自己重新看了簡報，大致上檢討一下自己，如下：</p>
+<ul>
+<li><code>git-config</code> 沒有 demo 到(因為我自己也很少用&hellip;我都直接看設定檔來改，比較乾脆XD)</li>
+<li>之前就一直覺得應該要畫點圖來描述 revision 還有 branch，但是一直偷懶&hellip;</li>
+<li><code>git-add -p</code> 沒講到QQ&hellip;.應該要 demo 一下「部分 add 並 commit」的</li>
+<li><code>.gitignore</code> 如果有 demo 的話，應該會更清楚點</li>
+<li>沒講到 <code>git-revert</code> 啊!!!! (大敗筆)</li>
+<li>應該拿個實際上的使用 git 協作的範例，這樣聽眾會更有感覺&hellip;</li>
+<li>make 還是該現場 demo 一下&hellip;.幾行而已又不會花多少時間QQ</li>
+<li>我竟然沒講到 gdb 可以預先寫好 command，甚至是 function 的這件事&hellip;..</li>
+<li>vim demo 太少&hellip;連 vimrc 都沒有開來看看，真是不應該</li>
+<li>vim 文字物件 (text object)、tabpage、quickfix、mapping 都應該要提一下的&hellip;.</li>
+</ul>
+<p>結果變成檢討文了&hellip;&hellip;..XD</p>
+<p>如果這樣的東西以後還有機會再講的話，也許要考慮拆成兩個部分，然後分別作比較完整的 demo，甚至是現場實作，應該會比較有趣一點！但是，如果是拆開的話，那不管講那個主題都顯得我會得太少了耶&hellip;..orz 畢竟，不管在哪個範疇我都只是個學習者，充其量是脫離初學吧我想。我生來就是只能講初級講題的吧XDDDD</p>
+<p>噢我發現我的文章，總是會出現很多個 XD，對吧？XD</p>
+<p>最後這邊宣傳一下當日最後宣傳的事情。</p>
+<p>我之前嘗試性的建立了一個小小的社群，叫做 C4Labs。當時想嘗試把社群聚會的形式跟氣氛帶到成大來，不過成效好像頗差orz。現在畢業了，想說看看能不能再找回當初的期待。我想把對於電腦、網路、程式等等技術有強烈興趣的朋友們聚集起來，一起討論跟分享。因為涵蓋範圍很廣，想當然爾並不是討論很高級很困難很深入的技術，算是初階的社群？XD<br>
+現在還有一些應該慢慢建立起來的東西，我會儘量去做，目前我在 Google Groups 上開了一個<a href="http://bit.ly/C4Labs">討論群組</a>，作為聯絡的管道。歡迎有興趣跟我們一起分享的朋友們一起來玩！:P<br>
+我們的聚會現在並不定期 (我承認是有一搭沒一搭啦)，不過從上週的演講做為一個開頭，希望每週四晚上都有一個聚會，一週是演講，一週是單純的聚會分享(或閒聊、討論、桌遊？XD)，這樣交錯進行，節奏應該不會太快，而且學得到東西！</p>
+<p>另外，就是下次的演講資訊。我們很開心邀請到老魏為我們帶來他玩 vim 的心得分享！時間是在 4 月 12 日的晚上 7:33，地點在資訊系館，詳細的資訊確定後會公開散佈。</p>
+<p>至於這週的聚會&hellip;.就在系館悠哉的閒聊好了~</p>
+<p>ps. 之前我們去比金盾獎所取的隊名：C4Labs，就是從這裡出來的，哈！XD</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2012-04-02</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/how-to-setup-pop3-for-google-apps/">
+			Next<br>如何設定 Gmail 帳戶收取 Google Apps 帳戶的信件
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/remote-git-access-via-ssh/">
+			Previous<br>透過 ssh 遠端存取 git repository
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

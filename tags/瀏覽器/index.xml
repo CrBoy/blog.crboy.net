@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>瀏覽器 on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/%E7%80%8F%E8%A6%BD%E5%99%A8/</link>
+    <description>Recent content in 瀏覽器 on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 02 Jun 2010 11:54:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/%E7%80%8F%E8%A6%BD%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>修改 Google Chrome 的外掛 - RePlurk Chrome 的javascript</title>
+      <link>https://blog.crboy.net/posts/patch-replurk-chrome/</link>
+      <pubDate>Wed, 02 Jun 2010 11:54:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/patch-replurk-chrome/</guid>
+      <description>用Firefox上噗浪(Plurk)的人，有些都會裝GreaseMonkey這個套件+RePlurk script。只不過我在Google Chrome on Linux上&amp;hellip;雖然他預設支援直接安裝userscripts，但是我從來沒有成功跑起來過orz|| (就是可以安裝，但是裝了之後plurk就開不起來了QQ)
+後來我發現有個RePlurk Chrome套件，他可以幫你的plurk頁面加上一個&amp;quot;RePlurk&amp;quot;的按鈕&amp;hellip;.就像我以前在Firefox上用的那樣(dance) 噢&amp;hellip;可是有個問題&amp;hellip;我喜歡的轉噗形式是：「[轉噗]: xxxxxx」，但是RePlurk Chrome的轉噗形式是：「([ReP]) 作者: xxxxxx」，最困擾的就是他不能自訂(angry)！(GreaseMonkey有提供介面讓你修改scripts)
+這篇就是為了解決這種問題的&amp;hellip;..:P 首先，我的平台是Linux，更詳細的說，是Ubuntu 10.04 (不過其實在openSUSE上也是一樣)&amp;hellip;..而這個套件把他的javascript放在哪裡呢？答案如下：
+$HOME/.config/google-chrome/Default/Extensions/beaghhigecidoamlpclhiboaeonkceea/0.1.1/RePlurk.js 補充：在MacOX 10.6.3上是放在
+~/Library/Application Support/Google/Chrome/Default/Extensions/beaghhigecidoamlpclhiboaeonkceea/0.1.1/RePlurk.js 那個一長串的是這個擴充套件的ID(在Chrome的擴充套件頁按「開發人員模式」就可以看到)，0.1.1是我現在使用的版本&amp;hellip;也就是說以後如果這個套件改版可能就會小小換個路徑XD&amp;quot;
+那該怎麼辦？
+人類哪有這麼強的記憶力&amp;hellip;.其實我每次都忘記他放在哪裡！我是這麼找到這個檔案的&amp;hellip;.
+$ find ~ |grep -i replurk 其中就會看到RePlurk.js這個檔案了&amp;hellip;.:P 在windows上一樣可以用搜尋功能來找唷，我想會差不多的吧。
+找到檔案之後，就是要修改他的內容了。呃&amp;hellip;.我不知道該怎麼說明&amp;hellip;..他裡面把code都擠在一行了XD 其實可以用搜尋取代啦，但是要有點js的基礎才行，不要改到變數名稱了，改字串就好。此外，對於轉噗的連結(原本是叫做&amp;quot;RePlurk&amp;quot;)我也不太滿意&amp;hellip;.所以我把他改成&amp;quot;轉噗&amp;quot;了。
+講東西只講一半，不教怎麼改一定會被看文章的人追殺！所以提供一個替代方案，我把我修改的RePlurk.js分享給大家，以下，請笑納:D
+var GM_JQ_src = document.createTextNode(&amp;quot;var ReP_Message={};var p=window.Plurks;var o_expand;if(p){o_expand=p.expand;p.expand=function(aa){o_expand(aa);if(typeof ReP_Message.hrefProcessed==&#39;undefined&#39;){ReP_Message.hrefProcessed=true;var ba=document.getElementById(&#39;form_holder&#39;).lastChild;var ib=document.getElementById(&#39;input_big&#39;);if(ba&amp;amp;&amp;amp;ib){var ca=document.createElement(&#39;a&#39;);var da=document.createElement(&#39;div&#39;);da.setAttribute(&#39;class&#39;,&#39;perma_link&#39;);da.id=&#39;RePlurkDiv&#39;;ca.id=&#39;RePlurk&#39;;ca.setAttribute(&#39;href&#39;,&#39;javascript:doRePlurk(ReP_Message.owner_id, ReP_Message.raw, ReP_Message.link);&#39;);ba.appendChild(da).appendChild(ca).appendChild(document.createTextNode(&#39;轉噗&#39;));}}var ea=window.getPD(aa).obj;ReP_Message.link=&#39;http://plurk.com/p/&#39;+(ea.plurk_id).toString(36);ReP_Message.raw=ea.content_raw;ReP_Message.owner_id=ea.owner_id;}}function doRePlurk(fa,ga,ha){var ib=document.getElementById(&#39;input_big&#39;);var ia=window.SiteState.getUserById(fa).nick_name;var ja=ha+&#39; ([轉噗]): &#39;+ga;if(ib){ib.value=ja;p._removeExpand();window.MaxChar.updateBig();}}&amp;quot;); var GM_JQ = document.createElement(&#39;script&#39;); GM_JQ.type = &#39;text/javascript&#39;; GM_JQ.appendChild(GM_JQ_src); document.getElementsByTagName(&#39;body&#39;)[0].appendChild(GM_JQ); </description>
+    </item>
+    
+    <item>
+      <title>用JavaScript判定瀏覽器是否為IE</title>
+      <link>https://blog.crboy.net/posts/%E7%94%A8javascript%E5%88%A4%E5%AE%9A%E7%80%8F%E8%A6%BD%E5%99%A8%E6%98%AF%E5%90%A6%E7%82%BAie/</link>
+      <pubDate>Thu, 15 Apr 2010 18:47:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E7%94%A8javascript%E5%88%A4%E5%AE%9A%E7%80%8F%E8%A6%BD%E5%99%A8%E6%98%AF%E5%90%A6%E7%82%BAie/</guid>
+      <description>摘自 http://leeiio.me/ie_detection_in_5_bytes/
+&amp;lt;script type=&#39;text/javascript&#39;&amp;gt; var ie = !-[1,]; alert(ie); &amp;lt;/script&amp;gt; 以上程式碼執行結果：IE 下返回 true，其他標準瀏覽器返回 false。!-[1,]，僅僅只有 6 bytes！
+&amp;lt;script type=&#39;text/javascript&#39;&amp;gt; // Option from Dean Edwards: var ie = /*@cc_on!@*/false; // Use the commented line: var ie//@cc_on=1; // Variation (shorter variable): var ie = &#39;\v&#39;==&#39;v&#39;; // Option to Gareth Hayes (former record-holder): var ie = !+&amp;quot;\v1&amp;quot;; &amp;lt;/script&amp;gt; </description>
+    </item>
+    
+  </channel>
+</rss>

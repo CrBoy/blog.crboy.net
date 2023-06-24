@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>網管 on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/%E7%B6%B2%E7%AE%A1/</link>
+    <description>Recent content in 網管 on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 19 Sep 2012 10:53:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/%E7%B6%B2%E7%AE%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在 .htaccess 裡面修改 php 設定值</title>
+      <link>https://blog.crboy.net/posts/php-setting-in-htaccess/</link>
+      <pubDate>Wed, 19 Sep 2012 10:53:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/php-setting-in-htaccess/</guid>
+      <description>這篇筆記拖稿好久了&amp;hellip;.其實應該很短的，所以趕快寫一寫。
+有時候在弄一些 php 相關的東西的時候，需要設定一些模組，例如之前用過的 Xdebug，但是每次設定 php.ini 就要重新啟動 apache server，很麻煩還是其次，有時候上線的系統這樣一搞就很多人掰了&amp;hellip;..XD 所以我們需要一個修改後立即生效的做法。
+.htaccess 是非常實用的做法，只要先在 apache 的設定檔裡去 AllowOverride Options 即可使用 (我自己的機器通常會在特定目錄直接 AllowOverride All)。那麼，到底該怎麼做呢？下面是範例：
+php_value xdebug.auto_trace on php_value xdebug.trace_output_dir /tmp/xdebug php_value xdebug.collect_params 3 php_value xdebug.profiler_enable on php_value xdebug.profiler_output_dir /tmp/xdebug 應該滿好懂的？其實就是&amp;hellip;前面先指定 php_value，後面不用等號，直接寫設定值即可。
+這樣做出來的結果，可以在 phpinfo 裡面看到成效。phpinfo 下方的 Configuration 那邊，設定值的部分有三欄，分別是 Directive、Local Value、Master Value，Directive 就是設定值的名稱，Local Value 是在該目錄真的會生效的設定值，Master Value 則是全系統的設定值。如果你覆蓋了全系統的設定，那麼你會看到你的 Local Value 跟 Master Value 不同，應該滿好認的。
+透過這個方式，我們可以隨時去修改 php 的設定值，對於一些測試性的行為很有幫助！:D</description>
+    </item>
+    
+    <item>
+      <title>Linux 上安裝 APC UPS 的控制程式 - apcupsd</title>
+      <link>https://blog.crboy.net/posts/linux-apcupsd/</link>
+      <pubDate>Sun, 20 Mar 2011 11:35:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/linux-apcupsd/</guid>
+      <description>由於實驗室的需要，有機會設定到 APC 的 UPS&amp;hellip;.
+架構上來說大致上是這樣&amp;hellip;. UPS 透過一條 RJ45-USB 的線接到某主機（主要控制端），另外有兩台主機也吃這個 UPS 的電，而他們必須透過 ethernet 與控制主機溝通。
+我用到的環境是 Ubuntu 跟 CentOS，設定上沒什麼很大的差別就是了。首先安裝 apcupsd 這個套件（apt-get install apcupsd 或是 yum install apcupsd），接著打開/etc/apcupsd/apcupsd.conf，這個檔案其實自己就有很詳細的說明了，主要要設定的有這幾個部分：
+主要控制端：
+UPSCABLE usb UPSTYPE usb NETSERVER on NISIP 0.0.0.0 NISPORT 3551 UPSCLASS standalone UPSMODE disable 其他主機：
+UPSCABLE ether UPSTYPE net DEVICE &amp;lt;server_ip&amp;gt;:&amp;lt;port&amp;gt; #例：DEVICE 192.168.12.34:3551 NETSERVER off #應該也是可以設定成on 讓別人也可以跟這台主機要資料 但我認為沒有必要就是了 此外，我還隨手修改了 ONBATTERYDELAY 20，他的功用是讓機器在發現斷電狀況後多久才開始做反應&amp;hellip;設太短的話怕那種幾秒鐘的跳電也害他關機就是了&amp;hellip;
+設定好後，要重新啟動 apcupsd：
+# /etc/init.d/apcupsd restart 然後就可以用apcaccess去看看UPS的狀態，本機可以直接使用
+# apcaccess 來查到狀態，但是我被表很久的是，如果在其他機器，那得這樣才行：
+# apcaccess status &amp;lt;server_ip&amp;gt;:&amp;lt;port&amp;gt; 我是認為有查到資訊就表示安裝OK了啦&amp;hellip;.</description>
+    </item>
+    
+    <item>
+      <title>安裝Ubuntu套件庫沒有的library (以libstdc&#43;&#43;.so.5為例)</title>
+      <link>https://blog.crboy.net/posts/ubuntu-install-library/</link>
+      <pubDate>Sat, 05 Jun 2010 02:05:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/ubuntu-install-library/</guid>
+      <description>有時候拿人家的程式來跑，也許是對方只肯給執行檔，或者是不給source的商業軟體，或是其他情況，總之，有時候會遇到自己的系統上缺少該程式所需要的dynamically linked library (也就是系統上的.so檔, shared object)，或是自己系統上的函式庫版本太舊或太新，此時的作法有兩種：
+使用現有新版函式庫假裝成舊版。
+此種方法很簡單，只要把新版函式庫建立一個symbolic link就可以了，例如：
+[/usr/lib]$ ln -s libstdc++.so.6 libstdc++.so.5 但是很不幸的這種作法是可能出問題的。例如我今天就遇到了這個問題&amp;hellip;.
+我的系統上裝有libstdc++.so.6，但我要執行的程式連結到的是libstdc++.so.5。所以我用類似以上的方式做了一個假的，結果在執行的時候，跳出訊息顯示，該程式需要CXXABI 1.2(其實我也不太清楚這是啥，只知道ABI是Application Binary Interface)，我猜大概是ABI版本太新&amp;hellip;.沒辦法我動不到&amp;hellip;.orz 所以只好認命的去尋找舊版函式庫了&amp;hellip;
+安裝舊版函式庫
+我在這篇文章找到做法，而且他寫得很簡單易懂:)
+先去Debian Packages抓取我要的套件的deb檔
+$ wget http://debian.nctu.edu.tw/debian/pool/main/g/gcc-3.3/libstdc++5_3.3.6-18_amd64.deb 解壓縮抓下來的檔案
+$ dpkg-deb -x libstdc++5_3.3.6-18_amd64.deb libstdc++5 把其中的函式庫放到/usr/lib中 (小心不要覆蓋到本來的檔案了)
+$ sudo mv libstdc++5/usr/lib/libstdc++.so.5* /usr/lib/ 更新linker的cache
+$ sudo ldconfig 完成了&amp;hellip;..
+照著這樣做是沒問題啦&amp;hellip;.只是我心中還有點疑惑，為什麼不直接安裝該deb套件就好？也許有其他什麼原因？
+總而言之，要安裝缺少的library，只要找到相應的.so檔，並放到/usr/lib中(或是/usr/local/lib中)，再更新ld的cache即可。
+那&amp;hellip;.如果沒有.so可以抓怎麼辦？那就只好自己找source來編譯了&amp;hellip;..那是另外一段故事:D</description>
+    </item>
+    
+    <item>
+      <title>在apt系統與wget上使用proxy</title>
+      <link>https://blog.crboy.net/posts/proxy-apt-wget/</link>
+      <pubDate>Fri, 04 Jun 2010 07:11:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/proxy-apt-wget/</guid>
+      <description>台灣的學術網路連國外很慢是眾所皆知的事情&amp;hellip;.但是像 Ubuntu 這種系統，雖然有國內的 mirror，但是有些東西，像是 ppa 之類的 source，還是得從國外抓。今天剛裝完機器要更新，發現有些東西實在龜到不行，426B/s 耶！雖然最後我抓完了啦&amp;hellip;..不過還是要研究一下該怎麼透過 proxy 抓這些套件。
+方法很簡單，只要在 /etc/apt/apt.conf 裡面寫入以下這段設定：
+ACQUIRE { http::proxy &amp;quot;http://USER:PASSWORD@PROXY-SERVER:PORT&amp;quot; } 使用者帳號密碼、server 資訊請自行更改，如果是不需要帳號密碼的 proxy server 的話，則引號中只要打 http://PROXY-SERVER:PORT 即可。如果連 port 都不打的話，則預設的 port 是 80（也就是 http 的預設 port）
+接著只要更新套件清單，並安裝想要的套件就好。如果設定有誤，應該會在 update 的時候就出錯了。（像我一開始設定到一台已經不能用的 proxy server，就直接噴 error 給我看&amp;hellip;..）
+那麼，該設定哪一台 proxy server 呢？我找到了一份（有點舊的）proxy 列表，剛好是成大的人做的的樣子，請看參考資料。
+其中我是覺得 NCHC 的 proxy server 好像滿可靠的（好歹人家是NCHC&amp;hellip;）如果那份列表的連結以後不能用了，可以試試看這台&amp;hellip;
+至於，wget 又是怎麼回事？噢&amp;hellip;只是因為我發現我去找 proxy 相關資料的時候，很多文章都會同時教 apt 跟 wget 怎麼設定 proxy，那我就從善如流，把相關的資訊照抄一下了～
+編輯 /etc/wgetrc 或是 ~/.wgetrc，加入以下設定：
+https_proxy = http://PROXY-SERVER:PORT http_proxy = http://PROXY-SERVER:PORT ftp_proxy = http://PROXY-SERVER:PORT 應該很好懂吧？</description>
+    </item>
+    
+    <item>
+      <title>在Ubuntu 10.04 (Lucid Lynx)上安裝NX - 許多人推薦的遠端桌面</title>
+      <link>https://blog.crboy.net/posts/install-nx-on-ubuntu-10.04/</link>
+      <pubDate>Thu, 03 Jun 2010 09:14:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/install-nx-on-ubuntu-10.04/</guid>
+      <description>呃阿阿阿阿阿&amp;hellip;..我不知道應該怎麼起頭&amp;hellip;&amp;hellip;其實故事是這樣的，去年有學弟跟我推薦了NX這個遠端桌面，他是NoMachine公司的產品。特色大致上是，支援ssh加密連線，傳輸的資訊有經過壓縮(速度較快，不過影像品質稍微不太好，看得出來是lossy compression)，client可以跨平台，windows跟Linux都可以用，這對於有Linux桌面需求的Windows user真是福音阿!!
+於是乎，我就把他給裝起來了。一開始我裝的是NoMachine提供的Free Edition，但是後來有人跟我反應會連不上的問題，我找了很久找不出原因，最後我在某篇文章(由於年代久遠現在找不到了)得知，原來NoMachine的免費版本的nxserver有session數的限制，所以只好另尋他法。
+有個好用的open source版本的nxserver叫做FreeNX，想當然爾，「應該」是沒有session數限制的吧？當時在以前版本的ubuntu怎麼裝的我已經忘了，只記得套件名稱是freenx，但是好像不在官方預設的套件庫裡面&amp;hellip;但是在Ubuntu 10.04，我發現了新大陸！XD&amp;quot;
+這裡是安裝教學，很簡單。
+首先第一部你要先搞定你的ssh連線&amp;hellip;.通常我是裝openssh-server這個套件好像就搞定了&amp;hellip;.不過ssh博大精深，請另行研究。
+在ssh server裝好之後，就要開始安裝nx server了：
+$ sudo apt-get install python-software-properties #這步其實應該不用做，ubuntu預設就有裝這個套件了 $ sudo add-apt-repository ppa:freenx-team #這步其實讓我滿驚奇的，原來有這樣好用的工具可以用XD.... $ sudo apt-get update #加了套件庫，當然要update一下 $ sudo apt-get install neatx-server` 咦？怎麼不是freenx了？而是一個叫做neatx-server的東西？他的套件說明是這樣的：
+Neatx is an Open Source NX server.
+Neatx is an Open Source NX server, similar to the commercial NX server from NoMachine.
+查到的資料來源網頁是這樣寫的：
+Ubuntu Lucid now uses Neatx, the Open Source NX server from Google.</description>
+    </item>
+    
+    <item>
+      <title>取得 SSH server public key 的 fingerprint</title>
+      <link>https://blog.crboy.net/posts/get-ssh-server-fingerprint/</link>
+      <pubDate>Thu, 03 Jun 2010 08:30:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/get-ssh-server-fingerprint/</guid>
+      <description>不說廢話先給答案：
+$ ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub 對於廢話有興趣的請繼續閱讀&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;
+手邊的機器管一陣子之後，就會開始手癢想要重灌XD
+每次重灌完，要 ssh 上去的時候，都會遇到 key 不符合的情形&amp;hellip;.畫面長得像是這樣：
+$ ssh Some-Server @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY! Someone could be eavesdropping on you right now (man-in-the-middle attack)! It is also possible that the RSA host key has just been changed. The fingerprint for the RSA key sent by the remote host is &amp;lt;這裡是一長串的fingerprint，會有16進位數字，用冒號分隔&amp;gt;. Please contact your system administrator.</description>
+    </item>
+    
+    <item>
+      <title>將filesystem從ext2 or ext3升級到ext4</title>
+      <link>https://blog.crboy.net/posts/upgrade-to-ext4/</link>
+      <pubDate>Wed, 02 Jun 2010 10:18:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/upgrade-to-ext4/</guid>
+      <description>剛好有點三八想把ext3轉到ext4去&amp;hellip;.就找了些資料，寫了這篇文章:P
+要轉換成ext4嘛&amp;hellip;&amp;hellip;首先當然有些前提&amp;hellip;.你的kernel要支援ext4才行:D 另外也建議備份重要資料&amp;hellip;.
+然後step by step的教學就開始了！以下 $DEV 為device的名字(例：/dev/sda1)，$MOUNT為mount point(例：/mnt)
+要變更檔案系統，理所當然絕對不能讓他在被mount的時候亂搞，那是會出人命的XD
+# umount $DEV 這麼快!? 對&amp;hellip;.現在就去變更他吧&amp;hellip;.
+# tune2fs -O extents,uninit_bg,dir_index $DEV 如果是ext2 -&amp;gt; ext4的話則要這樣(因為ext2是沒有日誌(journal)的)
+# tune2fs -O extents,uninit_bg,dir_index,has_journal $DEV 變更完之後，一定要做fsck！
+# fsck -pf $DEV (這裡讓我膽顫心驚！因為出現好多error唷&amp;hellip;.orz||| 而且他還修了很久，差點以為程式爛掉&amp;hellip;.)
+最後就可以把他mount回去囉！
+# mount -t ext4 $DEV $MOUNT 如果是系統預設會mount的filesystem的話，請記得修改/etc/fstab。裡面的參數會紀錄要怎麼mount它&amp;hellip;一定要改！
+ps. 若是有動到/boot，或是開機遇到grub出現問題的話，參考資料裡面有相關資訊！
+參考資料 Ext3升級到Ext4 無損升級 http://blog.chinaunix.net/u1/46672/showart_2069245.html Linux 文件系統從 ext3 升級到 ext4 http://www.vpsee.com/2010/01/convert-ext3-to-ext4-filesystem/ sshlog-轉換 Ext3 到 Ext4 http://blog.ssh.tw/?p=1447 (有ssh大掛保證，這方法讓我更安心了XD) </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html><head>
+<title>Boost 神秘的 deprecated warning</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    Boost 神秘的 deprecated warning
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2011-09-26 16:07
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/c/c&#43;&#43;">C/C&#43;&#43;</a>
+                                &nbsp;
+                            
+                                <a href="/tags/trouble-shooting">Trouble Shooting</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E7%AD%86%E8%A8%98">筆記</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p><a href="http://www.boost.org/">Boost</a> 是一個相當強大好用的 C++ library，一直都沒辦法把它摸透。最近在用的時候遇到神秘的問題，追了一下還是沒辦法完全理解，先筆記下來也許會有什麼進展(或是得到有緣人的提點:P)。</p>
+<p>首先是我的開發環境：Ubuntu 10.04 64-bits, GCC 4.4.3, Boost 1.40 (libboost-dev 1.40.0.1)</p>
+<p>我其實是在 <code>#include &lt;boost/graph/adjacency_list.hpp&gt;</code> 的地方遇到問題的，他出現的 warning message 如下：</p>
+<pre><code>warning: #warning This file includes at least one deprecated or antiquated header which may be removed without further notice at a future date. Please use a non-deprecated interface with equivalent functionality instead. For a listing of replacement headers and interfaces, consult the file backward_warning.h. To disable this warning use -Wno-deprecated.
+</code></pre>
+<p>這訊息事實上是在 <code>&lt;backward/backward_warning.h&gt;</code> 這個檔案裡寫死的，至於為什麼會出現這個訊息呢？是因為 <code>&lt;boost/graph/adjacency_list.hpp&gt;</code> 使用了 <code>&lt;backward/hash_set&gt;</code> 這個檔案，他不被建議使用&hellip;.(deprecated)。相信 boost 會使用 <code>&lt;hash_set&gt;</code> 也是歷史的塵埃吧？根據該 warning 檔案裡面的敘述，建議使用 <code>&lt;unordered_set&gt;</code> 取代 <code>&lt;hash_set&gt;</code>，以上是關於這個部份的發現。</p>
+<p>另一方面，boost 本身有相關的設定可以做，尋找的開端是 <code>&lt;boost/config.hpp&gt;</code>，從它開始追可以追蹤到 <code>&lt;boost/config/suffix.hpp&gt;</code> 這個檔案，在我這個版本的 298 行有這樣的一段程式碼：</p>
+<pre><code>#if defined(BOOST_HAS_HASH) &amp;&amp; !defined(BOOST_HASH_SET_HEADER)  
+#  define BOOST_HASH_SET_HEADER &lt;hash_set&gt;  
+#endif
+</code></pre>
+<p>網路上找到的<a href="http://omgili.com/mailinglist/boost-users/lists/boost/org/h7g6p5dd41gergmaneorg.html">這個解答</a>也是說明可以藉由 <code>define BOOST_NO_HASH</code> 來 disable hash 的支援&hellip;但是相對來說，就無法在 <code>adjacency_list</code> 中使用 <code>hash_setS</code> 或是 <code>hash_mapS</code> 了。</p>
+<p>實際嘗試過後，<code>define BOOST_NO_HASH</code> 的確可以避免該 warning message 的產生，但是這明顯不是最好的作法，所以我嘗試在 boost 相關的 inclusion 之前先這麼做：</p>
+<pre><code>#define BOOST_HASH_SET_HEADER &lt;unordered_set&gt;
+</code></pre>
+<p>這麼做是來自於 <code>&lt;boost/graph/adjacency_list.hpp&gt;</code> 中的第20行(一樣是在我的版本)：</p>
+<pre><code>// TODO: Deprecating this requires some cooperation from Boost.Config. It's not  
+// a good idea to just refuse the inclusion because it could break otherwise  
+// functioning code.  
+#if !defined BOOST_NO_HASH  
+#    ifdef BOOST_HASH_SET_HEADER  
+#        include BOOST_HASH_SET_HEADER  
+#    else  
+#        include &lt;hash_set&gt;  
+#     endif  
+#endif
+</code></pre>
+<p>想像中的一切是多麼完美&hellip;&hellip;只要我 define 了 <code>BOOST_HASH_SET_HEADER</code>，那他就不會去 include 那討厭的 <code>&lt;hash_set&gt;</code>，而是使用我要他 include 的 <code>&lt;unorder_set&gt;</code> 了！然而天不從人願(好爛的轉折語= =)，即使我這麼做：</p>
+<pre><code>#define BOOST_HASH_SET_HEADER &lt;unordered_set&gt;
+</code></pre>
+<p>似乎還是會被 <code>&lt;boost/config.hpp&gt;</code> 給改回來= =a<br>
+最神奇的是我找不到他在哪裡改的XD</p>
+<p>我自己的引用方式如下：</p>
+<pre><code>#define BOOST_HASH_SET_HEADER &lt;unordered_set&gt;  
+#include &lt;boost/bind.hpp&gt;  
+#include &lt;boost/graph/adjacency_list.hpp&gt;
+</code></pre>
+<p>那個 <code>bind.hpp</code> 會 include <code>config.hpp</code> :(</p>
+<p>如果這麼做：</p>
+<pre><code>#include &lt;boost/bind.hpp&gt;  
+#define BOOST_HASH_SET_HEADER &lt;unordered_set&gt;  
+#include &lt;boost/graph/adjacency_list.hpp&gt;
+</code></pre>
+<p>會造成 <code>BOOST_HASH_SET_HEADER</code> 的重複定義，因為 <code>config.hpp</code> 裡面呼叫 <code>suffix.hpp</code> 會去 define 這玩意兒&hellip;.好吧，那就只好來硬的：</p>
+<pre><code>#include &lt;boost/bind.hpp&gt;  
+#undef BOOST_HASH_SET_HEADER  
+#define BOOST_HASH_SET_HEADER &lt;unordered_set&gt;  
+#include &lt;boost/graph/adjacency_list.hpp&gt;
+</code></pre>
+<p>結果噴出來的訊息我也只能心服口服了&hellip;..</p>
+<pre><code>error: #error This file requires compiler and library support for the upcoming ISO C++ standard, C++0x. This support is currently experimental, and must be enabled with the -std=c++0x or -std=gnu++0x compiler options.
+</code></pre>
+<p>這個訊息來自 <code>&lt;unordered_set&gt;</code>&hellip;&hellip;要用 C++0x 是吧&hellip;&hellip;.所以說，我&hellip;&hellip;&hellip;放棄了= =a</p>
+<p>目前暫時的結論就是，先 define <code>BOOST_NO_HASH</code> 吧，等到 boost (或是說 BGL?) 出了新版，還有 GCC 預設支援 C++0x 的時候，這問題應該連改都不用改就解決了XD&quot;</p>
+<p>有興趣的朋友們可以嘗試看看強迫使用 C++0x 配合 <code>&lt;unordered_set&gt;</code> 看看會不會順利編譯唷 :D</p>
+<p>PS. 歡迎把你的經驗分享給我 :P</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2011-09-26</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/vim-to-html/">
+			Next<br>用 vim 把一堆程式碼轉成 html 檔案
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/yagbe-yet-another-google-bookmarks/">
+			Previous<br>發現 YAGBE - Yet Another Google Bookmarks™ Extension
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

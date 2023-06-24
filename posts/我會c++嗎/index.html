@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html><head>
+<title>我會C&#43;&#43;嗎？</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    我會C&#43;&#43;嗎？
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2009-07-23 00:16
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/%E7%A8%8B%E5%BC%8F">程式</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>剛剛看到<a href="http://nctusdk.blogspot.com/2009/07/c.html">這篇文章</a> 自認並沒有很熟 但是會寫一點C++的我想試著回答看看&hellip;.究竟&hellip;..我可以答對多少呢？</p>
+<ol>
+<li>
+<p>什麼是virtual inheritance? 請舉例說明。<br>
+當有一個class(稱為D好了)繼承自兩個有共同parent class(稱為A)的class時 必須使用virtual inheritance以避免來自兩個parent class(稱為B與C)的method產生衝突</p>
+</li>
+<li>
+<p>什麼是virtual function? 什麼是pure virtual function?<br>
+virtual function會在runtime的時候進行binding 也就是若透過parent class的pointer呼叫某method時 會根據實際指向之child class(或是事實上是該parent class)而呼叫相對應之method 若非dynamic binding的話 則會根據pointer的型態呼叫相對應的程式碼(static binding)<br>
+而pure virtual function則不指向某一段程式碼 僅用來作為一個呼叫child class的method的入口 擁有pure virtual function的class是abstract class 不可產生instance(可以產生的話就奇妙了&hellip;沒有實做的程式碼要怎麼跑&hellip;)</p>
+</li>
+<li>
+<p>pointer與reference的差別?<br>
+pointer是一個獨立的變數 儲存的是另一個物件的位址(address) 要取得位址需使用&amp;運算元 要dereferencing需使用*運算元<br>
+reference是一個&hellip;.reference&hellip;||| 僅僅是參考到其指向的物件 相當於該物件的別名(alias) 同時也不像pointer一樣可以更換參考目標 使用時與一般變數之syntax並無不同 僅僅是宣告時要加上&amp;</p>
+</li>
+<li>
+<p>什麼是static_cast, dynamic_cast, reinterpret_cast, const_cast? 他們之間的差異是?<br>
+static_cast較類似C語言的cast 在compilation time進行cast<br>
+dynamic_cast是在runtime進行cast 所以cast的成功與否會等到runtime才能獲知(例如有B,C兩個class都繼承自A 而有個A*指向B的物件 此時若要將這個pointer dynamic_cast成C就會產生問題)<br>
+reinterpret_cast我不知道<br>
+const_cast做常數性(const)的cast 我也不清楚詳細用途</p>
+</li>
+<li>
+<p>run-time polymorphism與compile-time polymorphism的差異? 分別要如何達成?<br>
+runtime polymorphism是dynamic binding 像是virtual function即是此類<br>
+compile-time polymorphism是static binding 像是operator和function的overloading 或是template的使用 在compilation time即可確定呼叫目標 屬於此類</p>
+</li>
+<li>
+<p>什麼是explicit constructor?<br>
+就&hellip;.明確宣告constructor吧&hellip;..|||</p>
+</li>
+<li>
+<p>什麼是template disambiguator? 請舉出例子。<br>
+沒聽過</p>
+</li>
+<li>
+<p>有沒有聽過boost or loki? 有沒有用過boost or loki? 請舉出例子。<br>
+聽過boost 用過1次 忘記用來幹嘛了 不過我知道boost是C++的utility 據說有被考慮納入STL的範疇</p>
+</li>
+<li>
+<p>有沒有聽過CRTP (Curiously Recurring Template Pattern)與PBCP (Parametric Base Class Pattern)? 請寫出兩者的sample code並比較它們的差異。<br>
+沒有</p>
+</li>
+<li>
+<p>請問在C++中, struct與class最大的差異是?<br>
+struct預設的存取權限是public 而class是private</p>
+</li>
+<li>
+<p>請問什麼是template partial specialization?<br>
+不知道</p>
+</li>
+<li>
+<p>什麼是type traits? 什麼是tag dispatch? 請以簡單的程式碼說明之。<br>
+不會XD</p>
+</li>
+<li>
+<p>有聽過template metaprogramming嗎? 請舉例解釋之。<br>
+聽過 不過不是很懂意思</p>
+</li>
+<li>
+<p>什麼是SFINAE? 請解釋之。<br>
+不會&hellip;|||</p>
+</li>
+<li>
+<p>為什麼常常看到template的程式碼寫在hpp裡，而不是放在cpp檔中?<br>
+因為被使用到的template在compilation time就必須產生相關程式碼 而不能到linking的時候才產生</p>
+</li>
+<li>
+<p>什麼是functor? 用過(或寫過)任何的functor library嗎? 例如boost function/bind或是fast delegate?<br>
+物件化的function 沒有明確用過/寫過</p>
+</li>
+<li>
+<p>std::list與std::vector的差異是什麼? std::map裡的資料結構是如何實作的?<br>
+list並不支援random access 而vector支援之 但vector對於在前端的資料新增會花較多時間(應該是O(n))<br>
+map一般的實做應該都是利用heap</p>
+</li>
+<li>
+<p>何謂copy constructor? 如何阻止一個class被copy?<br>
+複製一個object時會呼叫的constructor(例如o1=o2時 o1會以copy constructor來建構)<br>
+明確宣告一個protected或是private的copy constructor即可阻止一個class「的物件」被copy</p>
+</li>
+<li>
+<p>virtual function是如何實作的? 什麼是vtbl?<br>
+不知道 猜測是利用一個table紀錄virtual functions的symbol與實際的候選程式碼(instructions)的位址的對應 在執行時由executor選擇？<br>
+那vtbl應該就是virtual table了XD</p>
+</li>
+<li>
+<p>在template的宣告裡，typename與class的差異是? 為什麼有typename這個keyword?<br>
+囧 原來有差喔&hellip;.|||<br>
+typename搞不好是為了相容某個別的語言而出現的 例如Objective C之類的&hellip;.</p>
+</li>
+<li>
+<p>什麼是forward declaration?<br>
+?</p>
+</li>
+<li>
+<p>如何解決header file mutual inclusion的問題?<br>
+#ifndef XXX<br>
+#define XXX<br>
+//&hellip;<br>
+#endif</p>
+</li>
+<li>
+<p>什麼是templated class? 什麼是class template?<br>
+囧 學過但是忘了&hellip;</p>
+</li>
+<li>
+<p>什麼是wchar_t? 有沒有用過std::locale跟std::codecvt?<br>
+用於unicode字元的type<br>
+都沒用過</p>
+</li>
+<li>
+<p>用過那些c++ compiler? 有沒有聽過c++0x? 試舉出c++0x的新功能。<br>
+GCC(g++), MinGW(其實也是GCC), Visual C++(6,2005,2008)<br>
+沒聽過XD</p>
+</li>
+</ol>
+<p>回答完了&hellip;..答題率好像不到一半&hellip;囧&hellip;.|||<br>
+所以我總是說我跟C++不熟&hellip;不知道有沒有C語言的考題 我跟C語言比較熟一點點&hellip;.一點點而已啦&hellip;.XD</p>
+<p>五樓 請問這篇你給幾分？</p>
+<p>ps. 這篇是榮譽考 我沒有查資料 所以很鳥請不要見怪 內容有錯誤人子弟也概不負責！</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2009-07-23</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/freebsd-%E7%9B%B8%E8%A6%8B%E6%AD%A1/">
+			Next<br>FreeBSD 相見歡？
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/opensuse-%E5%AE%89%E8%A3%9D-flashplayer-plugin/">
+			Previous<br>openSUSE 安裝 flashplayer plugin
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

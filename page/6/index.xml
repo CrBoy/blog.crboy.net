@@ -1,0 +1,346 @@
+<?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/</link>
+    <description>Recent content on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
+    
+        <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>如何說服你的朋友使用 Linux - 但不被當成怪咖</title>
+        <link>https://blog.crboy.net/posts/%E5%A6%82%E4%BD%95%E8%AA%AA%E6%9C%8D%E4%BD%A0%E7%9A%84%E6%9C%8B%E5%8F%8B%E4%BD%BF%E7%94%A8-linux-%E4%BD%86%E4%B8%8D%E8%A2%AB%E7%95%B6%E6%88%90%E6%80%AA%E5%92%96/</link>
+        <pubDate>Wed, 02 Nov 2011 03:15:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/%E5%A6%82%E4%BD%95%E8%AA%AA%E6%9C%8D%E4%BD%A0%E7%9A%84%E6%9C%8B%E5%8F%8B%E4%BD%BF%E7%94%A8-linux-%E4%BD%86%E4%B8%8D%E8%A2%AB%E7%95%B6%E6%88%90%E6%80%AA%E5%92%96/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E5%A6%82%E4%BD%95%E8%AA%AA%E6%9C%8D%E4%BD%A0%E7%9A%84%E6%9C%8B%E5%8F%8B%E4%BD%BF%E7%94%A8-linux-%E4%BD%86%E4%B8%8D%E8%A2%AB%E7%95%B6%E6%88%90%E6%80%AA%E5%92%96/ -&lt;p&gt;本文翻譯自「&lt;a href=&#34;http://www.junauza.com/2011/10/how-to-convince-your-friends-into-using.html&#34; title=&#34;How to Convince Your Friends to Use Linux Without Being a Jerk&#34;&gt;How to Convince Your Friends to Use Linux Without Being a Jerk&lt;/a&gt;」，作者為 Abhishek。&lt;/p&gt;
+&lt;p&gt;This article is a translation of &amp;ldquo;&lt;a href=&#34;http://www.junauza.com/2011/10/how-to-convince-your-friends-into-using.html&#34; title=&#34;How to Convince Your Friends to Use Linux Without Being a Jerk&#34;&gt;How to Convince Your Friends to Use Linux Without Being a Jerk&lt;/a&gt;&amp;rdquo;, which is written by Abhishek.&lt;/p&gt;
+&lt;p&gt;Linux 是目前世界上最安全穩定的系統之一，但它的使用者數量卻不如想像中的成長迅速。這當中有很多原因，不過我們先不討論。但如果你像其他的 Linux 使用者一樣，對現在 Linux 的市佔率感到失望，我們可以告訴你一些說服你朋友來用 Linux 的小技巧。&lt;/p&gt;
+&lt;p&gt;現在有很多 Linux 使用者試著去引誘他們的朋友或家人來嘗試一個有名且容易上手的發行版 - Ubuntu。有些人成功了，不過大部分是失敗的。所以，我們要告訴你一些技巧來幫助你推廣 Linux，但不會被視為一個自以為是又看不起 Windows 或 Mac 的電腦怪咖。&lt;/p&gt;
+&lt;h1 id=&#34;用秀的不要用說的&#34;&gt;用秀的！不要用說的。&lt;/h1&gt;
+&lt;p&gt;沒錯，如果你想要說服一個 Windows 或 Mac 的使用者來使用 Linux，這是第一件也是最重要的一件事。Ubuntu、Linux Mint與許多其他發行版看起來都相當漂亮，而且說真的，最新版的 Ubuntu (Ubuntu 11.10) 看起來就跟 Mac 一樣漂亮。不過，如果你只是跟他們用說的，你認為他們會同意你嗎？就算他們同意了，他們還是不清楚 Ubuntu 或是其他你說的發行版究竟長什麼樣子。我的建議是，你可以帶著你的 Linux 筆電，交給對方讓他們玩玩看。如果你用的是 Ubuntu，我建議你開一個新的 Guest Session (訪客使用者階段)，然後把電腦交給他。這樣一來，他們會更了解一個沒有經過調整的桌面有多漂亮。如果你不太可能向你的朋友展示桌面的話，那就傳個關於桌面展示的 Youtube 影片給他吧。&lt;/p&gt;
+&lt;p&gt;這個「用秀的不要用說的」作法也可以用在功能比較上。假設你想要描述 Linux 一些明顯的優點，不要跟他囉嗦一堆不會中毒、沒有磁碟碎片、或是桌面效能有多快之類的話，只要秀給他們看就好了。把他們的 Windows/Mac 筆電拿來放在旁邊，開始計時看他們開機有多快。我不想再說一遍，用秀的，不要用說的。&lt;/p&gt;
+&lt;h1 id=&#34;別再告訴他們-windows-不好他們已經知道了&#34;&gt;別再告訴他們 Windows 不好，他們已經知道了&lt;/h1&gt;
+&lt;p&gt;對一個想要把 Windows 使用者帶向光明的 Linux 使用者來說，他們總是把「Windows 很爛」這件事掛在嘴邊。至少很多 Linux 使用者都這樣想。抨擊 Windows 很好，大家都在罵這個討厭的作業系統，但是這對 Windows 使用者而言沒什麼好說的，我很確定他們都已經知道了。我相信當你在閱讀這篇文章的時候，至少有上千個 Windows 使用者在痛罵微軟。不過他們沒辦法改變什麼。&lt;/p&gt;
+&lt;p&gt;簡單來說，不要告訴他們 Windows 不好，甚至不要提到 Windows。只要告訴他們：「嘿，我的電腦桌面超棒的，你該試試看。」把電腦給他們，然後讓他們去痛罵 Windows。當我把我的朋友變成 Linux 使用者的時候，我所做的就只是給他們看我的電腦，沒有提到關於 Windows 或 Mac 的隻字片語。當他們看到我的電腦的時候，他們就開始瘋狂地大罵 Windows 了。&lt;/p&gt;
+&lt;h1 id=&#34;如果他們遇到問題&#34;&gt;如果他們遇到問題&lt;/h1&gt;
+&lt;p&gt;與其直接幫助他們，不如告訴他們怎麼在 Linux 上取得幫助。別讓人依賴你解決所有他們電腦上的問題。只要帶他們看過 Ubuntu 論壇、IRC 以及說明文件，讓他們自己找到答案就好。&lt;/p&gt;
+&lt;h1 id=&#34;不要強調free的部份&#34;&gt;不要強調「free」的部份&lt;/h1&gt;
+&lt;p&gt;我再說一次，不要。不要推銷「free」這個部分。事實上，你最好完全不要提到免費這件事。有時候別人會對於 Linux 印象深刻，所以他們可能會問你它要花多少錢。你可以輕鬆的看著他們，然後說「It&amp;rsquo;s free.」接著等待他們的回應就好。&lt;/p&gt;
+&lt;p&gt;譯註：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;外觀的好壞很主觀，我並不認為 Ubuntu 的 artwork 有跟 Mac 一樣漂亮&amp;hellip;.&lt;/li&gt;
+&lt;li&gt;操作性(使用者體驗)而言，我認為 Mac 還是優於目前我所用過的幾種 Linux 桌面。但還是有些地方我比較喜歡 Linux 上的設計。&lt;/li&gt;
+&lt;/ol&gt;
+- https://blog.crboy.net/posts/%E5%A6%82%E4%BD%95%E8%AA%AA%E6%9C%8D%E4%BD%A0%E7%9A%84%E6%9C%8B%E5%8F%8B%E4%BD%BF%E7%94%A8-linux-%E4%BD%86%E4%B8%8D%E8%A2%AB%E7%95%B6%E6%88%90%E6%80%AA%E5%92%96/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>用 vim 把一堆程式碼轉成 html 檔案</title>
+        <link>https://blog.crboy.net/posts/vim-to-html/</link>
+        <pubDate>Mon, 31 Oct 2011 09:14:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/vim-to-html/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/vim-to-html/ -&lt;p&gt;前陣子剛好跟學弟聊天聊到一些事情，他提到他想把他之前寫的 code 轉成 html&amp;hellip;..呃&amp;hellip;雖然我不太清楚為什麼要這樣做啦&amp;hellip;可能是為了列印之類的&amp;hellip;.不過這個我不太 care&amp;hellip;身為一個資工人，這種事當然要自動化！我只是想知道該怎麼做到而已XD&lt;/p&gt;
+&lt;p&gt;這位學弟也玩 Linux，但他說他試過寫 script 卻沒辦法成功，說是檔名有空白就會被分成兩個檔名，會找不到。這怎麼可能呢！所以當下就試試看&amp;hellip;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ mkdir test  
+$ cd test  
+$ touch a\ 1 a\ 2 a\ 3  
+$ find . -exec echo {} \;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;這當然是沒問題的啊！每個檔名都自成一行 :D&lt;/p&gt;
+&lt;p&gt;好了&amp;hellip;.問題解決一半。不過如果這樣的話就不會想寫文章了&amp;hellip;主要是因為當天腦袋卡住，竟然沒辦法用 vim 轉換出他要的 html 檔案&amp;hellip;.|||&lt;/p&gt;
+&lt;p&gt;先提一下 vim 的 &lt;code&gt;:TOhtml&lt;/code&gt; 好了，這東西可以把現在的 syntax highlight 轉換成 html，很酷的小功能說~但當天不曉得為什麼，明明知道應該用 &lt;code&gt;find -exec&lt;/code&gt; 配合 &lt;code&gt;vim -c&lt;/code&gt; 去做，但檔名就一直不知道該怎麼下&amp;hellip;&amp;hellip;.orz 學弟的需求是這樣：code 放在 a 目錄，輸出的 html 要放在 b 目錄，然後 script 跟 a, b 放在同一層目錄&amp;hellip;.大概是這樣子:p&lt;/p&gt;
+&lt;p&gt;後來回家後，還查了我根本不懂的 vim register 跟 variable 的用法，搞老半天，最後發現答案很簡單= =a，只要 truncate 檔名就好了啊&amp;hellip;&amp;hellip;如下所示：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ find a -exec vim {} -c &amp;quot;TOhtml&amp;quot; -c &amp;quot;w b/%:t&amp;quot; -c &amp;quot;wqa\!&amp;quot; \;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重點就在那個「%:t」啊&amp;hellip;.花了我好多時間。那個 :t 在 vim 裡面稱為 file name modifier，可以取出一個檔案的「檔名部分」(也就是不包含他所在位置的路徑)，其他還有相當多種的 modifier，像是 :r, :h, :p 等等，可在 vim 中 &lt;code&gt;:help filename-modifiers&lt;/code&gt; 查詢說明。&lt;/p&gt;
+- https://blog.crboy.net/posts/vim-to-html/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>Boost 神秘的 deprecated warning</title>
+        <link>https://blog.crboy.net/posts/boost-deprecated-warning/</link>
+        <pubDate>Mon, 26 Sep 2011 16:07:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/boost-deprecated-warning/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/boost-deprecated-warning/ -&lt;p&gt;&lt;a href=&#34;http://www.boost.org/&#34;&gt;Boost&lt;/a&gt; 是一個相當強大好用的 C++ library，一直都沒辦法把它摸透。最近在用的時候遇到神秘的問題，追了一下還是沒辦法完全理解，先筆記下來也許會有什麼進展(或是得到有緣人的提點:P)。&lt;/p&gt;
+&lt;p&gt;首先是我的開發環境：Ubuntu 10.04 64-bits, GCC 4.4.3, Boost 1.40 (libboost-dev 1.40.0.1)&lt;/p&gt;
+&lt;p&gt;我其實是在 &lt;code&gt;#include &amp;lt;boost/graph/adjacency_list.hpp&amp;gt;&lt;/code&gt; 的地方遇到問題的，他出現的 warning message 如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;warning: #warning This file includes at least one deprecated or antiquated header which may be removed without further notice at a future date. Please use a non-deprecated interface with equivalent functionality instead. For a listing of replacement headers and interfaces, consult the file backward_warning.h. To disable this warning use -Wno-deprecated.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;這訊息事實上是在 &lt;code&gt;&amp;lt;backward/backward_warning.h&amp;gt;&lt;/code&gt; 這個檔案裡寫死的，至於為什麼會出現這個訊息呢？是因為 &lt;code&gt;&amp;lt;boost/graph/adjacency_list.hpp&amp;gt;&lt;/code&gt; 使用了 &lt;code&gt;&amp;lt;backward/hash_set&amp;gt;&lt;/code&gt; 這個檔案，他不被建議使用&amp;hellip;.(deprecated)。相信 boost 會使用 &lt;code&gt;&amp;lt;hash_set&amp;gt;&lt;/code&gt; 也是歷史的塵埃吧？根據該 warning 檔案裡面的敘述，建議使用 &lt;code&gt;&amp;lt;unordered_set&amp;gt;&lt;/code&gt; 取代 &lt;code&gt;&amp;lt;hash_set&amp;gt;&lt;/code&gt;，以上是關於這個部份的發現。&lt;/p&gt;
+&lt;p&gt;另一方面，boost 本身有相關的設定可以做，尋找的開端是 &lt;code&gt;&amp;lt;boost/config.hpp&amp;gt;&lt;/code&gt;，從它開始追可以追蹤到 &lt;code&gt;&amp;lt;boost/config/suffix.hpp&amp;gt;&lt;/code&gt; 這個檔案，在我這個版本的 298 行有這樣的一段程式碼：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#if defined(BOOST_HAS_HASH) &amp;amp;&amp;amp; !defined(BOOST_HASH_SET_HEADER)  
+#  define BOOST_HASH_SET_HEADER &amp;lt;hash_set&amp;gt;  
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;網路上找到的&lt;a href=&#34;http://omgili.com/mailinglist/boost-users/lists/boost/org/h7g6p5dd41gergmaneorg.html&#34;&gt;這個解答&lt;/a&gt;也是說明可以藉由 &lt;code&gt;define BOOST_NO_HASH&lt;/code&gt; 來 disable hash 的支援&amp;hellip;但是相對來說，就無法在 &lt;code&gt;adjacency_list&lt;/code&gt; 中使用 &lt;code&gt;hash_setS&lt;/code&gt; 或是 &lt;code&gt;hash_mapS&lt;/code&gt; 了。&lt;/p&gt;
+&lt;p&gt;實際嘗試過後，&lt;code&gt;define BOOST_NO_HASH&lt;/code&gt; 的確可以避免該 warning message 的產生，但是這明顯不是最好的作法，所以我嘗試在 boost 相關的 inclusion 之前先這麼做：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#define BOOST_HASH_SET_HEADER &amp;lt;unordered_set&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;這麼做是來自於 &lt;code&gt;&amp;lt;boost/graph/adjacency_list.hpp&amp;gt;&lt;/code&gt; 中的第20行(一樣是在我的版本)：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// TODO: Deprecating this requires some cooperation from Boost.Config. It&#39;s not  
+// a good idea to just refuse the inclusion because it could break otherwise  
+// functioning code.  
+#if !defined BOOST_NO_HASH  
+#    ifdef BOOST_HASH_SET_HEADER  
+#        include BOOST_HASH_SET_HEADER  
+#    else  
+#        include &amp;lt;hash_set&amp;gt;  
+#     endif  
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;想像中的一切是多麼完美&amp;hellip;&amp;hellip;只要我 define 了 &lt;code&gt;BOOST_HASH_SET_HEADER&lt;/code&gt;，那他就不會去 include 那討厭的 &lt;code&gt;&amp;lt;hash_set&amp;gt;&lt;/code&gt;，而是使用我要他 include 的 &lt;code&gt;&amp;lt;unorder_set&amp;gt;&lt;/code&gt; 了！然而天不從人願(好爛的轉折語= =)，即使我這麼做：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#define BOOST_HASH_SET_HEADER &amp;lt;unordered_set&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;似乎還是會被 &lt;code&gt;&amp;lt;boost/config.hpp&amp;gt;&lt;/code&gt; 給改回來= =a&lt;br&gt;
+最神奇的是我找不到他在哪裡改的XD&lt;/p&gt;
+&lt;p&gt;我自己的引用方式如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#define BOOST_HASH_SET_HEADER &amp;lt;unordered_set&amp;gt;  
+#include &amp;lt;boost/bind.hpp&amp;gt;  
+#include &amp;lt;boost/graph/adjacency_list.hpp&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;那個 &lt;code&gt;bind.hpp&lt;/code&gt; 會 include &lt;code&gt;config.hpp&lt;/code&gt; :(&lt;/p&gt;
+&lt;p&gt;如果這麼做：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;boost/bind.hpp&amp;gt;  
+#define BOOST_HASH_SET_HEADER &amp;lt;unordered_set&amp;gt;  
+#include &amp;lt;boost/graph/adjacency_list.hpp&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;會造成 &lt;code&gt;BOOST_HASH_SET_HEADER&lt;/code&gt; 的重複定義，因為 &lt;code&gt;config.hpp&lt;/code&gt; 裡面呼叫 &lt;code&gt;suffix.hpp&lt;/code&gt; 會去 define 這玩意兒&amp;hellip;.好吧，那就只好來硬的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;boost/bind.hpp&amp;gt;  
+#undef BOOST_HASH_SET_HEADER  
+#define BOOST_HASH_SET_HEADER &amp;lt;unordered_set&amp;gt;  
+#include &amp;lt;boost/graph/adjacency_list.hpp&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;結果噴出來的訊息我也只能心服口服了&amp;hellip;..&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;error: #error This file requires compiler and library support for the upcoming ISO C++ standard, C++0x. This support is currently experimental, and must be enabled with the -std=c++0x or -std=gnu++0x compiler options.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;這個訊息來自 &lt;code&gt;&amp;lt;unordered_set&amp;gt;&lt;/code&gt;&amp;hellip;&amp;hellip;要用 C++0x 是吧&amp;hellip;&amp;hellip;.所以說，我&amp;hellip;&amp;hellip;&amp;hellip;放棄了= =a&lt;/p&gt;
+&lt;p&gt;目前暫時的結論就是，先 define &lt;code&gt;BOOST_NO_HASH&lt;/code&gt; 吧，等到 boost (或是說 BGL?) 出了新版，還有 GCC 預設支援 C++0x 的時候，這問題應該連改都不用改就解決了XD&amp;quot;&lt;/p&gt;
+&lt;p&gt;有興趣的朋友們可以嘗試看看強迫使用 C++0x 配合 &lt;code&gt;&amp;lt;unordered_set&amp;gt;&lt;/code&gt; 看看會不會順利編譯唷 :D&lt;/p&gt;
+&lt;p&gt;PS. 歡迎把你的經驗分享給我 :P&lt;/p&gt;
+- https://blog.crboy.net/posts/boost-deprecated-warning/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>發現 YAGBE - Yet Another Google Bookmarks™ Extension</title>
+        <link>https://blog.crboy.net/posts/yagbe-yet-another-google-bookmarks/</link>
+        <pubDate>Thu, 22 Sep 2011 01:19:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/yagbe-yet-another-google-bookmarks/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/yagbe-yet-another-google-bookmarks/ -&lt;p&gt;一直很想要一個可以用標籤(label)分類的書籤系統。無奈本來都用 Chrome 的書籤，他沒辦法跟 Google Bookmarks 同步。本來在用的 Xmarks 也是以目錄方式管理的&amp;hellip;.過去我只知道 Firefox 的 Google Toolbar 有支援管理 Google Bookmarks。今天本來是想要試用看看，沒想到現在&lt;a href=&#34;http://www.google.com/support/toolbar/bin/answer.py?answer=1342452&amp;amp;topic=15356&amp;amp;hl=zh-TW&#34;&gt;工具列不適用於 Firefox 5 或更新版本&lt;/a&gt;了&amp;hellip;.真是令人難過= =&lt;/p&gt;
+&lt;p&gt;但是上帝幫你關上門的時候，會幫你打開一扇窗！本來是打算照他的建議去尋找 Google Bookmarks 的相關套件，就在這個時候我才發現，原來 Chrome 上也有 Google Bookmarks 的 extension！(之前就覺得一定有，可是就是找不到&amp;hellip;)&lt;/p&gt;
+&lt;p&gt;我找到三套 extension，分別是&lt;a href=&#34;https://chrome.google.com/webstore/detail/dobhkcpfdpfhghdmiecokllfjiemfmgm?hc=search&amp;amp;hcp=main&#34;&gt;Simple Google bookmarks&lt;/a&gt;、&lt;a href=&#34;https://chrome.google.com/webstore/detail/mnedccijmniojgaehpjebjfpkmafecho?hc=search&amp;amp;hcp=main&#34;&gt;Google Bookmarks&lt;/a&gt; (日本人做的)、還有&lt;a href=&#34;https://chrome.google.com/webstore/detail/jdnejaepfmacfdmhkplckpfdcjgbeode?hc=search&amp;amp;hcp=main&#34;&gt;Yet Another Google Bookmarks Extension&lt;/a&gt;。最後根據使用人數，還有評價，選擇了後者 - YAGBE。(好險他有縮寫，不然我會崩潰)&lt;/p&gt;
+&lt;p&gt;裝好之後要先 login。目前使用起來，其實不太好用&amp;hellip;.感覺圖跟字都太小，不過字的大小可以調整，我覺得調大一點比較舒服。另外，他是用樹狀顯示的，這當然沒什麼不好，不過感覺不像 Google 的東西就是了，我想我找書籤會用搜尋的吧&amp;hellip;.不可能在那邊捲來捲去，畢竟想用 label 來管理書籤就是因為可以組合標籤來搜尋&amp;hellip;.但是這就是最大的問題了&amp;hellip;.除了 Google 自己的搜尋以外，上面那三套 extension 我都試過了，都不能搜尋多個標籤&amp;hellip;.這&amp;hellip;.真是太杯具了&amp;hellip;..Q____________Q&lt;/p&gt;
+&lt;p&gt;好吧，我可以慢慢等待他的進步這樣&amp;hellip;.XD 現在先讓自己能夠把書籤放在雲端就好，反正，也沒那麼常在點書籤&amp;hellip;.反倒是都用來當做好文章的收集跟筆記用。:P&lt;/p&gt;
+&lt;p&gt;接下來該做的就是把原有的書籤匯入了&amp;hellip;..感覺是個相當困難的工作，我目前還沒有找到做法&amp;hellip;..等找到再說吧XD&lt;/p&gt;
+- https://blog.crboy.net/posts/yagbe-yet-another-google-bookmarks/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>Google&#43; 教學 - 功能介紹篇</title>
+        <link>https://blog.crboy.net/posts/google-plus-2/</link>
+        <pubDate>Sun, 03 Jul 2011 06:59:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/google-plus-2/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/google-plus-2/ -&lt;p&gt;首先進入 Google+ 的主畫面(登入之後)，會看到一個白色背景的 facebook，呃&amp;hellip;不是&amp;hellip;我是說&amp;hellip;.會看到一個跟 facebook 很像的畫面，三欄式版面，左邊顯示自己的頭像、名字(last name)、訊息串選單、Sparks、即時通訊(GTalk)，中欄則顯示一大堆訊息(訊息串)，除非是剛註冊，否則應該不會是空的。，右欄則比較偏向輔助性的功能，像是朋友牆、、建議的朋友(&lt;em&gt;警告：這欄出現指導教授的機率相當高！即使他根本沒有加入 Google+&lt;/em&gt;)、還有視訊聚會及手機版的相關訊息。&lt;/p&gt;
+&lt;p&gt;再來要特別介紹上面的兩列按鈕。瀏覽器畫面的最上面是 Google 最近持續在改變的新介面(我想應該可以叫他 navbar)，前陣子才在噗浪講說為什麼我的 Google navbar 變成黑的，過沒幾天就出現 Google+ 了XD。Navbar 的最左邊有時候會出現一個「+[名字]」的項目(例如一個人叫小明那他就會出現「+小明」)，這個是在申請了 Google+ 之後才會出現的，不過根據我自己的經驗還有公開調查的結果，這個地方根本就一直改！我看過三個狀況：沒有這個項目，也就是最左邊是「Gmail」。顯示「+[名字]」(例如「+小明」)。還有顯示「+您」。此外，同一個帳號在不同電腦上看到的可能會不一樣，同一個帳號同一台電腦不同時間看可能會不一樣，同帳號同電腦同時間不同分頁看也可能會不一樣&amp;hellip;..(我敗了= =)。&lt;/p&gt;
+&lt;p&gt;接著是 Google+ 本身的功能列，有四個主要的按鈕分別是「首頁」、「相片」、「個人資料」、「社交圈」，題外話，我真的覺得這個「社交圈(circles)」可以翻譯成小圈圈就好了&amp;hellip;.XDDDD。這個小圈圈是這次 Google+ 其中一個很吸引人的好玩功能之一！雖然不是說實用度滿點，可是用起來很有趣，而且速度也不錯，特效很可愛，滿方便的。只要把想&lt;br&gt;
+吸收&lt;br&gt;
+加入的人選取，拖拉到某個小圈圈裡就可以了。一個人可以同時被分類在多個小圈圈裡面，所以這個其實很像 tag 的功能，只不過觀點不同而已(其實 tag 也就是分類的另一種觀點嘛= =)。Google 保證你所加入的人只會知道你把他加入社交圈，但是絕對不會知道你給他的小圈圈叫什麼名字，所以應該可以放心的亂取名字？XD&lt;/p&gt;
+&lt;p&gt;接著是一些快捷鍵的介紹，配合快捷鍵可以讓閱讀訊息更有效率。在介紹之前，提醒 Vimium(on Chrome)、Vimperator(on Firefox)或是其他類似瀏覽器外掛的用戶要把 http*://plus.google.com/* 加入排除清單，否則快速鍵會被吃掉喔~&lt;br&gt;
+首先注意到每則訊息的左邊，如果你點選這則訊息，那麼會有一條深藍色的線移動到這則訊息上。這相當於一個箭頭，在 Google+ 裡面你可以使用按鍵k跟j來上下移動這個「箭頭」，一次以一則訊息為單位，而且指到的訊息會顯示在目前的 view 的最上面，對於看訊息來說很方便喔~不會眼花找不到！接著按下 enter 就可以直接對這則訊息回覆。另外，根據我的測試，在按下 home 或 end 鍵之後，或是用滑鼠換頁過後，雖然藍線不會改變位置，但是接著按下jk的話，會從當前看到的訊息開始往下或往上閱讀。&lt;/p&gt;
+&lt;p&gt;右上角的 popup notification 也有快捷鍵可以使用。首先是 k 跟 j 也可以作為上下移動的功能。按下 enter 或 o 會進入這則訊息，按 u 可以跳出(這是拿 Gmail 快捷鍵來試，沒想到猜對了)。另外，在閱讀訊息的時候，按方向鍵的左右也可以切換新舊訊息，左邊是較新(往上)，右邊是較舊。可以看上面有個「&amp;lt; 較新 | 較舊 &amp;gt;」作為提示。&lt;/p&gt;
+&lt;p&gt;嗯&amp;hellip;.再來講一下視訊聚會的功能好了。這個功能被稱為「Google Hangouts」(有加s)，不過他的 domain 是在 talkgadgets.google.com (我是在要加入 Vimium 排除清單的時候注意到的)。這個功能最讓我激賞的部份在於他的通話延遲跟一般手機差不多！(測試條件：兩人都在台灣，我這邊對外是8M/640K ADSL，不過中間隔了一台無線AP。對方那邊也是ADSL，速度不清楚。測試時不只打開通話，雙方也都有開啟視訊)&lt;br&gt;
+在技術上，我認為應該有某種根據可用頻寬調整影像品質(壓縮比)的機制，這很明顯可以看出來。至於語音的部份，我只敢猜測應該也有，只是我實在聽不出差異&amp;hellip;.而且即使視訊延遲或是停格，語音的通話也都滿順暢，可能也有優先權機制吧。&lt;br&gt;
+使用方法很簡單，想發起會議的人只要在主畫面右欄下方的「發起視訊聚會」的按鈕按一下(我的天阿怎麼變成 step-by-step 的教學了&amp;hellip;)，然後選擇對象就可以開始了。就跟一般發訊息的模式是一樣的，你所邀請的對象才會看到你的視訊會議通知，在中欄他也是顯示成一則普通的訊息，只不過內容會自動更新為哪些人參加中這樣。我想如果發起一個公開的 hangout 應該就是所有人都可以亂入XD&amp;quot;。再來，被邀請的人可以再邀請其他人，而且會議中並沒有管理者機制，所以如果有人來亂的話，沒辦法踢人，只能用排擠的&amp;hellip;.呃，我的意思是，所有人可以共同把一個人的 mic 關掉，這樣他在怎麼說話都不會影響到你們，只不過他還是聽得到你們的聲音就是了。&lt;br&gt;
+在 hangouts 中，中央的畫面會隨著現在講話的人而自動改變(自己除外)，不過多人同時講話的話就不清楚會怎麼變了，畢竟多人會議比較難作測試，有心得再跟大家報告。如果想要固定看到的人(比如說你暗戀他之類的)，只要在他的畫面上點一下就可以了，周圍會出現綠色框框，再點一下就可以恢復成自動切換。再來，應該有人會發現，怎麼有些人的畫面是一個藍色背景的黑色人影，難道他是黑鬼？其實不是，他是窮鬼，他沒有視訊攝影機。真正的黑鬼是畫面全黑的人，那表示他把他的視訊關起來了。關起來的功能在下方按鈕中間偏右的位置，按鈕這麼大應該不會找不到吧？XD&lt;br&gt;
+下方的按鈕依序是：邀請、即時通訊、YouTube、一段空白、視訊開關、麥克風開關、設定、結束。有人傳訊息的時候即時通訊旁邊會出現蹦現式對話框，不過，還是打開看比較方便。YouTube 的功能很好玩，當有其他人打開 YouTube 的時候，上面會跑出訊息問你要不要 to get her&amp;hellip;.呃，是問你要不要一起看啦。所有人的 YouTube 畫面是同步的，你開啟一個影片的時候還會顯示「xxx已將影片改變為ooo」，感覺壓力好大XD。特別需要注意的是，在 YouTube 開啟的狀態下，如果要講話的話必須把畫面中間的綠色按鈕「按住」才可以說話(像對講機一樣)，而且這時候 YouTube 影片的聲音會變成無聲，我想是為了避免聲音回饋到麥克風去吧。Ijs 有提到想用這個功能玩線上 KTV，不過因為這個設計的關係應該不太容易做到。(不過我認為主要的難題是在於，如果要一起唱歌，那聲音延遲的容忍程度會比講手機所能容忍的程度還要低，不然唱起歌來會很不舒服)&lt;/p&gt;
+&lt;p&gt;對了，最後給大家一個小技巧。應該很多人會發現用了 Google+ 之後，信箱幾乎要被塞爆了，其實這個是可以取消的。選右上角的齒輪圖案 - Google+設定 裡面就可以選擇哪些 event 要寄信通知。不過我認為更好的方法是在 Gmail 那邊設定 filter，把所有來自 plus.google.com 的信都封存+標為已讀+加上標籤，這樣可以幫自己把訊息都留下紀錄，方便查閱。只不過這樣的作法不曉得會不會漏掉系統重要通知信就是了&amp;hellip;.&lt;/p&gt;
+- https://blog.crboy.net/posts/google-plus-2/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>Google&#43; 教學 - 囉唆篇</title>
+        <link>https://blog.crboy.net/posts/google-plus-1/</link>
+        <pubDate>Sun, 03 Jul 2011 06:39:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/google-plus-1/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/google-plus-1/ -&lt;p&gt;與其說這是一篇教學，不如說是一篇使用心得吧XD&amp;quot;&lt;/p&gt;
+&lt;p&gt;目前 Google+ 還是處於封測狀態&amp;hellip;.要有邀請函才能加入，至於邀請函的取得方式已經有許多討論了，這裡就分享一點軼事給一開始沒跟到風的朋友好了~在我剛知道 Google+ 的那天(不確定是不是剛推出的第一天)，我身邊的朋友都還沒有邀請函，而且似乎相當難找&amp;hellip;但我們知道，乘法的力量是很強大的！隔天就發現信箱裡出現兩封邀請函，而且噗浪河道上充滿了 Google+ 的聲音(看來打^H呼聲很大)。掙扎了很久我才終於決定該用哪個帳號申請&amp;hellip;.XD&amp;quot; 咦？怎麼離題了&amp;hellip;.我想說的是，當天早上大家都有邀請函，所以身邊這圈朋友有在線上的幾乎都申請了。&lt;/p&gt;
+&lt;p&gt;不過就在我加入前不久，從噗浪河道來看，所有人的邀請函按鈕都被拿掉了&amp;hellip;.當時心想還好我有拿到邀請XD。不過就在不久後，某位(我猜他應該)不願具名的黑鬼^H^H長輩表示，有秘技可以發邀請函！身為一個沒發到邀請函的阿宅，對於秘技非常好奇也是合理的，一問之下發現只要把你要寄邀請函的對象加入小圈圈(Google+ 叫他社交圈啦..)之後對小圈圈發送訊息就可以了。只是我實在很懶，所以不小心發現直接在發訊息的時候輸入對方 e-mail 就可以了&amp;hellip;總而言之&amp;hellip;只要發訊息給沒有 Google+ 帳號的人，他就會收到一封信，裡面包含你的訊息，以及一個「瞭解更多」的連結，從這個連結連過去就可以申請了&amp;hellip;.這是 bug 嗎？XD 不過這個方法不曉得是被濫用還是怎樣&amp;hellip;當天晚上就完全不能用了。根據測試的結果，就算是稍早有收到真正的邀請函的人也無法在當天晚上申請帳號，猜想是完全把加入的功能關閉了。(但隔天疑似又開放了&amp;hellip;)&lt;/p&gt;
+&lt;p&gt;以上這些故事因為都過去了，手邊沒有也沒辦法抓截圖，不好意思囉!&lt;/p&gt;
+&lt;p&gt;接著我想談一下我對「Google+」這個名字的想法。&lt;br&gt;
+這名字很有趣，可是也很討厭。有趣在於，未來 Google+ 推出什麼新服務的話，就會變成「Google+Games」「Google+Clubs」「Google+Ads(誤)」，甚至可能就叫「+Games」之類的，很可愛的稱呼。可是這個「+」對於台灣人就很妙了，跟人討論的時候可能會出現以下幾種名字：「咕狗加」「Google plus」「G加」&amp;hellip;(我也不知道還有沒有別的)，叫「咕狗加」其實我是覺得不太通順= =a，私心最喜歡「G+」這個稱呼，因為他跟「居家」同音&amp;hellip;:P 不過在比較正式點的說法上，還是要寫「Google+」 唸作「Google plus」比較好~(這次總不會有人寫 Google plu 了吧&amp;hellip;.= =)&lt;/p&gt;
+&lt;p&gt;轉貼一則我在噗浪上的訊息&amp;hellip;..「快上 Google+！你今天，&lt;strong&gt;居家&lt;/strong&gt;了嗎？」&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(顯示為下集才要進入主題)&lt;/em&gt;&lt;/p&gt;
+- https://blog.crboy.net/posts/google-plus-1/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>同軸電纜規格</title>
+        <link>https://blog.crboy.net/posts/%E5%90%8C%E8%BB%B8%E9%9B%BB%E7%BA%9C%E8%A6%8F%E6%A0%BC/</link>
+        <pubDate>Sat, 25 Jun 2011 19:44:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/%E5%90%8C%E8%BB%B8%E9%9B%BB%E7%BA%9C%E8%A6%8F%E6%A0%BC/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E5%90%8C%E8%BB%B8%E9%9B%BB%E7%BA%9C%E8%A6%8F%E6%A0%BC/ -&lt;p&gt;之前為了找同軸電纜的規格，找了好久才找到，所以決定把它記錄下來。&lt;/p&gt;
+&lt;p&gt;來源是&lt;a href=&#34;http://www.myav.com.tw/bbs/showthread.php?threadid=378626&amp;amp;pagenumber=0&#34;&gt;這個地方&lt;/a&gt;：&lt;/p&gt;
+&lt;p&gt;一般同軸電纜品名記號說明：&lt;/p&gt;
+&lt;p&gt;例：3C-2W、5C-2V、5C-FB&lt;/p&gt;
+&lt;p&gt;第一項之數字：表示外部導體之約計外徑(mm)&lt;br&gt;
+第二項之文字：&amp;ldquo;D&amp;quot;表示特性阻抗 50 歐姆，&amp;ldquo;C&amp;quot;表示特性阻抗 75 歐姆&lt;br&gt;
+第三項之文字：&amp;ldquo;2&amp;quot;表示PE充實絕緣型，&amp;ldquo;F&amp;quot;表示發泡PE絕緣型&lt;br&gt;
+第四項之文字：&amp;ldquo;V&amp;quot;表示外部導體為一層編織後施以PVC外被覆，&amp;ldquo;W&amp;quot;表示外部導體為二層編織後施以PVC外被覆，&amp;ldquo;B&amp;quot;表示外部導體為兩面鋁箔麥拉帶縱包再加上鍍錫軟銅線編織&lt;/p&gt;
+- https://blog.crboy.net/posts/%E5%90%8C%E8%BB%B8%E9%9B%BB%E7%BA%9C%E8%A6%8F%E6%A0%BC/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>再看面劇團 - 影痴謀殺</title>
+        <link>https://blog.crboy.net/posts/face-to-audience-2/</link>
+        <pubDate>Fri, 10 Jun 2011 08:24:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/face-to-audience-2/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/face-to-audience-2/ -&lt;p&gt;噢天啊，我真的跑去看第二次了。&lt;/p&gt;
+&lt;p&gt;面劇團這次首演，事實上有兩場，昨天跟今天各一場。昨天(其實是今天凌晨)很努力的把心得給寫下來，心中的感動還是一直在那。今天晚上也有空，就去排隊囉~!! 話說，昨天跟今天都一樣，因為愚蠢的意外，我沒有事先線上索票(嗚嗚~昨天晚上要索今天的票也早已經滿了&amp;hellip;)，所以只能去無票候補區排隊。今天去得晚了點，昨天是第三個，今天是第&amp;hellip;.十幾個左右吧。排隊的時候突然發現，有些人手上拿著一朵花，我心想，哇喔應該是粉絲團吧！沒幾分鐘，天使似乎聽到了我的呼喚(?)，有工作人員拿了朵花給我，說謝幕的時候要獻花的。嘿，那朵是玫瑰耶！真害羞&amp;gt;////&amp;lt;&lt;br&gt;
+&lt;img src=&#34;01.jpg&#34; alt=&#34;&#34; title=&#34;花&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在隊伍中等候的同時，我除了邊壓抑著很想興奮地告訴旁邊的陌生人這場表演有多好看的衝動以外，同時還保持相機standby的狀態。因為有了昨天的經驗，我知道如果我想拍到入場票的全貌的話，就只有在我拿到它，一直到我走到剪票人員的這幾十秒的時間！唉，因為是候補的，所以票會在入場前一刻才發放&amp;hellip;..:( 把握這幾十秒的時間，我終於拍到完整的票了！&lt;br&gt;
+&lt;img src=&#34;02.jpg&#34; alt=&#34;&#34; title=&#34;票 - 正面&#34;&gt;
+&lt;img src=&#34;03.jpg&#34; alt=&#34;&#34; title=&#34;票 - 背面&#34;&gt;&lt;br&gt;
+其實昨天就發現一個很有趣的地方，票的角落寫著「流水號007」，昨天就在懷疑，到底是我運氣好到爆炸，候補也可以候補到007號這麼有意義的票，或是這是故意設計的呢？今天就馬上找到答案了&amp;hellip;.每一張都是007 :P&lt;/p&gt;
+&lt;p&gt;今天運氣跟昨天差不多好，今天坐到第六排正中間的位置！其實只是因為這個位置比較難走進去(很窄)，而且又只有一個空位，所以讓我搶到！這位置的角度跟高度都很棒，唯一可惜的就是前面那個人太高了= =&amp;hellip;.或是頭太大，反正就是會擋到我，可惡。&lt;/p&gt;
+&lt;p&gt;又一次的暗幕，又一次的演出。&lt;/p&gt;
+&lt;p&gt;第二次的欣賞，讓我發現一些很有趣的地方。首先是劇情前後的呼應，除了昨天說到的道具以外，其實也有很多台詞是前後連貫呼應的。我最驚訝的一句是，傻傻的小張跟他心愛的小萍在pub裡第一次出現的時候，聊天過程中他其實就有講到一句「&amp;hellip;..真他媽的xxx」這樣的話。一直到接近尾聲的地方&amp;hellip;.接到小萍說他不喜歡一點髒話都不罵的男人，雖然那個「哇操~」總是可以讓全場觀眾爆笑，但是這小小的伏筆應該要看第二次才會發現呢！:D&lt;br&gt;
+再來，大概就是今天的突發狀況少了很多&amp;hellip;像是吳思華生氣拍pub櫃檯桌子的時候，搖搖杯沒有倒下來，還有小萍寫白板的板擦沒有掉下來，這兩個突發狀況，說真的，對昨天那場表演有畫龍點睛的效果！另外，白板筆是真的沒水我知道XDDDD 還好有找到有水的筆&amp;hellip;..&lt;br&gt;
+嗯&amp;hellip;.我想還有一個讓我很懊惱的地方，就是今天的觀眾好會笑&amp;hellip;..害我都聽不清楚全部的台詞啦&amp;gt;&amp;quot;&amp;lt;&lt;/p&gt;
+&lt;p&gt;還是要講一下關於演員的部份。今天我發現神探跟Vincent的表現更亮眼了！神探的喜感更加活靈活現了，Vincent的同性戀味道更自然了，真的很棒！說到這個，害我想到那個神探外遇的部份啊&amp;hellip;..感覺不是很明確耶，有點讓人一頭霧水的說。不過那個「想你唷」好甜喔~不知道神探心裡在想著誰。:P&lt;br&gt;
+其他人的話&amp;hellip;..Coco跟小萍今天好像有一點點卡詞，但是其實看不太出來。Coco在這兩天的第一幕都有點緊張，是真的緊張還是他故意要演裝出來的緊張勒~? 萬一是演的那還真的是有夠像耶XDDDDD 太厲害了真的！吳思華的動作細節，昨天根本沒有注意到，今天仔細一看才發現，他真的演得很好！對女生的那個眼神，略帶勾引還有幻想的眼神，如果有注意到的話，真的就能夠直接知道他演的是一個變態了！最後是小張，他的那股傻勁還是非常生動，不過今天才突然發現，其實演小張這個，本人好像還滿帥的！不是英俊瀟灑那種，但是就是滿帥的這樣！&lt;/p&gt;
+&lt;p&gt;謝幕啊&amp;hellip;&amp;hellip;謝幕我還是一樣不停的鼓掌耶，好像鼓掌鼓到手傷好一半了，哈。&lt;br&gt;
+在衝上台送花的人群中，我也緩慢的向舞台移動，發現好像有滿多親友團來支持的，演員們都在跟朋友聊天。後來我鼓起勇氣去把花獻給小萍&amp;gt;///&amp;lt;，這麼巧旁邊跟他聊天的是之前認識的老師，就請老師幫我們拍個照！噢對了，這時候旁邊殺出一個人&amp;hellip;.他送花束！花束耶！拿著一朵玫瑰花的我輸了&amp;hellip;.||| 哎呀這只是個小插曲啦。接著我去找小張拍照，我沒有花了，也不打算送花，男生送男生一朵玫瑰花很奇怪耶&amp;hellip;..我只跟他說「我很喜歡你的角色，」(講到這裡他還一臉茫然)「可以跟你拍張照嗎？」啊哈~然後我就沒跟其他人拍照了。後來有點後悔，應該去找神探拍個照的，他好頑皮好好玩喔XD&lt;/p&gt;
+&lt;p&gt;呼~所有的工作人員們都辛苦了！整個表演的設計都很棒，也看得出來很用心。我很喜歡。第一次這麼認真看&lt;del&gt;話劇&lt;/del&gt;舞台劇的CrBoy覺得很開心！:D:D:D:D:D:D:D&lt;/p&gt;
+&lt;p&gt;又是碎碎念：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;我今天突然想到，我不穿皮衣，也不穿白襪子，偶爾也會罵一點髒話唷！XD&lt;/li&gt;
+&lt;li&gt;分享一下我的票，嘿嘿~&lt;br&gt;
+&lt;img src=&#34;07.jpg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;08.jpg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;09.jpg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;10.jpg&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;li&gt;對了！昨天就一直覺得小萍有某種感覺&amp;hellip;..今天想到了，原來是很像徐佳瑩！我不是說長相喔！是說氣質！氣質！&lt;/li&gt;
+&lt;li&gt;啊啊啊啊啊！差點就忘記這個！這個一定要說才行！第二天的小冊子多了一張小小的紙條&amp;hellip;.一看，原來是勘誤啊！&lt;br&gt;
+&lt;img src=&#34;11.jpg&#34; alt=&#34;&#34; title=&#34;走出戲外&#34;&gt;
+這實在太有梗了啦XDDDDDDDDDDDD 笑死我了~~~&lt;/li&gt;
+&lt;li&gt;對了，我好像一直都忘記說，看了他們的表演害我好後悔以前沒去修表演藝術概論喔T___________T&lt;/li&gt;
+&lt;/ul&gt;
+- https://blog.crboy.net/posts/face-to-audience-2/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>面劇團 (Face to Audience) - 影痴謀殺</title>
+        <link>https://blog.crboy.net/posts/face-to-audience-1/</link>
+        <pubDate>Thu, 09 Jun 2011 12:41:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/face-to-audience-1/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/face-to-audience-1/ -&lt;p&gt;嘿，我並不是要說紀蔚然老師寫的&lt;a href=&#34;http://findbook.tw/book/9789867420633/basic&#34;&gt;那本影痴謀殺&lt;/a&gt;，不過，關係倒也很深。&lt;/p&gt;
+&lt;p&gt;前兩天收到成大藝術中心寄的信，說有個「面劇團」的首演&amp;hellip;.「影痴謀殺」？我沒聽過面劇團，也沒聽過影痴謀殺，只是不小心被那簡介給吸引住了，或許也帶有一點點嘗鮮的心情吧。&lt;/p&gt;
+&lt;p&gt;在我的記憶所及，我好像沒看過幾場&lt;del&gt;話劇&lt;/del&gt;舞台劇。首先想到的是學校各系或是校友會辦的xx之夜，再來，印象中&amp;hellip;.呃，其實沒印象了，好像有次被強迫欣賞某個很有名的劇團演出的&lt;del&gt;話劇&lt;/del&gt;舞台劇？總之那都不重要了，我只是想說：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;我並不懂&lt;del&gt;話劇&lt;/del&gt;舞台劇。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;嗯，也許我該從下午講起了&amp;hellip;.其實我是當天下午才確定我晚上會去看這場表演的。首演耶！面劇團不曉得是哪裡來的新成立的劇團&amp;hellip;.以前我只聽過台南人劇團，那是從修通識表演藝術概論的同學口中聽到的，我還真是個鄉巴佬XD 晚上到了鳳凰樹劇場才知道，他˙們˙竟˙然˙全˙都˙是˙成˙大˙學˙生！！！！嚇死我了實在&amp;hellip;&amp;hellip;.呃，雖然在場外有些意外的小插曲，我沒有票可以進去&amp;hellip;..但是強運如我，在候補到票之後，竟然還是找了個第四排，中間偏右的位置坐了下來。欸不是我在說，這位置很棒耶！附近幾乎都坐滿了說，這就叫座無虛席嗎？我在入場前對藝術中心的怨念都消一半了&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;這場表演的劇本，其實就是開頭提到的那本影痴謀殺，我沒有看過內容，不曉得他是小說或是本來就是劇本形式。但我有找到&lt;a href=&#34;http://hakka.nctu.edu.tw/Hakka-I-facultywebs/iristuan/data/zhou/zhou4.htm&#34;&gt;別的劇團&lt;/a&gt;也以此作為演出劇本。故事發生在2005年的台北，六名白人男性慘遭連續殺害，而「神探」負責偵查此案件。所有死者在生前都經常出入一家外國人聚集的pub，Coco、Vincent、吳思華這三名嫌犯，對上「神探」與小張兩位警察，還有小萍這位&amp;hellip;..翻譯？XD 好啦事實上小萍也是警察吧。在影痴謀殺的一些網路上的心得有提到，紀蔚然老師在這個故事中，並不玩弄兇手犯案所使用的手法，而是要更實際的，去深刻探討兇手內心的動機。嗯，很棒的故事。噢對了，這段所講的東西其實都是我在回家之後才從網路上還有現場發的小冊子(那有專門的名字嗎)上面所了解到的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;「我現在就要幹你。」&lt;/strong&gt;(被揍)&lt;br&gt;
+小冊子的封面上，印著精緻卻又富有張力的標題。什麼樣的劇情，會出現這樣聳動的標題？很意外的沒有太多意外，這是一個很明顯的性暗示。&amp;hellip;&amp;hellip;&amp;hellip;很明顯的性暗示是什麼鬼阿！(又被揍)&lt;br&gt;
+入場後的等待時間，我看著冊子封面、還有舞台上的投影幕發呆。(其實還偷偷上了一下噗浪。) 美中不足的是，投影幕上所放映的人物介紹，太過粗糙了。一直到整場演出結束，我還是認為那是唯一的缺憾。但，&lt;del&gt;話劇&lt;/del&gt;舞台劇的重點並不在於前面的簡報做得好不好，連鄉巴佬都這樣認為了，我相信其他觀眾應該不會在意這種小事的。&lt;/p&gt;
+&lt;p&gt;抱著一種陌生與期待，我看著燈光暗下。&lt;/p&gt;
+&lt;p&gt;在演出過程中，我就已經融入他們了。噢不，我想應該是被強行吸入那個活生生的情境去了。不時可以聽到笑聲，還有間或出現的掌聲與小小的歡呼，整個鳳凰樹劇場都是他們的舞台了。角色的對話相當自然，其中埋伏著出其不意的笑點，跟搞笑劇又不一樣，那是真真實實能夠出現在生活中的趣味，當然是對旁觀者而言啦。我好喜歡那些對話，還有那些互動！不過，有時候我會偷偷觀察單面鏡另一邊的演員們，有時會發現他們也看戲看得入迷了XD 對了，這單面鏡不只是一個道具，我想它具有很大的象徵意義 - 警察局。開場時的那段簡短對白，引入警局這個場景，並且用單面鏡作為場景象徵，這一點細膩，對於觀眾的感受而言(學資訊的我們會叫他User Experience)有很大的影響！從這小地方就可以看出面劇團的團隊絕對有一定的水準 :D&lt;br&gt;
+事實上，每段場景都有或多或少的細節讓我佩服，也許真是我眼光短淺吧。不過我還想提到，那個三場景切割畫面的偵訊，看得出位置經過精心的安排，倒數第二次的亮燈，我心裡想的是：為什麼要加入這僅僅1秒鐘的畫面？我想是為了引導目光吧，觀眾的眼睛慢慢的被吸過去了:P 最後再挑一個我相當激賞的部份來碎碎念一下好了。在整個演出過程中，其實出現了很多突發狀況，呃，但是其實我沒辦法分辨哪些是突發狀況了！該說是他們太巧妙的製造了一些假的意外呢，或是他們精湛的演技把意外變成了劇本呢？記憶最深刻的是撿板擦的那個橋段，「板擦撿起來吧，都掉了」，他加詞耶！加詞耶！XDDDDDD (欸，你們不是故意弄掉的對吧&amp;hellip;..對吧？)&lt;/p&gt;
+&lt;p&gt;我必須說，這場演出真的太精采，太精采了！在小張發飆的時候，我的心跟著揪了起來，也感到有些害怕。別說神探跟小萍了，就連我也覺得小張真的發飆了&amp;hellip;..也是在這之後，我才不小心發覺，我早就被這六個人緊緊扣住&amp;hellip;&amp;hellip;這六個角色，真不曉得是怎麼選角的，怎麼會如此渾然天成？神探，有些老氣，有些江湖味，顯示出他在警界的經驗，但又有種頑童的氣質，為他所有的爆笑言行做了很貼切的引子。小張，傻傻的新人，看起來很上進，又帶有喜感，跟神探對戲簡直是情投意合(啥)。Coco，一個婊子，呃不是，我是說，一個相當自主且叛逆的女人，抽著菸，還有那富有殺氣的對白，他從打扮到內在彷彿真的成為了一個&amp;hellip;..＊＊。Vincent，稍微可惜了些，角色形象不夠鮮明，我認為外在的娘娘腔不是同性戀的主要特色，如果從內心把自己當成同性戀(而且是比較豪邁的那種)，也許會更加傳神:p。吳思華，一個安安靜靜的變態，本來以為會是智慧型犯罪的殺手，結果最後變成諧星了XD，我想這角色的形象並不如Coco那樣鮮明且外放，但仍然揣摩得很好！最後是小萍，我絕對不是因為小萍很可愛才最後提到的，我是根據出場順序。小萍在戲裡的獨白很多，我好喜歡這部份！小萍的獨白像是真的在說自己的心事一樣，動作、表情、語氣都是自己的，不小心就會忘記他其實是在舞台上勒！再來是戲的部份，這個角色本身的味道我也非常喜歡，那種堅持，一定要看資料的堅持，那種努力，要看完資料的努力，那種狂熱，對電影的狂熱，那種智慧，那種喜感，那種天真。對了，總覺得小萍才是真正的主角，雖然他在快到中期才出現，但是在那之前的橋段像是一段鋪陳的主歌，經過小萍獨白這段bridge後，開始進入副歌，也緊扣著整段故事。在這六個角色中，我想我最欣賞的應該是小張跟小萍吧，然而Coco也是讓我相當佩服的對象！&lt;/p&gt;
+&lt;p&gt;欸，其實好像還有很多感覺一時之間說不出來~&lt;/p&gt;
+&lt;p&gt;我不會忘記，謝幕的時候，我用最大的力氣，不顧右手受傷，很努力的不停鼓掌！真的，如果你看到這篇文章，我希望你也可以感受到我當時的感動！當時我唯一能夠做的就是給台上的每一位最大的掌聲。甚至，我感覺到他們的眼淚也即將決堤，或許在閉幕後的他們，也哭成了一團:p&lt;br&gt;
+嘿，整個鳳凰樹劇場都是你們的舞台啊！這個舞台裡面已經最少有一個人跟你們一起感動得熱淚盈眶了啊！走出鳳凰樹，我是帶著快樂、興奮、滿足、呃&amp;hellip;.我不知道該怎麼好好形容&amp;hellip;.總之是個超棒的心情離開的！&lt;/p&gt;
+&lt;p&gt;雖然現在在寫這篇文章的是個不懂&lt;del&gt;話劇&lt;/del&gt;舞台劇的阿宅 ，但是相信我，他們真的很棒！如果你也去欣賞他們，一定也會跟我一樣帶著笑容離開！&lt;/p&gt;
+&lt;p&gt;碎碎念們：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有篇找到的&amp;hellip;.算是新聞：&lt;a href=&#34;http://mypaper.pchome.com.tw/coolanews/post/1322198327&#34;&gt;成大「面劇團」成軍首演「影癡謀殺」&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;噢我才剛離開就馬上發噗說「面劇團讚！」可是都沒人理我XD&lt;/li&gt;
+&lt;li&gt;我說我要給他們100分! 結果得到的回應是「天啊&amp;hellip;.以你的標準&amp;hellip;..這真的是最高評價耶！」XDDDD&lt;/li&gt;
+&lt;li&gt;剛剛偷偷查了一下 小張、小萍還有Coco這三位演員，小張比較難找，不過先找到小萍之後就找到小張了XD 不過Coco就找不到了XD&lt;/li&gt;
+&lt;li&gt;噢噢~找到&lt;a href=&#34;http://www.cna.com.tw/postwrite/cvpread.aspx?ID=84482&#34;&gt;另外一篇新聞&lt;/a&gt;耶！(咦？裡面提到台灣戲劇表演家可是沒提到台南人劇團&amp;hellip;..?)&lt;/li&gt;
+&lt;li&gt;看了他們的演出之後其實很後悔之前沒有去修表演藝術概論啊&amp;hellip;..QQ 我回不去了&amp;hellip;&lt;/li&gt;
+&lt;li&gt;回家之後把門票還有小冊子拍了一下&lt;br&gt;
+&lt;img src=&#34;1.jpg&#34; alt=&#34;&#34;&gt;&lt;/li&gt;
+&lt;li&gt;碎碎念好多，還有想到的話之後再補吧~哈！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ps. 感謝&lt;a href=&#34;http://www.facebook.com/profile.php?id=1392878324&#34;&gt;楊三毛&lt;/a&gt;的指正，本文的「話劇」全部改成「舞台劇」了，真是不好意思。&amp;lt;(_ _)&amp;gt;&lt;/p&gt;
+- https://blog.crboy.net/posts/face-to-audience-1/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>Linux 上安裝 APC UPS 的控制程式 - apcupsd</title>
+        <link>https://blog.crboy.net/posts/linux-apcupsd/</link>
+        <pubDate>Sun, 20 Mar 2011 11:35:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/linux-apcupsd/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/linux-apcupsd/ -&lt;p&gt;由於實驗室的需要，有機會設定到 APC 的 UPS&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;架構上來說大致上是這樣&amp;hellip;. UPS 透過一條 RJ45-USB 的線接到某主機（主要控制端），另外有兩台主機也吃這個 UPS 的電，而他們必須透過 ethernet 與控制主機溝通。&lt;/p&gt;
+&lt;p&gt;我用到的環境是 Ubuntu 跟 CentOS，設定上沒什麼很大的差別就是了。首先安裝 &lt;code&gt;apcupsd&lt;/code&gt; 這個套件（&lt;code&gt;apt-get install apcupsd&lt;/code&gt; 或是 &lt;code&gt;yum install apcupsd&lt;/code&gt;），接著打開&lt;code&gt;/etc/apcupsd/apcupsd.conf&lt;/code&gt;，這個檔案其實自己就有很詳細的說明了，主要要設定的有這幾個部分：&lt;/p&gt;
+&lt;p&gt;主要控制端：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;UPSCABLE usb  
+UPSTYPE usb  
+NETSERVER on  
+NISIP 0.0.0.0  
+NISPORT 3551  
+UPSCLASS standalone  
+UPSMODE disable  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其他主機：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;UPSCABLE ether  
+UPSTYPE net  
+DEVICE &amp;lt;server_ip&amp;gt;:&amp;lt;port&amp;gt; #例：DEVICE 192.168.12.34:3551  
+NETSERVER off #應該也是可以設定成on 讓別人也可以跟這台主機要資料 但我認為沒有必要就是了  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此外，我還隨手修改了 &lt;code&gt;ONBATTERYDELAY 20&lt;/code&gt;，他的功用是讓機器在發現斷電狀況後多久才開始做反應&amp;hellip;設太短的話怕那種幾秒鐘的跳電也害他關機就是了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;設定好後，要重新啟動 apcupsd：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# /etc/init.d/apcupsd restart  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然後就可以用apcaccess去看看UPS的狀態，本機可以直接使用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# apcaccess
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;來查到狀態，但是我被表很久的是，如果在其他機器，那得這樣才行：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# apcaccess status &amp;lt;server_ip&amp;gt;:&amp;lt;port&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我是認為有查到資訊就表示安裝OK了啦&amp;hellip;.所以收工XD&lt;/p&gt;
+&lt;p&gt;其實安裝設定都不難，只是第一次做很生疏，也不知道該怎麼辦，所以摸索了很久。希望這篇文章有幫到人，也幫到未來的自己。:P&lt;/p&gt;
+&lt;h1 id=&#34;參考資料&#34;&gt;參考資料&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://help.ubuntu.com/community/apcupsd&#34;&gt;http://help.ubuntu.com/community/apcupsd&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.apcupsd.com/manual/manual.html&#34;&gt;http://www.apcupsd.com/manual/manual.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+- https://blog.crboy.net/posts/linux-apcupsd/ - </description>
+        </item>
+    
+    
+  </channel>
+</rss> 

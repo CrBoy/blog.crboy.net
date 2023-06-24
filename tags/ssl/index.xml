@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SSL on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/ssl/</link>
+    <description>Recent content in SSL on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 28 Sep 2016 03:09:57 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/ssl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CloudFlare 的 Flexible SSL</title>
+      <link>https://blog.crboy.net/posts/cloudflare-flexible-ssl/</link>
+      <pubDate>Wed, 28 Sep 2016 03:09:57 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/cloudflare-flexible-ssl/</guid>
+      <description>最近認真的把 blog 放上 github pages，算是差不多初始化完成了。不過 https 在這年頭是個很重要的問題啊&amp;hellip;.因為我設定了 CNAME，所以目前的網址是 hexo.crboy.net，但是如果直接連到 https://hexo.crboy.net 的話，會拿到一張 github.com 自己的 ssl 憑證，這張憑證簽給了許多 domain，其中包含 *.github.io，如下圖：
+雖然對於 github pages 本來給我的 crboy.githb.io 用起來是沒問題，但我自訂的 domain 可就沒辦法了。
+找了一下有沒有現成解決方案，找到這篇文章：Set Up SSL on Github Pages With Custom Domains for Free，裡面教你透過 CloudFlare 的 Flexible SSL 來設定，後半段則是教你怎麼強制使用 SSL。但我只想要單純支援 SSL，不反對 user 使用 http 連線，所以後半段就不理他了。進一步找「cloudflare flexible ssl」找到這篇文章：[免費SSL]Cloudflare 免費憑證讓網站綁上SSL加密連線(https)，得知原理其實很簡單：讓流量通過 CloudFlare（也就是 enable 他的 cdn 功能），CloudFlare 會幫你對外提供可用的 SSL 憑證。
+設定方式：
+把自己的 domain 的 DNS 服務放在 CloudFlare 上 啟用該 domain name 的 CDN 服務 到 Page Rules 新增一個 rule：URL match 設定為 DOMANE_NAME/*（例如 hexo.</description>
+    </item>
+    
+  </channel>
+</rss>

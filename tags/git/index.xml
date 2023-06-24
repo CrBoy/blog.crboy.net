@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/git/</link>
+    <description>Recent content in Git on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>神奇的 Git Subtree</title>
+      <link>https://blog.crboy.net/posts/amazing-git-subtree/</link>
+      <pubDate>Thu, 29 Sep 2016 03:01:12 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/amazing-git-subtree/</guid>
+      <description>一直以來只知道 git 可以透過 git-submodule 管理巢狀 git 專案。也就是一個大專案中有小專案，而這兩個專案要分別用 git 做版本控制的狀況。這會發生在專案有可以抽出來跟其他專案共用的部分，或是專案需要引入一個外部現有的 git 專案的時候。舉例來說，我的 vimrc 裡面有 snippets，這個 snippets 是值得被另外拉出來成為一個專案的。又或是像 hexo，我要自訂 theme，所以我 fork 了 icarus 這個 theme 來改，但需要把它放進我的大 hexo 專案中。
+用 submodule 的做法其實滿麻煩的，它的原理是：大專案紀錄某目錄是一個 submodule，所以大專案就不 track 該目錄的變更，而是 track 該目錄的 HEAD commit。該目錄的內容變更則交給他自己 track。也就是說，如果修改了小專案的內容，需要先去小專案裡面把修改 commit 進去後，再去大專案把小專案的新 commit id 給 commit 進去。光用講的都覺得混亂&amp;hellip;
+有天發現了 git-subtree 是個可以解決類似問題的工具，但差別在於 subtree 不需要事先指定哪個目錄是子專案，只要在需要的時候處理即可。什麼是需要的時候呢？
+要把子專案切出去的時候（通常只會切一次） 要把子專案在本地端的變更丟出去的時候 要把一個專案放進來變成子專案的時候（通常只會放一次） 要把子專案在外面的變更拉進來的時候 除了「需要的時候」以外，子專案就像是（其實根本就是）大專案的一部分，用原有的方式去操作 git 即可，相當單純！
+我覺得以我找到的資料來說，Git SubTree 共編 Library 這篇文章是講得比較清楚易懂的，有些別的文章會舉例錯誤或不知所云&amp;hellip;.XD 不過我認為需要搭配 man page 服用會比較能理解。
+下面就以 hexo 為例，練習把原本用 git-submodule 管理的 theme（crboy-icarus）改成用 git-subtree 管理，並推到相同的 remote repository 去吧。</description>
+    </item>
+    
+    <item>
+      <title>導讀：保持小而頻繁的 commit</title>
+      <link>https://blog.crboy.net/posts/small-frequent-commit/</link>
+      <pubDate>Tue, 03 Jul 2012 10:35:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/small-frequent-commit/</guid>
+      <description>今天讀到這篇文章 保持小而頻繁的 commit
+這篇文章在講使用分散式版本控制系統 (DVCS) 時應該儘量保持小而頻繁的 commit 行為，我覺得值得一讀。
+雖然作者使用的是 mercurial (hg)，但其實跟 git 的觀念是很像的。
+以下簡單導讀：
+第一部分介紹這個做法的好處，像是可以很容易做 code review (就算是自己 review 自己的 code 也一樣容易)、容易知道現在做了那些修改 (使用 git diff 一目了然)。他還提到用二元搜尋法找到出錯的程式，可透過 git bisect 完成。而他有用到的 hg shelve 跟 hg revert 在 git 也都有對應的功能 (git stash 跟 git revert)，前者是用來把目前 working copy 的修改「暫存」起來 (非 commit)，之後可以再取出來繼續把它改完，後者則是可以還原特定 commit 的變更。也就是說，配合 revert，如果每個 commit 都很小的話，可以很輕鬆把特定修改還原。
+第二部分講 DVCS 的好處，很重要的就是每個人可以自己搞自己的，又可以知道別人的脈絡。如果是在一人專案的狀況下，最基本上也可以省去跟遠端主機溝通的成本。但 DVCS 也有缺點，就是對於無法 merge (或根本不須 merge) 的檔案無法很好的處理。
+後面部分，關於暫存的部分上面提過了，主要就是 git stash。而 hunk selection 在 git 中可用 git add -p 或是 git add -i (interactive) 做到，如果不小心一次寫了太多功能，可以利用這種方式分別 commit，才能保持 commit 小而頻繁，以獲得好處。</description>
+    </item>
+    
+    <item>
+      <title>Gitolite 使用教學</title>
+      <link>https://blog.crboy.net/posts/gitolite-usage-tutorial/</link>
+      <pubDate>Tue, 26 Jun 2012 00:17:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/gitolite-usage-tutorial/</guid>
+      <description>首先，要使用 gitolite 一定得先會使用 git。下面就不贅述。
+初次設定 使用 gitolite 有以下兩個前置動作
+建立 ssh keypair
+使用 Linux 或 Windows 上的 Git Bash
+$ ssh-keygen -f mykey Generating public/private rsa key pair. Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in mykey. Your public key has been saved in mykey.pub. The key fingerprint is: xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx USER@HOST 這邊要注意幾個地方，-f 後面的參數表示檔名，可自行設定，此例中為 mykey。產生後會有兩個檔案，分別是 mykey.pub 跟 mykey，mykey.pub 是 public key (公鑰)，可以提供給你的 gitolite server 管理員，而 mykey 為 private key (私鑰)，相當於密碼，不可以洩漏給任何人。再來，passphrase 是用來保護 key 的密碼，也要牢記。在認證時，同時擁有 private key 與 passphrase 的人才能通過認證，這才是安全的手法。最後，當 key 產生之後，會印出 key 的 fingerprint (指紋)，是用來核對 public key 正確性用的。</description>
+    </item>
+    
+    <item>
+      <title>Gitolite 設定與管理</title>
+      <link>https://blog.crboy.net/posts/gitolite-settings-and-managements/</link>
+      <pubDate>Thu, 21 Jun 2012 01:57:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/gitolite-settings-and-managements/</guid>
+      <description>首先，要使用跟管理 gitolite 一定得先會使用 git。下面就不贅述。
+初次設定 對使用者而言，只要設定好 ssh host alias 即可。如果是 gitolite 管理者，還必須將 gitolite-admin 給 clone 下來，才能繼續後面設定的動作。
+設定 ssh host alias
+$ vim ~/.ssh/config host gitolite user git hostname localhost port 22 identityfile ~/.ssh/admin 這個設定的重點是指定連線時使用特定的 identity file (private key)，如此才能被 gitolite 認可為管理者 (gitolite 是看你用什麼 key 來決定你的身分)。記得 hostname 的部分要以自己的狀況更換成正確的主機位址。
+取得管理 gitolite 的 repository
+$ git clone gitolite:gitolite-admin 這個 repository 紀錄了所有 gitolite 的權限資料，包含所有 user 的 public key 與 repository 的存取權限設定。conf/gitolite.conf 中記載了所有專案的名稱以及每個 user 對專案的權限。而 keydir 中即為所有 user 的 keys。對 gitolite 的管理與設定都必須透過這個 repo 進行。</description>
+    </item>
+    
+    <item>
+      <title>Gitolite ver.3 (g3) 安裝筆記</title>
+      <link>https://blog.crboy.net/posts/gitolite-3-installation/</link>
+      <pubDate>Wed, 20 Jun 2012 01:50:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/gitolite-3-installation/</guid>
+      <description>Gitolite 是一個持續開發中的 git server 專案，自 2009 年開始後，至今已經發展到第 3 版，作者將其稱之為 g3 (之前的版本分別為 g1 與 g2)。由於 g3 相對於之前的版本，是整個重寫的專案，根據紀錄，g3 是大約今年 4 月才開始的，所以很多文件早已過時，只好慢慢研究作者提供的文件。整個專案都放在 github 上，並且作者也提供了相關文件，本文就是參考該文件寫成。
+我的操作環境是：
+Ubuntu 12.04 Git version 1.7.9.5 Perl 5.14 本文章假設使用者已經具備 git 的基本知識與操作技能，以及基本的 ssh 認知，不再贅述。
+準備步驟 伺服器上須先預備好以下套件
+Git 1.6.6 以上 Perl 5.8.8 以上 OpenSSH 產生管理者的 ssh key (此 key 將專門提供給 gitolite 管理者使用)
+$ ssh-keygen -t rsa -f &amp;lt;key_filename&amp;gt; 舉例：
+$ ssh-keygen -t rsa -f ~/admin 會產生 ~/admin 跟 ~/admin.pub 兩個檔案，分別是 private key 與 public key。</description>
+    </item>
+    
+    <item>
+      <title>Gitolite 2.2 安裝筆記</title>
+      <link>https://blog.crboy.net/posts/gitolite-22-installation/</link>
+      <pubDate>Mon, 18 Jun 2012 01:50:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/gitolite-22-installation/</guid>
+      <description>特別注意 - 為什麼標題要特別註明是 Gitolite 2.2？因為文章已經寫好之後才發現作者已經大幅更新版本。新版有文件在此。本文是以 ubuntu 12.04 套件庫中的 gitolite 2.2 作為安裝目標。
+Gitolite 是一個持續開發中的 git server 套件，本來還在糾結要玩 gitolite 或是 gitosis，決定兩個都嘗試看看後，發現本來打算先嘗試的 gitosis 很難找到來源，唯一找到的是原作者(吧)在 github 上的 repo，已經有 3 年沒更新了，於是決定直接嘗試 gitolite。搜尋了一下發現，原來 gitolite 是作者從 gitosis 的想法發展而來，本來是 gitosis + lite，但現在已經發展得比 gitosis 還強大了。而且從 gitolite 作者的 github repo 發現，上次更新是一週前，這表示它現在還是一個活躍且成長中的專案，當然就決定是他了！ (但其實後來才發現上次更新的是第 3 版，第 2 版現在只會修 bug 而已)
+我的安裝過程主要是參考 Tsung&amp;rsquo;s Blog 的這篇文章而成，但不曉得原因為何，我這邊碰到的狀況跟作者不太一樣，我想也許是他使用的是 Debian (?) 或者他用 Ubuntu 但是版本跟我不同吧。我還另外參考了這篇文章，裡面寫的東西滿豐富的。同時這裡也附上作者提供的文件。
+我的操作環境是：
+Ubuntu 12.04 Git version 1.7.9.5 Gitolite version: 2.2-1 本文章假設使用者已經具備 git 的基本知識與操作技能，不再贅述。另外如果是大部分其他系統的管理者，可能不習慣用 sudo，那麼就先切換到 root 再去執行動作即可。這邊為了保險起見，還是使用一般帳號進行設定。</description>
+    </item>
+    
+    <item>
+      <title>Git on Windows 安裝筆記</title>
+      <link>https://blog.crboy.net/posts/git-on-windows/</link>
+      <pubDate>Fri, 25 May 2012 00:25:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/git-on-windows/</guid>
+      <description>&lt;p&gt;Git 是一套很棒的分散式版本控制系統。不過由於它一直是在 Linux 上生長的，對於在 Windows 上使用來說其實稍嫌麻煩。&lt;/p&gt;
+&lt;h1 id=&#34;windows-上的各種-git&#34;&gt;Windows 上的各種 Git&lt;/h1&gt;
+&lt;p&gt;在網路上搜尋通常會找到 Git for Windows 跟 msysGit 這兩個不同的名詞，我過去一直沒辦法很清楚的把他們兩者區分開來。根據 &lt;a href=&#34;http://msysgit.github.com/&#34;&gt;msysgit 在 github 上的首頁&lt;/a&gt; 與 &lt;a href=&#34;http://stackoverflow.com/questions/3672272/msysgit-vs-git-for-windows&#34;&gt;StackOverflow 上的討論&lt;/a&gt;，我目前的理解是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;msysGit 是 msys + Git 的完整環境，包含了 build 程式用的 toolchain，同時他的執行檔是直接在 user (或者該說是 developer) 的機器上 compile 出來的，使用者隨時可以透過 &lt;code&gt;git pull&lt;/code&gt; 取得最新版的 msysGit 來編譯，算是給 git 開發者用的。&lt;/li&gt;
+&lt;li&gt;Git for Windows 可說是 msysGit 的「產出」，是預先 compile 好的 &lt;code&gt;git.exe&lt;/code&gt; 還有其他執行檔們&amp;hellip;其中只包含了基本的 msys 環境、有 bash、ssh、甚至 Git GUI 等工具，但是沒有 toolchain，適合單純使用（操作）git 的使用者安裝。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;另外還可能會找到一個更有名的東西，稱為 &lt;a href=&#34;http://code.google.com/p/tortoisegit/&#34;&gt;TortoiseGit&lt;/a&gt;，這是知名專案 &lt;a href=&#34;http://tortoisesvn.net/&#34;&gt;TortoiseSVN&lt;/a&gt; 的相關專案，顧名思義，就是烏龜殼包了 Git 啦！要注意的是，他只是一個 Git frontend，需要指定相關執行檔 (如 &lt;code&gt;git.exe&lt;/code&gt;) 的位置才能工作。特別的是，他本身附帶了 PuTTY 的 ssh client (&lt;code&gt;plink.exe&lt;/code&gt;)，讓使用者可以透過比較符合 windows 使用習慣的方式來使用 ssh，如果不是很熟 linux 或是 GUI 狂熱份子可能會比較喜歡。XD&lt;/p&gt;
+&lt;p&gt;註：知名專案 cygwin 也可以安裝 git 並在 command line 下使用，但對於沒在使用 cygwin 的使用者而言麻煩得多，故此處不介紹。&lt;/p&gt;
+&lt;p&gt;這篇文章分成三個部分：首先介紹 Git for Windows (免 compile 的那個) 的安裝，接著是 msysGit (需要 compile 的那個) 的安裝，最後會介紹 TortoiseGit 的安裝，並以一個簡單的 git clone 作為結束。如果是一般單純想在 windows 上用 git 的人，可以只看第一跟第三部分即可，第二部分就當作參考資料吧！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>「那些老師沒教的事」簡報釋出</title>
+      <link>https://blog.crboy.net/posts/release-slides-of-code-smart/</link>
+      <pubDate>Mon, 02 Apr 2012 23:41:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/release-slides-of-code-smart/</guid>
+      <description>在緊張得半死的狀況中，終於把這個 talk 給講完了XD 希望來聽的人都有些收穫~
+不過可惜的是，我太緊張了，所以有些東西講的不是很完整，甚至是漏講&amp;hellip;.orz 而且滿多東西好像&amp;hellip;.呃&amp;hellip;.有點臨場發揮&amp;hellip;.XD 希望不要讓人覺得太亂~
+當日演講簡報可點選此處下載
+自己重新看了簡報，大致上檢討一下自己，如下：
+git-config 沒有 demo 到(因為我自己也很少用&amp;hellip;我都直接看設定檔來改，比較乾脆XD) 之前就一直覺得應該要畫點圖來描述 revision 還有 branch，但是一直偷懶&amp;hellip; git-add -p 沒講到QQ&amp;hellip;.應該要 demo 一下「部分 add 並 commit」的 .gitignore 如果有 demo 的話，應該會更清楚點 沒講到 git-revert 啊!!!! (大敗筆) 應該拿個實際上的使用 git 協作的範例，這樣聽眾會更有感覺&amp;hellip; make 還是該現場 demo 一下&amp;hellip;.幾行而已又不會花多少時間QQ 我竟然沒講到 gdb 可以預先寫好 command，甚至是 function 的這件事&amp;hellip;.. vim demo 太少&amp;hellip;連 vimrc 都沒有開來看看，真是不應該 vim 文字物件 (text object)、tabpage、quickfix、mapping 都應該要提一下的&amp;hellip;. 結果變成檢討文了&amp;hellip;&amp;hellip;..XD
+如果這樣的東西以後還有機會再講的話，也許要考慮拆成兩個部分，然後分別作比較完整的 demo，甚至是現場實作，應該會比較有趣一點！但是，如果是拆開的話，那不管講那個主題都顯得我會得太少了耶&amp;hellip;..orz 畢竟，不管在哪個範疇我都只是個學習者，充其量是脫離初學吧我想。我生來就是只能講初級講題的吧XDDDD
+噢我發現我的文章，總是會出現很多個 XD，對吧？XD
+最後這邊宣傳一下當日最後宣傳的事情。
+我之前嘗試性的建立了一個小小的社群，叫做 C4Labs。當時想嘗試把社群聚會的形式跟氣氛帶到成大來，不過成效好像頗差orz。現在畢業了，想說看看能不能再找回當初的期待。我想把對於電腦、網路、程式等等技術有強烈興趣的朋友們聚集起來，一起討論跟分享。因為涵蓋範圍很廣，想當然爾並不是討論很高級很困難很深入的技術，算是初階的社群？XD
+現在還有一些應該慢慢建立起來的東西，我會儘量去做，目前我在 Google Groups 上開了一個討論群組，作為聯絡的管道。歡迎有興趣跟我們一起分享的朋友們一起來玩！:P
+我們的聚會現在並不定期 (我承認是有一搭沒一搭啦)，不過從上週的演講做為一個開頭，希望每週四晚上都有一個聚會，一週是演講，一週是單純的聚會分享(或閒聊、討論、桌遊？XD)，這樣交錯進行，節奏應該不會太快，而且學得到東西！</description>
+    </item>
+    
+    <item>
+      <title>透過 ssh 遠端存取 git repository</title>
+      <link>https://blog.crboy.net/posts/remote-git-access-via-ssh/</link>
+      <pubDate>Fri, 23 Mar 2012 03:31:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/remote-git-access-via-ssh/</guid>
+      <description>好，今天來寫個我架設「偽 - git server」的作法吧！
+為什麼叫做「偽 - git server」呢？因為他不是真的跑起來一支 daemon 去負責 git 的 access，像是 gitolite 或是 gitosis 那樣。(事實上我也不知道該怎麼把那些東西架起來XD)
+由於 git 可以透過 ssh protocol 來 access，當然要善用這點！
+以下我分為單人各自使用與多人共用來講：
+單人各自使用 這算是簡單的應用了，只要你有一台工作站的 ssh 帳號，而且工作站上有 git (好吧，我承認我不曉得 minimal requirement 是什麼，也許是 git-shell 吧？) 的話，就可以這樣用，相當簡單！
+首先假設遠端 server/workstation 叫做 Remote，網址是 example.com，我在這台機器上的帳號為 crboy，家目錄是 /home/crboy。相當單純而常見的配置。另外本機叫做 PC，其他相同。
+那麼我們想要開始一個新專案可以這麼做：(注意主機名稱)
+crboy@Remote:~$ mkdir my_project.git # 建立專案 repo 的目錄 crboy@Remote:~$ cd my_project.git # 進去該目錄 crboy@Remote:~/my_project.git$ git init --bare # 初始化這個目錄為「純repo」(這是我自己的說法，應該是不太通用，記得 bare repository 比較好) Initialized empty Git repository in /home/crboy/my_project.</description>
+    </item>
+    
+  </channel>
+</rss>

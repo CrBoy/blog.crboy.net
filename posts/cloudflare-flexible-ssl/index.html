@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html><head>
+<title>CloudFlare 的 Flexible SSL</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    CloudFlare 的 Flexible SSL
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2016-09-28 03:09
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/cloudflare">CloudFlare</a>
+                                &nbsp;
+                            
+                                <a href="/tags/hexo">hexo</a>
+                                &nbsp;
+                            
+                                <a href="/tags/ssl">SSL</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>最近認真的把 blog 放上 github pages，算是差不多初始化完成了。不過 https 在這年頭是個很重要的問題啊&hellip;.因為我設定了 CNAME，所以目前的網址是 hexo.crboy.net，但是如果直接連到 <a href="https://hexo.crboy.net">https://hexo.crboy.net</a> 的話，會拿到一張 github.com 自己的 ssl 憑證，這張憑證簽給了許多 domain，其中包含 *.github.io，如下圖：</p>
+<p><img src="github-ssl-cert.png" alt="github-ssl-cert"></p>
+<p>雖然對於 github pages 本來給我的 crboy.githb.io 用起來是沒問題，但我自訂的 domain 可就沒辦法了。</p>
+<p>找了一下有沒有現成解決方案，找到這篇文章：<a href="https://sheharyar.me/blog/free-ssl-for-github-pages-with-custom-domains/">Set Up SSL on Github Pages With Custom Domains for Free</a>，裡面教你透過 CloudFlare 的 Flexible SSL 來設定，後半段則是教你怎麼強制使用 SSL。但我只想要單純支援 SSL，不反對 user 使用 http 連線，所以後半段就不理他了。進一步找「cloudflare flexible ssl」找到這篇文章：<a href="https://sofree.cc/cloudflare-free-ssl/">[免費SSL]Cloudflare 免費憑證讓網站綁上SSL加密連線(https)</a>，得知原理其實很簡單：讓流量通過 CloudFlare（也就是 enable 他的 cdn 功能），CloudFlare 會幫你對外提供可用的 SSL 憑證。</p>
+<p>設定方式：</p>
+<ol>
+<li>把自己的 domain 的 DNS 服務放在 CloudFlare 上</li>
+<li>啟用該 domain name 的 CDN 服務</li>
+<li>到 Page Rules 新增一個 rule：URL match 設定為 <code>DOMANE_NAME/*</code>（例如 <code>hexo.crboy.net/*</code>），setting 新增 SSL 並指定為 flexible</li>
+<li>Save and Deploy 之後就好了，剩下的就是時間問題，我自己設定的時候是馬上就可以用了&hellip;.（運氣好）</li>
+</ol>
+<p>不過倒是有個小小的問題&hellip;..這張憑證簽給好多 domain 啊&hellip;..而且除了我的 domain 以外也有別人的 domain，而且都是 wildcard&hellip;.覺得有點擔心呢XD</p>
+<p><img src="cf-flexible-ssl-cert.png" alt="cf-flexible-ssl-cert"></p>
+<p>另一個方式（需要花點錢）是透過 AWS 的 CloudFront（也是 CDN 服務），他也有一樣模式的東西，AWS 會幫你簽一張憑證，不過這憑證是專門簽給那個 domain 的。實際上是在 AWS Certificate Manager (ACM) 中自己決定要簽給哪些 domain，AWS 會寄信給 domain 的管理者請求 approve。雖然這樣安心多了，不過要花錢&hellip;.就算了吧XD</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2016-09-28</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/amazing-git-subtree/">
+			Next<br>神奇的 Git Subtree
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/ipinfo.io/">
+			Previous<br>發現一個滿方便的 ip 資訊查詢：ipinfo.io
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

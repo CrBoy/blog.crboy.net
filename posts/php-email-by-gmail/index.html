@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html><head>
+<title>PHP 自動發信程式</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    PHP 自動發信程式
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2012-09-21 00:03
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/php">php</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E7%AD%86%E8%A8%98">筆記</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E9%96%92%E8%81%8A">閒聊</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>之前為了發 COSCUP 的通知信，參考網路上的範例用 PHP 寫了個小程式。我把範例程式放在這個 gist 上：<a href="https://gist.github.com/3135053">https://gist.github.com/3135053</a></p>
+<p>其實明顯看得出來，程式沒什麼架構，純粹只是為了可以 work 而寫的<a href="http://www.ithome.com.tw/itadm/article.php?c=49891">拋棄式程式</a>。不過丟出來一方面可以當自己的筆記，以後要找比較好找，另一方面，也許另一個人想要寫類似的小玩具的時候就可以參考了 :P</p>
+<p>以下是一些簡單的介紹。</p>
+<p>我使用這個程式的狀況是，我需要寄一封信給很多人，而我又希望每個人收到的信，收件者只有自己，而且信件開頭還會寫上他的名字，這樣比較貼心。所以沒辦法用「寄給自己 and BCC」的方法達成，只好透過程式完成。</p>
+<p>這個小程式實際上是透過一套稱為 PHPMailer 的 library 做真正的寄信動作，所以困難的部分都被它做走了！我們只要把該設定的東西設定一下就差不多。要設定的項目大概有這些：</p>
+<ul>
+<li>SMTP server 資訊 (主機、port、認證方式&hellip;等)</li>
+<li>登入資訊 (我使用 Gmail 寄信，所以需要登入)</li>
+<li>寄件者與收件者資訊</li>
+<li>信件資訊 (標題與內文)</li>
+</ul>
+<p>在我這邊，每封信不同的地方只有收件者與內文，所以我會每次重新產生並設定，其餘部分都在最前面寫死。</p>
+<p>收件者與內文的部分，我是先將收件者名單從 Google Spreadsheets 中匯出成 .tsv 檔 (因為比較容易 parse)，再直接讀入。這個寫在 <code>function parse_name_list_tsv($filename)</code> 中。然後用一個自己刻的簡單 template tool (<code>function fill_template($content, $data)</code>, 才 4 行XD) 去加上 user-specified 的資料，最後送信收工！</p>
+<p>一些有趣的小細節：</p>
+<ul>
+<li>忘記為什麼了，我一開始跑起來會出現跟時區有關的錯誤，所以必須加上 <code>date_default_timezone_set('Asia/Taipei');</code> 來避免這個問題</li>
+<li>因為我的 Google Account 有開啟兩階段驗證 (2-Step Verification)，而我們這種小工具當然不可能支援，所以要為我們的程式特別創造一組應用程式密碼，才能正常使用喔！</li>
+<li>一開始不小心抓到舊版的 PHPMailer，它有個 bug 就是，CC 的人會變成 BCC (或是反過來&hellip;我忘了)，所以我直接從它的 source code 裡找到有問題的那段修掉了 (open source rocks!)，不過還是不太確定是不是我使用錯誤。結果後來發現有新版 PHPMailer，就特別關注了一下這個問題，發現已經被修掉了XD 修的方法一樣&hellip;.哈！</li>
+<li>因為 PHPMailer 新增收件人的 API 是 <code>AddAddress()</code>，所以要注意，要更改收件人的話必須先執行 <code>ClearAddresses()</code>，否則收件人清單會一直長&hellip;.(好險我在正式寄信前的測試就發現這個問題&hellip;orz)</li>
+</ul>
+<p>大概&hellip;差不多是這樣吧！突然有點佩服自己，一點小東西也可以囉嗦這麼多，哈哈&hellip;.</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2012-09-21</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/change-debian-ubuntu-default-editor/">
+			Next<br>修改 Debian 或 Ubuntu 預設 editor
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/introduction-to-gitit/">
+			Previous<br>Gitit 簡介
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

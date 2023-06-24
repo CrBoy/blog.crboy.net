@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>硬體 on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/%E7%A1%AC%E9%AB%94/</link>
+    <description>Recent content in 硬體 on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 01 Aug 2012 17:45:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/%E7%A1%AC%E9%AB%94/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NAS 的 NFS 掛不上...竟然是 switch 害的!!</title>
+      <link>https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/</link>
+      <pubDate>Wed, 01 Aug 2012 17:45:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/</guid>
+      <description>最近在新增設備，分別是 HP ProCurve 1810G-24 L2 switch 與 Synology RS812+ NAS，沒想到前兩天碰到一個讓人吐血的問題&amp;hellip;故事要從這裡說起&amp;hellip;..
+一開始很開心的接上了 switch 還有 NAS，似乎相當正常，但操作相當緩慢&amp;hellip;.後來 ping 了一下，封包一直掉&amp;hellip;&amp;hellip;&amp;hellip;.呃，但是後來換台電腦就好了，所以目前這個問題被我擱置&amp;hellip;..XD
+離題了，Synology NAS 算是還不錯，它的 OS (核心是 Linux，名稱叫做 DSM) 提供了 NFS 的支援，但主要的問題是&amp;hellip;&amp;hellip;問題是我掛不上啊!!!!! 我碰到的狀況相當奇怪，我這台電腦連到 NAS 的管理介面沒有問題，ping 它也回很快，甚至是 CIFS (Windows 的網路芳鄰) 都很順利&amp;hellip;.獨獨 NFS 掛不上去 orz
+我試了兩台電腦，都是 Linux，這兩台電腦跟 NAS 都接在上面說的那台 HP ProCurve 1810G-24 L2 switch 上。其中一台有防火牆，另一台沒有開，但是問題跟這個無關，所以就不理他了。我的狀況是，showmount 非常正常，NFS 權限也沒問題，但是真的要 mount 的時候就等很久很久很久&amp;hellip;..然後就 timeout 了&amp;hellip;&amp;hellip;= =
+花了一個下午找不到問題，整個晚上在想原因，一直到隔天剛好 NAS 廠商過來，結果他們也找不出原因!!!! 後來是因為廠商帶了台很簡單的 ZyXEL switch 來 (因為之前跟他們說我 ping NAS 掉包掉很大)，沒想到換上去就好了!!!!!! 杯具啊!!!!!!!! 天大的杯具啊!!!!!!!! 好&amp;hellip;&amp;hellip;既然確定是 switch 的問題，當然立馬殺進去 switch 的管理介面看看&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>同軸電纜規格</title>
+      <link>https://blog.crboy.net/posts/%E5%90%8C%E8%BB%B8%E9%9B%BB%E7%BA%9C%E8%A6%8F%E6%A0%BC/</link>
+      <pubDate>Sat, 25 Jun 2011 19:44:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E5%90%8C%E8%BB%B8%E9%9B%BB%E7%BA%9C%E8%A6%8F%E6%A0%BC/</guid>
+      <description>之前為了找同軸電纜的規格，找了好久才找到，所以決定把它記錄下來。
+來源是這個地方：
+一般同軸電纜品名記號說明：
+例：3C-2W、5C-2V、5C-FB
+第一項之數字：表示外部導體之約計外徑(mm)
+第二項之文字：&amp;ldquo;D&amp;quot;表示特性阻抗 50 歐姆，&amp;ldquo;C&amp;quot;表示特性阻抗 75 歐姆
+第三項之文字：&amp;ldquo;2&amp;quot;表示PE充實絕緣型，&amp;ldquo;F&amp;quot;表示發泡PE絕緣型
+第四項之文字：&amp;ldquo;V&amp;quot;表示外部導體為一層編織後施以PVC外被覆，&amp;ldquo;W&amp;quot;表示外部導體為二層編織後施以PVC外被覆，&amp;ldquo;B&amp;quot;表示外部導體為兩面鋁箔麥拉帶縱包再加上鍍錫軟銅線編織</description>
+    </item>
+    
+    <item>
+      <title>FILCO紅軸80%鍵盤開箱</title>
+      <link>https://blog.crboy.net/posts/filco%E7%B4%85%E8%BB%B880%E9%8D%B5%E7%9B%A4%E9%96%8B%E7%AE%B1/</link>
+      <pubDate>Mon, 07 Mar 2011 05:14:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/filco%E7%B4%85%E8%BB%B880%E9%8D%B5%E7%9B%A4%E9%96%8B%E7%AE%B1/</guid>
+      <description>August, 2021
+由於管理不善，這篇開箱文的照片，在多年後已經全數消失，也不知道哪裡找得到了。
+啊啊啊啊啊啊啊啊啊首先報告一下，小弟這把鍵盤的型號是 - FLICKTL15，用的軸是cherry紅軸(無段落+輕彈力)，80%配置(沒有數字鍵區)，共87個鍵，黑色，白色英文+注音刻印，支援N-key rollover(不過我沒有測試，因為找到的測試軟體只有windows版orz)。另外，小弟對機械式鍵盤其實沒有研究&amp;hellip;所以說，這篇文章其實是一篇&amp;hellip;&amp;hellip;
+超級不專業開箱文。
+拿到的時候就這樣一小小盒&amp;hellip;.但是小歸小，還是要好多小朋友才搬得動阿&amp;hellip;..
+在開箱之前，先看看底部跟側邊的標籤，拖一下台錢創造一些期待感吧~
+由於小弟的不專業，這複雜的標籤我看不懂啊啊啊啊啊啊啊啊啊啊啊～～～～～～～～有研究的看倌們就自行解讀吧。(反正這只是拖台錢用的)
+那就正式把箱子給打開吧。
+掀開塑膠蓋子(那有專門的名詞嗎？)的樣子
+看到表面的那質感真是令我心花怒放啊XD 不過聽說這傢伙是ABS鍵帽，久了會變光頭&amp;hellip;.? 噢不管他了，真的變了再來換鍵帽吧。
+配件們出來跟大家打聲招呼
+左上角是連接線跟他的束帶，中間是拔鍵器，右下是搶鏡頭亮眼的紅色WSAD鍵帽
+把塑膠袋拆了拿出來呼吸一下新鮮空氣，順便很三八的排列了一下WSAD。可以看到在側面有印刷上下左右，如果忘記誰是上下左右的話可以看= =a (正常的遊戲玩家不會這麼呆吧XD)
+拔鍵器手把特寫。其實也沒什麼，只是想拍一下而已。
+這拔鍵器很有趣，跟以前看過的不一樣&amp;hellip;他的頭其實有兩片，分開之後可以扣住鍵帽的兩個角，往上一拉就可以把鍵帽拔掉了。噢不過我覺得這樣的設計比較佔空間就是了&amp;hellip;.
+這是鍵盤右側，下方有FILCO的logo，由於我買的是80%版本，沒有NumPad(數字鍵)區域，所以logo也移動到這個位置了。其實還不賴:D
+主要打字區的配置。呃&amp;hellip;.突然發現這照片有點變形&amp;hellip;.是廣角端的問題嗎= =a (這明明就是手機拍的 哪來的廣角端&amp;hellip;.) 看起來怪怪的&amp;hellip;不過我只是想拍他的配置啦。長形的enter鍵，長的shift，左右皆有windows key，右邊有快顯功能表鍵。
+功能鍵區是我比較喜歡的六塊雞肌配置。另外可以看到caps lock跟scroll lock的燈號，紅色LED，位置在六塊肌上方，原因也是因為沒有了NumPad&amp;hellip;.所以當然也沒有num lock的燈號了(廢話XD)
+拖了這麼久的台錢，還是得證明一下我真的拿了把紅軸出來，不然會被投訴XDDDDD ZXC這三個鍵很可憐的被我拆了下來，看看這精美的紅軸~
+換個角度再一張證明我的清白&amp;hellip;
+燈號近拍。這拍得實在是很糟糕&amp;gt;&amp;lt;
+最後一張圖，這是背後標籤。
+基本上，這篇文章的圖都拍得很糟糕&amp;hellip;噢不過這不是重點，重點是鍵盤。
+這把鍵盤打感就如同Cherry紅軸一般輕巧，無段落，這是我個人最理想的機械式手感了。跟Cherry的差別在於，聽說FILCO底部有一塊鐵板，所以觸底的感覺比較明顯，而Cherry則是有點QQ的。按鍵的觸發行程沒有很長，也很靈敏，倒是觸底的時候有點吵，在實驗室會不太好意思(羞)。為了不要觸底就要輕輕按，不過一方面早就習慣按到底，另外紅軸的彈簧很輕，所以故意不觸底反而累。相對的黑軸應該就比較OK，但是由於我還是習慣按到底，如果買黑軸手應該會很酸&amp;hellip;..orz||
+這把鍵盤的手感真的滿不賴的，雖然跟RealForce的超滑順橡皮擦手感比起來還是有差XDDD 可是價錢也有差啊囧&amp;hellip;
+至於80%的部份，一開始其實有點猶豫，畢竟少了numpad可以用，不過平常筆電也用得很習慣了，所以不要緊。而且80%鍵盤比較省空間，帶出門也比較好帶(大概過陣子就會懶得帶了啦，不過一開始就是會帶著跑來跑去&amp;hellip;.)，唯一的小小不方便就只有偶爾想要用到numpad右下角那個enter的時候&amp;hellip;不過這沒差啦！
+整體來說，考慮到價錢，這鍵盤的C/P值算是普普通通，不過買把好鍵盤對於經常打字的人來說真的很重要，不但保護雙手，打起來爽度也比較高！經過一番掙扎後還是衝了&amp;hellip;.不然本來只想買FILCO茶軸的&amp;hellip;(也不賴但是有段落感，稍微不喜歡:P)
+最後跟各位抱歉一下，這篇開箱文不但不專業又把圖拍得很醜XD 希望想要看圖的捧油們可以看得不要太火大&amp;hellip;.下台一鞠躬&amp;lt;(_ _)&amp;gt;</description>
+    </item>
+    
+  </channel>
+</rss>

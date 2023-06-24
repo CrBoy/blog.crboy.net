@@ -1,0 +1,1418 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/posts/</link>
+    <description>Recent content in Posts on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>神奇的 Git Subtree</title>
+      <link>https://blog.crboy.net/posts/amazing-git-subtree/</link>
+      <pubDate>Thu, 29 Sep 2016 03:01:12 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/amazing-git-subtree/</guid>
+      <description>一直以來只知道 git 可以透過 git-submodule 管理巢狀 git 專案。也就是一個大專案中有小專案，而這兩個專案要分別用 git 做版本控制的狀況。這會發生在專案有可以抽出來跟其他專案共用的部分，或是專案需要引入一個外部現有的 git 專案的時候。舉例來說，我的 vimrc 裡面有 snippets，這個 snippets 是值得被另外拉出來成為一個專案的。又或是像 hexo，我要自訂 theme，所以我 fork 了 icarus 這個 theme 來改，但需要把它放進我的大 hexo 專案中。
+用 submodule 的做法其實滿麻煩的，它的原理是：大專案紀錄某目錄是一個 submodule，所以大專案就不 track 該目錄的變更，而是 track 該目錄的 HEAD commit。該目錄的內容變更則交給他自己 track。也就是說，如果修改了小專案的內容，需要先去小專案裡面把修改 commit 進去後，再去大專案把小專案的新 commit id 給 commit 進去。光用講的都覺得混亂&amp;hellip;
+有天發現了 git-subtree 是個可以解決類似問題的工具，但差別在於 subtree 不需要事先指定哪個目錄是子專案，只要在需要的時候處理即可。什麼是需要的時候呢？
+要把子專案切出去的時候（通常只會切一次） 要把子專案在本地端的變更丟出去的時候 要把一個專案放進來變成子專案的時候（通常只會放一次） 要把子專案在外面的變更拉進來的時候 除了「需要的時候」以外，子專案就像是（其實根本就是）大專案的一部分，用原有的方式去操作 git 即可，相當單純！
+我覺得以我找到的資料來說，Git SubTree 共編 Library 這篇文章是講得比較清楚易懂的，有些別的文章會舉例錯誤或不知所云&amp;hellip;.XD 不過我認為需要搭配 man page 服用會比較能理解。
+下面就以 hexo 為例，練習把原本用 git-submodule 管理的 theme（crboy-icarus）改成用 git-subtree 管理，並推到相同的 remote repository 去吧。</description>
+    </item>
+    
+    <item>
+      <title>CloudFlare 的 Flexible SSL</title>
+      <link>https://blog.crboy.net/posts/cloudflare-flexible-ssl/</link>
+      <pubDate>Wed, 28 Sep 2016 03:09:57 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/cloudflare-flexible-ssl/</guid>
+      <description>最近認真的把 blog 放上 github pages，算是差不多初始化完成了。不過 https 在這年頭是個很重要的問題啊&amp;hellip;.因為我設定了 CNAME，所以目前的網址是 hexo.crboy.net，但是如果直接連到 https://hexo.crboy.net 的話，會拿到一張 github.com 自己的 ssl 憑證，這張憑證簽給了許多 domain，其中包含 *.github.io，如下圖：
+雖然對於 github pages 本來給我的 crboy.githb.io 用起來是沒問題，但我自訂的 domain 可就沒辦法了。
+找了一下有沒有現成解決方案，找到這篇文章：Set Up SSL on Github Pages With Custom Domains for Free，裡面教你透過 CloudFlare 的 Flexible SSL 來設定，後半段則是教你怎麼強制使用 SSL。但我只想要單純支援 SSL，不反對 user 使用 http 連線，所以後半段就不理他了。進一步找「cloudflare flexible ssl」找到這篇文章：[免費SSL]Cloudflare 免費憑證讓網站綁上SSL加密連線(https)，得知原理其實很簡單：讓流量通過 CloudFlare（也就是 enable 他的 cdn 功能），CloudFlare 會幫你對外提供可用的 SSL 憑證。
+設定方式：
+把自己的 domain 的 DNS 服務放在 CloudFlare 上 啟用該 domain name 的 CDN 服務 到 Page Rules 新增一個 rule：URL match 設定為 DOMANE_NAME/*（例如 hexo.</description>
+    </item>
+    
+    <item>
+      <title>發現一個滿方便的 ip 資訊查詢：ipinfo.io</title>
+      <link>https://blog.crboy.net/posts/ipinfo.io/</link>
+      <pubDate>Tue, 27 Sep 2016 18:45:49 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/ipinfo.io/</guid>
+      <description>以前都用 orange.tw 在查 ip，雖然自己也寫了一個 ip.crboy.net，不過因為實在不想花錢養一台機器，所以就把服務給停掉了。
+剛剛發現 ipinfo.io 這個網站，用瀏覽器開的話相關說明也都有了。但如果直接用 curl 送 request 的話，就可以拿到自己的 ip 的相關資訊（包含地點、國家等）。
+$ curl -D- ipinfo.io HTTP/1.1 200 OK Access-Control-Allow-Origin: * Content-Type: application/json; charset=utf-8 Date: Tue, 27 Sep 2016 10:33:36 GMT Server: nginx/1.8.1 Set-Cookie: first_referrer=; Path=/ X-Content-Type-Options: nosniff Content-Length: 219 Connection: keep-alive { &amp;#34;ip&amp;#34;: &amp;#34;119.14.25.111&amp;#34;, &amp;#34;hostname&amp;#34;: &amp;#34;host-111.25-14-119.dynamic.totalbb.net.tw&amp;#34;, &amp;#34;city&amp;#34;: &amp;#34;Taipei&amp;#34;, &amp;#34;region&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;country&amp;#34;: &amp;#34;TW&amp;#34;, &amp;#34;loc&amp;#34;: &amp;#34;25.0392,121.5250&amp;#34;, &amp;#34;org&amp;#34;: &amp;#34;AS9416 Hoshin Multimedia Center Inc.&amp;#34; } 也可以查詢特定 ip 的資訊：
+$ curl -D- ipinfo.</description>
+    </item>
+    
+    <item>
+      <title>Hexo 學習筆記 - 套用 Icarus 佈景</title>
+      <link>https://blog.crboy.net/posts/hexo-notes-apply-icarus/</link>
+      <pubDate>Mon, 21 Mar 2016 18:04:54 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/hexo-notes-apply-icarus/</guid>
+      <description>挑了一下主題，暫時就用 Icarus 這個樣式吧XD
+不過在 config 的時候遇到問題，怎麼改都沒效。後來找到這篇文章，裡面寫到這段話：
+hexo-config 方法会去 theme 主题下的 _config.yml 中查找参数中的配置项
+原來是會讀取 theme 底下的 _config.yml 啊！難怪我改 Hexo 的 _config.yml（根目錄那一個）沒辦法起作用。不過奇怪的是，像是 customize.profile.author 之類的設定，在 Hexo 的 config 中修改，會起作用。不曉得 Hexo 在這邊是怎麼處理的&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>搬家到 Hexo</title>
+      <link>https://blog.crboy.net/posts/move-to-hexo/</link>
+      <pubDate>Sun, 20 Mar 2016 05:47:04 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/move-to-hexo/</guid>
+      <description>今天突然覺得，應該要（再）開始好好寫 blog，想了一下，覺得實在受不了 blogger 的鳥氣。 以前評估過 Octopress 跟 Hexo，當時覺得不能用手機發文，或是用別台電腦發文，實在滿討厭的，就暫不考慮使用。 不過想到我現在的狀況&amp;hellip;.連發文都懶XD 轉念一想，其實用手機的時候，如果想寫文字，可以先筆記下來（比方說 Evernote），等到拿到電腦再好好整理文章啊！ 這樣也可以提高我發文的品質，而且可以好好整理文字內容。感覺這樣滿不錯的。
+於是我重新找了一下，發現這類工具好像還是以 Octopress 跟 Hexo 為大宗，而且 Hexo 據說比較易用，還是台灣人做的，當然要支持一下。（而且聽說 page render 的效能差很多&amp;hellip;.XD） 那麼，就開始學 Hexo 該怎麼用了！</description>
+    </item>
+    
+    <item>
+      <title>HTTP 通訊簡介</title>
+      <link>https://blog.crboy.net/posts/http-how-it-works/</link>
+      <pubDate>Mon, 10 Aug 2015 16:19:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/http-how-it-works/</guid>
+      <description>從網址列按下 enter 後，到網頁畫面顯示出來，這中間發生了哪些事？
+前言 我一直很喜歡的一個面試題，我決定今天把它拿出來告訴大家，歡迎參考，條件是如果有什麼有趣的回饋請一定要讓我知道！:P
+每次面試工程師 (敝公司會接觸到的是 web 前後端以及 mobile app 工程師) 的時候，我幾乎都會問這個問題：「從網址列按下 enter 後，到網頁畫面顯示出來，這中間發生了哪些事？」這是一個好像很空泛卻又很實際的問題，我則是認為這個問題可以問出受試者對哪個領域較熟悉。
+舉例來說，如果對方說了「瀏覽器會從 server 讀網頁跟 CSS 還有 JavaScript 回來，然後根據 HTML 產生 DOM，並根據 CSS 裡面描述的規則，對 DOM 中的元素進行排版，並且執行 JavaScript」這樣的話，那你可以猜測他應該比較熟悉前端。如果對方說的是「瀏覽器會送出 request 到 server，server 收到之後會先執行指定的 controller 裡面的 method，然後去存取資料庫把資料撈出來並顯示 view 回傳給瀏覽器」，那這個人應該曾經用某個後端的 framework 寫過網頁。又或是「server 會執行指定的 php 檔案，然後把執行結果顯示在瀏覽器上」，他可能是個比較資淺的 php 工程師 (因為講得很粗略)。我碰過一個有趣的例子，他跟我說的是「瀏覽器會先去找 DNS，解出主機的 IP&amp;hellip;」，那表示他至少知道 DNS 這個東西XD。
+總之，這個問題其實相當開放的，牽扯到的東西也滿多的，下面就來講講我會怎麼對付這個問題。
+OSI 網路七層架構 現在的網路世界，可以被分成很多層，每一層各自有他的功能。參考維基百科上的 OSI 頁面，看出可分為 physical, data link, network, transport, session, presentation, application 等 layer。由於這個問題屬於較上層相關的問題，所以通常會傾向從 application layer 的角度回答，也就是關於 HTTP protocol 本身，以及處理 HTTP protocol 的應用程式等等。不過，由於網路本身也是很重要的，所以如果能夠從 SSL, TCP/IP, DNS, 防火牆等等角度去敘述，也會是個有趣的答案。</description>
+    </item>
+    
+    <item>
+      <title>Evernote Web Clipper &#43; NoScript 在 Firefox 上的擷取問題</title>
+      <link>https://blog.crboy.net/posts/evernote-web-clipper-noscript/</link>
+      <pubDate>Thu, 10 Oct 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/evernote-web-clipper-noscript/</guid>
+      <description>這篇是個很短的筆記&amp;hellip;.
+簡單說，Evernote Web Clipper 在安裝了 NoScript 的 Firefox 上擷取的時候會有一點小小的問題&amp;hellip;原因是 NoScript 把 evernote 外掛做的事情當成 XSS 了。解決方式很簡單，根據這篇討論所說的，只要在 NoScript 的 XSS 白名單中加入下面這行就可以了：
+^https://www.evernote.com/noteit.action(.+)? </description>
+    </item>
+    
+    <item>
+      <title>好用的 Mockup / Wireframe 工具：Balsamiq Mockups</title>
+      <link>https://blog.crboy.net/posts/balsamiq-mockups/</link>
+      <pubDate>Fri, 27 Sep 2013 02:21:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/balsamiq-mockups/</guid>
+      <description>對於一個美術白癡來說，要設計一個網站的外觀，實在有點困難。有時候要把心中構想先畫出來給人看，都覺得力不從心，所以只好直接寫一個網頁出來，調 CSS 調老半天，只為了把心中的畫面呈現給人「看看再說」。上面所說的作法，做出來的東西比較類似於 prototype，也就是已經包含了部分 CSS/JavaScript 的完整網頁，也許缺的只是真正會 work 的功能還有各種比較細節的調整而已。但萬一這樣做出來的東西不合人家(也許是主管、客戶，甚至是自己)的胃口，那花的這些時間就算沒有全部白費，也浪費掉不少了。
+或許有人會說，「我寫 prototype 超快我超強！」但你再強你有人家設計師用 photoshop 隨便畫畫強嗎？雖然人家畫出來的就是一張圖，不會動也不能點，但是省時省力，又能把想表現的重點突顯出來，用來作為前期的討論跟比較相當適合！可能講成這樣還是有人鐵齒&amp;hellip;那試想一個狀況：客戶看了你的 prototype 之後，跟你講了一堆元件說要換位置，下面這個按鈕移到上面去(立刻修改HTML)，這個選單要大一點(趕快調整 font-size, width, height，啊破版了再改一下另外那個&amp;hellip;)，這些東西的間距要小一點，整個寬度要一樣(調 margin 調老半天)&amp;hellip;..總而言之，對於外觀的要求，在圖片上討論常常比在程式碼中討論來得容易，所以也才有所謂的 wireframe 與 mockup 的出現。
+這邊不深究 wireframe 與 mockup 兩者的差別，下面通通用 mockup 來表示。Mockup 是一種用來呈現成品大致外觀的工具，他不能拿來使用，但是可以讓人容易想像成品的呈現方式 (人類果然是視覺的動物&amp;hellip;)。以前看過一些人是用 photoshop 之類的影像處理軟體在畫 mockup，之後才去作切版套版&amp;hellip;但對於一個美術白癡而言實在太困難了，小弟實在是 photoshop 苦手orz。好在有人推薦了這套工具：Balsamiq Mockups，他是一個很好用的畫 mockup 工具，內建數十種常用元件，可以用來設計網站、視窗程式或是手機介面。下面就直接來介紹一下。
+下載跟安裝都很簡單，不多說了，Google 一下或是點上面的連結就可以下載&amp;hellip;.我是在 Mac 上安裝的，但他也有 Windows 跟 Linux 版，甚至還有 Google Drive 的 plugin （！）
+這是開啟後的畫面，可以看到左下角指出我只有 7 天的試用期，購買的話則是美金 $79，其實對我來說有點貴XD 但如果是工作所需的話，其實這個價倒不會有什麼問題&amp;hellip;
+只要花幾分鐘，從上面拉一些元件下來，打幾個字(不打也沒關係，他都有預設的文字)，就可以快速「畫」出一個網站&amp;hellip;我實在很喜歡這個 browser window，讓我畫出來的東西突然加了20分&amp;hellip;.XD
+覺得中間的框框實在不太好看&amp;hellip;所以就塞了點假文章進去。(我用了一個英文的假文產生器，如果想寫中文的可以參考看看和多的中文假文產生器) 嗯&amp;hellip;.看起來還算有模有樣呢~
+裡面的元件實在太多了，每次都要用選的很麻煩，如果知道大概名字的話，可以透過左上角的 Quick Add 直接搜尋加入
+元件中文字的設定也很簡單，常常都是簡單打個字他就會幫你做出想要的東西了，前提當然是元件要用對&amp;hellip;每個元件預設都有範例可以依循，所以不用擔心不會打，基本的用法都已經在範例中了！
+每個元件也都有相關的一些外觀設定可以用，可以隨意玩玩</description>
+    </item>
+    
+    <item>
+      <title>讓 Gitit 使用自己的網域名稱</title>
+      <link>https://blog.crboy.net/posts/gitit-custom-domain/</link>
+      <pubDate>Thu, 08 Aug 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/gitit-custom-domain/</guid>
+      <description>Apache &amp;lt;virtualhost&amp;gt; ServerName wiki.csie.ncku.edu.tw DocumentRoot /var/www/ RewriteEngine On ProxyPreserveHost On ProxyRequests Off &amp;lt;proxy&amp;gt; Order deny,allow Allow from all &amp;lt;/proxy&amp;gt; ProxyPassReverse / http://127.0.0.1:8000 RewriteRule ^(.*) http://127.0.0.1:8000$1 [P] #RewriteLog /var/log/apache2/rewrite.log #RewriteLogLevel 9 CustomLog ${APACHE_LOG_DIR}/csie-wiki-access.log combined ErrorLog ${APACHE_LOG_DIR}/error.log # Possible values include: debug, info, notice, warn, error, crit, # alert, emerg. LogLevel warn CustomLog ${APACHE_LOG_DIR}/access.log combined ServerSignature On &amp;lt;/virtualhost&amp;gt; Nginx server{ listen 80; server_name wiki.csie.ncku.edu.tw; server_name new.wiki.csie.ncku.edu.tw; access_log /var/log/nginx/csiewiki-access.log; location / { proxy_redirect off; proxy_pass http://localhost:8000; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; } } </description>
+    </item>
+    
+    <item>
+      <title>在 Windows 上安裝 Redmine 2.3.0 的筆記</title>
+      <link>https://blog.crboy.net/posts/install-redmine-on-windows/</link>
+      <pubDate>Sun, 07 Apr 2013 15:59:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/install-redmine-on-windows/</guid>
+      <description>Redmine 是一套很有名的專案管理系統，建構於 Ruby on Rails 之上。網路上搜尋「Redmine」都可以找到很多相關資料，這邊就不贅述功能。
+由於 Ruby/Rails 在 MacOSX 跟 Linux 相對比較友善，所以要找 Redmine on Windows 的安裝教學實在不太好找，中文資料更是寥寥可數。加上 Rails 進步迅速，很多 07~09 年的資料其實很可能都已經過時，所以乾脆自己研究完寫一篇XD
+不過由於現在實在沒什麼空寫網誌，所以簡單的把方法跟過程記錄一下&amp;hellip;.
+這邊主要是根據 http://www.redmine.org/projects/redmine/wiki/RedmineInstall 上面的說明，而 Redmine 安裝相依於特定的 rails 與 ruby 版本，可以參考前面這個連結裡面的表格。而我這邊以 Ruby 1.9.3 + Rails 3.2.13 + Redmine 2.3.0 為目標。
+以下為安裝步驟：(注意！安裝過程中的路徑最好都不要有中文，如果出現奇怪的問題，請先嘗試把目錄或檔案放到沒有中文路徑的位置。目前我已經碰到某些 gem file 放在中文路徑會沒辦法安裝)
+下載 Ruby installer 與 Development Kit (這邊我都選 32-bit 版本)
+http://rubyinstaller.org/downloads 下載 Redmine (點第一段的 RubyForge 連結)
+http://www.redmine.org/projects/redmine/wiki/Download 安裝 Ruby
+雙擊 ruby installer 並一直 Next，注意中途應選擇「Add Ruby executables to your PATH」 安裝 Development Kit</description>
+    </item>
+    
+    <item>
+      <title>修改 Debian 或 Ubuntu 預設 editor</title>
+      <link>https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/</link>
+      <pubDate>Mon, 24 Sep 2012 01:44:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/</guid>
+      <description>前幾天突然想到一個問題&amp;hellip;.由於 Ubuntu 預設 editor 是 nano，這對於一個 vim user 來說實在是不太舒服啊XD 所以稍微找了一下，找到一個很簡便的作法，可以用來修改預設 editor，方式如下：
+$ sudo update-alternatives --config editor [sudo] password for crboy: There are 4 choices for the alternative editor (providing /usr/bin/editor). Selection Path Priority Status ------------------------------------------------------------ * 0 /bin/nano 40 auto mode 1 /bin/ed -100 manual mode 2 /bin/nano 40 manual mode 3 /usr/bin/vim.basic 30 manual mode 4 /usr/bin/vim.tiny 10 manual mode Press enter to keep the current choice[*], or type selection number: 3 update-alternatives: using /usr/bin/vim.</description>
+    </item>
+    
+    <item>
+      <title>PHP 自動發信程式</title>
+      <link>https://blog.crboy.net/posts/php-email-by-gmail/</link>
+      <pubDate>Fri, 21 Sep 2012 00:03:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/php-email-by-gmail/</guid>
+      <description>之前為了發 COSCUP 的通知信，參考網路上的範例用 PHP 寫了個小程式。我把範例程式放在這個 gist 上：https://gist.github.com/3135053
+其實明顯看得出來，程式沒什麼架構，純粹只是為了可以 work 而寫的拋棄式程式。不過丟出來一方面可以當自己的筆記，以後要找比較好找，另一方面，也許另一個人想要寫類似的小玩具的時候就可以參考了 :P
+以下是一些簡單的介紹。
+我使用這個程式的狀況是，我需要寄一封信給很多人，而我又希望每個人收到的信，收件者只有自己，而且信件開頭還會寫上他的名字，這樣比較貼心。所以沒辦法用「寄給自己 and BCC」的方法達成，只好透過程式完成。
+這個小程式實際上是透過一套稱為 PHPMailer 的 library 做真正的寄信動作，所以困難的部分都被它做走了！我們只要把該設定的東西設定一下就差不多。要設定的項目大概有這些：
+SMTP server 資訊 (主機、port、認證方式&amp;hellip;等) 登入資訊 (我使用 Gmail 寄信，所以需要登入) 寄件者與收件者資訊 信件資訊 (標題與內文) 在我這邊，每封信不同的地方只有收件者與內文，所以我會每次重新產生並設定，其餘部分都在最前面寫死。
+收件者與內文的部分，我是先將收件者名單從 Google Spreadsheets 中匯出成 .tsv 檔 (因為比較容易 parse)，再直接讀入。這個寫在 function parse_name_list_tsv($filename) 中。然後用一個自己刻的簡單 template tool (function fill_template($content, $data), 才 4 行XD) 去加上 user-specified 的資料，最後送信收工！
+一些有趣的小細節：
+忘記為什麼了，我一開始跑起來會出現跟時區有關的錯誤，所以必須加上 date_default_timezone_set(&#39;Asia/Taipei&#39;); 來避免這個問題 因為我的 Google Account 有開啟兩階段驗證 (2-Step Verification)，而我們這種小工具當然不可能支援，所以要為我們的程式特別創造一組應用程式密碼，才能正常使用喔！ 一開始不小心抓到舊版的 PHPMailer，它有個 bug 就是，CC 的人會變成 BCC (或是反過來&amp;hellip;我忘了)，所以我直接從它的 source code 裡找到有問題的那段修掉了 (open source rocks!</description>
+    </item>
+    
+    <item>
+      <title>Gitit 簡介</title>
+      <link>https://blog.crboy.net/posts/introduction-to-gitit/</link>
+      <pubDate>Wed, 19 Sep 2012 13:56:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/introduction-to-gitit/</guid>
+      <description>最近打算發一系列的 Gitit 相關文章，希望不要拖稿拖太久&amp;hellip;.萬一去當兵了，可能會拖很久很久這樣XD
+之前我一直在尋找一個好用的共同協作平台系統，原因是我覺得 MediaWiki 的語法實在太難寫了&amp;hellip;.特別是當我看到 Ubuntu-TW Wiki 的首頁原始碼的時候，都快吐血了&amp;hellip;..當下覺得我智商不足&amp;hellip;..orz 但後來一直尋找，尋找的目標是：語法好寫、可即時線上協作的 wiki，所謂的「即時線上協作」就是像 Google Docs 那樣有可以多人同時編輯的頁面這樣。不過一直都找不到我想要的東西&amp;hellip;.即時線上協作有 etherpad-lite 這個 open source 專案，但是他是每個 pad 獨立的，而使用 Markdown 語法的 wiki 也不是沒有，但沒有勇氣(?)去嘗試&amp;hellip;.
+一開始知道 Gitit，是 @zeroplex (日落) 在噗浪上講的。因為之前也跟日落提過我想要尋找一個好用的 wiki system 這件事，他剛好不知道從哪裡獲得資訊，就分享給我了。結果沒想到，一玩下去，驚為天人啊XD
+我的第一步當然是先去 Google 一下，看有沒有什麼相關訊息。直到現在這個時間點，去 Google 「gitit」還很容易找到 walkingice 的這篇文章，另外當然還是要提一下 Gitit 官方網站。
+Gitit 這東西，是一個用 git 當 back-end datastore 的 wiki 系統，而且自帶 web server，不需要諸如 apache 或是 nginx 的存在也可以運作。Wiki 的語法使用 Markdown，方便好寫，同時也很容易用於其他用途，可攜性佳。
+簡單的 survey 過後，我決定也來試試看。沒想到在 Ubuntu 下安裝跟啟動都超簡單的&amp;hellip;.
+安裝：sudo apt-get install gitit
+建立目錄：mkdir wiki</description>
+    </item>
+    
+    <item>
+      <title>在 .htaccess 裡面修改 php 設定值</title>
+      <link>https://blog.crboy.net/posts/php-setting-in-htaccess/</link>
+      <pubDate>Wed, 19 Sep 2012 10:53:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/php-setting-in-htaccess/</guid>
+      <description>這篇筆記拖稿好久了&amp;hellip;.其實應該很短的，所以趕快寫一寫。
+有時候在弄一些 php 相關的東西的時候，需要設定一些模組，例如之前用過的 Xdebug，但是每次設定 php.ini 就要重新啟動 apache server，很麻煩還是其次，有時候上線的系統這樣一搞就很多人掰了&amp;hellip;..XD 所以我們需要一個修改後立即生效的做法。
+.htaccess 是非常實用的做法，只要先在 apache 的設定檔裡去 AllowOverride Options 即可使用 (我自己的機器通常會在特定目錄直接 AllowOverride All)。那麼，到底該怎麼做呢？下面是範例：
+php_value xdebug.auto_trace on php_value xdebug.trace_output_dir /tmp/xdebug php_value xdebug.collect_params 3 php_value xdebug.profiler_enable on php_value xdebug.profiler_output_dir /tmp/xdebug 應該滿好懂的？其實就是&amp;hellip;前面先指定 php_value，後面不用等號，直接寫設定值即可。
+這樣做出來的結果，可以在 phpinfo 裡面看到成效。phpinfo 下方的 Configuration 那邊，設定值的部分有三欄，分別是 Directive、Local Value、Master Value，Directive 就是設定值的名稱，Local Value 是在該目錄真的會生效的設定值，Master Value 則是全系統的設定值。如果你覆蓋了全系統的設定，那麼你會看到你的 Local Value 跟 Master Value 不同，應該滿好認的。
+透過這個方式，我們可以隨時去修改 php 的設定值，對於一些測試性的行為很有幫助！:D</description>
+    </item>
+    
+    <item>
+      <title>這拼音到底是什麼鬼？</title>
+      <link>https://blog.crboy.net/posts/wtf-pinyin/</link>
+      <pubDate>Mon, 10 Sep 2012 02:05:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/wtf-pinyin/</guid>
+      <description>有個已經讓我困擾非常久的問題&amp;hellip;.今天來抱怨一下。
+這個問題跟拼音有關，我指的是中文字以英文字母表示的那個拼音&amp;hellip;最後還想提一下關於奇怪的「洋中文」 (我自己亂取的稱呼) 現象&amp;hellip;.但必須先說，我不是專業的語言或是文字學家，甚至我對語言、文字都沒有什麼深入的了解，我只是想表達我覺得很困擾，以及莫名奇妙莫名其妙的一些問題罷了。(感謝朋友協助訂正錯字)
+我們在某些特定場合，可能會需要提供自己的英文名字，特別是一些正式的場合，會需要正式的「中文姓名英譯」。而這個英譯應該以什麼為準呢？當然是護照上的英文名字。因為你如果出國，有法定效力的身分證明文件就是護照，所以不管是什麼證件、信用卡或是國際證照上面，最好都是寫護照上的英文名字。連帶的，像是發表論文之類的，我們也會填上護照上的英文名字。
+OK，那這到底有什麼問題？
+我姓畢，畢業的畢。(我自介的時候都這樣講，講習慣了&amp;hellip;.) 我在護照上的姓是拼做：「Pi」(避免lI不分我改為首字母大寫，護照上是全大寫)&amp;hellip;&amp;hellip;所以外國人來念我的姓的時候，他會覺得我姓屁，屁股的屁 (開玩笑的)。
+我很好奇為什麼會有這種事情發生，所以稍微查了一下。我不是個認真向學的孩子，所以這邊只用維基百科上面的知識來討論。我發現我們的護照上所使用的是威妥瑪拼音，一種用拉丁字母拼寫拼讀漢字的方法&amp;hellip;.拉丁字母耶！到底是誰想出這種天才的作法？明明是要用英文字母表示的東西，你搞個威妥瑪拼音，結果ㄅㄆ不分、ㄉㄊ不分、ㄍㄎ不分、ㄐㄑ不分、ㄓㄔ不分、ㄗㄘ不分&amp;hellip;&amp;hellip;我光看都要崩潰了= =
+這真的不是威妥瑪拼音的錯，雖然我不會念拉丁字母，但至少我看到的 ㄅ (p) 跟 ㄆ (p&amp;rsquo;) 他們的形狀是不一樣的&amp;hellip;.但是你偏要把他用英文字母表示就不對啊&amp;hellip;..(崩潰)
+既然講到這個，就要看看漢語拼音跟通用拼音，這裡還有個中文拼音對照表可以順便參考一下。聽說以前曾經有過要選用哪種拼音的爭論？當時我就不太清楚，而現在其實我也沒有非常感興趣，因為我知道一定各自有自己的理由&amp;hellip;我的觀點是，這兩種不管哪一種都比威妥瑪拼音來得好，因為他們用的是英文字母，而非拉丁字母。雖然還是有些拼音唸起來有點彆扭，但至少每個音都分得出來&amp;hellip;.
+說到「唸」，其實這也是個很有趣的問題&amp;hellip;.像我這樣的台灣土包子，其實這輩子也沒去過中國大陸幾次。不過去了就會發現，同樣的中文字，不同地方的人就有不同的口音。就算是台灣人自己，讀音也可能有微妙的差異。(其實這又牽涉到「注音符號」的問題了&amp;hellip;.說不定我們的讀音根本是被注音符號修正過的而不自知？) 那&amp;hellip;既然大家的讀音都不一樣，又要怎麼制定一個統一的拼音系統呢？雖然不敢確定，不過我猜測也許這就是會有拼音系統之爭的原因之一吧？(另外可能還有政治因素 :P 我完全不意外&amp;hellip;.XD)
+根據我從維基百科上消化來的資料，台灣經歷過威妥瑪拼音、通用拼音、漢語拼音這三個時期，而從 2009 年開始，中央政府已經不建議使用通用拼音，而改採漢語拼音。
+但是事實上其實是，台灣各地所使用的拼音依然混亂。除了舊有拼音沿用以外，還有拼音來不及更改，或是有些地方就是堅持使用某種拼音，甚至是拼錯的 = =
+我想這點是需要台灣人有共識來改進的，不然&amp;hellip;.如果我是外國人我應該會崩潰吧= = 這樣要怎麼國際化&amp;hellip;..
+至於說到國際化嘛，就要提到一個也是很奇怪的問題了&amp;hellip;.
+有時候搭捷運啊，或是火車、高鐵之類的交通工具，常常聽到多種語言的語音廣播，有國語、台語、客語、英語。但是很奇怪，台灣人好像很喜歡把中文地名混入洋腔洋調唸給外國人聽？「台北」會被唸成「胎~配~」(跟「唉配」有關係嗎？)，「台南」會被唸成「胎~難~」，「左營」會唸成「ㄗㄨㄛ~硬~」&amp;hellip;&amp;hellip;&amp;hellip;都沒人覺得這樣很奇怪嗎？真的都沒人覺得這樣很奇怪嗎？(請原諒我跳針)
+我不相信外國人聽到台灣人念出「台北」「台南」「左營」這種我們在用的發音會聽不懂&amp;hellip;說「洋中文」真的有比較好嗎？要國際化，也不用把自己的文化放在地上踩吧&amp;hellip;.. :(
+PS. 前陣子經過台南市大學路跟勝利路口，看到有塊嶄新的路牌寫了「University Road」，當下覺得不太對勁&amp;hellip;因為我之前看到的路牌是「Dasyue Road」(查一下就知道這是通用拼音XD)。雖然我覺得用 University Road 表示「大學路」比較好，但是我更無法接受的是同一個中文名稱卻有不統一的翻譯。我覺得這真是太丟臉了，我們竟然連一個路牌都做不好&amp;hellip;.</description>
+    </item>
+    
+    <item>
+      <title>導讀：提問的藝術</title>
+      <link>https://blog.crboy.net/posts/smart-questions/</link>
+      <pubDate>Sun, 09 Sep 2012 14:03:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/smart-questions/</guid>
+      <description>這篇文章已經看過很多不同網頁都轉貼了，而我也不是很喜歡轉貼&amp;hellip;所以我去 Google 搜尋了「提問的藝術」，然後直接貼第一條結果出來：http://ihower.tw/blog/archives/457/ (是 ihower 大大的部落格 &amp;lt;(_ _)&amp;gt;)。萬一未來哪天連結失效，那就自行搜尋吧~:)
+那麼，要進入正題了。
+首先，所謂黑客，在台灣可能比較常稱為駭客，指的是擁有高度知識與技術的人，但比較常用在電腦資訊相關領域。也許他鑽研的是資訊安全，也可能是深入作業系統，也可能是程式高手。我不夠資格對駭客下定義，但我認為這是種文化、是種哲學，體現的是喜好自由、喜好創造的個性。我想維基百科上的說明應該會更清楚。只要讀者不要把黑客跟蓄意搞破壞的人混為一談就好。這篇文章就是教你該怎麼從這些滿是知識跟經驗的駭客手上，獲得他們所會所學。
+簡單來說：
+保持謙遜的態度 找對問問題的地方 問對問題 把問題問對 態度是最重要的，也許包含了一切。很多人會不自覺的認為「別人應該告訴我答案」，這樣的想法會造成你提問的方式有很大的問題。如果你想的是「我想要拜託別人給我一個答案」，那也許會順利點。
+想要「拜託」別人，總要拿出點誠意吧？要怎麼才能讓人看到你的誠意？你可以說明，你做了哪些動作。例如：你讀了說明文件 (哪一段？)、你看了 FAQ、你在網路上搜尋過、你有爬文。除了表現誠意以外，這對於別人找出你的問題也是有幫助的。也許你根本想錯方向，也許基本觀念不對，也許有地方誤解了等等&amp;hellip;總之，做過哪些找答案的動作都可以提出來。(但最好不要胡亂猜測又不去嘗試，人家會想「那你怎麼不試試看？」)
+透過提出具有思考性的問題，可以讓駭客們也對你的問題感興趣。若很多人對你的問題感興趣，那表示會有很多人一起幫你思考，幫你找出答案。(其實他們是在幫自己找出答案，只是你也可以從中獲益)
+再來，請仔細思考你的問題。沒有思考過就拿去問人是很不禮貌的，特別是當你還覺得別人理應回答你的時候&amp;hellip;除了仔細思考以外，也要仔細描述問題。特別是標題要清楚明確。如果你是別人，看到標題是「救命啊」的文章，你會覺得非看不可嗎？
+第二點是找對地方。這很簡單，如果你有爬文，你應該有辦法分辨你的問題適不適合在這個地方出現。如果你每個地方都有爬文，那你應該就不會把問題胡亂貼到所有的地方去。
+第三點，要問對問題。在很多情況下，你該問的是「我應該嘗試什麼？」而不是「答案是什麼？」為了你自己好，也為了節省別人的時間，請在問問題之前思考別人會怎麼回答你的問題。
+最後，其實跟態度也有很大關連，要把問題問對。文章中已經舉了非常多例子，這邊應該不用多說，我寫得實在太差了，還是看原文比較好！:P
+不過值得一提的是，要記得 RTFM (Read The Fucking Manual) 還有 STFW (Search The Fucking Web)。每次問問題的時候，最好都先自己找過答案。每次收到答案的時候，可能當中會有一些看不懂的東西，也記得要先找過答案。如果你收到了 TF 的答案&amp;hellip;.那就快去，因為答案真的在那裡&amp;hellip;..
+PS. 最近在思考一些關於學習的問題，總覺得普遍對於學習這件事不太抱有熱情&amp;hellip;但似乎是個無解的問題。該如何鼓勵身邊的其他人 (例如學弟妹) 對探索跟學習的熱情，好像是個很難的問題&amp;hellip;其實熱情也許是興趣的產物吧&amp;hellip;沒興趣就很難解&amp;hellip;.</description>
+    </item>
+    
+    <item>
+      <title>五月天 - 洗衣機</title>
+      <link>https://blog.crboy.net/posts/mayday-washer/</link>
+      <pubDate>Sun, 09 Sep 2012 01:24:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/mayday-washer/</guid>
+      <description>我記得&amp;hellip;是今年的母親節吧。
+還記得那時候五月天推出了這隻 MV，洗衣機。聽了好久的 KKBOX，一直都沒有仔細去聽歌詞，更沒有去看歌詞寫了什麼。
+不過，看了 MV 之後，實在讓我太感動了&amp;hellip;..也許，這跟我從小爸爸就過世了有關吧？一直在單親家庭長大的我，對這首歌如此有共鳴，也許是正常的&amp;hellip;&amp;hellip;&amp;hellip;先看看 MV 吧？
+奇怪是誰 一直清洗著 我闖的禍和污泥
+好久以來 原來我衣服 全部都是媽媽洗
+第一次看 MV，看到這句的時候，我就突然鼻酸了&amp;hellip;.
+也許是媽媽年紀已經大了吧，每每想到媽媽有天可能會離開我們，就覺得很害怕。但我卻從未想過，從未關心過媽媽的辛苦。是的，我知道媽媽很辛苦，但&amp;hellip;.也就只是知道而已。這種感覺很難形容，當你每天都住在家，平常卻跟媽媽講不到幾句話。其實這也沒什麼特別的，不特別孤單，不特別想念，不特別關心，不特別&amp;hellip;.。但就是特別奇怪。
+也許 我從來不是一個好孩子
+也許 我管不住自己的叛逆
+也許 我從來沒有讓你滿意
+但 我還是想讓你知道
+媽 我愛你
+我其實是邊流淚邊打這篇文章的&amp;hellip;還記得當時，我回頭看了第二遍 MV&amp;hellip;.突然想通了這首歌的故事。一方面是驚訝，驚訝歌詞竟然把這件事隱藏得如此明顯。但一方面也更難過&amp;hellip;..
+洗衣機 穿著一身 退色塑料壓克力
+獨坐在陽台上受 日曬風吹雨淋
+媽，我知道你不愛穿漂亮的衣服，只是想省錢給家裡用，照顧我們這些孩子。你不是不想打扮，不是不想娛樂，而是你把我們看得比自己還重要。媽，我知道你常常一個人在家，孤單的看電視，其實你更想有人陪你說說話。
+電視機 孩子們目光都以他為中心
+黑色簡約外型 多適合客廳
+小時候的我，愛看電視，還為了看電視跟你發脾氣。你，只是讓出電視。 而我，卻完完全全忽略了在我身邊的你&amp;hellip;
+就算是吹風機 也有流線外型
+緊握在手心 像跳舞親密
+光榮的電唱機 晉身為古董級
+典雅的中音比誰都 更受歡迎
+木訥的洗衣機 從沒有主題曲
+只有風霜灰塵 讓人不想接近
+青春期的我，看著繽紛的世界，卻依然忽略了你。當時，只覺得媽媽管很多、很煩，為什麼要來煩我？我們愛聽的流行歌，又有多少為了母親而歌頌？
+從來沒有 一句的怨言 你丟多少它都洗
+脫水總是 全心又全力 直到顫抖了身體
+多少年了 旋轉又旋轉 時間一眨眼過去
+上了年紀 卻依然盡力 孤獨勇敢洗衣機
+&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;..
+這說的，根本就是媽媽&amp;hellip;..根本就是一直以來，全心全力付出的媽媽啊&amp;hellip;&amp;hellip;
+在那之後的歌詞，也許是我未來的生活吧？當我們一步步長大，媽媽卻一點一滴的老邁。如果沒有好好想想，也許未來還是一樣的忽略、看輕自己的媽媽。</description>
+    </item>
+    
+    <item>
+      <title>NAS 的 NFS 掛不上...竟然是 switch 害的!!</title>
+      <link>https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/</link>
+      <pubDate>Wed, 01 Aug 2012 17:45:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/</guid>
+      <description>最近在新增設備，分別是 HP ProCurve 1810G-24 L2 switch 與 Synology RS812+ NAS，沒想到前兩天碰到一個讓人吐血的問題&amp;hellip;故事要從這裡說起&amp;hellip;..
+一開始很開心的接上了 switch 還有 NAS，似乎相當正常，但操作相當緩慢&amp;hellip;.後來 ping 了一下，封包一直掉&amp;hellip;&amp;hellip;&amp;hellip;.呃，但是後來換台電腦就好了，所以目前這個問題被我擱置&amp;hellip;..XD
+離題了，Synology NAS 算是還不錯，它的 OS (核心是 Linux，名稱叫做 DSM) 提供了 NFS 的支援，但主要的問題是&amp;hellip;&amp;hellip;問題是我掛不上啊!!!!! 我碰到的狀況相當奇怪，我這台電腦連到 NAS 的管理介面沒有問題，ping 它也回很快，甚至是 CIFS (Windows 的網路芳鄰) 都很順利&amp;hellip;.獨獨 NFS 掛不上去 orz
+我試了兩台電腦，都是 Linux，這兩台電腦跟 NAS 都接在上面說的那台 HP ProCurve 1810G-24 L2 switch 上。其中一台有防火牆，另一台沒有開，但是問題跟這個無關，所以就不理他了。我的狀況是，showmount 非常正常，NFS 權限也沒問題，但是真的要 mount 的時候就等很久很久很久&amp;hellip;..然後就 timeout 了&amp;hellip;&amp;hellip;= =
+花了一個下午找不到問題，整個晚上在想原因，一直到隔天剛好 NAS 廠商過來，結果他們也找不出原因!!!! 後來是因為廠商帶了台很簡單的 ZyXEL switch 來 (因為之前跟他們說我 ping NAS 掉包掉很大)，沒想到換上去就好了!!!!!! 杯具啊!!!!!!!! 天大的杯具啊!!!!!!!! 好&amp;hellip;&amp;hellip;既然確定是 switch 的問題，當然立馬殺進去 switch 的管理介面看看&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>導讀與心得：關於軟體的性能調校</title>
+      <link>https://blog.crboy.net/posts/software-performance-tuning/</link>
+      <pubDate>Sun, 08 Jul 2012 17:05:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/software-performance-tuning/</guid>
+      <description>今天來寫寫關於這兩篇文章的摘要跟心得：
+代码优化概要 | 酷 壳 - CoolShell
+性能调优攻略 | 酷 壳 - CoolShell
+第一篇文章裡面講的東西很簡單，卻很重要！用 profiler 跟看組語！我個人經常強調的一件事，就是在解決問題的時候一定要先找到問題在哪裡。以前我常用 debugger 來說明，但 debugger 最大的幫助其實不是找出問題，而是「快速的」找出問題。而透過 profiler，對於找出效能問題幾乎是最簡單的作法&amp;hellip;.(有一種相當土法煉鋼的方法是，在自己的程式碼裡面加上一大堆印出 timestamp 的程式碼，聰明一點的還會用夾擠來避免浪費太多時間。但是這個行為本身就是在浪費時間&amp;hellip;.)
+這篇文章可說是支持了我的觀點，有時候「看起來好像很慢」的程式碼，實際上並不會浪費你太多時間。這是真的！這也是為什麼作者會說，做性能調校要注意兩個重點，一個是花很多時間的程式碼，另一個是被執行很多次的程式碼！看起來很花時間的程式碼，可能不花你很多時間，也不執行很多次！
+第二篇文章講的就多了&amp;hellip;但這四個步驟的核心觀念很好抓，先定義(效能)需求，然後做測試，接著找出問題，最後解決問題。聽起來很無趣，不是嗎？但常常見到的情況反而是，先看看程式碼，然後猜測問題，修改之後測試看看，最後接受結果。
+常見的狀況都是這樣，我自己也是，但在我懂得使用 profiler 之後才終於知道該怎麼把效能問題的重點給抓出來。但這篇文章講得更多，第一步定義 throughput 與 latency，這兩個詞的差別常常被忽略，因為他們會互相影響，所以常被用「performance」給概括了，但其實是可以分開考慮的。
+性能測試部份我就比較沒有經驗了，我只懂得使用 profiler 做簡單的分析，但文中所提到的 throughput 與 latency 測試分析，光用想的就很辛苦&amp;hellip;.更別提還要配合穩定性測試 (舉例來說，如果系統有 memory leak 問題，碰到高 throughput 狀況則可能很容易噴掉)
+透過測試，我們可以知道系統效能狀況。可以從兩個角度來看：從外面看，看 CPU 與 IO 的使用率。從裡面看，看系統 profiling 的數據。但其實有個很尷尬的問題，profiler 會稍微降低系統效能，所以對於上線的(且忙碌的)系統來說，想抓到真實狀況又不想對系統造成影響真的很難&amp;hellip;..orz
+最後談到「解決問題」這就多了，因為不同的問題需要不同的解決方式，我認為文章裡每一條經驗都很值得參考！首先可能要改演算法，演算法對效能的影響，我想寫過 ICPC 比賽或是 UVa Online Judge 的人最清楚了！雖然有很多現實問題真的不是演算法解決的 (都是一些有的沒的雜事)，但底下用到的每個演算法都有機會成為瓶頸，也就有可能是系統加速的關鍵。再來，底層會發生的問題也要注意！誰說寫程式不用知道底層？對底層知道的越多，越有可能寫出好程式，這個定律是不會變的&amp;hellip;再來講到系統方面的最佳化，這也是對底層知道越多越有用的例子。後面則是講到資料庫&amp;hellip;資料庫性能調校相對於系統或是程式語言底層實做來說，應該算是顯學了。但是顯學歸顯學，也不是每個人都了解資料庫，所以「亂調一通然後看看速度多快」反而變成最 popular 的技術了&amp;hellip;.= = 文章這部份也相當值得閱讀，首先要知道 DB 的 lock 還有其他實做問題，再來可以透過工具看到 SQL query 的 execution plan (這真的很有用！比亂猜好太多了！但有些 RDBMS 要看到 execution plan 相當麻煩= =)。最後則是常見的 SQL 性能問題，像是 full table scan、index 的使用不當，或是某些通常很花時間的功能&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>Vim: CamelCase to snake_case</title>
+      <link>https://blog.crboy.net/posts/vim-camelcase-to-snakecase/</link>
+      <pubDate>Tue, 03 Jul 2012 11:05:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/vim-camelcase-to-snakecase/</guid>
+      <description>這篇文章：用 vim 將 camel case 改成 underscore-based 提到用 vim 取代把 CamelCase 轉換成 snake_case 的作法，看到後有一點點小想法，特別紀錄一下 :P
+作者提到的取代方式是：
+:%s/\(\l\)\(\u\)/\1_\l\2/gc 但配合 very magic 可以變成這樣
+:%s/\v(\l)(\u)/\1_\l\2/gc 短了一點點不是重點，重點是括號好看多了XD
+另外作者稍微寫錯的部分是，\l 跟 \u 在 substitute pattern 中表示的是小寫和大寫字元，而不是把下一個字變成大(小)寫，那是在後面做的事。可以 :help /character-classes 看到詳細的列表 (大心)。
+既然這篇文章這麼短，那就提一下好了。今天找資料的時候不小心發現這位作者的 blog，實在看得我欲罷不能啊XD 而且他玩的東西好多，也玩系統、也寫程式，從 C 寫到 PHP、Python、Perl、Ruby&amp;hellip;..太強了orz 還有很多有趣的東西，實在很好玩&amp;hellip;.太佩服 &amp;lt;(_ _)&amp;gt; 建議熱愛技術的人可以參考看看，我覺得很精采 :D</description>
+    </item>
+    
+    <item>
+      <title>導讀：保持小而頻繁的 commit</title>
+      <link>https://blog.crboy.net/posts/small-frequent-commit/</link>
+      <pubDate>Tue, 03 Jul 2012 10:35:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/small-frequent-commit/</guid>
+      <description>今天讀到這篇文章 保持小而頻繁的 commit
+這篇文章在講使用分散式版本控制系統 (DVCS) 時應該儘量保持小而頻繁的 commit 行為，我覺得值得一讀。
+雖然作者使用的是 mercurial (hg)，但其實跟 git 的觀念是很像的。
+以下簡單導讀：
+第一部分介紹這個做法的好處，像是可以很容易做 code review (就算是自己 review 自己的 code 也一樣容易)、容易知道現在做了那些修改 (使用 git diff 一目了然)。他還提到用二元搜尋法找到出錯的程式，可透過 git bisect 完成。而他有用到的 hg shelve 跟 hg revert 在 git 也都有對應的功能 (git stash 跟 git revert)，前者是用來把目前 working copy 的修改「暫存」起來 (非 commit)，之後可以再取出來繼續把它改完，後者則是可以還原特定 commit 的變更。也就是說，配合 revert，如果每個 commit 都很小的話，可以很輕鬆把特定修改還原。
+第二部分講 DVCS 的好處，很重要的就是每個人可以自己搞自己的，又可以知道別人的脈絡。如果是在一人專案的狀況下，最基本上也可以省去跟遠端主機溝通的成本。但 DVCS 也有缺點，就是對於無法 merge (或根本不須 merge) 的檔案無法很好的處理。
+後面部分，關於暫存的部分上面提過了，主要就是 git stash。而 hunk selection 在 git 中可用 git add -p 或是 git add -i (interactive) 做到，如果不小心一次寫了太多功能，可以利用這種方式分別 commit，才能保持 commit 小而頻繁，以獲得好處。</description>
+    </item>
+    
+    <item>
+      <title>Xdebug 遠端除錯 (Remote Debugging)</title>
+      <link>https://blog.crboy.net/posts/xdebug-remote-debugging/</link>
+      <pubDate>Sat, 30 Jun 2012 01:05:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/xdebug-remote-debugging/</guid>
+      <description>簡介 PHP 的除錯利器 - Xdebug 也可以進行互動式的除錯。什麼是互動式的除錯呢？當程式在執行中的時候，如果可以把程式的執行控制權攔截下來，那麼就可以根據自己的需求，單步執行我們的程式，並且可以監控程式的狀態。這些狀態包含了像是：目前執行到哪一行程式、目前所有的變數與其值、function 的 call stack (註) 等等。除了看到狀態以外，一個完善的 debugger 還允許開發者動態對變數進行修改，或是動態改變執行流程。
+註：Call stack 指的是 function 呼叫的順序，如 A 呼叫 B，B 呼叫 C，則 call stack 的長相就像是把 B 疊到 A 上，再把 C 疊到 B 上，當 C 執行完畢後，就把 C 從 stack 中取走，如果接下來 B 又呼叫了 D，那麼就把 D 疊上來。所以在任何時候查看 call stack 都可以知道 function 間呼叫的從屬關係。關於 stack 與 call stack 的更多資訊都可以在網路上查到更清楚的解釋，這邊就不獻醜。
+那麼要怎麼利用 Xdebug 進行互動式的除錯呢？由於很多 PHP 程式都是設計用來產生網頁的，所以常常會掛在 web server 底下執行，而非由我們手動去跑程式。Xdebug 身為一個 PHP module，他可以對執行流程進行監控，還可以藉由另外的通道跟開發者進行通訊，也就是說，開發者可以透過 Xdebug 對執行中的 PHP 進行控制。</description>
+    </item>
+    
+    <item>
+      <title>Gitolite 使用教學</title>
+      <link>https://blog.crboy.net/posts/gitolite-usage-tutorial/</link>
+      <pubDate>Tue, 26 Jun 2012 00:17:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/gitolite-usage-tutorial/</guid>
+      <description>首先，要使用 gitolite 一定得先會使用 git。下面就不贅述。
+初次設定 使用 gitolite 有以下兩個前置動作
+建立 ssh keypair
+使用 Linux 或 Windows 上的 Git Bash
+$ ssh-keygen -f mykey Generating public/private rsa key pair. Enter passphrase (empty for no passphrase): Enter same passphrase again: Your identification has been saved in mykey. Your public key has been saved in mykey.pub. The key fingerprint is: xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx USER@HOST 這邊要注意幾個地方，-f 後面的參數表示檔名，可自行設定，此例中為 mykey。產生後會有兩個檔案，分別是 mykey.pub 跟 mykey，mykey.pub 是 public key (公鑰)，可以提供給你的 gitolite server 管理員，而 mykey 為 private key (私鑰)，相當於密碼，不可以洩漏給任何人。再來，passphrase 是用來保護 key 的密碼，也要牢記。在認證時，同時擁有 private key 與 passphrase 的人才能通過認證，這才是安全的手法。最後，當 key 產生之後，會印出 key 的 fingerprint (指紋)，是用來核對 public key 正確性用的。</description>
+    </item>
+    
+    <item>
+      <title>Gitolite 設定與管理</title>
+      <link>https://blog.crboy.net/posts/gitolite-settings-and-managements/</link>
+      <pubDate>Thu, 21 Jun 2012 01:57:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/gitolite-settings-and-managements/</guid>
+      <description>首先，要使用跟管理 gitolite 一定得先會使用 git。下面就不贅述。
+初次設定 對使用者而言，只要設定好 ssh host alias 即可。如果是 gitolite 管理者，還必須將 gitolite-admin 給 clone 下來，才能繼續後面設定的動作。
+設定 ssh host alias
+$ vim ~/.ssh/config host gitolite user git hostname localhost port 22 identityfile ~/.ssh/admin 這個設定的重點是指定連線時使用特定的 identity file (private key)，如此才能被 gitolite 認可為管理者 (gitolite 是看你用什麼 key 來決定你的身分)。記得 hostname 的部分要以自己的狀況更換成正確的主機位址。
+取得管理 gitolite 的 repository
+$ git clone gitolite:gitolite-admin 這個 repository 紀錄了所有 gitolite 的權限資料，包含所有 user 的 public key 與 repository 的存取權限設定。conf/gitolite.conf 中記載了所有專案的名稱以及每個 user 對專案的權限。而 keydir 中即為所有 user 的 keys。對 gitolite 的管理與設定都必須透過這個 repo 進行。</description>
+    </item>
+    
+    <item>
+      <title>Gitolite ver.3 (g3) 安裝筆記</title>
+      <link>https://blog.crboy.net/posts/gitolite-3-installation/</link>
+      <pubDate>Wed, 20 Jun 2012 01:50:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/gitolite-3-installation/</guid>
+      <description>Gitolite 是一個持續開發中的 git server 專案，自 2009 年開始後，至今已經發展到第 3 版，作者將其稱之為 g3 (之前的版本分別為 g1 與 g2)。由於 g3 相對於之前的版本，是整個重寫的專案，根據紀錄，g3 是大約今年 4 月才開始的，所以很多文件早已過時，只好慢慢研究作者提供的文件。整個專案都放在 github 上，並且作者也提供了相關文件，本文就是參考該文件寫成。
+我的操作環境是：
+Ubuntu 12.04 Git version 1.7.9.5 Perl 5.14 本文章假設使用者已經具備 git 的基本知識與操作技能，以及基本的 ssh 認知，不再贅述。
+準備步驟 伺服器上須先預備好以下套件
+Git 1.6.6 以上 Perl 5.8.8 以上 OpenSSH 產生管理者的 ssh key (此 key 將專門提供給 gitolite 管理者使用)
+$ ssh-keygen -t rsa -f &amp;lt;key_filename&amp;gt; 舉例：
+$ ssh-keygen -t rsa -f ~/admin 會產生 ~/admin 跟 ~/admin.pub 兩個檔案，分別是 private key 與 public key。</description>
+    </item>
+    
+    <item>
+      <title>Gitolite 2.2 安裝筆記</title>
+      <link>https://blog.crboy.net/posts/gitolite-22-installation/</link>
+      <pubDate>Mon, 18 Jun 2012 01:50:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/gitolite-22-installation/</guid>
+      <description>特別注意 - 為什麼標題要特別註明是 Gitolite 2.2？因為文章已經寫好之後才發現作者已經大幅更新版本。新版有文件在此。本文是以 ubuntu 12.04 套件庫中的 gitolite 2.2 作為安裝目標。
+Gitolite 是一個持續開發中的 git server 套件，本來還在糾結要玩 gitolite 或是 gitosis，決定兩個都嘗試看看後，發現本來打算先嘗試的 gitosis 很難找到來源，唯一找到的是原作者(吧)在 github 上的 repo，已經有 3 年沒更新了，於是決定直接嘗試 gitolite。搜尋了一下發現，原來 gitolite 是作者從 gitosis 的想法發展而來，本來是 gitosis + lite，但現在已經發展得比 gitosis 還強大了。而且從 gitolite 作者的 github repo 發現，上次更新是一週前，這表示它現在還是一個活躍且成長中的專案，當然就決定是他了！ (但其實後來才發現上次更新的是第 3 版，第 2 版現在只會修 bug 而已)
+我的安裝過程主要是參考 Tsung&amp;rsquo;s Blog 的這篇文章而成，但不曉得原因為何，我這邊碰到的狀況跟作者不太一樣，我想也許是他使用的是 Debian (?) 或者他用 Ubuntu 但是版本跟我不同吧。我還另外參考了這篇文章，裡面寫的東西滿豐富的。同時這裡也附上作者提供的文件。
+我的操作環境是：
+Ubuntu 12.04 Git version 1.7.9.5 Gitolite version: 2.2-1 本文章假設使用者已經具備 git 的基本知識與操作技能，不再贅述。另外如果是大部分其他系統的管理者，可能不習慣用 sudo，那麼就先切換到 root 再去執行動作即可。這邊為了保險起見，還是使用一般帳號進行設定。</description>
+    </item>
+    
+    <item>
+      <title>PHP Informix on Linux 安裝與設定</title>
+      <link>https://blog.crboy.net/posts/php-informix-on-linux/</link>
+      <pubDate>Fri, 15 Jun 2012 06:43:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/php-informix-on-linux/</guid>
+      <description>環境
+Ubuntu 12.04 LTS Apache 2.2.22 PHP 5.3.10 如果沒有 apache 與 php 環境可由套件庫安裝
+$ sudo apt-get install apache2 php5 為了編譯模組，需要安裝 php5-dev
+$ sudo apt-get install php5-dev 為了取得 PECL 上的原始碼，需要安裝 subversion (即 SVN)
+$ sudo apt-get install subversion 安裝 Informix Client SDK 在這個連結可以下載 Informix Developer Edition，有免費的版本，但僅供開發使用且有使用資源上的限制。我抓下來的檔案為 iif.11.70.UC5DE.Linux-RHEL5.tar。其實根據 [Install Informix on Debian] 這篇文章看來，應該是有單純的 ClientSDK 可以下載，但是我找不到&amp;hellip;
+將其解開
+$ cd &amp;amp;&amp;amp; mkdir informix &amp;amp;&amp;amp; cd informix $ tar -xf /PATH/TO/iif.11.70.UC5DE.Linux-RHEL5.tar 建立 informix 帳號與群組
+$ sudo addgroup --system informix $ sudo adduser --system informix --ingroup informix 開始安裝</description>
+    </item>
+    
+    <item>
+      <title>Xdebug 基礎安裝與使用</title>
+      <link>https://blog.crboy.net/posts/xdebug-installation-and-usage/</link>
+      <pubDate>Tue, 12 Jun 2012 23:39:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/xdebug-installation-and-usage/</guid>
+      <description>環境 Ubuntu 12.04 LTS Apache 2.2.22 PHP 5.3.10 安裝 透過套件庫安裝
+$ sudo apt-get install php5-xdebug 設定 # /etc/php5/conf.d/xdebug.ini zend_extension=/usr/lib/php5/20090626+lfs/xdebug.so xdebug.auto_trace = on #自動進行 function trace xdebug.trace_output_dir = /tmp/xdebug #trace log 的位置 xdebug.collect_params = 3 #設定顯示參數內容 xdebug.profiler_enable = on #啟用 profiler xdebug.profiler_output_dir = /tmp/xdebug #profile log 的位置 建立記錄檔所需目錄
+$ mkdir /tmp/xdebug &amp;amp;&amp;amp; chmod 777 /tmp/xdebug 使用 每當你執行 php 的時候 (不管是透過 apache 或是用 command line 執行)，會在 /tmp/xdebug 底下產生 log 檔。trace.*.xt 是 function trace 的 log，而 cachegrind.</description>
+    </item>
+    
+    <item>
+      <title>明天，我們空中再見</title>
+      <link>https://blog.crboy.net/posts/%E6%98%8E%E5%A4%A9%E6%88%91%E5%80%91%E7%A9%BA%E4%B8%AD%E5%86%8D%E8%A6%8B/</link>
+      <pubDate>Sat, 09 Jun 2012 11:19:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E6%98%8E%E5%A4%A9%E6%88%91%E5%80%91%E7%A9%BA%E4%B8%AD%E5%86%8D%E8%A6%8B/</guid>
+      <description>延續上一篇&amp;hellip;嗨，我來看你們了。
+週三看的戲，到了現在才寫文章&amp;hellip;哈，其實今天心情不佳，想說寫寫文章沈澱一下自己。前幾天也許真的壓力太大了吧&amp;hellip;.
+這天我早早下班，直奔成功廳大門，雖然不意外，但是現場竟然已經有 10 個人左右在排隊了&amp;hellip;才 5:15 耶，這群人都是瘋子&amp;hellip;.然後我加入了這群瘋子，開始等XD 到了 6 點多，開始發放「限量月亮版海報」，果然啊&amp;hellip;.第一天發太陽第二天發月亮，真是太奸詐了!!! 讓我很意外的是，竟然發生跟前一天一樣的狀況，延後入場時間。我還以為會碰到的突發狀況前一天都先撞過了&amp;hellip;沒想到&amp;hellip;.看來他們對場地的掌握度還是不足，以後如果還要在成功廳演出的話，要更注意場地問題唷！
+進場後，先是發了呆，後來發現一個很重要的改進，前一天太亮的「緊急出口」標示被遮起來了，變得雖然能夠看到，但光線不會照亮台上。雖然說遮起來這樣好像不太好，但是這是成功廳的問題吧= = 這標示做這麼亮也太詭異&amp;hellip;.@@
+開場後，發現依然有些微黑臉的狀況，不過燈光是由上往下打的，無法避免。也許在前方放置反光板可以幫忙打光？不曉得有沒有人這樣做&amp;hellip;.要不然就要請演員注意頭不能太低了&amp;hellip;.這是舞台方面的東西，我不太懂，我想也許有專業的人知道要怎麼辦吧？
+該來爆雷談談內容了&amp;hellip;這部戲「明天我們空中再見」把時間軸切的很亂，讓人很難迅速組織起來。每次提到劇名就會想到一件事，這部戲到底干「明天我們空中再見」什麼事啊&amp;hellip;= = 除了開頭跟結尾的廣播內容，還有女主角是個播音員以外&amp;hellip;我實在找不出為什麼要用這個當名稱啊&amp;hellip;果然是藝術&amp;hellip;XD
+簡介一下故事，也順便可以審視一下我對於故事的理解是否正確。一開始的時間是「現在」，女播音員文媛到了 40 樓高的地方，看著風景，突然就失憶了，所以故事回到過去&amp;hellip;..
+三年前，溫柔體貼的成華 (他姓張) 與渴望愛情的嘟嘟相識，並在公園裡&amp;hellip;呃&amp;hellip;聊天的時候，遇到小海與烏龜搶劫，然而不打不相識，經過了這晚，成華與嘟嘟交往，也與小海、烏龜成了好朋友。不久後，他們結婚，並去度蜜月，回來後在家裡辦了 party，身為結婚證人的小海也來參加，並以奇妙的方式認識了嘟嘟的多年好友 - 文媛。幾天後，小海忍不住心中的思念 (我說羅同學你的內心戲實在很豐富XD)，與文媛相約爬山，在山上對文媛講了一個神話。小海說，他是太陽，他太燙了，只要接近他就會乾涸，所以天神懲罰他，要他追著月亮，但他們只在黃昏的時候能夠相見，而且只有這時候的太陽才不燙人&amp;hellip;&amp;hellip;這個神話讓他們相戀，卻也造成一年後的心傷&amp;hellip;
+一年後，是故事最大的轉折點，成華與嘟嘟決定離婚，而文媛與小海約定的一年交往期限也到了，文媛不再理會小海，但小海卻依然無法忘卻。就在某天小海與小妹 (文媛的妹妹) 盼著文媛回來的時候，小海的情緒潰堤，而他們倆發生了關係。在成華的獸醫院裡，嘟嘟 - 文媛所養的狗，嚥下他的最後一口氣，在這裡，小妹、文媛的同事 (男播音員) 還有成華、小海、小女人大吵了一架，這裡是劇情的一大高潮，然而小女人相當帥氣的控制住了小海，免於一場悲劇的發生。
+噢，小女人，他是小海多年的朋友了，像是在交往，卻又放任小海四處拈花惹草，也許小海心中未曾想過他與小女人的關係，但小女人的心中是喜歡著小海的。她甘願為了小海付出，雖然討厭自己的生活，卻還是掙扎著繼續生存。她會算命，她可以看透別人的未來、別人的人生，卻對自己的過去、現在、未來無能為力。不久後，她自殺了。
+而以各種方式尋覓文媛不成的小海，也決心讓自己不再痛苦，引火自焚，但沒死。卻在醫院接受成華的探病時，得知了一個晴天霹靂的消息&amp;hellip;.文媛與成華決定結婚。小海相當痛苦，他還是愛著文媛，但還是不情願的出席了成華與文媛的婚禮。在喜宴上，成華的前妻嘟嘟，已經跟烏龜交往了。嘟嘟倒是相當開放，與成華親密合照，這讓烏龜心理不是滋味。而心裡有疙瘩的小海與烏龜，都鬧著彆扭。
+時間拉回到現在&amp;hellip;在文媛失憶之後，每個人都試圖喚醒文媛的記憶，最激動的就屬小海了，他擔心文媛，擔心他與文媛的過去就這樣消失，一點痕跡也不留下。而被文媛遺忘的嘟嘟與惹文媛生氣的小妹，則試圖用過去的照片喚醒文媛的記憶。但文媛說，知道我過去做了什麼，對我是誰並沒有幫助。而暗戀文媛多年的男播音員，則試圖帶文媛回到錄音室，讓他唸著自己從前寫的稿子。
+最後大家都體會到，時間都回不去了。這個故事沒有結局，只知道小海要出去旅行，重新做人。也許未來會有意想不到的變化。但，有誰的生活是一成不變的呢？
+呼&amp;hellip;終於把故事給講完了。回憶演出，有許多部分讓我相當喜歡。先談談小女人出場那一幕，「嚇你爸！嚇你媽！嚇死你全家喔！」&amp;hellip;.呃好啦，這只是個笑點，可是我覺得很好笑XD 小女人賣的是面具，各式各樣的面具，笑臉、哭臉、三隻眼睛的臉&amp;hellip;我喜歡面具們出場的表演方式，也許這有某個專有名詞吧，但我不懂。我只知道配上音樂，營造出來的氣氛很奇妙，也許我們生活周遭也看著一堆面具，有笑臉、哭臉、三隻眼睛的臉&amp;hellip;這世界不就是這樣嗎？
+另一個也是黑衣隱形人出場的那幕，是小海的自焚。這樣的表演方式很棒，很有氣勢，不曉得是怎麼想到的呢？另外，我注意到其中一位黑衣人，很認真的「跳舞」。雖然我不太懂這個&amp;hellip;但是看得出來他的動作是舞蹈，不是單純的灑粉&amp;hellip;嗯，其實舞蹈也滿好看的嘛 :P
+嘟嘟跟成華都有口頭禪，嘟嘟說的是「我知道，然後呢？」，成華總是跟人家說「我們可不可以說說話？」『說什麼？』「說話啊。」雖然注意到，但是卻不曉得有什麼特別的意義？噢&amp;hellip;小海常常罵髒話這算口頭禪嗎？XD
+啊對了，小海跟嘟嘟都抽煙耶&amp;hellip;雖然看過影痴謀殺以後，我對於他們在舞台上點煙、抽煙已經不太意外了，可是沒想到他們都真抽&amp;hellip;實在很好奇你們是平常就抽煙，還是為了表演特地抽的呢？(不會抽煙的人抽煙會嗆到是真的還假的&amp;hellip;？)
+令人摸不透的文媛，總是靜靜的，像月亮，冷冷的。雖然是重要角色，卻從不突出。白色的衣服很美，卻飄逸的拉開了距離。噢，文媛聽嘟嘟和小妹解釋照片的那一幕，他們解釋的照片就是最後的喜宴會場啊！可是講真的，第一次聽根本就搞不清楚他們在講什麼嘛= = 有夠複雜的XD
+飾演小妹的演員也是熟面孔了，也是我覺得對自己的演技在做出最大突破的一位演員。雖然從不是主角，但卻一直相當用心的扮演好他的配角，人物的性格很明顯，很棒。那句「男人會喜歡」實在有被戳中&amp;hellip;.XD 好傻好天真XDDD 還有這次做了相當大的犧牲啊&amp;hellip;.@@
+成華講話一直都是慢慢的、溫和的，可是當中也會藏一些笑點。像是他答應文媛的求婚(?)的時候&amp;hellip;.呃&amp;hellip;..我不會說耶，就很北七XD 還有他跟小女人在酒店的時候&amp;hellip;.『我幫你洗澡&amp;hellip;要不要？』「要。」為什麼連這種話都可以這麼好笑&amp;hellip;..XD
+說到小女人，他實在很酷。我印象最深刻的就是小海與男播音員吵架的時候，他幾句話就讓小海冷靜了下來&amp;hellip;「你在發瘋啊！」「你恨他嗎？」「走不走？」也許他是最了解小海的人，也或許他能夠洞察未來的變化，但是&amp;hellip;.就是很酷XD
+男播音員的出場次數不多，戲份也少，唯一的一次比較有份量的，就是他的內心獨白。嗯，其實我覺得不是相當令人印象深刻就是了&amp;hellip;..@@
+烏龜則是一個很有趣的人，他的台詞幾乎都有梗啊XD 而且感覺演起來好像很累，因為要一直用奇妙的方式講話&amp;hellip;.欸&amp;hellip;應該不是本來就這樣吧？XD
+嘟嘟&amp;hellip;這次的轉變讓我嚇到啊XDDD 特別是第一次出場的時候，看到大紅色外套、大紅鞋&amp;hellip;這太驚嚇了XD 嘟嘟是一個心中相當熱情的女人，也相當有個性，我感覺到了~
+小海依然是很多獨角戲，有時候還會忘記其實你電話的那一頭是沒有人的&amp;hellip;
+以我認識的三位演員來講，因為看過你們過去的演出，所以也特別對你們的演技有感覺，很棒，真的。至於不認識的其他幾位，也可以感覺出你們的用心，辛苦你們了 :)
+說真的，我實在很不會評論像是服裝、燈光、音樂、演技還是舞台之類的&amp;hellip;因為其實我也不曉得到底這些部分有什麼樣的困難，或是怎樣算是表現得相當好。以一個觀眾的角度來看，我知道大部分都做得很好，只有當中有出一些小差錯而已。辛苦了 :)
+好像想講的都講得差不多了&amp;hellip;不曉得該怎麼結尾XD 其實心裡還有些想法，是從劇情裡面衍生出來的，可是我也不曉得該怎麼描述，大概&amp;hellip;就像是一種心情而已吧？
+謝謝面劇團，你們以後也要繼續加油喔！如果是決定好好念書的小朋友 (突然就從粉絲變學長了)，也要好好加油，祝福你們都有很美好的未來。
+下次的演出&amp;hellip;我想也只能「空中」再見了&amp;hellip;.哈~</description>
+    </item>
+    
+    <item>
+      <title>面劇團 - 「明天我們空中再見」首演</title>
+      <link>https://blog.crboy.net/posts/face-to-audience-%E6%98%8E%E5%A4%A9%E6%88%91%E5%80%91%E7%A9%BA%E4%B8%AD%E5%86%8D%E8%A6%8B/</link>
+      <pubDate>Wed, 06 Jun 2012 01:45:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/face-to-audience-%E6%98%8E%E5%A4%A9%E6%88%91%E5%80%91%E7%A9%BA%E4%B8%AD%E5%86%8D%E8%A6%8B/</guid>
+      <description>嘛&amp;hellip;實在覺得自己越來越不會寫文章了 &amp;gt;&amp;quot;&amp;lt; 各位讀者敬請見諒&amp;hellip;就當這只是小弟心中的碎碎念好了~~
+一如往常的，又在看完面劇團的演出後回家寫 blog 了&amp;hellip;會像是個回家作業嗎？或是變成一種形式嗎？至少我不這麼認為&amp;hellip;我是相當願意把心裡的想法，無論好壞、褒貶都寫出來給所有朋友們，還有所有面劇團的團員們看的。每次結束後總聽你們說「謝謝來看戲！」那我想說「謝謝來看文！」:P 噢對了，還有就是那張問卷這麼大張，哪有空寫這麼多字啊= = 而且根本沒有「背面空白處」嘛= =
+好啦，來聊聊今天的心得，不過因為明天還有一場，所以今天不爆雷、不破梗！
+排隊的時候啊，等啊等啊等的，延後了好久才進場，中間還兩度有工作人員出來說明會延後進場，還有鞠躬道歉耶@@ 辛苦了~我相信這不是你們的問題。另外還有發海報，我是回家才打開的，我拿到的是太陽&amp;hellip;.嗯&amp;hellip;..我其實在猜會不會第一天拿到的都是太陽而第二天拿到的都是月亮呢？:P 明天就知道囉~
+揭幕的時候啊，相當令人驚訝的是，那個佈景啊&amp;hellip;沒想到這次的演出竟然搭了一個這麼大的景！(不能說不能說不能說啊&amp;hellip;.) 接著嘛&amp;hellip;就是好戲上演了~
+內容的部份說好不提的，留到明天再說。
+但這次我看到三位認識的演員都在挑戰自我，做出改變啊！從清純小資女孩變身為火辣女人，從憨厚警員/學生變身為地痞流氓，還有從性感熟女變成拾荒老婦又變成傻小妹&amp;hellip;這絕對是演技上的一大挑戰，對認識他們的觀眾們，也絕對是相當大的震撼。
+還有舞台表演上，這次加上了很特別的元素，一開始有點疑惑，但其實我還滿喜歡的！:D 雖然沒有很強調，但我認為用這個元素所表現的內容，是一個相當值得思考的議題。人與人之間的距離、面對他人的每一張臉、面具下的真實又是什麼樣子？另外也很特別的是&amp;hellip;..是&amp;hellip;..不能說不能說不能說&amp;hellip;XD 很妙，用這樣的方法去表現這個橋段！不曉得是從哪邊學的？或是團員們自己發想的呢？酷~!!
+劇本部分，其實不是很好理解，時間軸相當破碎，所以因果跟時空關係需要好好思索，但我想明天應該就會看懂了！舞台設計部分，我覺得很有趣，很巧妙的設計，這個部分其實沒有什麼特別的想法，但因為我坐在面對舞台的左側，所以電梯那一幕的男播音員的臉就這樣被擋住了&amp;hellip;我想也許往前站一點會比較好。另外也是跟臉有關係的，就是燈光的部份。有好幾個場景的燈光，照下來讓演員有很明顯的黑臉&amp;hellip;我個人認為這應該不是故意營造的效果，也許是受限於場地吧，如果可以針對這個部分調整一下我想演出會更完美！
+另外，看戲的時候一直有種感覺，似乎劇團對這個場地還有用到的道具都不是很熟悉？大道具的動作也一定沒有多試幾次，還有門&amp;hellip;..(嘆) 是不是因為成功廳不容易借用，所以很難有機會用正式的場地跟道具彩排呢？我不敢肯定，但若是這樣的話，我想對於演出的品質會是一個很大的傷害。雖然我只是一介草民，但是之前也略有耳聞外面的團體會在正式演出場地做很多次的排練，以期讓演出達到最好的效果。如果可以的話，也希望面劇團未來能夠多多在成功廳排練囉！我想面劇團是成大之寶，學校會很樂意提供協助的！(吧？)
+其實心裡還有好多東西跟想法&amp;hellip;.可是&amp;hellip;.呃&amp;hellip;..好啦我想睡覺了XD 其他留到明天一起講好了~~</description>
+    </item>
+    
+    <item>
+      <title>期待面劇團「明天我們空中再見」</title>
+      <link>https://blog.crboy.net/posts/wait-for-fta-show/</link>
+      <pubDate>Mon, 04 Jun 2012 01:33:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/wait-for-fta-show/</guid>
+      <description>過了大概半年吧，又可以看到面劇團的演出了！:D
+面劇團 (Face To Audience, FTA) 是成大學生自己組成的一個劇團，最初是由一群修「表演藝術概論」通識的學生聚在一起所組成的。過去曾經舉行過兩場公演，每場各有兩個場次。地點都在成大的鳳凰樹劇場。
+雖然我不是面劇團的團員，也跟裡面的團員一個都不認識，但過去的「四」個演出場次恰好我都參與到了！說來實在是緣份，最初不過是看到學校寄來的信，幫忙宣傳了面劇團的演出，那是第一場的「影痴謀殺」，而他的介紹文案相當的吸引我。雖然到了現在，我已經忘記當時為什麼會被文案吸引，但我還清楚的記得看戲的感動，還有結束後心中幫他們打了一百分滿分的評價！
+隔天，我又傻傻的跑去排隊&amp;hellip;也不曉得是為了什麼，但就很想再看一次，再好好品嚐他們的演出。對了，說到排隊&amp;hellip;因為事前也不曉得要索票還是什麼的，反正我就相當懶惰，所以過去的四場演出，我都是當天提早到達現場排隊，等到開演前五分鐘才能依序入場的。不過，我還記得我運氣相當好，每次都坐到不錯的位置，都在中間靠前面耶！一定是我平常有做好事的關係。噢，然後那天有去找其中兩位演員拍照 :P，正妹小萍跟型男小張，開口的時候我整個超尷尬的XD
+隔了半年，面劇團帶來「一躍之下，」作為校慶賀歲(?)演出。呃&amp;hellip;因為擔心太過熱門，所以很早 (超級早) 就去排隊了，相當尷尬的排了一個第一名&amp;hellip;記得當天不但下雨，而且稍早有另一場活動在那個場地舉辦，所以整個相當狼狽，又找不到地方可以等待。直到面劇團的團員開始佈置，我才終於有地板可以坐XD
+「一躍之下，」我相當喜歡，也許除了演出以外，對於劇本也多了一份親切感吧。故事是以成大為出發點，描述男主角阿堂因為辛酸都往肚子裡吞，被教授冷嘲熱諷，還無法如期畢業，種種的壓力下，他選擇了&amp;hellip;從電機系的天井向下墜落。看戲當時的我，也是一個延畢中的研究生，也常常假裝堅強，戴著面具面對這個世界。這個故事，相當令人鼻酸。我到現在依然無法忘懷劇中那句台詞：「我以為我可以讓他們後悔，沒想到最後悔的，是我自己。」 (哭)
+後來不久，有段小插曲。某天去買水餃之家，當天很多人，我要外帶，當我站在那裡等的時候，發現旁邊有一桌的男女相當眼熟！竟然是&amp;hellip;.正妹小萍跟型男小張！！！噢，其實我一直都記得他們兩個的名字，但是擔心被當成變態，我就當做不記得了。當時鼓起勇氣去跟他們打招呼，首先偽裝成粉絲問「請問你們是面劇團的團員嗎？」『呃&amp;hellip;.是&amp;hellip;..』「我有看過你們的演出~」天啊太尷尬的開場白了XD 沒想到後來提到我有在部落格寫他們的文章，竟然戳中小張的驚訝點 (我的意思是，讓他相當驚訝)，原來他們不只是曾經回覆過而已，竟然還記得我，真害羞 &amp;gt;////&amp;lt; 啊，對了，他們不是兩個人去吃，還有第三位同學。但是&amp;hellip;呃&amp;hellip;嗯&amp;hellip;.哈哈&amp;hellip;..我認不得他 orz
+其實說實在話，我並沒有一直持續追著面劇團的消息，但是緣份讓我們碰在一起(?)。這次面劇團有公演的消息其實我是在網路索票當天早上才知道的，這次我終於可以不用再很可憐的排隊了啊！！！
+雖然說去取票的時候一直很擔心會不會被白眼說「面劇團的票已經有夠難搶了你還索這麼多，是不是要拿票去賣啊？」不過還好沒事啦&amp;hellip;.XD 好歹我以前都是兩場都去的，這次去兩場過份嗎？XDDD 現在相當期待明後兩天的演出啊~我其實也不知道該用怎樣的心情去面對，畢竟如果對一樣事物抱著相當高的期待，即使這樣事物已經相當棒了，心中的評價依然會減分&amp;hellip;但是，我知道面劇團相當優秀啊！而且他們也很努力&amp;hellip;真矛盾 orz。無論如何，我相信他們會再一次帶來很棒的演出。 :)
+「明天我們空中再見」的演出時間是 6/5, 6/6，晚上 7:00，地點在成大光復校區成功廳，如果你正在閱讀這篇文章，如果你也對面劇團很感興趣，建議你可以來看唷！嗯&amp;hellip;我知道你沒有票，但你只要跟我一樣有不屈不撓的精神，當天早點來現場排隊，相信你一定可以成功入場的XD
+&amp;hellip;&amp;hellip;.唉，也許未來就沒機會看到面劇團的演出了&amp;hellip; :( 等到離開了成大，不要說有沒有收到消息，就算收到了消息，也沒有權限索票了。當完兵後，勢必得去工作，好像也很難排隊&amp;hellip;..嗯，總之怎麼想都不可能 (攤手) 就把這兩天的演出，當做是對面劇團留下一個最美好的回憶吧&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>PHP imagettftext() could not read font</title>
+      <link>https://blog.crboy.net/posts/php-imagettftext-could-not-read-font/</link>
+      <pubDate>Thu, 31 May 2012 14:03:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/php-imagettftext-could-not-read-font/</guid>
+      <description>今天撞牆撞很大&amp;hellip;.由於手邊在碰的一個專案裡面需要產生類似驗證碼的圖片，他用了 imagecreate(), imagettftext(), imagesetpixel() 這些 PHP functions。聽說這支程式「曾經」是可以 work 的，不過在我手上就不 work，為了證明不是人品問題，一定要把這個 bug 修掉！
+一開始我傻傻的在程式碼裡面翻找，但這樣實在太沒效率了，身為一個專業的&amp;hellip;.呃&amp;hellip;雜工，一定要懂得善用工具！所以我用了&amp;hellip;.. command line php&amp;hellip;..
+$ php image.php &amp;gt; /dev/null 對啦，只不過是測試環境從 apache 換到 command line 底下了，這樣是有比較強嗎？有喔~因為我的測試環境有裝 xdebug，只要有 enable 就可以在 command line 底下看到 debugging messages，不用特別打開 stack trace。至於最後面把 standard output 導向 /dev/null 是為了不想看到他輸出的那張不完整的圖，那會干擾畫面。
+首先第一步，我忘記詳細的訊息了，大意是說 imagecreate() is undefined 等等，這時候當然要去找找這函式有沒有需要什麼相依的 library 啊！找了一下發現，這些函式是由 PHP 的 GD module 所提供的，所以我迅速的安裝了 GD 模組&amp;hellip;
+$ sudo apt-get install php5-gd 接著，才是重頭戲的開始&amp;hellip;.
+裝好 GD 模組之後，那些 function 都可以使用了，但是我卻一直收到這個錯誤訊息&amp;hellip;.
+PHP Warning: imagettftext(): Could not read font .</description>
+    </item>
+    
+    <item>
+      <title>對 Vim 啟動過程做效能分析</title>
+      <link>https://blog.crboy.net/posts/profiling-vim-startup/</link>
+      <pubDate>Wed, 30 May 2012 11:09:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/profiling-vim-startup/</guid>
+      <description>昨天在噗浪上看到有趣的分享，是一篇 StackOverflow 上的文章：Profiling vim startup time。
+其實講的東西相當單純，就是 vim 提供了 --startuptime 選項，後面接上 log 檔的檔名，他會幫你把啟動過程中每個部份所花的時間都記錄下來，有個別時間也有累計時間。例如：
+$ vim --startuptime vim.log 然後就可以看 vim.log 的內容來了解自己啟動 vim 的時候在哪個部分花最多時間囉。對於 vim plugin 裝很多又想瘦身的朋友應該很實用。:)
+嗯&amp;hellip;..身為一個程式語言 (vim script) 的 interpreter&amp;hellip;.果然會出現這種東西XD</description>
+    </item>
+    
+    <item>
+      <title>Git on Windows 安裝筆記</title>
+      <link>https://blog.crboy.net/posts/git-on-windows/</link>
+      <pubDate>Fri, 25 May 2012 00:25:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/git-on-windows/</guid>
+      <description>&lt;p&gt;Git 是一套很棒的分散式版本控制系統。不過由於它一直是在 Linux 上生長的，對於在 Windows 上使用來說其實稍嫌麻煩。&lt;/p&gt;
+&lt;h1 id=&#34;windows-上的各種-git&#34;&gt;Windows 上的各種 Git&lt;/h1&gt;
+&lt;p&gt;在網路上搜尋通常會找到 Git for Windows 跟 msysGit 這兩個不同的名詞，我過去一直沒辦法很清楚的把他們兩者區分開來。根據 &lt;a href=&#34;http://msysgit.github.com/&#34;&gt;msysgit 在 github 上的首頁&lt;/a&gt; 與 &lt;a href=&#34;http://stackoverflow.com/questions/3672272/msysgit-vs-git-for-windows&#34;&gt;StackOverflow 上的討論&lt;/a&gt;，我目前的理解是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;msysGit 是 msys + Git 的完整環境，包含了 build 程式用的 toolchain，同時他的執行檔是直接在 user (或者該說是 developer) 的機器上 compile 出來的，使用者隨時可以透過 &lt;code&gt;git pull&lt;/code&gt; 取得最新版的 msysGit 來編譯，算是給 git 開發者用的。&lt;/li&gt;
+&lt;li&gt;Git for Windows 可說是 msysGit 的「產出」，是預先 compile 好的 &lt;code&gt;git.exe&lt;/code&gt; 還有其他執行檔們&amp;hellip;其中只包含了基本的 msys 環境、有 bash、ssh、甚至 Git GUI 等工具，但是沒有 toolchain，適合單純使用（操作）git 的使用者安裝。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;另外還可能會找到一個更有名的東西，稱為 &lt;a href=&#34;http://code.google.com/p/tortoisegit/&#34;&gt;TortoiseGit&lt;/a&gt;，這是知名專案 &lt;a href=&#34;http://tortoisesvn.net/&#34;&gt;TortoiseSVN&lt;/a&gt; 的相關專案，顧名思義，就是烏龜殼包了 Git 啦！要注意的是，他只是一個 Git frontend，需要指定相關執行檔 (如 &lt;code&gt;git.exe&lt;/code&gt;) 的位置才能工作。特別的是，他本身附帶了 PuTTY 的 ssh client (&lt;code&gt;plink.exe&lt;/code&gt;)，讓使用者可以透過比較符合 windows 使用習慣的方式來使用 ssh，如果不是很熟 linux 或是 GUI 狂熱份子可能會比較喜歡。XD&lt;/p&gt;
+&lt;p&gt;註：知名專案 cygwin 也可以安裝 git 並在 command line 下使用，但對於沒在使用 cygwin 的使用者而言麻煩得多，故此處不介紹。&lt;/p&gt;
+&lt;p&gt;這篇文章分成三個部分：首先介紹 Git for Windows (免 compile 的那個) 的安裝，接著是 msysGit (需要 compile 的那個) 的安裝，最後會介紹 TortoiseGit 的安裝，並以一個簡單的 git clone 作為結束。如果是一般單純想在 windows 上用 git 的人，可以只看第一跟第三部分即可，第二部分就當作參考資料吧！&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>「cannot open shared object file」的解決方案</title>
+      <link>https://blog.crboy.net/posts/solution-for-cannot-open-shared-object/</link>
+      <pubDate>Wed, 23 May 2012 15:20:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/solution-for-cannot-open-shared-object/</guid>
+      <description>有時候執行一些指令，會碰到下面這樣的訊息：
+error while loading shared libraries: libiconv.so.2: cannot open shared object file: No such file or directory 在這個例子中，我們的程式找不到 libiconv.so.2 這個 dynamic library。那麼應該怎麼解決呢？
+首先必須找到系統中的 libiconv.so.2，下面四條指令選一條作就好：
+$ locate libiconv.so.2 $ whereis libiconv.so.2 $ find /usr /lib -name libiconv.so.2 $ find / -name libiconv.so.2 2&amp;gt;/dev/null 這時候就可以找出函式庫位置，例如：/usr/local/lib/libiconv.so
+萬一沒有找出來的話，就要自行安裝了。這篇文章有教該如何安裝 libiconv，如果是其他函式庫的話可以自行變通。
+找到位置之後，應該怎麼做呢？如果我們有 root 權限的話，可以把函式庫所在路徑寫入 /etc/ld.so.conf，再重新產生 ld 的 cache 即可，如下：
+# echo &amp;quot;/usr/local/lib&amp;quot; &amp;gt;&amp;gt; /etc/ld.so.conf # 注意! 要用 &amp;gt;&amp;gt; 而非 &amp;gt;！ # ldconfig 在某些系統中，/etc/ld.so.conf 可能會預設加上 include /etc/ld.so.conf.d/*.conf 這樣的敘述，那們我們也可以把路徑放在那個目錄下：</description>
+    </item>
+    
+    <item>
+      <title>SSH 安全性設定筆記</title>
+      <link>https://blog.crboy.net/posts/ssh-security-note/</link>
+      <pubDate>Fri, 18 May 2012 14:16:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/ssh-security-note/</guid>
+      <description>以下收錄可增加 ssh 安全性的各種技巧，主要的修改都在 /etc/ssh/sshd_config 中，同時，修改設定後別忘了重新載入設定值或重新啟動 sshd。
+修改預設 port (可用多行開啟多個 port)
+Port &amp;lt;port&amp;gt; 僅監聽特定 ip (適用於多網卡/多 IP 的情形)
+ListenAddress 192.168.1.10 禁止 root 登入
+PermitRootlogin no 管理者必須先以個人帳號登入，再 su 成 root，或利用 sudo 工作。
+禁止使用空密碼登入
+PermitEmptyPasswords no 僅允許或拒絕特定帳號或群組登入
+AllowUsers &amp;lt;user1&amp;gt; &amp;lt;user2&amp;gt; &amp;lt;user3&amp;gt; AllowGroups &amp;lt;group&amp;gt; DenyUsers * DenyGroups no-ssh 根據實驗，對於同一帳號而言，如果同時 Allow 跟 Deny 的話，結果會是 Deny 的。
+廢除密碼登錄，強迫使用 RSA/DSA 驗證
+RSAAuthentication yes PubkeyAuthentication yes AuthorizedKeysFile %h/.ssh/authorized_keys PasswordAuthentication no 並確保 user 的 ~/.ssh 權限為 700，同時將該 user 的 public key 加入其 ~/.</description>
+    </item>
+    
+    <item>
+      <title>在 iPhone 上設定 Google 帳戶</title>
+      <link>https://blog.crboy.net/posts/google-account-on-iphone/</link>
+      <pubDate>Sun, 08 Apr 2012 01:42:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/google-account-on-iphone/</guid>
+      <description>今天來耍點小技巧衝文章數。
+最近打算把一些我會的技巧什麼的&amp;hellip;.把它們整理起來並寫出來，未來想要查閱也比較方便。
+恰好之前做過一份簡報，連結在此：當 Google 遇上 iPhone。雖然已經是 iOS5 的年代了，不過設定方式沒有差很多，大概就是畫面有點不同而已&amp;hellip;.所以就不更新了！
+這份簡報的內容是關於怎麼在 iPhone 上加入你的 Google 帳號。這裡說的 Google 帳號可能是 Gmail (*@gmail.com) 或是 Google Apps (*@_&amp;lt;your_domain&amp;gt;_) 的帳戶。內容包含：
+收信 同步行事曆(特別是帳號底下有多個行事曆的同步，預設狀況下只能同步一個行事曆) 通訊錄 工作表 (tasks) 這些都是我在 iPhone 上相當依賴的功能，雖然 iPhone 跟 Google 在通訊錄方面的整合上有點小問題，但是用起來還是相當方便的。
+提供給有興趣的朋友使用 :P</description>
+    </item>
+    
+    <item>
+      <title>C, C&#43;&#43; 中沒有 return 敘述的 main function</title>
+      <link>https://blog.crboy.net/posts/main-function-without-return-statement/</link>
+      <pubDate>Thu, 05 Apr 2012 02:47:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/main-function-without-return-statement/</guid>
+      <description>今天在噗浪上討論+研究了一個問題，這邊記錄一下，不然每次查完資料都會忘記= =
+相關的討論在這則噗浪上，如果有興趣也可以去看。
+我所研究的問題很簡單，「在 C/C++ 語言中，main function 不寫上 return statement 的話，會怎樣？」因為有些人會寫上 void main () 這種 prototype (我想有個原因是 Visual C++ 6.0 預設就這樣搞)，或是有些人寫了 int main () 但是卻沒在 main function 中寫上 return 0; 或是 return EXIT_SUCCESS;。那麼，到底會不會出現問題呢？
+我在網路上找到一份號稱是 ANSI C 的 spec，希望我沒有被詐騙，該份 spec 的連結在此。
+根據這份文件，其中有兩個部分可以解決我的疑惑：
+2.1.2.2
+If the main function executes a return that specifies no value, the termination status returned to the host environment is undefined.
+3.6.6.4
+If a return statement without an expression is executed, and the value of the function call is used by the caller, the behavior is undefined.</description>
+    </item>
+    
+    <item>
+      <title>如何設定 Gmail 帳戶收取 Google Apps 帳戶的信件</title>
+      <link>https://blog.crboy.net/posts/how-to-setup-pop3-for-google-apps/</link>
+      <pubDate>Tue, 03 Apr 2012 22:00:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/how-to-setup-pop3-for-google-apps/</guid>
+      <description>今天學弟在問，要怎麼在自己的 Gmail 信箱中，收取實驗室信箱的 e-mail。我們實驗室的 e-mail 本來是自己架設，不過現在已經轉換到 Google Apps 上去了。而 Google Apps 的帳號其實相當於另一個 Gmail 帳號，除非管理員設定不允許外部 POP3 與 IMAP，否則其實跟一般設定沒什麼兩樣。
+設定這個可分為兩個部分：在要被收信的信箱開啟 POP3 功能，以及在要用來收信的信箱(通常是自己的 Gmail 帳號)設定收取 POP3 信件。
+第一部分 (在「被收信」的帳戶中設定) 進入 Gmail 設定
+點選「轉寄和 POP/IMAP」
+點選啟用 POP 功能。至於要收取「所有郵件」或是「現在起所收到的郵件」則是看個人需求。另外，可在這裡設定郵件被收走後，是否要保留？我的習慣是讓他標為已讀，你也可以選擇封存或刪除。
+第二部分 (在「用來收信」的帳戶中設定) 在 Gmail 設定中點選「帳戶」
+點選「以 POP3 檢查郵件」下面的「新增您的 POP3 郵件帳戶」，會出現下面的視窗
+輸入「被收信」的帳戶的 e-mail address，如圖例
+系統會自動幫你填上對應的資訊，但是這個資訊是錯的！必須自行修改，可參考這個連結。使用者名稱是你的完整 e-mail address，並輸入你的密碼。POP 伺服器要設定為 pop.gmail.com，port 為 995，並啟用 SSL。我的習慣是會把收來的郵件自動加上一個標籤，這樣可以用標籤區分是哪裡收來的信。
+設定到這裡其實已經差不多了。如果除了收信以外，也想利用那個信箱的 address 來寄信的話，可以透過 Gmail 幫你寄就可以，畢竟根本都是同樣的機器XD
+補充一個小東西，Gmail Labs (研究室) 裡面有一個有趣的功能，我覺得可以打開。它叫做「重新整理 POP 帳戶」，可以讓你點選首頁的「重新整理」就可以立刻收取外部信箱的信！個人覺得滿實用的 :P
+PS. 突然想到一個問題是，如果有開啟 two-step verification 的話，是要&amp;hellip;.</description>
+    </item>
+    
+    <item>
+      <title>「那些老師沒教的事」簡報釋出</title>
+      <link>https://blog.crboy.net/posts/release-slides-of-code-smart/</link>
+      <pubDate>Mon, 02 Apr 2012 23:41:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/release-slides-of-code-smart/</guid>
+      <description>在緊張得半死的狀況中，終於把這個 talk 給講完了XD 希望來聽的人都有些收穫~
+不過可惜的是，我太緊張了，所以有些東西講的不是很完整，甚至是漏講&amp;hellip;.orz 而且滿多東西好像&amp;hellip;.呃&amp;hellip;.有點臨場發揮&amp;hellip;.XD 希望不要讓人覺得太亂~
+當日演講簡報可點選此處下載
+自己重新看了簡報，大致上檢討一下自己，如下：
+git-config 沒有 demo 到(因為我自己也很少用&amp;hellip;我都直接看設定檔來改，比較乾脆XD) 之前就一直覺得應該要畫點圖來描述 revision 還有 branch，但是一直偷懶&amp;hellip; git-add -p 沒講到QQ&amp;hellip;.應該要 demo 一下「部分 add 並 commit」的 .gitignore 如果有 demo 的話，應該會更清楚點 沒講到 git-revert 啊!!!! (大敗筆) 應該拿個實際上的使用 git 協作的範例，這樣聽眾會更有感覺&amp;hellip; make 還是該現場 demo 一下&amp;hellip;.幾行而已又不會花多少時間QQ 我竟然沒講到 gdb 可以預先寫好 command，甚至是 function 的這件事&amp;hellip;.. vim demo 太少&amp;hellip;連 vimrc 都沒有開來看看，真是不應該 vim 文字物件 (text object)、tabpage、quickfix、mapping 都應該要提一下的&amp;hellip;. 結果變成檢討文了&amp;hellip;&amp;hellip;..XD
+如果這樣的東西以後還有機會再講的話，也許要考慮拆成兩個部分，然後分別作比較完整的 demo，甚至是現場實作，應該會比較有趣一點！但是，如果是拆開的話，那不管講那個主題都顯得我會得太少了耶&amp;hellip;..orz 畢竟，不管在哪個範疇我都只是個學習者，充其量是脫離初學吧我想。我生來就是只能講初級講題的吧XDDDD
+噢我發現我的文章，總是會出現很多個 XD，對吧？XD
+最後這邊宣傳一下當日最後宣傳的事情。
+我之前嘗試性的建立了一個小小的社群，叫做 C4Labs。當時想嘗試把社群聚會的形式跟氣氛帶到成大來，不過成效好像頗差orz。現在畢業了，想說看看能不能再找回當初的期待。我想把對於電腦、網路、程式等等技術有強烈興趣的朋友們聚集起來，一起討論跟分享。因為涵蓋範圍很廣，想當然爾並不是討論很高級很困難很深入的技術，算是初階的社群？XD
+現在還有一些應該慢慢建立起來的東西，我會儘量去做，目前我在 Google Groups 上開了一個討論群組，作為聯絡的管道。歡迎有興趣跟我們一起分享的朋友們一起來玩！:P
+我們的聚會現在並不定期 (我承認是有一搭沒一搭啦)，不過從上週的演講做為一個開頭，希望每週四晚上都有一個聚會，一週是演講，一週是單純的聚會分享(或閒聊、討論、桌遊？XD)，這樣交錯進行，節奏應該不會太快，而且學得到東西！</description>
+    </item>
+    
+    <item>
+      <title>透過 ssh 遠端存取 git repository</title>
+      <link>https://blog.crboy.net/posts/remote-git-access-via-ssh/</link>
+      <pubDate>Fri, 23 Mar 2012 03:31:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/remote-git-access-via-ssh/</guid>
+      <description>好，今天來寫個我架設「偽 - git server」的作法吧！
+為什麼叫做「偽 - git server」呢？因為他不是真的跑起來一支 daemon 去負責 git 的 access，像是 gitolite 或是 gitosis 那樣。(事實上我也不知道該怎麼把那些東西架起來XD)
+由於 git 可以透過 ssh protocol 來 access，當然要善用這點！
+以下我分為單人各自使用與多人共用來講：
+單人各自使用 這算是簡單的應用了，只要你有一台工作站的 ssh 帳號，而且工作站上有 git (好吧，我承認我不曉得 minimal requirement 是什麼，也許是 git-shell 吧？) 的話，就可以這樣用，相當簡單！
+首先假設遠端 server/workstation 叫做 Remote，網址是 example.com，我在這台機器上的帳號為 crboy，家目錄是 /home/crboy。相當單純而常見的配置。另外本機叫做 PC，其他相同。
+那麼我們想要開始一個新專案可以這麼做：(注意主機名稱)
+crboy@Remote:~$ mkdir my_project.git # 建立專案 repo 的目錄 crboy@Remote:~$ cd my_project.git # 進去該目錄 crboy@Remote:~/my_project.git$ git init --bare # 初始化這個目錄為「純repo」(這是我自己的說法，應該是不太通用，記得 bare repository 比較好) Initialized empty Git repository in /home/crboy/my_project.</description>
+    </item>
+    
+    <item>
+      <title>在 bash (zsh) script 中使用 trap</title>
+      <link>https://blog.crboy.net/posts/trap-in-bash-zsh-script/</link>
+      <pubDate>Sat, 17 Mar 2012 23:25:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/trap-in-bash-zsh-script/</guid>
+      <description>最近在跑分散式的程式，每次測試都要開好幾隻程式在跑。就算可以寫 script 自動開啟，還是會遇到一個很討厭的問題，沒辦法自動關閉那些屬於 worker 的程式。好像解釋的不太清楚&amp;hellip;.就是我希望在我程式跑完的時候，或是我把程式強迫終止的時候，我可以同時把好幾個 process 也 kill 掉。特別是強迫終止的時候，因為無論我在最後寫好什麼動作，一旦強迫終止就執行不到了。
+於是上網尋找解法，找到了 trap 可以用。Trap 這東西，也就是陷阱&amp;hellip;我想他的意思是，會讓你指定的那些 signal 掉入陷阱吧&amp;hellip;(笑)。不曉得 signal 是什麼的請自行閱讀 manpage 或是上網找。
+這裡提供兩個範例，第一個是測試 trap 功能的範例：
+這個範例中，我指定 SIGTERM SIGINT SIGHUP 這三個 signal 會被 trap 抓住，而 trap 抓到後所要執行的指令為 &amp;ldquo;echo TRAP!!; exit&amp;rdquo;。注意這邊我加上了 exit 讓這個 script 會在接到 signal 的時候終止，否則它只會 echo 出 TRAP!! 後繼續執行它要執行的動作。如果你沒有另外指定別的離開方法，就必須乖乖的等待 script 執行完畢，或是用 kill -9 (送 SIGKILL) 才能終止它了&amp;hellip;
+再來是第二個範例：
+這裡差不多是一個實際使用的 use case 了，參考自：這篇文章。把需要做清理的動作寫進 function 裡，以我最上面提到的情況就是把該關掉的 worker 程式都關掉，在這裡我就印出個 CLEAN UP!! 代替就好XD。然後在 trap 裡設定它負責清理，另外也在 script 正常結束前清理，這樣就可以保證(大概吧?)清理動作一定會被執行，除非是被 SIGKILL 強迫中斷。</description>
+    </item>
+    
+    <item>
+      <title>Talk (March 29): 寫程式？那些老師沒教的事 - Code Smart; Don&#39;t Code Hard</title>
+      <link>https://blog.crboy.net/posts/talk-0329-code-smart-dont-code-hard/</link>
+      <pubDate>Fri, 16 Mar 2012 23:59:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/talk-0329-code-smart-dont-code-hard/</guid>
+      <description>這是確定的演講資訊了&amp;hellip;.多少人願意來就看我的造化了XD
+「寫程式？那些老師沒教的事 - Code Smart, Don&amp;rsquo;t Code Hard」
+身為一個資工系的學生，經手過的 C 語言程式想必不少。而我們以前都是怎麼寫程式的呢？有沒有想過，也許寫程式這件事不用如此辛苦？在 C 語言的開發過程中，從撰寫、編譯、測試、除錯，中間碰到多少工具？俗話說「工欲善其事，必先利其器」，以往所用的工具是不是真的「夠利」呢？
+如果是成大資工系的學生，想必大一都接受過一段慘痛(?)的日子。我們這些小大一，被壓著去用什麼 pietty 連上 server，還要開什麼 vi 來寫程式。「那是什麼東西？難用死了！」是很多人大一時的心聲。寫完之後還要打好多指令，像是「機西西」&amp;hellip;呃，我是說 gcc，後面接上好多難懂的參數，才能把程式編譯完成。 但我一直到了大三才慢慢知道，這樣的環境才是 C 語言最快樂的地方，也要在這種環境下，我們才能很輕鬆的掌握 C 語言的全貌。噢，當然不是非要透過 putty/pietty 連上工作站才能使用到這類環境，在 windows 上一樣可以使用功能強大的命令列環境。(透過 cygwin/msys) 未來在外寫程式，仍然需要接觸這些東西的。
+除此之外，有經驗的人都知道，我們要隨時備份寫好的程式碼。至少剛剛會動的那個版本要留下來，不然萬一改爛了可能會改不回來。你都怎麼做的呢？backup_01.zip, backup_02.zip, backup_03.zip, &amp;hellip;？跟同學合作 project 的時候，又是怎麼做的呢？
+「欸我傳給你了喔！」
+『你改了哪些地方啊？我 copy 不完啦！』
+如果你有上述症狀，請立刻撥打下面這隻專線：
+0987-987-987 (哩揪北七-揪北七-揪北七)
+這場小小的分享，是我個人在學習克服上面這些問題時的心得。其實早就已經有很多好工具可以解決這些問題，端看我們懂不懂得使用。我會介紹到：vim、gcc、make、gdb、git
+由於東西太多了，這天我只會做一個通盤的概論，介紹這些工具分別是做什麼用的，而我們又為什麼需要這些工具，以及這些工具可以帶來什麼好處。
+歡迎完全沒有概念的朋友們來學習，也歡迎有一些概念的朋友們來一起研究，更歡迎相當有概念的朋友們來給小弟批評指教。鼓勵自行攜帶電腦現場實作！或是帶著你的問題來共同討論！希望可以達成演講50%、討論50%的目標！謝謝 &amp;lt;(_ _)&amp;gt;
+時間：3月29日 晚上7:32
+地點：成大資訊系館 4261 4263 教室 (地點更新，新教室僅在原教室隔壁)
+講者：畢玉泉 (小畢/CrBoy)
+講題：寫程式？那些老師沒教的事 - Code Smart, Don&amp;rsquo;t Code Hard
+歡迎宣傳、轉貼以及蒞臨指教 :P</description>
+    </item>
+    
+    <item>
+      <title>S型調整函數</title>
+      <link>https://blog.crboy.net/posts/s-shape-adjustment-function/</link>
+      <pubDate>Sun, 22 Jan 2012 15:39:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/s-shape-adjustment-function/</guid>
+      <description>前陣子一位學妹在噗浪上這樣發問：「問!! 假設我要讓數字越大的越大 越小的越小 我該怎麼做?? 假設零到一百 處理完區間還是零到一百 但是大於五十的會變大 小於五十的會變小 應該要做什麼@@???開根號??微積分?? 」
+OK&amp;hellip;.我來整理一下我對這個問題的理解：
+求一函數，定義域為 [0,100]，值域亦為 [0,100]，且若 0&amp;lt;x&amp;lt;50 則 f(x)&amp;lt;x，若 50&amp;lt;x&amp;lt;100 則 f(x)&amp;gt;x。
+另外還有一部分是我猜測應該也是需求的：
+若 x&amp;lt;y 則 f(x)&amp;lt;f(y)，f(0)=0，f(50)=50，f(100)=100。
+後面這幾項其實是為了讓這個調整更加完備一點&amp;hellip;
+由於這個調整的曲線很像是相片後製時常用的S型曲線(我不是很清楚專有名詞，好像是 gamma 曲線的調整云云)，說不定未來哪天會用到，所以特別寫篇文章記錄這件事 :P
+這是我提出的 function：
+設 t=x-50，f(x)=50+sqrt(50)sqrt(abs(t))(abs(t)/t)
+如果把 t 代進去(寫起來會比較複雜)就是這樣：
+f(x)=50+sqrt(50)sqrt(abs(x-50))(abs(x-50)/(x-50))
+底下有圖有真相。當時作圖沒有特別注意的部分是，x&amp;lt;0 跟 x&amp;gt;100 的部份應該要限制住的，不過只是做個概念的印證而已，就不太在意了~
+至於概念上&amp;hellip;..我不是很會解釋，基本上就是利用 sqrt(t) 這個曲線的特性，再去做參數上的調整就是了。我想利用 log 那類的函數應該也可以，但就沒有仔細想了。雖然數學上應該已經有滿多現有的作法可以完成這個目的，不過自己拼湊也是種樂趣 :D
+總結一下，我設計的這個 function 可以對一群資料做調整，使其高的更高、低的更低，並且保持其大小關係(如果是調整分數之類的應用，這點很重要)。同時這個 function 也是嚴格遞增，用於調整分數之類的滿適合的。:)</description>
+    </item>
+    
+    <item>
+      <title>以特定時間點為基準刪除老舊目錄</title>
+      <link>https://blog.crboy.net/posts/delete-old-folders-by-modified-time/</link>
+      <pubDate>Mon, 09 Jan 2012 18:05:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/delete-old-folders-by-modified-time/</guid>
+      <description>今天因為某些原因，得刪除特定目錄底下，太老舊的一些目錄。目錄數量有上百個，一個個刪實在令人難過，身為一個 Linux user，就該善用工具來解決這個問題！
+這篇是個簡單的速記，就不囉唆。只要使用以下指令即可：
+$ find * -maxdepth 0 -mtime +365 -exec rm -r {} \; 其中幾個重點說明如下：
+使用 find 可以找出符合特定條件的檔案並對該檔案做點事情(下指令) -maxdepth 是用來限制 find 往下搜尋的層數，由於我僅針對此目錄下的所有目錄做處理，故僅使用 find * -maxdepth 0 -mtime 是針對 modified time 做限制，後面接 +n 表示「早於 n 天前修改的檔案（比 n 天還舊）」，若是接上 -n 則表示「晚於 n 天前修改的檔案（比 n 天還新）」。類似的選項還有 atime, amin, ctime, cmin, mmin。可自行查看 manpage。值得注意的是，manpage 中是以「n*24 hours」來說明，不曉得是否有何特殊之處？ -exec 則是針對找到的檔案進行動作，後面接上要執行的指令，並以 {} 代表找到的檔案，結尾並加上 \; 即可。 網路上找到的通常會是刪除「老舊檔案」而非目錄，以下亦附上參考用法。
+$ find . -mtime +365 -exec rm {} \; 祝各位刪檔愉快(笑)。</description>
+    </item>
+    
+    <item>
+      <title>Slides of Makefile</title>
+      <link>https://blog.crboy.net/posts/slides-of-makefile/</link>
+      <pubDate>Wed, 28 Dec 2011 16:04:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/slides-of-makefile/</guid>
+      <description>前陣子準備了一份簡報，可以用來講一場的XD
+剛好這兩天系上學弟妹需要用到 make，所以就把其中關於 Makefile 的一部分東西抓出來做了一份短短的講義。內容講的是基本的 Makefile 的撰寫，也就是關於規則以及變數的基本使用部分。
+希望對於讀者有幫助。
+Code Smart - Makefile (special release)</description>
+    </item>
+    
+    <item>
+      <title>利用一些時間準備好了一場talk</title>
+      <link>https://blog.crboy.net/posts/necessary-tools-for-programmer/</link>
+      <pubDate>Fri, 23 Dec 2011 23:13:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/necessary-tools-for-programmer/</guid>
+      <description>這篇是先 po 在系上 BBS 再轉貼過來的XD&amp;quot; 基本上這場的內容相當相當相當的淺&amp;hellip;.本來預設的目標對象是完全不懂 debugger 跟 version control 的學生，特別是大學部，但同樣的對研究生也相當有幫助。(不過我猜研究生以上應該都沒什麼閒工夫聽我在那邊浪費他們的時間吧XD)
+因為這邊的內容比較淺，我想這也許不是很適合在社群中發表，不過也許有哪裡會需要這方面的資訊，之後我會放上相關的簡報，以 CC-BY-SA 釋出。
+這場 talk 的內容&amp;hellip;.真要說起來大概是兩年前就想講了XD 主要多加了一些關於 git 的部份，因為現在對 git 又更熟了一點這樣&amp;hellip;
+主題定為「寫程式？那些老師沒教的事 - Code Smart, Don&amp;rsquo;t Code Hard」。內容是關於一些對於開發程式相當有幫助的一些工具： vim, gcc, make, gdb, git
+這些東西也許可有可無，不懂也不會怎樣，然而學習這些工具，入門並不困難，又可以立刻對程式開發有幫助，因此我相當推薦念資工的學弟妹們，或是任何寫程式(特別是 C/C++ 語言)的人簡單了解這些工具。
+從前我們寫程式總是相當努力，在無形中花了很多力氣跟心血去達成目標，事實上很多事情可以更簡單，但是若不曉得這個簡單的世界，那也不得其門而入。從寫程式，到編譯，到除錯，再到程式的改版，我們已經花了太多血汗與肝了&amp;hellip;..要怎麼更簡單、更瀟灑(帥氣?)的搞定這些事，有時會讓人大開眼界~
+這裡我不會講到任何跟程式設計本身有關的技巧，也不會教你如何安裝這些工具，或是把這些工具用得出神入化。我所探討的是你為什麼需要這些工具？這些工具又可以幫上什麼忙？內容中會有基礎的入門教學，旨在提供剛剛接觸且有興趣的人有個無痛入門的管道，我將把重點放在現場的 demo 與互動，歡迎有任何相關問題都可以現場提出，共同討論。討論所能夠學到的東西會比單純的聆聽來的多很多很多唷!!!
+軟體的詳細教學會再找機會個別講&amp;hellip;如果我之後有餘裕的話 :)</description>
+    </item>
+    
+    <item>
+      <title>我的第二場「一躍之下，」</title>
+      <link>https://blog.crboy.net/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A0%B4%E4%B8%80%E8%BA%8D%E4%B9%8B%E4%B8%8B/</link>
+      <pubDate>Fri, 11 Nov 2011 23:59:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A0%B4%E4%B8%80%E8%BA%8D%E4%B9%8B%E4%B8%8B/</guid>
+      <description>哈，真的去看了第二次。我必須說，雖然劇情我早已知悉，雖然演員的動作、喜怒哀樂依然記憶猶新，但我還是隨著故事的腳步，偷偷哭了&amp;hellip;
+劇中的親情、愛情，依舊動人心弦，並不因為我知道它只是個故事而顯得冷清。我想這就是我喜歡面劇團的原因吧？或是我天生就這麼多愁善感(?) 希望不要&amp;hellip;.= =a
+來談談今天看到的一些不同吧。（第零個不同是今天隔壁帶了一枚檸檬一起去看XD）
+首先是進場時間比較早了，大概 19:20 就開放讓無票觀眾入場了。所以我也特別仔細觀賞了一下進場影片，昨天沒有什麼特別感覺，因為影片事實上沒有什麼內容，只有演員跟角色而已，而且圖也看不太懂&amp;hellip;.只有阿堂的名字旁邊出現的圖看起來比較像人&amp;hellip;.其他的名字旁邊出現的圖&amp;hellip;.我看不太出來那代表什麼orz。但是啊，做得很精緻耶！還記得當時我說「影痴謀殺」的開場做得太粗糙，這次完全不會有這種感覺！不論內容的話，其實對於氣氛的營造還蠻好的 :)
+開場前的&amp;hellip;.廣播？總之就是那個聲音說：「歡迎各位前來欣賞面劇團的一躍之下&amp;hellip;.(之類的)」，她昨天念「ㄧㄠˋ」，今天念「ㄩㄝˋ」唷！XD。然後開場時，我很壞的一直看後面:P。不過因為滿暗的，所以分辨不出哪個是阿堂，直到真的開始後才看到。其實我覺得這樣的開場非常棒！很有驚喜感，也同時象徵了「阿堂也只是群眾中的一個人」這樣的意義。李聿堂，你&amp;hellip;..又跳一次了。XD
+噢，如果剛剛那算是第零幕的話，那第一幕的開頭出了點小包，真可惜啊。你們不是故意的啦！ :)
+另外啊，今天講話超級快的狀況比昨天好一些了，但還是有些地方講好快我都聽不懂。 :(
+對了，我想應該很多觀眾會有一樣的感覺，就是劇中有些台詞實在相當的&amp;hellip;..具有文學氣息&amp;hellip;..也許這是編劇或導演的堅持吧，我抓不太到這樣的設計有什麼特別的用意，尤其是這類相當不白話的台詞比例並不低，究竟有什麼樣的意涵是我體會不到的呢？但無論如何，雖然覺得有點突兀，那些台詞確實是滿美的。「那瞬間支離破碎又空空蕩蕩&amp;hellip;.」這是導覽手冊封面所寫的台詞。
+手冊封面旁邊看到的小半圓形其實是立體折頁的邊邊
+說到台詞，「一躍之下，」的台詞的確相當值得玩味！我實在記不得全部，不過提起這些台詞，也許會心一笑，也許心有戚戚。舉幾個例子吧：「人生只有 regret，沒有 restart。」不僅趣味，卻也深刻。「我以為我可以讓別人後悔，沒想到最後悔的，是我自己。」這好似一記重擊打中我的心啊，是不是應該，應該更仔細的想想呢？「七歲&amp;hellip;十歲&amp;hellip;..十九歲&amp;hellip;&amp;hellip;&amp;hellip;.二十歲勒？三十歲勒？我的阿堂勒？」想到不禁令人鼻酸。「妳相信我們的愛情，而我相信妳。」這是多美的承諾？卻又在多久以後，崩壞？「這裡不是什麼地方，這裡哪裡都不是！」是否表示到了此處的阿堂，也什麼都不是了呢？
+「我寫不出論文！」我的天啊這句話好像是我吼的一樣&amp;hellip;.會不會哪天我也被逼急了，而這樣怒吼著呢？阿堂，我超同情你的，你的難過和你的壓力我絕對相當瞭解&amp;hellip;..我說真的！
+孩子是阿堂的。我昨天關於這個部分有些疑惑，但今天搞清楚了。小魚是在還沒接受陳寬之前就已經先發現自己懷孕的事實，並因為懷孕了，所以只好接受陳寬，否則孩子出生就沒有爸爸。但，有些疑惑的是，究竟小魚愛不愛陳寬呢？劇中的種種過程似乎都顯示了小魚只是勉強自己與陳寬在一起，像是小魚對陳寬有意無意的婉拒，或是在公園時，小魚回答陳寬的問題只說了：「我跟寶寶都愛爸爸。&amp;hellip;&amp;hellip;.你是爸爸。」這似乎暗示了小魚愛的依然是交往六年的阿堂，只是欺騙或是安撫陳寬他將要當孩子的爸的事實。只是&amp;hellip;..我不懂，為什麼小魚會拿陳寬的襯衫來穿呢？甚至說了「不是你穿的就不行。」這種話&amp;hellip;.也許小魚的心中存有矛盾，或是導演跟編劇的心裡有矛盾呢？
+令人疑惑的地方還有一些，像是小魚說「朋友都說，他跟我交往是他賺到了，要我好好把握。」這好像不太對吧&amp;hellip;..XD？還是我聽錯了呢？還有，阿堂跟小魚應是年紀相仿的同年級同學才對，但是社團博覽會的時候阿堂竟然在擺攤，並讓小魚加入社團，似乎有點不太對勁。另外，小次郎在最後說「如果他沒有自殺，也許他爸爸就不會離開他媽媽了。」但，阿堂在生前接到的最後一通電話不是阿堂的母親告訴他「父親跟一個酒家女跑了」嗎？似乎只有一個合理的解釋就是小次郎太天兵了XD。
+想起陳寬出門上班的那一幕，他那回眸一笑的「Bye bye.」實在非常有喜感&amp;hellip;.XD。「我不知道！」是阿堂好幾次對小魚說的話&amp;hellip;..雖然是個很低潮的橋段，可是我每聽到一次「我不知道！」的時候，就一直忍不住想到「三壘！」（語出相聲 - 誰在一壘）。對了，都忘記提到那些天人們的&amp;hellip;髒話了。「閻羅王！&amp;hellip;.」這在我們這種凡人聽起來真是相當的文雅啊，真不愧是住在「上面」的，連講話都不一樣！還有好多有趣的地方實在很難一一列出，我的記憶體實在太有限了&amp;hellip;..如果下次還有機會，建議讀者(如果你正在讀這段文字，你就是讀者)可以去欣賞，因為這場演出絕對可以讓你大笑，也可以讓你落淚，就像是從「上面」掉到「下面」一樣！
+今天的結束有點小小失望，本來以為有機會可以上台跟演員們合影(不是在叫楊三毛同學XD)的，不過被小萍清場了XDDD。走到外面填寫回饋單，今天留了資料，不過看到那一~長串的欄位我真的沒力氣寫&amp;hellip;.說好要寫在 blog 上的。
+給每位角色的話 阿堂：人帥真好+主角命的羅同學，我已經不小心記得你的名字了！今天結束後在門口有看到你拿著一支花走進來，不過太害羞了不好意思叫你&amp;hellip;.嘿，你演得很棒喔！無論是喜怒哀樂都相當鮮明，加上宏亮的聲音，有自信的表現，想必會有很多粉絲。:P
+噢對了，我很佩服你舌頭打結還可以立刻改回正確的句子這件事！ 派哥：我只記得你叫威寶&amp;hellip;.也是個相當有特色的角色，喜感也表現得淋漓盡致(我整個像是被洗腦了我)，從手冊中了解到似乎你也對自己做了很大的突破，在我看來，你的突破相當成功唷！ 小次郎：很成功的配角。想必在服裝方面是很大的挑戰，我真的不敢打扮成那樣&amp;hellip;.看你在阿堂掏心掏肺的傾訴時，還能在一旁淡定的玩你的寵物，也是蠻厲害的啦XD！第一天雖然卡詞卡了不少，不過第二天改善很多！ 小魚：好像表情不太豐富唷，你的笑容都是淡淡的微笑，如果再明顯一點的話，快樂的氛圍會更強烈，而且笑起來比較好看。第一天的演出我比較喜歡，說話的流暢度不錯。因為這個角色具有強烈的意義，並且無聲戲(不曉得有沒有專門的名詞)很多，所以豐富臉上的表情會很棒！也能讓整齣戲加分！ 陳寬：說實在話我不是很喜歡這個角色&amp;hellip;XD，不過我只是單純討厭「陳經理」的行為啦！你是個相當有喜感的人啊~至少我看起來是這樣。雖然戲份不很多，但是有正妹可以抱真是賺到了，哈哈！ 娜娜：戲份相當少的角色，從頭到尾也都是一貫的冷酷風格，但是出場相當亮眼。隔壁的檸檬說你相當適合這個角色！ 婦人：（駝背好像有點裝太低）雖然到故事尾聲才出現，卻是相當、相當重要的角色。你的演出非~~常棒！有真的把一個失心瘋的母親心情發揮出來唷！時而笑、時而哭，總是尋找著孩子，卻總是遍尋不著自己的孩子，那股悲傷，看了真的令人為之動容。另外「影痴謀殺」時看過你演 Coco 這個角色，對你的演技相當佩服，很厲害，真的！ 碎碎念 真可惜沒機會跟演員合照，也沒機會請演員在海報上簽名XD 發現表情真的是演戲很重要的因素，像小魚的表現其實也滿好的，只是表情不夠豐富就凸顯不出他的好。這部份就可以跟阿堂和阿堂他媽學習，兩位連莊演員，都有很吸引人的臉部演出這樣。 我真的不是親友團，一定要說的話，我只能算是粉絲團吧！還是有誰要來認識我一下讓我下次可以當親友團呢？:p 阿堂跟小魚轉圈圈轉好久&amp;hellip;.我如果沒看錯的話其實阿堂很想停下來對嗎？XD 故事步調真的好快，好快就求婚好快就交往好快就畢業好快就分手&amp;hellip;什麼都好快&amp;hellip;.不過快一點比較好，這樣心中的滿足感會比較強烈！ 發現手冊裡羅同學的綽號叫小張，是演完影痴謀殺就被定型了嗎XD？ 這次的視覺設計部分，有一半做得很棒，像是海報、門票、還有一些主要元素等等。但是像手冊感覺就比較粗糙&amp;hellip;不過我也不是設計專家，只好期待下次的視覺設計更加完美！ 今天排隊的時候跟隔壁的護理系同學搭訕了一下&amp;hellip;&amp;hellip;.(羞)，謝謝他借我他的票讓我可以拍照！:P 這次演出，算是成大 80 週年校慶的一個部分，待在成大已經邁入第七年的我，在這裡向成大說聲「生日快樂！」成大八十大壽囉，以後也要繼續長大！
+謝謝面劇團帶給我這兩個晚上豐富的體驗，有視覺上的也有心靈上的，謝謝你們，謝謝面劇團的所有幕前幕後工作人員！你們很棒！你們的表演很棒！你們的努力很棒！</description>
+    </item>
+    
+    <item>
+      <title>成大面劇團(Face To Audience) - 一躍之下，</title>
+      <link>https://blog.crboy.net/posts/face-to-audience-3/</link>
+      <pubDate>Thu, 10 Nov 2011 23:59:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/face-to-audience-3/</guid>
+      <description>上次看舞台劇就是面劇團的「影痴謀殺」。今天去看了他們的「一躍之下，」&amp;hellip;過程真是千辛萬苦幾經波折 :P
+之前就曾經看過他們的演出，深受感動，還為文紀念(是在文鄒鄒什麼&amp;hellip;)。(第一篇、第二篇)
+這次一收到消息就立刻去網路索票，沒想到&amp;hellip;&amp;hellip;.
+沒了&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.沒了&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.沒了&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.
+為什麼票被秒殺啊啊啊啊啊啊啊&amp;hellip;..很無奈的把現場索票的時間記得牢牢的，想說一定要搶到！到了 11/8 那天，本來是打算早起的啦&amp;hellip;.可是不小心賴了一下床(:P)，然後又不知道是中了什麼心魔，竟然中午想吃港記(一家總是排隊排很長的燒臘店)&amp;hellip;.我到藝術中心的時候大概是 12:10 左右，遠遠的就看到好多人在排隊，我想大概糟了。沒想到後來聽到更崩潰的消息，「面劇團的票只有30張」。雖然堅持下去，但最後還是排不到票 QQ
+本來已經放棄了，只是一直在噗浪上哀怨，誰知道今天(11/10)下午不曉得又發了什麼瘋，打電話去藝術中心問問&amp;hellip;..「喂你好，我想請問今天晚上七點半，面劇團在鳳凰樹的演出，有接受現場索票入場嗎？」『有，不過鳳凰樹有點小，你可能要早點過去喔。』
+五點半，我人已經出現在鳳凰樹劇場的門口了。
+好啦我知道我真的太誇張了 =口=&amp;quot; ，不過也因為這樣，入場的時候我還坐到一個很棒的位置啊！第四排中間偏右，這個位置高度很剛好，距離也適中，而且前面的人&amp;hellip;.頭沒有很大！隔壁的隔壁剛好是表演工作坊賣票的那位先生，我認得他的衣服XD
+周圍的光線漸暗，我期待著他們這次的表演。
+(以下內容有雷，慎入)
+前面幾幕我一開始真的不太看得懂&amp;hellip;.要後來才有辦法聯結。甚至我竟然以為小魚戴眼鏡跟沒戴眼鏡是不同人 = =&amp;quot; (我比較喜歡沒戴眼鏡XDDDD)。不過我很喜歡劇中的每一幕，他們營造出來的感覺都相當棒！我想最困難(也有點可惜)的應該就是第一幕吧&amp;hellip;.究竟要如何表現那「一躍之下」，我想真的非常困難，但羅同學的表現相當好。
+對了，羅同學是主角命嗎？XD 這是我看到手冊第一個反應&amp;hellip;.不過他的演技也的確相當不錯，也許修課的時候就已經很厲害了吧？
+在「哪裡都不是」的地方，小張的表現&amp;hellip;.呃不是，我是說阿堂的表現根本就和影痴謀殺的小張一樣，憨憨的&amp;hellip;.XD
+陳寬求婚的那幕，我喜歡那個幸福感跟害羞。
+阿堂把妹的那幕，我喜歡那個青澀的味道，也在心中高興著他們的交往。
+後來，阿堂跟小魚交往久了，也同住一個屋簷下，這讓我想到&amp;hellip;.某兩位朋友(sigh)。當初的承諾，當時的堅定，是不是總會隨著時間風化、變質呢？現在想想，似乎總會這樣，愛時轟轟烈烈，但卻在時間的沖襲下，冷卻了那股熱情，也切開了最初的堅定不移。
+阿堂殺去台北找小魚，似乎是整個故事的轉折點，我想阿堂的一躍之下並不是從那座天井開始的。為什麼兩個人明明彼此相愛，卻要為了莫名的原因而分開呢？他們真的分開了&amp;hellip;..唉&amp;hellip;.小魚心中是掛念著他的，但又為什麼不去把阿堂留下呢？（突然腦中響起「你那麼愛他，為什麼不巴他六下把他留下」）而且我覺得那個孩子明明就是阿堂的啊&amp;hellip;.難道是我搞錯了!? 還是說，是我被倒敘給弄混了，事實上是小魚先得知阿堂的死訊，然後才答應陳寬的求婚的嗎？唔&amp;hellip;.難道又要去看第二遍了&amp;hellip;.?
+說到這裡就想到，小魚的尖叫也是個遺憾之處&amp;hellip;.聽起來很突兀，不曉得應該怎麼修正會比較好。
+中間阿堂提到了他&amp;hellip;..他在學校的事情。他碩士班延畢，目前碩三，論文寫不出來，這這這&amp;hellip;.這不就是我的寫照嗎&amp;hellip;&amp;hellip;||| 好在我沒有在口試的時候被河蟹掉（事實上根本就還沒有口試），家裡也沒有欠五百萬的債務，所以應該不用擔心我會去一躍之下啦&amp;hellip;反正現在電機系館也有網子這樣。不過天啊，我看到那段我真的是&amp;hellip;..我整個人都彷彿置身在阿堂的鞋子情境中，我一一對照著他的經歷，想想自己&amp;hellip;.身為一個沒用的碩士生，若是加上如此龐大的壓力，又有誰能承受呢？
+「你不用擔心啦！」這是阿堂常說的話&amp;hellip;.原來&amp;hellip;.原來這是故事的伏筆嗎？突然想通了，就是阿堂不讓他人分享自己的負擔，最後才讓這些沈重把自己給擊墜在地。突然相當佩服編劇&amp;hellip;雖然編劇(就是之前有指正過我舞台劇!=話劇的楊三毛)被我發現他之前影痴謀殺跟這次的一躍之下都用同一張照片，但是不得不佩服他的才華！上次的影痴謀殺他負責做視覺設計的說。
+楊三毛小檔案：
+系統系100級，&amp;laquo;影痴謀殺&amp;raquo;視覺設計，&amp;laquo;一躍之下，&amp;raquo;編劇兼隱藏版平面設計(我猜應該什麼都摸過了)，照片好像只有一張，都不換，長得滿有型可是因為不明原因把頭髮遮住。
+&amp;ndash; 摘自「影痴謀殺」與「一躍之下，」導覽手冊
+欸欸我用網誌當回饋單你說好不好呀楊同學~這次我沒在回饋單留名字了&amp;hellip;
+後來的一小段，稍微感覺有點分離，並沒有跟劇情交織、融合在一起，只是稍微啦。但最後&amp;hellip;最後那邊&amp;hellip;..真他媽的騙眼淚阿&amp;hellip;.小張的靈魂終於能夠見到&amp;hellip;.我怎麼又打錯字了= =a 阿堂的靈魂終於能夠見到小魚，但卻只有不到一秒鐘的時間。即使他們近在咫尺，卻從此天人永隔，而那位婦人&amp;hellip;.(對，我猜到了)，竟然是阿堂的母親，那個他吼過、罵過的母親。即使如此，母親對阿堂的愛也在阿堂死後，爆炸了。七歲&amp;hellip;九歲&amp;hellip;十歲&amp;hellip;&amp;hellip;&amp;hellip;十八歲&amp;hellip;.阿堂怎麼不見了？這是母親最深刻的痛楚啊&amp;hellip;..
+「我以為，我可以讓他們後悔，沒想到最後悔的，是我自己。」我忘不了阿堂的這句話&amp;hellip;.尋死這件事啊&amp;hellip;.我想很多人都天真的想過吧，但還好我們都戰勝了自己，或是懦弱的被恐懼給擊敗，然後面對下一個挑戰。下次，我是說如果有下次，那就想想這句話吧，「沒想到最後悔的，是我自己。」
+題外話：突然想起今天看到的這篇文章，沒想到剛好也可以用來勵志一下。「死者不知道，他死後，債務是由他的親人繼承，反而讓他的親人成為被暴力討債的對象！」所以啊，歹路不可行！(?)
+結局了，來囉嗦幾句吧&amp;hellip;..上次的影痴謀殺我給100分，但這次我只給95分。雖然這場表演依然相當、相當感動我，但是有好多好多地方講話都好快(吵架戲那類的)，都聽不懂在講什麼&amp;hellip;.阿堂、小魚、「穿著花襯衫和木屐的奇怪老頭」&amp;hellip;好像滿多人都會這樣，不曉得為什麼&amp;hellip;&amp;hellip;..然後小次郎卡最多詞XD。這次的故事很棒我很喜歡，也相當貼近我們的生活！在成大生活第七年了，我整個超有感覺的啊！甚至有些地方我能夠直接跟自身經驗做連結呢。立體手冊有驚訝到我，不過還可以做得再精緻一點。為什麼手冊上只有蘇家瑜的名字是反白的勒？不可以因為演員比較可愛就這樣啊XD。戲份不太平均，娜娜的戲份好少，不過我想編劇跟導演也盡力了吧。然後謝幕的時候有發現大家都很感動，很多演員跟工作人員臉上都掛著藏不住的笑容，還有曾同學(阿堂的媽)謝幕的時候快哭出來了，不過有某位同學相對之下相當的面無表情XDDD。小萍跑去當舞監了，可是舞監是做什麼的啊？然後導覽手冊寫在小萍&amp;hellip;.好啦，寫在許同學旁邊的那位同學我怎麼找都找不到名字啊，&amp;lt;囧&amp;quot;。嗯&amp;hellip;..嚴格來說我比較喜歡影痴謀殺的手冊&amp;hellip;..「一躍之下，」的手冊封面有點太綠&amp;hellip;..orz 我怎麼這麼囉嗦XD
+對了，進去前有拿到一張海報，我滿喜歡那張海報的，設計的很棒！相當有味道唷 ;)
+好像還有一些有的沒的想法一時之間想不到&amp;hellip;..想到再說囉~:P 再度推薦成大面劇團！:D
+Update: 對了，現在想起當初有收到邀請，沒有去加入面劇團真的好可惜！唉，要不是跟阿堂一樣畢不了業的話，我就會去加入了 &amp;gt;&amp;quot;&amp;lt;
+Update: 發現「一躍之下，」這個名字後面應該要加上逗號&amp;hellip;..所以改了好幾個地方= =a</description>
+    </item>
+    
+    <item>
+      <title>如何說服你的朋友使用 Linux - 但不被當成怪咖</title>
+      <link>https://blog.crboy.net/posts/%E5%A6%82%E4%BD%95%E8%AA%AA%E6%9C%8D%E4%BD%A0%E7%9A%84%E6%9C%8B%E5%8F%8B%E4%BD%BF%E7%94%A8-linux-%E4%BD%86%E4%B8%8D%E8%A2%AB%E7%95%B6%E6%88%90%E6%80%AA%E5%92%96/</link>
+      <pubDate>Wed, 02 Nov 2011 03:15:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E5%A6%82%E4%BD%95%E8%AA%AA%E6%9C%8D%E4%BD%A0%E7%9A%84%E6%9C%8B%E5%8F%8B%E4%BD%BF%E7%94%A8-linux-%E4%BD%86%E4%B8%8D%E8%A2%AB%E7%95%B6%E6%88%90%E6%80%AA%E5%92%96/</guid>
+      <description>本文翻譯自「How to Convince Your Friends to Use Linux Without Being a Jerk」，作者為 Abhishek。
+This article is a translation of &amp;ldquo;How to Convince Your Friends to Use Linux Without Being a Jerk&amp;rdquo;, which is written by Abhishek.
+Linux 是目前世界上最安全穩定的系統之一，但它的使用者數量卻不如想像中的成長迅速。這當中有很多原因，不過我們先不討論。但如果你像其他的 Linux 使用者一樣，對現在 Linux 的市佔率感到失望，我們可以告訴你一些說服你朋友來用 Linux 的小技巧。
+現在有很多 Linux 使用者試著去引誘他們的朋友或家人來嘗試一個有名且容易上手的發行版 - Ubuntu。有些人成功了，不過大部分是失敗的。所以，我們要告訴你一些技巧來幫助你推廣 Linux，但不會被視為一個自以為是又看不起 Windows 或 Mac 的電腦怪咖。
+用秀的！不要用說的。 沒錯，如果你想要說服一個 Windows 或 Mac 的使用者來使用 Linux，這是第一件也是最重要的一件事。Ubuntu、Linux Mint與許多其他發行版看起來都相當漂亮，而且說真的，最新版的 Ubuntu (Ubuntu 11.10) 看起來就跟 Mac 一樣漂亮。不過，如果你只是跟他們用說的，你認為他們會同意你嗎？就算他們同意了，他們還是不清楚 Ubuntu 或是其他你說的發行版究竟長什麼樣子。我的建議是，你可以帶著你的 Linux 筆電，交給對方讓他們玩玩看。如果你用的是 Ubuntu，我建議你開一個新的 Guest Session (訪客使用者階段)，然後把電腦交給他。這樣一來，他們會更了解一個沒有經過調整的桌面有多漂亮。如果你不太可能向你的朋友展示桌面的話，那就傳個關於桌面展示的 Youtube 影片給他吧。</description>
+    </item>
+    
+    <item>
+      <title>用 vim 把一堆程式碼轉成 html 檔案</title>
+      <link>https://blog.crboy.net/posts/vim-to-html/</link>
+      <pubDate>Mon, 31 Oct 2011 09:14:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/vim-to-html/</guid>
+      <description>前陣子剛好跟學弟聊天聊到一些事情，他提到他想把他之前寫的 code 轉成 html&amp;hellip;..呃&amp;hellip;雖然我不太清楚為什麼要這樣做啦&amp;hellip;可能是為了列印之類的&amp;hellip;.不過這個我不太 care&amp;hellip;身為一個資工人，這種事當然要自動化！我只是想知道該怎麼做到而已XD
+這位學弟也玩 Linux，但他說他試過寫 script 卻沒辦法成功，說是檔名有空白就會被分成兩個檔名，會找不到。這怎麼可能呢！所以當下就試試看&amp;hellip;.
+$ mkdir test $ cd test $ touch a\ 1 a\ 2 a\ 3 $ find . -exec echo {} \; 這當然是沒問題的啊！每個檔名都自成一行 :D
+好了&amp;hellip;.問題解決一半。不過如果這樣的話就不會想寫文章了&amp;hellip;主要是因為當天腦袋卡住，竟然沒辦法用 vim 轉換出他要的 html 檔案&amp;hellip;.|||
+先提一下 vim 的 :TOhtml 好了，這東西可以把現在的 syntax highlight 轉換成 html，很酷的小功能說~但當天不曉得為什麼，明明知道應該用 find -exec 配合 vim -c 去做，但檔名就一直不知道該怎麼下&amp;hellip;&amp;hellip;.orz 學弟的需求是這樣：code 放在 a 目錄，輸出的 html 要放在 b 目錄，然後 script 跟 a, b 放在同一層目錄&amp;hellip;.大概是這樣子:p
+後來回家後，還查了我根本不懂的 vim register 跟 variable 的用法，搞老半天，最後發現答案很簡單= =a，只要 truncate 檔名就好了啊&amp;hellip;&amp;hellip;如下所示：</description>
+    </item>
+    
+    <item>
+      <title>Boost 神秘的 deprecated warning</title>
+      <link>https://blog.crboy.net/posts/boost-deprecated-warning/</link>
+      <pubDate>Mon, 26 Sep 2011 16:07:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/boost-deprecated-warning/</guid>
+      <description>Boost 是一個相當強大好用的 C++ library，一直都沒辦法把它摸透。最近在用的時候遇到神秘的問題，追了一下還是沒辦法完全理解，先筆記下來也許會有什麼進展(或是得到有緣人的提點:P)。
+首先是我的開發環境：Ubuntu 10.04 64-bits, GCC 4.4.3, Boost 1.40 (libboost-dev 1.40.0.1)
+我其實是在 #include &amp;lt;boost/graph/adjacency_list.hpp&amp;gt; 的地方遇到問題的，他出現的 warning message 如下：
+warning: #warning This file includes at least one deprecated or antiquated header which may be removed without further notice at a future date. Please use a non-deprecated interface with equivalent functionality instead. For a listing of replacement headers and interfaces, consult the file backward_warning.h. To disable this warning use -Wno-deprecated. 這訊息事實上是在 &amp;lt;backward/backward_warning.</description>
+    </item>
+    
+    <item>
+      <title>發現 YAGBE - Yet Another Google Bookmarks™ Extension</title>
+      <link>https://blog.crboy.net/posts/yagbe-yet-another-google-bookmarks/</link>
+      <pubDate>Thu, 22 Sep 2011 01:19:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/yagbe-yet-another-google-bookmarks/</guid>
+      <description>一直很想要一個可以用標籤(label)分類的書籤系統。無奈本來都用 Chrome 的書籤，他沒辦法跟 Google Bookmarks 同步。本來在用的 Xmarks 也是以目錄方式管理的&amp;hellip;.過去我只知道 Firefox 的 Google Toolbar 有支援管理 Google Bookmarks。今天本來是想要試用看看，沒想到現在工具列不適用於 Firefox 5 或更新版本了&amp;hellip;.真是令人難過= =
+但是上帝幫你關上門的時候，會幫你打開一扇窗！本來是打算照他的建議去尋找 Google Bookmarks 的相關套件，就在這個時候我才發現，原來 Chrome 上也有 Google Bookmarks 的 extension！(之前就覺得一定有，可是就是找不到&amp;hellip;)
+我找到三套 extension，分別是Simple Google bookmarks、Google Bookmarks (日本人做的)、還有Yet Another Google Bookmarks Extension。最後根據使用人數，還有評價，選擇了後者 - YAGBE。(好險他有縮寫，不然我會崩潰)
+裝好之後要先 login。目前使用起來，其實不太好用&amp;hellip;.感覺圖跟字都太小，不過字的大小可以調整，我覺得調大一點比較舒服。另外，他是用樹狀顯示的，這當然沒什麼不好，不過感覺不像 Google 的東西就是了，我想我找書籤會用搜尋的吧&amp;hellip;.不可能在那邊捲來捲去，畢竟想用 label 來管理書籤就是因為可以組合標籤來搜尋&amp;hellip;.但是這就是最大的問題了&amp;hellip;.除了 Google 自己的搜尋以外，上面那三套 extension 我都試過了，都不能搜尋多個標籤&amp;hellip;.這&amp;hellip;.真是太杯具了&amp;hellip;..Q____________Q
+好吧，我可以慢慢等待他的進步這樣&amp;hellip;.XD 現在先讓自己能夠把書籤放在雲端就好，反正，也沒那麼常在點書籤&amp;hellip;.反倒是都用來當做好文章的收集跟筆記用。:P
+接下來該做的就是把原有的書籤匯入了&amp;hellip;..感覺是個相當困難的工作，我目前還沒有找到做法&amp;hellip;..等找到再說吧XD</description>
+    </item>
+    
+    <item>
+      <title>Google&#43; 教學 - 功能介紹篇</title>
+      <link>https://blog.crboy.net/posts/google-plus-2/</link>
+      <pubDate>Sun, 03 Jul 2011 06:59:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/google-plus-2/</guid>
+      <description>首先進入 Google+ 的主畫面(登入之後)，會看到一個白色背景的 facebook，呃&amp;hellip;不是&amp;hellip;我是說&amp;hellip;.會看到一個跟 facebook 很像的畫面，三欄式版面，左邊顯示自己的頭像、名字(last name)、訊息串選單、Sparks、即時通訊(GTalk)，中欄則顯示一大堆訊息(訊息串)，除非是剛註冊，否則應該不會是空的。，右欄則比較偏向輔助性的功能，像是朋友牆、、建議的朋友(警告：這欄出現指導教授的機率相當高！即使他根本沒有加入 Google+)、還有視訊聚會及手機版的相關訊息。
+再來要特別介紹上面的兩列按鈕。瀏覽器畫面的最上面是 Google 最近持續在改變的新介面(我想應該可以叫他 navbar)，前陣子才在噗浪講說為什麼我的 Google navbar 變成黑的，過沒幾天就出現 Google+ 了XD。Navbar 的最左邊有時候會出現一個「+[名字]」的項目(例如一個人叫小明那他就會出現「+小明」)，這個是在申請了 Google+ 之後才會出現的，不過根據我自己的經驗還有公開調查的結果，這個地方根本就一直改！我看過三個狀況：沒有這個項目，也就是最左邊是「Gmail」。顯示「+[名字]」(例如「+小明」)。還有顯示「+您」。此外，同一個帳號在不同電腦上看到的可能會不一樣，同一個帳號同一台電腦不同時間看可能會不一樣，同帳號同電腦同時間不同分頁看也可能會不一樣&amp;hellip;..(我敗了= =)。
+接著是 Google+ 本身的功能列，有四個主要的按鈕分別是「首頁」、「相片」、「個人資料」、「社交圈」，題外話，我真的覺得這個「社交圈(circles)」可以翻譯成小圈圈就好了&amp;hellip;.XDDDD。這個小圈圈是這次 Google+ 其中一個很吸引人的好玩功能之一！雖然不是說實用度滿點，可是用起來很有趣，而且速度也不錯，特效很可愛，滿方便的。只要把想
+吸收
+加入的人選取，拖拉到某個小圈圈裡就可以了。一個人可以同時被分類在多個小圈圈裡面，所以這個其實很像 tag 的功能，只不過觀點不同而已(其實 tag 也就是分類的另一種觀點嘛= =)。Google 保證你所加入的人只會知道你把他加入社交圈，但是絕對不會知道你給他的小圈圈叫什麼名字，所以應該可以放心的亂取名字？XD
+接著是一些快捷鍵的介紹，配合快捷鍵可以讓閱讀訊息更有效率。在介紹之前，提醒 Vimium(on Chrome)、Vimperator(on Firefox)或是其他類似瀏覽器外掛的用戶要把 http*://plus.google.com/* 加入排除清單，否則快速鍵會被吃掉喔~
+首先注意到每則訊息的左邊，如果你點選這則訊息，那麼會有一條深藍色的線移動到這則訊息上。這相當於一個箭頭，在 Google+ 裡面你可以使用按鍵k跟j來上下移動這個「箭頭」，一次以一則訊息為單位，而且指到的訊息會顯示在目前的 view 的最上面，對於看訊息來說很方便喔~不會眼花找不到！接著按下 enter 就可以直接對這則訊息回覆。另外，根據我的測試，在按下 home 或 end 鍵之後，或是用滑鼠換頁過後，雖然藍線不會改變位置，但是接著按下jk的話，會從當前看到的訊息開始往下或往上閱讀。
+右上角的 popup notification 也有快捷鍵可以使用。首先是 k 跟 j 也可以作為上下移動的功能。按下 enter 或 o 會進入這則訊息，按 u 可以跳出(這是拿 Gmail 快捷鍵來試，沒想到猜對了)。另外，在閱讀訊息的時候，按方向鍵的左右也可以切換新舊訊息，左邊是較新(往上)，右邊是較舊。可以看上面有個「&amp;lt; 較新 | 較舊 &amp;gt;」作為提示。</description>
+    </item>
+    
+    <item>
+      <title>Google&#43; 教學 - 囉唆篇</title>
+      <link>https://blog.crboy.net/posts/google-plus-1/</link>
+      <pubDate>Sun, 03 Jul 2011 06:39:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/google-plus-1/</guid>
+      <description>與其說這是一篇教學，不如說是一篇使用心得吧XD&amp;quot;
+目前 Google+ 還是處於封測狀態&amp;hellip;.要有邀請函才能加入，至於邀請函的取得方式已經有許多討論了，這裡就分享一點軼事給一開始沒跟到風的朋友好了~在我剛知道 Google+ 的那天(不確定是不是剛推出的第一天)，我身邊的朋友都還沒有邀請函，而且似乎相當難找&amp;hellip;但我們知道，乘法的力量是很強大的！隔天就發現信箱裡出現兩封邀請函，而且噗浪河道上充滿了 Google+ 的聲音(看來打^H呼聲很大)。掙扎了很久我才終於決定該用哪個帳號申請&amp;hellip;.XD&amp;quot; 咦？怎麼離題了&amp;hellip;.我想說的是，當天早上大家都有邀請函，所以身邊這圈朋友有在線上的幾乎都申請了。
+不過就在我加入前不久，從噗浪河道來看，所有人的邀請函按鈕都被拿掉了&amp;hellip;.當時心想還好我有拿到邀請XD。不過就在不久後，某位(我猜他應該)不願具名的黑鬼^H^H長輩表示，有秘技可以發邀請函！身為一個沒發到邀請函的阿宅，對於秘技非常好奇也是合理的，一問之下發現只要把你要寄邀請函的對象加入小圈圈(Google+ 叫他社交圈啦..)之後對小圈圈發送訊息就可以了。只是我實在很懶，所以不小心發現直接在發訊息的時候輸入對方 e-mail 就可以了&amp;hellip;總而言之&amp;hellip;只要發訊息給沒有 Google+ 帳號的人，他就會收到一封信，裡面包含你的訊息，以及一個「瞭解更多」的連結，從這個連結連過去就可以申請了&amp;hellip;.這是 bug 嗎？XD 不過這個方法不曉得是被濫用還是怎樣&amp;hellip;當天晚上就完全不能用了。根據測試的結果，就算是稍早有收到真正的邀請函的人也無法在當天晚上申請帳號，猜想是完全把加入的功能關閉了。(但隔天疑似又開放了&amp;hellip;)
+以上這些故事因為都過去了，手邊沒有也沒辦法抓截圖，不好意思囉!
+接著我想談一下我對「Google+」這個名字的想法。
+這名字很有趣，可是也很討厭。有趣在於，未來 Google+ 推出什麼新服務的話，就會變成「Google+Games」「Google+Clubs」「Google+Ads(誤)」，甚至可能就叫「+Games」之類的，很可愛的稱呼。可是這個「+」對於台灣人就很妙了，跟人討論的時候可能會出現以下幾種名字：「咕狗加」「Google plus」「G加」&amp;hellip;(我也不知道還有沒有別的)，叫「咕狗加」其實我是覺得不太通順= =a，私心最喜歡「G+」這個稱呼，因為他跟「居家」同音&amp;hellip;:P 不過在比較正式點的說法上，還是要寫「Google+」 唸作「Google plus」比較好~(這次總不會有人寫 Google plu 了吧&amp;hellip;.= =)
+轉貼一則我在噗浪上的訊息&amp;hellip;..「快上 Google+！你今天，居家了嗎？」
+(顯示為下集才要進入主題)</description>
+    </item>
+    
+    <item>
+      <title>同軸電纜規格</title>
+      <link>https://blog.crboy.net/posts/%E5%90%8C%E8%BB%B8%E9%9B%BB%E7%BA%9C%E8%A6%8F%E6%A0%BC/</link>
+      <pubDate>Sat, 25 Jun 2011 19:44:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E5%90%8C%E8%BB%B8%E9%9B%BB%E7%BA%9C%E8%A6%8F%E6%A0%BC/</guid>
+      <description>之前為了找同軸電纜的規格，找了好久才找到，所以決定把它記錄下來。
+來源是這個地方：
+一般同軸電纜品名記號說明：
+例：3C-2W、5C-2V、5C-FB
+第一項之數字：表示外部導體之約計外徑(mm)
+第二項之文字：&amp;ldquo;D&amp;quot;表示特性阻抗 50 歐姆，&amp;ldquo;C&amp;quot;表示特性阻抗 75 歐姆
+第三項之文字：&amp;ldquo;2&amp;quot;表示PE充實絕緣型，&amp;ldquo;F&amp;quot;表示發泡PE絕緣型
+第四項之文字：&amp;ldquo;V&amp;quot;表示外部導體為一層編織後施以PVC外被覆，&amp;ldquo;W&amp;quot;表示外部導體為二層編織後施以PVC外被覆，&amp;ldquo;B&amp;quot;表示外部導體為兩面鋁箔麥拉帶縱包再加上鍍錫軟銅線編織</description>
+    </item>
+    
+    <item>
+      <title>再看面劇團 - 影痴謀殺</title>
+      <link>https://blog.crboy.net/posts/face-to-audience-2/</link>
+      <pubDate>Fri, 10 Jun 2011 08:24:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/face-to-audience-2/</guid>
+      <description>噢天啊，我真的跑去看第二次了。
+面劇團這次首演，事實上有兩場，昨天跟今天各一場。昨天(其實是今天凌晨)很努力的把心得給寫下來，心中的感動還是一直在那。今天晚上也有空，就去排隊囉~!! 話說，昨天跟今天都一樣，因為愚蠢的意外，我沒有事先線上索票(嗚嗚~昨天晚上要索今天的票也早已經滿了&amp;hellip;)，所以只能去無票候補區排隊。今天去得晚了點，昨天是第三個，今天是第&amp;hellip;.十幾個左右吧。排隊的時候突然發現，有些人手上拿著一朵花，我心想，哇喔應該是粉絲團吧！沒幾分鐘，天使似乎聽到了我的呼喚(?)，有工作人員拿了朵花給我，說謝幕的時候要獻花的。嘿，那朵是玫瑰耶！真害羞&amp;gt;////&amp;lt;
+在隊伍中等候的同時，我除了邊壓抑著很想興奮地告訴旁邊的陌生人這場表演有多好看的衝動以外，同時還保持相機standby的狀態。因為有了昨天的經驗，我知道如果我想拍到入場票的全貌的話，就只有在我拿到它，一直到我走到剪票人員的這幾十秒的時間！唉，因為是候補的，所以票會在入場前一刻才發放&amp;hellip;..:( 把握這幾十秒的時間，我終於拍到完整的票了！
+其實昨天就發現一個很有趣的地方，票的角落寫著「流水號007」，昨天就在懷疑，到底是我運氣好到爆炸，候補也可以候補到007號這麼有意義的票，或是這是故意設計的呢？今天就馬上找到答案了&amp;hellip;.每一張都是007 :P
+今天運氣跟昨天差不多好，今天坐到第六排正中間的位置！其實只是因為這個位置比較難走進去(很窄)，而且又只有一個空位，所以讓我搶到！這位置的角度跟高度都很棒，唯一可惜的就是前面那個人太高了= =&amp;hellip;.或是頭太大，反正就是會擋到我，可惡。
+又一次的暗幕，又一次的演出。
+第二次的欣賞，讓我發現一些很有趣的地方。首先是劇情前後的呼應，除了昨天說到的道具以外，其實也有很多台詞是前後連貫呼應的。我最驚訝的一句是，傻傻的小張跟他心愛的小萍在pub裡第一次出現的時候，聊天過程中他其實就有講到一句「&amp;hellip;..真他媽的xxx」這樣的話。一直到接近尾聲的地方&amp;hellip;.接到小萍說他不喜歡一點髒話都不罵的男人，雖然那個「哇操~」總是可以讓全場觀眾爆笑，但是這小小的伏筆應該要看第二次才會發現呢！:D
+再來，大概就是今天的突發狀況少了很多&amp;hellip;像是吳思華生氣拍pub櫃檯桌子的時候，搖搖杯沒有倒下來，還有小萍寫白板的板擦沒有掉下來，這兩個突發狀況，說真的，對昨天那場表演有畫龍點睛的效果！另外，白板筆是真的沒水我知道XDDDD 還好有找到有水的筆&amp;hellip;..
+嗯&amp;hellip;.我想還有一個讓我很懊惱的地方，就是今天的觀眾好會笑&amp;hellip;..害我都聽不清楚全部的台詞啦&amp;gt;&amp;quot;&amp;lt;
+還是要講一下關於演員的部份。今天我發現神探跟Vincent的表現更亮眼了！神探的喜感更加活靈活現了，Vincent的同性戀味道更自然了，真的很棒！說到這個，害我想到那個神探外遇的部份啊&amp;hellip;..感覺不是很明確耶，有點讓人一頭霧水的說。不過那個「想你唷」好甜喔~不知道神探心裡在想著誰。:P
+其他人的話&amp;hellip;..Coco跟小萍今天好像有一點點卡詞，但是其實看不太出來。Coco在這兩天的第一幕都有點緊張，是真的緊張還是他故意要演裝出來的緊張勒~? 萬一是演的那還真的是有夠像耶XDDDDD 太厲害了真的！吳思華的動作細節，昨天根本沒有注意到，今天仔細一看才發現，他真的演得很好！對女生的那個眼神，略帶勾引還有幻想的眼神，如果有注意到的話，真的就能夠直接知道他演的是一個變態了！最後是小張，他的那股傻勁還是非常生動，不過今天才突然發現，其實演小張這個，本人好像還滿帥的！不是英俊瀟灑那種，但是就是滿帥的這樣！
+謝幕啊&amp;hellip;&amp;hellip;謝幕我還是一樣不停的鼓掌耶，好像鼓掌鼓到手傷好一半了，哈。
+在衝上台送花的人群中，我也緩慢的向舞台移動，發現好像有滿多親友團來支持的，演員們都在跟朋友聊天。後來我鼓起勇氣去把花獻給小萍&amp;gt;///&amp;lt;，這麼巧旁邊跟他聊天的是之前認識的老師，就請老師幫我們拍個照！噢對了，這時候旁邊殺出一個人&amp;hellip;.他送花束！花束耶！拿著一朵玫瑰花的我輸了&amp;hellip;.||| 哎呀這只是個小插曲啦。接著我去找小張拍照，我沒有花了，也不打算送花，男生送男生一朵玫瑰花很奇怪耶&amp;hellip;..我只跟他說「我很喜歡你的角色，」(講到這裡他還一臉茫然)「可以跟你拍張照嗎？」啊哈~然後我就沒跟其他人拍照了。後來有點後悔，應該去找神探拍個照的，他好頑皮好好玩喔XD
+呼~所有的工作人員們都辛苦了！整個表演的設計都很棒，也看得出來很用心。我很喜歡。第一次這麼認真看話劇舞台劇的CrBoy覺得很開心！:D:D:D:D:D:D:D
+又是碎碎念：
+我今天突然想到，我不穿皮衣，也不穿白襪子，偶爾也會罵一點髒話唷！XD 分享一下我的票，嘿嘿~
+對了！昨天就一直覺得小萍有某種感覺&amp;hellip;..今天想到了，原來是很像徐佳瑩！我不是說長相喔！是說氣質！氣質！ 啊啊啊啊啊！差點就忘記這個！這個一定要說才行！第二天的小冊子多了一張小小的紙條&amp;hellip;.一看，原來是勘誤啊！
+這實在太有梗了啦XDDDDDDDDDDDD 笑死我了~~~ 對了，我好像一直都忘記說，看了他們的表演害我好後悔以前沒去修表演藝術概論喔T___________T </description>
+    </item>
+    
+    <item>
+      <title>面劇團 (Face to Audience) - 影痴謀殺</title>
+      <link>https://blog.crboy.net/posts/face-to-audience-1/</link>
+      <pubDate>Thu, 09 Jun 2011 12:41:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/face-to-audience-1/</guid>
+      <description>嘿，我並不是要說紀蔚然老師寫的那本影痴謀殺，不過，關係倒也很深。
+前兩天收到成大藝術中心寄的信，說有個「面劇團」的首演&amp;hellip;.「影痴謀殺」？我沒聽過面劇團，也沒聽過影痴謀殺，只是不小心被那簡介給吸引住了，或許也帶有一點點嘗鮮的心情吧。
+在我的記憶所及，我好像沒看過幾場話劇舞台劇。首先想到的是學校各系或是校友會辦的xx之夜，再來，印象中&amp;hellip;.呃，其實沒印象了，好像有次被強迫欣賞某個很有名的劇團演出的話劇舞台劇？總之那都不重要了，我只是想說：
+我並不懂話劇舞台劇。
+嗯，也許我該從下午講起了&amp;hellip;.其實我是當天下午才確定我晚上會去看這場表演的。首演耶！面劇團不曉得是哪裡來的新成立的劇團&amp;hellip;.以前我只聽過台南人劇團，那是從修通識表演藝術概論的同學口中聽到的，我還真是個鄉巴佬XD 晚上到了鳳凰樹劇場才知道，他˙們˙竟˙然˙全˙都˙是˙成˙大˙學˙生！！！！嚇死我了實在&amp;hellip;&amp;hellip;.呃，雖然在場外有些意外的小插曲，我沒有票可以進去&amp;hellip;..但是強運如我，在候補到票之後，竟然還是找了個第四排，中間偏右的位置坐了下來。欸不是我在說，這位置很棒耶！附近幾乎都坐滿了說，這就叫座無虛席嗎？我在入場前對藝術中心的怨念都消一半了&amp;hellip;.
+這場表演的劇本，其實就是開頭提到的那本影痴謀殺，我沒有看過內容，不曉得他是小說或是本來就是劇本形式。但我有找到別的劇團也以此作為演出劇本。故事發生在2005年的台北，六名白人男性慘遭連續殺害，而「神探」負責偵查此案件。所有死者在生前都經常出入一家外國人聚集的pub，Coco、Vincent、吳思華這三名嫌犯，對上「神探」與小張兩位警察，還有小萍這位&amp;hellip;..翻譯？XD 好啦事實上小萍也是警察吧。在影痴謀殺的一些網路上的心得有提到，紀蔚然老師在這個故事中，並不玩弄兇手犯案所使用的手法，而是要更實際的，去深刻探討兇手內心的動機。嗯，很棒的故事。噢對了，這段所講的東西其實都是我在回家之後才從網路上還有現場發的小冊子(那有專門的名字嗎)上面所了解到的。
+「我現在就要幹你。」(被揍)
+小冊子的封面上，印著精緻卻又富有張力的標題。什麼樣的劇情，會出現這樣聳動的標題？很意外的沒有太多意外，這是一個很明顯的性暗示。&amp;hellip;&amp;hellip;&amp;hellip;很明顯的性暗示是什麼鬼阿！(又被揍)
+入場後的等待時間，我看著冊子封面、還有舞台上的投影幕發呆。(其實還偷偷上了一下噗浪。) 美中不足的是，投影幕上所放映的人物介紹，太過粗糙了。一直到整場演出結束，我還是認為那是唯一的缺憾。但，話劇舞台劇的重點並不在於前面的簡報做得好不好，連鄉巴佬都這樣認為了，我相信其他觀眾應該不會在意這種小事的。
+抱著一種陌生與期待，我看著燈光暗下。
+在演出過程中，我就已經融入他們了。噢不，我想應該是被強行吸入那個活生生的情境去了。不時可以聽到笑聲，還有間或出現的掌聲與小小的歡呼，整個鳳凰樹劇場都是他們的舞台了。角色的對話相當自然，其中埋伏著出其不意的笑點，跟搞笑劇又不一樣，那是真真實實能夠出現在生活中的趣味，當然是對旁觀者而言啦。我好喜歡那些對話，還有那些互動！不過，有時候我會偷偷觀察單面鏡另一邊的演員們，有時會發現他們也看戲看得入迷了XD 對了，這單面鏡不只是一個道具，我想它具有很大的象徵意義 - 警察局。開場時的那段簡短對白，引入警局這個場景，並且用單面鏡作為場景象徵，這一點細膩，對於觀眾的感受而言(學資訊的我們會叫他User Experience)有很大的影響！從這小地方就可以看出面劇團的團隊絕對有一定的水準 :D
+事實上，每段場景都有或多或少的細節讓我佩服，也許真是我眼光短淺吧。不過我還想提到，那個三場景切割畫面的偵訊，看得出位置經過精心的安排，倒數第二次的亮燈，我心裡想的是：為什麼要加入這僅僅1秒鐘的畫面？我想是為了引導目光吧，觀眾的眼睛慢慢的被吸過去了:P 最後再挑一個我相當激賞的部份來碎碎念一下好了。在整個演出過程中，其實出現了很多突發狀況，呃，但是其實我沒辦法分辨哪些是突發狀況了！該說是他們太巧妙的製造了一些假的意外呢，或是他們精湛的演技把意外變成了劇本呢？記憶最深刻的是撿板擦的那個橋段，「板擦撿起來吧，都掉了」，他加詞耶！加詞耶！XDDDDDD (欸，你們不是故意弄掉的對吧&amp;hellip;..對吧？)
+我必須說，這場演出真的太精采，太精采了！在小張發飆的時候，我的心跟著揪了起來，也感到有些害怕。別說神探跟小萍了，就連我也覺得小張真的發飆了&amp;hellip;..也是在這之後，我才不小心發覺，我早就被這六個人緊緊扣住&amp;hellip;&amp;hellip;這六個角色，真不曉得是怎麼選角的，怎麼會如此渾然天成？神探，有些老氣，有些江湖味，顯示出他在警界的經驗，但又有種頑童的氣質，為他所有的爆笑言行做了很貼切的引子。小張，傻傻的新人，看起來很上進，又帶有喜感，跟神探對戲簡直是情投意合(啥)。Coco，一個婊子，呃不是，我是說，一個相當自主且叛逆的女人，抽著菸，還有那富有殺氣的對白，他從打扮到內在彷彿真的成為了一個&amp;hellip;..＊＊。Vincent，稍微可惜了些，角色形象不夠鮮明，我認為外在的娘娘腔不是同性戀的主要特色，如果從內心把自己當成同性戀(而且是比較豪邁的那種)，也許會更加傳神:p。吳思華，一個安安靜靜的變態，本來以為會是智慧型犯罪的殺手，結果最後變成諧星了XD，我想這角色的形象並不如Coco那樣鮮明且外放，但仍然揣摩得很好！最後是小萍，我絕對不是因為小萍很可愛才最後提到的，我是根據出場順序。小萍在戲裡的獨白很多，我好喜歡這部份！小萍的獨白像是真的在說自己的心事一樣，動作、表情、語氣都是自己的，不小心就會忘記他其實是在舞台上勒！再來是戲的部份，這個角色本身的味道我也非常喜歡，那種堅持，一定要看資料的堅持，那種努力，要看完資料的努力，那種狂熱，對電影的狂熱，那種智慧，那種喜感，那種天真。對了，總覺得小萍才是真正的主角，雖然他在快到中期才出現，但是在那之前的橋段像是一段鋪陳的主歌，經過小萍獨白這段bridge後，開始進入副歌，也緊扣著整段故事。在這六個角色中，我想我最欣賞的應該是小張跟小萍吧，然而Coco也是讓我相當佩服的對象！
+欸，其實好像還有很多感覺一時之間說不出來~
+我不會忘記，謝幕的時候，我用最大的力氣，不顧右手受傷，很努力的不停鼓掌！真的，如果你看到這篇文章，我希望你也可以感受到我當時的感動！當時我唯一能夠做的就是給台上的每一位最大的掌聲。甚至，我感覺到他們的眼淚也即將決堤，或許在閉幕後的他們，也哭成了一團:p
+嘿，整個鳳凰樹劇場都是你們的舞台啊！這個舞台裡面已經最少有一個人跟你們一起感動得熱淚盈眶了啊！走出鳳凰樹，我是帶著快樂、興奮、滿足、呃&amp;hellip;.我不知道該怎麼好好形容&amp;hellip;.總之是個超棒的心情離開的！
+雖然現在在寫這篇文章的是個不懂話劇舞台劇的阿宅 ，但是相信我，他們真的很棒！如果你也去欣賞他們，一定也會跟我一樣帶著笑容離開！
+碎碎念們：
+有篇找到的&amp;hellip;.算是新聞：成大「面劇團」成軍首演「影癡謀殺」 噢我才剛離開就馬上發噗說「面劇團讚！」可是都沒人理我XD 我說我要給他們100分! 結果得到的回應是「天啊&amp;hellip;.以你的標準&amp;hellip;..這真的是最高評價耶！」XDDDD 剛剛偷偷查了一下 小張、小萍還有Coco這三位演員，小張比較難找，不過先找到小萍之後就找到小張了XD 不過Coco就找不到了XD 噢噢~找到另外一篇新聞耶！(咦？裡面提到台灣戲劇表演家可是沒提到台南人劇團&amp;hellip;..?) 看了他們的演出之後其實很後悔之前沒有去修表演藝術概論啊&amp;hellip;..QQ 我回不去了&amp;hellip; 回家之後把門票還有小冊子拍了一下
+碎碎念好多，還有想到的話之後再補吧~哈！ ps. 感謝楊三毛的指正，本文的「話劇」全部改成「舞台劇」了，真是不好意思。&amp;lt;(_ _)&amp;gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 上安裝 APC UPS 的控制程式 - apcupsd</title>
+      <link>https://blog.crboy.net/posts/linux-apcupsd/</link>
+      <pubDate>Sun, 20 Mar 2011 11:35:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/linux-apcupsd/</guid>
+      <description>由於實驗室的需要，有機會設定到 APC 的 UPS&amp;hellip;.
+架構上來說大致上是這樣&amp;hellip;. UPS 透過一條 RJ45-USB 的線接到某主機（主要控制端），另外有兩台主機也吃這個 UPS 的電，而他們必須透過 ethernet 與控制主機溝通。
+我用到的環境是 Ubuntu 跟 CentOS，設定上沒什麼很大的差別就是了。首先安裝 apcupsd 這個套件（apt-get install apcupsd 或是 yum install apcupsd），接著打開/etc/apcupsd/apcupsd.conf，這個檔案其實自己就有很詳細的說明了，主要要設定的有這幾個部分：
+主要控制端：
+UPSCABLE usb UPSTYPE usb NETSERVER on NISIP 0.0.0.0 NISPORT 3551 UPSCLASS standalone UPSMODE disable 其他主機：
+UPSCABLE ether UPSTYPE net DEVICE &amp;lt;server_ip&amp;gt;:&amp;lt;port&amp;gt; #例：DEVICE 192.168.12.34:3551 NETSERVER off #應該也是可以設定成on 讓別人也可以跟這台主機要資料 但我認為沒有必要就是了 此外，我還隨手修改了 ONBATTERYDELAY 20，他的功用是讓機器在發現斷電狀況後多久才開始做反應&amp;hellip;設太短的話怕那種幾秒鐘的跳電也害他關機就是了&amp;hellip;
+設定好後，要重新啟動 apcupsd：
+# /etc/init.d/apcupsd restart 然後就可以用apcaccess去看看UPS的狀態，本機可以直接使用
+# apcaccess 來查到狀態，但是我被表很久的是，如果在其他機器，那得這樣才行：
+# apcaccess status &amp;lt;server_ip&amp;gt;:&amp;lt;port&amp;gt; 我是認為有查到資訊就表示安裝OK了啦&amp;hellip;.</description>
+    </item>
+    
+    <item>
+      <title>FILCO紅軸80%鍵盤開箱</title>
+      <link>https://blog.crboy.net/posts/filco%E7%B4%85%E8%BB%B880%E9%8D%B5%E7%9B%A4%E9%96%8B%E7%AE%B1/</link>
+      <pubDate>Mon, 07 Mar 2011 05:14:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/filco%E7%B4%85%E8%BB%B880%E9%8D%B5%E7%9B%A4%E9%96%8B%E7%AE%B1/</guid>
+      <description>August, 2021
+由於管理不善，這篇開箱文的照片，在多年後已經全數消失，也不知道哪裡找得到了。
+啊啊啊啊啊啊啊啊啊首先報告一下，小弟這把鍵盤的型號是 - FLICKTL15，用的軸是cherry紅軸(無段落+輕彈力)，80%配置(沒有數字鍵區)，共87個鍵，黑色，白色英文+注音刻印，支援N-key rollover(不過我沒有測試，因為找到的測試軟體只有windows版orz)。另外，小弟對機械式鍵盤其實沒有研究&amp;hellip;所以說，這篇文章其實是一篇&amp;hellip;&amp;hellip;
+超級不專業開箱文。
+拿到的時候就這樣一小小盒&amp;hellip;.但是小歸小，還是要好多小朋友才搬得動阿&amp;hellip;..
+在開箱之前，先看看底部跟側邊的標籤，拖一下台錢創造一些期待感吧~
+由於小弟的不專業，這複雜的標籤我看不懂啊啊啊啊啊啊啊啊啊啊啊～～～～～～～～有研究的看倌們就自行解讀吧。(反正這只是拖台錢用的)
+那就正式把箱子給打開吧。
+掀開塑膠蓋子(那有專門的名詞嗎？)的樣子
+看到表面的那質感真是令我心花怒放啊XD 不過聽說這傢伙是ABS鍵帽，久了會變光頭&amp;hellip;.? 噢不管他了，真的變了再來換鍵帽吧。
+配件們出來跟大家打聲招呼
+左上角是連接線跟他的束帶，中間是拔鍵器，右下是搶鏡頭亮眼的紅色WSAD鍵帽
+把塑膠袋拆了拿出來呼吸一下新鮮空氣，順便很三八的排列了一下WSAD。可以看到在側面有印刷上下左右，如果忘記誰是上下左右的話可以看= =a (正常的遊戲玩家不會這麼呆吧XD)
+拔鍵器手把特寫。其實也沒什麼，只是想拍一下而已。
+這拔鍵器很有趣，跟以前看過的不一樣&amp;hellip;他的頭其實有兩片，分開之後可以扣住鍵帽的兩個角，往上一拉就可以把鍵帽拔掉了。噢不過我覺得這樣的設計比較佔空間就是了&amp;hellip;.
+這是鍵盤右側，下方有FILCO的logo，由於我買的是80%版本，沒有NumPad(數字鍵)區域，所以logo也移動到這個位置了。其實還不賴:D
+主要打字區的配置。呃&amp;hellip;.突然發現這照片有點變形&amp;hellip;.是廣角端的問題嗎= =a (這明明就是手機拍的 哪來的廣角端&amp;hellip;.) 看起來怪怪的&amp;hellip;不過我只是想拍他的配置啦。長形的enter鍵，長的shift，左右皆有windows key，右邊有快顯功能表鍵。
+功能鍵區是我比較喜歡的六塊雞肌配置。另外可以看到caps lock跟scroll lock的燈號，紅色LED，位置在六塊肌上方，原因也是因為沒有了NumPad&amp;hellip;.所以當然也沒有num lock的燈號了(廢話XD)
+拖了這麼久的台錢，還是得證明一下我真的拿了把紅軸出來，不然會被投訴XDDDDD ZXC這三個鍵很可憐的被我拆了下來，看看這精美的紅軸~
+換個角度再一張證明我的清白&amp;hellip;
+燈號近拍。這拍得實在是很糟糕&amp;gt;&amp;lt;
+最後一張圖，這是背後標籤。
+基本上，這篇文章的圖都拍得很糟糕&amp;hellip;噢不過這不是重點，重點是鍵盤。
+這把鍵盤打感就如同Cherry紅軸一般輕巧，無段落，這是我個人最理想的機械式手感了。跟Cherry的差別在於，聽說FILCO底部有一塊鐵板，所以觸底的感覺比較明顯，而Cherry則是有點QQ的。按鍵的觸發行程沒有很長，也很靈敏，倒是觸底的時候有點吵，在實驗室會不太好意思(羞)。為了不要觸底就要輕輕按，不過一方面早就習慣按到底，另外紅軸的彈簧很輕，所以故意不觸底反而累。相對的黑軸應該就比較OK，但是由於我還是習慣按到底，如果買黑軸手應該會很酸&amp;hellip;..orz||
+這把鍵盤的手感真的滿不賴的，雖然跟RealForce的超滑順橡皮擦手感比起來還是有差XDDD 可是價錢也有差啊囧&amp;hellip;
+至於80%的部份，一開始其實有點猶豫，畢竟少了numpad可以用，不過平常筆電也用得很習慣了，所以不要緊。而且80%鍵盤比較省空間，帶出門也比較好帶(大概過陣子就會懶得帶了啦，不過一開始就是會帶著跑來跑去&amp;hellip;.)，唯一的小小不方便就只有偶爾想要用到numpad右下角那個enter的時候&amp;hellip;不過這沒差啦！
+整體來說，考慮到價錢，這鍵盤的C/P值算是普普通通，不過買把好鍵盤對於經常打字的人來說真的很重要，不但保護雙手，打起來爽度也比較高！經過一番掙扎後還是衝了&amp;hellip;.不然本來只想買FILCO茶軸的&amp;hellip;(也不賴但是有段落感，稍微不喜歡:P)
+最後跟各位抱歉一下，這篇開箱文不但不專業又把圖拍得很醜XD 希望想要看圖的捧油們可以看得不要太火大&amp;hellip;.下台一鞠躬&amp;lt;(_ _)&amp;gt;</description>
+    </item>
+    
+    <item>
+      <title>第一次用 Vim 就上手</title>
+      <link>https://blog.crboy.net/posts/vim-101/</link>
+      <pubDate>Sat, 05 Mar 2011 10:09:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/vim-101/</guid>
+      <description>前言 這篇是先貼在系上 BBS 的文章，主要對象是天真無邪的學弟妹們XD 所以太愚蠢的部份，還有排版太差的部份，就抱歉了orz
+簡介 標題是騙人的，第一次用 Vim 怎麼可能上手XDDDDD
+只是看到有學弟在講，就順便寫一下。我覺得一開始雖然會什麼都不懂，摸不著頭緒，但是在 Vim 裡面要先有基本生存能力，就像學武先學內功一樣～這篇文章就是要講基本的生存能力&amp;hellip;..
+用 Vim 開啟檔名為 FILENAME 的檔案 $ vim FILENAME 移動 h (左), j (下), k (上), l (右)
+我知道這很奇怪，但是請聽我說完&amp;hellip;首先把你的手「正常的」放在鍵盤上&amp;hellip;也就是雙手食指分別在 F 跟 J。通常這兩個按鍵會有一些幫助你定位的設計，常見的作法是有個凸點。接著忘記你的左手的存在，你的右手應該會微微的像 \ 這樣傾斜。
+不要亂動！！！這個時候，你的食指應該比中指更接近自己，這也就是 Vim 裡面上跟下分別是中指跟食指&amp;hellip;呃不是啦 是 k 跟 j 的原因&amp;hellip;至於左右呢？啊就左右嘛= =a
+輸入 先學著用 i 跟 a 吧。一個是 insert，一個是 append。這兩個用久了就會變成直覺了。熟了之後再學著用 I 跟 A 吧。如果 i 跟 a 很直覺，I 跟 A 就會很簡單了。（其他的以後再說沒關係）
+回到 Normal Mode 如果有看過其他文章，應該會知道 Vim 有 3 種以上的「mode」。我們不用管這麼多，只要記得「狂按 Esc 就會回到 normal mode」就好。手賤多按幾下沒關係，電腦不會爆炸。噢，你說其他的 mode 喔？先不用記啦，反正你自然就會進去了&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>安裝Ubuntu套件庫沒有的library (以libstdc&#43;&#43;.so.5為例)</title>
+      <link>https://blog.crboy.net/posts/ubuntu-install-library/</link>
+      <pubDate>Sat, 05 Jun 2010 02:05:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/ubuntu-install-library/</guid>
+      <description>有時候拿人家的程式來跑，也許是對方只肯給執行檔，或者是不給source的商業軟體，或是其他情況，總之，有時候會遇到自己的系統上缺少該程式所需要的dynamically linked library (也就是系統上的.so檔, shared object)，或是自己系統上的函式庫版本太舊或太新，此時的作法有兩種：
+使用現有新版函式庫假裝成舊版。
+此種方法很簡單，只要把新版函式庫建立一個symbolic link就可以了，例如：
+[/usr/lib]$ ln -s libstdc++.so.6 libstdc++.so.5 但是很不幸的這種作法是可能出問題的。例如我今天就遇到了這個問題&amp;hellip;.
+我的系統上裝有libstdc++.so.6，但我要執行的程式連結到的是libstdc++.so.5。所以我用類似以上的方式做了一個假的，結果在執行的時候，跳出訊息顯示，該程式需要CXXABI 1.2(其實我也不太清楚這是啥，只知道ABI是Application Binary Interface)，我猜大概是ABI版本太新&amp;hellip;.沒辦法我動不到&amp;hellip;.orz 所以只好認命的去尋找舊版函式庫了&amp;hellip;
+安裝舊版函式庫
+我在這篇文章找到做法，而且他寫得很簡單易懂:)
+先去Debian Packages抓取我要的套件的deb檔
+$ wget http://debian.nctu.edu.tw/debian/pool/main/g/gcc-3.3/libstdc++5_3.3.6-18_amd64.deb 解壓縮抓下來的檔案
+$ dpkg-deb -x libstdc++5_3.3.6-18_amd64.deb libstdc++5 把其中的函式庫放到/usr/lib中 (小心不要覆蓋到本來的檔案了)
+$ sudo mv libstdc++5/usr/lib/libstdc++.so.5* /usr/lib/ 更新linker的cache
+$ sudo ldconfig 完成了&amp;hellip;..
+照著這樣做是沒問題啦&amp;hellip;.只是我心中還有點疑惑，為什麼不直接安裝該deb套件就好？也許有其他什麼原因？
+總而言之，要安裝缺少的library，只要找到相應的.so檔，並放到/usr/lib中(或是/usr/local/lib中)，再更新ld的cache即可。
+那&amp;hellip;.如果沒有.so可以抓怎麼辦？那就只好自己找source來編譯了&amp;hellip;..那是另外一段故事:D</description>
+    </item>
+    
+    <item>
+      <title>在apt系統與wget上使用proxy</title>
+      <link>https://blog.crboy.net/posts/proxy-apt-wget/</link>
+      <pubDate>Fri, 04 Jun 2010 07:11:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/proxy-apt-wget/</guid>
+      <description>台灣的學術網路連國外很慢是眾所皆知的事情&amp;hellip;.但是像 Ubuntu 這種系統，雖然有國內的 mirror，但是有些東西，像是 ppa 之類的 source，還是得從國外抓。今天剛裝完機器要更新，發現有些東西實在龜到不行，426B/s 耶！雖然最後我抓完了啦&amp;hellip;..不過還是要研究一下該怎麼透過 proxy 抓這些套件。
+方法很簡單，只要在 /etc/apt/apt.conf 裡面寫入以下這段設定：
+ACQUIRE { http::proxy &amp;quot;http://USER:PASSWORD@PROXY-SERVER:PORT&amp;quot; } 使用者帳號密碼、server 資訊請自行更改，如果是不需要帳號密碼的 proxy server 的話，則引號中只要打 http://PROXY-SERVER:PORT 即可。如果連 port 都不打的話，則預設的 port 是 80（也就是 http 的預設 port）
+接著只要更新套件清單，並安裝想要的套件就好。如果設定有誤，應該會在 update 的時候就出錯了。（像我一開始設定到一台已經不能用的 proxy server，就直接噴 error 給我看&amp;hellip;..）
+那麼，該設定哪一台 proxy server 呢？我找到了一份（有點舊的）proxy 列表，剛好是成大的人做的的樣子，請看參考資料。
+其中我是覺得 NCHC 的 proxy server 好像滿可靠的（好歹人家是NCHC&amp;hellip;）如果那份列表的連結以後不能用了，可以試試看這台&amp;hellip;
+至於，wget 又是怎麼回事？噢&amp;hellip;只是因為我發現我去找 proxy 相關資料的時候，很多文章都會同時教 apt 跟 wget 怎麼設定 proxy，那我就從善如流，把相關的資訊照抄一下了～
+編輯 /etc/wgetrc 或是 ~/.wgetrc，加入以下設定：
+https_proxy = http://PROXY-SERVER:PORT http_proxy = http://PROXY-SERVER:PORT ftp_proxy = http://PROXY-SERVER:PORT 應該很好懂吧？</description>
+    </item>
+    
+    <item>
+      <title>在Ubuntu 10.04 (Lucid Lynx)上安裝NX - 許多人推薦的遠端桌面</title>
+      <link>https://blog.crboy.net/posts/install-nx-on-ubuntu-10.04/</link>
+      <pubDate>Thu, 03 Jun 2010 09:14:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/install-nx-on-ubuntu-10.04/</guid>
+      <description>呃阿阿阿阿阿&amp;hellip;..我不知道應該怎麼起頭&amp;hellip;&amp;hellip;其實故事是這樣的，去年有學弟跟我推薦了NX這個遠端桌面，他是NoMachine公司的產品。特色大致上是，支援ssh加密連線，傳輸的資訊有經過壓縮(速度較快，不過影像品質稍微不太好，看得出來是lossy compression)，client可以跨平台，windows跟Linux都可以用，這對於有Linux桌面需求的Windows user真是福音阿!!
+於是乎，我就把他給裝起來了。一開始我裝的是NoMachine提供的Free Edition，但是後來有人跟我反應會連不上的問題，我找了很久找不出原因，最後我在某篇文章(由於年代久遠現在找不到了)得知，原來NoMachine的免費版本的nxserver有session數的限制，所以只好另尋他法。
+有個好用的open source版本的nxserver叫做FreeNX，想當然爾，「應該」是沒有session數限制的吧？當時在以前版本的ubuntu怎麼裝的我已經忘了，只記得套件名稱是freenx，但是好像不在官方預設的套件庫裡面&amp;hellip;但是在Ubuntu 10.04，我發現了新大陸！XD&amp;quot;
+這裡是安裝教學，很簡單。
+首先第一部你要先搞定你的ssh連線&amp;hellip;.通常我是裝openssh-server這個套件好像就搞定了&amp;hellip;.不過ssh博大精深，請另行研究。
+在ssh server裝好之後，就要開始安裝nx server了：
+$ sudo apt-get install python-software-properties #這步其實應該不用做，ubuntu預設就有裝這個套件了 $ sudo add-apt-repository ppa:freenx-team #這步其實讓我滿驚奇的，原來有這樣好用的工具可以用XD.... $ sudo apt-get update #加了套件庫，當然要update一下 $ sudo apt-get install neatx-server` 咦？怎麼不是freenx了？而是一個叫做neatx-server的東西？他的套件說明是這樣的：
+Neatx is an Open Source NX server.
+Neatx is an Open Source NX server, similar to the commercial NX server from NoMachine.
+查到的資料來源網頁是這樣寫的：
+Ubuntu Lucid now uses Neatx, the Open Source NX server from Google.</description>
+    </item>
+    
+    <item>
+      <title>取得 SSH server public key 的 fingerprint</title>
+      <link>https://blog.crboy.net/posts/get-ssh-server-fingerprint/</link>
+      <pubDate>Thu, 03 Jun 2010 08:30:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/get-ssh-server-fingerprint/</guid>
+      <description>不說廢話先給答案：
+$ ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub 對於廢話有興趣的請繼續閱讀&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;
+手邊的機器管一陣子之後，就會開始手癢想要重灌XD
+每次重灌完，要 ssh 上去的時候，都會遇到 key 不符合的情形&amp;hellip;.畫面長得像是這樣：
+$ ssh Some-Server @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY! Someone could be eavesdropping on you right now (man-in-the-middle attack)! It is also possible that the RSA host key has just been changed. The fingerprint for the RSA key sent by the remote host is &amp;lt;這裡是一長串的fingerprint，會有16進位數字，用冒號分隔&amp;gt;. Please contact your system administrator.</description>
+    </item>
+    
+    <item>
+      <title>修改 Google Chrome 的外掛 - RePlurk Chrome 的javascript</title>
+      <link>https://blog.crboy.net/posts/patch-replurk-chrome/</link>
+      <pubDate>Wed, 02 Jun 2010 11:54:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/patch-replurk-chrome/</guid>
+      <description>用Firefox上噗浪(Plurk)的人，有些都會裝GreaseMonkey這個套件+RePlurk script。只不過我在Google Chrome on Linux上&amp;hellip;雖然他預設支援直接安裝userscripts，但是我從來沒有成功跑起來過orz|| (就是可以安裝，但是裝了之後plurk就開不起來了QQ)
+後來我發現有個RePlurk Chrome套件，他可以幫你的plurk頁面加上一個&amp;quot;RePlurk&amp;quot;的按鈕&amp;hellip;.就像我以前在Firefox上用的那樣(dance) 噢&amp;hellip;可是有個問題&amp;hellip;我喜歡的轉噗形式是：「[轉噗]: xxxxxx」，但是RePlurk Chrome的轉噗形式是：「([ReP]) 作者: xxxxxx」，最困擾的就是他不能自訂(angry)！(GreaseMonkey有提供介面讓你修改scripts)
+這篇就是為了解決這種問題的&amp;hellip;..:P 首先，我的平台是Linux，更詳細的說，是Ubuntu 10.04 (不過其實在openSUSE上也是一樣)&amp;hellip;..而這個套件把他的javascript放在哪裡呢？答案如下：
+$HOME/.config/google-chrome/Default/Extensions/beaghhigecidoamlpclhiboaeonkceea/0.1.1/RePlurk.js 補充：在MacOX 10.6.3上是放在
+~/Library/Application Support/Google/Chrome/Default/Extensions/beaghhigecidoamlpclhiboaeonkceea/0.1.1/RePlurk.js 那個一長串的是這個擴充套件的ID(在Chrome的擴充套件頁按「開發人員模式」就可以看到)，0.1.1是我現在使用的版本&amp;hellip;也就是說以後如果這個套件改版可能就會小小換個路徑XD&amp;quot;
+那該怎麼辦？
+人類哪有這麼強的記憶力&amp;hellip;.其實我每次都忘記他放在哪裡！我是這麼找到這個檔案的&amp;hellip;.
+$ find ~ |grep -i replurk 其中就會看到RePlurk.js這個檔案了&amp;hellip;.:P 在windows上一樣可以用搜尋功能來找唷，我想會差不多的吧。
+找到檔案之後，就是要修改他的內容了。呃&amp;hellip;.我不知道該怎麼說明&amp;hellip;..他裡面把code都擠在一行了XD 其實可以用搜尋取代啦，但是要有點js的基礎才行，不要改到變數名稱了，改字串就好。此外，對於轉噗的連結(原本是叫做&amp;quot;RePlurk&amp;quot;)我也不太滿意&amp;hellip;.所以我把他改成&amp;quot;轉噗&amp;quot;了。
+講東西只講一半，不教怎麼改一定會被看文章的人追殺！所以提供一個替代方案，我把我修改的RePlurk.js分享給大家，以下，請笑納:D
+var GM_JQ_src = document.createTextNode(&amp;quot;var ReP_Message={};var p=window.Plurks;var o_expand;if(p){o_expand=p.expand;p.expand=function(aa){o_expand(aa);if(typeof ReP_Message.hrefProcessed==&#39;undefined&#39;){ReP_Message.hrefProcessed=true;var ba=document.getElementById(&#39;form_holder&#39;).lastChild;var ib=document.getElementById(&#39;input_big&#39;);if(ba&amp;amp;&amp;amp;ib){var ca=document.createElement(&#39;a&#39;);var da=document.createElement(&#39;div&#39;);da.setAttribute(&#39;class&#39;,&#39;perma_link&#39;);da.id=&#39;RePlurkDiv&#39;;ca.id=&#39;RePlurk&#39;;ca.setAttribute(&#39;href&#39;,&#39;javascript:doRePlurk(ReP_Message.owner_id, ReP_Message.raw, ReP_Message.link);&#39;);ba.appendChild(da).appendChild(ca).appendChild(document.createTextNode(&#39;轉噗&#39;));}}var ea=window.getPD(aa).obj;ReP_Message.link=&#39;http://plurk.com/p/&#39;+(ea.plurk_id).toString(36);ReP_Message.raw=ea.content_raw;ReP_Message.owner_id=ea.owner_id;}}function doRePlurk(fa,ga,ha){var ib=document.getElementById(&#39;input_big&#39;);var ia=window.SiteState.getUserById(fa).nick_name;var ja=ha+&#39; ([轉噗]): &#39;+ga;if(ib){ib.value=ja;p._removeExpand();window.MaxChar.updateBig();}}&amp;quot;); var GM_JQ = document.createElement(&#39;script&#39;); GM_JQ.type = &#39;text/javascript&#39;; GM_JQ.appendChild(GM_JQ_src); document.getElementsByTagName(&#39;body&#39;)[0].appendChild(GM_JQ); </description>
+    </item>
+    
+    <item>
+      <title>將filesystem從ext2 or ext3升級到ext4</title>
+      <link>https://blog.crboy.net/posts/upgrade-to-ext4/</link>
+      <pubDate>Wed, 02 Jun 2010 10:18:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/upgrade-to-ext4/</guid>
+      <description>剛好有點三八想把ext3轉到ext4去&amp;hellip;.就找了些資料，寫了這篇文章:P
+要轉換成ext4嘛&amp;hellip;&amp;hellip;首先當然有些前提&amp;hellip;.你的kernel要支援ext4才行:D 另外也建議備份重要資料&amp;hellip;.
+然後step by step的教學就開始了！以下 $DEV 為device的名字(例：/dev/sda1)，$MOUNT為mount point(例：/mnt)
+要變更檔案系統，理所當然絕對不能讓他在被mount的時候亂搞，那是會出人命的XD
+# umount $DEV 這麼快!? 對&amp;hellip;.現在就去變更他吧&amp;hellip;.
+# tune2fs -O extents,uninit_bg,dir_index $DEV 如果是ext2 -&amp;gt; ext4的話則要這樣(因為ext2是沒有日誌(journal)的)
+# tune2fs -O extents,uninit_bg,dir_index,has_journal $DEV 變更完之後，一定要做fsck！
+# fsck -pf $DEV (這裡讓我膽顫心驚！因為出現好多error唷&amp;hellip;.orz||| 而且他還修了很久，差點以為程式爛掉&amp;hellip;.)
+最後就可以把他mount回去囉！
+# mount -t ext4 $DEV $MOUNT 如果是系統預設會mount的filesystem的話，請記得修改/etc/fstab。裡面的參數會紀錄要怎麼mount它&amp;hellip;一定要改！
+ps. 若是有動到/boot，或是開機遇到grub出現問題的話，參考資料裡面有相關資訊！
+參考資料 Ext3升級到Ext4 無損升級 http://blog.chinaunix.net/u1/46672/showart_2069245.html Linux 文件系統從 ext3 升級到 ext4 http://www.vpsee.com/2010/01/convert-ext3-to-ext4-filesystem/ sshlog-轉換 Ext3 到 Ext4 http://blog.ssh.tw/?p=1447 (有ssh大掛保證，這方法讓我更安心了XD) </description>
+    </item>
+    
+    <item>
+      <title>用JavaScript判定瀏覽器是否為IE</title>
+      <link>https://blog.crboy.net/posts/%E7%94%A8javascript%E5%88%A4%E5%AE%9A%E7%80%8F%E8%A6%BD%E5%99%A8%E6%98%AF%E5%90%A6%E7%82%BAie/</link>
+      <pubDate>Thu, 15 Apr 2010 18:47:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E7%94%A8javascript%E5%88%A4%E5%AE%9A%E7%80%8F%E8%A6%BD%E5%99%A8%E6%98%AF%E5%90%A6%E7%82%BAie/</guid>
+      <description>摘自 http://leeiio.me/ie_detection_in_5_bytes/
+&amp;lt;script type=&#39;text/javascript&#39;&amp;gt; var ie = !-[1,]; alert(ie); &amp;lt;/script&amp;gt; 以上程式碼執行結果：IE 下返回 true，其他標準瀏覽器返回 false。!-[1,]，僅僅只有 6 bytes！
+&amp;lt;script type=&#39;text/javascript&#39;&amp;gt; // Option from Dean Edwards: var ie = /*@cc_on!@*/false; // Use the commented line: var ie//@cc_on=1; // Variation (shorter variable): var ie = &#39;\v&#39;==&#39;v&#39;; // Option to Gareth Hayes (former record-holder): var ie = !+&amp;quot;\v1&amp;quot;; &amp;lt;/script&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>10 個最酷的 Linux 單行指令</title>
+      <link>https://blog.crboy.net/posts/top-10-linux-one-liners/</link>
+      <pubDate>Tue, 06 Apr 2010 02:10:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/top-10-linux-one-liners/</guid>
+      <description>本文內容修改自 http://linuxtoy.org/archives/top-10-one-liners.html
+下面是來自 Commandlinefu 網站由用戶投票表決出的 10 個最酷的 Linux 單行指令。
+sudo !! 以 root 帳戶執行上一道指令。
+python -m SimpleHTTPServer 利用 Python 建立一個簡單的 Web 伺服器，可透過 http://$HOSTNAME:8000 瀏覽。
+:w !sudo tee % 在 vim 中無需權限儲存編輯的文件。
+cd - 更改到上一次瀏覽的目錄。
+^foo^bar 將上一道指令中的 foo 替換為 bar，並執行。
+cp filename{,.bak} 快速備份或複製文件。
+mtr google.com = traceroute + ping。
+!whatever:p 搜尋命令歷史，但不執行。
+ssh-copy-id user@host 將 ssh keys 複製到 user@host 以啟用無密碼 SSH 登錄。
+ffmpeg -f x11grab -s wxga -r 25 -i :0.0 -sameq /tmp/out.</description>
+    </item>
+    
+    <item>
+      <title>一個有趣的小程式 - sm (screen message)</title>
+      <link>https://blog.crboy.net/posts/screen-message/</link>
+      <pubDate>Fri, 20 Nov 2009 12:29:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/screen-message/</guid>
+      <description>哈，其實我是想順便測試一下 wp-codebox 這個外掛&amp;hellip;.:P
+這個小程式很有趣，可以做全螢幕的大字報/看板之類的，下面是我自己做的範例：（圖不見了，找不回來了）
+別懷疑，這就是一整個螢幕大小！
+我曾經拿這隻程式來做舉牌小弟，或是在一些場合可以(娛樂性質的)打廣告或是發表意見之類的XD 總之很好玩就是了~
+下面是他的 python 版本的程式碼，才 140 行而已！值得注意的是，第 70 行的字型我改成我喜歡的字型了，畢竟這類型的應用，還是用黑體最好看了~嘿嘿~:P
+#!/usr/bin/python # encoding:utf8 # vlshow.py # Copyright (C) 2006 Joachim Breitner # # This program is free software; you can redistribute it and/or modify # it under the terms of the GNU General Public License as published by # the Free Software Foundation; either version 2 of the License, or # (at your option) any later version.</description>
+    </item>
+    
+    <item>
+      <title>在Ubuntu 9.10上自行編譯安裝PCManX 0.3.9</title>
+      <link>https://blog.crboy.net/posts/build-pcmanx-on-ubuntu-9.10/</link>
+      <pubDate>Sun, 01 Nov 2009 05:12:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/build-pcmanx-on-ubuntu-9.10/</guid>
+      <description>該是發技術性文章的時候了&amp;hellip;.XD
+剛剛才把 Ubuntu 給升到 9.10，要重灌 pcmanx，結果沒想到裝完要執行竟然出現：
+pcmanx: error while loading shared libraries: libpcmanx_core.so.0: cannot open shared object file: No such file or directory 這個錯誤，於是乎簡單查了一下資料，答案也很簡單：$ sudo ldconfig。以下是完整的編譯+安裝教學：
+首先到 PCManX 的專案網站(註)去下載最新版本的 PCManX GTK2，我抓到的是 pcmanx-gtk2-0.3.9.tar.bz2。
+抓回來之後先解壓縮：
+$ tar -xf pcmanx-gtk2-0.3.9.tar.bz2 會得到一個名為 pcmanx-gtk2-0.3.9 的目錄
+接著：
+$ cd pcmanx-gtk2-0.3.9 進入該目錄
+簡單看了一下 README，我用這樣的參數做 configure：
+$ ./configure --disable-nancy --disable-mouse --enable-wget --enable-proxy 結果發現&amp;hellip;&amp;hellip;對噢我有 library 還沒裝XD 根據專案網頁的說明，要安裝這些套件：
+$ sudo apt-get install intltool intltool-debian libxft-dev libgtk2.0-dev 重新 configure 一次，很快就好了XD 還會要你 type make and pray&amp;hellip;.</description>
+    </item>
+    
+    <item>
+      <title>FreeBSD 相見歡？</title>
+      <link>https://blog.crboy.net/posts/freebsd-%E7%9B%B8%E8%A6%8B%E6%AD%A1/</link>
+      <pubDate>Tue, 25 Aug 2009 03:02:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/freebsd-%E7%9B%B8%E8%A6%8B%E6%AD%A1/</guid>
+      <description>今天總算拿到主機板了&amp;hellip;.(唉 運作得好好的主機板竟然重灌的時候發現抓不到PS/2鍵盤)
+呃 不對 哪有一開始就離題的&amp;hellip;
+今天嘗試安裝FreeBSD 其實也不是第一次 但是之前裝起來沒多久就被我砍掉了XD 這次一定要努力！
+首先是安裝的部份&amp;hellip;用光碟開機之後 會進到FreeBSD的啟動畫面(boot loader) 選擇預設值就可以進去安裝畫面了XD 我用的是custom的設定 只是覺得這樣可以學比較多東西&amp;hellip;.一樣一樣東西去摸索到設定完成&amp;hellip;
+跑安裝花了15分鐘！(可以說是「而已」吧~)
+安裝後第一步就是連上網路 還有啟動sshd&amp;hellip;.sshd的啟動不難 因為sysinstall(就是那個安裝程式)裏面就有選項可以選了 打開就好 至於連上網路的部份 因為我用的是ADSL 要設定PPPoE的連線&amp;hellip;..不知道有沒有現成的工具可以用！ 我是照著 http://twbsd.org/cht/book/index.php?ch=05 的教學把那些資訊都打上去&amp;hellip;(手打真的好累..) 噢 然後就可以上網了！還算滿無痛的說~
+可以遠端連線之後 接下來就開始摸系統了&amp;hellip;.以下條列式:
+我的個人帳號沒辦法su成root: 編輯/etc/group把帳號加進wheel群組就好
+(哇勒 crash了 硬碟出錯&amp;hellip;.先寫到這邊 除錯去&amp;hellip;.~&amp;quot;~)
+(強迫重開機&amp;hellip;.我不知道發生什麼事了orz) 安裝bash跟vim: 進去/usr/ports裏面找到要裝的 然後make install就好 安裝vim到一半就出狀況&amp;hellip;看訊息像是I/O error&amp;hellip;重開機後自己會進去single user mode 此時我做了fsck 然後全都選y&amp;hellip;.XD 不知道這樣是否正確&amp;hellip;不過至少重開機後可以正常登入了~ root不能ssh進來: 這個沒關係 我知道是為了安全性 不過我也想知道哪裡可以調&amp;hellip;之後再研究看看 ports安裝實在好慢&amp;hellip;.XD 要等好久 看來這種爛機器不適合自己編程式&amp;hellip; 暫時是這個樣子 這篇文章沒有參考價值! 噢 之前是裝FreeBSD6.3 現在裝的是7.2</description>
+    </item>
+    
+    <item>
+      <title>我會C&#43;&#43;嗎？</title>
+      <link>https://blog.crboy.net/posts/%E6%88%91%E6%9C%83c&#43;&#43;%E5%97%8E/</link>
+      <pubDate>Thu, 23 Jul 2009 00:16:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E6%88%91%E6%9C%83c&#43;&#43;%E5%97%8E/</guid>
+      <description>剛剛看到這篇文章 自認並沒有很熟 但是會寫一點C++的我想試著回答看看&amp;hellip;.究竟&amp;hellip;..我可以答對多少呢？
+什麼是virtual inheritance? 請舉例說明。
+當有一個class(稱為D好了)繼承自兩個有共同parent class(稱為A)的class時 必須使用virtual inheritance以避免來自兩個parent class(稱為B與C)的method產生衝突
+什麼是virtual function? 什麼是pure virtual function?
+virtual function會在runtime的時候進行binding 也就是若透過parent class的pointer呼叫某method時 會根據實際指向之child class(或是事實上是該parent class)而呼叫相對應之method 若非dynamic binding的話 則會根據pointer的型態呼叫相對應的程式碼(static binding)
+而pure virtual function則不指向某一段程式碼 僅用來作為一個呼叫child class的method的入口 擁有pure virtual function的class是abstract class 不可產生instance(可以產生的話就奇妙了&amp;hellip;沒有實做的程式碼要怎麼跑&amp;hellip;)
+pointer與reference的差別?
+pointer是一個獨立的變數 儲存的是另一個物件的位址(address) 要取得位址需使用&amp;amp;運算元 要dereferencing需使用*運算元
+reference是一個&amp;hellip;.reference&amp;hellip;||| 僅僅是參考到其指向的物件 相當於該物件的別名(alias) 同時也不像pointer一樣可以更換參考目標 使用時與一般變數之syntax並無不同 僅僅是宣告時要加上&amp;amp;
+什麼是static_cast, dynamic_cast, reinterpret_cast, const_cast? 他們之間的差異是?
+static_cast較類似C語言的cast 在compilation time進行cast
+dynamic_cast是在runtime進行cast 所以cast的成功與否會等到runtime才能獲知(例如有B,C兩個class都繼承自A 而有個A*指向B的物件 此時若要將這個pointer dynamic_cast成C就會產生問題)
+reinterpret_cast我不知道
+const_cast做常數性(const)的cast 我也不清楚詳細用途
+run-time polymorphism與compile-time polymorphism的差異? 分別要如何達成?
+runtime polymorphism是dynamic binding 像是virtual function即是此類</description>
+    </item>
+    
+    <item>
+      <title>openSUSE 安裝 flashplayer plugin</title>
+      <link>https://blog.crboy.net/posts/opensuse-%E5%AE%89%E8%A3%9D-flashplayer-plugin/</link>
+      <pubDate>Sat, 18 Jul 2009 18:47:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/opensuse-%E5%AE%89%E8%A3%9D-flashplayer-plugin/</guid>
+      <description>要趕快記下來不然會忘記！XD
+這是小弟今天的實驗結果 使用的平台是openSUSE 11.0 + Firefox 3.0.11
+本來一直找不到可用的flash player plugin 套件庫的都有點問題(我是以能不能看YouTube當成能不能順利使用的指標&amp;hellip;XD) 今天在實驗室剛好跟學弟聊到 就來試試看！
+首先是學弟用Google找到的連結(關鍵字：64bit flash):
+http://labs.adobe.com/technologies/flashplayer10/
+這是Adobe Labs的網站 裡面有flash plugin 10的的prerelease版本可以下載 下載解壓縮後 只有看到一個libflashplayer.so檔 使用file查看：
+$ file libflashplayer.so libflashplayer.so: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, stripped 學弟要我把他放到 ~/.mozilla/plugins/ 裡面 不過我希望可以達到全系統的設定 所以暫時不這樣做(但後來證明這樣做是OK的)
+首先 我試著把libflashplayer.so放到 /usr/lib64/mozilla/plugins/ 裡面 不過firefox找不到他:(
+接著 我放到 /usr/lib/mozilla/plugins/ 裡面 firefox還是找不到他:(
+只好搜尋「opensuse 11 安裝 libflashplayer.so」找到黑眼珠大大的這篇文章 不過其實我看不太懂&amp;hellip;.XD 不過 仔細閱讀之後 發現他把libflashplayer.so放在 /usr/lib/browser-plugins/ 裡面!!!!(他裡面提到nspluginwrapper 不過因為我抓的應該就是for linux的了 所以應該不需要處理就可以用) 我就如法泡製 把libflashplayer.so放在 /usr/lib64/browser-plugins/ 裡面(小弟實在是很白目 硬要先用自己覺得合理的方法做!</description>
+    </item>
+    
+    <item>
+      <title>在Ubuntu上安裝nVidia官方顯示驅動程式</title>
+      <link>https://blog.crboy.net/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9Dnvidia%E5%AE%98%E6%96%B9%E9%A1%AF%E7%A4%BA%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F/</link>
+      <pubDate>Thu, 06 Mar 2008 18:39:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9Dnvidia%E5%AE%98%E6%96%B9%E9%A1%AF%E7%A4%BA%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F/</guid>
+      <description>首先要停用restricted driver(或移除nvidia-glx套件也是一樣的結果)
+接著修改/etc/default/linux-restricted-modules-common中的DISABLED_MODULES屬性 停用nv和nvidia_new(會像這樣：「DISABLED_MODULES=&amp;ldquo;nv nvidia_new&amp;rdquo;」)
+然後刪掉/lib/modules底下的跟nvidia有關的東西(但是我的ubuntu根本沒有這種東西 是找到的教學文件這樣說)
+刪掉/etc/init.d/nvidia-glx 和 /etc/init.d/nvidia-kernel
+接著關閉gdm：「$ sudo /etc/init.d/gdm stop」 如果在視窗介面下無法成功的話 可以按ctrl+alt+F1切換到terminal 接著登入並輸入以上指令 另外我個人的習慣是會先在視窗下登出後才停用gdm~
+然後就可以安裝新版驅動了！不過必須要有libc6-dev套件 似乎是因為官方的安裝程式會幫你編譯kernel module&amp;hellip;至於新版驅動的下載位置&amp;hellip;我都是直接在nVidia的網站搜尋「display」 因為常常會出新版 之前裝的時候我用的是169.09 現在我已經用到171.05了 而且好像很多版本都可以用&amp;hellip;我整個搞不懂@@&amp;quot;(如果有人可以幫小弟解答麻煩告訴我 謝謝！)
+安裝好之後重開gdm就行了：「$ sudo /etc/init.d/gdm start」
+不過我遇到一個無法開啟特效的問題 就是在「外觀設定(Appearence)」的地方的Visual Effect標籤裡 我沒有辦法讓他開啟特效 他會說要安裝受限的驅動程式(restricted driver)才能開(我想這部份可能是預防錯誤預防過了頭吧)
+我的解決方式是直接按alt+F2 執行compiz就可以開啟特效
+另外 如果想要在開機的時候就開啟特效 可以寫入作業階段(系統-管理-作業階段)裡面 但不是執行「compiz」 而是「compiz &amp;ndash;replace」
+意義好像是要取代本來的metacity 不然會發生錯誤(可能是衝突吧) 所以我之前直接執行compiz 開機進入X之後都會當掉&amp;hellip;.= =&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>在ThinkPad R61-A76上安裝Ubuntu &#43; Vista雙系統</title>
+      <link>https://blog.crboy.net/posts/%E5%9C%A8thinkpad-r61-a76%E4%B8%8A%E5%AE%89%E8%A3%9Dubuntu-&#43;-vista%E9%9B%99%E7%B3%BB%E7%B5%B1/</link>
+      <pubDate>Sun, 02 Mar 2008 00:28:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E5%9C%A8thinkpad-r61-a76%E4%B8%8A%E5%AE%89%E8%A3%9Dubuntu-&#43;-vista%E9%9B%99%E7%B3%BB%E7%B5%B1/</guid>
+      <description>其實是很久以前的筆記了 不過現在才放在blog上
+主角是我在寒假前買的Lenovo(IBM) ThinkPad R61-7743A76 內附的作業系統是Windows Vista Home Premium(可是Palmset上的貼紙竟是Basic:( 真無奈) 不過玩了Ubuntu一年多的我當然迫不及待想嘗試看看在新機器上能夠支援多少功能~XD
+之前就聽很多人說新的硬體不太容易被支援 我都沒有這種煩惱(嗚T_T) 現在總算可以換我煩惱一下了:P
+首先是失敗的紀錄 一開始我用Ubuntu的LiveCD進入系統 並使用gparted(Partition Editor/分割區編輯程式)來調整我的分割區 我先resize我的Vista的磁區 花了好久 可能有1,2個小時吧 後來我想說 先重開機確認看看Vista還能不能正常運作 於是我就在「沒有先把其他分割區建好」的情況下重開機了
+開機後 ThinkVantage的R&amp;amp;R(Rescue &amp;amp; Recovery)提醒我發生錯誤 要檢查之類的&amp;hellip;.這一檢查也不知道檢查了多久 最後我終於沒耐心了 重開機 還原！
+這一還原又花了我一整個晚上&amp;hellip;因為他會經歷多次的重開機 複製檔案 設定 安裝程式等等&amp;hellip;反正&amp;hellip;我就去睡了&amp;hellip;等到完成後&amp;hellip;.恩&amp;hellip;.令人難過的事情發生了！我明明選擇的是Recovery to first partition 但是我的未分割空間也被拿去用了 推測是我沒有把他建立起來 所以就被程式順便拿來灌Vista&amp;hellip;.事情至此 我只能大大的悔恨&amp;hellip;不過我又再翻出這篇文章 參考了他裡面一部份的做法 最後我成功了！
+成功的紀錄 首先關閉(disable)Windows的系統還原、休眠、以及分頁檔(設為0MB) 這3樣都不太好找 特別是在Vista上&amp;hellip;我每次都要找很久&amp;hellip;XD
+接著重新開機並刪除pagefile.sys 應該是儲存在系統槽(通常是C槽)底下 而且要開啟顯示隱藏檔和顯示系統檔才會看得到&amp;hellip;注意！因為我已經關閉了分頁功能才能安全的刪除這個檔案！
+再來盡量刪掉不必要的檔案 可以備份出來的就先備份出來 還有像是R&amp;amp;R的備份檔有夠大的 我也是把他給刪掉 這個作法的目的是希望該分割區裡的東西越少越好 (我自以為)這樣resize的時候會比較順&amp;hellip;
+然後清理磁碟(我是用CCleaner來清理垃圾檔案和無用的登錄檔)
+重開機(這是怪癖 我也不知道有沒有必要)
+最後做磁碟重組(我也忘記我用哪套軟體做的了 可能是出廠預裝的那個吧 忘記名字了)
+再來就可以重開機並用Ubuntu的LiveCD進入系統(當然也可以用別的像是GParted的LiveCD 而我所用的是Ubuntu Gutsy Gibbon/7.10 DVD版本 選英文+安全圖形模式) 在系統內用gparted來調整NTFS磁區的大小 並且建立你要的分割區(最好在這裡先對未來要使用的磁區先做一點規劃 我是切成3個「/」「/home」「swap」)</description>
+    </item>
+    
+    <item>
+      <title>修正開機沒有splash畫面(進度條)的問題</title>
+      <link>https://blog.crboy.net/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/</link>
+      <pubDate>Wed, 31 Oct 2007 12:25:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/</guid>
+      <description>開機的 usplash 變黑的 bug 和螢幕解析度有關，只在用 Desktop CD 安裝的時候會遇到。原因是因為安裝程式會偵測螢幕解析度，但是 usplash 沒辦法用那麼高的解析度顯示，於是就黑掉了。
+解法，例如我的螢幕解析度是 1280x1024，但是 usplash 可能只能用 1024x768 跑，到 /etc/usplash.conf 中將
+xres=1280 yres=1024 改成
+xres=1024 yres=768 然後再打
+$ sudo update-initramfs -u -k `uname -r` 更新一下就應該可以看到了。
+資料來源為 Ubuntu@TW 的 josesun 回應</description>
+    </item>
+    
+    <item>
+      <title>今天看到有人在徵 MS Office</title>
+      <link>https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/</link>
+      <pubDate>Thu, 19 Jul 2007 00:23:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/</guid>
+      <description>在我看到之前已經有人推 OpenOffice.org 了&amp;hellip;
+只是讓我突然想到 之前不知道看誰說過 你用 MS Office 是很強大沒錯 只是也用不到那麼多功能&amp;hellip;大部分的人 包含我自己在內 其實都用不到什麼很進階的功能 不過就是打打字 排個版 畫個表格之類&amp;hellip;這些東西都可以用 OO.o 來達成 以 c/p 值來說當然高很多 不過我也承認 MS Office 真的比較好用 至少介面親和力比較高 功能也比較完善 (OO.o 有時候會有一些我想要的效果做不出來) 只是人家就是要錢&amp;hellip;.我現在用的是成大的授權 那將來呢？我希望 OO.o 進步快一點 在我畢業之後可以完全不要用 MS Office～～</description>
+    </item>
+    
+    <item>
+      <title>解決新視窗不會取得focus的問題</title>
+      <link>https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/</link>
+      <pubDate>Mon, 18 Jun 2007 02:49:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/</guid>
+      <description>我也不確定這是Gnome的問題或是Beryl造成的～
+不過我知道解法了:P
+在Beryl Manager中找General Options裡面有個&amp;quot;聚交保護級&amp;quot; 把高設定為正常就好了:)
+來源</description>
+    </item>
+    
+    <item>
+      <title>之前的一篇</title>
+      <link>https://blog.crboy.net/posts/%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%80%E7%AF%87/</link>
+      <pubDate>Mon, 18 Jun 2007 01:46:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%80%E7%AF%87/</guid>
+      <description>2007年6月5日，innotek 發佈了 VirtualBox 1.4.0 for Linux and Windows。這個新版本有大幅的進步，超過所有自 2007 年 1 月發佈的官方版本以來的所有更新。
+這些更新有：對64-bit Linux主機的完整支援，RDP session shadowing，剪貼簿同步化，序列埠，以及更簡單的網路介面。
+在 儲存部份，VirtualBox已可原生支援 VMware 檔案格式(VMDK)，且可以讓虛擬機器直接存取硬碟與分割區(raw disk support)。圖形使用者介面也獲得很大的改善且提供12種語言的支援(正體/簡體中文、德文、西班牙文、法文、義大利文、波蘭文、葡萄牙文、羅馬尼 亞文、阿拉伯文、俄文、日文)Red Hat Enterprise Linux 5 (RHEL5) and Xandros Desktop 4.1現在也受到官方支援。對FreeBSD與OpenBSD的支援也有進步。
+細節可參考Changelog。
+與之前的版本相同的是 VirtualBox 1.4.0 有 GPL 授權的 Open Source 與商業授權可用，而且在大多數情況下，商業版本授權無須付費。
+讓我爽一下，這篇公佈在Ubuntu@TW的新聞大部分的內容是我翻譯的XD~~
+連結在此： http://www.ubuntu.org.tw/modules/news/article.php?storyid=52</description>
+    </item>
+    
+    <item>
+      <title>SSH key 的 randomart</title>
+      <link>https://blog.crboy.net/posts/ssh-key-random-art/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/ssh-key-random-art/</guid>
+      <description>滿有趣的…XD 就像是這種東西：
++--[ RSA 2048]----+ |.ooo+ | | oE= = | |..* B . | | . O . o | | o + . S | | . . o o | | o | | | | | +-----------------+ 這東西在產生 ssh key 的時候會出現，如果想要看現有的 public key 的 randomart 的話可以下 ssh-keygen -lv
+如果想要在連上 ssh server 的時候看到 randomart 的話可以在 ssh config 中設定 VisualHostKey=yes 或是連線的時候下 ssh -o VisualHostKey=yes
+滿好玩的XD</description>
+    </item>
+    
+    <item>
+      <title>Tumblr 的用途？</title>
+      <link>https://blog.crboy.net/posts/trying-tumblr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/trying-tumblr/</guid>
+      <description>今天在想，找個 web 界面又支援 markdown 的 blog system 來記一些還沒有好好整理的筆記…想著想著就想到 tumblr 了&amp;hellip;（支援 markdown 嗎？XD）
+所以….就來試試看~</description>
+    </item>
+    
+  </channel>
+</rss>

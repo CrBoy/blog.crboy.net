@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>軟體 on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/%E8%BB%9F%E9%AB%94/</link>
+    <description>Recent content in 軟體 on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 19 Sep 2012 13:56:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/%E8%BB%9F%E9%AB%94/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gitit 簡介</title>
+      <link>https://blog.crboy.net/posts/introduction-to-gitit/</link>
+      <pubDate>Wed, 19 Sep 2012 13:56:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/introduction-to-gitit/</guid>
+      <description>最近打算發一系列的 Gitit 相關文章，希望不要拖稿拖太久&amp;hellip;.萬一去當兵了，可能會拖很久很久這樣XD
+之前我一直在尋找一個好用的共同協作平台系統，原因是我覺得 MediaWiki 的語法實在太難寫了&amp;hellip;.特別是當我看到 Ubuntu-TW Wiki 的首頁原始碼的時候，都快吐血了&amp;hellip;..當下覺得我智商不足&amp;hellip;..orz 但後來一直尋找，尋找的目標是：語法好寫、可即時線上協作的 wiki，所謂的「即時線上協作」就是像 Google Docs 那樣有可以多人同時編輯的頁面這樣。不過一直都找不到我想要的東西&amp;hellip;.即時線上協作有 etherpad-lite 這個 open source 專案，但是他是每個 pad 獨立的，而使用 Markdown 語法的 wiki 也不是沒有，但沒有勇氣(?)去嘗試&amp;hellip;.
+一開始知道 Gitit，是 @zeroplex (日落) 在噗浪上講的。因為之前也跟日落提過我想要尋找一個好用的 wiki system 這件事，他剛好不知道從哪裡獲得資訊，就分享給我了。結果沒想到，一玩下去，驚為天人啊XD
+我的第一步當然是先去 Google 一下，看有沒有什麼相關訊息。直到現在這個時間點，去 Google 「gitit」還很容易找到 walkingice 的這篇文章，另外當然還是要提一下 Gitit 官方網站。
+Gitit 這東西，是一個用 git 當 back-end datastore 的 wiki 系統，而且自帶 web server，不需要諸如 apache 或是 nginx 的存在也可以運作。Wiki 的語法使用 Markdown，方便好寫，同時也很容易用於其他用途，可攜性佳。
+簡單的 survey 過後，我決定也來試試看。沒想到在 Ubuntu 下安裝跟啟動都超簡單的&amp;hellip;.
+安裝：sudo apt-get install gitit
+建立目錄：mkdir wiki</description>
+    </item>
+    
+    <item>
+      <title>對 Vim 啟動過程做效能分析</title>
+      <link>https://blog.crboy.net/posts/profiling-vim-startup/</link>
+      <pubDate>Wed, 30 May 2012 11:09:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/profiling-vim-startup/</guid>
+      <description>昨天在噗浪上看到有趣的分享，是一篇 StackOverflow 上的文章：Profiling vim startup time。
+其實講的東西相當單純，就是 vim 提供了 --startuptime 選項，後面接上 log 檔的檔名，他會幫你把啟動過程中每個部份所花的時間都記錄下來，有個別時間也有累計時間。例如：
+$ vim --startuptime vim.log 然後就可以看 vim.log 的內容來了解自己啟動 vim 的時候在哪個部分花最多時間囉。對於 vim plugin 裝很多又想瘦身的朋友應該很實用。:)
+嗯&amp;hellip;..身為一個程式語言 (vim script) 的 interpreter&amp;hellip;.果然會出現這種東西XD</description>
+    </item>
+    
+    <item>
+      <title>「那些老師沒教的事」簡報釋出</title>
+      <link>https://blog.crboy.net/posts/release-slides-of-code-smart/</link>
+      <pubDate>Mon, 02 Apr 2012 23:41:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/release-slides-of-code-smart/</guid>
+      <description>在緊張得半死的狀況中，終於把這個 talk 給講完了XD 希望來聽的人都有些收穫~
+不過可惜的是，我太緊張了，所以有些東西講的不是很完整，甚至是漏講&amp;hellip;.orz 而且滿多東西好像&amp;hellip;.呃&amp;hellip;.有點臨場發揮&amp;hellip;.XD 希望不要讓人覺得太亂~
+當日演講簡報可點選此處下載
+自己重新看了簡報，大致上檢討一下自己，如下：
+git-config 沒有 demo 到(因為我自己也很少用&amp;hellip;我都直接看設定檔來改，比較乾脆XD) 之前就一直覺得應該要畫點圖來描述 revision 還有 branch，但是一直偷懶&amp;hellip; git-add -p 沒講到QQ&amp;hellip;.應該要 demo 一下「部分 add 並 commit」的 .gitignore 如果有 demo 的話，應該會更清楚點 沒講到 git-revert 啊!!!! (大敗筆) 應該拿個實際上的使用 git 協作的範例，這樣聽眾會更有感覺&amp;hellip; make 還是該現場 demo 一下&amp;hellip;.幾行而已又不會花多少時間QQ 我竟然沒講到 gdb 可以預先寫好 command，甚至是 function 的這件事&amp;hellip;.. vim demo 太少&amp;hellip;連 vimrc 都沒有開來看看，真是不應該 vim 文字物件 (text object)、tabpage、quickfix、mapping 都應該要提一下的&amp;hellip;. 結果變成檢討文了&amp;hellip;&amp;hellip;..XD
+如果這樣的東西以後還有機會再講的話，也許要考慮拆成兩個部分，然後分別作比較完整的 demo，甚至是現場實作，應該會比較有趣一點！但是，如果是拆開的話，那不管講那個主題都顯得我會得太少了耶&amp;hellip;..orz 畢竟，不管在哪個範疇我都只是個學習者，充其量是脫離初學吧我想。我生來就是只能講初級講題的吧XDDDD
+噢我發現我的文章，總是會出現很多個 XD，對吧？XD
+最後這邊宣傳一下當日最後宣傳的事情。
+我之前嘗試性的建立了一個小小的社群，叫做 C4Labs。當時想嘗試把社群聚會的形式跟氣氛帶到成大來，不過成效好像頗差orz。現在畢業了，想說看看能不能再找回當初的期待。我想把對於電腦、網路、程式等等技術有強烈興趣的朋友們聚集起來，一起討論跟分享。因為涵蓋範圍很廣，想當然爾並不是討論很高級很困難很深入的技術，算是初階的社群？XD
+現在還有一些應該慢慢建立起來的東西，我會儘量去做，目前我在 Google Groups 上開了一個討論群組，作為聯絡的管道。歡迎有興趣跟我們一起分享的朋友們一起來玩！:P
+我們的聚會現在並不定期 (我承認是有一搭沒一搭啦)，不過從上週的演講做為一個開頭，希望每週四晚上都有一個聚會，一週是演講，一週是單純的聚會分享(或閒聊、討論、桌遊？XD)，這樣交錯進行，節奏應該不會太快，而且學得到東西！</description>
+    </item>
+    
+    <item>
+      <title>第一次用 Vim 就上手</title>
+      <link>https://blog.crboy.net/posts/vim-101/</link>
+      <pubDate>Sat, 05 Mar 2011 10:09:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/vim-101/</guid>
+      <description>前言 這篇是先貼在系上 BBS 的文章，主要對象是天真無邪的學弟妹們XD 所以太愚蠢的部份，還有排版太差的部份，就抱歉了orz
+簡介 標題是騙人的，第一次用 Vim 怎麼可能上手XDDDDD
+只是看到有學弟在講，就順便寫一下。我覺得一開始雖然會什麼都不懂，摸不著頭緒，但是在 Vim 裡面要先有基本生存能力，就像學武先學內功一樣～這篇文章就是要講基本的生存能力&amp;hellip;..
+用 Vim 開啟檔名為 FILENAME 的檔案 $ vim FILENAME 移動 h (左), j (下), k (上), l (右)
+我知道這很奇怪，但是請聽我說完&amp;hellip;首先把你的手「正常的」放在鍵盤上&amp;hellip;也就是雙手食指分別在 F 跟 J。通常這兩個按鍵會有一些幫助你定位的設計，常見的作法是有個凸點。接著忘記你的左手的存在，你的右手應該會微微的像 \ 這樣傾斜。
+不要亂動！！！這個時候，你的食指應該比中指更接近自己，這也就是 Vim 裡面上跟下分別是中指跟食指&amp;hellip;呃不是啦 是 k 跟 j 的原因&amp;hellip;至於左右呢？啊就左右嘛= =a
+輸入 先學著用 i 跟 a 吧。一個是 insert，一個是 append。這兩個用久了就會變成直覺了。熟了之後再學著用 I 跟 A 吧。如果 i 跟 a 很直覺，I 跟 A 就會很簡單了。（其他的以後再說沒關係）
+回到 Normal Mode 如果有看過其他文章，應該會知道 Vim 有 3 種以上的「mode」。我們不用管這麼多，只要記得「狂按 Esc 就會回到 normal mode」就好。手賤多按幾下沒關係，電腦不會爆炸。噢，你說其他的 mode 喔？先不用記啦，反正你自然就會進去了&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title>在Ubuntu 10.04 (Lucid Lynx)上安裝NX - 許多人推薦的遠端桌面</title>
+      <link>https://blog.crboy.net/posts/install-nx-on-ubuntu-10.04/</link>
+      <pubDate>Thu, 03 Jun 2010 09:14:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/install-nx-on-ubuntu-10.04/</guid>
+      <description>呃阿阿阿阿阿&amp;hellip;..我不知道應該怎麼起頭&amp;hellip;&amp;hellip;其實故事是這樣的，去年有學弟跟我推薦了NX這個遠端桌面，他是NoMachine公司的產品。特色大致上是，支援ssh加密連線，傳輸的資訊有經過壓縮(速度較快，不過影像品質稍微不太好，看得出來是lossy compression)，client可以跨平台，windows跟Linux都可以用，這對於有Linux桌面需求的Windows user真是福音阿!!
+於是乎，我就把他給裝起來了。一開始我裝的是NoMachine提供的Free Edition，但是後來有人跟我反應會連不上的問題，我找了很久找不出原因，最後我在某篇文章(由於年代久遠現在找不到了)得知，原來NoMachine的免費版本的nxserver有session數的限制，所以只好另尋他法。
+有個好用的open source版本的nxserver叫做FreeNX，想當然爾，「應該」是沒有session數限制的吧？當時在以前版本的ubuntu怎麼裝的我已經忘了，只記得套件名稱是freenx，但是好像不在官方預設的套件庫裡面&amp;hellip;但是在Ubuntu 10.04，我發現了新大陸！XD&amp;quot;
+這裡是安裝教學，很簡單。
+首先第一部你要先搞定你的ssh連線&amp;hellip;.通常我是裝openssh-server這個套件好像就搞定了&amp;hellip;.不過ssh博大精深，請另行研究。
+在ssh server裝好之後，就要開始安裝nx server了：
+$ sudo apt-get install python-software-properties #這步其實應該不用做，ubuntu預設就有裝這個套件了 $ sudo add-apt-repository ppa:freenx-team #這步其實讓我滿驚奇的，原來有這樣好用的工具可以用XD.... $ sudo apt-get update #加了套件庫，當然要update一下 $ sudo apt-get install neatx-server` 咦？怎麼不是freenx了？而是一個叫做neatx-server的東西？他的套件說明是這樣的：
+Neatx is an Open Source NX server.
+Neatx is an Open Source NX server, similar to the commercial NX server from NoMachine.
+查到的資料來源網頁是這樣寫的：
+Ubuntu Lucid now uses Neatx, the Open Source NX server from Google.</description>
+    </item>
+    
+    <item>
+      <title>修改 Google Chrome 的外掛 - RePlurk Chrome 的javascript</title>
+      <link>https://blog.crboy.net/posts/patch-replurk-chrome/</link>
+      <pubDate>Wed, 02 Jun 2010 11:54:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/patch-replurk-chrome/</guid>
+      <description>用Firefox上噗浪(Plurk)的人，有些都會裝GreaseMonkey這個套件+RePlurk script。只不過我在Google Chrome on Linux上&amp;hellip;雖然他預設支援直接安裝userscripts，但是我從來沒有成功跑起來過orz|| (就是可以安裝，但是裝了之後plurk就開不起來了QQ)
+後來我發現有個RePlurk Chrome套件，他可以幫你的plurk頁面加上一個&amp;quot;RePlurk&amp;quot;的按鈕&amp;hellip;.就像我以前在Firefox上用的那樣(dance) 噢&amp;hellip;可是有個問題&amp;hellip;我喜歡的轉噗形式是：「[轉噗]: xxxxxx」，但是RePlurk Chrome的轉噗形式是：「([ReP]) 作者: xxxxxx」，最困擾的就是他不能自訂(angry)！(GreaseMonkey有提供介面讓你修改scripts)
+這篇就是為了解決這種問題的&amp;hellip;..:P 首先，我的平台是Linux，更詳細的說，是Ubuntu 10.04 (不過其實在openSUSE上也是一樣)&amp;hellip;..而這個套件把他的javascript放在哪裡呢？答案如下：
+$HOME/.config/google-chrome/Default/Extensions/beaghhigecidoamlpclhiboaeonkceea/0.1.1/RePlurk.js 補充：在MacOX 10.6.3上是放在
+~/Library/Application Support/Google/Chrome/Default/Extensions/beaghhigecidoamlpclhiboaeonkceea/0.1.1/RePlurk.js 那個一長串的是這個擴充套件的ID(在Chrome的擴充套件頁按「開發人員模式」就可以看到)，0.1.1是我現在使用的版本&amp;hellip;也就是說以後如果這個套件改版可能就會小小換個路徑XD&amp;quot;
+那該怎麼辦？
+人類哪有這麼強的記憶力&amp;hellip;.其實我每次都忘記他放在哪裡！我是這麼找到這個檔案的&amp;hellip;.
+$ find ~ |grep -i replurk 其中就會看到RePlurk.js這個檔案了&amp;hellip;.:P 在windows上一樣可以用搜尋功能來找唷，我想會差不多的吧。
+找到檔案之後，就是要修改他的內容了。呃&amp;hellip;.我不知道該怎麼說明&amp;hellip;..他裡面把code都擠在一行了XD 其實可以用搜尋取代啦，但是要有點js的基礎才行，不要改到變數名稱了，改字串就好。此外，對於轉噗的連結(原本是叫做&amp;quot;RePlurk&amp;quot;)我也不太滿意&amp;hellip;.所以我把他改成&amp;quot;轉噗&amp;quot;了。
+講東西只講一半，不教怎麼改一定會被看文章的人追殺！所以提供一個替代方案，我把我修改的RePlurk.js分享給大家，以下，請笑納:D
+var GM_JQ_src = document.createTextNode(&amp;quot;var ReP_Message={};var p=window.Plurks;var o_expand;if(p){o_expand=p.expand;p.expand=function(aa){o_expand(aa);if(typeof ReP_Message.hrefProcessed==&#39;undefined&#39;){ReP_Message.hrefProcessed=true;var ba=document.getElementById(&#39;form_holder&#39;).lastChild;var ib=document.getElementById(&#39;input_big&#39;);if(ba&amp;amp;&amp;amp;ib){var ca=document.createElement(&#39;a&#39;);var da=document.createElement(&#39;div&#39;);da.setAttribute(&#39;class&#39;,&#39;perma_link&#39;);da.id=&#39;RePlurkDiv&#39;;ca.id=&#39;RePlurk&#39;;ca.setAttribute(&#39;href&#39;,&#39;javascript:doRePlurk(ReP_Message.owner_id, ReP_Message.raw, ReP_Message.link);&#39;);ba.appendChild(da).appendChild(ca).appendChild(document.createTextNode(&#39;轉噗&#39;));}}var ea=window.getPD(aa).obj;ReP_Message.link=&#39;http://plurk.com/p/&#39;+(ea.plurk_id).toString(36);ReP_Message.raw=ea.content_raw;ReP_Message.owner_id=ea.owner_id;}}function doRePlurk(fa,ga,ha){var ib=document.getElementById(&#39;input_big&#39;);var ia=window.SiteState.getUserById(fa).nick_name;var ja=ha+&#39; ([轉噗]): &#39;+ga;if(ib){ib.value=ja;p._removeExpand();window.MaxChar.updateBig();}}&amp;quot;); var GM_JQ = document.createElement(&#39;script&#39;); GM_JQ.type = &#39;text/javascript&#39;; GM_JQ.appendChild(GM_JQ_src); document.getElementsByTagName(&#39;body&#39;)[0].appendChild(GM_JQ); </description>
+    </item>
+    
+    <item>
+      <title>將filesystem從ext2 or ext3升級到ext4</title>
+      <link>https://blog.crboy.net/posts/upgrade-to-ext4/</link>
+      <pubDate>Wed, 02 Jun 2010 10:18:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/upgrade-to-ext4/</guid>
+      <description>剛好有點三八想把ext3轉到ext4去&amp;hellip;.就找了些資料，寫了這篇文章:P
+要轉換成ext4嘛&amp;hellip;&amp;hellip;首先當然有些前提&amp;hellip;.你的kernel要支援ext4才行:D 另外也建議備份重要資料&amp;hellip;.
+然後step by step的教學就開始了！以下 $DEV 為device的名字(例：/dev/sda1)，$MOUNT為mount point(例：/mnt)
+要變更檔案系統，理所當然絕對不能讓他在被mount的時候亂搞，那是會出人命的XD
+# umount $DEV 這麼快!? 對&amp;hellip;.現在就去變更他吧&amp;hellip;.
+# tune2fs -O extents,uninit_bg,dir_index $DEV 如果是ext2 -&amp;gt; ext4的話則要這樣(因為ext2是沒有日誌(journal)的)
+# tune2fs -O extents,uninit_bg,dir_index,has_journal $DEV 變更完之後，一定要做fsck！
+# fsck -pf $DEV (這裡讓我膽顫心驚！因為出現好多error唷&amp;hellip;.orz||| 而且他還修了很久，差點以為程式爛掉&amp;hellip;.)
+最後就可以把他mount回去囉！
+# mount -t ext4 $DEV $MOUNT 如果是系統預設會mount的filesystem的話，請記得修改/etc/fstab。裡面的參數會紀錄要怎麼mount它&amp;hellip;一定要改！
+ps. 若是有動到/boot，或是開機遇到grub出現問題的話，參考資料裡面有相關資訊！
+參考資料 Ext3升級到Ext4 無損升級 http://blog.chinaunix.net/u1/46672/showart_2069245.html Linux 文件系統從 ext3 升級到 ext4 http://www.vpsee.com/2010/01/convert-ext3-to-ext4-filesystem/ sshlog-轉換 Ext3 到 Ext4 http://blog.ssh.tw/?p=1447 (有ssh大掛保證，這方法讓我更安心了XD) </description>
+    </item>
+    
+    <item>
+      <title>一個有趣的小程式 - sm (screen message)</title>
+      <link>https://blog.crboy.net/posts/screen-message/</link>
+      <pubDate>Fri, 20 Nov 2009 12:29:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/screen-message/</guid>
+      <description>哈，其實我是想順便測試一下 wp-codebox 這個外掛&amp;hellip;.:P
+這個小程式很有趣，可以做全螢幕的大字報/看板之類的，下面是我自己做的範例：（圖不見了，找不回來了）
+別懷疑，這就是一整個螢幕大小！
+我曾經拿這隻程式來做舉牌小弟，或是在一些場合可以(娛樂性質的)打廣告或是發表意見之類的XD 總之很好玩就是了~
+下面是他的 python 版本的程式碼，才 140 行而已！值得注意的是，第 70 行的字型我改成我喜歡的字型了，畢竟這類型的應用，還是用黑體最好看了~嘿嘿~:P
+#!/usr/bin/python # encoding:utf8 # vlshow.py # Copyright (C) 2006 Joachim Breitner # # This program is free software; you can redistribute it and/or modify # it under the terms of the GNU General Public License as published by # the Free Software Foundation; either version 2 of the License, or # (at your option) any later version.</description>
+    </item>
+    
+    <item>
+      <title>在Ubuntu 9.10上自行編譯安裝PCManX 0.3.9</title>
+      <link>https://blog.crboy.net/posts/build-pcmanx-on-ubuntu-9.10/</link>
+      <pubDate>Sun, 01 Nov 2009 05:12:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/build-pcmanx-on-ubuntu-9.10/</guid>
+      <description>該是發技術性文章的時候了&amp;hellip;.XD
+剛剛才把 Ubuntu 給升到 9.10，要重灌 pcmanx，結果沒想到裝完要執行竟然出現：
+pcmanx: error while loading shared libraries: libpcmanx_core.so.0: cannot open shared object file: No such file or directory 這個錯誤，於是乎簡單查了一下資料，答案也很簡單：$ sudo ldconfig。以下是完整的編譯+安裝教學：
+首先到 PCManX 的專案網站(註)去下載最新版本的 PCManX GTK2，我抓到的是 pcmanx-gtk2-0.3.9.tar.bz2。
+抓回來之後先解壓縮：
+$ tar -xf pcmanx-gtk2-0.3.9.tar.bz2 會得到一個名為 pcmanx-gtk2-0.3.9 的目錄
+接著：
+$ cd pcmanx-gtk2-0.3.9 進入該目錄
+簡單看了一下 README，我用這樣的參數做 configure：
+$ ./configure --disable-nancy --disable-mouse --enable-wget --enable-proxy 結果發現&amp;hellip;&amp;hellip;對噢我有 library 還沒裝XD 根據專案網頁的說明，要安裝這些套件：
+$ sudo apt-get install intltool intltool-debian libxft-dev libgtk2.0-dev 重新 configure 一次，很快就好了XD 還會要你 type make and pray&amp;hellip;.</description>
+    </item>
+    
+  </channel>
+</rss>

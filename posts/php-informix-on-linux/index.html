@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html><head>
+<title>PHP Informix on Linux 安裝與設定</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%9d-informix-client-sdk" class="nav-安裝-informix-client-sdk">
+									安裝 Informix Client SDK
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%9d-php-informix-%e6%a8%a1%e7%b5%84" class="nav-安裝-php-informix-模組">
+									安裝 PHP Informix 模組
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%a8%ad%e5%ae%9a" class="nav-設定">
+									設定
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%b8%ac%e8%a9%a6%e7%94%a8-script" class="nav-測試用-script">
+									測試用 script
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%83%e8%80%83%e9%80%a3%e7%b5%90" class="nav-參考連結">
+									參考連結
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    PHP Informix on Linux 安裝與設定
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2012-06-15 06:43
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/linux">Linux</a>
+                                &nbsp;
+                            
+                                <a href="/tags/php">php</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E7%AD%86%E8%A8%98">筆記</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>環境</p>
+<ul>
+<li>Ubuntu 12.04 LTS</li>
+<li>Apache 2.2.22</li>
+<li>PHP 5.3.10</li>
+</ul>
+<p>如果沒有 apache 與 php 環境可由套件庫安裝</p>
+<pre><code>$ sudo apt-get install apache2 php5
+</code></pre>
+<p>為了編譯模組，需要安裝 <code>php5-dev</code></p>
+<pre><code>$ sudo apt-get install php5-dev
+</code></pre>
+<p>為了取得 PECL 上的原始碼，需要安裝 <code>subversion</code> (即 SVN)</p>
+<pre><code>$ sudo apt-get install subversion
+</code></pre>
+<h1 id="安裝-informix-client-sdk">安裝 Informix Client SDK</h1>
+<p>在<a href="http://www-01.ibm.com/software/tw/informix/retention/trial.html">這個連結</a>可以下載 Informix Developer Edition，有免費的版本，但僅供開發使用且有使用資源上的限制。我抓下來的檔案為 <code>iif.11.70.UC5DE.Linux-RHEL5.tar</code>。其實根據 [Install Informix on Debian] 這篇文章看來，應該是有單純的 ClientSDK 可以下載，但是我找不到&hellip;<br>
+將其解開</p>
+<pre><code>$ cd &amp;&amp; mkdir informix &amp;&amp; cd informix
+$ tar -xf /PATH/TO/iif.11.70.UC5DE.Linux-RHEL5.tar
+</code></pre>
+<p>建立 informix 帳號與群組</p>
+<pre><code>$ sudo addgroup --system informix
+$ sudo adduser --system informix --ingroup informix
+</code></pre>
+<p>開始安裝</p>
+<pre><code>$ sudo ./ids_install # 官方文件是要我們加上 `-i gui` 以圖形模式安裝，亦可
+#這中間的訊息會出現下面這一行疑似錯誤的訊息，但是不影響後面動作
+strings: '/lib/libc.so.6': No such file
+</code></pre>
+<p>在安裝過程中，多數設定都用預設值，但安裝目錄預設為 <code>/opt/IBM/informix</code>，我改為 <code>/opt/informix</code> 了。另外，可以自訂想安裝的模組，由於我不需要自行架設 server，所以這邊我只留下 IBM Informix Client SDK 與 Global Language Support (GLS) 中的 Chinese，其他全都取消了。<br>
+最後設定環境變數供後續安裝使用</p>
+<pre><code>export INFORMIXDIR=/opt/informix
+</code></pre>
+<h1 id="安裝-php-informix-模組">安裝 PHP Informix 模組</h1>
+<pre><code>$ cd &amp;&amp; mkdir php_informix &amp;&amp; cd php_informix
+</code></pre>
+<p>取得 php informix 的原始碼</p>
+<pre><code>$ svn checkout http://svn.php.net/repository/pecl/informix/trunk/
+</code></pre>
+<p>進行建置</p>
+<pre><code>$ cd trunk
+$ phpize --with-php-config=`which php-config`
+$ ./configure --with-php-config=`which php-config`
+</code></pre>
+<p>停！這邊有個問題需要處理&hellip;.在產生出來的 <code>Makefile</code> 的第 16 行有個這樣的敘述</p>
+<pre><code>INFORMIX_SHARED_LIBADD = -Wl,-rpath,/opt/informix/lib/esql -L/opt/informix/lib/esql -Wl,-rpath,/opt/informix/lib -L/opt/informix/lib -lifsql -lifasf -lifgen -lifos -lifgls -lnetstub -ldl -lcrypt -lifglx
+</code></pre>
+<p>我們必須手動給他加點參數才能讓後續執行動作正常，在後面加上 <code>/opt/IBM/lib/esql/checkapi.o</code></p>
+<pre><code>INFORMIX_SHARED_LIBADD = -Wl,-rpath,/opt/informix/lib/esql -L/opt/informix/lib/esql -Wl,-rpath,/opt/informix/lib -L/opt/informix/lib -lifsql -lifasf -lifgen -lifos -lifgls -lnetstub -ldl -lcrypt -lifglx /opt/informix/lib/esql/checkapi.o
+</code></pre>
+<p>開始編譯與安裝</p>
+<pre><code>$ make
+$ sudo make install
+Installing shared extensions:     /usr/lib/php5/20090626+lfs/
+</code></pre>
+<p>每個人的安裝位置可能不同，以我這裡為例，我的安裝位置是在 <code>/usr/lib/php5/20090626+lfs/</code> (後續設定會用到)。</p>
+<h1 id="設定">設定</h1>
+<p><strong>新增</strong>以下資料至相對應的設定檔中</p>
+<pre tabindex="0"><code># /etc/php5/conf.d/informix.ini
+extension=/usr/lib/php5/20090626+lfs/informix.so
+</code></pre><pre tabindex="0"><code># /opt/informix/etc/sqlhosts (偷參考的設定的 nettype 是用 tli，但我測試需用 soc 才能正常連線)  
+&lt;db_server&gt;     &lt;nettype&gt;       &lt;hostname&gt;      &lt;service&gt;
+</code></pre><pre tabindex="0"><code># /etc/hosts
+&lt;IP&gt;    &lt;hostname&gt;
+</code></pre><pre tabindex="0"><code># /etc/services
+&lt;service&gt;   &lt;port_num&gt;/tcp
+</code></pre><pre tabindex="0"><code>#/etc/apache2/envvars (聽說在 RedHat 上為 `/etc/sysconfig/httpd`)  
+export INFORMIXDIR=/opt/informix
+export INFORMIXSERVER=&lt;hostname&gt;
+</code></pre><p>有可能需要做 locale 的設定</p>
+<pre><code>export DB_LOCALE=zh_TW.big5
+export CLIENT_LOCALE=zh_TW.big5
+</code></pre>
+<p>重新啟動 apache</p>
+<pre><code>$ sudo service apache2 restart
+</code></pre>
+<p>設定完後可在 phpinfo 中看到 Informix 的區段，以及在 Environment 區段可以看到我們設定的環境變數。</p>
+<h1 id="測試用-script">測試用 script</h1>
+<p>這個程式僅供參考用，也可以使用本來可執行的程式進行測試。要注意的是如果使用 php command 進行測試的話，要設定環境變數。(如 <code>/etc/apache2/envvars</code> 中新增的設定)</p>
+<pre><code>&lt;?php
+$db = ifx_connect(&quot;DBNAME@DBSERVER&quot;, &quot;USERNAME&quot;, &quot;PASSWORD&quot;);
+var_dump($db);
+?&gt;
+</code></pre>
+<p>若可成功連結即表示安裝與設定成功</p>
+<h1 id="參考連結">參考連結</h1>
+<ul>
+<li>[Install Informix on Debian] (Google 搜尋 &ldquo;informix.so&rdquo;)</li>
+<li>[Informix finderr] (直接在 <code>$INFORMIXDIR/msg</code> 下 <code>grep -R</code> 亦可)</li>
+<li><a href="http://serverfault.com/questions/151328/setting-apache2-path-environment-variable" title="Setting Apache2 PATH environment variable">Setting Apache2 PATH environment variable</a></li>
+<li><a href="http://pecl.php.net/package/informix">PECL 上的 informix</a></li>
+</ul>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2012-06-15</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/gitolite-22-installation/">
+			Next<br>Gitolite 2.2 安裝筆記
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/xdebug-installation-and-usage/">
+			Previous<br>Xdebug 基礎安裝與使用
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%9d-informix-client-sdk" class="nav-安裝-informix-client-sdk">
+									安裝 Informix Client SDK
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ae%89%e8%a3%9d-php-informix-%e6%a8%a1%e7%b5%84" class="nav-安裝-php-informix-模組">
+									安裝 PHP Informix 模組
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e8%a8%ad%e5%ae%9a" class="nav-設定">
+									設定
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%b8%ac%e8%a9%a6%e7%94%a8-script" class="nav-測試用-script">
+									測試用 script
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%83%e8%80%83%e9%80%a3%e7%b5%90" class="nav-參考連結">
+									參考連結
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

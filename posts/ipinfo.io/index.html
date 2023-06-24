@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html><head>
+<title>發現一個滿方便的 ip 資訊查詢：ipinfo.io</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    發現一個滿方便的 ip 資訊查詢：ipinfo.io
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2016-09-27 18:45
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/networking">networking</a>
+                                &nbsp;
+                            
+                                <a href="/tags/tips">tips</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>以前都用 orange.tw 在查 ip，雖然自己也寫了一個 ip.crboy.net，不過因為實在不想花錢養一台機器，所以就把服務給停掉了。</p>
+<p>剛剛發現 ipinfo.io 這個網站，用瀏覽器開的話相關說明也都有了。但如果直接用 <code>curl</code> 送 request 的話，就可以拿到自己的 ip 的相關資訊（包含地點、國家等）。</p>
+<pre tabindex="0"><code>$ curl -D- ipinfo.io
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Tue, 27 Sep 2016 10:33:36 GMT
+Server: nginx/1.8.1
+Set-Cookie: first_referrer=; Path=/
+X-Content-Type-Options: nosniff
+Content-Length: 219
+Connection: keep-alive
+
+{
+  &#34;ip&#34;: &#34;119.14.25.111&#34;,
+  &#34;hostname&#34;: &#34;host-111.25-14-119.dynamic.totalbb.net.tw&#34;,
+  &#34;city&#34;: &#34;Taipei&#34;,
+  &#34;region&#34;: &#34;&#34;,
+  &#34;country&#34;: &#34;TW&#34;,
+  &#34;loc&#34;: &#34;25.0392,121.5250&#34;,
+  &#34;org&#34;: &#34;AS9416 Hoshin Multimedia Center Inc.&#34;
+}
+</code></pre><p>也可以查詢特定 ip 的資訊：</p>
+<pre tabindex="0"><code>$ curl -D- ipinfo.io/8.8.8.8
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Tue, 27 Sep 2016 10:36:40 GMT
+Server: nginx/1.8.1
+Set-Cookie: first_referrer=; Path=/
+X-Content-Type-Options: nosniff
+Content-Length: 160
+Connection: keep-alive
+
+{
+  &#34;ip&#34;: &#34;8.8.8.8&#34;,
+  &#34;hostname&#34;: &#34;No Hostname&#34;,
+  &#34;city&#34;: &#34;&#34;,
+  &#34;region&#34;: &#34;&#34;,
+  &#34;country&#34;: &#34;US&#34;,
+  &#34;loc&#34;: &#34;37.7510,-97.8220&#34;,
+  &#34;org&#34;: &#34;AS15169 Google Inc.&#34;
+}
+</code></pre><p>甚至 fetch 特定欄位資料：</p>
+<pre tabindex="0"><code>$ curl -D- ipinfo.io/8.8.8.8/country
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Date: Tue, 27 Sep 2016 10:37:18 GMT
+Server: nginx/1.8.1
+Set-Cookie: first_referrer=; Path=/
+Content-Length: 3
+Connection: keep-alive
+
+US
+</code></pre><pre tabindex="0"><code>$ curl -D- ipinfo.io/country
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=utf-8
+Date: Tue, 27 Sep 2016 10:37:22 GMT
+Server: nginx/1.8.1
+Set-Cookie: first_referrer=; Path=/
+Content-Length: 3
+Connection: keep-alive
+
+TW
+</code></pre><p>還有一些好玩的&hellip;.像是：</p>
+<pre tabindex="0"><code>$ curl -D- ipinfo.io/127.0.0.1
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Tue, 27 Sep 2016 10:39:36 GMT
+Server: nginx/1.8.1
+Set-Cookie: first_referrer=; Path=/
+X-Content-Type-Options: nosniff
+Content-Length: 37
+Connection: keep-alive
+
+{
+  &#34;ip&#34;: &#34;127.0.0.1&#34;,
+  &#34;bogon&#34;: 1
+}
+</code></pre><pre tabindex="0"><code>$ curl -D- ipinfo.io/255.255.255.255
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Tue, 27 Sep 2016 10:40:46 GMT
+Server: nginx/1.8.1
+Set-Cookie: first_referrer=; Path=/
+X-Content-Type-Options: nosniff
+Content-Length: 72
+Connection: keep-alive
+
+{
+  &#34;ip&#34;: &#34;255.255.255.255&#34;,
+  &#34;hostname&#34;: &#34;No Hostname&#34;,
+  &#34;bogon&#34;: 1
+}
+</code></pre><p><code>bogon: 1</code> 根據<a href="https://en.wikipedia.org/wiki/Bogon_filtering">維基百科上 Bogon filtering</a> 的描述，看來是有擋掉不應該被查詢的 ip。不過&hellip;.</p>
+<pre tabindex="0"><code>$ curl -D- ipinfo.io/192.168.1.1
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Tue, 27 Sep 2016 10:39:56 GMT
+Server: nginx/1.8.1
+Set-Cookie: first_referrer=; Path=/
+X-Content-Type-Options: nosniff
+Content-Length: 184
+Connection: keep-alive
+
+{
+  &#34;ip&#34;: &#34;192.168.1.1&#34;,
+  &#34;hostname&#34;: &#34;ip-192-168-1-1.ap-southeast-1.compute.internal&#34;,
+  &#34;city&#34;: &#34;Momoyama-cho&#34;,
+  &#34;region&#34;: &#34;Kyoto&#34;,
+  &#34;country&#34;: &#34;JP&#34;,
+  &#34;loc&#34;: &#34;34.9500,135.7830&#34;
+}
+</code></pre><p>看起來還是有些特別的 ip 可以查XD 原來這台主機放在 AWS EC2 的日本機房嗎&hellip;&hellip;（思）</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2016-09-27</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/cloudflare-flexible-ssl/">
+			Next<br>CloudFlare 的 Flexible SSL
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/pages/about/">
+			Previous<br>About This Blog
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

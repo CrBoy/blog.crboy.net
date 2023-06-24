@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>自由軟體 on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/%E8%87%AA%E7%94%B1%E8%BB%9F%E9%AB%94/</link>
+    <description>Recent content in 自由軟體 on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 07 Apr 2013 15:59:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/%E8%87%AA%E7%94%B1%E8%BB%9F%E9%AB%94/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在 Windows 上安裝 Redmine 2.3.0 的筆記</title>
+      <link>https://blog.crboy.net/posts/install-redmine-on-windows/</link>
+      <pubDate>Sun, 07 Apr 2013 15:59:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/install-redmine-on-windows/</guid>
+      <description>Redmine 是一套很有名的專案管理系統，建構於 Ruby on Rails 之上。網路上搜尋「Redmine」都可以找到很多相關資料，這邊就不贅述功能。
+由於 Ruby/Rails 在 MacOSX 跟 Linux 相對比較友善，所以要找 Redmine on Windows 的安裝教學實在不太好找，中文資料更是寥寥可數。加上 Rails 進步迅速，很多 07~09 年的資料其實很可能都已經過時，所以乾脆自己研究完寫一篇XD
+不過由於現在實在沒什麼空寫網誌，所以簡單的把方法跟過程記錄一下&amp;hellip;.
+這邊主要是根據 http://www.redmine.org/projects/redmine/wiki/RedmineInstall 上面的說明，而 Redmine 安裝相依於特定的 rails 與 ruby 版本，可以參考前面這個連結裡面的表格。而我這邊以 Ruby 1.9.3 + Rails 3.2.13 + Redmine 2.3.0 為目標。
+以下為安裝步驟：(注意！安裝過程中的路徑最好都不要有中文，如果出現奇怪的問題，請先嘗試把目錄或檔案放到沒有中文路徑的位置。目前我已經碰到某些 gem file 放在中文路徑會沒辦法安裝)
+下載 Ruby installer 與 Development Kit (這邊我都選 32-bit 版本)
+http://rubyinstaller.org/downloads 下載 Redmine (點第一段的 RubyForge 連結)
+http://www.redmine.org/projects/redmine/wiki/Download 安裝 Ruby
+雙擊 ruby installer 並一直 Next，注意中途應選擇「Add Ruby executables to your PATH」 安裝 Development Kit</description>
+    </item>
+    
+    <item>
+      <title>今天看到有人在徵 MS Office</title>
+      <link>https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/</link>
+      <pubDate>Thu, 19 Jul 2007 00:23:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/</guid>
+      <description>在我看到之前已經有人推 OpenOffice.org 了&amp;hellip;
+只是讓我突然想到 之前不知道看誰說過 你用 MS Office 是很強大沒錯 只是也用不到那麼多功能&amp;hellip;大部分的人 包含我自己在內 其實都用不到什麼很進階的功能 不過就是打打字 排個版 畫個表格之類&amp;hellip;這些東西都可以用 OO.o 來達成 以 c/p 值來說當然高很多 不過我也承認 MS Office 真的比較好用 至少介面親和力比較高 功能也比較完善 (OO.o 有時候會有一些我想要的效果做不出來) 只是人家就是要錢&amp;hellip;.我現在用的是成大的授權 那將來呢？我希望 OO.o 進步快一點 在我畢業之後可以完全不要用 MS Office～～</description>
+    </item>
+    
+    <item>
+      <title>之前的一篇</title>
+      <link>https://blog.crboy.net/posts/%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%80%E7%AF%87/</link>
+      <pubDate>Mon, 18 Jun 2007 01:46:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%80%E7%AF%87/</guid>
+      <description>2007年6月5日，innotek 發佈了 VirtualBox 1.4.0 for Linux and Windows。這個新版本有大幅的進步，超過所有自 2007 年 1 月發佈的官方版本以來的所有更新。
+這些更新有：對64-bit Linux主機的完整支援，RDP session shadowing，剪貼簿同步化，序列埠，以及更簡單的網路介面。
+在 儲存部份，VirtualBox已可原生支援 VMware 檔案格式(VMDK)，且可以讓虛擬機器直接存取硬碟與分割區(raw disk support)。圖形使用者介面也獲得很大的改善且提供12種語言的支援(正體/簡體中文、德文、西班牙文、法文、義大利文、波蘭文、葡萄牙文、羅馬尼 亞文、阿拉伯文、俄文、日文)Red Hat Enterprise Linux 5 (RHEL5) and Xandros Desktop 4.1現在也受到官方支援。對FreeBSD與OpenBSD的支援也有進步。
+細節可參考Changelog。
+與之前的版本相同的是 VirtualBox 1.4.0 有 GPL 授權的 Open Source 與商業授權可用，而且在大多數情況下，商業版本授權無須付費。
+讓我爽一下，這篇公佈在Ubuntu@TW的新聞大部分的內容是我翻譯的XD~~
+連結在此： http://www.ubuntu.org.tw/modules/news/article.php?storyid=52</description>
+    </item>
+    
+  </channel>
+</rss>

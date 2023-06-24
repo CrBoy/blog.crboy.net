@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html><head>
+<title>Gitolite 使用教學</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%88%9d%e6%ac%a1%e8%a8%ad%e5%ae%9a" class="nav-初次設定">
+									初次設定
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%80%e8%88%ac%e4%bd%bf%e7%94%a8" class="nav-一般使用">
+									一般使用
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e7%94%b3%e8%ab%8b-repository" class="nav-申請-repository">
+									申請 repository
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%8c%87%e5%ae%9a%e7%be%a4%e7%b5%84" class="nav-指定群組">
+									指定群組
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%ac%8a%e9%99%90%e6%8e%a7%e5%88%b6-%e9%80%b2%e9%9a%8e" class="nav-權限控制-進階">
+									權限控制 (進階)
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%af%84%e4%be%8b" class="nav-範例">
+									範例
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ad%98%e5%8f%96-repository" class="nav-存取-repository">
+									存取 repository
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%b0%87%e7%8f%be%e6%9c%89-repo-%e6%94%be%e5%88%b0-gitolite-%e4%b8%8a" class="nav-將現有-repo-放到-gitolite-上">
+									將現有 repo 放到 gitolite 上
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e7%b5%90%e8%aa%9e" class="nav-結語">
+									結語
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    Gitolite 使用教學
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2012-06-26 00:17
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/git">Git</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E6%95%99%E5%AD%B8">教學</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E7%AD%86%E8%A8%98">筆記</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>首先，要使用 gitolite 一定得先會使用 git。下面就不贅述。</p>
+<h1 id="初次設定">初次設定</h1>
+<p>使用 gitolite 有以下兩個前置動作</p>
+<ol>
+<li>
+<p>建立 ssh keypair</p>
+<ul>
+<li>
+<p>使用 Linux 或 Windows 上的 Git Bash</p>
+<pre><code>$ ssh-keygen -f mykey
+Generating public/private rsa key pair.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in mykey.
+Your public key has been saved in mykey.pub.
+The key fingerprint is:
+xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx USER@HOST
+</code></pre>
+<p>這邊要注意幾個地方，<code>-f</code> 後面的參數表示檔名，可自行設定，此例中為 mykey。產生後會有兩個檔案，分別是 <code>mykey.pub</code> 跟 <code>mykey</code>，<code>mykey.pub</code> 是 public key (公鑰)，可以提供給你的 gitolite server 管理員，而 <code>mykey</code> 為 private key (私鑰)，<strong>相當於密碼，不可以洩漏給任何人</strong>。再來，passphrase 是用來保護 key 的密碼，也要牢記。在認證時，同時擁有 private key 與 passphrase 的人才能通過認證，這才是安全的手法。最後，當 key 產生之後，會印出 key 的 fingerprint (指紋)，是用來核對 public key 正確性用的。</p>
+</li>
+<li>
+<p>使用 PuTTY (PuTTYGen) <a href="http://the.earth.li/~sgtatham/putty/latest/x86/puttygen.exe">下載</a></p>
+<ul>
+<li>開啟 PuTTYGen</li>
+<li>點選「Generate」並根據指示隨意移動滑鼠</li>
+<li>修改上方「Key comment」並輸入 passphrase (passphrase 的說明可參考上一點)</li>
+<li>將上方文字區中的 public key (ssh-rsa 開頭的那串內容) 與其下方的 fingerprint 複製並提供給 gitolite 管理員</li>
+<li>點選下方「Save private key」將私鑰儲存如果對於產生過程有什麼疑慮，都可以刪掉剛產生的 keypair，重新產生，沒有不良影響。Keypair 產生後，就可以將 public key 與 fingerprint 提供給管理員新增帳號。為了確保安全，最好跟管理員用另外的管道確認 fingerprint 正確。(例如用網路傳輸 public key，用電話確認 fingerprint)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>設定 ssh host alias (for Linux user, optional)<br>
+如果想要簡化後續操作 ssh 時輸入的資訊，可以事先設定好。這邊須填入由 gitolite 管理者提供的 <code>user</code>, <code>hostname</code>, <code>port</code> 等資訊：</p>
+<pre><code>$ vim ~/.ssh/config
+host gitserver  
+	user git  
+	hostname localhost  
+	port 22  
+	identityfile ~/.ssh/mykey
+</code></pre>
+<p>最後面的 identity file 就是 private key，如果不想設定也可以直接把 private key 更名為 <code>id_rsa</code> 放在 <code>~/.ssh</code> 下即可。</p>
+</li>
+</ol>
+<h1 id="一般使用">一般使用</h1>
+<h2 id="申請-repository">申請 repository</h2>
+<p>申請 repository 只要將想使用的名字告知 gitolite 管理員即可。如果有特殊需求，可以建立規則，自行新增，但使用上須更加小心。</p>
+<h2 id="指定群組">指定群組</h2>
+<p>如果有多人為同一個 team 的成員，可設定為群組，方便管理。</p>
+<h2 id="權限控制-進階">權限控制 (進階)</h2>
+<p>Gitolite 可以對 repository 中的每個 branch 或 tag 進行詳細的控制，例如 leader 可以讀寫所有 branch，而成員只能讀取 master，以及讀寫自己所屬的 branch 等等。若需要進階的權限控制可以詢問你的 gitolite 管理員。</p>
+<h2 id="範例">範例</h2>
+<pre><code>@team = alice bob
+
+repo @all ### 所有 repo
+	R = boss ### 老闆都可以看
+repo project
+	R master$ = crboy @team
+	RW+ master$ = crboy
+	RW dev$ = crboy @team
+</code></pre>
+<h2 id="存取-repository">存取 repository</h2>
+<p>由 gitolite 建立的 repo link 比較單純，不須加上路徑，如下：</p>
+<pre><code>&lt;git_user&gt;@&lt;host_address&gt;:&lt;repo_name&gt;
+</code></pre>
+<p>以上面的例子而言，即為：</p>
+<pre><code>git@localhost:project (通常的狀況下不會是 localhost，這部份就要自己變通了)
+</code></pre>
+<p>如果有照上面設定 ssh config 的話，可以寫：</p>
+<pre><code>gitserver:project
+</code></pre>
+<p>在這裡我們將 host alias 設定為 <code>gitserver</code> (按照前面的 ssh config 設定)，冒號後面直接接上 repo 名稱即可。</p>
+<h2 id="將現有-repo-放到-gitolite-上">將現有 repo 放到 gitolite 上</h2>
+<p>其實只是把 clone 空 repo 的動作省略，改為直接設定遠端 repo 位置而已</p>
+<pre><code>$ git remote add origin ssh://git@localhost:project
+$ git push origin master
+</code></pre>
+<h1 id="結語">結語</h1>
+<p>其實基本上的 gitolite 使用並沒有什麼技巧，只要把 ssh key 準備好並設定一下，能夠順利 clone 回來的話就沒問題了。或也可以把現有 repo push 到 gitolite server 上面的空 repo 去，方式其實都大同小異。如果要學習 gitolite 的管理才比較需要 K 文件之類的。:)</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2012-06-26</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/xdebug-remote-debugging/">
+			Next<br>Xdebug 遠端除錯 (Remote Debugging)
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/gitolite-settings-and-managements/">
+			Previous<br>Gitolite 設定與管理
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%88%9d%e6%ac%a1%e8%a8%ad%e5%ae%9a" class="nav-初次設定">
+									初次設定
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%80%e8%88%ac%e4%bd%bf%e7%94%a8" class="nav-一般使用">
+									一般使用
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e7%94%b3%e8%ab%8b-repository" class="nav-申請-repository">
+									申請 repository
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%8c%87%e5%ae%9a%e7%be%a4%e7%b5%84" class="nav-指定群組">
+									指定群組
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%ac%8a%e9%99%90%e6%8e%a7%e5%88%b6-%e9%80%b2%e9%9a%8e" class="nav-權限控制-進階">
+									權限控制 (進階)
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%af%84%e4%be%8b" class="nav-範例">
+									範例
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%ad%98%e5%8f%96-repository" class="nav-存取-repository">
+									存取 repository
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%b0%87%e7%8f%be%e6%9c%89-repo-%e6%94%be%e5%88%b0-gitolite-%e4%b8%8a" class="nav-將現有-repo-放到-gitolite-上">
+									將現有 repo 放到 gitolite 上
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+							
+								</ul>
+							
+						
+						
+						
+							<li>
+								<a href="#%e7%b5%90%e8%aa%9e" class="nav-結語">
+									結語
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

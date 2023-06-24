@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html><head>
+<title>在ThinkPad R61-A76上安裝Ubuntu &#43; Vista雙系統</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%a6%96%e5%85%88%e6%98%af%e5%a4%b1%e6%95%97%e7%9a%84%e7%b4%80%e9%8c%84" class="nav-首先是失敗的紀錄">
+									首先是失敗的紀錄
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%88%90%e5%8a%9f%e7%9a%84%e7%b4%80%e9%8c%84" class="nav-成功的紀錄">
+									成功的紀錄
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%be%8c%e8%a8%98" class="nav-後記">
+									後記
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    在ThinkPad R61-A76上安裝Ubuntu &#43; Vista雙系統
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2008-03-02 00:28
+                        </time>
+                        
+
+                        
+
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>其實是很久以前的筆記了 不過現在才放在blog上<br>
+主角是我在寒假前買的Lenovo(IBM) ThinkPad R61-7743A76 內附的作業系統是Windows Vista Home Premium(可是Palmset上的貼紙竟是Basic:( 真無奈) 不過玩了Ubuntu一年多的我當然迫不及待想嘗試看看在新機器上能夠支援多少功能~XD<br>
+之前就聽很多人說新的硬體不太容易被支援 我都沒有這種煩惱(嗚T_T) 現在總算可以換我煩惱一下了:P</p>
+<h1 id="首先是失敗的紀錄">首先是失敗的紀錄</h1>
+<p>一開始我用Ubuntu的LiveCD進入系統 並使用gparted(Partition Editor/分割區編輯程式)來調整我的分割區 我先resize我的Vista的磁區 花了好久 可能有1,2個小時吧 後來我想說 先重開機確認看看Vista還能不能正常運作 於是我就在「沒有先把其他分割區建好」的情況下重開機了<br>
+開機後 ThinkVantage的R&amp;R(Rescue &amp; Recovery)提醒我發生錯誤 要檢查之類的&hellip;.這一檢查也不知道檢查了多久 最後我終於沒耐心了 重開機 還原！<br>
+這一還原又花了我一整個晚上&hellip;因為他會經歷多次的重開機 複製檔案 設定 安裝程式等等&hellip;反正&hellip;我就去睡了&hellip;等到完成後&hellip;.恩&hellip;.令人難過的事情發生了！我明明選擇的是Recovery to first partition 但是我的未分割空間也被拿去用了 推測是我沒有把他建立起來 所以就被程式順便拿來灌Vista&hellip;.事情至此 我只能大大的悔恨&hellip;不過我又再翻出<a href="http://www.mobile01.com/topicdetail.php?f=300&amp;t=426704">這篇文章</a> 參考了他裡面一部份的做法 最後我成功了！</p>
+<h1 id="成功的紀錄">成功的紀錄</h1>
+<p>首先關閉(disable)Windows的系統還原、休眠、以及分頁檔(設為0MB) 這3樣都不太好找 特別是在Vista上&hellip;我每次都要找很久&hellip;XD<br>
+接著重新開機並刪除pagefile.sys 應該是儲存在系統槽(通常是C槽)底下 而且要開啟顯示隱藏檔和顯示系統檔才會看得到&hellip;注意！因為我已經關閉了分頁功能才能安全的刪除這個檔案！<br>
+再來盡量刪掉不必要的檔案 可以備份出來的就先備份出來 還有像是R&amp;R的備份檔有夠大的 我也是把他給刪掉 這個作法的目的是希望該分割區裡的東西越少越好 (我自以為)這樣resize的時候會比較順&hellip;<br>
+然後清理磁碟(我是用<a href="http://www.ccleaner.com/">CCleaner</a>來清理垃圾檔案和無用的登錄檔)<br>
+重開機(這是怪癖 我也不知道有沒有必要)<br>
+最後做磁碟重組(我也忘記我用哪套軟體做的了 可能是出廠預裝的那個吧 忘記名字了)<br>
+再來就可以重開機並用Ubuntu的LiveCD進入系統(當然也可以用別的像是GParted的LiveCD 而我所用的是Ubuntu Gutsy Gibbon/7.10 DVD版本 選英文+安全圖形模式) 在系統內用gparted來調整NTFS磁區的大小 並且建立你要的分割區(最好在這裡先對未來要使用的磁區先做一點規劃 我是切成3個「/」「/home」「swap」)<br>
+完成後就可以重開機再進入Vista了&hellip;.他會自動跑Thindpad的R&amp;R來repair你的系統 結束後「又會」重開機然後開始跑Vista的chkdsk(check disk) 跑完「又會」再重開機 接著就可以順利進入Vista 不過他會說要新增硬體 新增完之後「又會」再重開機一次&hellip;XDDD<br>
+弄到這裡 Vista部份已經解決了 再來就可以直接安裝Ubuntu 不過要小心不要裝到Vista的磁區上去了~</p>
+<p>我常常跟人家說 Ubuntu是很好安裝的系統 但是如果要安裝雙系統是高級技巧&hellip;特別是現在Vista要做雙系統好像更麻煩去了&hellip;.唉&hellip;.</p>
+<h1 id="後記">後記</h1>
+<p>後來我不知道什麼時候突然發現我的Vista開機都會有個錯誤訊息 所以我會再找時間重灌(其實是還原)Vista 到時候就可以看看他到底會不會把我的Ubuntu給毀了&hellip;XD 或是毀掉我的MBR(grub裝在MBR裡..)</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2008-03-02</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9Dnvidia%E5%AE%98%E6%96%B9%E9%A1%AF%E7%A4%BA%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F/">
+			Next<br>在Ubuntu上安裝nVidia官方顯示驅動程式
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/">
+			Previous<br>修正開機沒有splash畫面(進度條)的問題
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e9%a6%96%e5%85%88%e6%98%af%e5%a4%b1%e6%95%97%e7%9a%84%e7%b4%80%e9%8c%84" class="nav-首先是失敗的紀錄">
+									首先是失敗的紀錄
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e6%88%90%e5%8a%9f%e7%9a%84%e7%b4%80%e9%8c%84" class="nav-成功的紀錄">
+									成功的紀錄
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%be%8c%e8%a8%98" class="nav-後記">
+									後記
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

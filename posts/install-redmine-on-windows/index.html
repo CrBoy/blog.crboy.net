@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html><head>
+<title>在 Windows 上安裝 Redmine 2.3.0 的筆記</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    在 Windows 上安裝 Redmine 2.3.0 的筆記
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2013-04-07 15:59
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/%E7%AD%86%E8%A8%98">筆記</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E8%87%AA%E7%94%B1%E8%BB%9F%E9%AB%94">自由軟體</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>Redmine 是一套很有名的專案管理系統，建構於 Ruby on Rails 之上。網路上搜尋「Redmine」都可以找到很多相關資料，這邊就不贅述功能。</p>
+<p>由於 Ruby/Rails 在 MacOSX 跟 Linux 相對比較友善，所以要找 Redmine on Windows 的安裝教學實在不太好找，中文資料更是寥寥可數。加上 Rails 進步迅速，很多 07~09 年的資料其實很可能都已經過時，所以乾脆自己研究完寫一篇XD</p>
+<p>不過由於現在實在沒什麼空寫網誌，所以簡單的把方法跟過程記錄一下&hellip;.</p>
+<p>這邊主要是根據 <a href="http://www.redmine.org/projects/redmine/wiki/RedmineInstall">http://www.redmine.org/projects/redmine/wiki/RedmineInstall</a> 上面的說明，而 Redmine 安裝相依於特定的 rails 與 ruby 版本，可以參考前面這個連結裡面的表格。而我這邊以 Ruby 1.9.3 + Rails 3.2.13 + Redmine 2.3.0 為目標。</p>
+<p>以下為安裝步驟：(注意！安裝過程中的路徑最好都不要有中文，如果出現奇怪的問題，請先嘗試把目錄或檔案放到沒有中文路徑的位置。目前我已經碰到某些 gem file 放在中文路徑會沒辦法安裝)</p>
+<ol>
+<li>下載 Ruby installer 與 Development Kit (這邊我都選 32-bit 版本)<br>
+<a href="http://rubyinstaller.org/downloads">http://rubyinstaller.org/downloads</a></li>
+<li>下載 Redmine (點第一段的 RubyForge 連結)<br>
+<a href="http://www.redmine.org/projects/redmine/wiki/Download">http://www.redmine.org/projects/redmine/wiki/Download</a></li>
+<li>安裝 Ruby<br>
+雙擊 ruby installer 並一直 Next，注意中途應選擇「Add Ruby executables to your PATH」</li>
+<li>安裝 Development Kit<br>
+將 Development Kit 解壓縮到 <code>C:\Ruby193\DevKit</code>，並打開命令提示字元執行以下指令
+<pre tabindex="0"><code>ruby C:\Ruby193\DevKit\dk.rb init  
+ruby C:\Ruby193\DevKit\dk.rb install  
+</code></pre></li>
+<li>解壓縮 Redmine 至特定目錄，在此以 <code>$REDMINE</code> 表示</li>
+<li>進入 <code>$REDMINE\config\</code> 目錄中，複製 <code>database.yml.example</code> 至 <code>database.yml</code></li>
+<li>根據自己的環境，設定 <code>database.yml</code>。<br>
+在此我打算使用 SQLite3 作為 production (雖然官方不建議)，所以只需要很簡單的3行
+<pre tabindex="0"><code>production:  
+  adapter: sqlite3  
+  database: db/redmine.sqlite3  
+</code></pre></li>
+<li>安裝相依 gems
+<pre tabindex="0"><code>cd $REDMINE  
+gem install bundler  
+bundle install --without development test rmagick # rmagick 還需要額外安裝其他東西，乾脆就先不用了  
+</code></pre></li>
+<li>設定 Redmine
+<pre tabindex="0"><code>set RAILS_ENV=production  
+rake generate_secret_token  
+rake db:migrate  
+rake redmine:load_default_data  
+ruby script/rails server webrick -e production  
+</code></pre></li>
+<li>到這裡，Redmine server 應該已經 run 起來了，連上 http://localhost:3000/ 看看吧！</li>
+</ol>
+<p>通常應該這樣就結束了，但是發現某些文章提到用 mongrel，他似乎也是個 ruby 寫的 web server 吧&hellip;.查了一下資料發現，有個更新的東西叫做 <a href="http://code.macournoyer.com/thin/">thin</a>，根據 thin 的說法，它用了 mongrel parser&hellip;.然後效能比 mongrel 好&hellip;..哎呀反正我也不太懂，反正試試看就對了XD</p>
+<p>安裝 thin 很簡單：</p>
+<pre tabindex="0"><code>gem install thin  
+</code></pre><p>執行則是：</p>
+<pre tabindex="0"><code>thin start  
+</code></pre><p>結果竟然跑不起來？找了一些資料才發現，原來要加上 <code>Gemflie.local</code> 才行&hellip;.反正結論是，應該這樣安裝</p>
+<ol>
+<li>先編輯 <code>$REDMINE\Gemfile.local</code>
+<pre tabindex="0"><code>gem &#39;thin&#39;
+</code></pre></li>
+<li>執行以下指令
+<pre tabindex="0"><code>bundle install  
+thin start  
+</code></pre></li>
+</ol>
+<p>最後來個番外篇&hellip;如果想把相關檔案全都抓下來，拿到一台沒有網路的電腦安裝，應該怎麼做呢？可以透過 bundle 幫我們做這件事！<br>
+在 <code>$REDMINE</code> 下，執行 <code>bundle package</code>，就可以在 <code>$REDMINE\vender\cache\</code> 裡面找到目前配置下所需的所有 gems，但有趣的是，bundler 自己不在裡面&hellip;..XD 要找到 bundler 的 gem 的話，可以去 <code>C:\Ruby193\lib\ruby\gems\1.9.1\cache\</code> 裡面撈&hellip;找到 bundle 與 bundler 這兩個 gem，直接複製即可。(別問我，我不曉得這兩個分別是幹嘛的&hellip;.)<br>
+另外，我們還得偷帶走 <code>$REDMINE\Gemfile.lock</code> 這個檔案，這樣 bundle 才能在沒有網路連線的情況下，了解 gems 之間的相依性。既然都拿 <code>Gemfile.lock</code> 了，那剛剛安裝 thin 用的 <code>Gemfile.local</code> 也順便帶走吧！所以，想要離線安裝，先準備好以下這些檔案</p>
+<ul>
+<li>Ruby Installer</li>
+<li>Development Kit</li>
+<li>Redmine</li>
+<li>挖出來的 gems (包含 bundler, bundle, 以及 bundle package 產生的那些)</li>
+<li><code>Gemfile.local</code> 與 <code>Gemfile.lock</code></li>
+</ul>
+<p>然後根據以下步驟安裝</p>
+<ol>
+<li>
+<p>進行上面一般安裝步驟的第 3~7 步</p>
+</li>
+<li>
+<p>安裝 gems (假設我把檔案放在 <code>C:\Ruby193\gems.local</code>)</p>
+<pre tabindex="0"><code>cd C:\Ruby193\gems.local  
+gem install -l *  
+</code></pre></li>
+<li>
+<p>把 <code>Gemfile.local</code> 與 <code>Gemfile.lock</code> 丟回 <code>$REDMINE</code></p>
+</li>
+<li>
+<p>執行以下指令</p>
+<pre tabindex="0"><code>cd $REDMINE  
+bundle install --without development test rmagick --local
+</code></pre></li>
+<li>
+<p>進行一般安裝步驟第 9 步</p>
+</li>
+<li>
+<p>完成！</p>
+</li>
+</ol>
+<p>希望上面的筆記也可以對其他人有幫助&hellip;..</p>
+<p>好啦我知道這篇文章排版很糟糕&hellip;但我實在沒空調整了orz 再抱怨一次 Blogger 的寫文章介面實在不太好用 :(</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2013-04-07</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/gitit-custom-domain/">
+			Next<br>讓 Gitit 使用自己的網域名稱
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/change-debian-ubuntu-default-editor/">
+			Previous<br>修改 Debian 或 Ubuntu 預設 editor
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

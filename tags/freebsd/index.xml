@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FreeBSD on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/freebsd/</link>
+    <description>Recent content in FreeBSD on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Tue, 25 Aug 2009 03:02:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/freebsd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FreeBSD 相見歡？</title>
+      <link>https://blog.crboy.net/posts/freebsd-%E7%9B%B8%E8%A6%8B%E6%AD%A1/</link>
+      <pubDate>Tue, 25 Aug 2009 03:02:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/freebsd-%E7%9B%B8%E8%A6%8B%E6%AD%A1/</guid>
+      <description>今天總算拿到主機板了&amp;hellip;.(唉 運作得好好的主機板竟然重灌的時候發現抓不到PS/2鍵盤)
+呃 不對 哪有一開始就離題的&amp;hellip;
+今天嘗試安裝FreeBSD 其實也不是第一次 但是之前裝起來沒多久就被我砍掉了XD 這次一定要努力！
+首先是安裝的部份&amp;hellip;用光碟開機之後 會進到FreeBSD的啟動畫面(boot loader) 選擇預設值就可以進去安裝畫面了XD 我用的是custom的設定 只是覺得這樣可以學比較多東西&amp;hellip;.一樣一樣東西去摸索到設定完成&amp;hellip;
+跑安裝花了15分鐘！(可以說是「而已」吧~)
+安裝後第一步就是連上網路 還有啟動sshd&amp;hellip;.sshd的啟動不難 因為sysinstall(就是那個安裝程式)裏面就有選項可以選了 打開就好 至於連上網路的部份 因為我用的是ADSL 要設定PPPoE的連線&amp;hellip;..不知道有沒有現成的工具可以用！ 我是照著 http://twbsd.org/cht/book/index.php?ch=05 的教學把那些資訊都打上去&amp;hellip;(手打真的好累..) 噢 然後就可以上網了！還算滿無痛的說~
+可以遠端連線之後 接下來就開始摸系統了&amp;hellip;.以下條列式:
+我的個人帳號沒辦法su成root: 編輯/etc/group把帳號加進wheel群組就好
+(哇勒 crash了 硬碟出錯&amp;hellip;.先寫到這邊 除錯去&amp;hellip;.~&amp;quot;~)
+(強迫重開機&amp;hellip;.我不知道發生什麼事了orz) 安裝bash跟vim: 進去/usr/ports裏面找到要裝的 然後make install就好 安裝vim到一半就出狀況&amp;hellip;看訊息像是I/O error&amp;hellip;重開機後自己會進去single user mode 此時我做了fsck 然後全都選y&amp;hellip;.XD 不知道這樣是否正確&amp;hellip;不過至少重開機後可以正常登入了~ root不能ssh進來: 這個沒關係 我知道是為了安全性 不過我也想知道哪裡可以調&amp;hellip;之後再研究看看 ports安裝實在好慢&amp;hellip;.XD 要等好久 看來這種爛機器不適合自己編程式&amp;hellip; 暫時是這個樣子 這篇文章沒有參考價值! 噢 之前是裝FreeBSD6.3 現在裝的是7.2</description>
+    </item>
+    
+  </channel>
+</rss>

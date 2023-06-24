@@ -1,0 +1,38 @@
+<?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/</link>
+    <description>Recent content on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
+    
+        <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>之前的一篇</title>
+        <link>https://blog.crboy.net/posts/%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%80%E7%AF%87/</link>
+        <pubDate>Mon, 18 Jun 2007 01:46:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%80%E7%AF%87/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%80%E7%AF%87/ -&lt;p&gt;2007年6月5日，innotek 發佈了 VirtualBox 1.4.0 for Linux and Windows。這個新版本有大幅的進步，超過所有自 2007 年 1 月發佈的官方版本以來的所有更新。&lt;/p&gt;
+&lt;p&gt;這些更新有：對64-bit Linux主機的完整支援，RDP session shadowing，剪貼簿同步化，序列埠，以及更簡單的網路介面。&lt;/p&gt;
+&lt;p&gt;在 儲存部份，VirtualBox已可原生支援 VMware 檔案格式(VMDK)，且可以讓虛擬機器直接存取硬碟與分割區(raw disk support)。圖形使用者介面也獲得很大的改善且提供12種語言的支援(正體/簡體中文、德文、西班牙文、法文、義大利文、波蘭文、葡萄牙文、羅馬尼 亞文、阿拉伯文、俄文、日文)Red Hat Enterprise Linux 5 (RHEL5) and Xandros Desktop 4.1現在也受到官方支援。對FreeBSD與OpenBSD的支援也有進步。&lt;/p&gt;
+&lt;p&gt;細節可參考Changelog。&lt;/p&gt;
+&lt;p&gt;與之前的版本相同的是 VirtualBox 1.4.0 有 GPL 授權的 Open Source 與商業授權可用，而且在大多數情況下，商業版本授權無須付費。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;讓我爽一下，這篇公佈在Ubuntu@TW的新聞大部分的內容是我翻譯的XD~~&lt;/p&gt;
+&lt;p&gt;連結在此： &lt;a href=&#34;http://www.ubuntu.org.tw/modules/news/article.php?storyid=52&#34;&gt;http://www.ubuntu.org.tw/modules/news/article.php?storyid=52&lt;/a&gt;&lt;/p&gt;
+- https://blog.crboy.net/posts/%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%80%E7%AF%87/ - </description>
+        </item>
+    
+    
+    
+    
+    
+    
+  </channel>
+</rss> 

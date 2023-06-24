@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C/C&#43;&#43; on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/c/c&#43;&#43;/</link>
+    <description>Recent content in C/C&#43;&#43; on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language><atom:link href="https://blog.crboy.net/tags/c/c++/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C, C&#43;&#43; 中沒有 return 敘述的 main function</title>
+      <link>https://blog.crboy.net/posts/main-function-without-return-statement/</link>
+      <pubDate>Thu, 05 Apr 2012 02:47:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/main-function-without-return-statement/</guid>
+      <description>今天在噗浪上討論+研究了一個問題，這邊記錄一下，不然每次查完資料都會忘記= =
+相關的討論在這則噗浪上，如果有興趣也可以去看。
+我所研究的問題很簡單，「在 C/C++ 語言中，main function 不寫上 return statement 的話，會怎樣？」因為有些人會寫上 void main () 這種 prototype (我想有個原因是 Visual C++ 6.0 預設就這樣搞)，或是有些人寫了 int main () 但是卻沒在 main function 中寫上 return 0; 或是 return EXIT_SUCCESS;。那麼，到底會不會出現問題呢？
+我在網路上找到一份號稱是 ANSI C 的 spec，希望我沒有被詐騙，該份 spec 的連結在此。
+根據這份文件，其中有兩個部分可以解決我的疑惑：
+2.1.2.2
+If the main function executes a return that specifies no value, the termination status returned to the host environment is undefined.
+3.6.6.4
+If a return statement without an expression is executed, and the value of the function call is used by the caller, the behavior is undefined.</description>
+    </item>
+    
+    <item>
+      <title>「那些老師沒教的事」簡報釋出</title>
+      <link>https://blog.crboy.net/posts/release-slides-of-code-smart/</link>
+      <pubDate>Mon, 02 Apr 2012 23:41:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/release-slides-of-code-smart/</guid>
+      <description>在緊張得半死的狀況中，終於把這個 talk 給講完了XD 希望來聽的人都有些收穫~
+不過可惜的是，我太緊張了，所以有些東西講的不是很完整，甚至是漏講&amp;hellip;.orz 而且滿多東西好像&amp;hellip;.呃&amp;hellip;.有點臨場發揮&amp;hellip;.XD 希望不要讓人覺得太亂~
+當日演講簡報可點選此處下載
+自己重新看了簡報，大致上檢討一下自己，如下：
+git-config 沒有 demo 到(因為我自己也很少用&amp;hellip;我都直接看設定檔來改，比較乾脆XD) 之前就一直覺得應該要畫點圖來描述 revision 還有 branch，但是一直偷懶&amp;hellip; git-add -p 沒講到QQ&amp;hellip;.應該要 demo 一下「部分 add 並 commit」的 .gitignore 如果有 demo 的話，應該會更清楚點 沒講到 git-revert 啊!!!! (大敗筆) 應該拿個實際上的使用 git 協作的範例，這樣聽眾會更有感覺&amp;hellip; make 還是該現場 demo 一下&amp;hellip;.幾行而已又不會花多少時間QQ 我竟然沒講到 gdb 可以預先寫好 command，甚至是 function 的這件事&amp;hellip;.. vim demo 太少&amp;hellip;連 vimrc 都沒有開來看看，真是不應該 vim 文字物件 (text object)、tabpage、quickfix、mapping 都應該要提一下的&amp;hellip;. 結果變成檢討文了&amp;hellip;&amp;hellip;..XD
+如果這樣的東西以後還有機會再講的話，也許要考慮拆成兩個部分，然後分別作比較完整的 demo，甚至是現場實作，應該會比較有趣一點！但是，如果是拆開的話，那不管講那個主題都顯得我會得太少了耶&amp;hellip;..orz 畢竟，不管在哪個範疇我都只是個學習者，充其量是脫離初學吧我想。我生來就是只能講初級講題的吧XDDDD
+噢我發現我的文章，總是會出現很多個 XD，對吧？XD
+最後這邊宣傳一下當日最後宣傳的事情。
+我之前嘗試性的建立了一個小小的社群，叫做 C4Labs。當時想嘗試把社群聚會的形式跟氣氛帶到成大來，不過成效好像頗差orz。現在畢業了，想說看看能不能再找回當初的期待。我想把對於電腦、網路、程式等等技術有強烈興趣的朋友們聚集起來，一起討論跟分享。因為涵蓋範圍很廣，想當然爾並不是討論很高級很困難很深入的技術，算是初階的社群？XD
+現在還有一些應該慢慢建立起來的東西，我會儘量去做，目前我在 Google Groups 上開了一個討論群組，作為聯絡的管道。歡迎有興趣跟我們一起分享的朋友們一起來玩！:P
+我們的聚會現在並不定期 (我承認是有一搭沒一搭啦)，不過從上週的演講做為一個開頭，希望每週四晚上都有一個聚會，一週是演講，一週是單純的聚會分享(或閒聊、討論、桌遊？XD)，這樣交錯進行，節奏應該不會太快，而且學得到東西！</description>
+    </item>
+    
+    <item>
+      <title>Boost 神秘的 deprecated warning</title>
+      <link>https://blog.crboy.net/posts/boost-deprecated-warning/</link>
+      <pubDate>Mon, 26 Sep 2011 16:07:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/boost-deprecated-warning/</guid>
+      <description>Boost 是一個相當強大好用的 C++ library，一直都沒辦法把它摸透。最近在用的時候遇到神秘的問題，追了一下還是沒辦法完全理解，先筆記下來也許會有什麼進展(或是得到有緣人的提點:P)。
+首先是我的開發環境：Ubuntu 10.04 64-bits, GCC 4.4.3, Boost 1.40 (libboost-dev 1.40.0.1)
+我其實是在 #include &amp;lt;boost/graph/adjacency_list.hpp&amp;gt; 的地方遇到問題的，他出現的 warning message 如下：
+warning: #warning This file includes at least one deprecated or antiquated header which may be removed without further notice at a future date. Please use a non-deprecated interface with equivalent functionality instead. For a listing of replacement headers and interfaces, consult the file backward_warning.h. To disable this warning use -Wno-deprecated. 這訊息事實上是在 &amp;lt;backward/backward_warning.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html><head>
+<title>Talk (March 29): 寫程式？那些老師沒教的事 - Code Smart; Don&#39;t Code Hard</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    Talk (March 29): 寫程式？那些老師沒教的事 - Code Smart; Don&#39;t Code Hard
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2012-03-16 23:59
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/%E8%A8%8A%E6%81%AF">訊息</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>這是確定的演講資訊了&hellip;.多少人願意來就看我的造化了XD</p>
+<p><strong>「寫程式？那些老師沒教的事 - Code Smart, Don&rsquo;t Code Hard」</strong></p>
+<p>身為一個資工系的學生，經手過的 C 語言程式想必不少。而我們以前都是怎麼寫程式的呢？有沒有想過，也許寫程式這件事不用如此辛苦？在 C 語言的開發過程中，從撰寫、編譯、測試、除錯，中間碰到多少工具？俗話說「工欲善其事，必先利其器」，以往所用的工具是不是真的「夠利」呢？</p>
+<p>如果是成大資工系的學生，想必大一都接受過一段慘痛(?)的日子。我們這些小大一，被壓著去用什麼 pietty 連上 server，還要開什麼 vi 來寫程式。「那是什麼東西？難用死了！」是很多人大一時的心聲。寫完之後還要打好多指令，像是「機西西」&hellip;呃，我是說 gcc，後面接上好多難懂的參數，才能把程式編譯完成。 但我一直到了大三才慢慢知道，這樣的環境才是 C 語言最快樂的地方，也要在這種環境下，我們才能很輕鬆的掌握 C 語言的全貌。噢，當然不是非要透過 putty/pietty 連上工作站才能使用到這類環境，在 windows 上一樣可以使用功能強大的命令列環境。(透過 cygwin/msys) 未來在外寫程式，仍然需要接觸這些東西的。</p>
+<p>除此之外，有經驗的人都知道，我們要隨時備份寫好的程式碼。至少剛剛會動的那個版本要留下來，不然萬一改爛了可能會改不回來。你都怎麼做的呢？<code>backup_01.zip</code>,  <code>backup_02.zip</code>, <code>backup_03.zip</code>, &hellip;？跟同學合作 project 的時候，又是怎麼做的呢？<br>
+「欸我傳給你了喔！」<br>
+『你改了哪些地方啊？我 copy 不完啦！』<br>
+如果你有上述症狀，請立刻撥打下面這隻專線：<br>
+0987-987-987 (哩揪北七-揪北七-揪北七)</p>
+<p>這場小小的分享，是我個人在學習克服上面這些問題時的心得。其實早就已經有很多好工具可以解決這些問題，端看我們懂不懂得使用。我會介紹到：vim、gcc、make、gdb、git<br>
+由於東西太多了，這天我只會做一個通盤的概論，介紹這些工具分別是做什麼用的，而我們又為什麼需要這些工具，以及這些工具可以帶來什麼好處。<br>
+歡迎完全沒有概念的朋友們來學習，也歡迎有一些概念的朋友們來一起研究，更歡迎相當有概念的朋友們來給小弟批評指教。鼓勵自行攜帶電腦現場實作！或是帶著你的問題來共同討論！希望可以達成演講50%、討論50%的目標！謝謝 &lt;(_ _)&gt;</p>
+<p>時間：3月29日 晚上7:32<br>
+地點：成大資訊系館 <del>4261</del> 4263 教室 (地點更新，新教室僅在原教室隔壁)<br>
+講者：畢玉泉 (小畢/CrBoy)<br>
+講題：寫程式？那些老師沒教的事 - Code Smart, Don&rsquo;t Code Hard</p>
+<p>歡迎宣傳、轉貼以及蒞臨指教 :P</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2012-03-16</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/trap-in-bash-zsh-script/">
+			Next<br>在 bash (zsh) script 中使用 trap
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/s-shape-adjustment-function/">
+			Previous<br>S型調整函數
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

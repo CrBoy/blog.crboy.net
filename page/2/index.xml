@@ -1,0 +1,425 @@
+<?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/</link>
+    <description>Recent content on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
+    
+        <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>在 Windows 上安裝 Redmine 2.3.0 的筆記</title>
+        <link>https://blog.crboy.net/posts/install-redmine-on-windows/</link>
+        <pubDate>Sun, 07 Apr 2013 15:59:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/install-redmine-on-windows/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/install-redmine-on-windows/ -&lt;p&gt;Redmine 是一套很有名的專案管理系統，建構於 Ruby on Rails 之上。網路上搜尋「Redmine」都可以找到很多相關資料，這邊就不贅述功能。&lt;/p&gt;
+&lt;p&gt;由於 Ruby/Rails 在 MacOSX 跟 Linux 相對比較友善，所以要找 Redmine on Windows 的安裝教學實在不太好找，中文資料更是寥寥可數。加上 Rails 進步迅速，很多 07~09 年的資料其實很可能都已經過時，所以乾脆自己研究完寫一篇XD&lt;/p&gt;
+&lt;p&gt;不過由於現在實在沒什麼空寫網誌，所以簡單的把方法跟過程記錄一下&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;這邊主要是根據 &lt;a href=&#34;http://www.redmine.org/projects/redmine/wiki/RedmineInstall&#34;&gt;http://www.redmine.org/projects/redmine/wiki/RedmineInstall&lt;/a&gt; 上面的說明，而 Redmine 安裝相依於特定的 rails 與 ruby 版本，可以參考前面這個連結裡面的表格。而我這邊以 Ruby 1.9.3 + Rails 3.2.13 + Redmine 2.3.0 為目標。&lt;/p&gt;
+&lt;p&gt;以下為安裝步驟：(注意！安裝過程中的路徑最好都不要有中文，如果出現奇怪的問題，請先嘗試把目錄或檔案放到沒有中文路徑的位置。目前我已經碰到某些 gem file 放在中文路徑會沒辦法安裝)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下載 Ruby installer 與 Development Kit (這邊我都選 32-bit 版本)&lt;br&gt;
+&lt;a href=&#34;http://rubyinstaller.org/downloads&#34;&gt;http://rubyinstaller.org/downloads&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下載 Redmine (點第一段的 RubyForge 連結)&lt;br&gt;
+&lt;a href=&#34;http://www.redmine.org/projects/redmine/wiki/Download&#34;&gt;http://www.redmine.org/projects/redmine/wiki/Download&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;安裝 Ruby&lt;br&gt;
+雙擊 ruby installer 並一直 Next，注意中途應選擇「Add Ruby executables to your PATH」&lt;/li&gt;
+&lt;li&gt;安裝 Development Kit&lt;br&gt;
+將 Development Kit 解壓縮到 &lt;code&gt;C:\Ruby193\DevKit&lt;/code&gt;，並打開命令提示字元執行以下指令
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ruby C:\Ruby193\DevKit\dk.rb init  
+ruby C:\Ruby193\DevKit\dk.rb install  
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;解壓縮 Redmine 至特定目錄，在此以 &lt;code&gt;$REDMINE&lt;/code&gt; 表示&lt;/li&gt;
+&lt;li&gt;進入 &lt;code&gt;$REDMINE\config\&lt;/code&gt; 目錄中，複製 &lt;code&gt;database.yml.example&lt;/code&gt; 至 &lt;code&gt;database.yml&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;根據自己的環境，設定 &lt;code&gt;database.yml&lt;/code&gt;。&lt;br&gt;
+在此我打算使用 SQLite3 作為 production (雖然官方不建議)，所以只需要很簡單的3行
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;production:  
+  adapter: sqlite3  
+  database: db/redmine.sqlite3  
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;安裝相依 gems
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd $REDMINE  
+gem install bundler  
+bundle install --without development test rmagick # rmagick 還需要額外安裝其他東西，乾脆就先不用了  
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;設定 Redmine
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;set RAILS_ENV=production  
+rake generate_secret_token  
+rake db:migrate  
+rake redmine:load_default_data  
+ruby script/rails server webrick -e production  
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;到這裡，Redmine server 應該已經 run 起來了，連上 http://localhost:3000/ 看看吧！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;通常應該這樣就結束了，但是發現某些文章提到用 mongrel，他似乎也是個 ruby 寫的 web server 吧&amp;hellip;.查了一下資料發現，有個更新的東西叫做 &lt;a href=&#34;http://code.macournoyer.com/thin/&#34;&gt;thin&lt;/a&gt;，根據 thin 的說法，它用了 mongrel parser&amp;hellip;.然後效能比 mongrel 好&amp;hellip;..哎呀反正我也不太懂，反正試試看就對了XD&lt;/p&gt;
+&lt;p&gt;安裝 thin 很簡單：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;gem install thin  
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;執行則是：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;thin start  
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;結果竟然跑不起來？找了一些資料才發現，原來要加上 &lt;code&gt;Gemflie.local&lt;/code&gt; 才行&amp;hellip;.反正結論是，應該這樣安裝&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;先編輯 &lt;code&gt;$REDMINE\Gemfile.local&lt;/code&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;gem &amp;#39;thin&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;執行以下指令
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;bundle install  
+thin start  
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;最後來個番外篇&amp;hellip;如果想把相關檔案全都抓下來，拿到一台沒有網路的電腦安裝，應該怎麼做呢？可以透過 bundle 幫我們做這件事！&lt;br&gt;
+在 &lt;code&gt;$REDMINE&lt;/code&gt; 下，執行 &lt;code&gt;bundle package&lt;/code&gt;，就可以在 &lt;code&gt;$REDMINE\vender\cache\&lt;/code&gt; 裡面找到目前配置下所需的所有 gems，但有趣的是，bundler 自己不在裡面&amp;hellip;..XD 要找到 bundler 的 gem 的話，可以去 &lt;code&gt;C:\Ruby193\lib\ruby\gems\1.9.1\cache\&lt;/code&gt; 裡面撈&amp;hellip;找到 bundle 與 bundler 這兩個 gem，直接複製即可。(別問我，我不曉得這兩個分別是幹嘛的&amp;hellip;.)&lt;br&gt;
+另外，我們還得偷帶走 &lt;code&gt;$REDMINE\Gemfile.lock&lt;/code&gt; 這個檔案，這樣 bundle 才能在沒有網路連線的情況下，了解 gems 之間的相依性。既然都拿 &lt;code&gt;Gemfile.lock&lt;/code&gt; 了，那剛剛安裝 thin 用的 &lt;code&gt;Gemfile.local&lt;/code&gt; 也順便帶走吧！所以，想要離線安裝，先準備好以下這些檔案&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ruby Installer&lt;/li&gt;
+&lt;li&gt;Development Kit&lt;/li&gt;
+&lt;li&gt;Redmine&lt;/li&gt;
+&lt;li&gt;挖出來的 gems (包含 bundler, bundle, 以及 bundle package 產生的那些)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Gemfile.local&lt;/code&gt; 與 &lt;code&gt;Gemfile.lock&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然後根據以下步驟安裝&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;進行上面一般安裝步驟的第 3~7 步&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安裝 gems (假設我把檔案放在 &lt;code&gt;C:\Ruby193\gems.local&lt;/code&gt;)&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd C:\Ruby193\gems.local  
+gem install -l *  
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;把 &lt;code&gt;Gemfile.local&lt;/code&gt; 與 &lt;code&gt;Gemfile.lock&lt;/code&gt; 丟回 &lt;code&gt;$REDMINE&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;執行以下指令&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cd $REDMINE  
+bundle install --without development test rmagick --local
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;進行一般安裝步驟第 9 步&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;完成！&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;希望上面的筆記也可以對其他人有幫助&amp;hellip;..&lt;/p&gt;
+&lt;p&gt;好啦我知道這篇文章排版很糟糕&amp;hellip;但我實在沒空調整了orz 再抱怨一次 Blogger 的寫文章介面實在不太好用 :(&lt;/p&gt;
+- https://blog.crboy.net/posts/install-redmine-on-windows/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>修改 Debian 或 Ubuntu 預設 editor</title>
+        <link>https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/</link>
+        <pubDate>Mon, 24 Sep 2012 01:44:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/ -&lt;p&gt;前幾天突然想到一個問題&amp;hellip;.由於 Ubuntu 預設 editor 是 nano，這對於一個 vim user 來說實在是不太舒服啊XD 所以稍微找了一下，找到一個很簡便的作法，可以用來修改預設 editor，方式如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ sudo update-alternatives --config editor    
+[sudo] password for crboy: 
+There are 4 choices for the alternative editor (providing /usr/bin/editor).
+
+  Selection    Path                Priority   Status
+------------------------------------------------------------
+* 0            /bin/nano            40        auto mode
+  1            /bin/ed             -100       manual mode
+  2            /bin/nano            40        manual mode
+  3            /usr/bin/vim.basic   30        manual mode
+  4            /usr/bin/vim.tiny    10        manual mode
+
+Press enter to keep the current choice[*], or type selection number: 3
+update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/editor (editor) in manual mode.
+$ 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其實重點就是那個 &lt;code&gt;sudo update-alternatives --config editor&lt;/code&gt; 而已啦XD 後面照著指示操作就好了&amp;hellip; :)&lt;/p&gt;
+- https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>PHP 自動發信程式</title>
+        <link>https://blog.crboy.net/posts/php-email-by-gmail/</link>
+        <pubDate>Fri, 21 Sep 2012 00:03:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/php-email-by-gmail/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/php-email-by-gmail/ -&lt;p&gt;之前為了發 COSCUP 的通知信，參考網路上的範例用 PHP 寫了個小程式。我把範例程式放在這個 gist 上：&lt;a href=&#34;https://gist.github.com/3135053&#34;&gt;https://gist.github.com/3135053&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;其實明顯看得出來，程式沒什麼架構，純粹只是為了可以 work 而寫的&lt;a href=&#34;http://www.ithome.com.tw/itadm/article.php?c=49891&#34;&gt;拋棄式程式&lt;/a&gt;。不過丟出來一方面可以當自己的筆記，以後要找比較好找，另一方面，也許另一個人想要寫類似的小玩具的時候就可以參考了 :P&lt;/p&gt;
+&lt;p&gt;以下是一些簡單的介紹。&lt;/p&gt;
+&lt;p&gt;我使用這個程式的狀況是，我需要寄一封信給很多人，而我又希望每個人收到的信，收件者只有自己，而且信件開頭還會寫上他的名字，這樣比較貼心。所以沒辦法用「寄給自己 and BCC」的方法達成，只好透過程式完成。&lt;/p&gt;
+&lt;p&gt;這個小程式實際上是透過一套稱為 PHPMailer 的 library 做真正的寄信動作，所以困難的部分都被它做走了！我們只要把該設定的東西設定一下就差不多。要設定的項目大概有這些：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SMTP server 資訊 (主機、port、認證方式&amp;hellip;等)&lt;/li&gt;
+&lt;li&gt;登入資訊 (我使用 Gmail 寄信，所以需要登入)&lt;/li&gt;
+&lt;li&gt;寄件者與收件者資訊&lt;/li&gt;
+&lt;li&gt;信件資訊 (標題與內文)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在我這邊，每封信不同的地方只有收件者與內文，所以我會每次重新產生並設定，其餘部分都在最前面寫死。&lt;/p&gt;
+&lt;p&gt;收件者與內文的部分，我是先將收件者名單從 Google Spreadsheets 中匯出成 .tsv 檔 (因為比較容易 parse)，再直接讀入。這個寫在 &lt;code&gt;function parse_name_list_tsv($filename)&lt;/code&gt; 中。然後用一個自己刻的簡單 template tool (&lt;code&gt;function fill_template($content, $data)&lt;/code&gt;, 才 4 行XD) 去加上 user-specified 的資料，最後送信收工！&lt;/p&gt;
+&lt;p&gt;一些有趣的小細節：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;忘記為什麼了，我一開始跑起來會出現跟時區有關的錯誤，所以必須加上 &lt;code&gt;date_default_timezone_set(&#39;Asia/Taipei&#39;);&lt;/code&gt; 來避免這個問題&lt;/li&gt;
+&lt;li&gt;因為我的 Google Account 有開啟兩階段驗證 (2-Step Verification)，而我們這種小工具當然不可能支援，所以要為我們的程式特別創造一組應用程式密碼，才能正常使用喔！&lt;/li&gt;
+&lt;li&gt;一開始不小心抓到舊版的 PHPMailer，它有個 bug 就是，CC 的人會變成 BCC (或是反過來&amp;hellip;我忘了)，所以我直接從它的 source code 裡找到有問題的那段修掉了 (open source rocks!)，不過還是不太確定是不是我使用錯誤。結果後來發現有新版 PHPMailer，就特別關注了一下這個問題，發現已經被修掉了XD 修的方法一樣&amp;hellip;.哈！&lt;/li&gt;
+&lt;li&gt;因為 PHPMailer 新增收件人的 API 是 &lt;code&gt;AddAddress()&lt;/code&gt;，所以要注意，要更改收件人的話必須先執行 &lt;code&gt;ClearAddresses()&lt;/code&gt;，否則收件人清單會一直長&amp;hellip;.(好險我在正式寄信前的測試就發現這個問題&amp;hellip;orz)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;大概&amp;hellip;差不多是這樣吧！突然有點佩服自己，一點小東西也可以囉嗦這麼多，哈哈&amp;hellip;.&lt;/p&gt;
+- https://blog.crboy.net/posts/php-email-by-gmail/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>Gitit 簡介</title>
+        <link>https://blog.crboy.net/posts/introduction-to-gitit/</link>
+        <pubDate>Wed, 19 Sep 2012 13:56:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/introduction-to-gitit/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/introduction-to-gitit/ -&lt;p&gt;最近打算發一系列的 Gitit 相關文章，希望不要拖稿拖太久&amp;hellip;.萬一去當兵了，可能會拖很久很久這樣XD&lt;/p&gt;
+&lt;p&gt;之前我一直在尋找一個好用的共同協作平台系統，原因是我覺得 MediaWiki 的語法實在太難寫了&amp;hellip;.特別是當我看到 &lt;a href=&#34;http://wiki.ubuntu-tw.org/&#34;&gt;Ubuntu-TW Wiki&lt;/a&gt; 的首頁原始碼的時候，都快吐血了&amp;hellip;..當下覺得我智商不足&amp;hellip;..orz 但後來一直尋找，尋找的目標是：語法好寫、可即時線上協作的 wiki，所謂的「即時線上協作」就是像 Google Docs 那樣有可以多人同時編輯的頁面這樣。不過一直都找不到我想要的東西&amp;hellip;.即時線上協作有 etherpad-lite 這個 open source 專案，但是他是每個 pad 獨立的，而使用 Markdown 語法的 wiki 也不是沒有，但沒有勇氣(?)去嘗試&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;一開始知道 Gitit，是 &lt;a href=&#34;http://www.plurk.com/zeroplex&#34;&gt;@zeroplex&lt;/a&gt; (日落) 在噗浪上講的。因為之前也跟日落提過我想要尋找一個好用的 wiki system 這件事，他剛好不知道從哪裡獲得資訊，就分享給我了。結果沒想到，一玩下去，驚為天人啊XD&lt;/p&gt;
+&lt;p&gt;我的第一步當然是先去 Google 一下，看有沒有什麼相關訊息。直到現在這個時間點，去 Google 「gitit」還很容易找到 &lt;a href=&#34;http://walkingice.blogspot.tw/2011/11/gitit-git-based-wiki.html&#34;&gt;walkingice 的這篇文章&lt;/a&gt;，另外當然還是要提一下 &lt;a href=&#34;http://gitit.net/&#34;&gt;Gitit 官方網站&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;Gitit 這東西，是一個用 git 當 back-end datastore 的 wiki 系統，而且自帶 web server，不需要諸如 apache 或是 nginx 的存在也可以運作。Wiki 的語法使用 Markdown，方便好寫，同時也很容易用於其他用途，可攜性佳。&lt;/p&gt;
+&lt;p&gt;簡單的 survey 過後，我決定也來試試看。沒想到在 Ubuntu 下安裝跟啟動都超簡單的&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;安裝：&lt;code&gt;sudo apt-get install gitit&lt;/code&gt;&lt;br&gt;
+建立目錄：&lt;code&gt;mkdir wiki&lt;/code&gt;&lt;br&gt;
+進入目錄：&lt;code&gt;cd wiki&lt;/code&gt;&lt;br&gt;
+執行：&lt;code&gt;gitit&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;沒錯&amp;hellip;.就這樣&amp;hellip;.XD 你可以在這台機器的 port 5001 找到它。例如：http://localhost:5001/&lt;/p&gt;
+&lt;p&gt;只是這樣 run 起來的 wiki，所有設定都是預設值，個人是覺得 style 很醜，logo 也很醜XD 大家可以看看 &lt;a href=&#34;http://gitit.net/&#34;&gt;gitit 官方網站&lt;/a&gt;就知道了&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;如果是用剛剛的作法跑起來的話，這時候按下 &lt;code&gt;Ctrl+C&lt;/code&gt; 就可以停止運作。這時候看看目錄內容，會發現多了好幾個檔案，簡單挖掘一下應該可以猜到那些東西是做什麼用的&amp;hellip;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ find -maxdepth 3
+.
+./wikidata
+./wikidata/Front Page.page
+./wikidata/Gitit User&amp;#39;s Guide.page
+./wikidata/.git
+./wikidata/.git/refs
+./wikidata/.git/HEAD
+./wikidata/.git/config
+./wikidata/.git/COMMIT_EDITMSG
+./wikidata/.git/hooks
+./wikidata/.git/info
+./wikidata/.git/description
+./wikidata/.git/objects
+./wikidata/.git/logs
+./wikidata/.git/index
+./wikidata/.git/branches
+./wikidata/Help.page
+./templates
+./templates/footer.st
+./gitit.log
+./static
+./static/css
+./static/css/custom.css
+./static/img
+./static/img/logo.png
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;首先 &lt;code&gt;wikidata/.git&lt;/code&gt; 底下的東西我們就不要看了&amp;hellip;.其餘的部分大概是這樣：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;wikidata 底下是 wiki 的所有頁面，看到 .git 就知道他的頁面都在 git 的版本控制之下，所以萬一出了什麼包，都還可以恢復。&lt;/li&gt;
+&lt;li&gt;gitit.log 裡面只有簡單的幾行&amp;hellip;.&lt;/li&gt;
+&lt;li&gt;static 底下放的是網站的 css 跟 logo，如果有圖可以置換 logo 的話，只要換掉 logo.png 即可。&lt;/li&gt;
+&lt;li&gt;templates 底下有個 footer.st，看名字就知道應該是用來產生網站 footer 的樣板，可以嘗試修改看看&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;把想改的東西改一改之後，可以透過 &lt;code&gt;gitit &amp;amp;&lt;/code&gt; 重新執行 gitit。這指令跟前面不太一樣，後面多了一個 &amp;amp;，這樣可以把 gitit 丟到背景執行。而且如果你 logout 了，這個 process 還是會乖乖的留在系統裡，服務不會中斷!!&lt;/p&gt;
+&lt;p&gt;透過幾個簡單的步驟，一個精美的 wiki 就這樣架好了。不過&amp;hellip;.俗話說的好，魔鬼藏在細節裡！架起來只是第一步而已，有些地方還是需要調整跟修改的&amp;hellip;.下集待續！&lt;/p&gt;
+- https://blog.crboy.net/posts/introduction-to-gitit/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>在 .htaccess 裡面修改 php 設定值</title>
+        <link>https://blog.crboy.net/posts/php-setting-in-htaccess/</link>
+        <pubDate>Wed, 19 Sep 2012 10:53:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/php-setting-in-htaccess/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/php-setting-in-htaccess/ -&lt;p&gt;這篇筆記拖稿好久了&amp;hellip;.其實應該很短的，所以趕快寫一寫。&lt;/p&gt;
+&lt;p&gt;有時候在弄一些 php 相關的東西的時候，需要設定一些模組，例如&lt;a href=&#34;https://blog.crboy.net/2012/06/xdebug-installation-and-usage.html&#34;&gt;之前用過的 Xdebug&lt;/a&gt;，但是每次設定 php.ini 就要重新啟動 apache server，很麻煩還是其次，有時候上線的系統這樣一搞就很多人掰了&amp;hellip;..XD 所以我們需要一個修改後立即生效的做法。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;.htaccess&lt;/code&gt; 是非常實用的做法，只要先在 apache 的設定檔裡去 AllowOverride Options 即可使用 (我自己的機器通常會在特定目錄直接 AllowOverride All)。那麼，到底該怎麼做呢？下面是範例：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;php_value xdebug.auto_trace on
+php_value xdebug.trace_output_dir /tmp/xdebug
+php_value xdebug.collect_params 3
+
+php_value xdebug.profiler_enable on
+php_value xdebug.profiler_output_dir /tmp/xdebug
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;應該滿好懂的？其實就是&amp;hellip;前面先指定 &lt;code&gt;php_value&lt;/code&gt;，後面不用等號，直接寫設定值即可。&lt;/p&gt;
+&lt;p&gt;這樣做出來的結果，可以在 phpinfo 裡面看到成效。phpinfo 下方的 Configuration 那邊，設定值的部分有三欄，分別是 Directive、Local Value、Master Value，Directive 就是設定值的名稱，Local Value 是在該目錄真的會生效的設定值，Master Value 則是全系統的設定值。如果你覆蓋了全系統的設定，那麼你會看到你的 Local Value 跟 Master Value 不同，應該滿好認的。&lt;/p&gt;
+&lt;p&gt;透過這個方式，我們可以隨時去修改 php 的設定值，對於一些測試性的行為很有幫助！:D&lt;/p&gt;
+- https://blog.crboy.net/posts/php-setting-in-htaccess/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>這拼音到底是什麼鬼？</title>
+        <link>https://blog.crboy.net/posts/wtf-pinyin/</link>
+        <pubDate>Mon, 10 Sep 2012 02:05:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/wtf-pinyin/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/wtf-pinyin/ -&lt;p&gt;有個已經讓我困擾非常久的問題&amp;hellip;.今天來抱怨一下。&lt;/p&gt;
+&lt;p&gt;這個問題跟拼音有關，我指的是中文字以英文字母表示的那個拼音&amp;hellip;最後還想提一下關於奇怪的「洋中文」 (我自己亂取的稱呼) 現象&amp;hellip;.但必須先說，我不是專業的語言或是文字學家，甚至我對語言、文字都沒有什麼深入的了解，我只是想表達我覺得很困擾，以及&lt;del&gt;莫名奇妙&lt;/del&gt;莫名其妙的一些問題罷了。(感謝&lt;a href=&#34;http://www.plurk.com/mike771115&#34;&gt;朋友&lt;/a&gt;協助訂正錯字)&lt;/p&gt;
+&lt;p&gt;我們在某些特定場合，可能會需要提供自己的英文名字，特別是一些正式的場合，會需要正式的「中文姓名英譯」。而這個英譯應該以什麼為準呢？當然是護照上的英文名字。因為你如果出國，有法定效力的身分證明文件就是護照，所以不管是什麼證件、信用卡或是國際證照上面，最好都是寫護照上的英文名字。連帶的，像是發表論文之類的，我們也會填上護照上的英文名字。&lt;/p&gt;
+&lt;p&gt;OK，那這到底有什麼問題？&lt;/p&gt;
+&lt;p&gt;我姓畢，畢業的畢。(我自介的時候都這樣講，講習慣了&amp;hellip;.) 我在護照上的姓是拼做：「Pi」(避免lI不分我改為首字母大寫，護照上是全大寫)&amp;hellip;&amp;hellip;所以外國人來念我的姓的時候，他會覺得我姓屁，屁股的屁 (開玩笑的)。&lt;/p&gt;
+&lt;p&gt;我很好奇為什麼會有這種事情發生，所以稍微查了一下。我不是個認真向學的孩子，所以這邊只用維基百科上面的知識來討論。我發現我們的護照上所使用的是&lt;a href=&#34;http://zh.wikipedia.org/wiki/%E5%A8%81%E5%A6%A5%E7%91%AA%E6%8B%BC%E9%9F%B3&#34;&gt;威妥瑪拼音&lt;/a&gt;，一種用&lt;strong&gt;拉丁字母&lt;/strong&gt;拼寫拼讀漢字的方法&amp;hellip;.拉丁字母耶！到底是誰想出這種天才的作法？明明是要用英文字母表示的東西，你搞個威妥瑪拼音，結果ㄅㄆ不分、ㄉㄊ不分、ㄍㄎ不分、ㄐㄑ不分、ㄓㄔ不分、ㄗㄘ不分&amp;hellip;&amp;hellip;我光看都要崩潰了= =&lt;/p&gt;
+&lt;p&gt;這真的不是威妥瑪拼音的錯，雖然我不會念拉丁字母，但至少我看到的 ㄅ (p) 跟 ㄆ (p&amp;rsquo;) 他們的形狀是不一樣的&amp;hellip;.但是你偏要把他用英文字母表示就不對啊&amp;hellip;..(崩潰)&lt;/p&gt;
+&lt;p&gt;既然講到這個，就要看看&lt;a href=&#34;http://zh.wikipedia.org/wiki/%E6%B1%89%E8%AF%AD%E6%8B%BC%E9%9F%B3&#34;&gt;漢語拼音&lt;/a&gt;跟&lt;a href=&#34;http://zh.wikipedia.org/wiki/%E9%80%9A%E7%94%A8%E6%8B%BC%E9%9F%B3&#34;&gt;通用拼音&lt;/a&gt;，這裡還有個&lt;a href=&#34;http://zh.wikipedia.org/wiki/%E6%BC%A2%E8%AA%9E%E6%8B%BC%E9%9F%B3%E5%B0%8D%E7%85%A7%E8%A1%A8&#34;&gt;中文拼音對照表&lt;/a&gt;可以順便參考一下。聽說以前曾經有過要選用哪種拼音的爭論？當時我就不太清楚，而現在其實我也沒有非常感興趣，因為我知道一定各自有自己的理由&amp;hellip;我的觀點是，這兩種不管哪一種都比威妥瑪拼音來得好，因為他們用的是英文字母，而非拉丁字母。雖然還是有些拼音唸起來有點彆扭，但至少每個音都分得出來&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;說到「唸」，其實這也是個很有趣的問題&amp;hellip;.像我這樣的台灣土包子，其實這輩子也沒去過中國大陸幾次。不過去了就會發現，同樣的中文字，不同地方的人就有不同的口音。就算是台灣人自己，讀音也可能有微妙的差異。(其實這又牽涉到「注音符號」的問題了&amp;hellip;.說不定我們的讀音根本是被注音符號修正過的而不自知？) 那&amp;hellip;既然大家的讀音都不一樣，又要怎麼制定一個統一的拼音系統呢？雖然不敢確定，不過我猜測也許這就是會有拼音系統之爭的原因之一吧？(另外可能還有政治因素 :P 我完全不意外&amp;hellip;.XD)&lt;/p&gt;
+&lt;p&gt;根據我從維基百科上消化來的資料，台灣經歷過威妥瑪拼音、通用拼音、漢語拼音這三個時期，而從 2009 年開始，中央政府已經不建議使用通用拼音，而改採漢語拼音。&lt;/p&gt;
+&lt;p&gt;但是事實上其實是，台灣各地所使用的拼音依然混亂。除了舊有拼音沿用以外，還有拼音來不及更改，或是有些地方就是堅持使用某種拼音，甚至是拼錯的 = =&lt;br&gt;
+我想這點是需要台灣人有共識來改進的，不然&amp;hellip;.如果我是外國人我應該會崩潰吧= = 這樣要怎麼國際化&amp;hellip;..&lt;/p&gt;
+&lt;p&gt;至於說到國際化嘛，就要提到一個也是很奇怪的問題了&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;有時候搭捷運啊，或是火車、高鐵之類的交通工具，常常聽到多種語言的語音廣播，有國語、台語、客語、英語。但是很奇怪，台灣人好像很喜歡把中文地名混入洋腔洋調唸給外國人聽？「台北」會被唸成「胎~配~」(跟「唉配」有關係嗎？)，「台南」會被唸成「胎~難~」，「左營」會唸成「ㄗㄨㄛ~硬~」&amp;hellip;&amp;hellip;&amp;hellip;都沒人覺得這樣很奇怪嗎？真的都沒人覺得這樣很奇怪嗎？(請原諒我跳針)&lt;/p&gt;
+&lt;p&gt;我不相信外國人聽到台灣人念出「台北」「台南」「左營」這種&lt;!-- raw HTML omitted --&gt;我們在用的發音&lt;!-- raw HTML omitted --&gt;會聽不懂&amp;hellip;說「洋中文」真的有比較好嗎？要國際化，也不用把自己的文化放在地上踩吧&amp;hellip;.. :(&lt;/p&gt;
+&lt;p&gt;PS. 前陣子經過台南市大學路跟勝利路口，看到有塊嶄新的路牌寫了「University Road」，當下覺得不太對勁&amp;hellip;因為我之前看到的路牌是「Dasyue Road」(查一下就知道這是通用拼音XD)。雖然我覺得用 University Road 表示「大學路」比較好，但是我更無法接受的是同一個中文名稱卻有不統一的翻譯。我覺得這真是太丟臉了，我們竟然連一個路牌都做不好&amp;hellip;.&lt;/p&gt;
+- https://blog.crboy.net/posts/wtf-pinyin/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>導讀：提問的藝術</title>
+        <link>https://blog.crboy.net/posts/smart-questions/</link>
+        <pubDate>Sun, 09 Sep 2012 14:03:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/smart-questions/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/smart-questions/ -&lt;p&gt;這篇文章已經看過很多不同網頁都轉貼了，而我也不是很喜歡轉貼&amp;hellip;所以我去 Google 搜尋了「提問的藝術」，然後直接貼第一條結果出來：&lt;a href=&#34;http://ihower.tw/blog/archives/457/&#34;&gt;http://ihower.tw/blog/archives/457/&lt;/a&gt; (是 ihower 大大的部落格 &amp;lt;(_ _)&amp;gt;)。萬一未來哪天連結失效，那就自行搜尋吧~:)&lt;/p&gt;
+&lt;p&gt;那麼，要進入正題了。&lt;/p&gt;
+&lt;p&gt;首先，所謂黑客，在台灣可能比較常稱為駭客，指的是擁有高度知識與技術的人，但比較常用在電腦資訊相關領域。也許他鑽研的是資訊安全，也可能是深入作業系統，也可能是程式高手。我不夠資格對駭客下定義，但我認為這是種文化、是種哲學，體現的是喜好自由、喜好創造的個性。我想&lt;a href=&#34;http://zh.wikipedia.org/wiki/%E9%A7%AD%E5%AE%A2&#34;&gt;維基百科&lt;/a&gt;上的說明應該會更清楚。只要讀者不要把黑客跟蓄意搞破壞的人混為一談就好。這篇文章就是教你該怎麼從這些滿是知識跟經驗的駭客手上，獲得他們所會所學。&lt;/p&gt;
+&lt;p&gt;簡單來說：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;保持謙遜的態度&lt;/li&gt;
+&lt;li&gt;找對問問題的地方&lt;/li&gt;
+&lt;li&gt;問對問題&lt;/li&gt;
+&lt;li&gt;把問題問對&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;態度是最重要的，也許包含了一切。很多人會不自覺的認為「別人應該告訴我答案」，這樣的想法會造成你提問的方式有很大的問題。如果你想的是「我想要拜託別人給我一個答案」，那也許會順利點。&lt;/p&gt;
+&lt;p&gt;想要「拜託」別人，總要拿出點誠意吧？要怎麼才能讓人看到你的誠意？你可以說明，你做了哪些動作。例如：你讀了說明文件 (哪一段？)、你看了 FAQ、你在網路上搜尋過、你有爬文。除了表現誠意以外，這對於別人找出你的問題也是有幫助的。也許你根本想錯方向，也許基本觀念不對，也許有地方誤解了等等&amp;hellip;總之，做過哪些找答案的動作都可以提出來。(但最好不要胡亂猜測又不去嘗試，人家會想「那你怎麼不試試看？」)&lt;/p&gt;
+&lt;p&gt;透過提出具有思考性的問題，可以讓駭客們也對你的問題感興趣。若很多人對你的問題感興趣，那表示會有很多人一起幫你思考，幫你找出答案。(其實他們是在幫自己找出答案，只是你也可以從中獲益)&lt;/p&gt;
+&lt;p&gt;再來，請仔細思考你的問題。沒有思考過就拿去問人是很不禮貌的，特別是當你還覺得別人理應回答你的時候&amp;hellip;除了仔細思考以外，也要仔細描述問題。特別是標題要清楚明確。如果你是別人，看到標題是「救命啊」的文章，你會覺得非看不可嗎？&lt;/p&gt;
+&lt;p&gt;第二點是找對地方。這很簡單，如果你有爬文，你應該有辦法分辨你的問題適不適合在這個地方出現。如果你每個地方都有爬文，那你應該就不會把問題胡亂貼到所有的地方去。&lt;/p&gt;
+&lt;p&gt;第三點，要問對問題。在很多情況下，你該問的是「我應該嘗試什麼？」而不是「答案是什麼？」為了你自己好，也為了節省別人的時間，請在問問題之前思考別人會怎麼回答你的問題。&lt;/p&gt;
+&lt;p&gt;最後，其實跟態度也有很大關連，要把問題問對。文章中已經舉了非常多例子，這邊應該不用多說，我寫得實在太差了，還是看原文比較好！:P&lt;/p&gt;
+&lt;p&gt;不過值得一提的是，要記得 RTFM (Read The Fucking Manual) 還有 STFW (Search The Fucking Web)。每次問問題的時候，最好都先自己找過答案。每次收到答案的時候，可能當中會有一些看不懂的東西，也記得要先找過答案。如果你收到了 &lt;em&gt;TF&lt;/em&gt; 的答案&amp;hellip;.那就快去，因為答案真的在那裡&amp;hellip;..&lt;/p&gt;
+&lt;p&gt;PS. 最近在思考一些關於學習的問題，總覺得普遍對於學習這件事不太抱有熱情&amp;hellip;但似乎是個無解的問題。該如何鼓勵身邊的其他人 (例如學弟妹) 對探索跟學習的熱情，好像是個很難的問題&amp;hellip;其實熱情也許是興趣的產物吧&amp;hellip;沒興趣就很難解&amp;hellip;.&lt;/p&gt;
+- https://blog.crboy.net/posts/smart-questions/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>五月天 - 洗衣機</title>
+        <link>https://blog.crboy.net/posts/mayday-washer/</link>
+        <pubDate>Sun, 09 Sep 2012 01:24:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/mayday-washer/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/mayday-washer/ -&lt;p&gt;我記得&amp;hellip;是今年的母親節吧。&lt;/p&gt;
+&lt;p&gt;還記得那時候五月天推出了這隻 MV，洗衣機。聽了好久的 KKBOX，一直都沒有仔細去聽歌詞，更沒有去看歌詞寫了什麼。&lt;/p&gt;
+&lt;p&gt;不過，看了 MV 之後，實在讓我太感動了&amp;hellip;..也許，這跟我從小爸爸就過世了有關吧？一直在單親家庭長大的我，對這首歌如此有共鳴，也許是正常的&amp;hellip;&amp;hellip;&amp;hellip;先看看 MV 吧？&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/BfwbO0f1R8o&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;奇怪是誰 一直清洗著 我闖的禍和污泥&lt;br&gt;
+好久以來 原來我衣服 全部都是媽媽洗&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;第一次看 MV，看到這句的時候，我就突然鼻酸了&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;也許是媽媽年紀已經大了吧，每每想到媽媽有天可能會離開我們，就覺得很害怕。但我卻從未想過，從未關心過媽媽的辛苦。是的，我知道媽媽很辛苦，但&amp;hellip;.也就只是知道而已。這種感覺很難形容，當你每天都住在家，平常卻跟媽媽講不到幾句話。其實這也沒什麼特別的，不特別孤單，不特別想念，不特別關心，不特別&amp;hellip;.。但就是特別奇怪。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;也許 我從來不是一個好孩子&lt;br&gt;
+也許 我管不住自己的叛逆&lt;br&gt;
+也許 我從來沒有讓你滿意&lt;br&gt;
+但 我還是想讓你知道&lt;/p&gt;
+&lt;p&gt;媽 我愛你&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我其實是邊流淚邊打這篇文章的&amp;hellip;還記得當時，我回頭看了第二遍 MV&amp;hellip;.突然想通了這首歌的故事。一方面是驚訝，驚訝歌詞竟然把這件事隱藏得如此明顯。但一方面也更難過&amp;hellip;..&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;洗衣機 穿著一身 退色塑料壓克力&lt;br&gt;
+獨坐在陽台上受 日曬風吹雨淋&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;媽，我知道你不愛穿漂亮的衣服，只是想省錢給家裡用，照顧我們這些孩子。你不是不想打扮，不是不想娛樂，而是你把我們看得比自己還重要。媽，我知道你常常一個人在家，孤單的看電視，其實你更想有人陪你說說話。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;電視機 孩子們目光都以他為中心&lt;br&gt;
+黑色簡約外型 多適合客廳&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;小時候的我，愛看電視，還為了看電視跟你發脾氣。你，只是讓出電視。 而我，卻完完全全忽略了在我身邊的你&amp;hellip;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;就算是吹風機 也有流線外型&lt;br&gt;
+緊握在手心 像跳舞親密&lt;br&gt;
+光榮的電唱機 晉身為古董級&lt;br&gt;
+典雅的中音比誰都 更受歡迎&lt;br&gt;
+木訥的洗衣機 從沒有主題曲&lt;br&gt;
+只有風霜灰塵 讓人不想接近&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;青春期的我，看著繽紛的世界，卻依然忽略了你。當時，只覺得媽媽管很多、很煩，為什麼要來煩我？我們愛聽的流行歌，又有多少為了母親而歌頌？&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;從來沒有 一句的怨言 你丟多少它都洗&lt;br&gt;
+脫水總是 全心又全力 直到顫抖了身體&lt;br&gt;
+多少年了 旋轉又旋轉 時間一眨眼過去&lt;br&gt;
+上了年紀 卻依然盡力 孤獨勇敢洗衣機&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;..&lt;br&gt;
+這說的，根本就是媽媽&amp;hellip;..根本就是一直以來，全心全力付出的媽媽啊&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;在那之後的歌詞，也許是我未來的生活吧？當我們一步步長大，媽媽卻一點一滴的老邁。如果沒有好好想想，也許未來還是一樣的忽略、看輕自己的媽媽。&lt;/p&gt;
+&lt;p&gt;太多了&amp;hellip;.過去有太多後悔跟遺憾&amp;hellip;.突然想起之前看到的一本書：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.books.com.tw/img/001/053/71/0010537172.jpg&#34; alt=&#34;你跟父母相處的時間 其實只剩下 55 天&#34;&gt;&lt;/p&gt;
+&lt;p&gt;「你跟父母相處的時間 其實只剩下 55 天」&lt;/p&gt;
+&lt;p&gt;我想也許我的時間&amp;hellip;.更短一些吧？這些日子，我可以怎樣多陪陪媽媽呢？&lt;/p&gt;
+- https://blog.crboy.net/posts/mayday-washer/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>NAS 的 NFS 掛不上...竟然是 switch 害的!!</title>
+        <link>https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/</link>
+        <pubDate>Wed, 01 Aug 2012 17:45:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/ -&lt;p&gt;最近在新增設備，分別是 HP ProCurve 1810G-24 L2 switch 與 Synology RS812+ NAS，沒想到前兩天碰到一個讓人吐血的問題&amp;hellip;故事要從這裡說起&amp;hellip;..&lt;/p&gt;
+&lt;p&gt;一開始很開心的接上了 switch 還有 NAS，似乎相當正常，但操作相當緩慢&amp;hellip;.後來 ping 了一下，封包一直掉&amp;hellip;&amp;hellip;&amp;hellip;.呃，但是後來換台電腦就好了，所以目前這個問題被我擱置&amp;hellip;..XD&lt;/p&gt;
+&lt;p&gt;離題了，Synology NAS 算是還不錯，它的 OS (核心是 Linux，名稱叫做 DSM) 提供了 NFS 的支援，但主要的問題是&amp;hellip;&amp;hellip;問題是我掛不上啊!!!!! 我碰到的狀況相當奇怪，我這台電腦連到 NAS 的管理介面沒有問題，ping 它也回很快，甚至是 CIFS (Windows 的網路芳鄰) 都很順利&amp;hellip;.獨獨 NFS 掛不上去 orz&lt;/p&gt;
+&lt;p&gt;我試了兩台電腦，都是 Linux，這兩台電腦跟 NAS 都接在上面說的那台 HP ProCurve 1810G-24 L2 switch 上。其中一台有防火牆，另一台沒有開，但是問題跟這個無關，所以就不理他了。我的狀況是，showmount 非常正常，NFS 權限也沒問題，但是真的要 mount 的時候就等很久很久很久&amp;hellip;..然後就 timeout 了&amp;hellip;&amp;hellip;= =&lt;/p&gt;
+&lt;p&gt;花了一個下午找不到問題，整個晚上在想原因，一直到隔天剛好 NAS 廠商過來，結果他們也找不出原因!!!! 後來是因為廠商帶了台很簡單的 ZyXEL switch 來 (因為之前跟他們說我 ping NAS 掉包掉很大)，沒想到換上去就好了!!!!!! 杯具啊!!!!!!!! 天大的杯具啊!!!!!!!! 好&amp;hellip;&amp;hellip;既然確定是 switch 的問題，當然立馬殺進去 switch 的管理介面看看&amp;hellip;&lt;/p&gt;
+&lt;p&gt;這邊題外話，此時的網路接法是：&lt;code&gt;HP[ZyXEL[我的電腦, NAS], 另一台電腦]&lt;/code&gt; (&lt;code&gt;A[a,b]&lt;/code&gt; 表示 a 跟 b 接在 A 上)&lt;/p&gt;
+&lt;p&gt;接下來是我跟 NAS 廠商的工程師看著同一個螢幕 (其實他是用 VNC 連進來的，因為來我們這裡的人是搞 Windows 的XD)，他一個個看著可以設定的選項，然後關了 security 選項中的兩個選項&amp;hellip;.這個時候我腦袋像是通電一樣&amp;hellip;.立馬連到另一台電腦 (因為我的電腦跟 NAS 之前沒有通過 HP switch)，開始 mount&amp;hellip;..馬上就好了= = (崩潰) 然後打開 Auto DoS&amp;hellip;&amp;hellip;掛不起來了= = (崩潰) 然後關掉 Auto DoS 開啟 Storm Control (大概吧)&amp;hellip;.掛得起來= =&lt;/p&gt;
+&lt;p&gt;好啦越來越混亂了&amp;hellip;&amp;hellip;.總而言之就是&amp;hellip;&amp;hellip;..&lt;/p&gt;
+&lt;p&gt;HP ProCurve 1810G-24 的 Auto DoS 功能會把 NFS 給擋掉！&lt;/p&gt;
+&lt;p&gt;對&amp;hellip;.跟 Synology 完全無關&amp;hellip;.都是 HP 害的!!!!!!!! 去 Google 搜尋「Auto DoS NFS」也可以找到相關文章&amp;hellip;.都是同一台= = 我還嘗試去找出原因&amp;hellip;.但是找來找去&amp;hellip;.我只能說這是個 bug 吧&amp;hellip;..&lt;/p&gt;
+&lt;p&gt;總之，這真是太杯具了&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;..&lt;/p&gt;
+- https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>導讀與心得：關於軟體的性能調校</title>
+        <link>https://blog.crboy.net/posts/software-performance-tuning/</link>
+        <pubDate>Sun, 08 Jul 2012 17:05:00 +0000</pubDate>
+        
+        <guid>https://blog.crboy.net/posts/software-performance-tuning/</guid>
+        <description>CrBoy&#39;s blog https://blog.crboy.net/posts/software-performance-tuning/ -&lt;p&gt;今天來寫寫關於這兩篇文章的摘要跟心得：&lt;br&gt;
+&lt;a href=&#34;http://coolshell.cn/articles/2967.html&#34;&gt;代码优化概要 | 酷 壳 - CoolShell&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;http://coolshell.cn/articles/7490.html&#34;&gt;性能调优攻略 | 酷 壳 - CoolShell&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;第一篇文章裡面講的東西很簡單，卻很重要！用 profiler 跟看組語！我個人經常強調的一件事，就是在解決問題的時候一定要先找到問題在哪裡。以前我常用 debugger 來說明，但 debugger 最大的幫助其實不是找出問題，而是「快速的」找出問題。而透過 profiler，對於找出效能問題幾乎是最簡單的作法&amp;hellip;.(有一種相當土法煉鋼的方法是，在自己的程式碼裡面加上一大堆印出 timestamp 的程式碼，聰明一點的還會用夾擠來避免浪費太多時間。但是這個行為本身就是在浪費時間&amp;hellip;.)&lt;/p&gt;
+&lt;p&gt;這篇文章可說是支持了我的觀點，有時候「看起來好像很慢」的程式碼，實際上並不會浪費你太多時間。這是真的！這也是為什麼作者會說，做性能調校要注意兩個重點，一個是花很多時間的程式碼，另一個是被執行很多次的程式碼！看起來很花時間的程式碼，可能不花你很多時間，也不執行很多次！&lt;/p&gt;
+&lt;p&gt;第二篇文章講的就多了&amp;hellip;但這四個步驟的核心觀念很好抓，先定義(效能)需求，然後做測試，接著找出問題，最後解決問題。聽起來很無趣，不是嗎？但常常見到的情況反而是，先看看程式碼，然後猜測問題，修改之後測試看看，最後接受結果。&lt;/p&gt;
+&lt;p&gt;常見的狀況都是這樣，我自己也是，但在我懂得使用 profiler 之後才終於知道該怎麼把效能問題的重點給抓出來。但這篇文章講得更多，第一步定義 throughput 與 latency，這兩個詞的差別常常被忽略，因為他們會互相影響，所以常被用「performance」給概括了，但其實是可以分開考慮的。&lt;/p&gt;
+&lt;p&gt;性能測試部份我就比較沒有經驗了，我只懂得使用 profiler 做簡單的分析，但文中所提到的 throughput 與 latency 測試分析，光用想的就很辛苦&amp;hellip;.更別提還要配合穩定性測試 (舉例來說，如果系統有 memory leak 問題，碰到高 throughput 狀況則可能很容易噴掉)&lt;/p&gt;
+&lt;p&gt;透過測試，我們可以知道系統效能狀況。可以從兩個角度來看：從外面看，看 CPU 與 IO 的使用率。從裡面看，看系統 profiling 的數據。但其實有個很尷尬的問題，profiler 會稍微降低系統效能，所以對於上線的(且忙碌的)系統來說，想抓到真實狀況又不想對系統造成影響真的很難&amp;hellip;..orz&lt;/p&gt;
+&lt;p&gt;最後談到「解決問題」這就多了，因為不同的問題需要不同的解決方式，我認為文章裡每一條經驗都很值得參考！首先可能要改演算法，演算法對效能的影響，我想寫過 ICPC 比賽或是 UVa Online Judge 的人最清楚了！雖然有很多現實問題真的不是演算法解決的 (都是一些有的沒的雜事)，但底下用到的每個演算法都有機會成為瓶頸，也就有可能是系統加速的關鍵。再來，底層會發生的問題也要注意！誰說寫程式不用知道底層？對底層知道的越多，越有可能寫出好程式，這個定律是不會變的&amp;hellip;再來講到系統方面的最佳化，這也是對底層知道越多越有用的例子。後面則是講到資料庫&amp;hellip;資料庫性能調校相對於系統或是程式語言底層實做來說，應該算是顯學了。但是顯學歸顯學，也不是每個人都了解資料庫，所以「亂調一通然後看看速度多快」反而變成最 popular 的技術了&amp;hellip;.= = 文章這部份也相當值得閱讀，首先要知道 DB 的 lock 還有其他實做問題，再來可以透過工具看到 SQL query 的 execution plan (這真的很有用！比亂猜好太多了！但有些 RDBMS 要看到 execution plan 相當麻煩= =)。最後則是常見的 SQL 性能問題，像是 full table scan、index 的使用不當，或是某些通常很花時間的功能&amp;hellip;&lt;/p&gt;
+&lt;p&gt;簡單下個結論，軟體性能調校很重要，但是有些人常常沒有用對方法。建議好好讀過這兩篇文章，還有網路上的其他好文章，嘗試看看用比較好的方法做調整！:)&lt;/p&gt;
+- https://blog.crboy.net/posts/software-performance-tuning/ - </description>
+        </item>
+    
+    
+  </channel>
+</rss> 

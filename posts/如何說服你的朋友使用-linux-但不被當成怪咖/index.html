@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html><head>
+<title>如何說服你的朋友使用 Linux - 但不被當成怪咖</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%94%a8%e7%a7%80%e7%9a%84%e4%b8%8d%e8%a6%81%e7%94%a8%e8%aa%aa%e7%9a%84" class="nav-用秀的不要用說的">
+									用秀的！不要用說的。
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%88%a5%e5%86%8d%e5%91%8a%e8%a8%b4%e4%bb%96%e5%80%91-windows-%e4%b8%8d%e5%a5%bd%e4%bb%96%e5%80%91%e5%b7%b2%e7%b6%93%e7%9f%a5%e9%81%93%e4%ba%86" class="nav-別再告訴他們-windows-不好他們已經知道了">
+									別再告訴他們 Windows 不好，他們已經知道了
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%a6%82%e6%9e%9c%e4%bb%96%e5%80%91%e9%81%87%e5%88%b0%e5%95%8f%e9%a1%8c" class="nav-如果他們遇到問題">
+									如果他們遇到問題
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%8d%e8%a6%81%e5%bc%b7%e8%aa%bffree%e7%9a%84%e9%83%a8%e4%bb%bd" class="nav-不要強調free的部份">
+									不要強調「free」的部份
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    如何說服你的朋友使用 Linux - 但不被當成怪咖
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2011-11-02 03:15
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/linux">Linux</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E7%BF%BB%E8%AD%AF">翻譯</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>本文翻譯自「<a href="http://www.junauza.com/2011/10/how-to-convince-your-friends-into-using.html" title="How to Convince Your Friends to Use Linux Without Being a Jerk">How to Convince Your Friends to Use Linux Without Being a Jerk</a>」，作者為 Abhishek。</p>
+<p>This article is a translation of &ldquo;<a href="http://www.junauza.com/2011/10/how-to-convince-your-friends-into-using.html" title="How to Convince Your Friends to Use Linux Without Being a Jerk">How to Convince Your Friends to Use Linux Without Being a Jerk</a>&rdquo;, which is written by Abhishek.</p>
+<p>Linux 是目前世界上最安全穩定的系統之一，但它的使用者數量卻不如想像中的成長迅速。這當中有很多原因，不過我們先不討論。但如果你像其他的 Linux 使用者一樣，對現在 Linux 的市佔率感到失望，我們可以告訴你一些說服你朋友來用 Linux 的小技巧。</p>
+<p>現在有很多 Linux 使用者試著去引誘他們的朋友或家人來嘗試一個有名且容易上手的發行版 - Ubuntu。有些人成功了，不過大部分是失敗的。所以，我們要告訴你一些技巧來幫助你推廣 Linux，但不會被視為一個自以為是又看不起 Windows 或 Mac 的電腦怪咖。</p>
+<h1 id="用秀的不要用說的">用秀的！不要用說的。</h1>
+<p>沒錯，如果你想要說服一個 Windows 或 Mac 的使用者來使用 Linux，這是第一件也是最重要的一件事。Ubuntu、Linux Mint與許多其他發行版看起來都相當漂亮，而且說真的，最新版的 Ubuntu (Ubuntu 11.10) 看起來就跟 Mac 一樣漂亮。不過，如果你只是跟他們用說的，你認為他們會同意你嗎？就算他們同意了，他們還是不清楚 Ubuntu 或是其他你說的發行版究竟長什麼樣子。我的建議是，你可以帶著你的 Linux 筆電，交給對方讓他們玩玩看。如果你用的是 Ubuntu，我建議你開一個新的 Guest Session (訪客使用者階段)，然後把電腦交給他。這樣一來，他們會更了解一個沒有經過調整的桌面有多漂亮。如果你不太可能向你的朋友展示桌面的話，那就傳個關於桌面展示的 Youtube 影片給他吧。</p>
+<p>這個「用秀的不要用說的」作法也可以用在功能比較上。假設你想要描述 Linux 一些明顯的優點，不要跟他囉嗦一堆不會中毒、沒有磁碟碎片、或是桌面效能有多快之類的話，只要秀給他們看就好了。把他們的 Windows/Mac 筆電拿來放在旁邊，開始計時看他們開機有多快。我不想再說一遍，用秀的，不要用說的。</p>
+<h1 id="別再告訴他們-windows-不好他們已經知道了">別再告訴他們 Windows 不好，他們已經知道了</h1>
+<p>對一個想要把 Windows 使用者帶向光明的 Linux 使用者來說，他們總是把「Windows 很爛」這件事掛在嘴邊。至少很多 Linux 使用者都這樣想。抨擊 Windows 很好，大家都在罵這個討厭的作業系統，但是這對 Windows 使用者而言沒什麼好說的，我很確定他們都已經知道了。我相信當你在閱讀這篇文章的時候，至少有上千個 Windows 使用者在痛罵微軟。不過他們沒辦法改變什麼。</p>
+<p>簡單來說，不要告訴他們 Windows 不好，甚至不要提到 Windows。只要告訴他們：「嘿，我的電腦桌面超棒的，你該試試看。」把電腦給他們，然後讓他們去痛罵 Windows。當我把我的朋友變成 Linux 使用者的時候，我所做的就只是給他們看我的電腦，沒有提到關於 Windows 或 Mac 的隻字片語。當他們看到我的電腦的時候，他們就開始瘋狂地大罵 Windows 了。</p>
+<h1 id="如果他們遇到問題">如果他們遇到問題</h1>
+<p>與其直接幫助他們，不如告訴他們怎麼在 Linux 上取得幫助。別讓人依賴你解決所有他們電腦上的問題。只要帶他們看過 Ubuntu 論壇、IRC 以及說明文件，讓他們自己找到答案就好。</p>
+<h1 id="不要強調free的部份">不要強調「free」的部份</h1>
+<p>我再說一次，不要。不要推銷「free」這個部分。事實上，你最好完全不要提到免費這件事。有時候別人會對於 Linux 印象深刻，所以他們可能會問你它要花多少錢。你可以輕鬆的看著他們，然後說「It&rsquo;s free.」接著等待他們的回應就好。</p>
+<p>譯註：</p>
+<ol>
+<li>外觀的好壞很主觀，我並不認為 Ubuntu 的 artwork 有跟 Mac 一樣漂亮&hellip;.</li>
+<li>操作性(使用者體驗)而言，我認為 Mac 還是優於目前我所用過的幾種 Linux 桌面。但還是有些地方我比較喜歡 Linux 上的設計。</li>
+</ol>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2011-11-02</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/face-to-audience-3/">
+			Next<br>成大面劇團(Face To Audience) - 一躍之下，
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/vim-to-html/">
+			Previous<br>用 vim 把一堆程式碼轉成 html 檔案
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e7%94%a8%e7%a7%80%e7%9a%84%e4%b8%8d%e8%a6%81%e7%94%a8%e8%aa%aa%e7%9a%84" class="nav-用秀的不要用說的">
+									用秀的！不要用說的。
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%88%a5%e5%86%8d%e5%91%8a%e8%a8%b4%e4%bb%96%e5%80%91-windows-%e4%b8%8d%e5%a5%bd%e4%bb%96%e5%80%91%e5%b7%b2%e7%b6%93%e7%9f%a5%e9%81%93%e4%ba%86" class="nav-別再告訴他們-windows-不好他們已經知道了">
+									別再告訴他們 Windows 不好，他們已經知道了
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%a6%82%e6%9e%9c%e4%bb%96%e5%80%91%e9%81%87%e5%88%b0%e5%95%8f%e9%a1%8c" class="nav-如果他們遇到問題">
+									如果他們遇到問題
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%8d%e8%a6%81%e5%bc%b7%e8%aa%bffree%e7%9a%84%e9%83%a8%e4%bb%bd" class="nav-不要強調free的部份">
+									不要強調「free」的部份
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

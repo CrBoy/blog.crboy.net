@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shell script on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/shell-script/</link>
+    <description>Recent content in shell script on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sat, 17 Mar 2012 23:25:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/shell-script/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在 bash (zsh) script 中使用 trap</title>
+      <link>https://blog.crboy.net/posts/trap-in-bash-zsh-script/</link>
+      <pubDate>Sat, 17 Mar 2012 23:25:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/trap-in-bash-zsh-script/</guid>
+      <description>最近在跑分散式的程式，每次測試都要開好幾隻程式在跑。就算可以寫 script 自動開啟，還是會遇到一個很討厭的問題，沒辦法自動關閉那些屬於 worker 的程式。好像解釋的不太清楚&amp;hellip;.就是我希望在我程式跑完的時候，或是我把程式強迫終止的時候，我可以同時把好幾個 process 也 kill 掉。特別是強迫終止的時候，因為無論我在最後寫好什麼動作，一旦強迫終止就執行不到了。
+於是上網尋找解法，找到了 trap 可以用。Trap 這東西，也就是陷阱&amp;hellip;我想他的意思是，會讓你指定的那些 signal 掉入陷阱吧&amp;hellip;(笑)。不曉得 signal 是什麼的請自行閱讀 manpage 或是上網找。
+這裡提供兩個範例，第一個是測試 trap 功能的範例：
+這個範例中，我指定 SIGTERM SIGINT SIGHUP 這三個 signal 會被 trap 抓住，而 trap 抓到後所要執行的指令為 &amp;ldquo;echo TRAP!!; exit&amp;rdquo;。注意這邊我加上了 exit 讓這個 script 會在接到 signal 的時候終止，否則它只會 echo 出 TRAP!! 後繼續執行它要執行的動作。如果你沒有另外指定別的離開方法，就必須乖乖的等待 script 執行完畢，或是用 kill -9 (送 SIGKILL) 才能終止它了&amp;hellip;
+再來是第二個範例：
+這裡差不多是一個實際使用的 use case 了，參考自：這篇文章。把需要做清理的動作寫進 function 裡，以我最上面提到的情況就是把該關掉的 worker 程式都關掉，在這裡我就印出個 CLEAN UP!! 代替就好XD。然後在 trap 裡設定它負責清理，另外也在 script 正常結束前清理，這樣就可以保證(大概吧?)清理動作一定會被執行，除非是被 SIGKILL 強迫中斷。</description>
+    </item>
+    
+  </channel>
+</rss>

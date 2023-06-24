@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubuntu on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Mon, 24 Sep 2012 01:44:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>修改 Debian 或 Ubuntu 預設 editor</title>
+      <link>https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/</link>
+      <pubDate>Mon, 24 Sep 2012 01:44:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/</guid>
+      <description>前幾天突然想到一個問題&amp;hellip;.由於 Ubuntu 預設 editor 是 nano，這對於一個 vim user 來說實在是不太舒服啊XD 所以稍微找了一下，找到一個很簡便的作法，可以用來修改預設 editor，方式如下：
+$ sudo update-alternatives --config editor [sudo] password for crboy: There are 4 choices for the alternative editor (providing /usr/bin/editor). Selection Path Priority Status ------------------------------------------------------------ * 0 /bin/nano 40 auto mode 1 /bin/ed -100 manual mode 2 /bin/nano 40 manual mode 3 /usr/bin/vim.basic 30 manual mode 4 /usr/bin/vim.tiny 10 manual mode Press enter to keep the current choice[*], or type selection number: 3 update-alternatives: using /usr/bin/vim.</description>
+    </item>
+    
+    <item>
+      <title>在Ubuntu上安裝nVidia官方顯示驅動程式</title>
+      <link>https://blog.crboy.net/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9Dnvidia%E5%AE%98%E6%96%B9%E9%A1%AF%E7%A4%BA%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F/</link>
+      <pubDate>Thu, 06 Mar 2008 18:39:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9Dnvidia%E5%AE%98%E6%96%B9%E9%A1%AF%E7%A4%BA%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F/</guid>
+      <description>首先要停用restricted driver(或移除nvidia-glx套件也是一樣的結果)
+接著修改/etc/default/linux-restricted-modules-common中的DISABLED_MODULES屬性 停用nv和nvidia_new(會像這樣：「DISABLED_MODULES=&amp;ldquo;nv nvidia_new&amp;rdquo;」)
+然後刪掉/lib/modules底下的跟nvidia有關的東西(但是我的ubuntu根本沒有這種東西 是找到的教學文件這樣說)
+刪掉/etc/init.d/nvidia-glx 和 /etc/init.d/nvidia-kernel
+接著關閉gdm：「$ sudo /etc/init.d/gdm stop」 如果在視窗介面下無法成功的話 可以按ctrl+alt+F1切換到terminal 接著登入並輸入以上指令 另外我個人的習慣是會先在視窗下登出後才停用gdm~
+然後就可以安裝新版驅動了！不過必須要有libc6-dev套件 似乎是因為官方的安裝程式會幫你編譯kernel module&amp;hellip;至於新版驅動的下載位置&amp;hellip;我都是直接在nVidia的網站搜尋「display」 因為常常會出新版 之前裝的時候我用的是169.09 現在我已經用到171.05了 而且好像很多版本都可以用&amp;hellip;我整個搞不懂@@&amp;quot;(如果有人可以幫小弟解答麻煩告訴我 謝謝！)
+安裝好之後重開gdm就行了：「$ sudo /etc/init.d/gdm start」
+不過我遇到一個無法開啟特效的問題 就是在「外觀設定(Appearence)」的地方的Visual Effect標籤裡 我沒有辦法讓他開啟特效 他會說要安裝受限的驅動程式(restricted driver)才能開(我想這部份可能是預防錯誤預防過了頭吧)
+我的解決方式是直接按alt+F2 執行compiz就可以開啟特效
+另外 如果想要在開機的時候就開啟特效 可以寫入作業階段(系統-管理-作業階段)裡面 但不是執行「compiz」 而是「compiz &amp;ndash;replace」
+意義好像是要取代本來的metacity 不然會發生錯誤(可能是衝突吧) 所以我之前直接執行compiz 開機進入X之後都會當掉&amp;hellip;.= =&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>修正開機沒有splash畫面(進度條)的問題</title>
+      <link>https://blog.crboy.net/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/</link>
+      <pubDate>Wed, 31 Oct 2007 12:25:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/</guid>
+      <description>開機的 usplash 變黑的 bug 和螢幕解析度有關，只在用 Desktop CD 安裝的時候會遇到。原因是因為安裝程式會偵測螢幕解析度，但是 usplash 沒辦法用那麼高的解析度顯示，於是就黑掉了。
+解法，例如我的螢幕解析度是 1280x1024，但是 usplash 可能只能用 1024x768 跑，到 /etc/usplash.conf 中將
+xres=1280 yres=1024 改成
+xres=1024 yres=768 然後再打
+$ sudo update-initramfs -u -k `uname -r` 更新一下就應該可以看到了。
+資料來源為 Ubuntu@TW 的 josesun 回應</description>
+    </item>
+    
+    <item>
+      <title>解決新視窗不會取得focus的問題</title>
+      <link>https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/</link>
+      <pubDate>Mon, 18 Jun 2007 02:49:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/</guid>
+      <description>我也不確定這是Gnome的問題或是Beryl造成的～
+不過我知道解法了:P
+在Beryl Manager中找General Options裡面有個&amp;quot;聚交保護級&amp;quot; 把高設定為正常就好了:)
+來源</description>
+    </item>
+    
+  </channel>
+</rss>

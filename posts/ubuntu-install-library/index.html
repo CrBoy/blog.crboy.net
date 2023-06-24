@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html><head>
+<title>安裝Ubuntu套件庫沒有的library (以libstdc&#43;&#43;.so.5為例)</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    安裝Ubuntu套件庫沒有的library (以libstdc&#43;&#43;.so.5為例)
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2010-06-05 02:05
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/linux">Linux</a>
+                                &nbsp;
+                            
+                                <a href="/tags/%E7%B6%B2%E7%AE%A1">網管</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>有時候拿人家的程式來跑，也許是對方只肯給執行檔，或者是不給source的商業軟體，或是其他情況，總之，有時候會遇到自己的系統上缺少該程式所需要的dynamically linked library (也就是系統上的.so檔, shared object)，或是自己系統上的函式庫版本太舊或太新，此時的作法有兩種：</p>
+<ol>
+<li>
+<p>使用現有新版函式庫假裝成舊版。<br>
+此種方法很簡單，只要把新版函式庫建立一個symbolic link就可以了，例如：</p>
+<pre><code> [/usr/lib]$ ln -s libstdc++.so.6 libstdc++.so.5
+</code></pre>
+<p>但是很不幸的這種作法是可能出問題的。例如我今天就遇到了這個問題&hellip;.</p>
+<p>我的系統上裝有libstdc++.so.6，但我要執行的程式連結到的是libstdc++.so.5。所以我用類似以上的方式做了一個假的，結果在執行的時候，跳出訊息顯示，該程式需要CXXABI 1.2(其實我也不太清楚這是啥，只知道ABI是Application Binary Interface)，我猜大概是ABI版本太新&hellip;.沒辦法我動不到&hellip;.orz 所以只好認命的去尋找舊版函式庫了&hellip;</p>
+</li>
+<li>
+<p>安裝舊版函式庫<br>
+我在<a href="http://tess-learning.blogspot.com/2010/04/missing-libstdcso5-in-ubuntu-910.html">這篇文章</a>找到做法，而且他寫得很簡單易懂:)</p>
+<ol>
+<li>
+<p>先去<a href="http://packages.debian.org/lenny/libstdc++5">Debian Packages</a>抓取我要的套件的deb檔</p>
+<pre><code> $ wget http://debian.nctu.edu.tw/debian/pool/main/g/gcc-3.3/libstdc++5_3.3.6-18_amd64.deb
+</code></pre>
+</li>
+<li>
+<p>解壓縮抓下來的檔案</p>
+<pre><code> $ dpkg-deb -x libstdc++5_3.3.6-18_amd64.deb libstdc++5
+</code></pre>
+</li>
+<li>
+<p>把其中的函式庫放到/usr/lib中 (小心不要覆蓋到本來的檔案了)</p>
+<pre><code> $ sudo mv libstdc++5/usr/lib/libstdc++.so.5* /usr/lib/
+</code></pre>
+</li>
+<li>
+<p>更新linker的cache</p>
+<pre><code> $ sudo ldconfig
+</code></pre>
+</li>
+</ol>
+<p>完成了&hellip;..<br>
+照著這樣做是沒問題啦&hellip;.只是我心中還有點疑惑，為什麼不直接安裝該deb套件就好？也許有其他什麼原因？</p>
+</li>
+</ol>
+<p>總而言之，要安裝缺少的library，只要找到相應的.so檔，並放到/usr/lib中(或是/usr/local/lib中)，再更新ld的cache即可。<br>
+那&hellip;.如果沒有.so可以抓怎麼辦？那就只好自己找source來編譯了&hellip;..那是另外一段故事:D</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2010-06-05</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/vim-101/">
+			Next<br>第一次用 Vim 就上手
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/proxy-apt-wget/">
+			Previous<br>在apt系統與wget上使用proxy
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

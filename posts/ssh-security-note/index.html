@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html><head>
+<title>SSH 安全性設定筆記</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+      <script src="/js/toc.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/scss/dark-mode.min.cb53f1bee2b8900cb4f082afbf00175d6618f281cf9a2fe8619e3b52d20b5721.css" integrity="sha256-y1PxvuK4kAy08IKvvwAXXWYY8oHPmi/oYZ47UtILVyE=" media="screen">
+
+
+<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Material+Icons">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%83%e8%80%83%e6%96%87%e7%ab%a0%e5%88%97%e8%a1%a8" class="nav-參考文章列表">
+									參考文章列表
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://blog.crboy.net/">
+            CrBoy&#39;s blog
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://blog.crboy.net/">
+        <div class="single-column-header-title">CrBoy&#39;s blog</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    SSH 安全性設定筆記
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2012-05-18 14:16
+                        </time>
+                        
+
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/ssh">ssh</a>
+                                &nbsp;
+                            
+                                <a href="/tags/security">security</a>
+                                &nbsp;
+                            
+                                <a href="/tags/note">note</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p>以下收錄可增加 ssh 安全性的各種技巧，主要的修改都在 <code>/etc/ssh/sshd_config</code> 中，同時，修改設定後別忘了重新載入設定值或重新啟動 sshd。</p>
+<ul>
+<li>
+<p>修改預設 port (可用多行開啟多個 port)</p>
+<pre><code>  Port &lt;port&gt;
+</code></pre>
+</li>
+<li>
+<p>僅監聽特定 ip (適用於多網卡/多 IP 的情形)</p>
+<pre><code>  ListenAddress 192.168.1.10
+</code></pre>
+</li>
+<li>
+<p>禁止 root 登入</p>
+<pre><code>  PermitRootlogin no
+</code></pre>
+<p>管理者必須先以個人帳號登入，再 su 成 root，或利用 sudo 工作。</p>
+</li>
+<li>
+<p>禁止使用空密碼登入</p>
+<pre><code>  PermitEmptyPasswords no
+</code></pre>
+</li>
+<li>
+<p>僅允許或拒絕特定帳號或群組登入</p>
+<pre><code>  AllowUsers &lt;user1&gt; &lt;user2&gt; &lt;user3&gt;
+  AllowGroups &lt;group&gt;
+  DenyUsers *
+  DenyGroups no-ssh
+</code></pre>
+<p>根據實驗，對於同一帳號而言，如果同時 Allow 跟 Deny 的話，結果會是 Deny 的。</p>
+</li>
+<li>
+<p>廢除密碼登錄，強迫使用 RSA/DSA 驗證</p>
+<pre><code>  RSAAuthentication yes
+  PubkeyAuthentication yes
+  AuthorizedKeysFile %h/.ssh/authorized_keys
+  PasswordAuthentication no
+</code></pre>
+<p>並確保 user 的 <code>~/.ssh</code> 權限為 <code>700</code>，同時將該 user 的 public key 加入其 <code>~/.ssh/authorized_keys</code> 中。Public key 的產生方式可搜尋 <code>ssh-keygen</code>。</p>
+</li>
+<li>
+<p>僅允許 SSHv2</p>
+<pre><code>  Protocol 2
+</code></pre>
+</li>
+<li>
+<p>限制特定使用者、群組、主機或位址的登入行為，這裡以限制 <code>somebody</code> 與 <code>handsomebody</code> 不可使用密碼登入為例</p>
+<pre><code>  Match User somebody,handsomebody
+  PasswordAuthentication no
+</code></pre>
+<p>但是要怎麼結束 Match block？我只找到有資料說「In sshd_config, Match blocks must be located at the end of the file.」，如果真是這樣，那就只好認了。</p>
+</li>
+<li>
+<p>使用 TCP wrappers 限制來源 IP</p>
+<pre><code>  # /etc/hosts.deny
+  sshd: ALL
+
+  # /etc/hosts.allow
+  sshd: 192.168.1 1.2.3.4 # 僅允許 192.168.1.* 與 1.2.3.4 連線
+</code></pre>
+</li>
+<li>
+<p>使用 iptables 限制來源 IP</p>
+<pre><code>  # iptables -A INPUT -p tcp -m state --state NEW --source 1.2.3.4 --dport 22 -j ACCEPT
+  # iptables -A INPUT -p tcp --dport 22 -j DROP
+</code></pre>
+<p>設定會立即生效，但若希望重開機後還能保存，需要手動儲存 iptables 的設定。</p>
+</li>
+<li>
+<p>時間鎖定 (這段直接引用並稍微修改<a href="http://os.51cto.com/art/200803/68174_2.htm">原作者的文字</a>，有空再消化整理)</p>
+</li>
+</ul>
+<blockquote>
+<p>你可以使用不同的 iptables 參數來限制到 SSH 服務的連接，讓其在一個特定的時間範圍內可以連接，其他時間不能連接。你可以在下面的任何例子中使用 <code>/second</code>、<code>/minute</code>、<code>/hour</code> 或 <code>/day</code> 開關。
+第一個例子，如果一個用戶輸入了錯誤的密碼，鎖定一分鐘內不允許在訪問 SSH 服務，這樣每個用戶在一分鐘內只能嘗試一次登錄</p>
+<pre><code>  # iptables -A INPUT -p tcp -m state --syn --state NEW --dport 22 -m limit --limit 1/minute --limit-burst 1 -j ACCEPT
+  # iptables -A INPUT -p tcp -m state --syn --state NEW --dport 22 -j DROP
+</code></pre>
+<p>第二個例子，設置 iptables 只允許主機 193.180.177.13 連接到 SSH 服務，在嘗試三次失敗登錄後，iptables 允許該主機每分鐘嘗試一次登錄</p>
+<pre><code>  # iptables -A INPUT -p tcp -s 193.180.177.13 -m state --syn --state NEW --dport 22 -m limit --limit 1/minute --limit-burst 1 -j ACCEPT
+  # iptables -A INPUT -p tcp -s 193.180.177.13 -m state --syn --state NEW --dport 22 -j DROP
+</code></pre>
+</blockquote>
+<ul>
+<li>
+<p>檢查相關檔案權限，不安全則不允許登入</p>
+<pre><code>  StrictModes yes
+</code></pre>
+<p>某些相關檔案權限設定若有錯誤時，可能造成安全性風險。如使用者的 ~/.ssh/authorized_keys 權限若為 666，可能造成其他人可以盜用帳號。</p>
+</li>
+<li>
+<p>自訂使用者登入時顯示的 banner (話說這跟安全性有什麼關係&hellip;? 大概可以用社交方式嚇跑壞人吧&hellip;= =a)</p>
+<pre><code>  Banner /etc/ssh/banner # 任意文字檔
+</code></pre>
+</li>
+<li>
+<p>限制 su/sudo 名單</p>
+<pre><code>  # vi /etc/pam.d/su
+  auth       required     /lib/security/$ISA/pam_wheel.so use_uid
+
+  # visudo
+  %wheel  ALL = (ALL) ALL
+
+  # gpasswd -a user1 wheel
+</code></pre>
+</li>
+<li>
+<p>限制 ssh 使用者名單</p>
+<pre><code>  # vi /etc/pam.d/sshd
+  auth required pam_listfile.so item=user sense=allow file=/etc/ssh_users onerr=fail
+  # echo USERNAME &gt;&gt; /etc/ssh_users
+</code></pre>
+</li>
+</ul>
+<h1 id="參考文章列表">參考文章列表</h1>
+<ul>
+<li><a href="http://www.hkcode.com/linux-bsd-notes/176">網絡技術日誌 - SSH 安全設定</a></li>
+<li><a href="http://www.study-area.org/tips/ssh_tips.htm">SSH 的一些安全小技巧 by Netman</a> (後半段有個有趣的應用技，讓人透過 web 去暫時允許某 ip 登入 ssh，期限 5 分鐘!)</li>
+<li><a href="http://os.51cto.com/art/200803/68174.htm">高级 SSH 安全技巧</a></li>
+<li><a href="http://linux.vbird.org/linux_server/0310telnetssh.php#ssh_sshdconfig">鳥哥的 Linux 私房菜</a></li>
+<li><a href="http://serverfault.com/questions/238711/force-ssh-public-key-authentication-for-specific-users">Force SSH public key authentication for specific users</a></li>
+</ul>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">Last modified on 2012-05-18</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="/posts/solution-for-cannot-open-shared-object/">
+			Next<br>「cannot open shared object file」的解決方案
+                </a>
+                
+                
+                
+                <a class="older-posts" href="/posts/google-account-on-iphone/">
+			Previous<br>在 iPhone 上設定 Google 帳戶
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://blog.crboy.net/">
+    
+        <div class="nav-title">
+            CrBoy&#39;s blog
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    <div class="toc-wrapper">
+        
+
+        
+        <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%83%e8%80%83%e6%96%87%e7%ab%a0%e5%88%97%e8%a1%a8" class="nav-參考文章列表">
+									參考文章列表
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+        
+    </div>
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top"
+            :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+Ported from <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	2016 CrBoy&#39;s blog
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script></body>
+</html>

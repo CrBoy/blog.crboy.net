@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/web/</link>
+    <description>Recent content in web on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Mon, 10 Aug 2015 16:19:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTTP 通訊簡介</title>
+      <link>https://blog.crboy.net/posts/http-how-it-works/</link>
+      <pubDate>Mon, 10 Aug 2015 16:19:00 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/http-how-it-works/</guid>
+      <description>從網址列按下 enter 後，到網頁畫面顯示出來，這中間發生了哪些事？
+前言 我一直很喜歡的一個面試題，我決定今天把它拿出來告訴大家，歡迎參考，條件是如果有什麼有趣的回饋請一定要讓我知道！:P
+每次面試工程師 (敝公司會接觸到的是 web 前後端以及 mobile app 工程師) 的時候，我幾乎都會問這個問題：「從網址列按下 enter 後，到網頁畫面顯示出來，這中間發生了哪些事？」這是一個好像很空泛卻又很實際的問題，我則是認為這個問題可以問出受試者對哪個領域較熟悉。
+舉例來說，如果對方說了「瀏覽器會從 server 讀網頁跟 CSS 還有 JavaScript 回來，然後根據 HTML 產生 DOM，並根據 CSS 裡面描述的規則，對 DOM 中的元素進行排版，並且執行 JavaScript」這樣的話，那你可以猜測他應該比較熟悉前端。如果對方說的是「瀏覽器會送出 request 到 server，server 收到之後會先執行指定的 controller 裡面的 method，然後去存取資料庫把資料撈出來並顯示 view 回傳給瀏覽器」，那這個人應該曾經用某個後端的 framework 寫過網頁。又或是「server 會執行指定的 php 檔案，然後把執行結果顯示在瀏覽器上」，他可能是個比較資淺的 php 工程師 (因為講得很粗略)。我碰過一個有趣的例子，他跟我說的是「瀏覽器會先去找 DNS，解出主機的 IP&amp;hellip;」，那表示他至少知道 DNS 這個東西XD。
+總之，這個問題其實相當開放的，牽扯到的東西也滿多的，下面就來講講我會怎麼對付這個問題。
+OSI 網路七層架構 現在的網路世界，可以被分成很多層，每一層各自有他的功能。參考維基百科上的 OSI 頁面，看出可分為 physical, data link, network, transport, session, presentation, application 等 layer。由於這個問題屬於較上層相關的問題，所以通常會傾向從 application layer 的角度回答，也就是關於 HTTP protocol 本身，以及處理 HTTP protocol 的應用程式等等。不過，由於網路本身也是很重要的，所以如果能夠從 SSL, TCP/IP, DNS, 防火牆等等角度去敘述，也會是個有趣的答案。</description>
+    </item>
+    
+  </channel>
+</rss>

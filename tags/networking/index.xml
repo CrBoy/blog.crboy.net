@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>networking on CrBoy&#39;s blog</title>
+    <link>https://blog.crboy.net/tags/networking/</link>
+    <description>Recent content in networking on CrBoy&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Tue, 27 Sep 2016 18:45:49 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/networking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>發現一個滿方便的 ip 資訊查詢：ipinfo.io</title>
+      <link>https://blog.crboy.net/posts/ipinfo.io/</link>
+      <pubDate>Tue, 27 Sep 2016 18:45:49 +0000</pubDate>
+      
+      <guid>https://blog.crboy.net/posts/ipinfo.io/</guid>
+      <description>以前都用 orange.tw 在查 ip，雖然自己也寫了一個 ip.crboy.net，不過因為實在不想花錢養一台機器，所以就把服務給停掉了。
+剛剛發現 ipinfo.io 這個網站，用瀏覽器開的話相關說明也都有了。但如果直接用 curl 送 request 的話，就可以拿到自己的 ip 的相關資訊（包含地點、國家等）。
+$ curl -D- ipinfo.io HTTP/1.1 200 OK Access-Control-Allow-Origin: * Content-Type: application/json; charset=utf-8 Date: Tue, 27 Sep 2016 10:33:36 GMT Server: nginx/1.8.1 Set-Cookie: first_referrer=; Path=/ X-Content-Type-Options: nosniff Content-Length: 219 Connection: keep-alive { &amp;#34;ip&amp;#34;: &amp;#34;119.14.25.111&amp;#34;, &amp;#34;hostname&amp;#34;: &amp;#34;host-111.25-14-119.dynamic.totalbb.net.tw&amp;#34;, &amp;#34;city&amp;#34;: &amp;#34;Taipei&amp;#34;, &amp;#34;region&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;country&amp;#34;: &amp;#34;TW&amp;#34;, &amp;#34;loc&amp;#34;: &amp;#34;25.0392,121.5250&amp;#34;, &amp;#34;org&amp;#34;: &amp;#34;AS9416 Hoshin Multimedia Center Inc.&amp;#34; } 也可以查詢特定 ip 的資訊：
+$ curl -D- ipinfo.</description>
+    </item>
+    
+  </channel>
+</rss>
