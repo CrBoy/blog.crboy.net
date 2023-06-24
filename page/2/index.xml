@@ -6,6 +6,7 @@
     <description>Recent content on CrBoy&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
+    <copyright>本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</copyright>
     <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
     
         <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
@@ -109,7 +110,7 @@ bundle install --without development test rmagick --local
 &lt;/ol&gt;
 &lt;p&gt;希望上面的筆記也可以對其他人有幫助&amp;hellip;..&lt;/p&gt;
 &lt;p&gt;好啦我知道這篇文章排版很糟糕&amp;hellip;但我實在沒空調整了orz 再抱怨一次 Blogger 的寫文章介面實在不太好用 :(&lt;/p&gt;
-- https://blog.crboy.net/posts/install-redmine-on-windows/ - </description>
+- https://blog.crboy.net/posts/install-redmine-on-windows/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -137,7 +138,7 @@ Press enter to keep the current choice[*], or type selection number: 3
 update-alternatives: using /usr/bin/vim.basic to provide /usr/bin/editor (editor) in manual mode.
 $ 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其實重點就是那個 &lt;code&gt;sudo update-alternatives --config editor&lt;/code&gt; 而已啦XD 後面照著指示操作就好了&amp;hellip; :)&lt;/p&gt;
-- https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/ - </description>
+- https://blog.crboy.net/posts/change-debian-ubuntu-default-editor/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -169,7 +170,7 @@ $
 &lt;li&gt;因為 PHPMailer 新增收件人的 API 是 &lt;code&gt;AddAddress()&lt;/code&gt;，所以要注意，要更改收件人的話必須先執行 &lt;code&gt;ClearAddresses()&lt;/code&gt;，否則收件人清單會一直長&amp;hellip;.(好險我在正式寄信前的測試就發現這個問題&amp;hellip;orz)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;大概&amp;hellip;差不多是這樣吧！突然有點佩服自己，一點小東西也可以囉嗦這麼多，哈哈&amp;hellip;.&lt;/p&gt;
-- https://blog.crboy.net/posts/php-email-by-gmail/ - </description>
+- https://blog.crboy.net/posts/php-email-by-gmail/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -228,7 +229,7 @@ $
 &lt;/ul&gt;
 &lt;p&gt;把想改的東西改一改之後，可以透過 &lt;code&gt;gitit &amp;amp;&lt;/code&gt; 重新執行 gitit。這指令跟前面不太一樣，後面多了一個 &amp;amp;，這樣可以把 gitit 丟到背景執行。而且如果你 logout 了，這個 process 還是會乖乖的留在系統裡，服務不會中斷!!&lt;/p&gt;
 &lt;p&gt;透過幾個簡單的步驟，一個精美的 wiki 就這樣架好了。不過&amp;hellip;.俗話說的好，魔鬼藏在細節裡！架起來只是第一步而已，有些地方還是需要調整跟修改的&amp;hellip;.下集待續！&lt;/p&gt;
-- https://blog.crboy.net/posts/introduction-to-gitit/ - </description>
+- https://blog.crboy.net/posts/introduction-to-gitit/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -251,7 +252,7 @@ php_value xdebug.profiler_output_dir /tmp/xdebug
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;應該滿好懂的？其實就是&amp;hellip;前面先指定 &lt;code&gt;php_value&lt;/code&gt;，後面不用等號，直接寫設定值即可。&lt;/p&gt;
 &lt;p&gt;這樣做出來的結果，可以在 phpinfo 裡面看到成效。phpinfo 下方的 Configuration 那邊，設定值的部分有三欄，分別是 Directive、Local Value、Master Value，Directive 就是設定值的名稱，Local Value 是在該目錄真的會生效的設定值，Master Value 則是全系統的設定值。如果你覆蓋了全系統的設定，那麼你會看到你的 Local Value 跟 Master Value 不同，應該滿好認的。&lt;/p&gt;
 &lt;p&gt;透過這個方式，我們可以隨時去修改 php 的設定值，對於一些測試性的行為很有幫助！:D&lt;/p&gt;
-- https://blog.crboy.net/posts/php-setting-in-htaccess/ - </description>
+- https://blog.crboy.net/posts/php-setting-in-htaccess/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -278,7 +279,7 @@ php_value xdebug.profiler_output_dir /tmp/xdebug
 &lt;p&gt;有時候搭捷運啊，或是火車、高鐵之類的交通工具，常常聽到多種語言的語音廣播，有國語、台語、客語、英語。但是很奇怪，台灣人好像很喜歡把中文地名混入洋腔洋調唸給外國人聽？「台北」會被唸成「胎~配~」(跟「唉配」有關係嗎？)，「台南」會被唸成「胎~難~」，「左營」會唸成「ㄗㄨㄛ~硬~」&amp;hellip;&amp;hellip;&amp;hellip;都沒人覺得這樣很奇怪嗎？真的都沒人覺得這樣很奇怪嗎？(請原諒我跳針)&lt;/p&gt;
 &lt;p&gt;我不相信外國人聽到台灣人念出「台北」「台南」「左營」這種&lt;!-- raw HTML omitted --&gt;我們在用的發音&lt;!-- raw HTML omitted --&gt;會聽不懂&amp;hellip;說「洋中文」真的有比較好嗎？要國際化，也不用把自己的文化放在地上踩吧&amp;hellip;.. :(&lt;/p&gt;
 &lt;p&gt;PS. 前陣子經過台南市大學路跟勝利路口，看到有塊嶄新的路牌寫了「University Road」，當下覺得不太對勁&amp;hellip;因為我之前看到的路牌是「Dasyue Road」(查一下就知道這是通用拼音XD)。雖然我覺得用 University Road 表示「大學路」比較好，但是我更無法接受的是同一個中文名稱卻有不統一的翻譯。我覺得這真是太丟臉了，我們竟然連一個路牌都做不好&amp;hellip;.&lt;/p&gt;
-- https://blog.crboy.net/posts/wtf-pinyin/ - </description>
+- https://blog.crboy.net/posts/wtf-pinyin/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -308,7 +309,7 @@ php_value xdebug.profiler_output_dir /tmp/xdebug
 &lt;p&gt;最後，其實跟態度也有很大關連，要把問題問對。文章中已經舉了非常多例子，這邊應該不用多說，我寫得實在太差了，還是看原文比較好！:P&lt;/p&gt;
 &lt;p&gt;不過值得一提的是，要記得 RTFM (Read The Fucking Manual) 還有 STFW (Search The Fucking Web)。每次問問題的時候，最好都先自己找過答案。每次收到答案的時候，可能當中會有一些看不懂的東西，也記得要先找過答案。如果你收到了 &lt;em&gt;TF&lt;/em&gt; 的答案&amp;hellip;.那就快去，因為答案真的在那裡&amp;hellip;..&lt;/p&gt;
 &lt;p&gt;PS. 最近在思考一些關於學習的問題，總覺得普遍對於學習這件事不太抱有熱情&amp;hellip;但似乎是個無解的問題。該如何鼓勵身邊的其他人 (例如學弟妹) 對探索跟學習的熱情，好像是個很難的問題&amp;hellip;其實熱情也許是興趣的產物吧&amp;hellip;沒興趣就很難解&amp;hellip;.&lt;/p&gt;
-- https://blog.crboy.net/posts/smart-questions/ - </description>
+- https://blog.crboy.net/posts/smart-questions/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -373,7 +374,7 @@ php_value xdebug.profiler_output_dir /tmp/xdebug
 &lt;p&gt;&lt;img src=&#34;https://www.books.com.tw/img/001/053/71/0010537172.jpg&#34; alt=&#34;你跟父母相處的時間 其實只剩下 55 天&#34;&gt;&lt;/p&gt;
 &lt;p&gt;「你跟父母相處的時間 其實只剩下 55 天」&lt;/p&gt;
 &lt;p&gt;我想也許我的時間&amp;hellip;.更短一些吧？這些日子，我可以怎樣多陪陪媽媽呢？&lt;/p&gt;
-- https://blog.crboy.net/posts/mayday-washer/ - </description>
+- https://blog.crboy.net/posts/mayday-washer/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -395,7 +396,7 @@ php_value xdebug.profiler_output_dir /tmp/xdebug
 &lt;p&gt;HP ProCurve 1810G-24 的 Auto DoS 功能會把 NFS 給擋掉！&lt;/p&gt;
 &lt;p&gt;對&amp;hellip;.跟 Synology 完全無關&amp;hellip;.都是 HP 害的!!!!!!!! 去 Google 搜尋「Auto DoS NFS」也可以找到相關文章&amp;hellip;.都是同一台= = 我還嘗試去找出原因&amp;hellip;.但是找來找去&amp;hellip;.我只能說這是個 bug 吧&amp;hellip;..&lt;/p&gt;
 &lt;p&gt;總之，這真是太杯具了&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;..&lt;/p&gt;
-- https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/ - </description>
+- https://blog.crboy.net/posts/nfs-mount-fail-caused-by-switch/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -417,7 +418,7 @@ php_value xdebug.profiler_output_dir /tmp/xdebug
 &lt;p&gt;透過測試，我們可以知道系統效能狀況。可以從兩個角度來看：從外面看，看 CPU 與 IO 的使用率。從裡面看，看系統 profiling 的數據。但其實有個很尷尬的問題，profiler 會稍微降低系統效能，所以對於上線的(且忙碌的)系統來說，想抓到真實狀況又不想對系統造成影響真的很難&amp;hellip;..orz&lt;/p&gt;
 &lt;p&gt;最後談到「解決問題」這就多了，因為不同的問題需要不同的解決方式，我認為文章裡每一條經驗都很值得參考！首先可能要改演算法，演算法對效能的影響，我想寫過 ICPC 比賽或是 UVa Online Judge 的人最清楚了！雖然有很多現實問題真的不是演算法解決的 (都是一些有的沒的雜事)，但底下用到的每個演算法都有機會成為瓶頸，也就有可能是系統加速的關鍵。再來，底層會發生的問題也要注意！誰說寫程式不用知道底層？對底層知道的越多，越有可能寫出好程式，這個定律是不會變的&amp;hellip;再來講到系統方面的最佳化，這也是對底層知道越多越有用的例子。後面則是講到資料庫&amp;hellip;資料庫性能調校相對於系統或是程式語言底層實做來說，應該算是顯學了。但是顯學歸顯學，也不是每個人都了解資料庫，所以「亂調一通然後看看速度多快」反而變成最 popular 的技術了&amp;hellip;.= = 文章這部份也相當值得閱讀，首先要知道 DB 的 lock 還有其他實做問題，再來可以透過工具看到 SQL query 的 execution plan (這真的很有用！比亂猜好太多了！但有些 RDBMS 要看到 execution plan 相當麻煩= =)。最後則是常見的 SQL 性能問題，像是 full table scan、index 的使用不當，或是某些通常很花時間的功能&amp;hellip;&lt;/p&gt;
 &lt;p&gt;簡單下個結論，軟體性能調校很重要，但是有些人常常沒有用對方法。建議好好讀過這兩篇文章，還有網路上的其他好文章，嘗試看看用比較好的方法做調整！:)&lt;/p&gt;
-- https://blog.crboy.net/posts/software-performance-tuning/ - </description>
+- https://blog.crboy.net/posts/software-performance-tuning/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     

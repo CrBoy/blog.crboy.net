@@ -6,6 +6,7 @@
     <description>Recent content on CrBoy&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
+    <copyright>本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</copyright>
     <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
     
         <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
@@ -55,7 +56,7 @@ $ git subtree add -P themes/crboy-icarus theme-crboy-icarus master
 &lt;li&gt;&lt;a href=&#34;https://github.com/git/git/blob/master/contrib/subtree/git-subtree.txt&#34;&gt;git-subtree&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://yutin.logdown.com/posts/188306-git-subtree-total-addendum-library&#34;&gt;Git SubTree 共編 Library&lt;/a&gt;（我覺得這篇寫得滿好懂的，是我找了很多篇教學中最好懂的一篇）&lt;/li&gt;
 &lt;/ul&gt;
-- https://blog.crboy.net/posts/amazing-git-subtree/ - </description>
+- https://blog.crboy.net/posts/amazing-git-subtree/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -80,7 +81,7 @@ $ git subtree add -P themes/crboy-icarus theme-crboy-icarus master
 &lt;p&gt;不過倒是有個小小的問題&amp;hellip;..這張憑證簽給好多 domain 啊&amp;hellip;..而且除了我的 domain 以外也有別人的 domain，而且都是 wildcard&amp;hellip;.覺得有點擔心呢XD&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;cf-flexible-ssl-cert.png&#34; alt=&#34;cf-flexible-ssl-cert&#34;&gt;&lt;/p&gt;
 &lt;p&gt;另一個方式（需要花點錢）是透過 AWS 的 CloudFront（也是 CDN 服務），他也有一樣模式的東西，AWS 會幫你簽一張憑證，不過這憑證是專門簽給那個 domain 的。實際上是在 AWS Certificate Manager (ACM) 中自己決定要簽給哪些 domain，AWS 會寄信給 domain 的管理者請求 approve。雖然這樣安心多了，不過要花錢&amp;hellip;.就算了吧XD&lt;/p&gt;
-- https://blog.crboy.net/posts/cloudflare-flexible-ssl/ - </description>
+- https://blog.crboy.net/posts/cloudflare-flexible-ssl/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -210,7 +211,7 @@ Connection: keep-alive
   &amp;#34;loc&amp;#34;: &amp;#34;34.9500,135.7830&amp;#34;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;看起來還是有些特別的 ip 可以查XD 原來這台主機放在 AWS EC2 的日本機房嗎&amp;hellip;&amp;hellip;（思）&lt;/p&gt;
-- https://blog.crboy.net/posts/ipinfo.io/ - </description>
+- https://blog.crboy.net/posts/ipinfo.io/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -226,7 +227,7 @@ Connection: keep-alive
 其實寫 blog 是希望可以把一些想法或是研究的東西記錄下來，同時也可以分享給其他人，還有未來的自己。&lt;/p&gt;
 &lt;p&gt;這次我改用 &lt;a href=&#34;https://hexo.io/&#34;&gt;Hexo&lt;/a&gt;，主要看上的是可以用 markdown 寫文章，還可以自訂外觀（Logdown 不能自訂外觀），而且 generate 之後可以放在各種網頁伺服器上，或是 GitHub pages、AWS S3 之類的。總之感覺很方便XD 唯一有一點，過去我一直不傾向使用這一類的 static site generator，像是 &lt;a href=&#34;http://octopress.org/&#34;&gt;Octopress&lt;/a&gt; 之類（我承認我之前看到 Octopress 的時候很心動），是因為沒辦法在線上編輯器直接編輯文章。不過後來想想，其實我的文章產量實在夠少的（自己懶惰），不是在自己電腦上其實也根本不想寫文章。所以有沒有手機 app 或是能不能線上編輯好像都不是非常重要，如果真的要用手機紀錄東西就先記在筆記裡面就好了。&lt;/p&gt;
 &lt;p&gt;這是這個 blog 的誕生，我會努力的把以前寫的文章慢慢轉成 markdown，雖然說放棄了以前的 SEO，但反正我每次換 blog system 都在放棄 SEO，我早就已經放棄 SEO 了啦XD&lt;/p&gt;
-- https://blog.crboy.net/pages/about/ - </description>
+- https://blog.crboy.net/pages/about/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -243,7 +244,7 @@ Connection: keep-alive
 &lt;p&gt;hexo-config 方法会去 theme 主题下的 _config.yml 中查找参数中的配置项&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;原來是會讀取 &lt;strong&gt;theme 底下的&lt;/strong&gt; &lt;code&gt;_config.yml&lt;/code&gt; 啊！難怪我改 Hexo 的 &lt;code&gt;_config.yml&lt;/code&gt;（根目錄那一個）沒辦法起作用。不過奇怪的是，像是 &lt;code&gt;customize.profile.author&lt;/code&gt; 之類的設定，在 Hexo 的 config 中修改，會起作用。不曉得 Hexo 在這邊是怎麼處理的&amp;hellip;&lt;/p&gt;
-- https://blog.crboy.net/posts/hexo-notes-apply-icarus/ - </description>
+- https://blog.crboy.net/posts/hexo-notes-apply-icarus/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -261,7 +262,7 @@ Connection: keep-alive
 這樣也可以提高我發文的品質，而且可以好好整理文字內容。感覺這樣滿不錯的。&lt;/p&gt;
 &lt;p&gt;於是我重新找了一下，發現這類工具好像還是以 Octopress 跟 Hexo 為大宗，而且 Hexo 據說比較易用，還是台灣人做的，當然要支持一下。（而且聽說 page render 的效能差很多&amp;hellip;.XD）
 那麼，就開始學 Hexo 該怎麼用了！&lt;/p&gt;
-- https://blog.crboy.net/posts/move-to-hexo/ - </description>
+- https://blog.crboy.net/posts/move-to-hexo/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -316,7 +317,7 @@ HTML 中會有些 tag 參考到其他資料嘛，比方說像是 link (通常用
 &lt;h1 id=&#34;結語&#34;&gt;結語&lt;/h1&gt;
 &lt;p&gt;其實寫了這麼亂一篇，還是覺得不夠全面，畢竟一開始我提出來的問題就是個開放式的問題&amp;hellip;回頭看看這篇文章，發現如果是另一個人來看我的文章，也會抓出我對於哪些方面的技術接觸較多，哪些比較少，還有哪些地方其實我一竅不通XD&lt;br&gt;
 期許這篇文章可以對一些朋友有點幫助，也希望各路高手如果抓到什麼問題，或是覺得哪邊值得討論，都可以提出來。雖然我很懶 (XD 要不是搭車沒有網路用，我可能一輩子不會把這篇文章寫出來)，但我還是會儘量把上面寫的東西修得更完整的啦&amp;hellip;.&lt;/p&gt;
-- https://blog.crboy.net/posts/http-how-it-works/ - </description>
+- https://blog.crboy.net/posts/http-how-it-works/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -331,7 +332,7 @@ HTML 中會有些 tag 參考到其他資料嘛，比方說像是 link (通常用
 &lt;p&gt;簡單說，Evernote Web Clipper 在安裝了 NoScript 的 Firefox 上擷取的時候會有一點小小的問題&amp;hellip;原因是 NoScript 把 evernote 外掛做的事情當成 XSS 了。解決方式很簡單，根據&lt;a href=&#34;http://discussion.evernote.com/topic/12304-noscript-and-evernote/&#34;&gt;這篇討論&lt;/a&gt;所說的，只要在 NoScript 的 XSS 白名單中加入下面這行就可以了：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;^https://www.evernote.com/noteit.action(.+)?
 &lt;/code&gt;&lt;/pre&gt;
-- https://blog.crboy.net/posts/evernote-web-clipper-noscript/ - </description>
+- https://blog.crboy.net/posts/evernote-web-clipper-noscript/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -375,7 +376,7 @@ HTML 中會有些 tag 參考到其他資料嘛，比方說像是 link (通常用
 &lt;p&gt;最後，總不能畫完東西只給自己看吧XD Balsamiq Mockups 提供 export 的功能，可以輸出成 PNG 圖檔或是 PDF 檔，當然也可以放進系統剪貼簿或是直接列印出來。&lt;br&gt;
 &lt;img src=&#34;14.png&#34; alt=&#34;14&#34;&gt;&lt;/p&gt;
 &lt;p&gt;這樣的工具也許有些人(可能是專業設計師或 photoshop 強者)認為沒什麼，但每樣工具都有他不同的目標。Balsamiq Mockups 並沒有辦法用來作各種不同的繪圖，但是他專注於繪製 mockup 這件事上，所以可以讓這件事變得很簡單，門檻很低，特別是對小弟這種美術白癡來說相當受用！不管是網站設計公司、SOHO或是要設計教材之類的用途，都相當實用。推薦~ :P&lt;/p&gt;
-- https://blog.crboy.net/posts/balsamiq-mockups/ - </description>
+- https://blog.crboy.net/posts/balsamiq-mockups/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -431,7 +432,7 @@ HTML 中會有些 tag 參考到其他資料嘛，比方說像是 link (通常用
 		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 	}   
 }
-&lt;/code&gt;&lt;/pre&gt;- https://blog.crboy.net/posts/gitit-custom-domain/ - </description>
+&lt;/code&gt;&lt;/pre&gt;- https://blog.crboy.net/posts/gitit-custom-domain/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     

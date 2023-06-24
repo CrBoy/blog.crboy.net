@@ -6,6 +6,7 @@
     <description>Recent content on CrBoy&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
+    <copyright>本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</copyright>
     <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
     
         <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
@@ -64,7 +65,7 @@
 &lt;p&gt;至於80%的部份，一開始其實有點猶豫，畢竟少了numpad可以用，不過平常筆電也用得很習慣了，所以不要緊。而且80%鍵盤比較省空間，帶出門也比較好帶(大概過陣子就會懶得帶了啦，不過一開始就是會帶著跑來跑去&amp;hellip;.)，唯一的小小不方便就只有偶爾想要用到numpad右下角那個enter的時候&amp;hellip;不過這沒差啦！&lt;/p&gt;
 &lt;p&gt;整體來說，考慮到價錢，這鍵盤的C/P值算是普普通通，不過買把好鍵盤對於經常打字的人來說真的很重要，不但保護雙手，打起來爽度也比較高！經過一番掙扎後還是衝了&amp;hellip;.不然本來只想買FILCO茶軸的&amp;hellip;(也不賴但是有段落感，稍微不喜歡:P)&lt;/p&gt;
 &lt;p&gt;最後跟各位抱歉一下，這篇開箱文不但不專業又把圖拍得很醜XD 希望想要看圖的捧油們可以看得不要太火大&amp;hellip;.下台一鞠躬&amp;lt;(_ _)&amp;gt;&lt;/p&gt;
-- https://blog.crboy.net/posts/filco%E7%B4%85%E8%BB%B880%E9%8D%B5%E7%9B%A4%E9%96%8B%E7%AE%B1/ - </description>
+- https://blog.crboy.net/posts/filco%E7%B4%85%E8%BB%B880%E9%8D%B5%E7%9B%A4%E9%96%8B%E7%AE%B1/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -187,7 +188,7 @@ vllllllllllllld
 :set nonu
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;就先這樣吧@@&lt;/p&gt;
-- https://blog.crboy.net/posts/vim-101/ - </description>
+- https://blog.crboy.net/posts/vim-101/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -239,7 +240,7 @@ vllllllllllllld
 &lt;/ol&gt;
 &lt;p&gt;總而言之，要安裝缺少的library，只要找到相應的.so檔，並放到/usr/lib中(或是/usr/local/lib中)，再更新ld的cache即可。&lt;br&gt;
 那&amp;hellip;.如果沒有.so可以抓怎麼辦？那就只好自己找source來編譯了&amp;hellip;..那是另外一段故事:D&lt;/p&gt;
-- https://blog.crboy.net/posts/ubuntu-install-library/ - </description>
+- https://blog.crboy.net/posts/ubuntu-install-library/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -275,7 +276,7 @@ ftp_proxy = http://PROXY-SERVER:PORT
 &lt;li&gt;&lt;a href=&#34;http://turtle.ee.ncku.edu.tw/~tung/proxy/proxylst.html&#34;&gt;Proxy Server 列表&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://mis.ntct.edu.tw/book/368&#34;&gt;如何在 Linux 使用 wget 透過 proxy 抓取檔案&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-- https://blog.crboy.net/posts/proxy-apt-wget/ - </description>
+- https://blog.crboy.net/posts/proxy-apt-wget/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -315,7 +316,7 @@ Installation is simple enough, and similar to the Ubuntu Karmic method.&lt;/p&gt
 &lt;li&gt;&lt;a href=&#34;https://help.ubuntu.com/community/FreeNX&#34;&gt;Ubuntu Documentation - FreeNX&lt;/a&gt; 這篇是主要資料來源，裡面也提到在9.10上的安裝方式，其實就是安裝freenx。&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.kenming.idv.tw/ubuntu-server_windows-os_remote-desktop-control_by-freenx&#34;&gt;Ubuntu Server 與 Windows 系統的遠端桌面遙控 by FreeNX&lt;/a&gt; 這篇主要是用官方的免費版本(然後最下面有提到neatx)，如我前面提到的，NoMachine免費版本會有session數量限制(而且不多)，如果是多人使用的話要注意。&lt;/li&gt;
 &lt;/ul&gt;
-- https://blog.crboy.net/posts/install-nx-on-ubuntu-10.04/ - </description>
+- https://blog.crboy.net/posts/install-nx-on-ubuntu-10.04/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -372,7 +373,7 @@ Host key verification failed.
 &lt;li&gt;&lt;a href=&#34;http://www.lysium.de/blog/index.php?/archives/186-How-to-get-ssh-server-fingerprint-information.html&#34;&gt;How to get ssh server fingerprint information&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.symantec.com/connect/articles/ssh-host-key-protection&#34;&gt;SSH Host Key Protection&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-- https://blog.crboy.net/posts/get-ssh-server-fingerprint/ - </description>
+- https://blog.crboy.net/posts/get-ssh-server-fingerprint/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -406,7 +407,7 @@ GM_JQ.type = &#39;text/javascript&#39;;
 GM_JQ.appendChild(GM_JQ_src);  
 document.getElementsByTagName(&#39;body&#39;)[0].appendChild(GM_JQ);
 &lt;/code&gt;&lt;/pre&gt;
-- https://blog.crboy.net/posts/patch-replurk-chrome/ - </description>
+- https://blog.crboy.net/posts/patch-replurk-chrome/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -456,7 +457,7 @@ document.getElementsByTagName(&#39;body&#39;)[0].appendChild(GM_JQ);
 &lt;li&gt;Linux 文件系統從 ext3 升級到 ext4 &lt;a href=&#34;http://www.vpsee.com/2010/01/convert-ext3-to-ext4-filesystem/&#34;&gt;http://www.vpsee.com/2010/01/convert-ext3-to-ext4-filesystem/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;sshlog-轉換 Ext3 到 Ext4 &lt;a href=&#34;http://blog.ssh.tw/?p=1447&#34;&gt;http://blog.ssh.tw/?p=1447&lt;/a&gt; (有ssh大掛保證，這方法讓我更安心了XD)&lt;/li&gt;
 &lt;/ul&gt;
-- https://blog.crboy.net/posts/upgrade-to-ext4/ - </description>
+- https://blog.crboy.net/posts/upgrade-to-ext4/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -488,7 +489,7 @@ var ie = &#39;\v&#39;==&#39;v&#39;;
 var ie = !+&amp;quot;\v1&amp;quot;;  
 &amp;lt;/script&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-- https://blog.crboy.net/posts/%E7%94%A8javascript%E5%88%A4%E5%AE%9A%E7%80%8F%E8%A6%BD%E5%99%A8%E6%98%AF%E5%90%A6%E7%82%BAie/ - </description>
+- https://blog.crboy.net/posts/%E7%94%A8javascript%E5%88%A4%E5%AE%9A%E7%80%8F%E8%A6%BD%E5%99%A8%E6%98%AF%E5%90%A6%E7%82%BAie/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -543,7 +544,7 @@ var ie = !+&amp;quot;\v1&amp;quot;;
 把 Linux 桌面錄製為影片。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-- https://blog.crboy.net/posts/top-10-linux-one-liners/ - </description>
+- https://blog.crboy.net/posts/top-10-linux-one-liners/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     

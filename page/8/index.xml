@@ -6,6 +6,7 @@
     <description>Recent content on CrBoy&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
+    <copyright>本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</copyright>
     <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
     
         <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
@@ -164,7 +165,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;另外附上我&lt;a href=&#34;http://mac1.ccns.ncku.edu.tw/wordpress/?p=366&#34; title=&#34;我學弟對這個程式的介紹&#34;&gt;學弟對這個程式的介紹&lt;/a&gt;，我想他的文筆應該比我好吧&amp;hellip;.|||&lt;/p&gt;
 &lt;p&gt;或是您也可以直接去 Google 搜尋「screen message」(千萬不要只搜尋簡寫&amp;hellip;orz) 有很多相關資料~:P&lt;/p&gt;
 &lt;p&gt;Ubuntu 的使用者也可以直接 &lt;code&gt;$ sudo apt-get install sm&lt;/code&gt; 來安裝唷~(不過好像是 C 語言版本的，C 語言版本在我的電腦上運作會跟 compiz 搭配得不太好&amp;hellip;)&lt;/p&gt;
-- https://blog.crboy.net/posts/screen-message/ - </description>
+- https://blog.crboy.net/posts/screen-message/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -213,7 +214,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;以上，PCManX 裝完收工！&lt;/p&gt;
 &lt;p&gt;註：過去 PCManX 的專案網頁在&lt;a href=&#34;http://pcmanx.csie.net/&#34;&gt;這裡&lt;/a&gt;，但是自從 0.3.9 以後，就轉移到 Google Code 上了。詳細的原因我不清楚，但是結論就是這樣&amp;hellip;&lt;/p&gt;
-- https://blog.crboy.net/posts/build-pcmanx-on-ubuntu-9.10/ - </description>
+- https://blog.crboy.net/posts/build-pcmanx-on-ubuntu-9.10/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -241,7 +242,7 @@
 &lt;li&gt;ports安裝實在好慢&amp;hellip;.XD 要等好久 看來這種爛機器不適合自己編程式&amp;hellip;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;暫時是這個樣子 這篇文章沒有參考價值! 噢 之前是裝FreeBSD6.3 現在裝的是7.2&lt;/p&gt;
-- https://blog.crboy.net/posts/freebsd-%E7%9B%B8%E8%A6%8B%E6%AD%A1/ - </description>
+- https://blog.crboy.net/posts/freebsd-%E7%9B%B8%E8%A6%8B%E6%AD%A1/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -374,7 +375,7 @@ GCC(g++), MinGW(其實也是GCC), Visual C++(6,2005,2008)&lt;br&gt;
 所以我總是說我跟C++不熟&amp;hellip;不知道有沒有C語言的考題 我跟C語言比較熟一點點&amp;hellip;.一點點而已啦&amp;hellip;.XD&lt;/p&gt;
 &lt;p&gt;五樓 請問這篇你給幾分？&lt;/p&gt;
 &lt;p&gt;ps. 這篇是榮譽考 我沒有查資料 所以很鳥請不要見怪 內容有錯誤人子弟也概不負責！&lt;/p&gt;
-- https://blog.crboy.net/posts/%E6%88%91%E6%9C%83c&#43;&#43;%E5%97%8E/ - </description>
+- https://blog.crboy.net/posts/%E6%88%91%E6%9C%83c&#43;&#43;%E5%97%8E/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -412,7 +413,7 @@ libflashplayer.so: ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), 
 &lt;/ol&gt;
 &lt;p&gt;個人私心認為2是最好的選擇(64 bits的lib就放在lib64很合理嘛..) 而如果是非管理員的user則可以選擇放在1&lt;/p&gt;
 &lt;p&gt;這是一篇很緊張的速記 未來也沒有重構的打算 但若是有錯誤也歡迎提供指教！&lt;/p&gt;
-- https://blog.crboy.net/posts/opensuse-%E5%AE%89%E8%A3%9D-flashplayer-plugin/ - </description>
+- https://blog.crboy.net/posts/opensuse-%E5%AE%89%E8%A3%9D-flashplayer-plugin/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -434,7 +435,7 @@ libflashplayer.so: ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), 
 我的解決方式是直接按alt+F2 執行compiz就可以開啟特效&lt;/p&gt;
 &lt;p&gt;另外 如果想要在開機的時候就開啟特效 可以寫入作業階段(系統-管理-作業階段)裡面 但不是執行「compiz」 而是「compiz &amp;ndash;replace」&lt;br&gt;
 意義好像是要取代本來的metacity 不然會發生錯誤(可能是衝突吧) 所以我之前直接執行compiz 開機進入X之後都會當掉&amp;hellip;.= =&amp;quot;&lt;/p&gt;
-- https://blog.crboy.net/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9Dnvidia%E5%AE%98%E6%96%B9%E9%A1%AF%E7%A4%BA%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F/ - </description>
+- https://blog.crboy.net/posts/%E5%9C%A8ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9Dnvidia%E5%AE%98%E6%96%B9%E9%A1%AF%E7%A4%BA%E9%A9%85%E5%8B%95%E7%A8%8B%E5%BC%8F/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -465,7 +466,7 @@ libflashplayer.so: ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), 
 &lt;p&gt;我常常跟人家說 Ubuntu是很好安裝的系統 但是如果要安裝雙系統是高級技巧&amp;hellip;特別是現在Vista要做雙系統好像更麻煩去了&amp;hellip;.唉&amp;hellip;.&lt;/p&gt;
 &lt;h1 id=&#34;後記&#34;&gt;後記&lt;/h1&gt;
 &lt;p&gt;後來我不知道什麼時候突然發現我的Vista開機都會有個錯誤訊息 所以我會再找時間重灌(其實是還原)Vista 到時候就可以看看他到底會不會把我的Ubuntu給毀了&amp;hellip;XD 或是毀掉我的MBR(grub裝在MBR裡..)&lt;/p&gt;
-- https://blog.crboy.net/posts/%E5%9C%A8thinkpad-r61-a76%E4%B8%8A%E5%AE%89%E8%A3%9Dubuntu-&#43;-vista%E9%9B%99%E7%B3%BB%E7%B5%B1/ - </description>
+- https://blog.crboy.net/posts/%E5%9C%A8thinkpad-r61-a76%E4%B8%8A%E5%AE%89%E8%A3%9Dubuntu-&#43;-vista%E9%9B%99%E7%B3%BB%E7%B5%B1/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -490,7 +491,7 @@ yres=768
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;更新一下就應該可以看到了。&lt;/p&gt;
 &lt;p&gt;資料來源為 Ubuntu@TW 的 josesun 回應&lt;/p&gt;
-- https://blog.crboy.net/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/ - </description>
+- https://blog.crboy.net/posts/%E4%BF%AE%E6%AD%A3%E9%96%8B%E6%A9%9F%E6%B2%92%E6%9C%89splash%E7%95%AB%E9%9D%A2%E9%80%B2%E5%BA%A6%E6%A2%9D%E7%9A%84%E5%95%8F%E9%A1%8C/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -503,7 +504,7 @@ yres=768
         <guid>https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/</guid>
         <description>CrBoy&#39;s blog https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/ -&lt;p&gt;在我看到之前已經有人推 OpenOffice.org 了&amp;hellip;&lt;br&gt;
 只是讓我突然想到 之前不知道看誰說過 你用 MS Office 是很強大沒錯 只是也用不到那麼多功能&amp;hellip;大部分的人 包含我自己在內 其實都用不到什麼很進階的功能 不過就是打打字 排個版 畫個表格之類&amp;hellip;這些東西都可以用 OO.o 來達成 以 c/p 值來說當然高很多 不過我也承認 MS Office 真的比較好用 至少介面親和力比較高 功能也比較完善 (OO.o 有時候會有一些我想要的效果做不出來) 只是人家就是要錢&amp;hellip;.我現在用的是成大的授權 那將來呢？我希望 OO.o 進步快一點 在我畢業之後可以完全不要用 MS Office～～&lt;/p&gt;
-- https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/ - </description>
+- https://blog.crboy.net/posts/%E4%BB%8A%E5%A4%A9%E7%9C%8B%E5%88%B0%E6%9C%89%E4%BA%BA%E5%9C%A8%E5%BE%B5-ms-office/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -518,7 +519,7 @@ yres=768
 不過我知道解法了:P&lt;/p&gt;
 &lt;p&gt;在Beryl Manager中找General Options裡面有個&amp;quot;聚交保護級&amp;quot; 把高設定為正常就好了:)&lt;br&gt;
 &lt;a href=&#34;http://www.ubuntu.org.tw/modules/newbb/viewtopic.php?viewmode=flat&amp;amp;type=&amp;amp;topic_id=4541&amp;amp;forum=22&#34;&gt;來源&lt;/a&gt;&lt;/p&gt;
-- https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/ - </description>
+- https://blog.crboy.net/posts/%E8%A7%A3%E6%B1%BA%E6%96%B0%E8%A6%96%E7%AA%97%E4%B8%8D%E6%9C%83%E5%8F%96%E5%BE%97focus%E7%9A%84%E5%95%8F%E9%A1%8C/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     

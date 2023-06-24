@@ -6,6 +6,7 @@
     <description>Recent content on CrBoy&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
+    <copyright>本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</copyright>
     <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
     
         <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
@@ -37,7 +38,7 @@
 &lt;li&gt;外觀的好壞很主觀，我並不認為 Ubuntu 的 artwork 有跟 Mac 一樣漂亮&amp;hellip;.&lt;/li&gt;
 &lt;li&gt;操作性(使用者體驗)而言，我認為 Mac 還是優於目前我所用過的幾種 Linux 桌面。但還是有些地方我比較喜歡 Linux 上的設計。&lt;/li&gt;
 &lt;/ol&gt;
-- https://blog.crboy.net/posts/%E5%A6%82%E4%BD%95%E8%AA%AA%E6%9C%8D%E4%BD%A0%E7%9A%84%E6%9C%8B%E5%8F%8B%E4%BD%BF%E7%94%A8-linux-%E4%BD%86%E4%B8%8D%E8%A2%AB%E7%95%B6%E6%88%90%E6%80%AA%E5%92%96/ - </description>
+- https://blog.crboy.net/posts/%E5%A6%82%E4%BD%95%E8%AA%AA%E6%9C%8D%E4%BD%A0%E7%9A%84%E6%9C%8B%E5%8F%8B%E4%BD%BF%E7%94%A8-linux-%E4%BD%86%E4%B8%8D%E8%A2%AB%E7%95%B6%E6%88%90%E6%80%AA%E5%92%96/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -62,7 +63,7 @@ $ find . -exec echo {} \;
 &lt;pre&gt;&lt;code&gt;$ find a -exec vim {} -c &amp;quot;TOhtml&amp;quot; -c &amp;quot;w b/%:t&amp;quot; -c &amp;quot;wqa\!&amp;quot; \;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;重點就在那個「%:t」啊&amp;hellip;.花了我好多時間。那個 :t 在 vim 裡面稱為 file name modifier，可以取出一個檔案的「檔名部分」(也就是不包含他所在位置的路徑)，其他還有相當多種的 modifier，像是 :r, :h, :p 等等，可在 vim 中 &lt;code&gt;:help filename-modifiers&lt;/code&gt; 查詢說明。&lt;/p&gt;
-- https://blog.crboy.net/posts/vim-to-html/ - </description>
+- https://blog.crboy.net/posts/vim-to-html/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -129,7 +130,7 @@ $ find . -exec echo {} \;
 &lt;p&gt;目前暫時的結論就是，先 define &lt;code&gt;BOOST_NO_HASH&lt;/code&gt; 吧，等到 boost (或是說 BGL?) 出了新版，還有 GCC 預設支援 C++0x 的時候，這問題應該連改都不用改就解決了XD&amp;quot;&lt;/p&gt;
 &lt;p&gt;有興趣的朋友們可以嘗試看看強迫使用 C++0x 配合 &lt;code&gt;&amp;lt;unordered_set&amp;gt;&lt;/code&gt; 看看會不會順利編譯唷 :D&lt;/p&gt;
 &lt;p&gt;PS. 歡迎把你的經驗分享給我 :P&lt;/p&gt;
-- https://blog.crboy.net/posts/boost-deprecated-warning/ - </description>
+- https://blog.crboy.net/posts/boost-deprecated-warning/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -146,7 +147,7 @@ $ find . -exec echo {} \;
 &lt;p&gt;裝好之後要先 login。目前使用起來，其實不太好用&amp;hellip;.感覺圖跟字都太小，不過字的大小可以調整，我覺得調大一點比較舒服。另外，他是用樹狀顯示的，這當然沒什麼不好，不過感覺不像 Google 的東西就是了，我想我找書籤會用搜尋的吧&amp;hellip;.不可能在那邊捲來捲去，畢竟想用 label 來管理書籤就是因為可以組合標籤來搜尋&amp;hellip;.但是這就是最大的問題了&amp;hellip;.除了 Google 自己的搜尋以外，上面那三套 extension 我都試過了，都不能搜尋多個標籤&amp;hellip;.這&amp;hellip;.真是太杯具了&amp;hellip;..Q____________Q&lt;/p&gt;
 &lt;p&gt;好吧，我可以慢慢等待他的進步這樣&amp;hellip;.XD 現在先讓自己能夠把書籤放在雲端就好，反正，也沒那麼常在點書籤&amp;hellip;.反倒是都用來當做好文章的收集跟筆記用。:P&lt;/p&gt;
 &lt;p&gt;接下來該做的就是把原有的書籤匯入了&amp;hellip;..感覺是個相當困難的工作，我目前還沒有找到做法&amp;hellip;..等找到再說吧XD&lt;/p&gt;
-- https://blog.crboy.net/posts/yagbe-yet-another-google-bookmarks/ - </description>
+- https://blog.crboy.net/posts/yagbe-yet-another-google-bookmarks/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -171,7 +172,7 @@ $ find . -exec echo {} \;
 在 hangouts 中，中央的畫面會隨著現在講話的人而自動改變(自己除外)，不過多人同時講話的話就不清楚會怎麼變了，畢竟多人會議比較難作測試，有心得再跟大家報告。如果想要固定看到的人(比如說你暗戀他之類的)，只要在他的畫面上點一下就可以了，周圍會出現綠色框框，再點一下就可以恢復成自動切換。再來，應該有人會發現，怎麼有些人的畫面是一個藍色背景的黑色人影，難道他是黑鬼？其實不是，他是窮鬼，他沒有視訊攝影機。真正的黑鬼是畫面全黑的人，那表示他把他的視訊關起來了。關起來的功能在下方按鈕中間偏右的位置，按鈕這麼大應該不會找不到吧？XD&lt;br&gt;
 下方的按鈕依序是：邀請、即時通訊、YouTube、一段空白、視訊開關、麥克風開關、設定、結束。有人傳訊息的時候即時通訊旁邊會出現蹦現式對話框，不過，還是打開看比較方便。YouTube 的功能很好玩，當有其他人打開 YouTube 的時候，上面會跑出訊息問你要不要 to get her&amp;hellip;.呃，是問你要不要一起看啦。所有人的 YouTube 畫面是同步的，你開啟一個影片的時候還會顯示「xxx已將影片改變為ooo」，感覺壓力好大XD。特別需要注意的是，在 YouTube 開啟的狀態下，如果要講話的話必須把畫面中間的綠色按鈕「按住」才可以說話(像對講機一樣)，而且這時候 YouTube 影片的聲音會變成無聲，我想是為了避免聲音回饋到麥克風去吧。Ijs 有提到想用這個功能玩線上 KTV，不過因為這個設計的關係應該不太容易做到。(不過我認為主要的難題是在於，如果要一起唱歌，那聲音延遲的容忍程度會比講手機所能容忍的程度還要低，不然唱起歌來會很不舒服)&lt;/p&gt;
 &lt;p&gt;對了，最後給大家一個小技巧。應該很多人會發現用了 Google+ 之後，信箱幾乎要被塞爆了，其實這個是可以取消的。選右上角的齒輪圖案 - Google+設定 裡面就可以選擇哪些 event 要寄信通知。不過我認為更好的方法是在 Gmail 那邊設定 filter，把所有來自 plus.google.com 的信都封存+標為已讀+加上標籤，這樣可以幫自己把訊息都留下紀錄，方便查閱。只不過這樣的作法不曉得會不會漏掉系統重要通知信就是了&amp;hellip;.&lt;/p&gt;
-- https://blog.crboy.net/posts/google-plus-2/ - </description>
+- https://blog.crboy.net/posts/google-plus-2/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -190,7 +191,7 @@ $ find . -exec echo {} \;
 這名字很有趣，可是也很討厭。有趣在於，未來 Google+ 推出什麼新服務的話，就會變成「Google+Games」「Google+Clubs」「Google+Ads(誤)」，甚至可能就叫「+Games」之類的，很可愛的稱呼。可是這個「+」對於台灣人就很妙了，跟人討論的時候可能會出現以下幾種名字：「咕狗加」「Google plus」「G加」&amp;hellip;(我也不知道還有沒有別的)，叫「咕狗加」其實我是覺得不太通順= =a，私心最喜歡「G+」這個稱呼，因為他跟「居家」同音&amp;hellip;:P 不過在比較正式點的說法上，還是要寫「Google+」 唸作「Google plus」比較好~(這次總不會有人寫 Google plu 了吧&amp;hellip;.= =)&lt;/p&gt;
 &lt;p&gt;轉貼一則我在噗浪上的訊息&amp;hellip;..「快上 Google+！你今天，&lt;strong&gt;居家&lt;/strong&gt;了嗎？」&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;(顯示為下集才要進入主題)&lt;/em&gt;&lt;/p&gt;
-- https://blog.crboy.net/posts/google-plus-1/ - </description>
+- https://blog.crboy.net/posts/google-plus-1/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -209,7 +210,7 @@ $ find . -exec echo {} \;
 第二項之文字：&amp;ldquo;D&amp;quot;表示特性阻抗 50 歐姆，&amp;ldquo;C&amp;quot;表示特性阻抗 75 歐姆&lt;br&gt;
 第三項之文字：&amp;ldquo;2&amp;quot;表示PE充實絕緣型，&amp;ldquo;F&amp;quot;表示發泡PE絕緣型&lt;br&gt;
 第四項之文字：&amp;ldquo;V&amp;quot;表示外部導體為一層編織後施以PVC外被覆，&amp;ldquo;W&amp;quot;表示外部導體為二層編織後施以PVC外被覆，&amp;ldquo;B&amp;quot;表示外部導體為兩面鋁箔麥拉帶縱包再加上鍍錫軟銅線編織&lt;/p&gt;
-- https://blog.crboy.net/posts/%E5%90%8C%E8%BB%B8%E9%9B%BB%E7%BA%9C%E8%A6%8F%E6%A0%BC/ - </description>
+- https://blog.crboy.net/posts/%E5%90%8C%E8%BB%B8%E9%9B%BB%E7%BA%9C%E8%A6%8F%E6%A0%BC/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -251,7 +252,7 @@ $ find . -exec echo {} \;
 這實在太有梗了啦XDDDDDDDDDDDD 笑死我了~~~&lt;/li&gt;
 &lt;li&gt;對了，我好像一直都忘記說，看了他們的表演害我好後悔以前沒去修表演藝術概論喔T___________T&lt;/li&gt;
 &lt;/ul&gt;
-- https://blog.crboy.net/posts/face-to-audience-2/ - </description>
+- https://blog.crboy.net/posts/face-to-audience-2/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -292,7 +293,7 @@ $ find . -exec echo {} \;
 &lt;li&gt;碎碎念好多，還有想到的話之後再補吧~哈！&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;ps. 感謝&lt;a href=&#34;http://www.facebook.com/profile.php?id=1392878324&#34;&gt;楊三毛&lt;/a&gt;的指正，本文的「話劇」全部改成「舞台劇」了，真是不好意思。&amp;lt;(_ _)&amp;gt;&lt;/p&gt;
-- https://blog.crboy.net/posts/face-to-audience-1/ - </description>
+- https://blog.crboy.net/posts/face-to-audience-1/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -338,7 +339,7 @@ NETSERVER off #應該也是可以設定成on 讓別人也可以跟這台主機�
 &lt;li&gt;&lt;a href=&#34;http://help.ubuntu.com/community/apcupsd&#34;&gt;http://help.ubuntu.com/community/apcupsd&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.apcupsd.com/manual/manual.html&#34;&gt;http://www.apcupsd.com/manual/manual.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-- https://blog.crboy.net/posts/linux-apcupsd/ - </description>
+- https://blog.crboy.net/posts/linux-apcupsd/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     

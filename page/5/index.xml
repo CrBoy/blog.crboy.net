@@ -6,6 +6,7 @@
     <description>Recent content on CrBoy&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
+    <copyright>本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</copyright>
     <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
     
         <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
@@ -44,7 +45,7 @@
 &lt;p&gt;另外，就是下次的演講資訊。我們很開心邀請到老魏為我們帶來他玩 vim 的心得分享！時間是在 4 月 12 日的晚上 7:33，地點在資訊系館，詳細的資訊確定後會公開散佈。&lt;/p&gt;
 &lt;p&gt;至於這週的聚會&amp;hellip;.就在系館悠哉的閒聊好了~&lt;/p&gt;
 &lt;p&gt;ps. 之前我們去比金盾獎所取的隊名：C4Labs，就是從這裡出來的，哈！XD&lt;/p&gt;
-- https://blog.crboy.net/posts/release-slides-of-code-smart/ - </description>
+- https://blog.crboy.net/posts/release-slides-of-code-smart/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -138,7 +139,7 @@ fatal: The remote end hung up unexpectedly
 &lt;/ul&gt;
 &lt;p&gt;所以這個 solution 只適合用在小型團隊，很少開專案或是加減人的狀況囉！&lt;/p&gt;
 &lt;p&gt;對了，抱怨一下，我實在受不了 blogger 寫技術文章真的有夠麻煩&amp;hellip;..快崩潰了= =&lt;/p&gt;
-- https://blog.crboy.net/posts/remote-git-access-via-ssh/ - </description>
+- https://blog.crboy.net/posts/remote-git-access-via-ssh/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -158,7 +159,7 @@ fatal: The remote end hung up unexpectedly
 &lt;p&gt;對了&amp;hellip;我實際在用的時候其實是用 zsh 啦，不過我試過了，用 bash 也可以正常執行沒有問題。我指的是 script 第一行指定的 shell，不是執行 script 的 shell 唷！&lt;/p&gt;
 &lt;p&gt;另外還有，我認為 clean_up 應該只要負責清理就好，所以最後小小修改，變成了這樣：&lt;br&gt;
 以上，請多多指教！&amp;lt;(_ _)&amp;gt;&lt;/p&gt;
-- https://blog.crboy.net/posts/trap-in-bash-zsh-script/ - </description>
+- https://blog.crboy.net/posts/trap-in-bash-zsh-script/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -186,7 +187,7 @@ fatal: The remote end hung up unexpectedly
 講者：畢玉泉 (小畢/CrBoy)&lt;br&gt;
 講題：寫程式？那些老師沒教的事 - Code Smart, Don&amp;rsquo;t Code Hard&lt;/p&gt;
 &lt;p&gt;歡迎宣傳、轉貼以及蒞臨指教 :P&lt;/p&gt;
-- https://blog.crboy.net/posts/talk-0329-code-smart-dont-code-hard/ - </description>
+- https://blog.crboy.net/posts/talk-0329-code-smart-dont-code-hard/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -216,7 +217,7 @@ fatal: The remote end hung up unexpectedly
 &lt;p&gt;&lt;img src=&#34;ivyhere.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;至於概念上&amp;hellip;..我不是很會解釋，基本上就是利用 sqrt(t) 這個曲線的特性，再去做參數上的調整就是了。我想利用 log 那類的函數應該也可以，但就沒有仔細想了。雖然數學上應該已經有滿多現有的作法可以完成這個目的，不過自己拼湊也是種樂趣 :D&lt;/p&gt;
 &lt;p&gt;總結一下，我設計的這個 function 可以對一群資料做調整，使其高的更高、低的更低，並且保持其大小關係(如果是調整分數之類的應用，這點很重要)。同時這個 function 也是嚴格遞增，用於調整分數之類的滿適合的。:)&lt;/p&gt;
-- https://blog.crboy.net/posts/s-shape-adjustment-function/ - </description>
+- https://blog.crboy.net/posts/s-shape-adjustment-function/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -242,7 +243,7 @@ fatal: The remote end hung up unexpectedly
 &lt;pre&gt;&lt;code&gt;$ find . -mtime +365 -exec rm {} \;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;祝各位刪檔愉快(笑)。&lt;/p&gt;
-- https://blog.crboy.net/posts/delete-old-folders-by-modified-time/ - </description>
+- https://blog.crboy.net/posts/delete-old-folders-by-modified-time/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -257,7 +258,7 @@ fatal: The remote end hung up unexpectedly
 &lt;p&gt;剛好這兩天系上學弟妹需要用到 make，所以就把其中關於 Makefile 的一部分東西抓出來做了一份短短的講義。內容講的是基本的 Makefile 的撰寫，也就是關於規則以及變數的基本使用部分。&lt;br&gt;
 希望對於讀者有幫助。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://www.slideshare.net/CrBoy/code-smart-makefile-special-release&#34;&gt;Code Smart - Makefile (special release)&lt;/a&gt;&lt;/p&gt;
-- https://blog.crboy.net/posts/slides-of-makefile/ - </description>
+- https://blog.crboy.net/posts/slides-of-makefile/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -276,7 +277,7 @@ fatal: The remote end hung up unexpectedly
 &lt;p&gt;從前我們寫程式總是相當努力，在無形中花了很多力氣跟心血去達成目標，事實上很多事情可以更簡單，但是若不曉得這個簡單的世界，那也不得其門而入。從寫程式，到編譯，到除錯，再到程式的改版，我們已經花了太多血汗與肝了&amp;hellip;..要怎麼更簡單、更瀟灑(帥氣?)的搞定這些事，有時會讓人大開眼界~&lt;/p&gt;
 &lt;p&gt;這裡我不會講到任何跟程式設計本身有關的技巧，也不會教你如何安裝這些工具，或是把這些工具用得出神入化。我所探討的是你為什麼需要這些工具？這些工具又可以幫上什麼忙？內容中會有基礎的入門教學，旨在提供剛剛接觸且有興趣的人有個無痛入門的管道，我將把重點放在現場的 demo 與互動，歡迎有任何相關問題都可以現場提出，共同討論。討論所能夠學到的東西會比單純的聆聽來的多很多很多唷!!!&lt;/p&gt;
 &lt;p&gt;軟體的詳細教學會再找機會個別講&amp;hellip;如果我之後有餘裕的話 :)&lt;/p&gt;
-- https://blog.crboy.net/posts/necessary-tools-for-programmer/ - </description>
+- https://blog.crboy.net/posts/necessary-tools-for-programmer/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -329,7 +330,7 @@ fatal: The remote end hung up unexpectedly
 &lt;p&gt;&lt;img src=&#34;3.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;這次演出，算是成大 80 週年校慶的一個部分，待在成大已經邁入第七年的我，在這裡向成大說聲「生日快樂！」成大八十大壽囉，以後也要繼續長大！&lt;/p&gt;
 &lt;p&gt;謝謝面劇團帶給我這兩個晚上豐富的體驗，有視覺上的也有心靈上的，謝謝你們，謝謝面劇團的所有幕前幕後工作人員！你們很棒！你們的表演很棒！你們的努力很棒！&lt;/p&gt;
-- https://blog.crboy.net/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A0%B4%E4%B8%80%E8%BA%8D%E4%B9%8B%E4%B8%8B/ - </description>
+- https://blog.crboy.net/posts/%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E5%A0%B4%E4%B8%80%E8%BA%8D%E4%B9%8B%E4%B8%8B/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -374,7 +375,7 @@ fatal: The remote end hung up unexpectedly
 &lt;p&gt;好像還有一些有的沒的想法一時之間想不到&amp;hellip;..想到再說囉~:P 再度推薦成大面劇團！:D&lt;/p&gt;
 &lt;p&gt;Update: 對了，現在想起當初有收到邀請，沒有去加入面劇團真的好可惜！唉，要不是跟阿堂一樣畢不了業的話，我就會去加入了 &amp;gt;&amp;quot;&amp;lt;&lt;br&gt;
 Update: 發現「一躍之下，」這個名字後面應該要加上逗號&amp;hellip;..所以改了好幾個地方= =a&lt;/p&gt;
-- https://blog.crboy.net/posts/face-to-audience-3/ - </description>
+- https://blog.crboy.net/posts/face-to-audience-3/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     

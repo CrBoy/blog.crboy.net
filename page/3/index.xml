@@ -6,6 +6,7 @@
     <description>Recent content on CrBoy&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
+    <copyright>本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</copyright>
     <lastBuildDate>Thu, 29 Sep 2016 03:01:12 +0000</lastBuildDate>
     
         <atom:link href="https://blog.crboy.net/index.xml" rel="self" type="application/rss+xml" />
@@ -26,7 +27,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;短了一點點不是重點，重點是括號好看多了XD&lt;/p&gt;
 &lt;p&gt;另外作者稍微寫錯的部分是，&lt;code&gt;\l&lt;/code&gt; 跟 &lt;code&gt;\u&lt;/code&gt; 在 substitute pattern 中表示的是小寫和大寫字元，而不是把下一個字變成大(小)寫，那是在後面做的事。可以 &lt;code&gt;:help /character-classes&lt;/code&gt; 看到詳細的列表 (大心)。&lt;/p&gt;
 &lt;p&gt;既然這篇文章這麼短，那就提一下好了。今天找資料的時候不小心發現這位作者的 blog，實在看得我欲罷不能啊XD 而且他玩的東西好多，也玩系統、也寫程式，從 C 寫到 PHP、Python、Perl、Ruby&amp;hellip;..太強了orz 還有很多有趣的東西，實在很好玩&amp;hellip;.太佩服 &amp;lt;(_ _)&amp;gt; 建議熱愛技術的人可以參考看看，我覺得很精采 :D&lt;/p&gt;
-- https://blog.crboy.net/posts/vim-camelcase-to-snakecase/ - </description>
+- https://blog.crboy.net/posts/vim-camelcase-to-snakecase/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -45,7 +46,7 @@
 &lt;p&gt;第二部分講 DVCS 的好處，很重要的就是每個人可以自己搞自己的，又可以知道別人的脈絡。如果是在一人專案的狀況下，最基本上也可以省去跟遠端主機溝通的成本。但 DVCS 也有缺點，就是對於無法 merge (或根本不須 merge) 的檔案無法很好的處理。&lt;/p&gt;
 &lt;p&gt;後面部分，關於暫存的部分上面提過了，主要就是 git stash。而 hunk selection 在 git 中可用 git add -p 或是 git add -i (interactive) 做到，如果不小心一次寫了太多功能，可以利用這種方式分別 commit，才能保持 commit 小而頻繁，以獲得好處。&lt;/p&gt;
 &lt;p&gt;最後一個部分，列了幾個常見的無趣但重要的工作，偏重構方面的。作者建議把這些工作各自獨立成單一的 commit，而事實上這樣真的有很大的好處，看 log 跟 diff 的時候可以少花很多心思。&lt;/p&gt;
-- https://blog.crboy.net/posts/small-frequent-commit/ - </description>
+- https://blog.crboy.net/posts/small-frequent-commit/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -114,7 +115,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://xdebug.org/docs/&#34;&gt;Xdebug 官方文件&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-- https://blog.crboy.net/posts/xdebug-remote-debugging/ - </description>
+- https://blog.crboy.net/posts/xdebug-remote-debugging/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -205,7 +206,7 @@ $ git push origin master
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;結語&#34;&gt;結語&lt;/h1&gt;
 &lt;p&gt;其實基本上的 gitolite 使用並沒有什麼技巧，只要把 ssh key 準備好並設定一下，能夠順利 clone 回來的話就沒問題了。或也可以把現有 repo push 到 gitolite server 上面的空 repo 去，方式其實都大同小異。如果要學習 gitolite 的管理才比較需要 K 文件之類的。:)&lt;/p&gt;
-- https://blog.crboy.net/posts/gitolite-usage-tutorial/ - </description>
+- https://blog.crboy.net/posts/gitolite-usage-tutorial/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -326,7 +327,7 @@ repo crboy/.+$                  ### crboy 目錄下的任意 repo
 	C = crboy                   ### CrBoy 可以隨意創建
 	RW+ = crboy                 ### 當然也可以隨意讀寫 (這行似乎不必要，因為創建的人就可以讀寫)
 &lt;/code&gt;&lt;/pre&gt;
-- https://blog.crboy.net/posts/gitolite-settings-and-managements/ - </description>
+- https://blog.crboy.net/posts/gitolite-settings-and-managements/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -425,7 +426,7 @@ command=&amp;quot;/usr/share/gitolite/./gl-auth-command someone&amp;quot;,no-por
 &lt;/ul&gt;
 &lt;h1 id=&#34;總結&#34;&gt;總結&lt;/h1&gt;
 &lt;p&gt;整體弄起來，覺得 g3 在管理設定上，還有使用上都跟 g2 沒有什麼差別，只是安裝上不一樣就是了。不過由於是 perl 程式，其實安裝上還滿容易的，一開始不了解架構的話容易撞牆而已。&lt;/p&gt;
-- https://blog.crboy.net/posts/gitolite-3-installation/ - </description>
+- https://blog.crboy.net/posts/gitolite-3-installation/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -508,7 +509,7 @@ Initialized empty Git repository in /home/git/repositories/testing.git/
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;安裝完畢！關於管理跟使用的部分將另外撰寫。&lt;/p&gt;
-- https://blog.crboy.net/posts/gitolite-22-installation/ - </description>
+- https://blog.crboy.net/posts/gitolite-22-installation/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -612,7 +613,7 @@ var_dump($db);
 &lt;li&gt;&lt;a href=&#34;http://serverfault.com/questions/151328/setting-apache2-path-environment-variable&#34; title=&#34;Setting Apache2 PATH environment variable&#34;&gt;Setting Apache2 PATH environment variable&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://pecl.php.net/package/informix&#34;&gt;PECL 上的 informix&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-- https://blog.crboy.net/posts/php-informix-on-linux/ - </description>
+- https://blog.crboy.net/posts/php-informix-on-linux/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -654,7 +655,7 @@ xdebug.profiler_output_dir = /tmp/xdebug    #profile log 的位置
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://xdebug.org/docs/&#34;&gt;Xdebug 官方文件&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-- https://blog.crboy.net/posts/xdebug-installation-and-usage/ - </description>
+- https://blog.crboy.net/posts/xdebug-installation-and-usage/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     
@@ -695,7 +696,7 @@ xdebug.profiler_output_dir = /tmp/xdebug    #profile log 的位置
 &lt;p&gt;好像想講的都講得差不多了&amp;hellip;不曉得該怎麼結尾XD 其實心裡還有些想法，是從劇情裡面衍生出來的，可是我也不曉得該怎麼描述，大概&amp;hellip;就像是一種心情而已吧？&lt;/p&gt;
 &lt;p&gt;謝謝面劇團，你們以後也要繼續加油喔！如果是決定好好念書的小朋友 (突然就從粉絲變學長了)，也要好好加油，祝福你們都有很美好的未來。&lt;/p&gt;
 &lt;p&gt;下次的演出&amp;hellip;我想也只能「空中」再見了&amp;hellip;.哈~&lt;/p&gt;
-- https://blog.crboy.net/posts/%E6%98%8E%E5%A4%A9%E6%88%91%E5%80%91%E7%A9%BA%E4%B8%AD%E5%86%8D%E8%A6%8B/ - </description>
+- https://blog.crboy.net/posts/%E6%98%8E%E5%A4%A9%E6%88%91%E5%80%91%E7%A9%BA%E4%B8%AD%E5%86%8D%E8%A6%8B/ - 本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</description>
         </item>
     
     

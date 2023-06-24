@@ -6,6 +6,7 @@
     <description>Recent content in Trouble Shooting on CrBoy&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
+    <copyright>本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</copyright>
     <lastBuildDate>Wed, 01 Aug 2012 17:45:00 +0000</lastBuildDate><atom:link href="https://blog.crboy.net/tags/trouble-shooting/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>NAS 的 NFS 掛不上...竟然是 switch 害的!!</title>

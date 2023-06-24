@@ -5,6 +5,7 @@
     <link>https://blog.crboy.net/categories/</link>
     <description>Recent content in Categories on CrBoy&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-tw</language><atom:link href="https://blog.crboy.net/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-tw</language>
+    <copyright>本 blog 文章除另有註明外，皆以 CC BY-SA 4.0 國際版授權條款釋出</copyright><atom:link href="https://blog.crboy.net/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
